@@ -1,3 +1,23 @@
 <resources>
     <string name="app_name">Shopping</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- Đăng nhập -->
+    <string name="title_dang_nhap">SHOPPING</string>
+    <string name="ten_dang_nhap">Tên đăng nhập</string>
+    <string name="mat_khau">Mật khẩu</string>
+    <string name="chu_ngan_cach">Hoặc</string>
+    <string name="quen_mat_khau">Quên mật khẩu ?</string>
+    <string name="dang_nhap">ĐĂNG NHẬP</string>
+    <string name="dang_ky">Chưa có tài khoản? ĐĂNG KÝ</string>
+    <string name="toast_dang_nhap_thanh_cong">Đăng nhập thành công!</string>
+    <string name="toast_dang_nhap_that_bai">Sai thông tin đăng nhập!</string>
+
+    <!-- Đăng ký -->
+    <string name="toast_dang_ky_thanh_cong">Đăng ký thành công!</string>
+    <string name="toast_dang_ky_that_bai">Đăng ký thất bại!</string>
+
+    <string name="toast_nhap_thieu">Thiếu thông tin cần thiết!</string>
 </resources>
