@@ -1,6 +1,7 @@
 package vn.com.greenacademy.shopping.Fragment.TaiKhoan;
 
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -13,7 +14,7 @@ import android.widget.Toast;
 
 import vn.com.greenacademy.shopping.R;
 import vn.com.greenacademy.shopping.Util.SupportKeyList;
-import vn.com.greenacademy.shopping.asynctask.GoiAPIServerAsyncTask;
+import vn.com.greenacademy.shopping.Asynctask.GoiAPIServerAsyncTask;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -24,12 +25,12 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener {
     private TextView tvDangKy;
     private Button btnDangNhap;
 
+    private Context context;
     private static final String URL_DANG_NHAP = "http://tamod.vn:9045/TaiKhoan/DangNhap";
 
-    public DangNhapFragment() {
-        // Required empty public constructor
+    public DangNhapFragment(Context context) {
+        this.context = context;
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -52,10 +53,11 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener {
             case R.id.btnDangNhap_FragmentDangNhap:
                 //Kiểm tra thông tin và tạo kết nối tới server để đăng nhập
                 if (!etTenDangNhap.getText().toString().isEmpty() && !etPassword.getText().toString().isEmpty())
-                    new GoiAPIServerAsyncTask(getContext()).execute(SupportKeyList.API_DANG_NHAP, URL_DANG_NHAP, etTenDangNhap.getText().toString(), etPassword.getText().toString());
+                    new GoiAPIServerAsyncTask(context, getActivity().getSupportFragmentManager()).execute(SupportKeyList.API_DANG_NHAP, URL_DANG_NHAP, etTenDangNhap.getText().toString(), etPassword.getText().toString());
                 else
                     Toast.makeText(getContext(), R.string.toast_nhap_thieu, Toast.LENGTH_SHORT).show();
                 break;
+
             case R.id.tvDangKy_FragmentDangNhap:
                 //Chuyền sang màn hình đăng ký
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content_Main, new DangKyFragment()).addToBackStack("dang_ky_fragment").commit();

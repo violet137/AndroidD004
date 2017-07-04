@@ -1,14 +1,13 @@
-package vn.com.greenacademy.shopping.asynctask;
+package vn.com.greenacademy.shopping.Asynctask;
 
 import android.content.Context;
 import android.os.AsyncTask;
-import android.util.Log;
+import android.support.v4.app.FragmentManager;
 import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -17,6 +16,9 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import vn.com.greenacademy.shopping.Data.MySharedPreferences;
+import vn.com.greenacademy.shopping.Fragment.Main.MainFragment;
+import vn.com.greenacademy.shopping.Fragment.TaiKhoan.DangNhapFragment;
 import vn.com.greenacademy.shopping.R;
 import vn.com.greenacademy.shopping.Util.SupportKeyList;
 
@@ -26,13 +28,19 @@ import vn.com.greenacademy.shopping.Util.SupportKeyList;
 
 public class GoiAPIServerAsyncTask extends AsyncTask<String, Void, Integer> {
     private Context context;
+    private FragmentManager fragmentManager;
+    private MySharedPreferences mySharedPreferences;
+
+    //Key phân loại kết quả trả về của từng API
     private static final int DANG_NHAP_THAT_BAI = 0;
     private static final int DANG_NHAP_THANH_CONG = 1;
     private static final int DANG_KY_THAT_BAI = 2;
     private static final int DANG_KY_THANH_CONG = 3;
 
-    public GoiAPIServerAsyncTask(Context context){
+    public GoiAPIServerAsyncTask(Context context, FragmentManager fragmentManager){
         this.context = context;
+        this.fragmentManager = fragmentManager;
+        mySharedPreferences = new MySharedPreferences(context, SupportKeyList.PREFERENCES_TEN_FILE);
     }
 
     @Override
@@ -81,11 +89,7 @@ public class GoiAPIServerAsyncTask extends AsyncTask<String, Void, Integer> {
                         if(jsonObject.getInt("Status") == 1)
                             return DANG_NHAP_THANH_CONG;
                     }
-                } catch (MalformedURLException e) {
-                    e.printStackTrace();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                } catch (JSONException e) {
+                } catch (IOException | JSONException e) {
                     e.printStackTrace();
                 }
                 return  DANG_NHAP_THAT_BAI;
@@ -115,11 +119,7 @@ public class GoiAPIServerAsyncTask extends AsyncTask<String, Void, Integer> {
                         if(jsonObject.getInt("Status") == 1)
                             return DANG_KY_THANH_CONG;
                     }
-                } catch (MalformedURLException e) {
-                    e.printStackTrace();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                } catch (JSONException e) {
+                } catch (JSONException | IOException e) {
                     e.printStackTrace();
                 }
                 return DANG_KY_THAT_BAI;
@@ -134,14 +134,20 @@ public class GoiAPIServerAsyncTask extends AsyncTask<String, Void, Integer> {
         //Xử lý kết quả từ server
         switch (result){
             case DANG_NHAP_THANH_CONG:
+                //Hiện thông báo, chuyển vào màn hình main, lưu đăng nhập
                 Toast.makeText(context, R.string.toast_dang_nhap_thanh_cong, Toast.LENGTH_SHORT).show();
+                fragmentManager.beginTransaction().replace(R.id.content_Main, new MainFragment(context)).commit();
+                mySharedPreferences.setSHAREDPREF_LUU_DANG_NHAP(true);
                 break;
+
             case DANG_NHAP_THAT_BAI:
                 Toast.makeText(context, R.string.toast_dang_nhap_that_bai, Toast.LENGTH_SHORT).show();
                 break;
+
             case DANG_KY_THANH_CONG:
                 Toast.makeText(context, R.string.toast_dang_ky_thanh_cong, Toast.LENGTH_SHORT).show();
                 break;
+
             case DANG_KY_THAT_BAI:
                 Toast.makeText(context, R.string.toast_dang_ky_that_bai, Toast.LENGTH_SHORT).show();
                 break;

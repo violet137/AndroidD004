@@ -1,0 +1,139 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height ="match_parent"
+    android:background="@drawable/log_in_background"
+    tools:context="vn.com.greenacademy.shopping.Fragment.TaiKhoan.DangNhapFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/scrim">
+        <!-- Title -->
+        <TextView
+            android:id="@+id/tvTiltleDangNhap_FragmentDangNhap"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="@dimen/title_dang_nhap_margin"
+            android:text="@string/title_dang_nhap"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/title_dang_nhap_size"
+            android:textStyle="bold|italic" />
+
+        <!-- Khung đăng nhập -->
+        <LinearLayout
+            android:id="@+id/khung_dang_nhap_FragmentDangNhap"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dang_nhap_margin"
+            android:layout_marginRight="@dimen/dang_nhap_margin"
+            android:layout_below="@+id/tvTiltleDangNhap_FragmentDangNhap"
+            android:background="@drawable/shape"
+            android:orientation="vertical"
+            android:padding="@dimen/khung_dang_nhap_padding">
+
+            <!-- Tên đăng nhập -->
+            <EditText
+                android:id="@+id/etTenDangNhap_FragmentDangNhap"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/edit_text_height"
+                android:background="@drawable/shape"
+                android:hint="@string/ten_dang_nhap"
+                android:padding="@dimen/edit_text_padding" />
+
+            <!-- Mật khẩu -->
+            <EditText
+                android:id="@+id/etMatKhau_FragmentDangNhap"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/edit_text_height"
+                android:layout_marginTop="@dimen/edit_text_dang_nhap_marginTop"
+                android:background="@drawable/shape"
+                android:hint="@string/mat_khau"
+                android:padding="@dimen/edit_text_padding" />
+
+            <!-- Nút đăng nhập -->
+            <Button
+                android:id="@+id/btnDangNhap_FragmentDangNhap"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/nut_dang_nhap_height"
+                android:layout_marginLeft="@dimen/dang_nhap_margin"
+                android:layout_marginRight="@dimen/dang_nhap_margin"
+                android:layout_marginTop="@dimen/button_dang_nhap_marginTop"
+                android:background="@drawable/shape"
+                android:text="@string/dang_nhap" />
+
+            <!-- Quên mật khẩu -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/item_quen_mat_khau_marginTop"
+                android:text="@string/quen_mat_khau"
+                android:textColor="@color/colorPrimary" />
+
+            <!-- Đường ngăn cách -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/item_ngan_cach_marginTop"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/duong_ngan_cach_height"
+                    android:layout_weight="1"
+                    android:background="@android:color/darker_gray" />
+
+                <!-- Chữ ngăn cách -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/chu_ngan_cach" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/duong_ngan_cach_height"
+                    android:layout_weight="1"
+                    android:background="@android:color/darker_gray" />
+            </LinearLayout>
+
+            <!-- Đăng nhập Google/Facebook -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <!-- Google -->
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/nut_dang_nhap_khac_height"
+                    android:layout_weight="1"
+                    android:text="Google" />
+
+                <!-- Facebook -->
+                <Button
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/nut_dang_nhap_khac_height"
+                    android:layout_weight="1"
+                    android:text="FaceBook" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Đăng ký -->
+        <TextView
+            android:id="@+id/tvDangKy_FragmentDangNhap"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/khung_dang_nhap_FragmentDangNhap"
+            android:layout_marginTop="@dimen/dang_nhap_margin"
+            android:layout_centerHorizontal="true"
+            android:text="@string/dang_ky"
+            android:textAllCaps="false"
+            android:textStyle="italic"
+            android:textColor="@android:color/white"/>
+    </RelativeLayout>
+</RelativeLayout>
