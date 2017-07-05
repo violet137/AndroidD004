@@ -24,7 +24,7 @@ public class FirstScreenFragment extends Fragment {
 
     public FirstScreenFragment(Context context) {
         this.context = context;
-        mySharedPreferences = new MySharedPreferences(context, SupportKeyList.PREFERENCES_TEN_FILE);
+        mySharedPreferences = new MySharedPreferences(context, SupportKeyList.SHAREDPREF_TEN_FILE);
     }
 
 

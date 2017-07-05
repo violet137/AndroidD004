@@ -12,6 +12,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:background="@color/scrim">
+
         <!-- Title -->
         <TextView
             android:id="@+id/tvTiltleDangNhap_FragmentDangNhap"
@@ -56,9 +57,7 @@
                 android:layout_height="@dimen/edit_text_height"
                 android:layout_marginTop="@dimen/edit_text_dang_nhap_marginTop"
                 android:background="@drawable/shape"
-                android:drawableRight="@android:drawable/ic_menu_view"
                 android:hint="@string/mat_khau"
-                android:inputType="textPassword"
                 android:padding="@dimen/edit_text_padding"
                 android:textColor="@color/text_color"
                 android:textColorHint="@color/text_color" />
@@ -77,15 +76,12 @@
 
             <!-- Quên mật khẩu -->
             <TextView
-                android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="@dimen/item_quen_mat_khau_marginTop"
                 android:text="@string/quen_mat_khau"
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/text_quen_mat_khau"
-                android:textStyle="italic"/>
+                android:textColor="@color/colorPrimary" />
 
             <!-- Đường ngăn cách -->
             <LinearLayout
@@ -128,18 +124,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/nut_dang_nhap_khac_height"
                     android:layout_weight="1"
-                    android:text="Google"
-                    android:background="@drawable/shape_text"
-                    android:layout_marginRight="2dp"/>
+                    android:text="Google" />
 
                 <!-- Facebook -->
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/nut_dang_nhap_khac_height"
                     android:layout_weight="1"
-                    android:background="@drawable/shape_nut_facebook"
-                    android:text="FaceBook"
-                    android:layout_marginLeft="2dp"/>
+                    android:text="FaceBook" />
             </LinearLayout>
         </LinearLayout>
 
@@ -151,7 +143,6 @@
             android:layout_below="@+id/khung_dang_nhap_FragmentDangNhap"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/dang_nhap_margin"
-            android:gravity="center"
             android:text="@string/dang_ky"
             android:textAllCaps="false"
             android:textColor="@color/text_color"

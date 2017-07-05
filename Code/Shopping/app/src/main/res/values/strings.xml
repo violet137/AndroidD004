@@ -11,7 +11,7 @@
     <string name="chu_ngan_cach">Hoặc</string>
     <string name="quen_mat_khau">Quên mật khẩu ?</string>
     <string name="dang_nhap">ĐĂNG NHẬP</string>
-    <string name="dang_ky">Chưa có tài khoản? ĐĂNG KÝ</string>
+    <string name="dang_ky">Chưa có tài khoản? <b><u>\nĐĂNG KÝ</u></b></string>
     <string name="toast_dang_nhap_thanh_cong">Đăng nhập thành công!</string>
     <string name="toast_dang_nhap_that_bai">Sai thông tin đăng nhập!</string>
 

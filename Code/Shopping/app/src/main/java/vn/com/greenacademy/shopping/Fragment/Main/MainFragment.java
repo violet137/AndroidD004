@@ -22,7 +22,7 @@ public class MainFragment extends Fragment implements View.OnClickListener {
 
     private MySharedPreferences mySharedPreferences;
     public MainFragment(Context context) {
-        mySharedPreferences = new MySharedPreferences(context, SupportKeyList.PREFERENCES_TEN_FILE);
+        mySharedPreferences = new MySharedPreferences(context, SupportKeyList.SHAREDPREF_TEN_FILE);
     }
 
 

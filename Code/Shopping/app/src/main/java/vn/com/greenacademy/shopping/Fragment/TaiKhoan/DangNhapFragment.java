@@ -4,7 +4,10 @@ package vn.com.greenacademy.shopping.Fragment.TaiKhoan;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
+import android.text.method.PasswordTransformationMethod;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -36,14 +39,37 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View root = inflater.inflate(R.layout.fragment_dang_nhap_test, container, false);
+        View root = inflater.inflate(R.layout.fragment_dang_nhap, container, false);
         etTenDangNhap = (EditText) root.findViewById(R.id.etTenDangNhap_FragmentDangNhap);
         etPassword = (EditText) root.findViewById(R.id.etMatKhau_FragmentDangNhap);
         tvDangKy = (TextView) root.findViewById(R.id.tvDangKy_FragmentDangNhap);
         btnDangNhap = (Button) root.findViewById(R.id.btnDangNhap_FragmentDangNhap);
 
+        //Thay đổi chữ đăng ký
+        ((TextView) root.findViewById(R.id.tvDangKy_FragmentDangNhap)).setText(R.string.dang_ky);
+
         btnDangNhap.setOnClickListener(this);
         tvDangKy.setOnClickListener(this);
+
+        //Ẩn hiện password
+        etPassword.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                final int DRAWABLE_LEFT = 0;
+                final int DRAWABLE_TOP = 1;
+                final int DRAWABLE_RIGHT = 2;
+                final int DRAWABLE_BOTTOM = 3;
+
+                if(motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
+                    if(motionEvent.getRawX() >= (etPassword.getRight() - etPassword.getCompoundDrawables()[DRAWABLE_RIGHT].getBounds().width())) {
+                        etPassword.setTransformationMethod(null);
+                        return true;
+                    }
+                }
+                etPassword.setTransformationMethod(new PasswordTransformationMethod());
+                return false;
+            }
+        });
         return root;
     }
 

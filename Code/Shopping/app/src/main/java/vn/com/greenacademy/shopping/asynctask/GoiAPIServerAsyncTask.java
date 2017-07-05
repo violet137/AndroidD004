@@ -40,7 +40,7 @@ public class GoiAPIServerAsyncTask extends AsyncTask<String, Void, Integer> {
     public GoiAPIServerAsyncTask(Context context, FragmentManager fragmentManager){
         this.context = context;
         this.fragmentManager = fragmentManager;
-        mySharedPreferences = new MySharedPreferences(context, SupportKeyList.PREFERENCES_TEN_FILE);
+        mySharedPreferences = new MySharedPreferences(context, SupportKeyList.SHAREDPREF_TEN_FILE);
     }
 
     @Override
@@ -138,6 +138,7 @@ public class GoiAPIServerAsyncTask extends AsyncTask<String, Void, Integer> {
                 Toast.makeText(context, R.string.toast_dang_nhap_thanh_cong, Toast.LENGTH_SHORT).show();
                 fragmentManager.beginTransaction().replace(R.id.content_Main, new MainFragment(context)).commit();
                 mySharedPreferences.setSHAREDPREF_LUU_DANG_NHAP(true);
+                mySharedPreferences.setSHAREDPREF_LOAI_TAI_KHOAN(SupportKeyList.ACCOUNT_THUONG);
                 break;
 
             case DANG_NHAP_THAT_BAI:

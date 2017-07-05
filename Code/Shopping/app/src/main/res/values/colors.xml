@@ -3,5 +3,7 @@
     <color name="colorPrimary">#FF65AEFC</color>
     <color name="colorPrimaryDark">@null</color>
     <color name="colorAccent">#FF4081</color>
-    <color name="scrim">#4d494949</color>
+    <color name="scrim">#a43c3b3b</color>
+    <color name="scrimDark">#a43c3b3a</color>
+    <color name="text_color">#ffffffff</color>
 </resources>
