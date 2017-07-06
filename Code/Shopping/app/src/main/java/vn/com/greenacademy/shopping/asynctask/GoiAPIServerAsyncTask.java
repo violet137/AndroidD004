@@ -19,6 +19,7 @@ import java.net.URL;
 import vn.com.greenacademy.shopping.Data.MySharedPreferences;
 import vn.com.greenacademy.shopping.Fragment.Main.MainFragment;
 import vn.com.greenacademy.shopping.Fragment.TaiKhoan.DangNhapFragment;
+import vn.com.greenacademy.shopping.Interface.DataCallBack;
 import vn.com.greenacademy.shopping.R;
 import vn.com.greenacademy.shopping.Util.SupportKeyList;
 
@@ -27,20 +28,10 @@ import vn.com.greenacademy.shopping.Util.SupportKeyList;
  */
 
 public class GoiAPIServerAsyncTask extends AsyncTask<String, Void, Integer> {
-    private Context context;
-    private FragmentManager fragmentManager;
-    private MySharedPreferences mySharedPreferences;
+    private DataCallBack dataCallBack;
 
-    //Key phân loại kết quả trả về của từng API
-    private static final int DANG_NHAP_THAT_BAI = 0;
-    private static final int DANG_NHAP_THANH_CONG = 1;
-    private static final int DANG_KY_THAT_BAI = 2;
-    private static final int DANG_KY_THANH_CONG = 3;
-
-    public GoiAPIServerAsyncTask(Context context, FragmentManager fragmentManager){
-        this.context = context;
-        this.fragmentManager = fragmentManager;
-        mySharedPreferences = new MySharedPreferences(context, SupportKeyList.SHAREDPREF_TEN_FILE);
+    public GoiAPIServerAsyncTask(DataCallBack dataCallBack){
+        this.dataCallBack = dataCallBack;
     }
 
     @Override
@@ -87,12 +78,12 @@ public class GoiAPIServerAsyncTask extends AsyncTask<String, Void, Integer> {
                         //Chuyển kết quả trả về từ string sang JSONObject
                         JSONObject jsonObject = new JSONObject(result.toString());
                         if(jsonObject.getInt("Status") == 1)
-                            return DANG_NHAP_THANH_CONG;
+                            return SupportKeyList.DANG_NHAP_THANH_CONG;
                     }
                 } catch (IOException | JSONException e) {
-                    e.printStackTrace();
+                    return SupportKeyList.LOI_KET_NOI;
                 }
-                return  DANG_NHAP_THAT_BAI;
+                return  SupportKeyList.DANG_NHAP_THAT_BAI;
 
             case SupportKeyList.API_DANG_KY:
                 try {
@@ -117,12 +108,12 @@ public class GoiAPIServerAsyncTask extends AsyncTask<String, Void, Integer> {
                         InputStream inputStream = conn.getInputStream();
                         JSONObject jsonObject = new JSONObject(inputStream.toString());
                         if(jsonObject.getInt("Status") == 1)
-                            return DANG_KY_THANH_CONG;
+                            return SupportKeyList.DANG_KY_THANH_CONG;
                     }
                 } catch (JSONException | IOException e) {
                     e.printStackTrace();
                 }
-                return DANG_KY_THAT_BAI;
+                return SupportKeyList.DANG_KY_THAT_BAI;
         }
         return null;
     }
@@ -130,27 +121,22 @@ public class GoiAPIServerAsyncTask extends AsyncTask<String, Void, Integer> {
     @Override
     protected void onPostExecute(Integer result) {
         super.onPostExecute(result);
-
-        //Xử lý kết quả từ server
+        //Trả kết quả về class yêu cầu
         switch (result){
-            case DANG_NHAP_THANH_CONG:
-                //Hiện thông báo, chuyển vào màn hình main, lưu đăng nhập
-                Toast.makeText(context, R.string.toast_dang_nhap_thanh_cong, Toast.LENGTH_SHORT).show();
-                fragmentManager.beginTransaction().replace(R.id.content_Main, new MainFragment(context)).commit();
-                mySharedPreferences.setSHAREDPREF_LUU_DANG_NHAP(true);
-                mySharedPreferences.setSHAREDPREF_LOAI_TAI_KHOAN(SupportKeyList.ACCOUNT_THUONG);
+            case SupportKeyList.LOI_KET_NOI:
+                dataCallBack.KetQua(SupportKeyList.LOI_KET_NOI);
                 break;
-
-            case DANG_NHAP_THAT_BAI:
-                Toast.makeText(context, R.string.toast_dang_nhap_that_bai, Toast.LENGTH_SHORT).show();
+            case SupportKeyList.DANG_NHAP_THANH_CONG:
+                dataCallBack.KetQua(SupportKeyList.DANG_NHAP_THANH_CONG);
                 break;
-
-            case DANG_KY_THANH_CONG:
-                Toast.makeText(context, R.string.toast_dang_ky_thanh_cong, Toast.LENGTH_SHORT).show();
+            case SupportKeyList.DANG_NHAP_THAT_BAI:
+                dataCallBack.KetQua(SupportKeyList.DANG_NHAP_THAT_BAI);
                 break;
-
-            case DANG_KY_THAT_BAI:
-                Toast.makeText(context, R.string.toast_dang_ky_that_bai, Toast.LENGTH_SHORT).show();
+            case SupportKeyList.DANG_KY_THANH_CONG:
+                dataCallBack.KetQua(SupportKeyList.DANG_KY_THANH_CONG);
+                break;
+            case SupportKeyList.DANG_KY_THAT_BAI:
+                dataCallBack.KetQua(SupportKeyList.DANG_KY_THAT_BAI);
                 break;
             default:
                 break;

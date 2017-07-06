@@ -43,7 +43,7 @@ public class MainFragment extends Fragment implements View.OnClickListener {
             case R.id.btnDangXuat_FragmentMain:
                 //Chuyển về màn hình đăng nhập, lưu lại trạng thái
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content_Main, new DangNhapFragment(getContext())).commit();
-                mySharedPreferences.setSHAREDPREF_LUU_DANG_NHAP(false);
+                mySharedPreferences.setLUU_DANG_NHAP(false);
                 break;
         }
     }

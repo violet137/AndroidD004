@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height ="match_parent"
-    android:background="@drawable/log_in_background"
+    android:background="@drawable/background_0"
     tools:context="vn.com.greenacademy.shopping.Fragment.TaiKhoan.DangNhapFragment">
 
     <RelativeLayout
@@ -11,7 +11,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:background="@color/scrim">
+        android:background="@color/scrimDark">
         <!-- Title -->
         <TextView
             android:id="@+id/tvTiltleDangNhap_FragmentDangNhap"
@@ -85,7 +85,7 @@
                 android:text="@string/quen_mat_khau"
                 android:textColor="@color/colorPrimary"
                 android:textSize="@dimen/text_quen_mat_khau"
-                android:textStyle="italic"/>
+                android:textStyle="italic" />
 
             <!-- Đường ngăn cách -->
             <LinearLayout
@@ -127,19 +127,19 @@
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/nut_dang_nhap_khac_height"
+                    android:layout_marginRight="2dp"
                     android:layout_weight="1"
-                    android:text="Google"
                     android:background="@drawable/shape_text"
-                    android:layout_marginRight="2dp"/>
+                    android:text="Google" />
 
                 <!-- Facebook -->
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/nut_dang_nhap_khac_height"
+                    android:layout_marginLeft="2dp"
                     android:layout_weight="1"
                     android:background="@drawable/shape_nut_facebook"
-                    android:text="FaceBook"
-                    android:layout_marginLeft="2dp"/>
+                    android:text="FaceBook" />
             </LinearLayout>
         </LinearLayout>
 

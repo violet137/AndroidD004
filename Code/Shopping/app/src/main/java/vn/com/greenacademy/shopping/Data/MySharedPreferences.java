@@ -25,21 +25,21 @@ public class MySharedPreferences {
     }
 
     //Key đăng nhập
-    public boolean getSHAREDPREF_LUU_DANG_NHAP() {
+    public boolean getLUU_DANG_NHAP() {
         return sharedPreferences.getBoolean(KEY_LUU_DANG_NHAP, false);
     }
 
-    public void setSHAREDPREF_LUU_DANG_NHAP(boolean status){
+    public void setLUU_DANG_NHAP(boolean status){
         editor.putBoolean(KEY_LUU_DANG_NHAP, status);
         editor.commit();
     }
 
     //Key tai khoan
-    public int getSHAREDPREF_LOAI_TAI_KHOAN(){
+    public int getLOAI_TAI_KHOAN(){
         return sharedPreferences.getInt(KEY_LOAI_TAI_KHOAN, -1);
     }
 
-    public void setSHAREDPREF_LOAI_TAI_KHOAN(int loaiTK){
+    public void setLOAI_TAI_KHOAN(int loaiTK){
         editor.putInt(KEY_LOAI_TAI_KHOAN, loaiTK);
         editor.commit();
     }
