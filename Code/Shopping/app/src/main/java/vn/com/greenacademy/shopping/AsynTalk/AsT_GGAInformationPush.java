@@ -1,7 +1,6 @@
 package vn.com.greenacademy.shopping.AsynTalk;
 
 import android.os.AsyncTask;
-import android.util.Log;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -14,14 +13,14 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-import vn.com.greenacademy.shopping.Model.ModelAccount;
-import vn.com.greenacademy.shopping.ParData.ParGoogleID;
+import vn.com.greenacademy.shopping.Model.Md_Account;
+import vn.com.greenacademy.shopping.ParData.Par_GoogleID;
 
 /**
  * Created by ADMIN on 7/6/2017.
  */
 
-public class AsynTalkGGAInformationPush extends AsyncTask<String, Void, String>{
+public class AsT_GGAInformationPush extends AsyncTask<String, Void, String>{
     @Override
     protected String doInBackground(String... params) {
         URL url = null;
@@ -66,9 +65,9 @@ public class AsynTalkGGAInformationPush extends AsyncTask<String, Void, String>{
 
     @Override
     protected void onPostExecute(String s) {
-        ParGoogleID parGoogleID = new ParGoogleID(s);
+        Par_GoogleID parGoogleID = new Par_GoogleID(s);
         try {
-            ModelAccount modelAccount = parGoogleID.parID();
+            Md_Account modelAccount = parGoogleID.parID();
             modelAccount.getStatus();
         } catch (JSONException e) {
             e.printStackTrace();

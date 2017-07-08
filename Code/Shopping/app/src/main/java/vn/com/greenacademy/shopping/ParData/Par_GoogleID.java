@@ -1,26 +1,23 @@
 package vn.com.greenacademy.shopping.ParData;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
-
-import vn.com.greenacademy.shopping.Model.ModelAccount;
+import vn.com.greenacademy.shopping.Model.Md_Account;
 
 /**
  * Created by ADMIN on 7/6/2017.
  */
 
-public class ParGoogleID {
+public class Par_GoogleID {
     String mData;
 
-    public ParGoogleID(String mData) {
+    public Par_GoogleID(String mData) {
         this.mData = mData;
     }
 
-    public ModelAccount parID() throws JSONException {
-        ModelAccount result = new ModelAccount();
+    public Md_Account parID() throws JSONException {
+        Md_Account result = new Md_Account();
         JSONObject root = new JSONObject(mData);
         result.setDescription(root.getString("Description"));
         result.setStatus(root.getInt("Status"));

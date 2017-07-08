@@ -4,7 +4,7 @@ package vn.com.greenacademy.shopping.Model;
  * Created by ADMIN on 7/6/2017.
  */
 
-public class ModelAccount {
+public class Md_Account {
     String Token;
     int Status;
     String Description;
