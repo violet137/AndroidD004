@@ -1,0 +1,63 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="vn.com.greenacademy.shopping.Fragment.Main.MyShopping.TaiKhoan.TaiKhoanFragment">
+
+    <!-- Title -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title_height"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/vertical_padding"
+        android:background="@color/colorPrimaryDark"
+        android:text="@string/title_tai_khoan"
+        android:textColor="@color/colorText"
+        android:textSize="@dimen/title_size"
+        android:textStyle="bold"/>
+
+    <!-- Đổi mật khẩu -->
+    <TextView
+        android:id="@+id/tvDoiMatKhau"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/vertical_padding"
+        android:text="@string/doi_mat_khau"
+        android:textColor="@color/colorTextDark"
+        android:textSize="@dimen/account_text_size"
+        android:textStyle="bold"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:background="@android:color/darker_gray"/>
+
+    <!-- Thông tin cá nhân -->
+    <!-- Title -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/horizontal_padding"
+        android:paddingLeft="@dimen/vertical_padding"
+        android:paddingBottom="@dimen/horizontal_padding"
+        android:text="@string/title_thong_tin_ca_nhan"
+        android:textColor="@color/colorTextDark"
+        android:textSize="@dimen/account_text_size"
+        android:textStyle="bold" />
+    <!-- Username(Email) -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/vertical_padding"
+        android:text="@string/title_username"/>
+    <TextView
+        android:id="@+id/tvUsername_FragmentTaiKhoan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/vertical_padding"
+        android:text="test@gmail.com"
+        android:textColor="@color/colorTextDark"
+        android:textSize="@dimen/title_size"/>
+
+</LinearLayout>

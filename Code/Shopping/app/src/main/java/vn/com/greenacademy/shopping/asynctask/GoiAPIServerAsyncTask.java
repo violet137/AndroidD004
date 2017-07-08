@@ -1,9 +1,6 @@
 package vn.com.greenacademy.shopping.Asynctask;
 
-import android.content.Context;
 import android.os.AsyncTask;
-import android.support.v4.app.FragmentManager;
-import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -13,14 +10,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 
-import vn.com.greenacademy.shopping.Data.MySharedPreferences;
-import vn.com.greenacademy.shopping.Fragment.Main.MainFragment;
-import vn.com.greenacademy.shopping.Fragment.TaiKhoan.DangNhapFragment;
 import vn.com.greenacademy.shopping.Interface.DataCallBack;
-import vn.com.greenacademy.shopping.R;
 import vn.com.greenacademy.shopping.Util.SupportKeyList;
 
 /**

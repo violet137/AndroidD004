@@ -2,7 +2,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_0"
-    tools:context="vn.com.greenacademy.shopping.Fragment.TaiKhoan.SPlashScreenFragment">
+    tools:context="vn.com.greenacademy.shopping.Fragment.SplashScreenFragment">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="SHOPPING"
+        android:textSize="40sp"
+        android:textStyle="italic"
+        android:typeface="serif" />
 </FrameLayout>

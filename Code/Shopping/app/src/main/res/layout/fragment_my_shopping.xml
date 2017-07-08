@@ -1,0 +1,48 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="vn.com.greenacademy.shopping.Fragment.Main.MyShopping.MyShoppingFragment">
+
+    <!-- Title bar-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title_height"
+        android:orientation="horizontal"
+        android:background="@color/colorPrimaryDark">
+        <!-- Title -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/vertical_padding"
+            android:text="@string/title_my_shopping"
+            android:textColor="@color/colorText"
+            android:textSize="@dimen/title_size"
+            android:textStyle="bold"/>
+        <!-- Tên tài khoản -->
+        <TextView
+            android:id="@+id/tvTenTaiKhoan_FragmentMyShopping"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textColor="@color/colorText"
+            android:textSize="@dimen/text_size"/>
+    </LinearLayout>
+
+    <!-- Tài khoản -->
+    <TextView
+        android:id="@+id/tvTaiKhoan_MyShoppingFragment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/vertical_padding"
+        android:gravity="center_vertical"
+        android:drawableLeft="?android:attr/actionModePasteDrawable"
+        android:text="@string/item_title_tai_khoan"
+        android:textColor="@color/colorTextDark"
+        android:textSize="@dimen/text_size" />
+
+</LinearLayout>

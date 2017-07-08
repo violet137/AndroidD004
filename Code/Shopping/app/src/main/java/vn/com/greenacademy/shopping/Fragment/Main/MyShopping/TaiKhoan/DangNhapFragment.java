@@ -1,20 +1,18 @@
-package vn.com.greenacademy.shopping.Fragment.TaiKhoan;
+package vn.com.greenacademy.shopping.Fragment.Main.MyShopping.TaiKhoan;
 
 
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
+import android.support.v4.app.FragmentManager;
 import android.text.method.PasswordTransformationMethod;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -32,8 +30,7 @@ import vn.com.greenacademy.shopping.Asynctask.GoiAPIServerAsyncTask;
 public class DangNhapFragment extends Fragment implements View.OnClickListener, DataCallBack {
     private EditText etTenDangNhap;
     private EditText etPassword;
-    private TextView tvDangKy;
-    private Button btnDangNhap;
+    private CheckBox cbLuuDangNhap;
 
     private Context context;
     private MySharedPreferences mySharedPref;
@@ -53,31 +50,26 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener, 
         View root = inflater.inflate(R.layout.fragment_dang_nhap, container, false);
         etTenDangNhap = (EditText) root.findViewById(R.id.etTenDangNhap_FragmentDangNhap);
         etPassword = (EditText) root.findViewById(R.id.etMatKhau_FragmentDangNhap);
-        tvDangKy = (TextView) root.findViewById(R.id.tvDangKy_FragmentDangNhap);
-        btnDangNhap = (Button) root.findViewById(R.id.btnDangNhap_FragmentDangNhap);
+        cbLuuDangNhap = (CheckBox) root.findViewById(R.id.cbLuuDangNhap_FragmentDangNhap);
 
-        //Thay đổi chữ đăng ký
-        ((TextView) root.findViewById(R.id.tvDangKy_FragmentDangNhap)).setText(R.string.dang_ky);
-
-        btnDangNhap.setOnClickListener(this);
-        tvDangKy.setOnClickListener(this);
-
+        root.findViewById(R.id.btnDangNhap_FragmentDangNhap).setOnClickListener(this);
+        root.findViewById(R.id.tvDangKy_FragmentDangNhap).setOnClickListener(this);
         //Ẩn hiện password
-        etPassword.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View view, MotionEvent motionEvent) {
-                final int DRAWABLE_RIGHT = 2;
-
-                if(motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
-                    if(motionEvent.getRawX() >= (etPassword.getRight() - etPassword.getCompoundDrawables()[DRAWABLE_RIGHT].getBounds().width())) {
-                        etPassword.setTransformationMethod(null);
-                        return true;
-                    }
-                }
-                etPassword.setTransformationMethod(new PasswordTransformationMethod());
-                return false;
-            }
-        });
+//        etPassword.setOnTouchListener(new View.OnTouchListener() {
+//            @Override
+//            public boolean onTouch(View view, MotionEvent motionEvent) {
+//                final int DRAWABLE_RIGHT = 2;
+//
+//                if(motionEvent.getAction() == MotionEvent.ACTION_DOWN) {
+//                    if(motionEvent.getRawX() >= (etPassword.getRight() - etPassword.getCompoundDrawables()[DRAWABLE_RIGHT].getBounds().width())) {
+//                        etPassword.setTransformationMethod(null);
+//                        return true;
+//                    }
+//                }
+//                etPassword.setTransformationMethod(new PasswordTransformationMethod());
+//                return false;
+//            }
+//        });
         return root;
     }
 
@@ -102,7 +94,7 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener, 
 
             case R.id.tvDangKy_FragmentDangNhap:
                 //Chuyền sang màn hình đăng ký
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content_Main, new DangKyFragment()).addToBackStack("dang_ky_fragment").commit();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content_main, new DangKyFragment()).addToBackStack("dang_ky_fragment").commit();
                 break;
         }
     }
@@ -118,9 +110,11 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener, 
             case SupportKeyList.DANG_NHAP_THANH_CONG:
                 loadingDialog.dismiss();
                 Toast.makeText(context, getString(R.string.toast_dang_nhap_thanh_cong) + " " + etTenDangNhap.getText().toString() , Toast.LENGTH_SHORT).show();
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content_Main, new MainFragment(context)).commit();
-                mySharedPref.setLUU_DANG_NHAP(true);
+                mySharedPref.setTEN_TAI_KHOAN(etTenDangNhap.getText().toString());
+                mySharedPref.setDA_DANG_NHAP(true);
+                mySharedPref.setLUU_DANG_NHAP(cbLuuDangNhap.isChecked());
                 mySharedPref.setLOAI_TAI_KHOAN(SupportKeyList.ACCOUNT_THUONG);
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content_main, new TaiKhoanFragment(context)).commit();
                 break;
             case SupportKeyList.DANG_NHAP_THAT_BAI:
                 loadingDialog.dismiss();

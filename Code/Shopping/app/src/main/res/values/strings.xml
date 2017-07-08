@@ -3,24 +3,33 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
     <!-- Message -->
     <string name="dialog_loading">Loading...</string>
     <string name="toast_loi_ket_noi">Lỗi kết nối!</string>
     <string name="toast_dang_nhap_thanh_cong">Hello</string>
     <string name="toast_dang_nhap_that_bai">Sai thông tin đăng nhập!</string>
-
-    <!-- Đăng nhập -->
-    <string name="title_dang_nhap">SHOPPING</string>
-    <string name="ten_dang_nhap">Tên đăng nhập</string>
-    <string name="mat_khau">Mật khẩu</string>
-    <string name="chu_ngan_cach">Hoặc</string>
-    <string name="quen_mat_khau">Quên mật khẩu ?</string>
-    <string name="dang_nhap">ĐĂNG NHẬP</string>
-    <string name="dang_ky">Chưa có tài khoản? <b><u>\nĐĂNG KÝ</u></b></string>
-
-    <!-- Đăng ký -->
     <string name="toast_dang_ky_thanh_cong">Đăng ký thành công!</string>
     <string name="toast_dang_ky_that_bai">Đăng ký thất bại!</string>
-
     <string name="toast_nhap_thieu">Thiếu thông tin cần thiết!</string>
+
+    <!-- My Shopping -->
+    <string name="title_my_shopping">MY SHOPPING</string>
+    <string name="item_title_tai_khoan">Tài khoản</string>
+
+    <!-- Đăng nhập -->
+    <string name="title_dang_nhap">ĐĂNG NHẬP</string>
+    <string name="title_user_name">Username:</string>
+    <string name="title_password">Password:</string>
+    <string name="hint_user_name">Nhập username</string>
+    <string name="hint_password">Nhập password</string>
+    <string name="luu_dang_nhap">Lưu đăng nhập</string>
+    <string name="nut_dang_nhap">Đăng nhập</string>
+    <string name="dang_ky">Đăng ký</string>
+
+    <!-- Tài khoản -->
+    <string name="title_tai_khoan">TÀI KHOẢN</string>
+    <string name="doi_mat_khau">Đổi mật khẩu</string>
+    <string name="title_thong_tin_ca_nhan">Thông tin cá nhân</string>
+    <string name="title_username">Username(E-mail)</string>
 </resources>

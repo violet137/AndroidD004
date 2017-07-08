@@ -1,26 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="shape_corners_radius">3dp</dimen>
-    <dimen name="duong_ngan_cach_height">0.75dp</dimen>
-
+    <dimen name="horizontal_padding">15dp</dimen>
+    <dimen name="vertical_padding">12dp</dimen>
+    <dimen name="shape_corners_radius">4dp</dimen>
+    <dimen name="shape_stroke_width">0.1dp</dimen>
+    <dimen name="toolbar_height">50dp</dimen>
+    <dimen name="title_height">35dp</dimen>
+    <dimen name="title_size">17sp</dimen>
     <!-- Đăng nhập -->
-    <dimen name="title_dang_nhap_size">45sp</dimen>
-    <dimen name="text_quen_mat_khau">12sp</dimen>
-    <dimen name="khung_dang_nhap_padding">30dp</dimen>
-    <dimen name="item_khung_dang_nhap_padding">20dp</dimen>
-    <dimen name="edit_text_padding">5dp</dimen>
+    <dimen name="text_size">15sp</dimen>
+    <dimen name="text_dang_ky_size">18sp</dimen>
+    <dimen name="edittext_height">35dp</dimen>
+    <dimen name="button_height">45dp</dimen>
+    <dimen name="edittext_padding">10dp</dimen>
+    <dimen name="item_khung_dang_nhap_margin">20dp</dimen>
 
-    <dimen name="title_dang_nhap_margin">60dp</dimen>
-    <dimen name="khung_dang_nhap_margin_top">60dp</dimen>
-    <dimen name="dang_nhap_margin">40dp</dimen>
-    <dimen name="edit_text_dang_nhap_marginTop">15dp</dimen>
-    <dimen name="item_quen_mat_khau_marginTop">7dp</dimen>
-    <dimen name="item_ngan_cach_marginTop">25dp</dimen>
-    <dimen name="button_dang_nhap_marginTop">25dp</dimen>
-
-    <dimen name="nut_dang_nhap_height">35dp</dimen>
-    <dimen name="nut_dang_nhap_khac_height">40dp</dimen>
-    <dimen name="edit_text_height">30dp</dimen>
-
-
+    <!-- Tài khoản -->
+    <dimen name="account_text_size">20sp</dimen>
 </resources>

@@ -13,6 +13,8 @@ public class MySharedPreferences {
 
     private Context context;
     //Key Data
+    private final String KEY_TEN_TAI_KHOAN = "ten_tai_khoan";
+    private final String KEY_DA_DANG_NHAP = "da_dang_nhap";
     private final String KEY_LUU_DANG_NHAP = "luu_dang_nhap";
     private final String KEY_LOAI_TAI_KHOAN = "loai_tai_khoan";
 
@@ -24,7 +26,26 @@ public class MySharedPreferences {
         editor = sharedPreferences.edit();
     }
 
+    //Key tên tài khoản
+    public String getTEN_TAI_KHOAN(){
+        return sharedPreferences.getString(KEY_TEN_TAI_KHOAN, null);
+    }
+
+    public void setTEN_TAI_KHOAN(String ten_tai_khoan){
+        editor.putString(KEY_TEN_TAI_KHOAN, ten_tai_khoan);
+        editor.commit();
+    }
+
     //Key đăng nhập
+    public boolean getDA_DANG_NHAP(){
+        return sharedPreferences.getBoolean(KEY_DA_DANG_NHAP, false);
+    }
+
+    public void setDA_DANG_NHAP(boolean status){
+        editor.putBoolean(KEY_DA_DANG_NHAP, status);
+        editor.commit();
+    }
+
     public boolean getLUU_DANG_NHAP() {
         return sharedPreferences.getBoolean(KEY_LUU_DANG_NHAP, false);
     }

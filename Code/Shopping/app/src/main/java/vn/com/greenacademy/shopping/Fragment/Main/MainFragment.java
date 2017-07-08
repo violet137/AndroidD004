@@ -10,7 +10,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import vn.com.greenacademy.shopping.Data.MySharedPreferences;
-import vn.com.greenacademy.shopping.Fragment.TaiKhoan.DangNhapFragment;
+import vn.com.greenacademy.shopping.Fragment.Main.MyShopping.MyShoppingFragment;
+import vn.com.greenacademy.shopping.Fragment.Main.MyShopping.TaiKhoan.DangNhapFragment;
 import vn.com.greenacademy.shopping.R;
 import vn.com.greenacademy.shopping.Util.SupportKeyList;
 
@@ -18,10 +19,13 @@ import vn.com.greenacademy.shopping.Util.SupportKeyList;
  * A simple {@link Fragment} subclass.
  */
 public class MainFragment extends Fragment implements View.OnClickListener {
-    Button btnDangXuat;
-
+    private Context context;
     private MySharedPreferences mySharedPreferences;
+
+    private static final String TAG = "MAIN_FRAGMENT";
+
     public MainFragment(Context context) {
+        this.context = context;
         mySharedPreferences = new MySharedPreferences(context, SupportKeyList.SHAREDPREF_TEN_FILE);
     }
 
@@ -31,9 +35,8 @@ public class MainFragment extends Fragment implements View.OnClickListener {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_main, container, false);
-        btnDangXuat = (Button) root.findViewById(R.id.btnDangXuat_FragmentMain);
+        root.findViewById(R.id.btnDangXuat_FragmentMain).setOnClickListener(this);
 
-        btnDangXuat.setOnClickListener(this);
         return root;
     }
 
@@ -42,8 +45,8 @@ public class MainFragment extends Fragment implements View.OnClickListener {
         switch (view.getId()){
             case R.id.btnDangXuat_FragmentMain:
                 //Chuyển về màn hình đăng nhập, lưu lại trạng thái
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content_Main, new DangNhapFragment(getContext())).commit();
-                mySharedPreferences.setLUU_DANG_NHAP(false);
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content_main, new DangNhapFragment(context)).addToBackStack(TAG).commit();
+                mySharedPreferences.setDA_DANG_NHAP(false);
                 break;
         }
     }
