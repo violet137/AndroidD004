@@ -15,6 +15,7 @@
 
     <!-- My Shopping -->
     <string name="title_my_shopping">MY SHOPPING</string>
+    <string name="title_message">Hi</string>
     <string name="item_title_tai_khoan">Tài khoản</string>
 
     <!-- Đăng nhập -->
@@ -27,9 +28,40 @@
     <string name="nut_dang_nhap">Đăng nhập</string>
     <string name="dang_ky">Đăng ký</string>
 
+    <!-- Đăng nhập không lưu -->
+    <string name="tai_khoan_khac">(<u><b>Tài khoản khác</b></u>)</string>
+
     <!-- Tài khoản -->
     <string name="title_tai_khoan">TÀI KHOẢN</string>
-    <string name="doi_mat_khau">Đổi mật khẩu</string>
-    <string name="title_thong_tin_ca_nhan">Thông tin cá nhân</string>
-    <string name="title_username">Username(E-mail)</string>
+    <string name="doi_mat_khau">ĐỔI MẬT KHẨU ?</string>
+    <string name="title_group_thong_tin_ca_nhan">THÔNG TIN CÁ NHÂN</string>
+    <string name="title_group_thong_tin_khac">THÔNG TIN KHÁC</string>
+    <string name="title_username">USERNAME(E-MAIL)</string>
+    <string name="title_country">COUNTRY:</string>
+    <string name="nut_sua_thong_tin">Sửa thông tin</string>
+
+    <!-- Thông tin cá nhân -->
+    <string name="title_thong_tin_ca_nhan">THÔNG TIN CÁ NHÂN</string>
+    <string name="thong_tin_bat_buoc">Thông tin bắt buộc *</string>
+    <string name="ho">Họ:</string>
+    <string name="ten">Tên:</string>
+    <string name="username_thong_tin_ca_nhan">Username(E-mail): *</string>
+    <string name="ngay_sinh">Ngày sinh:</string>
+    <string name="dinh_dang_ngay">(DDMMYYYY)</string>
+    <string name="note_ngay_sinh">Lưu ý ngày sinh không thể thay đổi sau khi sửa</string>
+    <string name="dia_chi">Địa chỉ:</string>
+    <string name="thanh_pho">Thành phố:</string>
+    <string name="cb_giao_hang">Giao tới địa chỉ này</string>
+    <string name="dia_chi_thay_the">ĐỊA CHỈ GIAO HÀNG THAY THẾ</string>
+    <string name="so_dien_thoai">Số điện thoại:</string>
+    <string name="so_dien_thoai_khac">Số điện thoại khác:</string>
+    <string name="note_sdt">Số điện thoại chỉ được liên lạc khi chúng tôi cần trao đổi về đơn hàng</string>
+    <string name="the_nhan_vien">Thẻ nhân viên:</string>
+    <string name="gioi_tinh">Giới tính:</string>
+    <string name="gioi_tinh_nam">Nam</string>
+    <string name="gioi_tinh_nu">Nữ</string>
+    <string name="cb_nhan_thong_tin">Nhận thông tin mới qua email</string>
+    <string name="note_privacy_policy">Ấn lưu đồng nghĩa với việc bạn đồng ý với <u>Chính Sách Bảo Mật</u></string>
+    <string name="nut_luu">Lưu</string>
+    <string name="nut_huy">Hủy</string>
 </resources>

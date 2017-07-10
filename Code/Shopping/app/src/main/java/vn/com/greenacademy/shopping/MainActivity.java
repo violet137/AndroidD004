@@ -3,6 +3,8 @@ package vn.com.greenacademy.shopping;
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -43,7 +45,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setNavigationItemSelectedListener(this);
 
         //Chạy màn hình splash
-        getSupportFragmentManager().beginTransaction().replace(R.id.content_main, new SplashScreenFragment(this, getSupportActionBar())).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.content_main, new SplashScreenFragment(getSupportActionBar())).commit();
 
 
     }
@@ -55,11 +57,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         } else {
             if (getSupportFragmentManager().getBackStackEntryCount() <= 0)
                 super.onBackPressed();
-            else
+            else {
                 getSupportFragmentManager().popBackStack();
+                removeCurrentFragment();
+            }
         }
     }
 
+    public void removeCurrentFragment(){
+        FragmentTransaction fragmentTransaction=getSupportFragmentManager().beginTransaction();
+        Fragment fragment=getSupportFragmentManager().findFragmentById(R.id.content_main);
+        if(fragment!=null){
+            fragmentTransaction.remove(fragment).commit();
+        }
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_tool_bar, menu);
@@ -69,7 +80,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         super.onPrepareOptionsMenu(menu);
-        menu.findItem(R.id.toolbar_item_dang_nhap).setVisible(false);
+        menu.findItem(R.id.dang_nhap_toolbar).setVisible(false);
         return true;
     }
 
@@ -77,7 +88,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.item_my_shopping:
-                getSupportFragmentManager().beginTransaction().replace(R.id.content_main, new MyShoppingFragment(this)).addToBackStack(TAG).commit();
+                int count = getSupportFragmentManager().getBackStackEntryCount();
+                while(count > 0){
+                    getSupportFragmentManager().popBackStack();
+                    removeCurrentFragment();
+                    count--;
+                }
+                getSupportFragmentManager().beginTransaction().replace(R.id.content_main, new MyShoppingFragment()).addToBackStack(TAG).commit();
                 break;
             default:
                 break;

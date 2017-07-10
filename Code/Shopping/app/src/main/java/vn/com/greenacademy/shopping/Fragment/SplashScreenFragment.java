@@ -20,13 +20,11 @@ import vn.com.greenacademy.shopping.Util.SupportKeyList;
  * A simple {@link Fragment} subclass.
  */
 public class SplashScreenFragment extends Fragment {
-    private Context context;
     private ActionBar actionBar;
 
     private static final int DELAY_TIME = 3000;
 
-    public SplashScreenFragment(Context context, ActionBar actionBar) {
-        this.context = context;
+    public SplashScreenFragment(ActionBar actionBar) {
         this.actionBar = actionBar;
     }
 
@@ -41,7 +39,7 @@ public class SplashScreenFragment extends Fragment {
             @Override
             public void run() {
                 actionBar.show();
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content_main, new MainFragment(context)).commit();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content_main, new MainFragment()).commit();
             }
         }, DELAY_TIME);
         return root;

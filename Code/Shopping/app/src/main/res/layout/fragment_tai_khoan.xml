@@ -19,7 +19,7 @@
 
     <!-- Đổi mật khẩu -->
     <TextView
-        android:id="@+id/tvDoiMatKhau"
+        android:id="@+id/tvDoiMatKhau_FragmentTaiKhoan"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="@dimen/vertical_padding"
@@ -34,23 +34,25 @@
         android:background="@android:color/darker_gray"/>
 
     <!-- Thông tin cá nhân -->
-    <!-- Title -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/horizontal_padding"
         android:paddingLeft="@dimen/vertical_padding"
-        android:paddingBottom="@dimen/horizontal_padding"
-        android:text="@string/title_thong_tin_ca_nhan"
+        android:text="@string/title_group_thong_tin_ca_nhan"
         android:textColor="@color/colorTextDark"
         android:textSize="@dimen/account_text_size"
         android:textStyle="bold" />
-    <!-- Username(Email) -->
+
+    <!-- Title username -->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingLeft="@dimen/vertical_padding"
+        android:layout_marginTop="@dimen/tai_khoan_vertical_margin"
         android:text="@string/title_username"/>
+
+    <!-- Username -->
     <TextView
         android:id="@+id/tvUsername_FragmentTaiKhoan"
         android:layout_width="match_parent"
@@ -60,4 +62,49 @@
         android:textColor="@color/colorTextDark"
         android:textSize="@dimen/title_size"/>
 
+    <!-- Thông tin khác -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/tai_khoan_marginTop"
+        android:paddingLeft="@dimen/vertical_padding"
+        android:text="@string/title_group_thong_tin_khac"
+        android:textColor="@color/colorTextDark"
+        android:textSize="@dimen/account_text_size"
+        android:textStyle="bold" />
+
+    <!-- Title Country  -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/vertical_padding"
+        android:layout_marginTop="@dimen/tai_khoan_vertical_margin"
+        android:text="@string/title_country"/>
+
+    <!-- Country -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/vertical_padding"
+        android:text="Việt Nam"
+        android:textColor="@color/colorTextDark"
+        android:textSize="@dimen/title_size"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:layout_marginTop="@dimen/vertical_padding"
+        android:background="@android:color/darker_gray"/>
+
+    <!-- Nút chỉnh sửa -->
+    <Button
+        android:id="@+id/btnEdit_FragmentTaiKhoan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_button"
+        android:layout_marginTop="@dimen/tai_khoan_marginTop"
+        android:layout_marginLeft="@dimen/horizontal_padding"
+        android:layout_marginRight="@dimen/horizontal_padding"
+        android:text="@string/nut_sua_thong_tin"
+        android:textColor="@color/colorText"/>
 </LinearLayout>

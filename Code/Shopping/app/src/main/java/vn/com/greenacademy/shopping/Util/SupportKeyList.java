@@ -5,6 +5,9 @@ package vn.com.greenacademy.shopping.Util;
  */
 
 public class SupportKeyList {
+    //Key URL
+    public static final String URL_DANG_NHAP = "http://tamod.vn:9045/TaiKhoan/DangNhap";
+
     //Key API
     public static final String API_DANG_NHAP = "api_dang_nhap";
     public static final String API_DANG_KY = "api_dang_ky";

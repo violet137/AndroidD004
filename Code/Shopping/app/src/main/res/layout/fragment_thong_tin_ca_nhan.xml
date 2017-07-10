@@ -1,0 +1,353 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="vn.com.greenacademy.shopping.Fragment.Main.MyShopping.TaiKhoan.ThongTinCaNhanFragment">
+
+    <!-- Title -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title_height"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/vertical_padding"
+        android:background="@color/colorPrimaryDark"
+        android:text="@string/title_thong_tin_ca_nhan"
+        android:textColor="@color/colorText"
+        android:textSize="@dimen/title_size"
+        android:textStyle="bold"/>
+
+    <!-- Khung thông tin -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_khung_dang_nhap"
+            android:orientation="vertical"
+            android:padding="@dimen/vertical_padding">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/thong_tin_bat_buoc"/>
+
+            <!-- Họ -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/thong_tin_ca_nhan_vertical_margin"
+                android:text="@string/ho"
+                android:textColor="@color/colorTextDark"
+                android:textSize="@dimen/text_size" />
+            <!-- Ô nhập họ -->
+            <EditText
+                android:id="@+id/etHo_FragmentThongTinCaNhan"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/edittext_height"
+                android:background="@drawable/shape_edit_text"
+                android:paddingLeft="@dimen/edittext_padding"
+                android:textSize="@dimen/text_size" />
+
+            <!-- Tên -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/thong_tin_ca_nhan_vertical_margin"
+                android:text="@string/ten"
+                android:textColor="@color/colorTextDark"
+                android:textSize="@dimen/text_size"/>
+            <!-- Ô nhập tên -->
+            <EditText
+                android:id="@+id/etTen_FragmentThongTinCaNhan"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/edittext_height"
+                android:background="@drawable/shape_edit_text"
+                android:paddingLeft="@dimen/edittext_padding"
+                android:textSize="@dimen/text_size" />
+
+            <!-- Username(E-mail) -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/thong_tin_ca_nhan_vertical_margin"
+                android:text="@string/username_thong_tin_ca_nhan"
+                android:textColor="@color/colorTextDark"
+                android:textSize="@dimen/text_size"/>
+            <!-- Ô nhập username -->
+            <EditText
+                android:id="@+id/etUsername_FragmentThongTinCaNhan"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/edittext_height"
+                android:background="@drawable/shape_edit_text"
+                android:paddingLeft="@dimen/edittext_padding"
+                android:textSize="@dimen/text_size" />
+
+            <!-- Ngày sinh -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/thong_tin_ca_nhan_vertical_margin"
+                android:text="@string/ngay_sinh"
+                android:textColor="@color/colorTextDark"
+                android:textSize="@dimen/text_size"/>
+            <!-- Ô nhập ngay sinh -->
+            <EditText
+                android:id="@+id/etNgaySinh_FragmentThongTinCaNhan"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/edittext_height"
+                android:background="@drawable/shape_edit_text"
+                android:paddingLeft="@dimen/edittext_padding"
+                android:textSize="@dimen/text_size" />
+            <!-- Định dạng ngày -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/dinh_dang_ngay"/>
+            <!-- Lưu ý ngày sinh -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/thong_tin_ca_nhan_vertical_margin"
+                android:text="@string/note_ngay_sinh"/>
+
+            <!-- Địa chỉ -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/thong_tin_ca_nhan_vertical_margin"
+                android:text="@string/dia_chi"
+                android:textColor="@color/colorTextDark"
+                android:textSize="@dimen/text_size"/>
+            <!-- Ô nhập địa chỉ -->
+            <EditText
+                android:id="@+id/etDiaChi_FragmentThongTinCaNhan"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/edittext_height"
+                android:background="@drawable/shape_edit_text"
+                android:paddingLeft="@dimen/edittext_padding"
+                android:textSize="@dimen/text_size" />
+
+            <!-- Thành phố -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/thong_tin_ca_nhan_vertical_margin"
+                android:text="@string/thanh_pho"
+                android:textColor="@color/colorTextDark"
+                android:textSize="@dimen/text_size"/>
+            <!-- Ô nhập địa chỉ -->
+            <EditText
+                android:id="@+id/etThanhPho_FragmentThongTinCaNhan"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/edittext_height"
+                android:background="@drawable/shape_edit_text"
+                android:paddingLeft="@dimen/edittext_padding"
+                android:textSize="@dimen/text_size" />
+
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checkedButton="@+id/rbDiaChi1_FragmentThongTinCaNhan">
+                <!-- CheckBox giao hàng 1 -->
+                <RadioButton
+                    android:id="@id/rbDiaChi1_FragmentThongTinCaNhan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/thong_tin_ca_nhan_vertical_margin"
+                    android:text="@string/cb_giao_hang"
+                    android:textSize="@dimen/text_size"/>
+
+                <!-- Địa chỉ khác -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/thong_tin_ca_nhan_vertical_margin"
+                    android:text="@string/dia_chi"
+                    android:textColor="@color/colorTextDark"
+                    android:textSize="@dimen/text_size"/>
+                <!-- Ô nhập địa chỉ -->
+                <EditText
+                    android:id="@+id/etDiaChiKhac_FragmentThongTinCaNhan"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/edittext_height"
+                    android:background="@drawable/shape_edit_text"
+                    android:paddingLeft="@dimen/edittext_padding"
+                    android:textSize="@dimen/text_size" />
+
+                <!-- Thành phố -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/thong_tin_ca_nhan_vertical_margin"
+                    android:text="@string/thanh_pho"
+                    android:textColor="@color/colorTextDark"
+                    android:textSize="@dimen/text_size"/>
+                <!-- Ô nhập địa chỉ -->
+                <EditText
+                    android:id="@+id/etThanhPhoKhac_FragmentThongTinCaNhan"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/edittext_height"
+                    android:background="@drawable/shape_edit_text"
+                    android:paddingLeft="@dimen/edittext_padding"
+                    android:textSize="@dimen/text_size" />
+
+                <!-- CheckBox giao hàng 2 -->
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/thong_tin_ca_nhan_vertical_margin"
+                    android:text="@string/cb_giao_hang"
+                    android:textSize="@dimen/text_size"/>
+            </RadioGroup>
+
+            <!-- Country -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/thong_tin_ca_nhan_vertical_margin"
+                android:text="@string/title_country"
+                android:textColor="@color/colorTextDark"
+                android:textSize="@dimen/text_size"/>
+            <!-- Ô chọn country -->
+            <Spinner
+                android:id="@+id/spinnerCountry_FragmentThongTinCaNhan"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/edittext_height"
+                android:background="@drawable/shape_edit_text"
+                android:paddingLeft="@dimen/edittext_padding"
+                android:textSize="@dimen/text_size" />
+
+            <!-- Số điện thoại -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/thong_tin_ca_nhan_vertical_margin"
+                android:text="@string/so_dien_thoai"
+                android:textColor="@color/colorTextDark"
+                android:textSize="@dimen/text_size"/>
+            <!-- Ô nhập số điện thoại -->
+            <EditText
+                android:id="@+id/etSoDienThoai_FragmentThongTinCaNhan"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/edittext_height"
+                android:background="@drawable/shape_edit_text"
+                android:paddingLeft="@dimen/edittext_padding"
+                android:textSize="@dimen/text_size" />
+            <!-- Lưu ý số điện thoại -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/thong_tin_ca_nhan_vertical_margin"
+                android:text="@string/note_sdt"/>
+
+            <!-- Số điện thoại khác -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/thong_tin_ca_nhan_vertical_margin"
+                android:text="@string/so_dien_thoai_khac"
+                android:textColor="@color/colorTextDark"
+                android:textSize="@dimen/text_size"/>
+            <!-- Ô nhập số điện thoại khác-->
+            <EditText
+                android:id="@+id/etSoDienThoaiKhac_FragmentThongTinCaNhan"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/edittext_height"
+                android:background="@drawable/shape_edit_text"
+                android:paddingLeft="@dimen/edittext_padding"
+                android:textSize="@dimen/text_size" />
+
+            <!-- Thẻ nhân viên -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/thong_tin_ca_nhan_vertical_margin"
+                android:text="@string/the_nhan_vien"
+                android:textColor="@color/colorTextDark"
+                android:textSize="@dimen/text_size"/>
+            <!-- Ô nhập thẻ nhân viên-->
+            <EditText
+                android:id="@+id/etTheNhanVien_FragmentThongTinCaNhan"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/edittext_height"
+                android:background="@drawable/shape_edit_text"
+                android:paddingLeft="@dimen/edittext_padding"
+                android:textSize="@dimen/text_size" />
+
+            <!-- Giới tính -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/thong_tin_ca_nhan_vertical_margin"
+                android:text="@string/gioi_tinh"
+                android:textColor="@color/colorTextDark"
+                android:textSize="@dimen/text_size"/>
+            <!-- Chọn giới tính -->
+            <RadioGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/gioi_tinh_nam"/>
+                <RadioButton
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/gioi_tinh_nu"/>
+            </RadioGroup>
+
+            <!-- Nhận qua email -->
+            <CheckBox
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/thong_tin_ca_nhan_vertical_margin"
+                android:text="@string/cb_nhan_thong_tin"/>
+
+            <!-- Lưu ý privacy policy -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/thong_tin_ca_nhan_vertical_margin"
+                android:layout_marginBottom="@dimen/thong_tin_ca_nhan_vertical_margin"
+                android:text="@string/note_privacy_policy"
+                android:textColor="@color/colorTextDark"
+                android:textSize="@dimen/text_size"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.1dp"
+                android:background="@android:color/darker_gray"/>
+
+            <!-- Lưu, Hủy -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/horizontal_padding"
+                android:paddingRight="@dimen/horizontal_padding"
+                android:layout_marginTop="@dimen/thong_tin_ca_nhan_vertical_margin">
+                <!-- Lưu -->
+                <Button
+                    android:id="@+id/btnLuu_FragmentThongTinCaNhan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_button"
+                    android:layout_marginRight="@dimen/thong_tin_ca_nhan_horizontal_margin"
+                    android:text="@string/nut_luu"
+                    android:textColor="@color/colorText"/>
+                <!-- Hủy -->
+                <Button
+                    android:id="@+id/btnHuy_FragmentThongTinCaNhan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/shape_button_gray"
+                    android:layout_marginRight="@dimen/thong_tin_ca_nhan_horizontal_margin"
+                    android:text="@string/nut_huy"/>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

@@ -18,15 +18,10 @@ import vn.com.greenacademy.shopping.Util.SupportKeyList;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class MainFragment extends Fragment implements View.OnClickListener {
-    private Context context;
-    private MySharedPreferences mySharedPreferences;
+public class MainFragment extends Fragment {
 
-    private static final String TAG = "MAIN_FRAGMENT";
+    public MainFragment() {
 
-    public MainFragment(Context context) {
-        this.context = context;
-        mySharedPreferences = new MySharedPreferences(context, SupportKeyList.SHAREDPREF_TEN_FILE);
     }
 
 
@@ -35,19 +30,8 @@ public class MainFragment extends Fragment implements View.OnClickListener {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_main, container, false);
-        root.findViewById(R.id.btnDangXuat_FragmentMain).setOnClickListener(this);
 
         return root;
     }
 
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()){
-            case R.id.btnDangXuat_FragmentMain:
-                //Chuyển về màn hình đăng nhập, lưu lại trạng thái
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content_main, new DangNhapFragment(context)).addToBackStack(TAG).commit();
-                mySharedPreferences.setDA_DANG_NHAP(false);
-                break;
-        }
-    }
 }
