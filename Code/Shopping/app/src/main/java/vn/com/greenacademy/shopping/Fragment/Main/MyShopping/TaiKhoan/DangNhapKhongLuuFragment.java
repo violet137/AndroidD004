@@ -2,10 +2,8 @@ package vn.com.greenacademy.shopping.Fragment.Main.MyShopping.TaiKhoan;
 
 
 import android.app.ProgressDialog;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +12,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import vn.com.greenacademy.shopping.Asynctask.GoiAPIServerAsyncTask;
+import vn.com.greenacademy.shopping.AsynTalk.GoiAPIServerAsyncTask;
 import vn.com.greenacademy.shopping.Data.MySharedPreferences;
 import vn.com.greenacademy.shopping.Interface.DataCallBack;
 import vn.com.greenacademy.shopping.R;

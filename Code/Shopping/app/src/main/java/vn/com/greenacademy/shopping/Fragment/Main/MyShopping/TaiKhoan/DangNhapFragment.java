@@ -2,28 +2,20 @@ package vn.com.greenacademy.shopping.Fragment.Main.MyShopping.TaiKhoan;
 
 
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.text.method.PasswordTransformationMethod;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import vn.com.greenacademy.shopping.Data.MySharedPreferences;
-import vn.com.greenacademy.shopping.Fragment.Main.MainFragment;
 import vn.com.greenacademy.shopping.Interface.DataCallBack;
 import vn.com.greenacademy.shopping.R;
 import vn.com.greenacademy.shopping.Util.SupportKeyList;
-import vn.com.greenacademy.shopping.Asynctask.GoiAPIServerAsyncTask;
+import vn.com.greenacademy.shopping.AsynTalk.GoiAPIServerAsyncTask;
 
 /**
  * A simple {@link Fragment} subclass.
