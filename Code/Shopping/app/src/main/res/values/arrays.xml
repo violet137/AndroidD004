@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="name_slide_menu">
+        <item>Products</item>
+        <item>Ladies</item>
+        <item>Men</item>
+        <item>Kids</item>
+        <item>Home</item>
+        <item>Magazine</item>
+        <item>Wish List</item>
+        <item>My Shopping</item>
+        <item>Support</item>
+        <item>Find a store</item>
+        <item>Newsletter</item>
+    </string-array>
+
+    <string-array name="icon_slide_menu">
+        <item>@drawable/ic_menu_send</item>
+        <item>@drawable/ic_menu_send</item>
+        <item>@drawable/ic_menu_send</item>
+        <item>@drawable/ic_menu_send</item>
+        <item>@drawable/ic_menu_send</item>
+        <item>@drawable/ic_menu_send</item>
+        <item>@drawable/ic_menu_send</item>
+        <item>@drawable/ic_menu_send</item>
+        <item>@drawable/ic_menu_send</item>
+        <item>@drawable/ic_menu_send</item>
+        <item>@drawable/ic_menu_send</item>
+    </string-array>
+</resources>

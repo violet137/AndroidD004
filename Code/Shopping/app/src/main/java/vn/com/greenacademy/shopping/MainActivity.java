@@ -1,0 +1,85 @@
+package vn.com.greenacademy.shopping;
+
+import android.content.res.TypedArray;
+import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
+import android.view.View;
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.widget.AdapterView;
+import android.widget.ListView;
+
+import java.util.ArrayList;
+
+import vn.com.greenacademy.shopping.Adapter.AdapterSlideMenu;
+import vn.com.greenacademy.shopping.Model.ModeSlideMenu;
+
+public class MainActivity extends AppCompatActivity {
+    ListView lv_item_slide_menu;
+
+    ArrayList<ModeSlideMenu> arrayModeSlideMenus;
+    int[] arrIcon;
+    String[] arrName;
+    ModeSlideMenu modeSlideMenu;
+    AdapterSlideMenu adapterSlideMenu;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        lv_item_slide_menu = (ListView) findViewById(R.id.lv_item_slide_menu);
+
+        lv_item_slide_menu.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                modeSlideMenu = arrayModeSlideMenus.get(position);
+
+            }
+        });
+
+        //load data
+        LoadData();
+        displayListview();
+    }
+
+    @Override
+    public void onBackPressed() {
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
+
+    private void displayListview() {
+        adapterSlideMenu = new AdapterSlideMenu(this, R.layout.item_slide_menu, arrayModeSlideMenus);
+        lv_item_slide_menu.setAdapter(adapterSlideMenu);
+    }
+
+    private void LoadData() {
+        arrName = getResources().getStringArray(R.array.name_slide_menu);
+        TypedArray listAnh = getResources().obtainTypedArray(R.array.icon_slide_menu);
+        arrIcon = new int[arrName.length];
+        for(int i=0; i< arrName.length;i++){
+            arrIcon[i]=listAnh.getResourceId(i,-1);
+        }
+        // danh sach bai hat
+        arrayModeSlideMenus = new ArrayList<ModeSlideMenu>();
+        for(int i = 0; i< arrName.length; i++){
+            ModeSlideMenu modeSlideMenu = new ModeSlideMenu();
+            modeSlideMenu.setTen(arrName[i]);
+            modeSlideMenu.setIcon(arrIcon[i]);
+            arrayModeSlideMenus.add(modeSlideMenu);
+        }
+
+    }
+}
