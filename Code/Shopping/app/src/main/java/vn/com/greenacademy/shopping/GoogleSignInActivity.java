@@ -10,7 +10,7 @@ import com.google.android.gms.common.SignInButton;
 
 import vn.com.greenacademy.shopping.Control.Ctr_GoogleSignIn;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class GoogleSignInActivity extends AppCompatActivity implements View.OnClickListener {
 
     SignInButton signInButton;
     Ctr_GoogleSignIn ctr_googleSignIn;
@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_googlesignIn);
         getSupportActionBar().hide();
 
         button2 = (Button) findViewById(R.id.button2);
