@@ -1,4 +1,4 @@
-package vn.com.greenacademy.shopping.Control;
+package vn.com.greenacademy.shopping.HandleUi;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -14,7 +14,7 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
 
-import vn.com.greenacademy.shopping.AsynTalk.AsT_GGAInformationPush;
+import vn.com.greenacademy.shopping.Network.AsynTask.GooglePlusAsyncTask;
 
 /**
  * Created by ADMIN on 7/4/2017.
@@ -66,7 +66,7 @@ public class Ctr_GoogleSignIn extends FragmentActivity implements GoogleApiClien
             Toast.makeText(mActivity, "Kết nối", Toast.LENGTH_SHORT).show();
         }else if (requestCode == 200){
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
-            AsT_GGAInformationPush asynTalkGGAInformationPush = new AsT_GGAInformationPush();
+            GooglePlusAsyncTask asynTalkGGAInformationPush = new GooglePlusAsyncTask();
             Toast.makeText(mActivity, "Đã kết nối với ID: " + result.getSignInAccount().getEmail(), Toast.LENGTH_SHORT).show();
         }
     }
@@ -74,7 +74,7 @@ public class Ctr_GoogleSignIn extends FragmentActivity implements GoogleApiClien
         // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
         if (requestCode == RC_SIGN_IN) {
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
-            AsT_GGAInformationPush asynTalkGGAInformationPush = new AsT_GGAInformationPush();
+            GooglePlusAsyncTask asynTalkGGAInformationPush = new GooglePlusAsyncTask();
 //            asynTalkGGAInformationPush.execute(result.getSignInAccount().getEmail(),result.getSignInAccount().getDisplayName());
             Toast.makeText(mActivity, result.getSignInAccount().getEmail(), Toast.LENGTH_SHORT).show();
         }else {

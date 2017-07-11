@@ -1,4 +1,4 @@
-package vn.com.greenacademy.shopping.ParData;
+package vn.com.greenacademy.shopping.Network.ParserData;
 
 import org.json.JSONException;
 import org.json.JSONObject;

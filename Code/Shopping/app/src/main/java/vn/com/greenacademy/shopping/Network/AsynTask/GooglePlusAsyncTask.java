@@ -1,4 +1,4 @@
-package vn.com.greenacademy.shopping.AsynTalk;
+package vn.com.greenacademy.shopping.Network.AsynTask;
 
 import android.os.AsyncTask;
 
@@ -14,13 +14,13 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 import vn.com.greenacademy.shopping.Model.Md_Account;
-import vn.com.greenacademy.shopping.ParData.Par_GoogleID;
+import vn.com.greenacademy.shopping.Network.ParserData.Par_GoogleID;
 
 /**
  * Created by ADMIN on 7/6/2017.
  */
 
-public class AsT_GGAInformationPush extends AsyncTask<String, Void, String>{
+public class GooglePlusAsyncTask extends AsyncTask<String, Void, String>{
     @Override
     protected String doInBackground(String... params) {
         URL url = null;

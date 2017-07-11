@@ -1,18 +1,15 @@
 package vn.com.greenacademy.shopping.Fragment;
 
 
-import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import vn.com.greenacademy.shopping.BaseFragment;
-import vn.com.greenacademy.shopping.Data.MySharedPreferences;
+import vn.com.greenacademy.shopping.Util.Ui.BaseFragment;
 import vn.com.greenacademy.shopping.Fragment.Main.MainFragment;
 import vn.com.greenacademy.shopping.R;
 import vn.com.greenacademy.shopping.Util.SupportKeyList;

@@ -1,4 +1,4 @@
-package vn.com.greenacademy.shopping.Fragment.Dialog;
+package vn.com.greenacademy.shopping.HandleUi.Dialog;
 
 import android.app.Dialog;
 import android.os.Bundle;
@@ -13,7 +13,7 @@ import android.view.ViewGroup;
  * Created by zzzzz on 7/6/2017.
  */
 
-public class loadingDialog extends DialogFragment {
+public class ChatLieuSphamDialog extends DialogFragment {
 
     @NonNull
     @Override

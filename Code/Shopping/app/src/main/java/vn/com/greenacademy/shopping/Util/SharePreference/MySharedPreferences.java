@@ -1,4 +1,4 @@
-package vn.com.greenacademy.shopping.Data;
+package vn.com.greenacademy.shopping.Util.SharePreference;
 
 import android.content.Context;
 import android.content.SharedPreferences;

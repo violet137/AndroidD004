@@ -12,11 +12,11 @@
         <item
             android:id="@+id/dang_nhap_toolbar"
             android:title="Đăng nhập"
-            app:showAsAction="always"/>
+            app:showAsAction="always" />
 
         <item
             android:id="@+id/dang_xuat_toolbar"
             android:title="Đăng nhập"
-            app:showAsAction="always"/>
+            app:showAsAction="always" />
     </group>
 </menu>

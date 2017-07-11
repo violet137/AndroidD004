@@ -11,11 +11,11 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import vn.com.greenacademy.shopping.Data.MySharedPreferences;
+import vn.com.greenacademy.shopping.Util.SharePreference.MySharedPreferences;
 import vn.com.greenacademy.shopping.Interface.DataCallBack;
 import vn.com.greenacademy.shopping.R;
 import vn.com.greenacademy.shopping.Util.SupportKeyList;
-import vn.com.greenacademy.shopping.AsynTalk.GoiAPIServerAsyncTask;
+import vn.com.greenacademy.shopping.Network.AsynTask.GoiAPIServerAsyncTask;
 
 /**
  * A simple {@link Fragment} subclass.

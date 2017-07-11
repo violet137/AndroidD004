@@ -1,4 +1,4 @@
-package vn.com.greenacademy.shopping;
+package vn.com.greenacademy.shopping.Activity;
 
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -12,11 +12,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import vn.com.greenacademy.shopping.Data.MySharedPreferences;
+import vn.com.greenacademy.shopping.R;
+import vn.com.greenacademy.shopping.Util.SharePreference.MySharedPreferences;
 import vn.com.greenacademy.shopping.Fragment.Main.MyShopping.MyShoppingFragment;
 import vn.com.greenacademy.shopping.Fragment.Main.MyShopping.TaiKhoan.DangNhapFragment;
 import vn.com.greenacademy.shopping.Fragment.SplashScreenFragment;
 import vn.com.greenacademy.shopping.Util.SupportKeyList;
+import vn.com.greenacademy.shopping.Util.Ui.BaseFragment;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     DrawerLayout drawerLayout;

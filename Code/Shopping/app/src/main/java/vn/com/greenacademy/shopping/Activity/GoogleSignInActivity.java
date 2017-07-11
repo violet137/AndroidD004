@@ -1,4 +1,4 @@
-package vn.com.greenacademy.shopping;
+package vn.com.greenacademy.shopping.Activity;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -8,7 +8,8 @@ import android.widget.Button;
 
 import com.google.android.gms.common.SignInButton;
 
-import vn.com.greenacademy.shopping.Control.Ctr_GoogleSignIn;
+import vn.com.greenacademy.shopping.HandleUi.Ctr_GoogleSignIn;
+import vn.com.greenacademy.shopping.R;
 
 public class GoogleSignInActivity extends AppCompatActivity implements View.OnClickListener {
 

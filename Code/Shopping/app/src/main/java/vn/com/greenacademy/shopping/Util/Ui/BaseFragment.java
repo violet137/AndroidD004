@@ -1,9 +1,11 @@
-package vn.com.greenacademy.shopping;
+package vn.com.greenacademy.shopping.Util.Ui;
 
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+
+import vn.com.greenacademy.shopping.R;
 
 /**
  * Created by zzzzz on 7/10/2017.
