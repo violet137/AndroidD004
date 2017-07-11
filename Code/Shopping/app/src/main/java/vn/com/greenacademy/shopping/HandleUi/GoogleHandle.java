@@ -20,29 +20,15 @@ import vn.com.greenacademy.shopping.Network.AsynTask.GooglePlusAsyncTask;
  * Created by ADMIN on 7/4/2017.
  */
 
-public class Ctr_GoogleSignIn extends FragmentActivity implements GoogleApiClient.OnConnectionFailedListener {
+public class GoogleHandle extends FragmentActivity implements GoogleApiClient.OnConnectionFailedListener {
     Activity mActivity;
     int RC_SIGN_IN = 200;
-
-    public Ctr_GoogleSignIn(Activity activity) {
-        this.mActivity = activity;
-
-    }
-    public void signOut() {
-        if (requestCode == RC_SIGN_IN){
-            Auth.GoogleSignInApi.signOut(mGoogleApiClient).setResultCallback(
-                    new ResultCallback<Status>() {
-                        @Override
-                        public void onResult(@NonNull Status status) {
-                            requestCode = 0;
-                            Toast.makeText(mActivity, "Đã đăng xuất", Toast.LENGTH_SHORT).show();
-                        }
-                    });
-        }else {
-            Toast.makeText(mActivity, "Chưa Đăng Nhập", Toast.LENGTH_SHORT).show();
-        }
-    }
     GoogleApiClient mGoogleApiClient;
+
+    public GoogleHandle(Activity activity) {
+        this.mActivity = activity;
+    }
+
     public void connectBuild (){
         if (mGoogleApiClient == null){
             // Configure sign-in to request the user's ID, email address, and basic
@@ -82,9 +68,24 @@ public class Ctr_GoogleSignIn extends FragmentActivity implements GoogleApiClien
         }
     }
 
+    public void signOut() {
+        if (requestCode == RC_SIGN_IN){
+            Auth.GoogleSignInApi.signOut(mGoogleApiClient).setResultCallback(
+                    new ResultCallback<Status>() {
+                        @Override
+                        public void onResult(@NonNull Status status) {
+                            requestCode = 0;
+                            Toast.makeText(mActivity, "Đã đăng xuất", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+        }else {
+            Toast.makeText(mActivity, "Chưa Đăng Nhập", Toast.LENGTH_SHORT).show();
+        }
+    }
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-        Toast.makeText(mActivity, "Không Thể Kết Nối", Toast.LENGTH_SHORT).show();
+        //Toast.makeText(mActivity, "Không Thể Kết Nối", Toast.LENGTH_SHORT).show();
+
     }
 
     int requestCode;
