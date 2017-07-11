@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "557766322493",
+    "project_id": "shopping-58c6b"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:557766322493:android:b9fb4658d025b166",
+        "android_client_info": {
+          "package_name": "vn.com.greenacademy.shopping"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "557766322493-87301id99rre2b9os3at7v1t2epuv8ag.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "557766322493-dsj6i6i76km84tn8e9f46olivc3dmbf3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "vn.com.greenacademy.shopping",
+            "certificate_hash": "fcc631671aa87ce4cb9b777bda2c75dc350d0ca6"
+          }
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyChrBp3oCVeUggPSMjasPAZ98t_kpLFjZY"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
