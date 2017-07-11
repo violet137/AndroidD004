@@ -41,6 +41,9 @@ public class ThongTinCaNhanFragment extends Fragment implements View.OnClickList
 
         mySharedPref = new MySharedPreferences(getActivity(), SupportKeyList.SHAREDPREF_TEN_FILE);
         etUsername.setText(mySharedPref.getTEN_TAI_KHOAN());
+
+        //reset option menu
+        getActivity().supportInvalidateOptionsMenu();
         return root;
     }
 

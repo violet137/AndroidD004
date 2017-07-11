@@ -53,6 +53,9 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener, 
         root.findViewById(R.id.tvDangKy_FragmentDangNhap).setOnClickListener(this);
 
         mySharedPref = new MySharedPreferences(getActivity(), SupportKeyList.SHAREDPREF_TEN_FILE);
+
+        //reset option menu
+        getActivity().supportInvalidateOptionsMenu();
         return root;
     }
 

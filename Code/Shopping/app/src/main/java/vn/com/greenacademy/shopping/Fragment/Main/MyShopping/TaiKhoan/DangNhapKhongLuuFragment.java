@@ -52,6 +52,9 @@ public class DangNhapKhongLuuFragment extends Fragment implements View.OnClickLi
         mySharedPref = new MySharedPreferences(getActivity(), SupportKeyList.SHAREDPREF_TEN_FILE);
         tvUsername.setText(tvUsername.getText().toString() + " " + mySharedPref.getTEN_TAI_KHOAN());
         tvTaiKhoanKhac.setText(R.string.tai_khoan_khac);
+
+        //reset option menu
+        getActivity().supportInvalidateOptionsMenu();
         return root;
     }
 

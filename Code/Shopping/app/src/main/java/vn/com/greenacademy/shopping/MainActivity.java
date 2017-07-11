@@ -1,34 +1,36 @@
 package vn.com.greenacademy.shopping;
 
-import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import vn.com.greenacademy.shopping.Data.MySharedPreferences;
 import vn.com.greenacademy.shopping.Fragment.Main.MyShopping.MyShoppingFragment;
+import vn.com.greenacademy.shopping.Fragment.Main.MyShopping.TaiKhoan.DangNhapFragment;
 import vn.com.greenacademy.shopping.Fragment.SplashScreenFragment;
+import vn.com.greenacademy.shopping.Util.SupportKeyList;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     DrawerLayout drawerLayout;
     Toolbar toolbar;
     NavigationView navigationView;
 
-    private static final String TAG = "MyShopping";
+    private BaseFragment baseFragment;
+    private MySharedPreferences mySharedPref;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        //Config custom appbar
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
@@ -44,9 +46,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         //Sự kiện click item trong menu
         navigationView.setNavigationItemSelectedListener(this);
 
+        mySharedPref = new MySharedPreferences(this, SupportKeyList.SHAREDPREF_TEN_FILE);
+        baseFragment = new BaseFragment(getSupportFragmentManager());
         //Chạy màn hình splash
-        getSupportFragmentManager().beginTransaction().replace(R.id.content_main, new SplashScreenFragment(getSupportActionBar())).commit();
-
+        baseFragment.ChuyenFragment(new SplashScreenFragment(getSupportActionBar()), null, false);
 
     }
 
@@ -58,19 +61,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             if (getSupportFragmentManager().getBackStackEntryCount() <= 0)
                 super.onBackPressed();
             else {
-                getSupportFragmentManager().popBackStack();
-                removeCurrentFragment();
+                baseFragment.XoaFragment();
+                supportInvalidateOptionsMenu();
             }
         }
     }
 
-    public void removeCurrentFragment(){
-        FragmentTransaction fragmentTransaction=getSupportFragmentManager().beginTransaction();
-        Fragment fragment=getSupportFragmentManager().findFragmentById(R.id.content_main);
-        if(fragment!=null){
-            fragmentTransaction.remove(fragment).commit();
-        }
-    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_tool_bar, menu);
@@ -80,8 +76,47 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         super.onPrepareOptionsMenu(menu);
+        Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.content_main);
+        if(fragment != null && fragment.getTag() != null) {
+            switch (fragment.getTag()){
+                case SupportKeyList.TAG_FRAGMENT_MAIN:
+                    menu.findItem(R.id.search_toolbar).setVisible(true);
+                    menu.findItem(R.id.dang_nhap_toolbar).setVisible(false);
+                    break;
+                case SupportKeyList.TAG_FRAGMENT_MY_SHOPPING:
+                    if (mySharedPref.getDA_DANG_NHAP() && !mySharedPref.getLUU_DANG_NHAP())
+                        menu.findItem(R.id.dang_nhap_toolbar).setVisible(true);
+                    else
+                        menu.findItem(R.id.dang_xuat_toolbar).setVisible(true);
+                    menu.findItem(R.id.search_toolbar).setVisible(false);
+                    break;
+                default:
+                    menu.clear();
+                    break;
+            }
+            return true;
+        }
+        menu.findItem(R.id.search_toolbar).setVisible(true);
         menu.findItem(R.id.dang_nhap_toolbar).setVisible(false);
         return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.dang_nhap_toolbar:
+                baseFragment.ChuyenFragment(new DangNhapFragment(), SupportKeyList.TAG_FRAGMENT_DANG_NHAP, true);
+                return true;
+            case R.id.dang_xuat_toolbar:
+                baseFragment.ChuyenFragment(new DangNhapFragment(), SupportKeyList.TAG_FRAGMENT_DANG_NHAP, true);
+                mySharedPref.setTEN_TAI_KHOAN("");
+                mySharedPref.setDA_DANG_NHAP(false);
+                mySharedPref.setLUU_DANG_NHAP(false);
+                mySharedPref.setLOAI_TAI_KHOAN(-1);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     @Override
@@ -90,11 +125,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.item_my_shopping:
                 int count = getSupportFragmentManager().getBackStackEntryCount();
                 while(count > 0){
-                    getSupportFragmentManager().popBackStack();
-                    removeCurrentFragment();
+                    baseFragment.XoaFragment();
                     count--;
                 }
-                getSupportFragmentManager().beginTransaction().replace(R.id.content_main, new MyShoppingFragment()).addToBackStack(TAG).commit();
+                baseFragment.ChuyenFragment(new MyShoppingFragment(), SupportKeyList.TAG_FRAGMENT_MY_SHOPPING, true);
                 break;
             default:
                 break;

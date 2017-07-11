@@ -24,4 +24,12 @@ public class SupportKeyList {
     public static final int DANG_NHAP_THANH_CONG = 1;
     public static final int DANG_KY_THAT_BAI = 2;
     public static final int DANG_KY_THANH_CONG = 3;
+
+    //Key tag
+    public static final String TAG_FRAGMENT_MAIN = "MainFragment";
+    public static final String TAG_FRAGMENT_MY_SHOPPING = "MyShopping";
+    public static final String TAG_FRAGMENT_DANG_NHAP = "DangNhap";
+    public static final String TAG_FRAGMENT_DANG_NHAP_KHONG_LUU = "DangNhapKhongLuu";
+    public static final String TAG_FRAGMENT_TAI_KHOAN = "TaiKhoan";
+    public static final String TAG_FRAGMENT_THONG_TIN_CA_NHAN = "ThongTinCaNhan";
 }

@@ -40,6 +40,9 @@ public class TaiKhoanFragment extends Fragment implements View.OnClickListener {
 
         mySharedPref = new MySharedPreferences(getActivity(), SupportKeyList.SHAREDPREF_TEN_FILE);
         tvUsername.setText(mySharedPref.getTEN_TAI_KHOAN());
+
+        //reset option menu
+        getActivity().supportInvalidateOptionsMenu();
         return root;
     }
 

@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import vn.com.greenacademy.shopping.BaseFragment;
 import vn.com.greenacademy.shopping.Data.MySharedPreferences;
 import vn.com.greenacademy.shopping.Fragment.Main.MyShopping.TaiKhoan.DangNhapFragment;
 import vn.com.greenacademy.shopping.Fragment.Main.MyShopping.TaiKhoan.DangNhapKhongLuuFragment;
@@ -27,15 +28,11 @@ import vn.com.greenacademy.shopping.Util.SupportKeyList;
  */
 public class MyShoppingFragment extends Fragment implements View.OnClickListener {
     private MySharedPreferences mySharedPref;
-
-    private static final String TAG_TAI_KHOAN = "TaiKhoan";
-    private static final String TAG_DANG_NHAP = "DangNhap";
-    private static final String TAG_DANG_NHAP_KHONG_LUU = "DangNhapKhongLuu";
+    private BaseFragment baseFragment;
 
     public MyShoppingFragment() {
 
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -44,12 +41,14 @@ public class MyShoppingFragment extends Fragment implements View.OnClickListener
         root.findViewById(R.id.tvTaiKhoan_MyShoppingFragment).setOnClickListener(this);
         TextView tvTenTaiKhoan = (TextView) root.findViewById(R.id.tvTenTaiKhoan_FragmentMyShopping);
 
+        baseFragment = new BaseFragment(getActivity().getSupportFragmentManager());
         mySharedPref = new MySharedPreferences(getActivity(), SupportKeyList.SHAREDPREF_TEN_FILE);
+
         //Hiện tên tài khoản tren title bar
         if(mySharedPref.getDA_DANG_NHAP())
             tvTenTaiKhoan.setText(getString(R.string.title_message) + " " + mySharedPref.getTEN_TAI_KHOAN());
 
-
+        //reset option menu
         getActivity().supportInvalidateOptionsMenu();
         return root;
     }
@@ -58,22 +57,23 @@ public class MyShoppingFragment extends Fragment implements View.OnClickListener
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.tvTaiKhoan_MyShoppingFragment:
-                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
                 //Kiểm tra người dùng đã đăng nhập trước đó chưa
                 if(mySharedPref.getDA_DANG_NHAP()) {
                     if (!mySharedPref.getLUU_DANG_NHAP())
-                        transaction.replace(R.id.content_main, new DangNhapKhongLuuFragment()).addToBackStack(TAG_DANG_NHAP_KHONG_LUU).commit();
+                        baseFragment.ChuyenFragment(new DangNhapKhongLuuFragment(), SupportKeyList.TAG_FRAGMENT_DANG_NHAP_KHONG_LUU, true);
                     else
-                        transaction.replace(R.id.content_main, new TaiKhoanFragment()).addToBackStack(TAG_TAI_KHOAN).commit();
+                        baseFragment.ChuyenFragment(new TaiKhoanFragment(), SupportKeyList.TAG_FRAGMENT_TAI_KHOAN, true);
                 } else
-                    transaction.replace(R.id.content_main, new DangNhapFragment()).addToBackStack(TAG_DANG_NHAP).commit();
+                    baseFragment.ChuyenFragment(new DangNhapFragment(), SupportKeyList.TAG_FRAGMENT_DANG_NHAP, true);
                 break;
         }
     }
-    @Override
+
+
+        @Override
     public void onPrepareOptionsMenu(Menu menu) {
+            menu.findItem(R.id.search_toolbar).setVisible(false);
+            menu.findItem(R.id.dang_nhap_toolbar).setVisible(true);
         super.onPrepareOptionsMenu(menu);
-        menu.findItem(R.id.search_toolbar).setVisible(false);
-        menu.findItem(R.id.dang_nhap_toolbar).setVisible(true);
     }
 }
