@@ -11,6 +11,9 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.common.SignInButton;
+
+import vn.com.greenacademy.shopping.HandleUi.GoogleHandle;
 import vn.com.greenacademy.shopping.Util.SharePreference.MySharedPreferences;
 import vn.com.greenacademy.shopping.Interface.DataCallBack;
 import vn.com.greenacademy.shopping.R;
@@ -27,7 +30,7 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener, 
 
     private MySharedPreferences mySharedPref;
     private ProgressDialog loadingDialog;
-
+    private GoogleHandle googleHandle;
     public DangNhapFragment() {
 
     }
@@ -37,14 +40,17 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener, 
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_dang_nhap, container, false);
-        etTenDangNhap = (EditText) root.findViewById(R.id.etTenDangNhap_FragmentDangNhap);
-        etPassword = (EditText) root.findViewById(R.id.etMatKhau_FragmentDangNhap);
-        cbLuuDangNhap = (CheckBox) root.findViewById(R.id.cbLuuDangNhap_FragmentDangNhap);
+        etTenDangNhap = (EditText) root.findViewById(R.id.ten_dang_nhap_edittext_fragment_dang_nhap);
+        etPassword = (EditText) root.findViewById(R.id.mat_khau_edittext_fragment_dang_nhap);
+        cbLuuDangNhap = (CheckBox) root.findViewById(R.id.luu_dang_nhap_checkbox);
 
-        root.findViewById(R.id.btnDangNhap_FragmentDangNhap).setOnClickListener(this);
-        root.findViewById(R.id.tvDangKy_FragmentDangNhap).setOnClickListener(this);
+        root.findViewById(R.id.dang_nhap_button_fragment_dang_nhap).setOnClickListener(this);
+        root.findViewById(R.id.dang_ky_textview_fragment_dang_nhap).setOnClickListener(this);
+        root.findViewById(R.id.sign_in_button).setOnClickListener(this);
 
         mySharedPref = new MySharedPreferences(getActivity(), SupportKeyList.SHAREDPREF_TEN_FILE);
+        googleHandle = new GoogleHandle(getActivity());
+        googleHandle.connectBuild();
 
         //reset option menu
         getActivity().supportInvalidateOptionsMenu();
@@ -73,6 +79,10 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener, 
             case R.id.tvDangKy_FragmentDangNhap:
                 //Chuyền sang màn hình đăng ký
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content_main, new DangKyFragment()).addToBackStack("dang_ky_fragment").commit();
+                break;
+
+            case R.id.sign_in_button:
+                googleHandle.signIn();
                 break;
         }
     }

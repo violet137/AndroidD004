@@ -11,7 +11,11 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
+import com.google.android.gms.common.SignInButton;
+
+import vn.com.greenacademy.shopping.HandleUi.GoogleHandle;
 import vn.com.greenacademy.shopping.R;
 import vn.com.greenacademy.shopping.Util.SharePreference.MySharedPreferences;
 import vn.com.greenacademy.shopping.Fragment.Main.MyShopping.MyShoppingFragment;
@@ -19,6 +23,7 @@ import vn.com.greenacademy.shopping.Fragment.Main.MyShopping.TaiKhoan.DangNhapFr
 import vn.com.greenacademy.shopping.Fragment.SplashScreenFragment;
 import vn.com.greenacademy.shopping.Util.SupportKeyList;
 import vn.com.greenacademy.shopping.Util.Ui.BaseFragment;
+
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     DrawerLayout drawerLayout;
@@ -40,19 +45,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         navigationView = (NavigationView) findViewById(R.id.nav_menu_main);
 
+
+        navigationView.setNavigationItemSelectedListener(this);
+
+        mySharedPref = new MySharedPreferences(this, SupportKeyList.SHAREDPREF_TEN_FILE);
+        baseFragment = new BaseFragment(getSupportFragmentManager());
+
         //Hiện icon menu va đồng bộ actionbar với menu
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, 0, 0);
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
-        //Sự kiện click item trong menu
-        navigationView.setNavigationItemSelectedListener(this);
-
-        mySharedPref = new MySharedPreferences(this, SupportKeyList.SHAREDPREF_TEN_FILE);
-        baseFragment = new BaseFragment(getSupportFragmentManager());
         //Chạy màn hình splash
         baseFragment.ChuyenFragment(new SplashScreenFragment(getSupportActionBar()), null, false);
-
     }
 
     @Override
@@ -86,10 +91,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     menu.findItem(R.id.dang_nhap_toolbar).setVisible(false);
                     break;
                 case SupportKeyList.TAG_FRAGMENT_MY_SHOPPING:
-                    if (mySharedPref.getDA_DANG_NHAP() && !mySharedPref.getLUU_DANG_NHAP())
+                    if (mySharedPref.getDA_DANG_NHAP() && !mySharedPref.getLUU_DANG_NHAP()) {
                         menu.findItem(R.id.dang_nhap_toolbar).setVisible(true);
-                    else
+                        menu.findItem(R.id.dang_xuat_toolbar).setVisible(false);
+                    }
+                    else {
                         menu.findItem(R.id.dang_xuat_toolbar).setVisible(true);
+                        menu.findItem(R.id.dang_nhap_toolbar).setVisible(false);
+                    }
                     menu.findItem(R.id.search_toolbar).setVisible(false);
                     break;
                 default:
@@ -138,4 +147,5 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawerLayout.closeDrawer(GravityCompat.START);
         return false;
     }
+
 }

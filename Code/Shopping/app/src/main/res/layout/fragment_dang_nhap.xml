@@ -37,7 +37,7 @@
 
         <!-- Ô nhập username -->
         <EditText
-            android:id="@+id/etTenDangNhap_FragmentDangNhap"
+            android:id="@+id/ten_dang_nhap_edittext_fragment_dang_nhap"
             android:layout_width="match_parent"
             android:layout_height="@dimen/edittext_height"
             android:background="@drawable/shape_edit_text"
@@ -57,7 +57,7 @@
 
         <!-- Ô nhập password -->
         <EditText
-            android:id="@+id/etMatKhau_FragmentDangNhap"
+            android:id="@+id/mat_khau_edittext_fragment_dang_nhap"
             android:layout_width="match_parent"
             android:layout_height="@dimen/edittext_height"
             android:background="@drawable/shape_edit_text"
@@ -74,7 +74,7 @@
             android:layout_marginTop="@dimen/item_khung_dang_nhap_margin">
             <!-- Lưu đăng nhập -->
             <CheckBox
-                android:id="@+id/cbLuuDangNhap_FragmentDangNhap"
+                android:id="@+id/luu_dang_nhap_checkbox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -94,7 +94,7 @@
 
         <!-- Nút đăng nhập -->
         <Button
-            android:id="@+id/btnDangNhap_FragmentDangNhap"
+            android:id="@+id/dang_nhap_button_fragment_dang_nhap"
             android:layout_width="match_parent"
             android:layout_height="@dimen/button_height"
             android:layout_marginTop="@dimen/item_khung_dang_nhap_margin"
@@ -105,7 +105,7 @@
 
     <!-- Đăng ký -->
     <TextView
-        android:id="@+id/tvDangKy_FragmentDangNhap"
+        android:id="@+id/dang_ky_textview_fragment_dang_nhap"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/item_khung_dang_nhap_margin"
@@ -130,13 +130,13 @@
         android:layout_marginTop="@dimen/item_khung_dang_nhap_margin"
         android:background="@drawable/shape_khung_dang_nhap">
         <!-- Google -->
-        <Button
+        <com.google.android.gms.common.SignInButton
+            android:id="@+id/sign_in_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:layout_marginRight="5dp"
-            android:background="@drawable/shape"
-            android:text="Google" />
+            android:layout_marginRight="5dp" />
+
         <!-- Facebook -->
         <Button
             android:id="@+id/btn_face_login"

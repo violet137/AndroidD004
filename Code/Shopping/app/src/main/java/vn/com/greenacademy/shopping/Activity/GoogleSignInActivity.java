@@ -8,13 +8,13 @@ import android.widget.Button;
 
 import com.google.android.gms.common.SignInButton;
 
-import vn.com.greenacademy.shopping.HandleUi.Ctr_GoogleSignIn;
+import vn.com.greenacademy.shopping.HandleUi.GoogleHandle;
 import vn.com.greenacademy.shopping.R;
 
 public class GoogleSignInActivity extends AppCompatActivity implements View.OnClickListener {
 
     SignInButton signInButton;
-    Ctr_GoogleSignIn ctr_googleSignIn;
+    GoogleHandle _googleHandle;
     Button button2;
 
     @Override
@@ -32,21 +32,21 @@ public class GoogleSignInActivity extends AppCompatActivity implements View.OnCl
 
         signInButton.setOnClickListener(this);
 
-        ctr_googleSignIn = new Ctr_GoogleSignIn(this);
-        ctr_googleSignIn.connectBuild();
+        _googleHandle = new GoogleHandle(this);
+        _googleHandle.connectBuild();
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.sign_in_button:
-                ctr_googleSignIn.signIn();
+                _googleHandle.signIn();
                 break;
             case R.id.button2:
-                ctr_googleSignIn.getEmail();
+                _googleHandle.getEmail();
                 break;
             case R.id.button3:
-                ctr_googleSignIn.signOut();
+                _googleHandle.signOut();
                 break;
 
         }
@@ -55,7 +55,7 @@ public class GoogleSignInActivity extends AppCompatActivity implements View.OnCl
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
 //        super.onActivityResult(requestCode, resultCode, data);
-        ctr_googleSignIn.activityResult(requestCode, resultCode, data);
+        _googleHandle.activityResult(requestCode, resultCode, data);
     }
 
 
