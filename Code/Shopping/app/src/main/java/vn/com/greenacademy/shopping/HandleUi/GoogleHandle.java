@@ -56,44 +56,16 @@ public class GoogleHandle extends FragmentActivity implements GoogleApiClient.On
             Toast.makeText(mActivity, "Đã kết nối với ID: " + result.getSignInAccount().getEmail(), Toast.LENGTH_SHORT).show();
         }
     }
-
-    public String getEmail(){
+    public void getEmail(){
         // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
-        GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
         if (requestCode == RC_SIGN_IN) {
+            GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
             GooglePlusAsyncTask asynTalkGGAInformationPush = new GooglePlusAsyncTask();
 //            asynTalkGGAInformationPush.execute(result.getSignInAccount().getEmail(),result.getSignInAccount().getDisplayName());
             Toast.makeText(mActivity, result.getSignInAccount().getEmail(), Toast.LENGTH_SHORT).show();
-            return result.getSignInAccount().getEmail();
         }else {
             Toast.makeText(mActivity, "Chưa Đăng Nhập", Toast.LENGTH_SHORT).show();
         }
-        return "";
-    }
-
-    public String getPhotoUser(){
-        // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
-        GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
-        if (requestCode == RC_SIGN_IN) {
-            GooglePlusAsyncTask asynTalkGGAInformationPush = new GooglePlusAsyncTask();
-            Toast.makeText(mActivity, result.getSignInAccount().getEmail(), Toast.LENGTH_SHORT).show();
-            return result.getSignInAccount().getPhotoUrl().toString();
-        }else {
-            Toast.makeText(mActivity, "Chưa Đăng Nhập", Toast.LENGTH_SHORT).show();
-        }
-        return "";
-    }
-
-    public String getNameUser(){
-        // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
-        GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
-        if (requestCode == RC_SIGN_IN) {
-            GooglePlusAsyncTask asynTalkGGAInformationPush = new GooglePlusAsyncTask();
-            Toast.makeText(mActivity, result.getSignInAccount().getGivenName(), Toast.LENGTH_SHORT).show();
-        }else {
-            Toast.makeText(mActivity, "Chưa Đăng Nhập", Toast.LENGTH_SHORT).show();
-        }
-        return result.getSignInAccount().getGivenName();
     }
 
     public void signOut() {
