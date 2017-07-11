@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         signInButton.setOnClickListener(this);
 
         ctr_googleSignIn = new Ctr_GoogleSignIn(this);
+        ctr_googleSignIn.connectBuild();
     }
 
     @Override
