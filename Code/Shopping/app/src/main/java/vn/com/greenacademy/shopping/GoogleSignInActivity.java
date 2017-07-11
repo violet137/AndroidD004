@@ -19,7 +19,7 @@ public class GoogleSignInActivity extends AppCompatActivity implements View.OnCl
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_googlesignIn);
+        setContentView(R.layout.activity_google_signin);
         getSupportActionBar().hide();
 
         button2 = (Button) findViewById(R.id.button2);
