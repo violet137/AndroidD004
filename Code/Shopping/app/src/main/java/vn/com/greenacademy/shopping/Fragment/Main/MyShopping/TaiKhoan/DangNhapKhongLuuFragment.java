@@ -12,11 +12,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import vn.com.greenacademy.shopping.Network.AsynTask.GoiAPIServerAsyncTask;
+import vn.com.greenacademy.shopping.Handle.HandleData.DataHandler;
 import vn.com.greenacademy.shopping.Util.SharePreference.MySharedPreferences;
 import vn.com.greenacademy.shopping.Interface.DataCallBack;
 import vn.com.greenacademy.shopping.R;
 import vn.com.greenacademy.shopping.Util.SupportKeyList;
+import vn.com.greenacademy.shopping.Util.Ui.BaseFragment;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -25,10 +26,11 @@ public class DangNhapKhongLuuFragment extends Fragment implements View.OnClickLi
     EditText etTenDangNhap;
     EditText etPassword;
     CheckBox cbLuuDangNhap;
-
-    private MySharedPreferences mySharedPref;
     private ProgressDialog loadingDialog;
 
+    private MySharedPreferences mySharedPref;
+    private DataHandler dataHandler;
+    private BaseFragment baseFragment;
     public DangNhapKhongLuuFragment() {
         // Required empty public constructor
     }
@@ -47,8 +49,10 @@ public class DangNhapKhongLuuFragment extends Fragment implements View.OnClickLi
         root.findViewById(R.id.btnDangNhap_FragmentDangNhapKhongLuu).setOnClickListener(this);
         tvTaiKhoanKhac.setOnClickListener(this);
 
+        dataHandler = new DataHandler(getActivity(), this);
+        baseFragment = new BaseFragment(getActivity().getSupportFragmentManager());
         mySharedPref = new MySharedPreferences(getActivity(), SupportKeyList.SHAREDPREF_TEN_FILE);
-        tvUsername.setText(tvUsername.getText().toString() + " " + mySharedPref.getTEN_TAI_KHOAN());
+        tvUsername.setText(tvUsername.getText().toString() + " " + mySharedPref.getTenTaiKhoan());
         tvTaiKhoanKhac.setText(R.string.tai_khoan_khac);
 
         //reset option menu
@@ -61,11 +65,8 @@ public class DangNhapKhongLuuFragment extends Fragment implements View.OnClickLi
         switch (v.getId()){
             case R.id.tvTaiKhoanKhac_FragmentDangNhapKhongLuu:
                 //Đăng xuất
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content_main, new DangNhapFragment()).commit();
-                mySharedPref.setTEN_TAI_KHOAN("");
-                mySharedPref.setDA_DANG_NHAP(false);
-                mySharedPref.setLUU_DANG_NHAP(false);
-                mySharedPref.setLOAI_TAI_KHOAN(-1);
+                dataHandler.DangXuat();
+                baseFragment.ChuyenFragment(new DangNhapFragment(), SupportKeyList.TAG_FRAGMENT_DANG_NHAP, false);
                 break;
 
             case R.id.btnDangNhap_FragmentDangNhapKhongLuu:
@@ -77,8 +78,7 @@ public class DangNhapKhongLuuFragment extends Fragment implements View.OnClickLi
                     loadingDialog.setCancelable(false);
                     loadingDialog.setInverseBackgroundForced(false);
                     loadingDialog.show();
-                    //Gọi API server
-                    new GoiAPIServerAsyncTask(this).execute(SupportKeyList.API_DANG_NHAP, SupportKeyList.URL_DANG_NHAP, mySharedPref.getTEN_TAI_KHOAN(), etPassword.getText().toString());
+                    dataHandler.DangNhap(SupportKeyList.ACCOUNT_THUONG, mySharedPref.getTenTaiKhoan(), etPassword.getText().toString());
                 }
                 else
                     Toast.makeText(getContext(), R.string.toast_nhap_thieu, Toast.LENGTH_SHORT).show();
@@ -92,17 +92,15 @@ public class DangNhapKhongLuuFragment extends Fragment implements View.OnClickLi
         switch (result){
             case SupportKeyList.LOI_KET_NOI:
                 Toast.makeText(getActivity(), getString(R.string.toast_loi_ket_noi), Toast.LENGTH_LONG).show();
-                loadingDialog.dismiss();
                 break;
             case SupportKeyList.DANG_NHAP_THANH_CONG:
-                loadingDialog.dismiss();
-                mySharedPref.setLUU_DANG_NHAP(cbLuuDangNhap.isChecked());
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content_main, new TaiKhoanFragment()).commit();
+                mySharedPref.setLuuDangNhap(cbLuuDangNhap.isChecked());
+                baseFragment.ChuyenFragment(new TaiKhoanFragment(), SupportKeyList.TAG_FRAGMENT_TAI_KHOAN, false);
                 break;
             case SupportKeyList.DANG_NHAP_THAT_BAI:
-                loadingDialog.dismiss();
                 Toast.makeText(getActivity(), R.string.toast_dang_nhap_that_bai, Toast.LENGTH_SHORT).show();
                 break;
         }
+        loadingDialog.dismiss();
     }
 }

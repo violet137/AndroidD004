@@ -1,7 +1,7 @@
 package vn.com.greenacademy.shopping.Fragment.Main.MyShopping.TaiKhoan;
 
 
-import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -11,14 +11,13 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.google.android.gms.common.SignInButton;
-
-import vn.com.greenacademy.shopping.HandleUi.GoogleHandle;
-import vn.com.greenacademy.shopping.Util.SharePreference.MySharedPreferences;
+import vn.com.greenacademy.shopping.Handle.HandleData.DataHandler;
+import vn.com.greenacademy.shopping.Handle.HandleUi.Dialog.LoadingDialog;
+import vn.com.greenacademy.shopping.Handle.HandleData.GoogleHandle;
 import vn.com.greenacademy.shopping.Interface.DataCallBack;
 import vn.com.greenacademy.shopping.R;
 import vn.com.greenacademy.shopping.Util.SupportKeyList;
-import vn.com.greenacademy.shopping.Network.AsynTask.GoiAPIServerAsyncTask;
+import vn.com.greenacademy.shopping.Util.Ui.BaseFragment;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -28,9 +27,11 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener, 
     private EditText etPassword;
     private CheckBox cbLuuDangNhap;
 
-    private MySharedPreferences mySharedPref;
-    private ProgressDialog loadingDialog;
+    private LoadingDialog  loadingDialog;
     private GoogleHandle googleHandle;
+    private DataHandler dataHandler;
+    private BaseFragment baseFragment;
+    
     public DangNhapFragment() {
 
     }
@@ -48,9 +49,9 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener, 
         root.findViewById(R.id.dang_ky_textview_fragment_dang_nhap).setOnClickListener(this);
         root.findViewById(R.id.sign_in_button).setOnClickListener(this);
 
-        mySharedPref = new MySharedPreferences(getActivity(), SupportKeyList.SHAREDPREF_TEN_FILE);
-        googleHandle = new GoogleHandle(getActivity());
-        googleHandle.connectBuild();
+        dataHandler = new DataHandler(getActivity(), this);
+        baseFragment = new BaseFragment(getActivity().getSupportFragmentManager());
+        loadingDialog = new LoadingDialog(getActivity());
 
         //reset option menu
         getActivity().supportInvalidateOptionsMenu();
@@ -60,28 +61,25 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener, 
     @Override
     public void onClick(View view) {
         switch (view.getId()){
-            case R.id.btnDangNhap_FragmentDangNhap:
+            case R.id.dang_nhap_button_fragment_dang_nhap:
                 //Kiểm tra thông tin và tạo kết nối tới server để đăng nhập
                 if (!etTenDangNhap.getText().toString().isEmpty() && !etPassword.getText().toString().isEmpty()) {
                     //Hiện dialog loading chờ xử lý kết quả
-                    loadingDialog = new ProgressDialog(getActivity());
-                    loadingDialog.setMessage(getString(R.string.dialog_loading));
-                    loadingDialog.setCancelable(false);
-                    loadingDialog.setInverseBackgroundForced(false);
                     loadingDialog.show();
-                    //Gọi API server
-                    new GoiAPIServerAsyncTask(this).execute(SupportKeyList.API_DANG_NHAP, SupportKeyList.URL_DANG_NHAP, etTenDangNhap.getText().toString(), etPassword.getText().toString());
+                    dataHandler.DangNhap(SupportKeyList.ACCOUNT_THUONG, etTenDangNhap.getText().toString(), etPassword.getText().toString());
                 }
                 else
                     Toast.makeText(getContext(), R.string.toast_nhap_thieu, Toast.LENGTH_SHORT).show();
                 break;
 
-            case R.id.tvDangKy_FragmentDangNhap:
+            case R.id.dang_ky_textview_fragment_dang_nhap:
                 //Chuyền sang màn hình đăng ký
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content_main, new DangKyFragment()).addToBackStack("dang_ky_fragment").commit();
+                baseFragment.ChuyenFragment(new DangNhapFragment(), SupportKeyList.TAG_FRAGMENT_DANG_KY, true);
                 break;
 
             case R.id.sign_in_button:
+                googleHandle = new GoogleHandle(getActivity(), this , this);
+                googleHandle.connectBuild();
                 googleHandle.signIn();
                 break;
         }
@@ -93,22 +91,36 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener, 
         switch (result){
             case SupportKeyList.LOI_KET_NOI:
                 Toast.makeText(getActivity(), getString(R.string.toast_loi_ket_noi), Toast.LENGTH_LONG).show();
-                loadingDialog.dismiss();
                 break;
             case SupportKeyList.DANG_NHAP_THANH_CONG:
-                loadingDialog.dismiss();
                 Toast.makeText(getActivity(), getString(R.string.toast_dang_nhap_thanh_cong) + " " + etTenDangNhap.getText().toString() , Toast.LENGTH_SHORT).show();
-                mySharedPref.setTEN_TAI_KHOAN(etTenDangNhap.getText().toString());
-                mySharedPref.setDA_DANG_NHAP(true);
-                mySharedPref.setLUU_DANG_NHAP(cbLuuDangNhap.isChecked());
-                mySharedPref.setLOAI_TAI_KHOAN(SupportKeyList.ACCOUNT_THUONG);
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content_main, new TaiKhoanFragment()).commit();
+                dataHandler.setTrangThaiDangNhap(SupportKeyList.ACCOUNT_THUONG, etTenDangNhap.getText().toString(), etTenDangNhap.getText().toString(), cbLuuDangNhap.isChecked());
+                baseFragment.ChuyenFragment(new TaiKhoanFragment(), SupportKeyList.TAG_FRAGMENT_TAI_KHOAN, false);
+                break;
+            case SupportKeyList.DANG_NHAP_GOOGLE_THANH_CONG:
+                Toast.makeText(getActivity(), getString(R.string.toast_dang_nhap_thanh_cong) + " " + googleHandle.getUsername() , Toast.LENGTH_SHORT).show();
+                dataHandler.setTrangThaiDangNhap(SupportKeyList.ACCOUNT_GOOGLE, googleHandle.getEmail(), googleHandle.getUsername(), cbLuuDangNhap.isChecked());
+                baseFragment.ChuyenFragment(new TaiKhoanFragment(), SupportKeyList.TAG_FRAGMENT_TAI_KHOAN, false);
                 break;
             case SupportKeyList.DANG_NHAP_THAT_BAI:
-                loadingDialog.dismiss();
                 Toast.makeText(getActivity(), R.string.toast_dang_nhap_that_bai, Toast.LENGTH_SHORT).show();
                 break;
+            case SupportKeyList.DANG_NHAP_GOOGLE_THAT_BAI:
+                Toast.makeText(getActivity(), R.string.toast_loi_ket_noi_server, Toast.LENGTH_SHORT).show();
+                googleHandle.signOut();
+                break;
+            case SupportKeyList.DANG_NHAP_FACEBOOK_THAT_BAI:
+                Toast.makeText(getActivity(), R.string.toast_loi_ket_noi_server, Toast.LENGTH_SHORT).show();
+                break;
+            case SupportKeyList.DANG_XUAT_THANH_CONG:
+                break;
         }
+        loadingDialog.dismiss();
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        googleHandle.activityResult(requestCode, resultCode, data);
+    }
 }

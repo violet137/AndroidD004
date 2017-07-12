@@ -14,12 +14,14 @@ import android.widget.Toast;
 import vn.com.greenacademy.shopping.Util.SharePreference.MySharedPreferences;
 import vn.com.greenacademy.shopping.R;
 import vn.com.greenacademy.shopping.Util.SupportKeyList;
+import vn.com.greenacademy.shopping.Util.Ui.BaseFragment;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class ThongTinCaNhanFragment extends Fragment implements View.OnClickListener {
     private MySharedPreferences mySharedPref;
+    private BaseFragment baseFragment;
     private ProgressDialog progressDialog;
 
     public ThongTinCaNhanFragment() {
@@ -38,7 +40,8 @@ public class ThongTinCaNhanFragment extends Fragment implements View.OnClickList
         root.findViewById(R.id.btnHuy_FragmentThongTinCaNhan).setOnClickListener(this);
 
         mySharedPref = new MySharedPreferences(getActivity(), SupportKeyList.SHAREDPREF_TEN_FILE);
-        etUsername.setText(mySharedPref.getTEN_TAI_KHOAN());
+        baseFragment = new BaseFragment(getActivity().getSupportFragmentManager());
+        etUsername.setText(mySharedPref.getTenTaiKhoan());
 
         //reset option menu
         getActivity().supportInvalidateOptionsMenu();
@@ -47,16 +50,13 @@ public class ThongTinCaNhanFragment extends Fragment implements View.OnClickList
 
     @Override
     public void onClick(View v) {
-        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
         switch (v.getId()){
             case R.id.btnLuu_FragmentThongTinCaNhan:
                 Toast.makeText(getActivity(), "Lưu", Toast.LENGTH_LONG).show();
-                transaction.replace(R.id.content_main, new TaiKhoanFragment()).commit();
                 break;
             case R.id.btnHuy_FragmentThongTinCaNhan:
-                transaction.replace(R.id.content_main, new TaiKhoanFragment()).commit();
                 break;
-
         }
+        baseFragment.ChuyenFragment(new TaiKhoanFragment(), SupportKeyList.TAG_FRAGMENT_THONG_TIN_CA_NHAN, false);
     }
 }

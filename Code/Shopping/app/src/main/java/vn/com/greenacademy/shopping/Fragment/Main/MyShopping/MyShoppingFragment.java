@@ -39,8 +39,8 @@ public class MyShoppingFragment extends Fragment implements View.OnClickListener
         mySharedPref = new MySharedPreferences(getActivity(), SupportKeyList.SHAREDPREF_TEN_FILE);
 
         //Hiện tên tài khoản tren title bar
-        if(mySharedPref.getDA_DANG_NHAP())
-            tvTenTaiKhoan.setText(getString(R.string.title_message) + " " + mySharedPref.getTEN_TAI_KHOAN());
+        if(mySharedPref.getDaDangNhap())
+            tvTenTaiKhoan.setText(getString(R.string.title_message) + " " + mySharedPref.getTenTaiKhoan());
 
         //reset option menu
         getActivity().supportInvalidateOptionsMenu();
@@ -52,8 +52,8 @@ public class MyShoppingFragment extends Fragment implements View.OnClickListener
         switch (v.getId()){
             case R.id.tvTaiKhoan_MyShoppingFragment:
                 //Kiểm tra người dùng đã đăng nhập trước đó chưa
-                if(mySharedPref.getDA_DANG_NHAP()) {
-                    if (!mySharedPref.getLUU_DANG_NHAP())
+                if(mySharedPref.getDaDangNhap()) {
+                    if (!mySharedPref.getLuuDangNhap())
                         baseFragment.ChuyenFragment(new DangNhapKhongLuuFragment(), SupportKeyList.TAG_FRAGMENT_DANG_NHAP_KHONG_LUU, true);
                     else
                         baseFragment.ChuyenFragment(new TaiKhoanFragment(), SupportKeyList.TAG_FRAGMENT_TAI_KHOAN, true);
@@ -61,13 +61,5 @@ public class MyShoppingFragment extends Fragment implements View.OnClickListener
                     baseFragment.ChuyenFragment(new DangNhapFragment(), SupportKeyList.TAG_FRAGMENT_DANG_NHAP, true);
                 break;
         }
-    }
-
-
-        @Override
-    public void onPrepareOptionsMenu(Menu menu) {
-            menu.findItem(R.id.search_toolbar).setVisible(false);
-            menu.findItem(R.id.dang_nhap_toolbar).setVisible(true);
-        super.onPrepareOptionsMenu(menu);
     }
 }
