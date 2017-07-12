@@ -1,0 +1,13 @@
+﻿1. Loại sản phẩm:
+   . Women
+   . Men
+   . Kids
+   . Home
+2. Tên
+3. Hình
+4. Size
+5. Giá
+6. Màu
+7. Description
+8. Chi tiết (Chất liệu, hàng nhập khẩu, ...)
+7. Giảm giá

@@ -1,0 +1,14 @@
+﻿1. Họ
+2. Tên
+3. Username(E-mail)
+4. Hình đại diện
+5. Ngày sinh
+6. Địa chỉ 1
+7. Thành phố 1
+8. Địa chỉ 2
+9. Thành phố 2
+10. Nước
+11. Số điện thoại
+12. Số điện thoại khác
+13. Thẻ nhân viên
+14. Giới tính
