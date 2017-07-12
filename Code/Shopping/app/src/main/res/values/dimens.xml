@@ -6,5 +6,8 @@
     <dimen name="nav_header_height">160dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
 
+    <!-- item slide menu -->
     <dimen name="width_height_imageView">50dp</dimen>
+    <dimen name="textView_layout_margin_left">15dp</dimen>
+
 </resources>
