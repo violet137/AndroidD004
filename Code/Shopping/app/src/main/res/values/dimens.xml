@@ -8,6 +8,7 @@
 
     <!-- item slide menu -->
     <dimen name="width_height_imageView">50dp</dimen>
-    <dimen name="textView_layout_margin_left">15dp</dimen>
+    <dimen name="textView_layout_margin_left">20dp</dimen>
+    <dimen name="imageView_layout_margin_left">10dp</dimen>
 
 </resources>

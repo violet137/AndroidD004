@@ -1,6 +1,7 @@
 package vn.com.greenacademy.shopping.Adapter;
 
 import android.app.Activity;
+import android.graphics.drawable.ColorDrawable;
 import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -42,7 +43,6 @@ public class AdapterSlideMenu extends ArrayAdapter {
 
         TextView tvName = (TextView) convertView.findViewById(R.id.tvName_item_slide_menu);
         ImageView ivIcon = (ImageView) convertView.findViewById(R.id.ivIcon_item_slide_menu);
-
 
         tvName.setText(modeSlideMenu.getTen());
         ivIcon.setImageResource(modeSlideMenu.getIcon());

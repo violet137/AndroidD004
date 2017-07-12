@@ -1,6 +1,7 @@
 package vn.com.greenacademy.shopping;
 
 import android.content.res.TypedArray;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -15,13 +16,14 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 import vn.com.greenacademy.shopping.Adapter.AdapterSlideMenu;
 import vn.com.greenacademy.shopping.Model.ModeSlideMenu;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     ListView lv_item_slide_menu;
 
     ArrayList<ModeSlideMenu> arrayModeSlideMenus;
@@ -30,10 +32,13 @@ public class MainActivity extends AppCompatActivity {
     ModeSlideMenu modeSlideMenu;
     AdapterSlideMenu adapterSlideMenu;
 
-    @Override
+    @Override()
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+//        View viewNavHeader = getLayoutInflater().inflate(R.layout.nav_header_main, null);
+//        viewNavHeader.findViewById(R.id.ivUser_nav_hear).setOnClickListener(this);
 
         lv_item_slide_menu = (ListView) findViewById(R.id.lv_item_slide_menu);
 
@@ -41,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 modeSlideMenu = arrayModeSlideMenus.get(position);
+                itemClickListener(position);
 
             }
         });
@@ -48,6 +54,49 @@ public class MainActivity extends AppCompatActivity {
         //load data
         LoadData();
         displayListview();
+    }
+
+    private void itemClickListener(int position) {
+        String temp ;
+        switch (position){
+            case 0:
+                temp = "Products";
+                break;
+            case 1:
+                temp = "Ladies";
+                break;
+            case 2:
+                temp = "Men";
+                break;
+            case 3:
+                temp = "Kids";
+                break;
+            case 4:
+                temp = "Home";
+                break;
+            case 5:
+                temp = "Magazine";
+                break;
+            case 6:
+                temp = "Wish list";
+                break;
+            case 7:
+                temp = "My Shopping";
+                break;
+            case 8:
+                temp = "Support";
+                break;
+            case 9:
+                temp = "Find a store";
+                break;
+            case 10:
+                temp = "Newsletter";
+                break;
+            default:
+                temp = "null";
+                break;
+        }
+        Toast.makeText(this, temp, Toast.LENGTH_SHORT).show();
     }
 
     @Override
@@ -81,5 +130,14 @@ public class MainActivity extends AppCompatActivity {
             arrayModeSlideMenus.add(modeSlideMenu);
         }
 
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.ivUser_nav_hear:
+                Toast.makeText(this, "ok", Toast.LENGTH_SHORT).show();
+                break;
+        }
     }
 }
