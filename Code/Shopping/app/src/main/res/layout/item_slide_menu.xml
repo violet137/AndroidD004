@@ -15,8 +15,8 @@
 
         <ImageView
             android:id="@+id/ivIcon_item_slide_menu"
-            android:layout_width="@dimen/width_height_imageView"
-            android:layout_height="@dimen/width_height_imageView"
+            android:layout_width="@dimen/imageView_width_height"
+            android:layout_height="@dimen/imageView_width_height"
             android:layout_marginLeft="@dimen/imageView_layout_margin_left"
             app:srcCompat="@mipmap/ic_launcher" />
 

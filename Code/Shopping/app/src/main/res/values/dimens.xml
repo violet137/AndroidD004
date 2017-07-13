@@ -7,8 +7,12 @@
     <dimen name="fab_margin">16dp</dimen>
 
     <!-- item slide menu -->
-    <dimen name="width_height_imageView">50dp</dimen>
+    <dimen name="imageView_width_height">50dp</dimen>
     <dimen name="textView_layout_margin_left">20dp</dimen>
     <dimen name="imageView_layout_margin_left">10dp</dimen>
+
+    <!-- fragment menu main -->
+    <dimen name="viewFlipper_height">150dp</dimen>
+    <dimen name="ConstraintLayout_height">100dp</dimen>
 
 </resources>
