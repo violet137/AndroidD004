@@ -138,10 +138,10 @@
             android:layout_marginRight="5dp" />
 
         <!-- Facebook -->
-        <Button
+        <com.facebook.login.widget.LoginButton
             android:id="@+id/btn_face_login"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_marginLeft="5dp"
             android:background="@drawable/shape_nut_facebook"
