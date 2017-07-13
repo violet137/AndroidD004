@@ -43,6 +43,9 @@ public class AdapterSlideMenu extends ArrayAdapter {
 
         TextView tvName = (TextView) convertView.findViewById(R.id.tvName_item_slide_menu);
         ImageView ivIcon = (ImageView) convertView.findViewById(R.id.ivIcon_item_slide_menu);
+        if (position == 4){
+            convertView.findViewById(R.id.divider_item_slide_menu).setVisibility(View.VISIBLE);
+        }
 
         tvName.setText(modeSlideMenu.getTen());
         ivIcon.setImageResource(modeSlideMenu.getIcon());

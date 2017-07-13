@@ -37,8 +37,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-//        View viewNavHeader = getLayoutInflater().inflate(R.layout.nav_header_main, null);
-//        viewNavHeader.findViewById(R.id.ivUser_nav_hear).setOnClickListener(this);
+        View viewNav = findViewById(R.id.nav_view);
+        viewNav.findViewById(R.id.ivUser_nav_hear).setOnClickListener(this);
+        viewNav.findViewById(R.id.tvName_nav_hear).setOnClickListener(this);
+        viewNav.findViewById(R.id.tvEmail_nav_hear).setOnClickListener(this);
 
         lv_item_slide_menu = (ListView) findViewById(R.id.lv_item_slide_menu);
 
@@ -136,7 +138,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.ivUser_nav_hear:
-                Toast.makeText(this, "ok", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Photo", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.tvName_nav_hear:
+                Toast.makeText(this, "Name", Toast.LENGTH_SHORT).show();
+                break;
+            case R.id.tvEmail_nav_hear:
+                Toast.makeText(this, "Email", Toast.LENGTH_SHORT).show();
                 break;
         }
     }
