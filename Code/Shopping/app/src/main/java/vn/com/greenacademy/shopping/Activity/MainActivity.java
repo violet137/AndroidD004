@@ -59,8 +59,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         //googleHandle = new GoogleHandle(this, this);
         toggle.syncState();
 
+
         //Chạy màn hình splash
-        baseFragment.ChuyenFragment(new SplashScreenFragment(getSupportActionBar()), null, false);
+        baseFragment.ChuyenFragment(new SplashScreenFragment(getSupportActionBar(), drawerLayout), null, false);
     }
 
     @Override

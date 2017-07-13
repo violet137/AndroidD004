@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Data test -->
+    <array name="arr_hinh">
+        <item>@drawable/banner_test2</item>
+        <item>@drawable/banner_test1</item>
+        <item>@drawable/banner_xu_huong_thoi_trang</item>
+    </array>
+</resources>

@@ -39,4 +39,5 @@ public class SupportKeyList {
     public static final String TAG_FRAGMENT_TAI_KHOAN = "TaiKhoan";
     public static final String TAG_FRAGMENT_THONG_TIN_CA_NHAN = "ThongTinCaNhan";
     public static final String TAG_FRAGMENT_DANG_KY = "DangKy";
+    public static final String TAG_XU_HUONG_THOI_TRANG = "XuHuongThoiTrang";
 }

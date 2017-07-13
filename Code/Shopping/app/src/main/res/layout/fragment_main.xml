@@ -1,13 +1,18 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="vn.com.greenacademy.shopping.Fragment.Main.MainFragment">
 
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="MAIN" />
+        android:layout_height="match_parent">
 
-</RelativeLayout>
+        <!-- Xu hướng thời trang -->
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/list_xu_huong_thoi_trang"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </ScrollView>
+</LinearLayout>

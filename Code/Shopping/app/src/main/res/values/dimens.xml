@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Chung -->
+    <dimen name="toolbar_height">55dp</dimen>
+    <dimen name="title_height">30dp</dimen>
+    <dimen name="title_size">17sp</dimen>
     <dimen name="horizontal_padding">15dp</dimen>
     <dimen name="vertical_padding">12dp</dimen>
     <dimen name="shape_corners_radius">4dp</dimen>
     <dimen name="shape_stroke_width">0.1dp</dimen>
-    <dimen name="toolbar_height">50dp</dimen>
-    <dimen name="title_height">35dp</dimen>
-    <dimen name="title_size">17sp</dimen>
 
     <!-- Đăng nhập -->
     <dimen name="text_size">15sp</dimen>
@@ -24,5 +25,8 @@
     <!-- Thông tin cá nhân -->
     <dimen name="thong_tin_ca_nhan_vertical_margin">15dp</dimen>
     <dimen name="thong_tin_ca_nhan_horizontal_margin">5dp</dimen>
+
+    <!-- Banner xu hướng thời trang -->
+    <dimen name="image_height">240dp</dimen>
 
 </resources>
