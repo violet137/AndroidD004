@@ -1,15 +1,37 @@
 package vn.com.greenacademy.shopping.Fragment.Main.MyShopping.TaiKhoan;
 
 
+import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Base64;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.FacebookSdk;
+import com.facebook.Profile;
+import com.facebook.appevents.AppEventsLogger;
+import com.facebook.internal.CallbackManagerImpl;
+import com.facebook.login.LoginManager;
+import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
+
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.Arrays;
+import java.util.Collections;
 
 import vn.com.greenacademy.shopping.Handle.HandleData.DataHandler;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Dialog.LoadingDialog;
@@ -26,6 +48,8 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener, 
     private EditText etTenDangNhap;
     private EditText etPassword;
     private CheckBox cbLuuDangNhap;
+    private CallbackManager callbackManager;
+    private LoginButton button_face_login;
 
     private LoadingDialog  loadingDialog;
     private GoogleHandle googleHandle;
@@ -44,17 +68,27 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener, 
         etTenDangNhap = (EditText) root.findViewById(R.id.ten_dang_nhap_edittext_fragment_dang_nhap);
         etPassword = (EditText) root.findViewById(R.id.mat_khau_edittext_fragment_dang_nhap);
         cbLuuDangNhap = (CheckBox) root.findViewById(R.id.luu_dang_nhap_checkbox);
+        button_face_login = (LoginButton) root.findViewById(R.id.btn_face_login);
+        button_face_login.setFragment(this);
+        callbackManager = CallbackManager.Factory.create();
+        printKeyHash(getActivity());
 
         root.findViewById(R.id.dang_nhap_button_fragment_dang_nhap).setOnClickListener(this);
         root.findViewById(R.id.dang_ky_textview_fragment_dang_nhap).setOnClickListener(this);
         root.findViewById(R.id.sign_in_button).setOnClickListener(this);
+        button_face_login.setOnClickListener(this);
+
 
         dataHandler = new DataHandler(getActivity(), this);
         baseFragment = new BaseFragment(getActivity().getSupportFragmentManager());
         loadingDialog = new LoadingDialog(getActivity());
 
+        googleHandle = new GoogleHandle(getActivity(), this , this);
+        googleHandle.connectBuild();
+
         //reset option menu
         getActivity().supportInvalidateOptionsMenu();
+
         return root;
     }
 
@@ -78,12 +112,35 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener, 
                 break;
 
             case R.id.sign_in_button:
-                googleHandle = new GoogleHandle(getActivity(), this , this);
-                googleHandle.connectBuild();
                 googleHandle.signIn();
+                break;
+            case R.id.btn_face_login:
+                button_face_login.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+                    @Override
+                    public void onSuccess(LoginResult loginResult) {
+                        Profile profile = Profile.getCurrentProfile();
+                        String name = null;
+                        if (profile!=null){
+                            name = profile.getName();
+                            Toast.makeText(getActivity(), name, Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onCancel() {
+                        Toast.makeText(getActivity(), "dang nhap bi huy", Toast.LENGTH_SHORT).show();
+                    }
+
+                    @Override
+                    public void onError(FacebookException error) {
+                        Toast.makeText(getActivity(), "dang nhap bi loi", Toast.LENGTH_SHORT).show();
+                    }
+                });
                 break;
         }
     }
+
+
 
     //Xử lý kết quả trả về
     @Override
@@ -121,6 +178,42 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener, 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        googleHandle.activityResult(requestCode, resultCode, data);
+        if (requestCode == CallbackManagerImpl.RequestCodeOffset.Login.toRequestCode()){
+            callbackManager.onActivityResult(requestCode,resultCode,data);
+        }else {
+            googleHandle.activityResult(requestCode, resultCode, data);
+        }
+    }
+
+    // Hien thi Key Hash cho facebook
+    public static String printKeyHash(Activity context) {
+        PackageInfo packageInfo;
+        String key = null;
+        try {
+            //getting application package name, as defined in manifest
+            String packageName = context.getApplicationContext().getPackageName();
+
+            //Retriving package info
+            packageInfo = context.getPackageManager().getPackageInfo(packageName,
+                    PackageManager.GET_SIGNATURES);
+
+            Log.e("Package Name=", context.getApplicationContext().getPackageName());
+
+            for (android.content.pm.Signature signature : packageInfo.signatures) {
+                MessageDigest md = MessageDigest.getInstance("SHA");
+                md.update(signature.toByteArray());
+                key = new String(Base64.encode(md.digest(), 0));
+
+                // String key = new String(Base64.encodeBytes(md.digest()));
+                Log.e("Key Hash=", key);
+            }
+        } catch (PackageManager.NameNotFoundException e1) {
+            Log.e("Name not found", e1.toString());
+        } catch (NoSuchAlgorithmException e) {
+            Log.e("No such an algorithm", e.toString());
+        } catch (Exception e) {
+            Log.e("Exception", e.toString());
+        }
+        return key;
     }
 }
