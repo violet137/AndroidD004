@@ -13,12 +13,14 @@ import android.widget.Toast;
 import vn.com.greenacademy.shopping.Util.SharePreference.MySharedPreferences;
 import vn.com.greenacademy.shopping.R;
 import vn.com.greenacademy.shopping.Util.SupportKeyList;
+import vn.com.greenacademy.shopping.Util.Ui.BaseFragment;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class TaiKhoanFragment extends Fragment implements View.OnClickListener {
     private MySharedPreferences mySharedPref;
+    private BaseFragment baseFragment;
 
     public TaiKhoanFragment() {
 
@@ -36,7 +38,8 @@ public class TaiKhoanFragment extends Fragment implements View.OnClickListener {
         root.findViewById(R.id.btnEdit_FragmentTaiKhoan).setOnClickListener(this);
 
         mySharedPref = new MySharedPreferences(getActivity(), SupportKeyList.SHAREDPREF_TEN_FILE);
-        tvUsername.setText(mySharedPref.getTEN_TAI_KHOAN());
+        baseFragment = new BaseFragment(getActivity().getSupportFragmentManager());
+        tvUsername.setText(mySharedPref.getTenTaiKhoan());
 
         //reset option menu
         getActivity().supportInvalidateOptionsMenu();
@@ -45,13 +48,12 @@ public class TaiKhoanFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
         switch (v.getId()){
             case R.id.tvDoiMatKhau_FragmentTaiKhoan:
                 Toast.makeText(getActivity(), "Đổi mật khẩu", Toast.LENGTH_LONG).show();
                 break;
             case R.id.btnEdit_FragmentTaiKhoan:
-                transaction.replace(R.id.content_main, new ThongTinCaNhanFragment()).commit();
+                baseFragment.ChuyenFragment(new ThongTinCaNhanFragment(), SupportKeyList.TAG_FRAGMENT_THONG_TIN_CA_NHAN, true);
                 break;
         }
     }

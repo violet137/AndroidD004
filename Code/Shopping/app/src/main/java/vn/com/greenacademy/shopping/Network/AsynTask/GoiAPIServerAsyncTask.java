@@ -21,6 +21,7 @@ import vn.com.greenacademy.shopping.Util.SupportKeyList;
 
 public class GoiAPIServerAsyncTask extends AsyncTask<String, Void, Integer> {
     private DataCallBack dataCallBack;
+    private String loaiTaiKhoan;
 
     public GoiAPIServerAsyncTask(DataCallBack dataCallBack){
         this.dataCallBack = dataCallBack;
@@ -31,9 +32,22 @@ public class GoiAPIServerAsyncTask extends AsyncTask<String, Void, Integer> {
         /*Thứ tự tham số truyền vào:
         * string[0]: loại API
         * string[1]: URL
-        * string[2]: Tên đăng nhập
-        * string[3]: Password
-        * string[4]: Tên hiển thị (cho đăng ký)
+        *
+        * 1. API ĐĂNG NHẬP:
+        * string[2]: loại tài khoản
+        *
+        * Account thường:
+        * string[3]: Tên đăng nhập (email)
+        * string[4]: Password
+        * string[5]: Tên hiển thị (cho đăng ký)
+        *
+        * Account Google/Facebook:
+        * string[3]: email
+        *
+        * 2. API ĐĂNG KÝ:
+        * string[3]: Username (email)
+        * string[4]: Password
+        * string[5]: Tên hiển thị
         * */
 
         //Kiểm tra API được gọi
@@ -50,9 +64,22 @@ public class GoiAPIServerAsyncTask extends AsyncTask<String, Void, Integer> {
                     //Chuẩn bị data
                     OutputStream outputStream = conn.getOutputStream();
                     JSONObject object = new JSONObject();
-                    object.put("Username", strings[2]);
-                    object.put("MatKhau", strings[3]);
-                    object.put("KieuTK", "0");
+                    //Phân loại tài khoản
+                    switch (strings[2]){
+                        case SupportKeyList.ACCOUNT_THUONG:
+                            object.put("Username", strings[3]);
+                            object.put("MatKhau", strings[4]);
+                            object.put("KieuTK", "0");
+                            break;
+                        case SupportKeyList.ACCOUNT_GOOGLE:
+                            object.put("Username", strings[3]);
+                            object.put("KieuTK", "0");
+                            break;
+                        case SupportKeyList.ACCOUNT_FACEBOOK:
+                            object.put("Username", strings[3]);
+                            object.put("KieuTK", "0");
+                            break;
+                    }
                     outputStream.write(object.toString().getBytes());
                     conn.connect();
 
@@ -69,8 +96,10 @@ public class GoiAPIServerAsyncTask extends AsyncTask<String, Void, Integer> {
 
                         //Chuyển kết quả trả về từ string sang JSONObject
                         JSONObject jsonObject = new JSONObject(result.toString());
-                        if(jsonObject.getInt("Status") == 1)
+                        if(jsonObject.getInt("Status") == 1) {
+                            loaiTaiKhoan = strings[2];
                             return SupportKeyList.DANG_NHAP_THANH_CONG;
+                        }
                     }
                 } catch (IOException | JSONException e) {
                     return SupportKeyList.LOI_KET_NOI;
@@ -119,10 +148,30 @@ public class GoiAPIServerAsyncTask extends AsyncTask<String, Void, Integer> {
                 dataCallBack.KetQua(SupportKeyList.LOI_KET_NOI);
                 break;
             case SupportKeyList.DANG_NHAP_THANH_CONG:
-                dataCallBack.KetQua(SupportKeyList.DANG_NHAP_THANH_CONG);
+                switch (loaiTaiKhoan){
+                    case SupportKeyList.ACCOUNT_THUONG:
+                        dataCallBack.KetQua(SupportKeyList.DANG_NHAP_THANH_CONG);
+                        break;
+                    case SupportKeyList.ACCOUNT_GOOGLE:
+                        dataCallBack.KetQua(SupportKeyList.DANG_NHAP_GOOGLE_THANH_CONG);
+                        break;
+                    case SupportKeyList.ACCOUNT_FACEBOOK:
+                        dataCallBack.KetQua(SupportKeyList.DANG_NHAP_FACEBOOK_THANH_CONG);
+                        break;
+                }
                 break;
             case SupportKeyList.DANG_NHAP_THAT_BAI:
-                dataCallBack.KetQua(SupportKeyList.DANG_NHAP_THAT_BAI);
+                switch (loaiTaiKhoan){
+                    case SupportKeyList.ACCOUNT_THUONG:
+                        dataCallBack.KetQua(SupportKeyList.DANG_NHAP_THAT_BAI);
+                        break;
+                    case SupportKeyList.ACCOUNT_GOOGLE:
+                        dataCallBack.KetQua(SupportKeyList.DANG_NHAP_GOOGLE_THAT_BAI);
+                        break;
+                    case SupportKeyList.ACCOUNT_FACEBOOK:
+                        dataCallBack.KetQua(SupportKeyList.DANG_NHAP_FACEBOOK_THAT_BAI);
+                        break;
+                }
                 break;
             case SupportKeyList.DANG_KY_THANH_CONG:
                 dataCallBack.KetQua(SupportKeyList.DANG_KY_THANH_CONG);

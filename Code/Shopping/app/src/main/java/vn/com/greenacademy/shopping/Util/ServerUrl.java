@@ -7,6 +7,6 @@ package vn.com.greenacademy.shopping.Util;
 public class ServerUrl {
     public static final String ServerLink="http://tamod.vn:9045/";
 
-
-    public static final String LoginApi = ServerLink + "Login";
+    public static final String DangNhapAPI = ServerLink + "TaiKhoan/DangNhap";
+    public static final String DangKyAPI = ServerLink + "TaiKhoan/DangKy";
 }

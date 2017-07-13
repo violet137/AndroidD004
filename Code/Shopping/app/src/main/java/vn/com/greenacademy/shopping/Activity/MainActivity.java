@@ -1,5 +1,6 @@
 package vn.com.greenacademy.shopping.Activity;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -11,11 +12,10 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 
-import com.google.android.gms.common.SignInButton;
-
-import vn.com.greenacademy.shopping.HandleUi.GoogleHandle;
+import vn.com.greenacademy.shopping.Handle.HandleData.DataHandler;
+import vn.com.greenacademy.shopping.Handle.HandleData.GoogleHandle;
+import vn.com.greenacademy.shopping.Interface.DataCallBack;
 import vn.com.greenacademy.shopping.R;
 import vn.com.greenacademy.shopping.Util.SharePreference.MySharedPreferences;
 import vn.com.greenacademy.shopping.Fragment.Main.MyShopping.MyShoppingFragment;
@@ -25,13 +25,15 @@ import vn.com.greenacademy.shopping.Util.SupportKeyList;
 import vn.com.greenacademy.shopping.Util.Ui.BaseFragment;
 
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, DataCallBack {
     DrawerLayout drawerLayout;
     Toolbar toolbar;
     NavigationView navigationView;
 
     private BaseFragment baseFragment;
+    private DataHandler dataHandler;
     private MySharedPreferences mySharedPref;
+    private GoogleHandle googleHandle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,15 +47,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         navigationView = (NavigationView) findViewById(R.id.nav_menu_main);
 
-
         navigationView.setNavigationItemSelectedListener(this);
 
         mySharedPref = new MySharedPreferences(this, SupportKeyList.SHAREDPREF_TEN_FILE);
+        dataHandler = new DataHandler(this);
         baseFragment = new BaseFragment(getSupportFragmentManager());
 
         //Hiện icon menu va đồng bộ actionbar với menu
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, 0, 0);
         drawerLayout.addDrawerListener(toggle);
+        //googleHandle = new GoogleHandle(this, this);
         toggle.syncState();
 
         //Chạy màn hình splash
@@ -89,15 +92,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 case SupportKeyList.TAG_FRAGMENT_MAIN:
                     menu.findItem(R.id.search_toolbar).setVisible(true);
                     menu.findItem(R.id.dang_nhap_toolbar).setVisible(false);
+                    menu.findItem(R.id.dang_xuat_toolbar).setVisible(false);
                     break;
                 case SupportKeyList.TAG_FRAGMENT_MY_SHOPPING:
-                    if (mySharedPref.getDA_DANG_NHAP() && !mySharedPref.getLUU_DANG_NHAP()) {
+                    if (mySharedPref.getDaDangNhap()) {
+                        if(!mySharedPref.getLuuDangNhap()) {
+                            menu.findItem(R.id.dang_nhap_toolbar).setVisible(true);
+                            menu.findItem(R.id.dang_xuat_toolbar).setVisible(false);
+                        } else {
+                            menu.findItem(R.id.dang_xuat_toolbar).setVisible(true);
+                            menu.findItem(R.id.dang_nhap_toolbar).setVisible(false);
+                        }
+                    } else {
                         menu.findItem(R.id.dang_nhap_toolbar).setVisible(true);
                         menu.findItem(R.id.dang_xuat_toolbar).setVisible(false);
-                    }
-                    else {
-                        menu.findItem(R.id.dang_xuat_toolbar).setVisible(true);
-                        menu.findItem(R.id.dang_nhap_toolbar).setVisible(false);
                     }
                     menu.findItem(R.id.search_toolbar).setVisible(false);
                     break;
@@ -109,6 +117,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
         menu.findItem(R.id.search_toolbar).setVisible(true);
         menu.findItem(R.id.dang_nhap_toolbar).setVisible(false);
+        menu.findItem(R.id.dang_xuat_toolbar).setVisible(false);
         return true;
     }
 
@@ -117,17 +126,24 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         switch (item.getItemId()){
             case R.id.dang_nhap_toolbar:
                 baseFragment.ChuyenFragment(new DangNhapFragment(), SupportKeyList.TAG_FRAGMENT_DANG_NHAP, true);
-                return true;
+                break;
             case R.id.dang_xuat_toolbar:
-                baseFragment.ChuyenFragment(new DangNhapFragment(), SupportKeyList.TAG_FRAGMENT_DANG_NHAP, true);
-                mySharedPref.setTEN_TAI_KHOAN("");
-                mySharedPref.setDA_DANG_NHAP(false);
-                mySharedPref.setLUU_DANG_NHAP(false);
-                mySharedPref.setLOAI_TAI_KHOAN(-1);
-                return true;
+                switch (mySharedPref.getLoaiTaiKhoan()){
+                    case SupportKeyList.ACCOUNT_THUONG:
+                        dataHandler.DangXuat();
+                        baseFragment.ChuyenFragment(new DangNhapFragment(), SupportKeyList.TAG_FRAGMENT_DANG_NHAP, false);
+                        break;
+                    case SupportKeyList.ACCOUNT_GOOGLE:
+                        //googleHandle.signOut();
+                        break;
+                    case SupportKeyList.ACCOUNT_FACEBOOK:
+                        break;
+                }
+                break;
             default:
                 return super.onOptionsItemSelected(item);
         }
+        return true;
     }
 
     @Override
@@ -148,4 +164,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return false;
     }
 
+    @Override
+    public void KetQua(int result) {
+        switch (result){
+            case SupportKeyList.DANG_XUAT_THANH_CONG:
+                dataHandler.DangXuat();
+                baseFragment.ChuyenFragment(new DangNhapFragment(), SupportKeyList.TAG_FRAGMENT_DANG_NHAP, false);
+                break;
+        }
+    }
 }

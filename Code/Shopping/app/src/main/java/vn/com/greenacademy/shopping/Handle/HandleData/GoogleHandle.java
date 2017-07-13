@@ -1,6 +1,7 @@
-package vn.com.greenacademy.shopping.HandleUi;
+package vn.com.greenacademy.shopping.Handle.HandleData;
 
 import android.app.Activity;
+import android.app.Fragment;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentActivity;
@@ -14,19 +15,40 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
 
-import vn.com.greenacademy.shopping.Network.AsynTask.GooglePlusAsyncTask;
+import vn.com.greenacademy.shopping.Fragment.Main.MyShopping.TaiKhoan.DangNhapFragment;
+import vn.com.greenacademy.shopping.Interface.DataCallBack;
+import vn.com.greenacademy.shopping.Network.AsynTask.GoiAPIServerAsyncTask;
+import vn.com.greenacademy.shopping.R;
+import vn.com.greenacademy.shopping.Util.ServerUrl;
+import vn.com.greenacademy.shopping.Util.SupportKeyList;
 
 /**
  * Created by ADMIN on 7/4/2017.
  */
 
 public class GoogleHandle extends FragmentActivity implements GoogleApiClient.OnConnectionFailedListener {
-    Activity mActivity;
-    int RC_SIGN_IN = 200;
-    GoogleApiClient mGoogleApiClient;
+    private Activity mActivity;
+    private GoiAPIServerAsyncTask goiAPIServerAsyncTask;
+    private GoogleApiClient mGoogleApiClient;
+    private DataCallBack dataCallBack;
+    private DangNhapFragment fragment;
+    private int requestCode;
+    private int resultCode;
+    private Intent data;
 
-    public GoogleHandle(Activity activity) {
+    private final int RC_SIGN_IN = 200;
+
+    public GoogleHandle(Activity activity, DangNhapFragment fragment, DataCallBack dataCallBack) {
         this.mActivity = activity;
+        this.fragment = fragment;
+        this.dataCallBack = dataCallBack;
+        goiAPIServerAsyncTask = new GoiAPIServerAsyncTask(dataCallBack);
+    }
+
+    public GoogleHandle(Activity activity, DataCallBack dataCallBack) {
+        this.mActivity = activity;
+        this.dataCallBack = dataCallBack;
+        goiAPIServerAsyncTask = new GoiAPIServerAsyncTask(dataCallBack);
     }
 
     public void connectBuild (){
@@ -43,27 +65,21 @@ public class GoogleHandle extends FragmentActivity implements GoogleApiClient.On
                     .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
                     .build();
         }
-        Toast.makeText(mActivity, "Build hoàn tất", Toast.LENGTH_SHORT).show();
+
     }
+
     public void signIn() {
         if (requestCode == 0){
             Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
-            mActivity.startActivityForResult(signInIntent, 200);
-            Toast.makeText(mActivity, "Kết nối", Toast.LENGTH_SHORT).show();
-        }else if (requestCode == 200){
-            GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
-            GooglePlusAsyncTask asynTalkGGAInformationPush = new GooglePlusAsyncTask();
-            Toast.makeText(mActivity, "Đã kết nối với ID: " + result.getSignInAccount().getEmail(), Toast.LENGTH_SHORT).show();
+            fragment.startActivityForResult(signInIntent, RC_SIGN_IN);
         }
     }
 
+    //Lấy email
     public String getEmail(){
         // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
         GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
         if (requestCode == RC_SIGN_IN) {
-            GooglePlusAsyncTask asynTalkGGAInformationPush = new GooglePlusAsyncTask();
-//            asynTalkGGAInformationPush.execute(result.getSignInAccount().getEmail(),result.getSignInAccount().getDisplayName());
-            Toast.makeText(mActivity, result.getSignInAccount().getEmail(), Toast.LENGTH_SHORT).show();
             return result.getSignInAccount().getEmail();
         }else {
             Toast.makeText(mActivity, "Chưa Đăng Nhập", Toast.LENGTH_SHORT).show();
@@ -71,12 +87,11 @@ public class GoogleHandle extends FragmentActivity implements GoogleApiClient.On
         return "";
     }
 
-    public String getPhotoUser(){
+    //Lấy hình
+    public String getUserPhoto(){
         // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
         GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
         if (requestCode == RC_SIGN_IN) {
-            GooglePlusAsyncTask asynTalkGGAInformationPush = new GooglePlusAsyncTask();
-            Toast.makeText(mActivity, result.getSignInAccount().getEmail(), Toast.LENGTH_SHORT).show();
             return result.getSignInAccount().getPhotoUrl().toString();
         }else {
             Toast.makeText(mActivity, "Chưa Đăng Nhập", Toast.LENGTH_SHORT).show();
@@ -84,16 +99,16 @@ public class GoogleHandle extends FragmentActivity implements GoogleApiClient.On
         return "";
     }
 
-    public String getNameUser(){
+    //Lấy tên
+    public String getUsername(){
         // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
         GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
         if (requestCode == RC_SIGN_IN) {
-            GooglePlusAsyncTask asynTalkGGAInformationPush = new GooglePlusAsyncTask();
-            Toast.makeText(mActivity, result.getSignInAccount().getGivenName(), Toast.LENGTH_SHORT).show();
+            return result.getSignInAccount().getGivenName();
         }else {
             Toast.makeText(mActivity, "Chưa Đăng Nhập", Toast.LENGTH_SHORT).show();
         }
-        return result.getSignInAccount().getGivenName();
+        return "";
     }
 
     public void signOut() {
@@ -103,25 +118,35 @@ public class GoogleHandle extends FragmentActivity implements GoogleApiClient.On
                         @Override
                         public void onResult(@NonNull Status status) {
                             requestCode = 0;
-                            Toast.makeText(mActivity, "Đã đăng xuất", Toast.LENGTH_SHORT).show();
+                            dataCallBack.KetQua(SupportKeyList.DANG_XUAT_THANH_CONG);
                         }
                     });
         }else {
             Toast.makeText(mActivity, "Chưa Đăng Nhập", Toast.LENGTH_SHORT).show();
         }
     }
+
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-        //Toast.makeText(mActivity, "Không Thể Kết Nối", Toast.LENGTH_SHORT).show();
-
+        dataCallBack.KetQua(SupportKeyList.LOI_KET_NOI);
     }
 
-    int requestCode;
-    int resultCode;
-    Intent data;
     public void activityResult(int requestCode, int resultCode, Intent data) {
         this.requestCode = requestCode;
         this.resultCode = resultCode;
         this.data=data;
+        //check requestCode
+        if(requestCode == RC_SIGN_IN) {
+            GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
+            //Kiểm tra đăng nhập thành công
+            if (result.isSuccess()) {
+                String mail = result.getSignInAccount().getEmail();
+                String username = result.getSignInAccount().getGivenName();
+                String hinh = result.getSignInAccount().getPhotoUrl().toString();
+                goiAPIServerAsyncTask.execute(SupportKeyList.API_DANG_NHAP, ServerUrl.DangNhapAPI, SupportKeyList.ACCOUNT_GOOGLE, result.getSignInAccount().getEmail());
+            }
+            else
+                Toast.makeText(mActivity, "Lỗi đăng nhập", Toast.LENGTH_LONG).show();
+        }
     }
 }
