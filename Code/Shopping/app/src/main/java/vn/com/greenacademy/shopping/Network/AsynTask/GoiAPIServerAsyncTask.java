@@ -21,7 +21,7 @@ import vn.com.greenacademy.shopping.Util.SupportKeyList;
 
 public class GoiAPIServerAsyncTask extends AsyncTask<String, Void, Integer> {
     private DataCallBack dataCallBack;
-    private String loaiTaiKhoan;
+    private String loaiTaiKhoan = null;
 
     public GoiAPIServerAsyncTask(DataCallBack dataCallBack){
         this.dataCallBack = dataCallBack;
@@ -53,6 +53,7 @@ public class GoiAPIServerAsyncTask extends AsyncTask<String, Void, Integer> {
         //Kiểm tra API được gọi
         switch (strings[0]){
             case SupportKeyList.API_DANG_NHAP:
+                loaiTaiKhoan = strings[2];
                 try {
                     URL url = new URL(strings[1]);
                     HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -64,6 +65,7 @@ public class GoiAPIServerAsyncTask extends AsyncTask<String, Void, Integer> {
                     //Chuẩn bị data
                     OutputStream outputStream = conn.getOutputStream();
                     JSONObject object = new JSONObject();
+
                     //Phân loại tài khoản
                     switch (strings[2]){
                         case SupportKeyList.ACCOUNT_THUONG:
@@ -97,7 +99,6 @@ public class GoiAPIServerAsyncTask extends AsyncTask<String, Void, Integer> {
                         //Chuyển kết quả trả về từ string sang JSONObject
                         JSONObject jsonObject = new JSONObject(result.toString());
                         if(jsonObject.getInt("Status") == 1) {
-                            loaiTaiKhoan = strings[2];
                             return SupportKeyList.DANG_NHAP_THANH_CONG;
                         }
                     }

@@ -6,7 +6,6 @@
 
     <!--face id apps-->
     <string name="facebook_app_id">409682249432747</string>
-
     <string name="fb_login_protocol_scheme">fb409682249432747</string>
 
     <!-- Message -->

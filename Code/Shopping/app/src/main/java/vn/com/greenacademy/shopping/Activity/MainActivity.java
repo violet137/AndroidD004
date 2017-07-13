@@ -33,7 +33,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private BaseFragment baseFragment;
     private DataHandler dataHandler;
     private MySharedPreferences mySharedPref;
-    private GoogleHandle googleHandle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,9 +55,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         //Hiện icon menu va đồng bộ actionbar với menu
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, 0, 0);
         drawerLayout.addDrawerListener(toggle);
-        //googleHandle = new GoogleHandle(this, this);
         toggle.syncState();
-
 
         //Chạy màn hình splash
         baseFragment.ChuyenFragment(new SplashScreenFragment(getSupportActionBar(), drawerLayout), null, false);
@@ -135,6 +132,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         baseFragment.ChuyenFragment(new DangNhapFragment(), SupportKeyList.TAG_FRAGMENT_DANG_NHAP, false);
                         break;
                     case SupportKeyList.ACCOUNT_GOOGLE:
+                        //googleHandle = new GoogleHandle(this, this);
                         //googleHandle.signOut();
                         break;
                     case SupportKeyList.ACCOUNT_FACEBOOK:

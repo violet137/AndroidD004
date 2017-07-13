@@ -48,14 +48,14 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener, 
     private EditText etTenDangNhap;
     private EditText etPassword;
     private CheckBox cbLuuDangNhap;
-    private CallbackManager callbackManager;
     private LoginButton button_face_login;
 
     private LoadingDialog  loadingDialog;
-    private GoogleHandle googleHandle;
     private DataHandler dataHandler;
+    private GoogleHandle googleHandle;
     private BaseFragment baseFragment;
-    
+    private CallbackManager callbackManager;
+
     public DangNhapFragment() {
 
     }
@@ -69,26 +69,21 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener, 
         etPassword = (EditText) root.findViewById(R.id.mat_khau_edittext_fragment_dang_nhap);
         cbLuuDangNhap = (CheckBox) root.findViewById(R.id.luu_dang_nhap_checkbox);
         button_face_login = (LoginButton) root.findViewById(R.id.btn_face_login);
-        button_face_login.setFragment(this);
-        callbackManager = CallbackManager.Factory.create();
-        printKeyHash(getActivity());
 
         root.findViewById(R.id.dang_nhap_button_fragment_dang_nhap).setOnClickListener(this);
         root.findViewById(R.id.dang_ky_textview_fragment_dang_nhap).setOnClickListener(this);
         root.findViewById(R.id.sign_in_button).setOnClickListener(this);
         button_face_login.setOnClickListener(this);
 
-
         dataHandler = new DataHandler(getActivity(), this);
         baseFragment = new BaseFragment(getActivity().getSupportFragmentManager());
         loadingDialog = new LoadingDialog(getActivity());
-
-        googleHandle = new GoogleHandle(getActivity(), this , this);
-        googleHandle.connectBuild();
+        callbackManager = CallbackManager.Factory.create();
+        button_face_login.setFragment(this);
+        printKeyHash(getActivity());
 
         //reset option menu
         getActivity().supportInvalidateOptionsMenu();
-
         return root;
     }
 
@@ -107,13 +102,15 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener, 
                 break;
 
             case R.id.dang_ky_textview_fragment_dang_nhap:
-                //Chuyền sang màn hình đăng ký
                 baseFragment.ChuyenFragment(new DangNhapFragment(), SupportKeyList.TAG_FRAGMENT_DANG_KY, true);
                 break;
 
             case R.id.sign_in_button:
+                googleHandle = new GoogleHandle(getActivity(), this , this);
+                googleHandle.connectBuild();
                 googleHandle.signIn();
                 break;
+
             case R.id.btn_face_login:
                 button_face_login.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
                     @Override
@@ -139,8 +136,6 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener, 
                 break;
         }
     }
-
-
 
     //Xử lý kết quả trả về
     @Override
@@ -175,6 +170,7 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener, 
         loadingDialog.dismiss();
     }
 
+    //Xử lý kết quả của Google
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
