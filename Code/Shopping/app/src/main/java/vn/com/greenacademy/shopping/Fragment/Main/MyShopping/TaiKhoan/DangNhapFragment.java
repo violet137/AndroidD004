@@ -2,6 +2,7 @@ package vn.com.greenacademy.shopping.Fragment.Main.MyShopping.TaiKhoan;
 
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -60,7 +61,7 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener, 
     @Override
     public void onClick(View view) {
         switch (view.getId()){
-            case R.id.btnDangNhap_FragmentDangNhap:
+            case R.id.dang_nhap_button_fragment_dang_nhap:
                 //Kiểm tra thông tin và tạo kết nối tới server để đăng nhập
                 if (!etTenDangNhap.getText().toString().isEmpty() && !etPassword.getText().toString().isEmpty()) {
                     //Hiện dialog loading chờ xử lý kết quả
@@ -76,7 +77,7 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener, 
                     Toast.makeText(getContext(), R.string.toast_nhap_thieu, Toast.LENGTH_SHORT).show();
                 break;
 
-            case R.id.tvDangKy_FragmentDangNhap:
+            case R.id.dang_ky_textview_fragment_dang_nhap:
                 //Chuyền sang màn hình đăng ký
                 getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.content_main, new DangKyFragment()).addToBackStack("dang_ky_fragment").commit();
                 break;
@@ -111,4 +112,9 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener, 
         }
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        googleHandle.activityResult(requestCode,resultCode,data);
+    }
 }
