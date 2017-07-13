@@ -156,9 +156,10 @@ public class GoogleHandle extends FragmentActivity implements GoogleApiClient.On
 
 
             }
-            else
+            else{
                 requestCode = 0;
                 Toast.makeText(mActivity, "Lỗi đăng nhập", Toast.LENGTH_LONG).show();
+            }
         }
 
         // chuyen du lieu ra ngoai
