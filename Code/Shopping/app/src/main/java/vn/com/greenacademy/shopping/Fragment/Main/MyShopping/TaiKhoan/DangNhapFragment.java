@@ -53,6 +53,9 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener, 
         baseFragment = new BaseFragment(getActivity().getSupportFragmentManager());
         loadingDialog = new LoadingDialog(getActivity());
 
+        googleHandle = new GoogleHandle(getActivity(), this , this);
+        googleHandle.connectBuild();
+
         //reset option menu
         getActivity().supportInvalidateOptionsMenu();
         return root;
@@ -78,8 +81,6 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener, 
                 break;
 
             case R.id.sign_in_button:
-                googleHandle = new GoogleHandle(getActivity(), this , this);
-                googleHandle.connectBuild();
                 googleHandle.signIn();
                 break;
         }

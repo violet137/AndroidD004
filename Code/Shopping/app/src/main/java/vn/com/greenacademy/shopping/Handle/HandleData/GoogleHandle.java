@@ -132,21 +132,38 @@ public class GoogleHandle extends FragmentActivity implements GoogleApiClient.On
     }
 
     public void activityResult(int requestCode, int resultCode, Intent data) {
-        this.requestCode = requestCode;
-        this.resultCode = resultCode;
-        this.data=data;
         //check requestCode
         if(requestCode == RC_SIGN_IN) {
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
             //Kiểm tra đăng nhập thành công
             if (result.isSuccess()) {
                 String mail = result.getSignInAccount().getEmail();
+                Toast.makeText(mActivity, mail, Toast.LENGTH_SHORT).show();
                 String username = result.getSignInAccount().getGivenName();
-                String hinh = result.getSignInAccount().getPhotoUrl().toString();
-                goiAPIServerAsyncTask.execute(SupportKeyList.API_DANG_NHAP, ServerUrl.DangNhapAPI, SupportKeyList.ACCOUNT_GOOGLE, result.getSignInAccount().getEmail());
+                Toast.makeText(mActivity, username, Toast.LENGTH_SHORT).show();
+                if (result.getSignInAccount().getPhotoUrl() == null){
+//                  tai khoan chua co hinh
+                    Toast.makeText(mActivity, "tài khoản chưa có ảnh", Toast.LENGTH_SHORT).show();
+                } else {
+                    String hinh = result.getSignInAccount().getPhotoUrl().toString();
+                    Toast.makeText(mActivity, hinh, Toast.LENGTH_SHORT).show();
+                }
+
+
+                // hàm này bị lỗi
+//                goiAPIServerAsyncTask.execute(SupportKeyList.API_DANG_NHAP, ServerUrl.DangNhapAPI, SupportKeyList.ACCOUNT_GOOGLE, result.getSignInAccount().getEmail());
+
+
+
             }
             else
+                requestCode = 0;
                 Toast.makeText(mActivity, "Lỗi đăng nhập", Toast.LENGTH_LONG).show();
         }
+
+        // chuyen du lieu ra ngoai
+        this.requestCode = requestCode;
+        this.resultCode = resultCode;
+        this.data=data;
     }
 }
