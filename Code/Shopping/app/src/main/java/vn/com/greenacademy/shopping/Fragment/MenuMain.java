@@ -40,8 +40,9 @@ public class MenuMain extends Fragment {
 
 
         for (int i = 0; i < arrayLinkPhoto.length; i++) {
-            // chu y neu ko tai hinh dc thi kiem tra lai mang
+            // chu y neu ko tai hinh dc thi kiem t(ra lai mang
             ImageView image = new ImageView(getActivity());
+//            Picasso.with(getActivity()).load(arrayLinkPhoto[i]).resize(380,150).centerCrop().into(image);
             Picasso.with(getActivity()).load(arrayLinkPhoto[i]).into(image);
             viewFlipper.addView(image);
         }
