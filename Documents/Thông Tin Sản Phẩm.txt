@@ -4,10 +4,10 @@
    . Kids
    . Home
 2. Tên
-3. Hình
-4. Size
-5. Giá
-6. Màu
+3. List Hình
+4. List Size
+5. List Giá
+6. List Màu
 7. Description
 8. Chi tiết (Chất liệu, hàng nhập khẩu, ...)
 7. Giảm giá
