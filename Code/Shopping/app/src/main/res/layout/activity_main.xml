@@ -5,18 +5,38 @@
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="vn.com.greenacademy.shopping.Activity.MainActivity">
+    android:fitsSystemWindows="true"
+    tools:openDrawer="start">
 
-    <include layout="@layout/content_main"/>
+    <include
+        layout="@layout/app_bar_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
-    <!-- Menu -->
     <android.support.design.widget.NavigationView
         android:id="@+id/nav_menu_main"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:background="@color/colorPrimary"
-        app:menu="@menu/menu"/>
+        android:fitsSystemWindows="true">
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <include
+                layout="@layout/nav_header_main"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <ListView
+                android:id="@+id/lv_item_slide_menu"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:divider="@null"/>
+
+        </LinearLayout>
+    </android.support.design.widget.NavigationView>
 
 </android.support.v4.widget.DrawerLayout>

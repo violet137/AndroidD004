@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ViewFlipper
+        android:id="@+id/vf_menu_main"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/viewFlipper_height"
+        android:visibility="gone">
+
+    </ViewFlipper>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/constrainLayout_menu_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/ivLayout_menu_main"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/imageView_constrain_height"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@null" />
+
+        <TextView
+            android:id="@+id/tvName_menu_main"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="40dp"
+            android:background="@android:color/background_light"
+            android:text="Text View"
+            android:textColor="#ff000000"
+            android:textSize="@dimen/text_textSize"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </android.support.constraint.ConstraintLayout>
+
+    <ImageView
+        android:id="@+id/iv_menu_main"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/imageView_height"
+        android:layout_weight="1"
+        android:visibility="gone"
+        app:srcCompat="@null" />
+
+</LinearLayout>
