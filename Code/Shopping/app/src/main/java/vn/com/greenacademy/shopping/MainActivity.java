@@ -156,7 +156,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 //            super.onBackPressed();
 //        }
 //    }
-    
+
 
     private void displayListview() {
         adapterSlideMenu = new AdapterSlideMenu(this, R.layout.item_slide_menu, arrayModeSlideMenus);
