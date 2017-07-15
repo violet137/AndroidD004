@@ -13,6 +13,8 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import vn.com.greenacademy.shopping.Main2Activity;
+import vn.com.greenacademy.shopping.Model.ModeMenuMain;
 import vn.com.greenacademy.shopping.Model.ModeSlideMenu;
 import vn.com.greenacademy.shopping.R;
 
@@ -32,6 +34,8 @@ public class AdapterSlideMenu extends ArrayAdapter {
         layoutItem=resource;
         arrayList=objects;
     }
+
+
 
     @NonNull
     @Override

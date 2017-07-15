@@ -1,135 +1,14 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="vn.com.greenacademy.shopping.Fragment.MenuMain">
+    tools:context="vn.com.greenacademy.shopping.Fragment.MenuMainFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <ScrollView
+    <ListView
+        android:id="@+id/lv_menu_mani"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <ViewFlipper
-                android:id="@+id/vf_menu_main"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/viewFlipper_height">
-
-            </ViewFlipper>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <android.support.constraint.ConstraintLayout
-                    android:id="@+id/layputLadies_menu_main"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/ConstraintLayout_height"
-                    android:background="@drawable/side_nav_bar">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
-                        android:layout_marginTop="70dp"
-                        android:background="@android:color/white"
-                        android:text="LADIES"
-                        android:textColor="#ff000000"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        tools:layout_editor_absoluteX="0dp" />
-                </android.support.constraint.ConstraintLayout>
-
-                <android.support.constraint.ConstraintLayout
-                    android:id="@+id/layoutMen_menu_main"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/ConstraintLayout_height"
-                    android:background="@drawable/side_nav_bar">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
-                        android:layout_marginTop="70dp"
-                        android:background="@android:color/white"
-                        android:text="MEN"
-                        android:textColor="#ff000000"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        tools:layout_editor_absoluteX="0dp" />
-                </android.support.constraint.ConstraintLayout>
-
-                <android.support.constraint.ConstraintLayout
-                    android:id="@+id/layoutKids_menu_main"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/ConstraintLayout_height"
-                    android:background="@drawable/side_nav_bar">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
-                        android:layout_marginTop="70dp"
-                        android:background="@android:color/white"
-                        android:text="KIDS"
-                        android:textColor="#ff000000"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        tools:layout_editor_absoluteX="0dp" />
-                </android.support.constraint.ConstraintLayout>
-
-                <android.support.constraint.ConstraintLayout
-                    android:id="@+id/layoutShoppingHome_menu_main"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/ConstraintLayout_height"
-                    android:background="@drawable/side_nav_bar">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
-                        android:layout_marginTop="70dp"
-                        android:background="@android:color/white"
-                        android:text="SHOPPING HOME"
-                        android:textColor="#ff000000"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        tools:layout_editor_absoluteX="0dp" />
-                </android.support.constraint.ConstraintLayout>
-
-                <android.support.constraint.ConstraintLayout
-                    android:id="@+id/layoutMagazine_menu_main"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/ConstraintLayout_height"
-                    android:background="@drawable/side_nav_bar">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
-                        android:layout_marginTop="70dp"
-                        android:background="@android:color/white"
-                        android:text="MAGAZINE"
-                        android:textColor="#ff000000"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        tools:layout_editor_absoluteX="0dp" />
-                </android.support.constraint.ConstraintLayout>
-
-                <ListView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
-
-
-            </LinearLayout>
-
-        </LinearLayout>
-    </ScrollView>
-
-</FrameLayout>
+</RelativeLayout>

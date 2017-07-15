@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="link_photo_menu">
+    <string-array name="link_viewFlipper">
         <item>http://revelwallpapers.net/d/37484A616D315F68347471597436476130337034306476457A6268386D513D3D/77602.jpg</item>
         <item>https://4.bp.blogspot.com/-N3pimB9qxIg/VwUe_7Sqh3I/AAAAAAAATRA/9rM2kCEng54F1Crj5kf1N6-tutzshx4Qg/s1600/Girl-xinh-ohaylam.com-%25284%2529.jpg</item>
         <item>http://anh.24h.com.vn/upload/4-2016/images/2016-11-16/1479281909-147921543937742-18.jpg</item>
@@ -23,6 +23,32 @@
     </string-array>
 
     <string-array name="icon_slide_menu">
+        <item>@drawable/ic_menu_send</item>
+        <item>@drawable/ic_menu_send</item>
+        <item>@drawable/ic_menu_send</item>
+        <item>@drawable/ic_menu_send</item>
+        <item>@drawable/ic_menu_send</item>
+        <item>@drawable/ic_menu_send</item>
+        <item>@drawable/ic_menu_send</item>
+        <item>@drawable/ic_menu_send</item>
+        <item>@drawable/ic_menu_send</item>
+        <item>@drawable/ic_menu_send</item>
+        <item>@drawable/ic_menu_send</item>
+    </string-array>
+
+    <string-array name="name_menu_main">
+        <item></item>
+        <item>Ladies</item>
+        <item>Men</item>
+        <item>Kids</item>
+        <item>Home</item>
+        <item>Magazine</item>
+    </string-array>
+
+    <string-array name="photo_menu_main">
+        <item>@drawable/ic_menu_send</item>
+        <item>@drawable/ic_menu_send</item>
+        <item>@drawable/ic_menu_send</item>
         <item>@drawable/ic_menu_send</item>
         <item>@drawable/ic_menu_send</item>
         <item>@drawable/ic_menu_send</item>
