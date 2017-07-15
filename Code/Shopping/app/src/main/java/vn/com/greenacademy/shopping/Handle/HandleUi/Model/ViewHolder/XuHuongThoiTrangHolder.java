@@ -1,4 +1,4 @@
-package vn.com.greenacademy.shopping.Handle.HandleUi.Dialog.Model;
+package vn.com.greenacademy.shopping.Handle.HandleUi.Model.ViewHolder;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;

@@ -69,4 +69,8 @@
     <string name="note_privacy_policy">Ấn lưu đồng nghĩa với việc bạn đồng ý với <u>Chính Sách Bảo Mật</u></string>
     <string name="nut_luu">Lưu</string>
     <string name="nut_huy">Hủy</string>
+
+    <!-- Xu hướng thời trang -->
+    <!-- Set đồ -->
+    <string name="xem_san_pham">XEM SẢN PHẨM</string>
 </resources>

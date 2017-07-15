@@ -15,6 +15,7 @@
     <dimen name="edittext_height">35dp</dimen>
     <dimen name="button_height">45dp</dimen>
     <dimen name="edittext_padding">10dp</dimen>
+    <dimen name="facebook_button_vertical_padding">13dp</dimen>
     <dimen name="item_khung_dang_nhap_margin">20dp</dimen>
 
     <!-- Tài khoản -->
@@ -26,7 +27,16 @@
     <dimen name="thong_tin_ca_nhan_vertical_margin">15dp</dimen>
     <dimen name="thong_tin_ca_nhan_horizontal_margin">5dp</dimen>
 
-    <!-- Banner xu hướng thời trang -->
-    <dimen name="image_height">240dp</dimen>
+    <!-- Xu hướng thời trang -->
+    <dimen name="banner_height">240dp</dimen>
+    <dimen name="description_xu_huong_thoi_trang_margin">10dp</dimen>
+    <dimen name="item_list_set_do_margin">20dp</dimen>
+    <dimen name="item_list_set_do_image_max_height">300dp</dimen>
+
+    <!-- List sản phẩm -->
+    <dimen name="item_list_san_pham_margin">5dp</dimen>
+    <dimen name="item_list_san_pham_width">180dp</dimen>
+    <dimen name="item_list_san_pham_height">300dp</dimen>
+    <dimen name="item_list_san_pham_image_height">200dp</dimen>
 
 </resources>

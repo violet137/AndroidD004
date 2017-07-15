@@ -88,7 +88,7 @@ public class DangNhapKhongLuuFragment extends Fragment implements View.OnClickLi
 
     //Xử lý kết quả trả về
     @Override
-    public void KetQua(int result) {
+    public void KetQua(String result) {
         switch (result){
             case SupportKeyList.LOI_KET_NOI:
                 Toast.makeText(getActivity(), getString(R.string.toast_loi_ket_noi), Toast.LENGTH_LONG).show();

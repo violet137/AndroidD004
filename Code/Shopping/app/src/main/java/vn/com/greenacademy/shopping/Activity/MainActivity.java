@@ -164,7 +164,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     @Override
-    public void KetQua(int result) {
+    public void KetQua(String result) {
         switch (result){
             case SupportKeyList.DANG_XUAT_THANH_CONG:
                 dataHandler.DangXuat();

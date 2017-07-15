@@ -1,7 +1,6 @@
 package vn.com.greenacademy.shopping.Handle.HandleData;
 
 import android.app.Activity;
-import android.app.Fragment;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentActivity;
@@ -18,7 +17,6 @@ import com.google.android.gms.common.api.Status;
 import vn.com.greenacademy.shopping.Fragment.Main.MyShopping.TaiKhoan.DangNhapFragment;
 import vn.com.greenacademy.shopping.Interface.DataCallBack;
 import vn.com.greenacademy.shopping.Network.AsynTask.GoiAPIServerAsyncTask;
-import vn.com.greenacademy.shopping.R;
 import vn.com.greenacademy.shopping.Util.ServerUrl;
 import vn.com.greenacademy.shopping.Util.SupportKeyList;
 
@@ -148,7 +146,7 @@ public class GoogleHandle extends FragmentActivity implements GoogleApiClient.On
                     String hinh = result.getSignInAccount().getPhotoUrl().toString();
                     Toast.makeText(mActivity, hinh, Toast.LENGTH_SHORT).show();
                 }
-                goiAPIServerAsyncTask.execute(SupportKeyList.API_DANG_NHAP, ServerUrl.DangNhapAPI, SupportKeyList.ACCOUNT_GOOGLE, result.getSignInAccount().getEmail());
+                goiAPIServerAsyncTask.execute(SupportKeyList.API_DANG_NHAP, ServerUrl.DangNhapUrl, SupportKeyList.ACCOUNT_GOOGLE, result.getSignInAccount().getEmail());
             }
             else {
                 requestCode = 0;

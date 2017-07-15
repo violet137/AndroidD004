@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/shape">
+
+    <!-- Descripton -->
+    <TextView
+        android:id="@+id/description_textview_item_set_do"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/description_xu_huong_thoi_trang_margin"
+        android:gravity="center"
+        android:text="Description"
+        android:textColor="@color/colorTextDark"/>
+
+    <!-- Hình set đồ -->
+    <ImageView
+        android:id="@+id/set_do_image_item_set_do"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxHeight="@dimen/item_list_set_do_image_max_height"
+        app:srcCompat="@drawable/banner_test1"
+        android:scaleType="fitXY"/>
+
+    <!-- View products -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_margin="@dimen/item_list_set_do_margin"
+        android:text="@string/xem_san_pham"
+        android:textColor="@color/colorTextDark" />
+</LinearLayout>

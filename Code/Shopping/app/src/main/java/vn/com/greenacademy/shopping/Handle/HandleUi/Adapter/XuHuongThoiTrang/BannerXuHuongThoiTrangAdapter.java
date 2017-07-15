@@ -1,4 +1,4 @@
-package vn.com.greenacademy.shopping.Handle.HandleUi.Dialog.Adapter;
+package vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.XuHuongThoiTrang;
 
 import android.content.Context;
 import android.content.res.TypedArray;
@@ -8,10 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import vn.com.greenacademy.shopping.Fragment.Main.XuHuongThoiTrang.XuHuongThoiTrangFragment;
-import vn.com.greenacademy.shopping.Handle.HandleUi.Dialog.Model.XuHuongThoiTrangHolder;
+import vn.com.greenacademy.shopping.Handle.HandleUi.Model.ViewHolder.XuHuongThoiTrangHolder;
 import vn.com.greenacademy.shopping.R;
-import vn.com.greenacademy.shopping.Util.SupportKeyList;
 import vn.com.greenacademy.shopping.Util.Ui.BaseFragment;
 
 /**

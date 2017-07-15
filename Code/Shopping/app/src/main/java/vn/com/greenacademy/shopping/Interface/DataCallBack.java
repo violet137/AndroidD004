@@ -7,5 +7,5 @@ import java.io.Serializable;
  */
 
 public interface DataCallBack extends Serializable {
-    void KetQua(int result);
+    void KetQua(String result);
 }

@@ -9,7 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import vn.com.greenacademy.shopping.Handle.HandleUi.Dialog.Adapter.BannerXuHuongThoiTrangAdapter;
+import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.XuHuongThoiTrang.BannerXuHuongThoiTrangAdapter;
 import vn.com.greenacademy.shopping.R;
 
 /**

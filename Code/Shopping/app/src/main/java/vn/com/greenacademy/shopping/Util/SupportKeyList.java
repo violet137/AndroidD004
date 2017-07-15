@@ -5,12 +5,11 @@ package vn.com.greenacademy.shopping.Util;
  */
 
 public class SupportKeyList {
-    //Key URL
-    public static final String URL_DANG_NHAP = "http://tamod.vn:9045/TaiKhoan/DangNhap";
 
     //Key API
     public static final String API_DANG_NHAP = "api_dang_nhap";
     public static final String API_DANG_KY = "api_dang_ky";
+    public static final String API_DATA_XU_HUONG_THOI_TRANG = "api_data";
 
     //Key Data
     public static final String SHAREDPREF_TEN_FILE = "vn.com.greenacademy.shopping.MY_SHAREDPREF";
@@ -19,17 +18,17 @@ public class SupportKeyList {
     public static final String ACCOUNT_FACEBOOK = "facebook";
 
     //Key result
-    public static final int LOI_KET_NOI = -1;
-    public static final int KET_NOI_THANH_CONG = 0;
-    public static final int DANG_NHAP_THAT_BAI = 1;
-    public static final int DANG_NHAP_GOOGLE_THAT_BAI = 2;
-    public static final int DANG_NHAP_FACEBOOK_THAT_BAI = 3;
-    public static final int DANG_NHAP_THANH_CONG = 4;
-    public static final int DANG_NHAP_GOOGLE_THANH_CONG = 5;
-    public static final int DANG_NHAP_FACEBOOK_THANH_CONG = 6;
-    public static final int DANG_XUAT_THANH_CONG = 7;
-    public static final int DANG_KY_THAT_BAI = 8;
-    public static final int DANG_KY_THANH_CONG = 9;
+    public static final String LOI_KET_NOI = "loi_ket_noi";
+    public static final String KET_NOI_THANH_CONG = "ket_noi_thanh_cong";
+    public static final String DANG_NHAP_THAT_BAI = "dang_nhap_that_bai";
+    public static final String DANG_NHAP_GOOGLE_THAT_BAI = "dang_nhap_google_that_bai";
+    public static final String DANG_NHAP_FACEBOOK_THAT_BAI = "dang_nhap_facebook_that_bai";
+    public static final String DANG_NHAP_THANH_CONG = "dang_nhap_thanh_cong";
+    public static final String DANG_NHAP_GOOGLE_THANH_CONG = "dang_nhap_google_thanh_cong";
+    public static final String DANG_NHAP_FACEBOOK_THANH_CONG = "dang_nhap_facebook_thanh_cong";
+    public static final String DANG_XUAT_THANH_CONG = "dang_xuat_thanh_cong";
+    public static final String DANG_KY_THAT_BAI = "dang_ky_that_bai";
+    public static final String DANG_KY_THANH_CONG = "dang_ky_thanh_cong";
 
     //Key tag
     public static final String TAG_FRAGMENT_MAIN = "MainFragment";

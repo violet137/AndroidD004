@@ -6,4 +6,9 @@
         <item>@drawable/banner_test1</item>
         <item>@drawable/banner_xu_huong_thoi_trang</item>
     </array>
+
+    <array name="arr_description">
+        <item>Descripton 1</item>
+        <item></item>
+    </array>
 </resources>

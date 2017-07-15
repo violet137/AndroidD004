@@ -133,7 +133,7 @@
         <com.google.android.gms.common.SignInButton
             android:id="@+id/sign_in_button"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_marginRight="5dp" />
 
@@ -143,8 +143,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:layout_marginLeft="5dp"
-            android:background="@drawable/shape_nut_facebook"
-            android:text="Facebook" />
+            android:layout_gravity="center"
+            android:paddingTop="@dimen/facebook_button_vertical_padding"
+            android:paddingBottom="@dimen/facebook_button_vertical_padding"
+            android:layout_marginLeft="5dp"/>
     </LinearLayout>
 </LinearLayout>
