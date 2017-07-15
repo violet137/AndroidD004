@@ -1,0 +1,17 @@
+﻿Xu hướng thời trang:
+1. Tên xu hướng
+2. Loại:
+   . Women
+   . Men
+   . Kids
+   . Home
+3. Hình
+4. List set đồ
+
+Set đồ:
+1. Tên set đồ
+2. Hình
+3. Tiền
+4. List sản phẩm
+
+   
