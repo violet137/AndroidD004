@@ -10,13 +10,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
 
-import com.squareup.picasso.Picasso;
-
 import java.util.ArrayList;
 
+import vn.com.greenacademy.shopping.Handle.HandleData.ImageLoad;
 import vn.com.greenacademy.shopping.Model.ModeMenuMain;
-import vn.com.greenacademy.shopping.Model.ModeSlideMenu;
 import vn.com.greenacademy.shopping.R;
+import vn.com.greenacademy.shopping.Util.SupportKeyList;
 
 /**
  * Created by GIT on 3/11/2017.
@@ -27,12 +26,14 @@ public class AdapterMenuMain extends ArrayAdapter {
     Activity activity;
     int layoutItem;
     ArrayList<ModeMenuMain> arrayList;
+    View.OnClickListener onClickListener;
 
-    public AdapterMenuMain(Activity activity, int resource, ArrayList<ModeMenuMain> objects){
+    public AdapterMenuMain(Activity activity, int resource, ArrayList<ModeMenuMain> objects, View.OnClickListener onClickListener){
         super(activity,resource,objects);
         this.activity = activity;
         layoutItem=resource;
         arrayList=objects;
+        this.onClickListener = onClickListener;
     }
 
     @NonNull
@@ -41,38 +42,44 @@ public class AdapterMenuMain extends ArrayAdapter {
         //dinh nghia thanh phan giao dien cho tung item cua listview
         LayoutInflater inflater = activity.getLayoutInflater();
         convertView = inflater.inflate(layoutItem,null);
-        final ModeMenuMain modeMenuMain = arrayList.get(position);
+        ImageLoad imageLoad = new ImageLoad(activity);
 
+        final ModeMenuMain modeMenuMain = arrayList.get(position);
         switch (position){
-            case 0:
+            case SupportKeyList.Advertise:
                 ViewFlipper viewFlipper = (ViewFlipper) convertView.findViewById(R.id.vf_menu_main);
                 viewFlipper.setVisibility(View.VISIBLE);
-                String[] arrayLinkPhoto = activity.getResources().getStringArray(R.array.link_viewFlipper);
-                for (int i = 0; i < arrayLinkPhoto.length; i++) {
+                String[] arraylink_Advertise = activity.getResources().getStringArray(R.array.link_Advertise);
+                for (int i = 0; i < arraylink_Advertise.length; i++) {
                     // chu y neu ko tai hinh dc thi kiem t(ra lai mang
                     ImageView image = new ImageView(activity);
                     image.setScaleType(ImageView.ScaleType.FIT_XY);
-                    Picasso.with(activity).load(arrayLinkPhoto[i]).into(image);
+                    imageLoad.ImageLoad(arraylink_Advertise[i], image);
                     viewFlipper.addView(image);
                 }
                 viewFlipper.startFlipping();
+                viewFlipper.setOnClickListener(onClickListener);
                 break;
-            case 1:
-            case 2:
-            case 3:
-            case 4:
-            case 5:
+            case SupportKeyList.Ladies:
+            case SupportKeyList.Men:
+            case SupportKeyList.Kids:
+            case SupportKeyList.Home:
+            case SupportKeyList.Magazine:
                 convertView.findViewById(R.id.constrainLayout_menu_main).setVisibility(View.VISIBLE);
-                ImageView imageView = (ImageView) convertView.findViewById(R.id.ivLayout_menu_main);
+
+                ImageView imageView = (ImageView) convertView.findViewById(R.id.ivMenuType_menu_main);
                 TextView textView = (TextView) convertView.findViewById(R.id.tvName_menu_main);
 
-                imageView.setImageResource(modeMenuMain.getPhoto());
+                String[] arraylink_MenunType = activity.getResources().getStringArray(R.array.link_MenuType);
+                imageLoad.ImageLoad(arraylink_MenunType[position-1], imageView);
                 textView.setText(modeMenuMain.getName());
                 break;
             default:
-                ImageView imageView2 = (ImageView) convertView.findViewById(R.id.iv_menu_main);
-                imageView2.setVisibility(View.VISIBLE);
-                imageView2.setImageResource(modeMenuMain.getPhoto());
+                ImageView imageViewFashion = (ImageView) convertView.findViewById(R.id.ivFashion_menu_main);
+                imageViewFashion.setVisibility(View.VISIBLE);
+
+                String[] arraylink_Fashion = activity.getResources().getStringArray(R.array.link_Fashion);
+                imageLoad.ImageLoad(arraylink_Fashion[position-6], imageViewFashion);
                 break;
         }
 

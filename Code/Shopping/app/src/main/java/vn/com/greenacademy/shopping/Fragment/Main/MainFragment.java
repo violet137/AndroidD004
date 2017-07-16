@@ -1,10 +1,8 @@
 package vn.com.greenacademy.shopping.Fragment.Main;
 
 
-import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,20 +14,17 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import vn.com.greenacademy.shopping.Adapter.AdapterMenuMain;
-import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.XuHuongThoiTrang.BannerXuHuongThoiTrangAdapter;
+import vn.com.greenacademy.shopping.Fragment.Main.XuHuongThoiTrang.XuHuongThoiTrangFragment;
 import vn.com.greenacademy.shopping.Model.ModeMenuMain;
 import vn.com.greenacademy.shopping.R;
+import vn.com.greenacademy.shopping.Util.SupportKeyList;
+import vn.com.greenacademy.shopping.Util.Ui.BaseFragment;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class MainFragment extends Fragment{
+public class MainFragment extends Fragment {
     private RecyclerView listXuHuongThoiTrang;
-
-    public MainFragment() {
-
-    }
-
     ListView lv_menu_main;
 
     ArrayList<ModeMenuMain> arrayModeMenuMain;
@@ -37,6 +32,12 @@ public class MainFragment extends Fragment{
     String[] arrName;
     ModeMenuMain modeMenuMain;
     AdapterMenuMain adapterMenuMain;
+    private BaseFragment baseFragment;
+    View.OnClickListener onClickListener;
+
+    public MainFragment() {
+
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -56,31 +57,40 @@ public class MainFragment extends Fragment{
             }
         });
 
+        onClickListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity(), "okokokokokokoo", Toast.LENGTH_SHORT).show();
+            }
+        };
+
         //load data
         LoadData();
         displayListview();
+        baseFragment = new BaseFragment(getActivity().getSupportFragmentManager());
         return view;
     }
 
     private void itemClickListener(int position) {
         String temp ;
         switch (position){
-            case 0:
-                temp = "Quảng Cáo";
-                break;
-            case 1:
+//            case SupportKeyList.Advertise:
+//                temp = "Quảng Cáo";
+//                break;
+            case SupportKeyList.Ladies:
                 temp = "Ladies";
+                baseFragment.ChuyenFragment(new XuHuongThoiTrangFragment(1), SupportKeyList.TAG_XU_HUONG_THOI_TRANG, false);
                 break;
-            case 2:
+            case SupportKeyList.Men:
                 temp = "Men";
                 break;
-            case 3:
+            case SupportKeyList.Kids:
                 temp = "Kids";
                 break;
-            case 4:
+            case SupportKeyList.Home:
                 temp = "Home";
                 break;
-            case 5:
+            case SupportKeyList.Magazine:
                 temp = "Magazine";
                 break;
             default:
@@ -91,29 +101,26 @@ public class MainFragment extends Fragment{
     }
 
     private void displayListview() {
-        adapterMenuMain = new AdapterMenuMain(getActivity(), R.layout.item_listview_menu_main, arrayModeMenuMain);
+        adapterMenuMain = new AdapterMenuMain(getActivity(), R.layout.item_listview_menu_main, arrayModeMenuMain,onClickListener);
         lv_menu_main.setAdapter(adapterMenuMain);
     }
 
     private void LoadData() {
         arrName = getResources().getStringArray(R.array.name_menu_main);
-        String[] array = getResources().getStringArray(R.array.photo_menu_main);
-        TypedArray listAnh = getResources().obtainTypedArray(R.array.photo_menu_main);
-        arrPhoto = new int[array.length];
-        for(int i=0; i< arrPhoto.length;i++){
-            arrPhoto[i]=listAnh.getResourceId(i,-1);
-        }
-        // danh sach bai hat
-        arrayModeMenuMain = new ArrayList<ModeMenuMain>();
-        for(int i = 0; i< arrPhoto.length; i++){
+        String []arrLink_MenuType = getResources().getStringArray(R.array.link_MenuType);
+        String []arrLink_Fashion = getResources().getStringArray(R.array.link_Fashion);
+
+
+        arrayModeMenuMain = new ArrayList<>();
+        for(int i = 0; i< (arrLink_Fashion.length + arrLink_MenuType.length); i++){
             ModeMenuMain modeMenuMain = new ModeMenuMain();
             if (i<=5){
                 modeMenuMain.setName(arrName[i]);
             }
-            modeMenuMain.setPhoto(arrPhoto[i]);
             arrayModeMenuMain.add(modeMenuMain);
         }
 
     }
+
 
 }

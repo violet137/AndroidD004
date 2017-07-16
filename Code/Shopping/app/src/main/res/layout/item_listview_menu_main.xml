@@ -20,8 +20,9 @@
         android:visibility="gone">
 
         <ImageView
-            android:id="@+id/ivLayout_menu_main"
+            android:id="@+id/ivMenuType_menu_main"
             android:layout_width="0dp"
+            android:scaleType="fitXY"
             android:layout_height="@dimen/imageView_constrain_height"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -46,11 +47,12 @@
     </android.support.constraint.ConstraintLayout>
 
     <ImageView
-        android:id="@+id/iv_menu_main"
+        android:id="@+id/ivFashion_menu_main"
         android:layout_width="match_parent"
         android:layout_height="@dimen/imageView_height"
         android:layout_weight="1"
         android:visibility="gone"
+        android:scaleType="fitXY"
         app:srcCompat="@null" />
 
 </LinearLayout>
