@@ -49,23 +49,6 @@
         <item>Magazine</item>
     </string-array>
 
-    <string-array name="photo_menu_main">
-        <item>@drawable/ic_menu_send</item>
-        <item>@drawable/ic_menu_send</item>
-        <item>@drawable/ic_menu_send</item>
-        <item>@drawable/ic_menu_send</item>
-        <item>@drawable/ic_menu_send</item>
-        <item>@drawable/ic_menu_send</item>
-        <item>@drawable/ic_menu_send</item>
-        <item>@drawable/ic_menu_send</item>
-        <item>@drawable/ic_menu_send</item>
-        <item>@drawable/ic_menu_send</item>
-        <item>@drawable/ic_menu_send</item>
-        <item>@drawable/ic_menu_send</item>
-        <item>@drawable/ic_menu_send</item>
-        <item>@drawable/ic_menu_send</item>
-    </string-array>
-
     <string-array name="link_Advertise">
         <item>http://revelwallpapers.net/d/37484A616D315F68347471597436476130337034306476457A6268386D513D3D/77602.jpg</item>
         <item>https://4.bp.blogspot.com/-N3pimB9qxIg/VwUe_7Sqh3I/AAAAAAAATRA/9rM2kCEng54F1Crj5kf1N6-tutzshx4Qg/s1600/Girl-xinh-ohaylam.com-%25284%2529.jpg</item>
@@ -74,23 +57,24 @@
         <item>http://znews-photo-td.zadn.vn/w1024/Uploaded/ofh_fdmzsofw/2017_05_02/unnamed_2.jpg</item>
     </string-array>
 
-    <string-array name="link_MenuType">
-        <item>http://revelwallpapers.net/d/37484A616D315F68347471597436476130337034306476457A6268386D513D3D/77602.jpg</item>
-        <item>https://4.bp.blogspot.com/-N3pimB9qxIg/VwUe_7Sqh3I/AAAAAAAATRA/9rM2kCEng54F1Crj5kf1N6-tutzshx4Qg/s1600/Girl-xinh-ohaylam.com-%25284%2529.jpg</item>
-        <item>http://anh.24h.com.vn/upload/4-2016/images/2016-11-16/1479281909-147921543937742-18.jpg</item>
-        <item>http://anhdep99.com/wp-content/uploads/2016/03/anh-girl-xinh-kute-dang-yeu.jpg</item>
-        <item>http://znews-photo-td.zadn.vn/w1024/Uploaded/ofh_fdmzsofw/2017_05_02/unnamed_2.jpg</item>
+    <string-array name="link_MenuPhotos">
+        <item>http://asset2.cxnmarksandspencer.com/is/image/mands/4b50d337a68a84706f74735db759cfe72a467a30?$GEO_LOCATE_1032x470$</item>
+        <item>http://xuongmaylabellevn.com/upload/news/men-fashion.jpg</item>
+        <item>hsdzsdzxczxcg</item>
+        <item>hsdzsdzxczxcg</item>
+        <item>hsdzsdzxczxcg</item>
+
+        // ảnh phan xu huong
+        <item>https://central-zalora-media-live-vn.s3.amazonaws.com/cms/20170525-men-hero1-desk.jpg</item>
+        <item>http://vn-live-01.slatic.net/cms/2015/campaign-06/seo/lazada-thoi-trang-nu-1.jpg</item>
+        <item>http://www.pantio.vn/media/adv/1499678050_New_Arrivals.jpg</item>
+        <item>http://www.sifafashion.com/public/uploads/images/nang_am_mua_dong-xanh.jpg</item>
+        <item>http://benhvienxaydung.org.vn/wp-content/uploads/2016/06/Thoi-trang-he-2016.jpg</item>
+        <item>http://www.vogue.com/wp-content/uploads/2016/02/09/voguerunway-share.jpg</item>
+        <item>http://p2pmailing.co.uk/wp-content/uploads/2013/10/Fashion-And-Modern-Youth.jpg</item>
+        <item>http://s2.webbnc.vn/uploadv2/web/48/4801/album/2016/11/07/03/01/1478488036_tu-vung-tieng-anh-chu-de-thoi-trang-fashion1.jpg</item>
+
     </string-array>
 
-    <string-array name="link_Fashion">
-        <item>http://revelwallpapers.net/d/37484A616D315F68347471597436476130337034306476457A6268386D513D3D/77602.jpg</item>
-        <item>https://4.bp.blogspot.com/-N3pimB9qxIg/VwUe_7Sqh3I/AAAAAAAATRA/9rM2kCEng54F1Crj5kf1N6-tutzshx4Qg/s1600/Girl-xinh-ohaylam.com-%25284%2529.jpg</item>
-        <item>http://anh.24h.com.vn/upload/4-2016/images/2016-11-16/1479281909-147921543937742-18.jpg</item>
-        <item>http://anhdep99.com/wp-content/uploads/2016/03/anh-girl-xinh-kute-dang-yeu.jpg</item>
-        <item>http://znews-photo-td.zadn.vn/w1024/Uploaded/ofh_fdmzsofw/2017_05_02/unnamed_2.jpg</item>
-        <item>http://revelwallpapers.net/d/37484A616D315F68347471597436476130337034306476457A6268386D513D3D/77602.jpg</item>
-        <item>https://4.bp.blogspot.com/-N3pimB9qxIg/VwUe_7Sqh3I/AAAAAAAATRA/9rM2kCEng54F1Crj5kf1N6-tutzshx4Qg/s1600/Girl-xinh-ohaylam.com-%25284%2529.jpg</item>
-        <item>http://anh.24h.com.vn/upload/4-2016/images/2016-11-16/1479281909-147921543937742-18.jpg</item>
-    </string-array>
 
 </resources>

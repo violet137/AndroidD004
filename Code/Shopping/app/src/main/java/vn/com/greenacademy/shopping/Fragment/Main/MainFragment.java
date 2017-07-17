@@ -107,12 +107,9 @@ public class MainFragment extends Fragment {
 
     private void LoadData() {
         arrName = getResources().getStringArray(R.array.name_menu_main);
-        String []arrLink_MenuType = getResources().getStringArray(R.array.link_MenuType);
-        String []arrLink_Fashion = getResources().getStringArray(R.array.link_Fashion);
-
-
+        String []arrLink_MenuPhotos = getResources().getStringArray(R.array.link_MenuPhotos);
         arrayModeMenuMain = new ArrayList<>();
-        for(int i = 0; i< (arrLink_Fashion.length + arrLink_MenuType.length); i++){
+        for(int i = 0; i< (arrLink_MenuPhotos.length); i++){
             ModeMenuMain modeMenuMain = new ModeMenuMain();
             if (i<=5){
                 modeMenuMain.setName(arrName[i]);

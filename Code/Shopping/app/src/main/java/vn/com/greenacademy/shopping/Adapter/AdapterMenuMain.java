@@ -70,7 +70,7 @@ public class AdapterMenuMain extends ArrayAdapter {
                 ImageView imageView = (ImageView) convertView.findViewById(R.id.ivMenuType_menu_main);
                 TextView textView = (TextView) convertView.findViewById(R.id.tvName_menu_main);
 
-                String[] arraylink_MenunType = activity.getResources().getStringArray(R.array.link_MenuType);
+                String[] arraylink_MenunType = activity.getResources().getStringArray(R.array.link_MenuPhotos);
                 imageLoad.ImageLoad(arraylink_MenunType[position-1], imageView);
                 textView.setText(modeMenuMain.getName());
                 break;
@@ -78,8 +78,8 @@ public class AdapterMenuMain extends ArrayAdapter {
                 ImageView imageViewFashion = (ImageView) convertView.findViewById(R.id.ivFashion_menu_main);
                 imageViewFashion.setVisibility(View.VISIBLE);
 
-                String[] arraylink_Fashion = activity.getResources().getStringArray(R.array.link_Fashion);
-                imageLoad.ImageLoad(arraylink_Fashion[position-6], imageViewFashion);
+                String[] arraylink_Fashion = activity.getResources().getStringArray(R.array.link_MenuPhotos);
+                imageLoad.ImageLoad(arraylink_Fashion[position-1], imageViewFashion);
                 break;
         }
 
