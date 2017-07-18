@@ -9,6 +9,8 @@
     <ListView
         android:id="@+id/lv_menu_mani"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:divider="@color/cardview_light_background"
+        android:dividerHeight="2px"/>
 
 </RelativeLayout>
