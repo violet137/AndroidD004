@@ -6,8 +6,8 @@
 2. Tên
 3. List Hình
 4. List Size
-5. List Giá
+5. Giá
 6. List Màu
 7. Description
-8. Chi tiết (Chất liệu, hàng nhập khẩu, ...)
+8. Chi tiết
 7. Giảm giá

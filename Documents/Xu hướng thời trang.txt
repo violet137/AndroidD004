@@ -7,6 +7,7 @@
    . Home
 3. Hình
 4. List set đồ
+5. List sản phẩm
 
 Set đồ:
 1. Tên set đồ
