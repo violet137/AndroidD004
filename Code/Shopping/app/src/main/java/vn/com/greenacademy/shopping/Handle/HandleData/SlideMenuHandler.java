@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 import vn.com.greenacademy.shopping.Adapter.AdapterSlideMenu;
 import vn.com.greenacademy.shopping.Fragment.Main.MyShopping.MyShoppingFragment;
-import vn.com.greenacademy.shopping.Model.ModeSlideMenu;
+import vn.com.greenacademy.shopping.Model.SlideMenu;
 import vn.com.greenacademy.shopping.R;
 import vn.com.greenacademy.shopping.Util.SupportKeyList;
 import vn.com.greenacademy.shopping.Util.Ui.BaseFragment;
@@ -21,7 +21,7 @@ import vn.com.greenacademy.shopping.Util.Ui.BaseFragment;
 
 public class SlideMenuHandler {
 
-    ArrayList<ModeSlideMenu> arrayModeSlideMenus;
+    ArrayList<SlideMenu> arraySlideMenus;
     int[] arrIcon;
     String[] arrName;
     AdapterSlideMenu adapterSlideMenu;
@@ -83,7 +83,7 @@ public class SlideMenuHandler {
 
     // tai du lieu tu adapter len list
     public void displayListview(ListView listView) {
-        adapterSlideMenu = new AdapterSlideMenu(activity, R.layout.item_slide_menu, arrayModeSlideMenus);
+        adapterSlideMenu = new AdapterSlideMenu(activity, R.layout.item_slide_menu, arraySlideMenus);
         listView.setAdapter(adapterSlideMenu);
     }
 
@@ -96,12 +96,12 @@ public class SlideMenuHandler {
             arrIcon[i]=listAnh.getResourceId(i,-1);
         }
 
-        arrayModeSlideMenus = new ArrayList<ModeSlideMenu>();
+        arraySlideMenus = new ArrayList<SlideMenu>();
         for(int i = 0; i< arrName.length; i++){
-            ModeSlideMenu modeSlideMenu = new ModeSlideMenu();
-            modeSlideMenu.setTen(arrName[i]);
-            modeSlideMenu.setIcon(arrIcon[i]);
-            arrayModeSlideMenus.add(modeSlideMenu);
+            SlideMenu slideMenu = new SlideMenu();
+            slideMenu.setTen(arrName[i]);
+            slideMenu.setIcon(arrIcon[i]);
+            arraySlideMenus.add(slideMenu);
         }
 
     }

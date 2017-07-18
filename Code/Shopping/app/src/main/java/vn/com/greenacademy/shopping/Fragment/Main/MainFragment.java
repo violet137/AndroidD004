@@ -9,16 +9,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
-import java.util.ArrayList;
-
-import vn.com.greenacademy.shopping.Adapter.AdapterMenuMain;
-import vn.com.greenacademy.shopping.Fragment.Main.XuHuongThoiTrang.XuHuongThoiTrangFragment;
 import vn.com.greenacademy.shopping.Handle.HandleData.MainMenuHandler;
-import vn.com.greenacademy.shopping.Model.ModeMenuMain;
 import vn.com.greenacademy.shopping.R;
-import vn.com.greenacademy.shopping.Util.SupportKeyList;
 import vn.com.greenacademy.shopping.Util.Ui.BaseFragment;
 
 /**
