@@ -25,7 +25,7 @@ import vn.com.greenacademy.shopping.Util.SharePreference.MySharedPreferences;
 import vn.com.greenacademy.shopping.Util.SupportKeyList;
 import vn.com.greenacademy.shopping.Util.Ui.BaseFragment;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener,NavigationView.OnNavigationItemSelectedListener, DataCallBack {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener, DataCallBack {
     ListView lv_item_slide_menu;
 
 //    ArrayList<ModeSlideMenu> arrayModeSlideMenus;
@@ -52,44 +52,32 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-
-        // anh xa va set su kien click cho navigationView
-        navigationView = (NavigationView) findViewById(R.id.nav_menu_main);
-        navigationView.setNavigationItemSelectedListener(this);
-
-        // anh xa va set su kien click cho nav_hear để truy cập trang thông tin cá nhân người dùng
-        View viewNav = findViewById(R.id.nav_menu_main);
-        viewNav.findViewById(R.id.ivUser_nav_hear).setOnClickListener(this);
-        viewNav.findViewById(R.id.tvName_nav_hear).setOnClickListener(this);
-        viewNav.findViewById(R.id.tvEmail_nav_hear).setOnClickListener(this);
-
-        // SlideMenuHander là class dieu khien slied menu
-        final SlideMenuHandler slideMenuHandler = new SlideMenuHandler(this);
-
+        View navigationView = findViewById(R.id.nav_menu_main);
         lv_item_slide_menu = (ListView) findViewById(R.id.lv_item_slide_menu);
 
+        //Xử lý sự kiện
+        navigationView.findViewById(R.id.ivUser_nav_hear).setOnClickListener(this);
+        navigationView.findViewById(R.id.tvName_nav_hear).setOnClickListener(this);
+        navigationView.findViewById(R.id.tvEmail_nav_hear).setOnClickListener(this);
+        final SlideMenuHandler slideMenuHandler = new SlideMenuHandler(this);
         lv_item_slide_menu.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                modeSlideMenu = arrayModeSlideMenus.get(position);
+                //modeSlideMenu = arrayModeSlideMenus.get(position);
                 slideMenuHandler.itemClickListener(position, baseFragment);
-
             }
         });
 
-        //load data cho slide menu
-        slideMenuHandler.loadData();
-        slideMenuHandler.displayListview(lv_item_slide_menu);
-
-        //Hiện icon menu va đồng bộ actionbar với menu
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, 0, 0);
-        drawerLayout.addDrawerListener(toggle);
-        toggle.syncState();
-        //
-
+        //Khởi tạo, thiết lập giá trị
         mySharedPref = new MySharedPreferences(this, SupportKeyList.SHAREDPREF_TEN_FILE);
         dataHandler = new DataHandler(this);
         baseFragment = new BaseFragment(getSupportFragmentManager());
+        slideMenuHandler.loadData();
+        slideMenuHandler.displayListview(lv_item_slide_menu);
+
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, 0, 0);
+        drawerLayout.addDrawerListener(toggle);
+        toggle.syncState();
 
         //Chạy màn hình splash
         baseFragment.ChuyenFragment(new SplashScreenFragment(getSupportActionBar(), drawerLayout), null, false);
@@ -121,6 +109,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+    //Menu của tool bar
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_tool_bar, menu);
@@ -191,19 +180,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return true;
     }
 
-    @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
-            case R.id.item_my_shopping:
-
-                break;
-            default:
-                break;
-        }
-        drawerLayout.closeDrawer(GravityCompat.START);
-        return false;
-    }
-
+    //Xử lý kết quả
     @Override
     public void KetQua(String result, Bundle bundle) {
         switch (result){

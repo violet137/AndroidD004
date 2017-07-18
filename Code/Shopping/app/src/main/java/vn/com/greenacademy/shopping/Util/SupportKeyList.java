@@ -42,4 +42,26 @@ public class SupportKeyList {
     public static final String TAG_FRAGMENT_DANG_KY = "DangKy";
     public static final String TAG_XU_HUONG_THOI_TRANG = "XuHuongThoiTrang";
     public static final String TAG_THONG_TIN_SAN_PHAM = "ThongTinSanPham";
+
+    //Key Menu Main
+    public static final int Advertise = 0;
+    public static final int Ladies = 1;
+    public static final int Men = 2;
+    public static final int Kids = 3;
+    public static final int Home = 4;
+    public static final int Magazine = 5;
+
+    //Key Menu Main
+    public static final int Products_slide = 0;
+    public static final int Ladies_slide = 1;
+    public static final int Men_slide = 2;
+    public static final int Kids_slide = 3;
+    public static final int Home_slide = 4;
+    public static final int Magazine_slide = 5;
+    public static final int Wish_list_slide = 6;
+    public static final int My_Shopping_slide = 7;
+    public static final int Support_slide = 8;
+    public static final int Find_a_store_slide = 9;
+    public static final int Newsletter_slide = 10;
+
 }
