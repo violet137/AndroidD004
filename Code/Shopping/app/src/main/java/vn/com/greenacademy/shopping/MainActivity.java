@@ -19,6 +19,7 @@ import android.widget.Toast;
 import vn.com.greenacademy.shopping.Fragment.Main.MyShopping.TaiKhoan.DangNhapFragment;
 import vn.com.greenacademy.shopping.Fragment.SplashScreenFragment;
 import vn.com.greenacademy.shopping.Handle.HandleData.DataHandler;
+import vn.com.greenacademy.shopping.Handle.HandleData.GoogleHandler;
 import vn.com.greenacademy.shopping.Handle.HandleData.SlideMenuHandler;
 import vn.com.greenacademy.shopping.Interface.DataCallBack;
 import vn.com.greenacademy.shopping.Util.SharePreference.MySharedPreferences;
@@ -167,8 +168,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         baseFragment.ChuyenFragment(new DangNhapFragment(), SupportKeyList.TAG_FRAGMENT_DANG_NHAP, false);
                         break;
                     case SupportKeyList.ACCOUNT_GOOGLE:
-                        //googleHandle = new GoogleHandler(this, this);
-                        //googleHandle.signOut();
+                        GoogleHandler googleHandle = new GoogleHandler(this, this);
+                        googleHandle.signOut();
                         break;
                     case SupportKeyList.ACCOUNT_FACEBOOK:
                         break;
@@ -186,6 +187,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (result){
             case SupportKeyList.DANG_XUAT_THANH_CONG:
                 dataHandler.DangXuat();
+                Toast.makeText(this, "dang xuat thanh cong", Toast.LENGTH_SHORT).show();
                 baseFragment.ChuyenFragment(new DangNhapFragment(), SupportKeyList.TAG_FRAGMENT_DANG_NHAP, false);
                 break;
         }

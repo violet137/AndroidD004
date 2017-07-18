@@ -78,7 +78,7 @@ public class SlideMenuHandler {
                 temp = "null";
                 break;
         }
-        Toast.makeText(activity, temp, Toast.LENGTH_SHORT).show();
+//        Toast.makeText(activity, temp, Toast.LENGTH_SHORT).show();
     }
 
     // tai du lieu tu adapter len list

@@ -135,10 +135,10 @@ public class GoogleHandler extends FragmentActivity implements GoogleApiClient.O
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
             //Kiểm tra đăng nhập thành công
             if (result.isSuccess()) {
-                String mail = result.getSignInAccount().getEmail();
-                Toast.makeText(mActivity, mail, Toast.LENGTH_SHORT).show();
-                String username = result.getSignInAccount().getGivenName();
-                Toast.makeText(mActivity, username, Toast.LENGTH_SHORT).show();
+//                String mail = result.getSignInAccount().getEmail();
+//                Toast.makeText(mActivity, mail, Toast.LENGTH_SHORT).show();
+//                String username = result.getSignInAccount().getGivenName();
+//                Toast.makeText(mActivity, username, Toast.LENGTH_SHORT).show();
                 //Kiểm tra hình
                 if (result.getSignInAccount().getPhotoUrl() == null){
                     Toast.makeText(mActivity, "tài khoản chưa có ảnh", Toast.LENGTH_SHORT).show();

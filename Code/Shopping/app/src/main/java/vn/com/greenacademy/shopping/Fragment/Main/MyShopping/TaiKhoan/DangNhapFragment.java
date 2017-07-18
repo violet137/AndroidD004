@@ -147,7 +147,7 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener, 
 
             case SupportKeyList.DANG_NHAP_GOOGLE_THANH_CONG:
                 Toast.makeText(getActivity(), getString(R.string.toast_dang_nhap_thanh_cong) + " " + googleHandler.getUsername() , Toast.LENGTH_SHORT).show();
-                dataHandler.setTrangThaiDangNhap(bundle.getString("Token"),SupportKeyList.ACCOUNT_GOOGLE, googleHandler.getEmail(), googleHandler.getUsername(), cbLuuDangNhap.isChecked());
+                dataHandler.setTrangThaiDangNhap(bundle.getString("Token"),SupportKeyList.ACCOUNT_GOOGLE, googleHandler.getEmail(), googleHandler.getUsername(), true);
                 baseFragment.ChuyenFragment(new TaiKhoanFragment(), SupportKeyList.TAG_FRAGMENT_TAI_KHOAN, false);
                 break;
 
