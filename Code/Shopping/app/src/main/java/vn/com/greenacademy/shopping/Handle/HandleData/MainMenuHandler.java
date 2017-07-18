@@ -70,7 +70,7 @@ public class MainMenuHandler {
 //                break;
             case SupportKeyList.Ladies:
                 temp = "Ladies";
-                baseFragment.ChuyenFragment(new XuHuongThoiTrangFragment(1), SupportKeyList.TAG_XU_HUONG_THOI_TRANG, false);
+
                 break;
             case SupportKeyList.Men:
                 temp = "Men";
@@ -86,6 +86,7 @@ public class MainMenuHandler {
                 break;
             default:
                 temp = "Mục chưa biết";
+                baseFragment.ChuyenFragment(new XuHuongThoiTrangFragment(1), SupportKeyList.TAG_XU_HUONG_THOI_TRANG, true);
                 break;
         }
         Toast.makeText(activity, temp, Toast.LENGTH_SHORT).show();

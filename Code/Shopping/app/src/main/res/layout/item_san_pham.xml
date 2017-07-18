@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layout_item_san_pham"
     android:orientation="vertical"
     android:layout_width="@dimen/item_list_san_pham_width"
     android:layout_height="@dimen/item_list_san_pham_height">

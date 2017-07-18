@@ -13,7 +13,7 @@ import java.security.NoSuchAlgorithmException;
  * Created by zzzzz on 7/14/2017.
  */
 
-public class FacebookHandle {
+public class FacebookHandler {
 
     // Hien thi Key Hash cho facebook
     public static String printKeyHash(Activity context) {

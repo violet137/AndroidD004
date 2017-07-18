@@ -8,7 +8,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
+
 import vn.com.greenacademy.shopping.Handle.HandleUi.Model.ViewHolder.SetDoHolder;
+import vn.com.greenacademy.shopping.Model.SetDo;
 import vn.com.greenacademy.shopping.R;
 
 /**
@@ -17,14 +20,13 @@ import vn.com.greenacademy.shopping.R;
 
 public class ListSetDoAdapter extends RecyclerView.Adapter<SetDoHolder> {
     private Context context;
-    private String[] listDataDescription;
+    private ArrayList<SetDo> listSetDo = null;
 
-    public ListSetDoAdapter(Context context){
+    public ListSetDoAdapter(Context context, ArrayList<SetDo> listSetDo){
         this.context = context;
-
-        //Data test
-        loadDataTest();
+        this.listSetDo = listSetDo;
     }
+
     @Override
     public SetDoHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
@@ -34,19 +36,18 @@ public class ListSetDoAdapter extends RecyclerView.Adapter<SetDoHolder> {
 
     @Override
     public void onBindViewHolder(SetDoHolder holder, int position) {
-        if (!listDataDescription[position].isEmpty()){
-            holder.tvDescription.setText(listDataDescription[position]);
+        //Description set đồ
+        if (!listSetDo.get(position).getDescriptionSetDo().isEmpty()){
+            holder.tvDescription.setText(listSetDo.get(position).getDescriptionSetDo());
         } else {
             holder.tvDescription.setVisibility(View.GONE);
         }
+
+        //hình set đồ
     }
 
     @Override
     public int getItemCount() {
-        return listDataDescription.length;
-    }
-
-    public void loadDataTest(){
-        listDataDescription = context.getResources().getStringArray(R.array.arr_description);
+        return listSetDo.size();
     }
 }

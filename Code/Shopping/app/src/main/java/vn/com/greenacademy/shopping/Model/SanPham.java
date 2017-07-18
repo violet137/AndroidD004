@@ -11,9 +11,23 @@ public class SanPham {
     private String chiTietSanPham;
     private String[] hinhSanPham;
     private String[] mauSanPham;
-    private int[] giaSanPham;
+    private double giaSanPham;
     private String[] size;
     private int giamGia;
+
+    public SanPham(){}
+
+    public SanPham(String tenSanPham, String loaiSanPham, String description, String chiTietSanPham, String[] hinhSanPham, String[] mauSanPham, double giaSanPham, String[] size, int giamGia) {
+        this.tenSanPham = tenSanPham;
+        this.loaiSanPham = loaiSanPham;
+        this.description = description;
+        this.chiTietSanPham = chiTietSanPham;
+        this.hinhSanPham = hinhSanPham;
+        this.mauSanPham = mauSanPham;
+        this.giaSanPham = giaSanPham;
+        this.size = size;
+        this.giamGia = giamGia;
+    }
 
     public String getTenSanPham() {
         return tenSanPham;
@@ -63,11 +77,11 @@ public class SanPham {
         this.mauSanPham = mauSanPham;
     }
 
-    public int[] getGiaSanPham() {
+    public double getGiaSanPham() {
         return giaSanPham;
     }
 
-    public void setGiaSanPham(int[] giaSanPham) {
+    public void setGiaSanPham(double giaSanPham) {
         this.giaSanPham = giaSanPham;
     }
 

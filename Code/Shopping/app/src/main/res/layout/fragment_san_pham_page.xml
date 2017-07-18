@@ -1,0 +1,28 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="vn.com.greenacademy.shopping.Fragment.Main.SanPham.SanPhamPagerFragment">
+
+    <!-- Hình sản phẩm -->
+    <ImageView
+        android:id="@+id/hinh_san_pham"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/banner_test1" />
+
+    <TextView
+        android:id="@+id/gia_fragment_page_san_pham"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/gia_tien_text_height_info_san_pham"
+        android:layout_gravity="bottom|right"
+        android:gravity="center"
+        android:paddingLeft="@dimen/gia_tien_horizontal_padding"
+        android:paddingRight="@dimen/gia_tien_horizontal_padding"
+        android:layout_marginBottom="@dimen/gia_tien_margin_bottom"
+        android:background="@drawable/shape_text"
+        android:text="$20.99"
+        android:textColor="@color/colorTextDark"
+        android:textSize="@dimen/gia_tien_text_size_info_san_pham"
+        android:textStyle="bold"/>
+</FrameLayout>

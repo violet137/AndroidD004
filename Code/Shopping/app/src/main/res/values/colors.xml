@@ -8,4 +8,5 @@
     <color name="colorText">#ffffffff</color>
     <color name="colorTextDark">#000</color>
     <color name="colorChuButtonDangNhap">#ffff</color>
+    <color name="srim">#9f000000</color>
 </resources>

@@ -7,9 +7,27 @@ import java.util.ArrayList;
  */
 
 public class SetDo {
+    private String tenSetDo;
     private String descriptionSetDo;
     private String hinhSetDo;
-    private ArrayList<SanPham> listSanPham;
+    private ArrayList<SanPham> listSanPham = new ArrayList<>();
+
+    public SetDo(){}
+
+    public SetDo(String tenSetDo, String descriptionSetDo, String hinhSetDo, ArrayList<SanPham> listSanPham) {
+        this.tenSetDo = tenSetDo;
+        this.descriptionSetDo = descriptionSetDo;
+        this.hinhSetDo = hinhSetDo;
+        this.listSanPham = listSanPham;
+    }
+
+    public String getTenSetDo() {
+        return tenSetDo;
+    }
+
+    public void setTenSetDo(String tenSetDo) {
+        this.tenSetDo = tenSetDo;
+    }
 
     public String getDescriptionSetDo() {
         return descriptionSetDo;
