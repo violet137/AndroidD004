@@ -2,7 +2,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     tools:context="vn.com.greenacademy.shopping.Fragment.Main.XuHuongThoiTrang.XuHuongThoiTrangFragment">
 
     <LinearLayout
@@ -22,12 +21,12 @@
         <android.support.v7.widget.RecyclerView
             android:id="@+id/list_set_do_fragment_xu_huong_thoi_trang"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content" />
 
         <!-- List sản phẩm -->
         <android.support.v7.widget.RecyclerView
             android:id="@+id/list_san_pham_fragment_xu_huong_thoi_trang"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"/>
     </LinearLayout>
 </ScrollView>

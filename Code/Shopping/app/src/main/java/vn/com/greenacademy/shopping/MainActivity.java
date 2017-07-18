@@ -269,7 +269,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                         baseFragment.ChuyenFragment(new DangNhapFragment(), SupportKeyList.TAG_FRAGMENT_DANG_NHAP, false);
                         break;
                     case SupportKeyList.ACCOUNT_GOOGLE:
-                        //googleHandle = new GoogleHandle(this, this);
+                        //googleHandle = new GoogleHandler(this, this);
                         //googleHandle.signOut();
                         break;
                     case SupportKeyList.ACCOUNT_FACEBOOK:
@@ -301,7 +301,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     @Override
-    public void KetQua(String result) {
+    public void KetQua(String result, Bundle bundle) {
         switch (result){
             case SupportKeyList.DANG_XUAT_THANH_CONG:
                 dataHandler.DangXuat();

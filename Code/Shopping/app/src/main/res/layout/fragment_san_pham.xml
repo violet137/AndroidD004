@@ -1,0 +1,55 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="vn.com.greenacademy.shopping.Fragment.Main.SanPham.ThongTinSanPhamFragment">
+
+    <!-- Top info -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@drawable/scrim"
+        android:paddingTop="@dimen/top_info_vertical_padding"
+        android:paddingBottom="@dimen/top_info_vertical_padding"
+        android:paddingLeft="@dimen/top_info_horizontal_padding"
+        android:paddingRight="@dimen/top_info_horizontal_padding">
+
+        <!-- Tên sản phẩm -->
+        <TextView
+            android:id="@+id/ten_va_mau_fragment_san_pham"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:text="Patterned Duvet Cover Set - Khaki green"
+            android:textColor="@color/colorText"
+            android:textSize="@dimen/text_size_info_san_pham"/>
+
+        <!-- Số lượng -->
+        <TextView
+            android:id="@+id/so_luong_fragment_san_pham"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:text="3/23"
+            android:textColor="@color/colorText"
+            android:textSize="20sp"/>
+    </LinearLayout>
+
+    <!-- List sản phẩm -->
+    <android.support.v4.view.ViewPager
+        android:id="@+id/pager_fragment_san_pham"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <!-- Bottom info -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:layout_gravity="bottom"
+        android:background="@drawable/scrim">
+
+    </LinearLayout>
+</FrameLayout>

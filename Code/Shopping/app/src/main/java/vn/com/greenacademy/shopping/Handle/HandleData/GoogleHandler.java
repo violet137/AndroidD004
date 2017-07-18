@@ -24,7 +24,7 @@ import vn.com.greenacademy.shopping.Util.SupportKeyList;
  * Created by ADMIN on 7/4/2017.
  */
 
-public class GoogleHandle extends FragmentActivity implements GoogleApiClient.OnConnectionFailedListener {
+public class GoogleHandler extends FragmentActivity implements GoogleApiClient.OnConnectionFailedListener {
     private Activity mActivity;
     private GoiAPIServerAsyncTask goiAPIServerAsyncTask;
     private GoogleApiClient mGoogleApiClient;
@@ -36,14 +36,14 @@ public class GoogleHandle extends FragmentActivity implements GoogleApiClient.On
 
     private final int RC_SIGN_IN = 200;
 
-    public GoogleHandle(Activity activity, DangNhapFragment fragment, DataCallBack dataCallBack) {
+    public GoogleHandler(Activity activity, DangNhapFragment fragment, DataCallBack dataCallBack) {
         this.mActivity = activity;
         this.fragment = fragment;
         this.dataCallBack = dataCallBack;
         goiAPIServerAsyncTask = new GoiAPIServerAsyncTask(dataCallBack);
     }
 
-    public GoogleHandle(Activity activity, DataCallBack dataCallBack) {
+    public GoogleHandler(Activity activity, DataCallBack dataCallBack) {
         this.mActivity = activity;
         this.dataCallBack = dataCallBack;
         goiAPIServerAsyncTask = new GoiAPIServerAsyncTask(dataCallBack);
@@ -116,7 +116,7 @@ public class GoogleHandle extends FragmentActivity implements GoogleApiClient.On
                         @Override
                         public void onResult(@NonNull Status status) {
                             requestCode = 0;
-                            dataCallBack.KetQua(SupportKeyList.DANG_XUAT_THANH_CONG);
+                            dataCallBack.KetQua(SupportKeyList.DANG_XUAT_THANH_CONG, null);
                         }
                     });
         }else {
@@ -126,7 +126,7 @@ public class GoogleHandle extends FragmentActivity implements GoogleApiClient.On
 
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-        dataCallBack.KetQua(SupportKeyList.LOI_KET_NOI);
+        dataCallBack.KetQua(SupportKeyList.LOI_KET_NOI, null);
     }
 
     public void activityResult(int requestCode, int resultCode, Intent data) {

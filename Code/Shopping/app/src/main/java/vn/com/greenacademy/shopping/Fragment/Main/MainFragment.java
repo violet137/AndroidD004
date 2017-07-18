@@ -16,20 +16,19 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import vn.com.greenacademy.shopping.Adapter.AdapterMenuMain;
+import vn.com.greenacademy.shopping.Fragment.Main.XuHuongThoiTrang.XuHuongThoiTrangFragment;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.XuHuongThoiTrang.BannerXuHuongThoiTrangAdapter;
 import vn.com.greenacademy.shopping.Model.ModeMenuMain;
 import vn.com.greenacademy.shopping.R;
+import vn.com.greenacademy.shopping.Util.SupportKeyList;
+import vn.com.greenacademy.shopping.Util.Ui.BaseFragment;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class MainFragment extends Fragment{
     private RecyclerView listXuHuongThoiTrang;
-
-    public MainFragment() {
-
-    }
-
+    private BaseFragment baseFragment;
     ListView lv_menu_main;
 
     ArrayList<ModeMenuMain> arrayModeMenuMain;
@@ -37,6 +36,10 @@ public class MainFragment extends Fragment{
     String[] arrName;
     ModeMenuMain modeMenuMain;
     AdapterMenuMain adapterMenuMain;
+
+    public MainFragment() {
+
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -59,6 +62,7 @@ public class MainFragment extends Fragment{
         //load data
         LoadData();
         displayListview();
+        baseFragment = new BaseFragment(getActivity().getSupportFragmentManager());
         return view;
     }
 
@@ -70,6 +74,7 @@ public class MainFragment extends Fragment{
                 break;
             case 1:
                 temp = "Ladies";
+                baseFragment.ChuyenFragment(new XuHuongThoiTrangFragment(2), SupportKeyList.TAG_XU_HUONG_THOI_TRANG, true);
                 break;
             case 2:
                 temp = "Men";

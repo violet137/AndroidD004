@@ -12,7 +12,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -20,22 +19,17 @@ import android.widget.Toast;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
-import com.facebook.FacebookSdk;
 import com.facebook.Profile;
-import com.facebook.appevents.AppEventsLogger;
 import com.facebook.internal.CallbackManagerImpl;
-import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.Arrays;
-import java.util.Collections;
 
 import vn.com.greenacademy.shopping.Handle.HandleData.DataHandler;
+import vn.com.greenacademy.shopping.Handle.HandleData.GoogleHandler;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Dialog.LoadingDialog;
-import vn.com.greenacademy.shopping.Handle.HandleData.GoogleHandle;
 import vn.com.greenacademy.shopping.Interface.DataCallBack;
 import vn.com.greenacademy.shopping.R;
 import vn.com.greenacademy.shopping.Util.SupportKeyList;
@@ -52,7 +46,7 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener, 
 
     private LoadingDialog  loadingDialog;
     private DataHandler dataHandler;
-    private GoogleHandle googleHandle;
+    private GoogleHandler googleHandler;
     private BaseFragment baseFragment;
     private CallbackManager callbackManager;
 
@@ -106,9 +100,9 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener, 
                 break;
 
             case R.id.sign_in_button:
-                googleHandle = new GoogleHandle(getActivity(), this , this);
-                googleHandle.connectBuild();
-                googleHandle.signIn();
+                googleHandler = new GoogleHandler(getActivity(), this , this);
+                googleHandler.connectBuild();
+                googleHandler.signIn();
                 break;
 
             case R.id.btn_face_login:
@@ -139,7 +133,7 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener, 
 
     //Xử lý kết quả trả về
     @Override
-    public void KetQua(String result) {
+    public void KetQua(String result, Bundle bundle) {
         switch (result){
             case SupportKeyList.LOI_KET_NOI:
                 Toast.makeText(getActivity(), getString(R.string.toast_loi_ket_noi), Toast.LENGTH_LONG).show();
@@ -150,8 +144,8 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener, 
                 baseFragment.ChuyenFragment(new TaiKhoanFragment(), SupportKeyList.TAG_FRAGMENT_TAI_KHOAN, false);
                 break;
             case SupportKeyList.DANG_NHAP_GOOGLE_THANH_CONG:
-                Toast.makeText(getActivity(), getString(R.string.toast_dang_nhap_thanh_cong) + " " + googleHandle.getUsername() , Toast.LENGTH_SHORT).show();
-                dataHandler.setTrangThaiDangNhap(SupportKeyList.ACCOUNT_GOOGLE, googleHandle.getEmail(), googleHandle.getUsername(), cbLuuDangNhap.isChecked());
+                Toast.makeText(getActivity(), getString(R.string.toast_dang_nhap_thanh_cong) + " " + googleHandler.getUsername() , Toast.LENGTH_SHORT).show();
+                dataHandler.setTrangThaiDangNhap(SupportKeyList.ACCOUNT_GOOGLE, googleHandler.getEmail(), googleHandler.getUsername(), cbLuuDangNhap.isChecked());
                 baseFragment.ChuyenFragment(new TaiKhoanFragment(), SupportKeyList.TAG_FRAGMENT_TAI_KHOAN, false);
                 break;
             case SupportKeyList.DANG_NHAP_THAT_BAI:
@@ -159,7 +153,7 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener, 
                 break;
             case SupportKeyList.DANG_NHAP_GOOGLE_THAT_BAI:
                 Toast.makeText(getActivity(), R.string.toast_loi_ket_noi_server, Toast.LENGTH_SHORT).show();
-                googleHandle.signOut();
+                googleHandler.signOut();
                 break;
             case SupportKeyList.DANG_NHAP_FACEBOOK_THAT_BAI:
                 Toast.makeText(getActivity(), R.string.toast_loi_ket_noi_server, Toast.LENGTH_SHORT).show();
@@ -177,7 +171,7 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener, 
         if (requestCode == CallbackManagerImpl.RequestCodeOffset.Login.toRequestCode()){
             callbackManager.onActivityResult(requestCode,resultCode,data);
         }else {
-            googleHandle.activityResult(requestCode, resultCode, data);
+            googleHandler.activityResult(requestCode, resultCode, data);
         }
     }
 
