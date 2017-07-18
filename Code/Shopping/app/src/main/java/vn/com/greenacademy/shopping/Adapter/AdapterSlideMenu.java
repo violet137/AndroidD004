@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import vn.com.greenacademy.shopping.Model.ModeSlideMenu;
+import vn.com.greenacademy.shopping.Model.SlideMenu;
 import vn.com.greenacademy.shopping.R;
 
 /**
@@ -22,9 +22,9 @@ public class AdapterSlideMenu extends ArrayAdapter {
 
     Activity activity;
     int layoutItem;
-    ArrayList<ModeSlideMenu> arrayList;
+    ArrayList<SlideMenu> arrayList;
 
-    public AdapterSlideMenu(Activity activity, int resource, ArrayList<ModeSlideMenu> objects){
+    public AdapterSlideMenu(Activity activity, int resource, ArrayList<SlideMenu> objects){
         super(activity,resource,objects);
         this.activity = activity;
         layoutItem=resource;
@@ -39,7 +39,7 @@ public class AdapterSlideMenu extends ArrayAdapter {
         //dinh nghia thanh phan giao dien cho tung item cua listview
         LayoutInflater inflater = activity.getLayoutInflater();
         convertView = inflater.inflate(layoutItem,null);
-        final ModeSlideMenu modeSlideMenu = arrayList.get(position);
+        final SlideMenu slideMenu = arrayList.get(position);
 
         TextView tvName = (TextView) convertView.findViewById(R.id.tvName_item_slide_menu);
         ImageView ivIcon = (ImageView) convertView.findViewById(R.id.ivIcon_item_slide_menu);
@@ -47,8 +47,8 @@ public class AdapterSlideMenu extends ArrayAdapter {
             convertView.findViewById(R.id.divider_item_slide_menu).setVisibility(View.VISIBLE);
         }
 
-        tvName.setText(modeSlideMenu.getTen());
-        ivIcon.setImageResource(modeSlideMenu.getIcon());
+        tvName.setText(slideMenu.getTen());
+        ivIcon.setImageResource(slideMenu.getIcon());
 
         return convertView;
     }

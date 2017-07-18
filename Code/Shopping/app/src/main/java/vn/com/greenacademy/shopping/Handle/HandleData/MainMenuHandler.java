@@ -10,7 +10,8 @@ import java.util.ArrayList;
 
 import vn.com.greenacademy.shopping.Adapter.AdapterMenuMain;
 import vn.com.greenacademy.shopping.Fragment.Main.XuHuongThoiTrang.XuHuongThoiTrangFragment;
-import vn.com.greenacademy.shopping.Model.ModeMenuMain;
+import vn.com.greenacademy.shopping.Model.AdvertisePhoto;
+import vn.com.greenacademy.shopping.Model.MenuMain;
 import vn.com.greenacademy.shopping.R;
 import vn.com.greenacademy.shopping.Util.SupportKeyList;
 import vn.com.greenacademy.shopping.Util.Ui.BaseFragment;
@@ -21,7 +22,7 @@ import vn.com.greenacademy.shopping.Util.Ui.BaseFragment;
 
 public class MainMenuHandler {
 
-    ArrayList<ModeMenuMain> arrayModeMenuMain;
+    ArrayList<MenuMain> arrayMenuMain;
     String[] arrName;
     AdapterMenuMain adapterMenuMain;
     private BaseFragment baseFragment;
@@ -38,7 +39,23 @@ public class MainMenuHandler {
         onClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(activity, "okokokokokokoo", Toast.LENGTH_SHORT).show();
+                AdvertisePhoto advertisePhoto = (AdvertisePhoto) v.getTag();
+                String temp = null;
+                switch (advertisePhoto.getId()){
+                    case 0:
+                        temp = "Sale up to 50%";
+                        break;
+                    case 1:
+                        temp = "Phong cách đơn giản";
+                        break;
+                    case 2:
+                        temp = "Canada fashion";
+                        break;
+                    default:
+                        temp = "ok";
+                        break;
+                }
+                Toast.makeText(activity, temp, Toast.LENGTH_SHORT).show();
             }
         };
     }
@@ -77,7 +94,7 @@ public class MainMenuHandler {
 
     // tai du lieu tu adapter len list
     public void displayListview(ListView listView) {
-        adapterMenuMain = new AdapterMenuMain(activity, R.layout.item_listview_menu_main, arrayModeMenuMain,onClickListener);
+        adapterMenuMain = new AdapterMenuMain(activity, R.layout.item_listview_menu_main, arrayMenuMain,onClickListener);
         listView.setAdapter(adapterMenuMain);
     }
 
@@ -85,13 +102,13 @@ public class MainMenuHandler {
     public void loadData() {
         arrName = activity.getResources().getStringArray(R.array.name_menu_main);
         String []arrLink_MenuPhotos = activity.getResources().getStringArray(R.array.link_MenuPhotos);
-        arrayModeMenuMain = new ArrayList<>();
+        arrayMenuMain = new ArrayList<>();
         for(int i = 0; i< (arrLink_MenuPhotos.length); i++){
-            ModeMenuMain modeMenuMain = new ModeMenuMain();
+            MenuMain menuMain = new MenuMain();
             if (i<=5){
-                modeMenuMain.setName(arrName[i]);
+                menuMain.setName(arrName[i]);
             }
-            arrayModeMenuMain.add(modeMenuMain);
+            arrayMenuMain.add(menuMain);
         }
 
     }

@@ -22,8 +22,8 @@
         <ImageView
             android:id="@+id/ivMenuType_menu_main"
             android:layout_width="0dp"
-            android:scaleType="fitXY"
             android:layout_height="@dimen/imageView_constrain_height"
+            android:scaleType="fitXY"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -34,25 +34,43 @@
             android:id="@+id/tvName_menu_main"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="@dimen/textView_layout_marginTop"
             android:background="@android:color/background_light"
+            android:paddingLeft="@dimen/textView_paddingLeft"
+            android:paddingRight="@dimen/textView_paddingRight"
             android:text="Text View"
             android:textColor="#ff000000"
-            android:textSize="@dimen/text_textSize"
+            android:textSize="@dimen/textView_textSize"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
     </android.support.constraint.ConstraintLayout>
 
-    <ImageView
-        android:id="@+id/ivFashion_menu_main"
+    <LinearLayout
+        android:id="@+id/linear_ivFashion_menu_main"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/imageView_height"
-        android:layout_weight="1"
-        android:visibility="gone"
-        android:scaleType="fitXY"
-        app:srcCompat="@null" />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <Button
+            android:id="@+id/diviver_ivFashion_menu_main"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/btnDiviver_layout_height"
+            android:layout_marginBottom="@dimen/btnDiviver_marginBottom"
+            android:layout_weight="1"
+            android:background="@color/cast_expanded_controller_seek_bar_progress_background_tint_color"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/ivFashion_menu_main"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/imageView_height"
+            android:layout_weight="1"
+            android:scaleType="fitXY"
+            app:srcCompat="@null" />
+    </LinearLayout>
 
 </LinearLayout>

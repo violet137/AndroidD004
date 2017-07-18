@@ -4,7 +4,7 @@ package vn.com.greenacademy.shopping.Model;
  * Created by ADMIN on 7/15/2017.
  */
 
-public class ModeMenuMain {
+public class MenuMain {
     int photo;
     String name;
 

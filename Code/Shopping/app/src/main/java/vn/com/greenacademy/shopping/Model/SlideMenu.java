@@ -6,7 +6,7 @@ import java.io.Serializable;
  * Created by GIT on 3/11/2017.
  */
 
-public class ModeSlideMenu implements Serializable {
+public class SlideMenu implements Serializable {
     int icon;
     String ten;
 

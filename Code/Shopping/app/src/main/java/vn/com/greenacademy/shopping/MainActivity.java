@@ -28,10 +28,10 @@ import vn.com.greenacademy.shopping.Util.Ui.BaseFragment;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener, DataCallBack {
     ListView lv_item_slide_menu;
 
-//    ArrayList<ModeSlideMenu> arrayModeSlideMenus;
+//    ArrayList<SlideMenu> arrayModeSlideMenus;
 //    int[] arrIcon;
 //    String[] arrName;
-//    ModeSlideMenu modeSlideMenu;
+//    SlideMenu modeSlideMenu;
 //    AdapterSlideMenu adapterSlideMenu;
 
     DrawerLayout drawerLayout;
