@@ -12,9 +12,9 @@ public class SupportKeyList {
 
     //Key Data
     public static final String SHAREDPREF_TEN_FILE = "vn.com.greenacademy.shopping.MY_SHAREDPREF";
-    public static final String ACCOUNT_THUONG = "thuong";
-    public static final String ACCOUNT_GOOGLE = "google";
-    public static final String ACCOUNT_FACEBOOK = "facebook";
+    public static final String ACCOUNT_THUONG = "Thuong";
+    public static final String ACCOUNT_GOOGLE = "Google";
+    public static final String ACCOUNT_FACEBOOK = "Facebook";
 
     //Key result
     public static final String LOI_KET_NOI = "loi_ket_noi";

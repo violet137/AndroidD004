@@ -51,7 +51,8 @@ public class DataHandler{
         }
     }
 
-    public void setTrangThaiDangNhap(String loaiTaiKhoan, String email, String tenHienThi, boolean luuDangNhap){
+    public void setTrangThaiDangNhap(String token, String loaiTaiKhoan, String email, String tenHienThi, boolean luuDangNhap){
+        mySharedPref.setToken(token);
         mySharedPref.setEmail(email);
         mySharedPref.setTenTaiKhoan(tenHienThi);
         mySharedPref.setDaDangNhap(true);
@@ -60,6 +61,7 @@ public class DataHandler{
     }
 
     public void DangXuat(){
+        mySharedPref.setToken("");
         mySharedPref.setEmail("");
         mySharedPref.setTenTaiKhoan("");
         mySharedPref.setDaDangNhap(false);

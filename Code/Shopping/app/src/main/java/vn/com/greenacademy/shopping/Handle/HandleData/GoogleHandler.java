@@ -146,7 +146,7 @@ public class GoogleHandler extends FragmentActivity implements GoogleApiClient.O
                     String hinh = result.getSignInAccount().getPhotoUrl().toString();
                     Toast.makeText(mActivity, hinh, Toast.LENGTH_SHORT).show();
                 }
-                goiAPIServerAsyncTask.execute(SupportKeyList.API_DANG_NHAP, ServerUrl.DangNhapUrl, SupportKeyList.ACCOUNT_GOOGLE, result.getSignInAccount().getEmail());
+                goiAPIServerAsyncTask.execute(SupportKeyList.API_DANG_NHAP, ServerUrl.DangNhapUrl, SupportKeyList.ACCOUNT_GOOGLE, result.getSignInAccount().getId());
             }
             else {
                 requestCode = 0;

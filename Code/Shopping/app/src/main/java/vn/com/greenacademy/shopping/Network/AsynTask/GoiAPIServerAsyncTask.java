@@ -48,7 +48,7 @@ public class GoiAPIServerAsyncTask extends AsyncTask<String, Void, String> {
         * string[5]: Tên hiển thị (cho đăng ký)
         *
         * Account Google/Facebook:
-        * string[3]: email
+        * string[3]: google id
         *
         * 2. API ĐĂNG KÝ:
         * string[3]: Username (email)
@@ -78,16 +78,21 @@ public class GoiAPIServerAsyncTask extends AsyncTask<String, Void, String> {
                         switch (strings[2]){
                             case SupportKeyList.ACCOUNT_THUONG:
                                 object.put("Username", strings[3]);
-                                object.put("MatKhau", strings[4]);
-                                object.put("KieuTK", "0");
+                                object.put("Pwd", strings[4]);
+                                object.put("AccountType", SupportKeyList.ACCOUNT_THUONG);
+                                object.put("NenTang", "Android");
                                 break;
                             case SupportKeyList.ACCOUNT_GOOGLE:
                                 object.put("Username", strings[3]);
-                                object.put("KieuTK", "0");
+                                object.put("Pwd", "123456");
+                                object.put("AccountType", SupportKeyList.ACCOUNT_GOOGLE);
+                                object.put("NenTang", "Android");
                                 break;
                             case SupportKeyList.ACCOUNT_FACEBOOK:
                                 object.put("Username", strings[3]);
-                                object.put("KieuTK", "0");
+                                object.put("Pwd", "123456");
+                                object.put("AccountType", SupportKeyList.ACCOUNT_FACEBOOK);
+                                object.put("NenTang", "Android");
                                 break;
                         }
                         outputStream.write(object.toString().getBytes());
@@ -195,17 +200,23 @@ public class GoiAPIServerAsyncTask extends AsyncTask<String, Void, String> {
                 case SupportKeyList.API_DANG_NHAP:
                     //Kiểm tra đăng nhập thành công
                     if (!result.equals(SupportKeyList.DANG_NHAP_THAT_BAI)) {
-                        //Parse data và trả kết quả về cho class yêu cầu
-                        switch (loaiTaiKhoan) {
-                            case SupportKeyList.ACCOUNT_THUONG:
-                                dataCallBack.KetQua(SupportKeyList.DANG_NHAP_THANH_CONG, null);
-                                break;
-                            case SupportKeyList.ACCOUNT_GOOGLE:
-                                dataCallBack.KetQua(SupportKeyList.DANG_NHAP_GOOGLE_THANH_CONG, null);
-                                break;
-                            case SupportKeyList.ACCOUNT_FACEBOOK:
-                                dataCallBack.KetQua(SupportKeyList.DANG_NHAP_FACEBOOK_THANH_CONG, null);
-                                break;
+                        Bundle bundle = new Bundle();
+                        try {
+                            bundle.putString("Token", new JSONObject(result).getString("Token"));
+                            //Parse data và trả kết quả về cho class yêu cầu
+                            switch (loaiTaiKhoan) {
+                                case SupportKeyList.ACCOUNT_THUONG:
+                                    dataCallBack.KetQua(SupportKeyList.DANG_NHAP_THANH_CONG, bundle);
+                                    break;
+                                case SupportKeyList.ACCOUNT_GOOGLE:
+                                    dataCallBack.KetQua(SupportKeyList.DANG_NHAP_GOOGLE_THANH_CONG, bundle);
+                                    break;
+                                case SupportKeyList.ACCOUNT_FACEBOOK:
+                                    dataCallBack.KetQua(SupportKeyList.DANG_NHAP_FACEBOOK_THANH_CONG, bundle);
+                                    break;
+                            }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
                         }
                     }
                     else {

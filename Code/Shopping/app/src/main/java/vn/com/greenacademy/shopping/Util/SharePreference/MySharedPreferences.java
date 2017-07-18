@@ -13,6 +13,7 @@ public class MySharedPreferences {
 
     private Context context;
     //Key Data
+    private final String KEY_TOKEN = "token";
     private final String KEY_TEN_TAI_KHOAN = "ten_tai_khoan";
     private final String KEY_EMAIL = "email";
     private final String KEY_DA_DANG_NHAP = "da_dang_nhap";
@@ -25,6 +26,16 @@ public class MySharedPreferences {
         //Khởi tạo biến sharedPreferences và biến GHI, XÓA editor
         sharedPreferences = context.getSharedPreferences(tenFile, Context.MODE_PRIVATE);
         editor = sharedPreferences.edit();
+    }
+
+    //Key token
+    public String getToken() {
+        return sharedPreferences.getString(KEY_TOKEN, null);
+    }
+
+    public void setToken(String token){
+        editor.putString(KEY_TOKEN, token);
+        editor.commit();
     }
 
     //Key tên tài khoản

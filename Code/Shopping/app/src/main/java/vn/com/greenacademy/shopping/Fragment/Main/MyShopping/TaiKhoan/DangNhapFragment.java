@@ -138,26 +138,32 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener, 
             case SupportKeyList.LOI_KET_NOI:
                 Toast.makeText(getActivity(), getString(R.string.toast_loi_ket_noi), Toast.LENGTH_LONG).show();
                 break;
+
             case SupportKeyList.DANG_NHAP_THANH_CONG:
                 Toast.makeText(getActivity(), getString(R.string.toast_dang_nhap_thanh_cong) + " " + etTenDangNhap.getText().toString() , Toast.LENGTH_SHORT).show();
-                dataHandler.setTrangThaiDangNhap(SupportKeyList.ACCOUNT_THUONG, etTenDangNhap.getText().toString(), etTenDangNhap.getText().toString(), cbLuuDangNhap.isChecked());
+                dataHandler.setTrangThaiDangNhap(bundle.getString("Token"), SupportKeyList.ACCOUNT_THUONG, etTenDangNhap.getText().toString(), etTenDangNhap.getText().toString(), cbLuuDangNhap.isChecked());
                 baseFragment.ChuyenFragment(new TaiKhoanFragment(), SupportKeyList.TAG_FRAGMENT_TAI_KHOAN, false);
                 break;
+
             case SupportKeyList.DANG_NHAP_GOOGLE_THANH_CONG:
                 Toast.makeText(getActivity(), getString(R.string.toast_dang_nhap_thanh_cong) + " " + googleHandler.getUsername() , Toast.LENGTH_SHORT).show();
-                dataHandler.setTrangThaiDangNhap(SupportKeyList.ACCOUNT_GOOGLE, googleHandler.getEmail(), googleHandler.getUsername(), cbLuuDangNhap.isChecked());
+                dataHandler.setTrangThaiDangNhap(bundle.getString("Token"),SupportKeyList.ACCOUNT_GOOGLE, googleHandler.getEmail(), googleHandler.getUsername(), cbLuuDangNhap.isChecked());
                 baseFragment.ChuyenFragment(new TaiKhoanFragment(), SupportKeyList.TAG_FRAGMENT_TAI_KHOAN, false);
                 break;
+
             case SupportKeyList.DANG_NHAP_THAT_BAI:
                 Toast.makeText(getActivity(), R.string.toast_dang_nhap_that_bai, Toast.LENGTH_SHORT).show();
                 break;
+
             case SupportKeyList.DANG_NHAP_GOOGLE_THAT_BAI:
                 Toast.makeText(getActivity(), R.string.toast_loi_ket_noi_server, Toast.LENGTH_SHORT).show();
                 googleHandler.signOut();
                 break;
+
             case SupportKeyList.DANG_NHAP_FACEBOOK_THAT_BAI:
                 Toast.makeText(getActivity(), R.string.toast_loi_ket_noi_server, Toast.LENGTH_SHORT).show();
                 break;
+
             case SupportKeyList.DANG_XUAT_THANH_CONG:
                 break;
         }
