@@ -1,4 +1,4 @@
-package vn.com.greenacademy.shopping.Adapter;
+package vn.com.greenacademy.shopping.Handle.HandleUi.Adapter;
 
 import android.app.Activity;
 import android.support.annotation.NonNull;

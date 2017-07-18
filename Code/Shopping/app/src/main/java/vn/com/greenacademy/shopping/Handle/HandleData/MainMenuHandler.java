@@ -8,7 +8,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-import vn.com.greenacademy.shopping.Adapter.AdapterMenuMain;
+import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.AdapterMenuMain;
 import vn.com.greenacademy.shopping.Fragment.Main.XuHuongThoiTrang.XuHuongThoiTrangFragment;
 import vn.com.greenacademy.shopping.Model.AdvertisePhoto;
 import vn.com.greenacademy.shopping.Model.MenuMain;
