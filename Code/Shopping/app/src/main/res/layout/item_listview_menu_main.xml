@@ -41,6 +41,7 @@
             android:text="Text View"
             android:textColor="#ff000000"
             android:textSize="@dimen/textView_textSize"
+            android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
