@@ -64,4 +64,10 @@ public class SupportKeyList {
     public static final int Find_a_store_slide = 9;
     public static final int Newsletter_slide = 10;
 
+    // key vi tri loi cua Fragment Dang ky
+    public static final int Email_Error = 0;
+    public static final int Password_Error = 1;
+    public static final int Re_type_Password_Error = 2;
+    public static final int Connect_Error = 4;
+
 }

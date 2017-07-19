@@ -5,5 +5,5 @@ package vn.com.greenacademy.shopping.Interface;
  */
 
 public interface ErrorCallBack {
-    void errorCallBack(String error);
+    void errorCallBack(String error, int errorPosition);
 }

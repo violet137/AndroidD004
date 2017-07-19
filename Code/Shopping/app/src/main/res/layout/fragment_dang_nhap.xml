@@ -106,7 +106,7 @@
 
     <!-- Đăng ký -->
     <TextView
-        android:id="@+id/dang_ky_button_fragment_d  ang_nhap"
+        android:id="@+id/dang_ky_button_fragment_dang_nhap"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/item_khung_dang_nhap_margin"
