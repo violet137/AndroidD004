@@ -35,6 +35,6 @@
         android:id="@+id/divider_item_slide_menu"
         android:layout_width="match_parent"
         android:layout_height="1px"
-        android:background="@android:color/darker_gray"
+        android:background="#f4f3f3"
         android:visibility="gone" />
 </LinearLayout>

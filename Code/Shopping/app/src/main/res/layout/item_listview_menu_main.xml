@@ -52,8 +52,7 @@
         android:id="@+id/linear_ivFashion_menu_main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:visibility="gone">
+        android:orientation="vertical">
 
         <Button
             android:id="@+id/diviver_ivFashion_menu_main"
@@ -61,7 +60,7 @@
             android:layout_height="@dimen/btnDiviver_layout_height"
             android:layout_marginBottom="@dimen/btnDiviver_marginBottom"
             android:layout_weight="1"
-            android:background="@color/cast_expanded_controller_seek_bar_progress_background_tint_color"
+            android:background="#46ebe7e7"
             android:visibility="gone" />
 
         <ImageView

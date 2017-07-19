@@ -65,7 +65,7 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener, 
         button_face_login = (LoginButton) root.findViewById(R.id.btn_face_login);
 
         root.findViewById(R.id.dang_nhap_button_fragment_dang_nhap).setOnClickListener(this);
-        root.findViewById(R.id.dang_ky_textview_fragment_dang_nhap).setOnClickListener(this);
+        root.findViewById(R.id.dang_ky_button_fragment_dang_nhap).setOnClickListener(this);
         root.findViewById(R.id.sign_in_button).setOnClickListener(this);
         button_face_login.setOnClickListener(this);
 
@@ -95,8 +95,8 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener, 
                     Toast.makeText(getContext(), R.string.toast_nhap_thieu, Toast.LENGTH_SHORT).show();
                 break;
 
-            case R.id.dang_ky_textview_fragment_dang_nhap:
-                baseFragment.ChuyenFragment(new DangNhapFragment(), SupportKeyList.TAG_FRAGMENT_DANG_KY, true);
+            case R.id.dang_ky_button_fragment_dang_nhap:
+                baseFragment.ChuyenFragment(new DangKyFragment(), SupportKeyList.TAG_FRAGMENT_DANG_KY, true);
                 break;
 
             case R.id.sign_in_button:

@@ -23,18 +23,20 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginTop="25dp"
             android:orientation="vertical">
 
             <include
                 layout="@layout/nav_header_main"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:visibility="gone" />
 
             <ListView
                 android:id="@+id/lv_item_slide_menu"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:divider="@null"/>
+                android:divider="@null" />
 
         </LinearLayout>
     </android.support.design.widget.NavigationView>
