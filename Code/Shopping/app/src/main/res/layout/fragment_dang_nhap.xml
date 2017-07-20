@@ -70,8 +70,8 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="@dimen/item_khung_dang_nhap_margin">
+            android:layout_marginTop="@dimen/item_khung_dang_nhap_margin"
+            android:orientation="horizontal">
             <!-- Lưu đăng nhập -->
             <CheckBox
                 android:id="@+id/luu_dang_nhap_checkbox"

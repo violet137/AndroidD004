@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="@dimen/layout_margin_linear_main_fragment_DangKy"
     android:orientation="vertical"
     tools:context="vn.com.greenacademy.shopping.Fragment.Main.MyShopping.TaiKhoan.DangKyFragment">
 
@@ -16,81 +17,107 @@
             android:id="@+id/textView10"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="10dp"
-            android:text="Required fields*" />
+            android:text="Required fields*"
+            android:textColor="@color/cardview_dark_background"
+            android:textSize="10dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/layout_marginTop_linear_child_fragment_DangKy"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/tvEmail_fragmentDangKy"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/cardview_dark_background"
-                android:text="Email(username):*" />
+                android:text="@string/email_fragment_DangKy"
+                android:textColor="@color/cardview_dark_background" />
 
             <EditText
                 android:id="@+id/etEmail_fragmentDangKy"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
+                android:layout_height="@dimen/edittext_height"
+                android:background="@drawable/shape_edit_text"
                 android:inputType="textPersonName" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/layout_marginTop_linear_child_fragment_DangKy"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/tvPassword_fragmentDangKy"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/cardview_dark_background"
-                android:text="Password:*" />
+                android:text="@string/password_fragment_DangKy"
+                android:textColor="@color/cardview_dark_background" />
 
             <EditText
                 android:id="@+id/etPassword_fragmentDangKy"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textPersonName" />
+                android:layout_height="@dimen/edittext_height"
+                android:background="@drawable/shape_edit_text"
+                android:inputType="textPassword" />
 
             <TextView
-                android:id="@+id/textView4"
+                android:id="@+id/tvNote_fragmentDangKy"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Your password needs to contain least characters. User upper and lowercase letters together with number to make it more secure" />
+                android:text="@string/note_password_fragment_DangKy"
+                android:visibility="gone" />
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/layout_marginTop_linear_child_fragment_DangKy"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/tvRePassword_fragmentDangKy"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/cardview_dark_background"
-                android:text="Re-type password*" />
+                android:text="@string/re_type_password_fragment_DangKy"
+                android:textColor="@color/cardview_dark_background" />
 
             <EditText
                 android:id="@+id/etRePassword_fragmentDangKy"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="textPersonName" />
+                android:layout_height="@dimen/edittext_height"
+                android:background="@drawable/shape_edit_text"
+                android:inputType="textPassword" />
 
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/layout_marginTop_linear_child_fragment_DangKy"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/name_fragment_DangKy"
+                android:textColor="@color/cardview_dark_background" />
+
+            <EditText
+                android:id="@+id/etName_fragmentDangKy"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/edittext_height"
+                android:background="@drawable/shape_edit_text"
+                android:inputType="textPersonName" />
         </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:visibility="gone">
 
         <TextView
             android:id="@+id/textView9"
@@ -367,12 +394,16 @@
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/cardview_dark_background"
-        android:text="By clicking 'Register' I accept the Privacy Policy" />
+        android:layout_marginTop="@dimen/layout_marginTop_linear_child_fragment_DangKy"
+        android:text="@string/privacy_policy_fragment_DangKy"
+        android:textColor="@color/cardview_dark_background" />
 
     <Button
         android:id="@+id/btnRegister_fragmentDangKy"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Register" />
+        android:layout_marginTop="@dimen/layout_marginTop_linear_child_fragment_DangKy"
+        android:background="#cf000000"
+        android:text="@string/register_fragment_DangKy"
+        android:textColor="@color/cardview_light_background" />
 </LinearLayout>
