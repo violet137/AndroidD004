@@ -10,6 +10,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import vn.com.greenacademy.shopping.Handle.HandleData.MainMenuHandler;
+import vn.com.greenacademy.shopping.Network.AsynTask.GetMainMenuPhotos;
 import vn.com.greenacademy.shopping.R;
 import vn.com.greenacademy.shopping.Util.Ui.BaseFragment;
 
@@ -44,8 +45,9 @@ public class MainFragment extends Fragment {
         mainMenuHandler.clickAdvertise();
 
         //Khởi tạo giá trị
-        mainMenuHandler.loadData();
         mainMenuHandler.displayListview(lv_menu_main);
+        mainMenuHandler.loadData();
+
         return view;
     }
 }

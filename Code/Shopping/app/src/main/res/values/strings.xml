@@ -84,7 +84,7 @@
     <!-- Set đồ -->
     <string name="xem_san_pham">XEM SẢN PHẨM</string>
 
-    <!-- Fragment Dang Ky xml -->
+    <!-- Fragment Dang Ky -->
     <string name="email_fragment_DangKy">Email(username):*</string>
     <string name="password_fragment_DangKy">Password:*</string>
     <string name="note_password_fragment_DangKy">Your password needs to contain least characters. User upper and lowercase letters together with number to make it more secure</string>
@@ -93,5 +93,7 @@
     <string name="privacy_policy_fragment_DangKy">By clicking Register I accept the Privacy Policy</string>
     <string name="register_fragment_DangKy">Register</string>
 
+    <!-- Fragment Dang Ky -->
+    <string name="read_the_story">READ THE STORY</string>
 
 </resources>

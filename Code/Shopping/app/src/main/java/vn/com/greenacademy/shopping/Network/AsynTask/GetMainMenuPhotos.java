@@ -16,6 +16,7 @@ import java.net.URL;
 import java.util.ArrayList;
 
 import vn.com.greenacademy.shopping.Interface.UrlPhotoCallBack;
+import vn.com.greenacademy.shopping.Model.FashionType;
 import vn.com.greenacademy.shopping.Model.MenuPhoto;
 import vn.com.greenacademy.shopping.Util.ServerUrl;
 
@@ -34,7 +35,7 @@ public class GetMainMenuPhotos extends AsyncTask<String,Void,String> {
     protected String doInBackground(String[] params) {
         URL url = null;
         try {
-            url = new URL(ServerUrl.ServerLink);
+            url = new URL(params[0]);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             // sever tra du lieu ve kiei xml
             connection.addRequestProperty("Accept", "text/json");
@@ -63,14 +64,17 @@ public class GetMainMenuPhotos extends AsyncTask<String,Void,String> {
     @Override
     protected void onPostExecute(String o) {
         super.onPostExecute(o);
-        if (!o.equals("false")){
-            ParDataGetMainMenuPhotos par = new ParDataGetMainMenuPhotos(o);
-//            urlPhotoCallBack.getMapMarker(par.parData());
-        }else {
-            Log.d("GetMainMenuPhotos", "FALSE");
-        }
+        ParDataGetMainMenuPhotos par = new ParDataGetMainMenuPhotos(o);
+        urlPhotoCallBack.urlCallBack(par.parData());
+//        if (!o.equals("false")){
+//            ParDataGetMainMenuPhotos par = new ParDataGetMainMenuPhotos(o);
+//            urlPhotoCallBack.urlCallBack(par.parData());
+//        }else {
+//            Log.d("GetMainMenuPhotos", "FALSE");
+//        }
 
     }
+
 }
 
 class ParDataGetMainMenuPhotos{
@@ -81,30 +85,21 @@ class ParDataGetMainMenuPhotos{
 
     public MenuPhoto parData(){
         MenuPhoto result = new MenuPhoto();
-        ArrayList<MenuPhoto> temp = new ArrayList<>();
+        ArrayList<FashionType> temp;
         try {
             JSONObject root = new JSONObject(data);
-            JSONArray jsonArray = root.getJSONArray("MapMarkerTranfers");
+            JSONArray jsonArray = root.getJSONArray("LoaiThoiTrangTranfers");
             temp = new ArrayList<>();
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
-                MenuPhoto menuPhoto = new MenuPhoto();
-//                mapMarkerTranfers.setId(jsonObject.getInt("Id"));
-//                mapMarkerTranfers.setTen(jsonObject.getString("Ten"));
-//                mapMarkerTranfers.setMoTa(jsonObject.getString("MoTa"));
-//                mapMarkerTranfers.setDanhGia(jsonObject.getInt("DanhGia"));
-//                mapMarkerTranfers.setSoLuotXem(jsonObject.getInt("SoLuotXem"));
-//                mapMarkerTranfers.setYeuThich(jsonObject.getInt("YeuThich"));
-//                mapMarkerTranfers.setCheckIn(jsonObject.getInt("CheckIn"));
-//                mapMarkerTranfers.setLoaiMarker(jsonObject.getString("LoaiMarker"));
-//                mapMarkerTranfers.setLinkAnh(jsonObject.getString("MoTa"));
-//                mapMarkerTranfers.setLat(jsonObject.getDouble("Lat"));
-//                mapMarkerTranfers.setLng(jsonObject.getDouble("Lng"));
-                temp.add(menuPhoto);
+                FashionType fashionType = new FashionType();
+                fashionType.setLinkHinh(jsonObject.getString("LinkHinh"));
+                fashionType.setLoaiThoiTrang(jsonObject.getString("loaiThoiTrang"));
+                temp.add(fashionType);
             }
-//            result.setStatus(root.getInt("Status"));
-//            result.setMapMarkerTranfersArrayList(temp);
-//            result.setDescription(root.getString("Description"));
+            result.setFashionTypeArrayList(temp);
+            result.setStatus(root.getInt("Status"));
+            result.setDescription(root.getString("Description"));
         } catch (JSONException e) {
             e.printStackTrace();
         }

@@ -5,22 +5,22 @@ package vn.com.greenacademy.shopping.Model;
  */
 
 public class MenuMain {
-    int photo;
-    String name;
+    String url;
+    String id;
 
-    public int getPhoto() {
-        return photo;
+    public String getUrl() {
+        return url;
     }
 
-    public void setPhoto(int photo) {
-        this.photo = photo;
+    public void setUrl(String url) {
+        this.url = url;
     }
 
-    public String getName() {
-        return name;
+    public String getId() {
+        return id;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setId(String id) {
+        this.id = id;
     }
 }
