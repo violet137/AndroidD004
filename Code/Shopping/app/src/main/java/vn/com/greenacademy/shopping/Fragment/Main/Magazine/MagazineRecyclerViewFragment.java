@@ -8,7 +8,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import vn.com.greenacademy.shopping.Handle.HandleData.MagazineHandler;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.Magazine.AdapterMagazineRecyclerView;
 import vn.com.greenacademy.shopping.R;
 
@@ -17,9 +19,10 @@ import vn.com.greenacademy.shopping.R;
  */
 public class MagazineRecyclerViewFragment extends Fragment {
 
-
-    public MagazineRecyclerViewFragment() {
+    int positionViewPagger;
+    public MagazineRecyclerViewFragment(int positionViewPagger) {
         // Required empty public constructor
+        this.positionViewPagger = positionViewPagger;
     }
 
 
@@ -32,8 +35,15 @@ public class MagazineRecyclerViewFragment extends Fragment {
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.view_recyclerView_fragment);
         recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 1));
 
-        AdapterMagazineRecyclerView adapterMagazineRecyclerView = new AdapterMagazineRecyclerView(getContext());
-        recyclerView.setAdapter(adapterMagazineRecyclerView);
+        // magazineHandler doi tượng dieu khien cuc recyclerView
+        MagazineHandler magazineHandler = new MagazineHandler(getContext());
+
+        // ham nhan su kien click item tren view
+        magazineHandler.clickItem(recyclerView);
+
+        // ham đổ dữ liệu lên recyclerView
+        magazineHandler.displayView(recyclerView,positionViewPagger);
+
         return view;
     }
 

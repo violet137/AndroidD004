@@ -26,7 +26,7 @@ public class AdapterMagazineViewPager extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        return new MagazineRecyclerViewFragment();
+        return new MagazineRecyclerViewFragment(position);
     }
 
     @Override

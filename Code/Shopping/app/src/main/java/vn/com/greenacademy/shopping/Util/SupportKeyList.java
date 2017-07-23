@@ -71,4 +71,12 @@ public class SupportKeyList {
     public static final int Re_type_Password_Error = 2;
     public static final int Connect_Error = 4;
 
+    //key viewPager Magazine
+    public static final int Magazine_ALL = 0;
+    public static final int Magazine_FASHION = 1;
+    public static final int Magazine_BEAUTY = 2;
+    public static final int Magazine_CULURE = 3;
+    public static final int Magazine_VIDEO = 4;
+
+
 }
