@@ -1,0 +1,6 @@
+string link_anh
+string loai_bài_báo
+string tiêu_de
+string gioi_thieu
+date ngày_tháng_nam_cua_bài_báo
+int id_bài_báo
