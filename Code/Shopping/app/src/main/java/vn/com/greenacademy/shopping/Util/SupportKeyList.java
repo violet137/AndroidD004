@@ -42,7 +42,7 @@ public class SupportKeyList {
     public static final String TAG_FRAGMENT_DANG_KY = "DangKy";
     public static final String TAG_XU_HUONG_THOI_TRANG = "XuHuongThoiTrang";
     public static final String TAG_THONG_TIN_SAN_PHAM = "ThongTinSanPham";
-
+    public static final String TAG_DETAILS_SAN_PHAM = "DetailsSanPham";
     //Key Menu Main
     public static final int Advertise = 0;
     public static final int Ladies = 1;

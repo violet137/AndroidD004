@@ -43,6 +43,15 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
+    <!-- Nút thông tin -->
+    <ImageButton
+        android:id="@+id/button_info_san_pham"
+        android:layout_width="@dimen/button_info_size"
+        android:layout_height="@dimen/button_info_size"
+        android:src="@android:drawable/ic_menu_info_details"
+        android:background="@null"
+        android:layout_marginTop="@dimen/button_info_margin_top" />
+
     <!-- Bottom info -->
     <LinearLayout
         android:layout_width="match_parent"

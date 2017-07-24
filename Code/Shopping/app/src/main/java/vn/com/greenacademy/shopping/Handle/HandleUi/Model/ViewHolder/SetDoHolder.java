@@ -1,10 +1,12 @@
 package vn.com.greenacademy.shopping.Handle.HandleUi.Model.ViewHolder;
 
+import android.support.design.widget.BottomSheetBehavior;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import vn.com.greenacademy.shopping.Interface.SetDoCallBack;
 import vn.com.greenacademy.shopping.R;
 
 /**

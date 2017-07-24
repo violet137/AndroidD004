@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/layout_item_san_pham"
     android:orientation="vertical"
-    android:layout_width="@dimen/item_list_san_pham_width"
+    android:layout_width="match_parent"
     android:layout_height="@dimen/item_list_san_pham_height">
 
     <!-- Hình sản phẩm -->
@@ -39,13 +39,12 @@
 
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content" />
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="12dp"
         app:srcCompat="@drawable/red" />
-
 
 </LinearLayout>

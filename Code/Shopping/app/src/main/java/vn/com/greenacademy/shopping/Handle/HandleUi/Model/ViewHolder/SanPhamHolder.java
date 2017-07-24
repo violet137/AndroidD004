@@ -18,29 +18,17 @@ import vn.com.greenacademy.shopping.Util.Ui.BaseFragment;
  * Created by zzzzz on 7/15/2017.
  */
 
-public class SanPhamHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-    private BaseFragment baseFragment;
-    private ArrayList<SanPham> listSanPham;
+public class SanPhamHolder extends RecyclerView.ViewHolder {
+    public ImageView imgSanPham;
+    public TextView tvTenSanPham;
+    public  TextView tvGia;
+    public LinearLayout itemSanPham;
 
-    public SanPhamHolder(View itemView, BaseFragment baseFragment, ArrayList<SanPham> listSanPham) {
+    public SanPhamHolder(View itemView) {
         super(itemView);
-        ImageView imgSanPham = (ImageView) itemView.findViewById(R.id.san_pham_image);
-        TextView tvTenSanPham = (TextView) itemView.findViewById(R.id.ten_san_pham_text_view);
-        TextView tvGia = (TextView) itemView.findViewById(R.id.gia_text_view);
-        LinearLayout itemSanPham = (LinearLayout) itemView.findViewById(R.id.layout_item_san_pham);
-
-        itemSanPham.setOnClickListener(this);
-
-        this.baseFragment = baseFragment;
-        this.listSanPham = listSanPham;
-    }
-
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.layout_item_san_pham:
-                baseFragment.ChuyenFragment(new ThongTinSanPhamFragment(getLayoutPosition(), listSanPham), SupportKeyList.TAG_THONG_TIN_SAN_PHAM, true);
-                break;
-        }
+        imgSanPham = (ImageView) itemView.findViewById(R.id.san_pham_image);
+        tvTenSanPham = (TextView) itemView.findViewById(R.id.ten_san_pham_text_view);
+        tvGia = (TextView) itemView.findViewById(R.id.gia_text_view);
+        itemSanPham = (LinearLayout) itemView.findViewById(R.id.layout_item_san_pham);
     }
 }

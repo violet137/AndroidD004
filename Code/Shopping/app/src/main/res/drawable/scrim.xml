@@ -5,5 +5,5 @@
         android:startColor="@color/srim"
         android:centerColor="@color/srim"
         android:endColor="@color/srim"/>
-    <corners android:radius="@dimen/shape_corners_radius"/>
+
 </shape>

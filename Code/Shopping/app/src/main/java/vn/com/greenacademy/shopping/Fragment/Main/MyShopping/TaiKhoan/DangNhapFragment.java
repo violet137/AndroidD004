@@ -50,10 +50,6 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener, 
     private BaseFragment baseFragment;
     private CallbackManager callbackManager;
 
-    public DangNhapFragment() {
-
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {

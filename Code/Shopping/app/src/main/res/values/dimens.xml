@@ -55,6 +55,10 @@
     <dimen name="item_list_set_do_margin">20dp</dimen>
     <dimen name="item_list_set_do_image_max_height">300dp</dimen>
 
+    <!-- Set đồ -->
+    <dimen name="set_do_text_height">50dp</dimen>
+    <dimen name="button_thoat_size_set_do">50dp</dimen>
+    <dimen name="set_do_horizontal_padding">10dp</dimen>
     <!-- List sản phẩm -->
     <dimen name="item_list_san_pham_margin">5dp</dimen>
     <dimen name="item_list_san_pham_width">180dp</dimen>
@@ -62,6 +66,10 @@
     <dimen name="item_list_san_pham_image_height">200dp</dimen>
 
     <!-- Thông tin sản phẩm -->
+    <dimen name="text_size_title_description_san_pham">20sp</dimen>
+    <dimen name="text_size_description_san_pham">15sp</dimen>
+    <dimen name="button_info_size">40dp</dimen>
+    <dimen name="button_info_margin_top">130dp</dimen>
     <dimen name="top_info_horizontal_padding">10dp</dimen>
     <dimen name="top_info_vertical_padding">3dp</dimen>
     <dimen name="text_size_info_san_pham">19sp</dimen>

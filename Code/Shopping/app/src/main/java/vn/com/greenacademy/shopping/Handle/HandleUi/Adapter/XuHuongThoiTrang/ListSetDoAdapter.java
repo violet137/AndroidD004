@@ -2,6 +2,7 @@ package vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.XuHuongThoiTrang;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Layout;
 import android.view.LayoutInflater;
@@ -11,6 +12,7 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 
 import vn.com.greenacademy.shopping.Handle.HandleUi.Model.ViewHolder.SetDoHolder;
+import vn.com.greenacademy.shopping.Interface.SetDoCallBack;
 import vn.com.greenacademy.shopping.Model.SetDo;
 import vn.com.greenacademy.shopping.R;
 
@@ -20,11 +22,13 @@ import vn.com.greenacademy.shopping.R;
 
 public class ListSetDoAdapter extends RecyclerView.Adapter<SetDoHolder> {
     private Context context;
+    private SetDoCallBack setDoCallBack;
     private ArrayList<SetDo> listSetDo = null;
 
-    public ListSetDoAdapter(Context context, ArrayList<SetDo> listSetDo){
+    public ListSetDoAdapter(Context context, SetDoCallBack setDoCallBack, ArrayList<SetDo> listSetDo){
         this.context = context;
         this.listSetDo = listSetDo;
+        this.setDoCallBack = setDoCallBack;
     }
 
     @Override
@@ -35,7 +39,7 @@ public class ListSetDoAdapter extends RecyclerView.Adapter<SetDoHolder> {
     }
 
     @Override
-    public void onBindViewHolder(SetDoHolder holder, int position) {
+    public void onBindViewHolder(final SetDoHolder holder, int position) {
         //Description set đồ
         if (!listSetDo.get(position).getDescriptionSetDo().isEmpty()){
             holder.tvDescription.setText(listSetDo.get(position).getDescriptionSetDo());
@@ -43,7 +47,12 @@ public class ListSetDoAdapter extends RecyclerView.Adapter<SetDoHolder> {
             holder.tvDescription.setVisibility(View.GONE);
         }
 
-        //hình set đồ
+        holder.imgSetDo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setDoCallBack.clickSetDo(holder.getLayoutPosition());
+            }
+        });
     }
 
     @Override

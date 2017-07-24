@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <!-- Title -->
+    <TextView
+        android:id="@+id/title_chi_tiet_set_do"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/set_do_text_height"
+        android:gravity="center|left"
+        android:paddingLeft="@dimen/set_do_horizontal_padding"
+        android:paddingRight="@dimen/set_do_horizontal_padding"
+        android:background="@drawable/shape"
+        android:text="@string/xem_san_pham"
+        android:textColor="@color/colorTextDark"
+        android:textSize="@dimen/text_size"
+        android:textStyle="bold" />
+
+    <!-- Nút hủy -->
+    <ImageButton
+        android:id="@+id/thoat_button_chi_tiet_set_do"
+        android:layout_width="@dimen/button_thoat_size_set_do"
+        android:layout_height="@dimen/button_thoat_size_set_do"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        app:srcCompat="@drawable/mr_dialog_close_light"
+        android:background="@null"/>
+
+    <!-- List sản phẩm -->
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/list_san_pham_chi_tiet_set_do"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/title_chi_tiet_set_do"
+        android:paddingLeft="@dimen/set_do_horizontal_padding"
+        android:paddingRight="@dimen/set_do_horizontal_padding"/>
+</RelativeLayout>

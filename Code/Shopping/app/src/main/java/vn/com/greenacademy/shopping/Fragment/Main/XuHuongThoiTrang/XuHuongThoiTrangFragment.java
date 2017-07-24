@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.SanPham.ListSanPhamAdapter;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.XuHuongThoiTrang.ListSetDoAdapter;
 import vn.com.greenacademy.shopping.Interface.DataCallBack;
+import vn.com.greenacademy.shopping.Interface.SetDoCallBack;
 import vn.com.greenacademy.shopping.Model.SanPham;
 import vn.com.greenacademy.shopping.Model.SetDo;
 import vn.com.greenacademy.shopping.Model.XuHuongThoiTrang;
@@ -28,19 +29,19 @@ import vn.com.greenacademy.shopping.Util.Ui.BaseFragment;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class XuHuongThoiTrangFragment extends Fragment implements DataCallBack {
+public class XuHuongThoiTrangFragment extends Fragment implements DataCallBack, SetDoCallBack {
     private XuHuongThoiTrang xuHuongThoiTrang;
-    private int position;
 
     //Data test
     private int[] listDataBanner;
+    private int position;
 
-    public XuHuongThoiTrangFragment(String tenXuHuong){
-        new GoiAPIServerAsyncTask(this).execute(SupportKeyList.API_DATA_XU_HUONG_THOI_TRANG, ServerUrl.DataUrl, tenXuHuong);
+    public XuHuongThoiTrangFragment(String idXuHuong){
+        new GoiAPIServerAsyncTask(this).execute(SupportKeyList.API_DATA_XU_HUONG_THOI_TRANG, ServerUrl.DataUrl, idXuHuong);
     }
 
     public XuHuongThoiTrangFragment(int pos) {
-       position = pos;
+        position = pos;
     }
 
     @Override
@@ -53,17 +54,25 @@ public class XuHuongThoiTrangFragment extends Fragment implements DataCallBack {
         RecyclerView vListSanPham = (RecyclerView) root.findViewById(R.id.list_san_pham_fragment_xu_huong_thoi_trang);
 
         DataTest();
-
         vBanner.setImageResource(listDataBanner[position]);
+        //List set đồ
         if (xuHuongThoiTrang.getListSetDo() != null) {
             vListSetDo.setLayoutManager(new GridLayoutManager(getActivity(), 1));
             vListSetDo.setNestedScrollingEnabled(false);
-            vListSetDo.setAdapter(new ListSetDoAdapter(getActivity(), xuHuongThoiTrang.getListSetDo()));
+            vListSetDo.setAdapter(new ListSetDoAdapter(getActivity() , this, xuHuongThoiTrang.getListSetDo()));
         }
+        //List sản phẩm
         vListSanPham.setLayoutManager(new GridLayoutManager(getActivity(), 2));
         vListSanPham.setNestedScrollingEnabled(false);
-        vListSanPham.setAdapter(new ListSanPhamAdapter(getActivity(), xuHuongThoiTrang.getListSanPham(), new BaseFragment(getActivity().getSupportFragmentManager())));
+        vListSanPham.setAdapter(new ListSanPhamAdapter(getActivity(), xuHuongThoiTrang.getListSanPham(), new BaseFragment(getActivity().getSupportFragmentManager()), null));
+
         return root;
+    }
+
+    @Override
+    public void clickSetDo(int position) {
+        ChiTietSetDoDialog chiTietSetDoDialog = new ChiTietSetDoDialog(getActivity(), xuHuongThoiTrang.getListSetDo().get(position), new BaseFragment(getActivity().getSupportFragmentManager()));
+        chiTietSetDoDialog.show();
     }
 
     public void DataTest(){

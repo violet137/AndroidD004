@@ -9,9 +9,12 @@ import android.view.ViewGroup;
 
 import java.util.ArrayList;
 
+import vn.com.greenacademy.shopping.Fragment.Main.SanPham.ThongTinSanPhamFragment;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Model.ViewHolder.SanPhamHolder;
+import vn.com.greenacademy.shopping.Interface.SanPhamCallBack;
 import vn.com.greenacademy.shopping.Model.SanPham;
 import vn.com.greenacademy.shopping.R;
+import vn.com.greenacademy.shopping.Util.SupportKeyList;
 import vn.com.greenacademy.shopping.Util.Ui.BaseFragment;
 
 /**
@@ -22,23 +25,32 @@ public class ListSanPhamAdapter extends RecyclerView.Adapter<SanPhamHolder> {
     private Context context;
     private ArrayList<SanPham> listSanPham;
     private BaseFragment baseFragment;
+    private SanPhamCallBack sanPhamCallBack;
 
-    public ListSanPhamAdapter(Context context, ArrayList<SanPham> listSanPham, BaseFragment baseFragment){
+    public ListSanPhamAdapter(Context context, ArrayList<SanPham> listSanPham, BaseFragment baseFragment, SanPhamCallBack sanPhamCallBack){
         this.context = context;
         this.listSanPham = listSanPham;
         this.baseFragment = baseFragment;
+        this.sanPhamCallBack = sanPhamCallBack;
     }
 
     @Override
     public SanPhamHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
         View root = inflater.inflate(R.layout.item_san_pham, parent, false);
-        return new SanPhamHolder(root, baseFragment, listSanPham);
+        return new SanPhamHolder(root);
     }
 
     @Override
-    public void onBindViewHolder(SanPhamHolder holder, int position) {
-
+    public void onBindViewHolder(final SanPhamHolder holder, final int position) {
+        holder.imgSanPham.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                baseFragment.ChuyenFragment(new ThongTinSanPhamFragment(holder.getLayoutPosition(), listSanPham), SupportKeyList.TAG_THONG_TIN_SAN_PHAM, true);
+                if (sanPhamCallBack != null)
+                    sanPhamCallBack.clickSanPham(position);
+            }
+        });
     }
 
     @Override

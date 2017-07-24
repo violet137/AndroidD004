@@ -117,7 +117,7 @@ public class GoiAPIServerAsyncTask extends AsyncTask<String, Void, String> {
                             }
                         }
                     } catch (JSONException e) {
-                        dataCallBack.KetQua(SupportKeyList.LOI_DATA, null);
+                        return SupportKeyList.LOI_DATA;
                     }
                     return  SupportKeyList.DANG_NHAP_THAT_BAI;
 
@@ -154,7 +154,7 @@ public class GoiAPIServerAsyncTask extends AsyncTask<String, Void, String> {
                                 return SupportKeyList.DANG_KY_THANH_CONG;
                         }
                     } catch (JSONException e) {
-                        dataCallBack.KetQua(SupportKeyList.LOI_DATA, null);
+                        return SupportKeyList.LOI_DATA;
                     }
                     return SupportKeyList.DANG_KY_THAT_BAI;
 
@@ -179,13 +179,12 @@ public class GoiAPIServerAsyncTask extends AsyncTask<String, Void, String> {
                             }
                         }
                     } catch (JSONException e) {
-                        dataCallBack.KetQua(SupportKeyList.LOI_DATA, null);
+                        return SupportKeyList.LOI_DATA;
                     }
-                    dataCallBack.KetQua(SupportKeyList.LOI_DATA_SERVER, null);
-                    break;
+                    return SupportKeyList.LOI_DATA_SERVER;
             }
         } catch (IOException e) {
-            dataCallBack.KetQua(SupportKeyList.LOI_KET_NOI, null);
+            return SupportKeyList.LOI_KET_NOI;
         }
         return null;
     }
@@ -195,6 +194,10 @@ public class GoiAPIServerAsyncTask extends AsyncTask<String, Void, String> {
         super.onPostExecute(result);
 
         if (!result.isEmpty()) {
+            if (result.equals(SupportKeyList.LOI_KET_NOI)){
+                dataCallBack.KetQua(SupportKeyList.LOI_KET_NOI, null);
+            }
+
             //Phân loại kết quả của API
             switch (API) {
                 case SupportKeyList.API_DANG_NHAP:

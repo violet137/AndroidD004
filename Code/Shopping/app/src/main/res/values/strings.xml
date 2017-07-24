@@ -12,16 +12,16 @@
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_menu_cung">MenuCungActivity</string>
+    <string name="title_activity_main">MainActivity</string>
+
     <!-- Message -->
     <string name="dialog_loading">Loading...</string>
     <string name="toast_loi_ket_noi">Lỗi kết nối!</string>
     <string name="toast_loi_ket_noi_server">Lỗi kết nối server!</string>
     <string name="toast_loi_data">Lỗi data</string>
     <string name="toast_loi_data_server">Lỗi data server</string>
-    <string name="action_settings">Settings</string>
-    <string name="title_activity_menu_cung">MenuCungActivity</string>
-    <string name="title_activity_main">MainActivity</string>
-
     <string name="toast_dang_nhap_thanh_cong">Hello</string>
     <string name="toast_dang_nhap_that_bai">Sai thông tin đăng nhập!</string>
     <string name="toast_dang_ky_thanh_cong">Đăng ký thành công!</string>
@@ -80,7 +80,13 @@
     <string name="nut_luu">Lưu</string>
     <string name="nut_huy">Hủy</string>
 
+    <!-- Ngành thời trang -->
+    <string name="text_so_luong_nganh_thoi_trang">sản phẩm</string>
+    <string name="loc_san_pham">Lọc</string>
     <!-- Xu hướng thời trang -->
-    <!-- Set đồ -->
-    <string name="xem_san_pham">XEM SẢN PHẨM</string>
+    <string name="xem_san_pham">XEM CÁC SẢN PHẨM</string>
+
+    <!-- Sản phẩm -->
+    <string name="description_san_pham">MÔ TẢ</string>
+    <string name="details">CHI TIẾT</string>
 </resources>

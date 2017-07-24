@@ -1,0 +1,88 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorBackground"
+    tools:context="vn.com.greenacademy.shopping.Fragment.Main.NganhThoiTrang.NganhThoiTrangFragment">
+
+    <!-- Title bar-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title_height"
+        android:orientation="horizontal"
+        android:background="@color/colorPrimaryDark">
+        <!-- Title -->
+        <TextView
+            android:id="@+id/text_loai_nganh_thoi_trang"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/vertical_padding"
+            android:text="test"
+            android:textColor="@color/colorText"
+            android:textSize="@dimen/title_size"
+            android:textStyle="bold"/>
+        <!-- Số lượng -->
+        <TextView
+            android:id="@+id/text_so_luong_nganh_thoi_trang"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="right|center"
+            android:paddingRight="@dimen/vertical_padding"
+            android:text="@string/text_so_luong_nganh_thoi_trang"
+            android:textColor="@color/colorText"
+            android:textSize="@dimen/text_size"/>
+    </LinearLayout>
+
+    <!-- Nội dung -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorBackground">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <!-- List phân loại -->
+            <ListView
+                android:id="@+id/list_phan_loai"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <!-- Sản phẩm và phân loại -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <!-- Phân loại -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="10dp">
+                    <!-- Lọc -->
+                    <Button
+                        android:id="@+id/button_loc_san_pham"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/loc_san_pham"/>
+                    <!-- Sắp xếp -->
+                    <Spinner
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1" />
+                </LinearLayout>
+
+                <!-- List sản phẩm -->
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/list_san_pham_nganh_thoi_trang"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
