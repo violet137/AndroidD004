@@ -77,4 +77,20 @@
     <dimen name="gia_tien_text_size_info_san_pham">19sp</dimen>
     <dimen name="gia_tien_horizontal_padding">10dp</dimen>
     <dimen name="gia_tien_margin_bottom">200dp</dimen>
+
+    <!-- Fragment Dang Ky -->
+    <dimen name="layout_margin_linear_main_fragment_DangKy">15dp</dimen>
+    <dimen name="layout_marginTop_linear_child_fragment_DangKy">10dp</dimen>
+
+    <!-- Fragment Magazine -->
+    <dimen name="layout_margin_10dp">10dp</dimen>
+    <dimen name="text_size_40dp">40dp</dimen>
+    <dimen name="text_size_20dp">20dp</dimen>
+    <dimen name="text_size_15dp">15dp</dimen>
+    <dimen name="text_size_10dp">10dp</dimen>
+    <dimen name="text_layout_height_15dp">15dp</dimen>
+
+
+    layout_height
+
 </resources>

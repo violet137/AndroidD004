@@ -10,9 +10,13 @@ import java.util.ArrayList;
 
 import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.AdapterMenuMain;
 import vn.com.greenacademy.shopping.Fragment.Main.XuHuongThoiTrang.XuHuongThoiTrangFragment;
+import vn.com.greenacademy.shopping.Interface.UrlPhotoCallBack;
 import vn.com.greenacademy.shopping.Model.AdvertisePhoto;
 import vn.com.greenacademy.shopping.Model.MenuMain;
+import vn.com.greenacademy.shopping.Model.MenuPhoto;
+import vn.com.greenacademy.shopping.Network.AsynTask.GetMainMenuPhotos;
 import vn.com.greenacademy.shopping.R;
+import vn.com.greenacademy.shopping.Util.ServerUrl;
 import vn.com.greenacademy.shopping.Util.SupportKeyList;
 import vn.com.greenacademy.shopping.Util.Ui.BaseFragment;
 
@@ -22,17 +26,17 @@ import vn.com.greenacademy.shopping.Util.Ui.BaseFragment;
 
 public class MainMenuHandler {
 
-    ArrayList<MenuMain> arrayMenuMain;
     String[] arrName;
     AdapterMenuMain adapterMenuMain;
     private BaseFragment baseFragment;
     Activity activity;
     View.OnClickListener onClickListener;
-
+    UrlPhotoCallBack urlPhotoCallBack;
 
     public MainMenuHandler(Activity activity) {
         this.activity = activity;
     }
+
 
     // dieu khien phần click mục quang cao
     public void clickAdvertise(){
@@ -93,23 +97,26 @@ public class MainMenuHandler {
     }
 
     // tai du lieu tu adapter len list
-    public void displayListview(ListView listView) {
-        adapterMenuMain = new AdapterMenuMain(activity, R.layout.item_listview_menu_main, arrayMenuMain,onClickListener);
-        listView.setAdapter(adapterMenuMain);
+    public void displayListview(final ListView listView) {
+        urlPhotoCallBack = new UrlPhotoCallBack() {
+            @Override
+            public void urlCallBack(MenuPhoto menuPhoto) {
+                ArrayList<MenuMain> mainArrayList = new ArrayList<>();
+                for (int i = 0; i < menuPhoto.getFashionTypeArrayList().size(); i++) {
+                    MenuMain menuMain = new MenuMain();
+                    menuMain.setUrl(menuPhoto.getFashionTypeArrayList().get(i).getLinkHinh());
+                    menuMain.setId(menuPhoto.getFashionTypeArrayList().get(i).getLoaiThoiTrang());
+                    mainArrayList.add(menuMain);
+                }
+                adapterMenuMain = new AdapterMenuMain(activity, R.layout.item_listview_menu_main, mainArrayList,onClickListener);
+                listView.setAdapter(adapterMenuMain);
+            }
+        };
     }
 
     // tai du lieu tu file xml cua may vao doi tuong array de dua vao adapter
     public void loadData() {
-        arrName = activity.getResources().getStringArray(R.array.name_menu_main);
-        String []arrLink_MenuPhotos = activity.getResources().getStringArray(R.array.link_MenuPhotos);
-        arrayMenuMain = new ArrayList<>();
-        for(int i = 0; i< (arrLink_MenuPhotos.length); i++){
-            MenuMain menuMain = new MenuMain();
-            if (i<=5){
-                menuMain.setName(arrName[i]);
-            }
-            arrayMenuMain.add(menuMain);
-        }
-
+        GetMainMenuPhotos getMainMenuPhotos  = new GetMainMenuPhotos(urlPhotoCallBack);
+        getMainMenuPhotos.execute(ServerUrl.UrlDanhSachThoiTrang);
     }
 }

@@ -35,6 +35,7 @@ public class SupportKeyList {
     //Key tag
     public static final String TAG_FRAGMENT_MAIN = "MainFragment";
     public static final String TAG_FRAGMENT_MY_SHOPPING = "MyShopping";
+    public static final String TAG_FRAGMENT_MAGAZINE = "Magazine";
     public static final String TAG_FRAGMENT_DANG_NHAP = "DangNhap";
     public static final String TAG_FRAGMENT_DANG_NHAP_KHONG_LUU = "DangNhapKhongLuu";
     public static final String TAG_FRAGMENT_TAI_KHOAN = "TaiKhoan";
@@ -69,5 +70,13 @@ public class SupportKeyList {
     public static final int Password_Error = 1;
     public static final int Re_type_Password_Error = 2;
     public static final int Connect_Error = 4;
+
+    //key viewPager Magazine
+    public static final int Magazine_ALL = 0;
+    public static final int Magazine_FASHION = 1;
+    public static final int Magazine_BEAUTY = 2;
+    public static final int Magazine_CULURE = 3;
+    public static final int Magazine_VIDEO = 4;
+
 
 }

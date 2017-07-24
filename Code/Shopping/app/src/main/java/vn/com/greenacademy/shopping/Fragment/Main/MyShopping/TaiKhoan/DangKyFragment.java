@@ -63,15 +63,15 @@ public class DangKyFragment extends Fragment implements ErrorCallBack {
         switch (errorPosition){
             case SupportKeyList.Email_Error:
                 tvEmail.setTextColor(Color.RED);
-                tvEmail.setText("Email(username):*  Tài Khoản đã được sử dung");
+                tvEmail.setText("Email(username):*  " + error);
                 break;
             case SupportKeyList.Password_Error:
                 tvPassword.setTextColor(Color.RED);
-                tvPassword.setText("Password:*   Độ bảo mật kém");
+                tvPassword.setText("Password:*  " + error);
                 break;
             case SupportKeyList.Re_type_Password_Error:
                 tvPassword.setTextColor(Color.RED);
-                tvPassword.setText("Re-type password*   password không trùng khớp");
+                tvPassword.setText("Re-type password*  " + error);
                 break;
             case SupportKeyList.Connect_Error:
                 Toast.makeText(getActivity(), "Không thể kết nối", Toast.LENGTH_SHORT).show();

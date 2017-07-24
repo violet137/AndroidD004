@@ -2,11 +2,13 @@ package vn.com.greenacademy.shopping.Handle.HandleData;
 
 import android.app.Activity;
 import android.content.res.TypedArray;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ListView;
 
 import java.util.ArrayList;
 
+import vn.com.greenacademy.shopping.Fragment.Main.Magazine.MagazineFragment;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.AdapterSlideMenu;
 import vn.com.greenacademy.shopping.Fragment.Main.MyShopping.MyShoppingFragment;
 import vn.com.greenacademy.shopping.Model.SlideMenu;
@@ -33,6 +35,7 @@ public class SlideMenuHandler {
     // xu ly su kien click cua nguoi dung
     public void itemClickListener(int position, BaseFragment baseFragment) {
         String temp ;
+        int count = ((AppCompatActivity)activity).getSupportFragmentManager().getBackStackEntryCount();
         switch (position){
             case SupportKeyList.Products_slide:
                 temp = "Products";
@@ -51,13 +54,17 @@ public class SlideMenuHandler {
                 break;
             case SupportKeyList.Magazine_slide:
                 temp = "Magazine";
+                while(count > 0){
+                    baseFragment.XoaFragment();
+                    count--;
+                }
+                baseFragment.ChuyenFragment(new MagazineFragment(), SupportKeyList.TAG_FRAGMENT_MAGAZINE, true);
                 break;
             case SupportKeyList.Wish_list_slide:
                 temp = "Wish list";
                 break;
             case SupportKeyList.My_Shopping_slide:
                 temp = "My Shopping";
-                int count = ((AppCompatActivity)activity).getSupportFragmentManager().getBackStackEntryCount();
                 while(count > 0){
                     baseFragment.XoaFragment();
                     count--;

@@ -12,10 +12,13 @@ import android.widget.TextView;
 import android.widget.ViewFlipper;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import vn.com.greenacademy.shopping.Handle.HandleData.ImageLoad;
 import vn.com.greenacademy.shopping.Model.AdvertisePhoto;
+import vn.com.greenacademy.shopping.Model.FashionType;
 import vn.com.greenacademy.shopping.Model.MenuMain;
+import vn.com.greenacademy.shopping.Model.MenuPhoto;
 import vn.com.greenacademy.shopping.R;
 import vn.com.greenacademy.shopping.Util.SupportKeyList;
 
@@ -27,14 +30,14 @@ public class AdapterMenuMain extends ArrayAdapter {
 
     Activity activity;
     int layoutItem;
-    ArrayList<MenuMain> arrayList;
+    ArrayList<MenuMain> menuMainArrayList;
     View.OnClickListener onClickListener;
 
     public AdapterMenuMain(Activity activity, int resource, ArrayList<MenuMain> objects, View.OnClickListener onClickListener){
-        super(activity,resource,objects);
+        super(activity,resource, (List) objects);
         this.activity = activity;
         layoutItem=resource;
-        arrayList=objects;
+        menuMainArrayList=objects;
         this.onClickListener = onClickListener;
     }
 
@@ -46,7 +49,6 @@ public class AdapterMenuMain extends ArrayAdapter {
         convertView = inflater.inflate(layoutItem,null);
         ImageLoad imageLoad = new ImageLoad(activity);
 
-        final MenuMain menuMain = arrayList.get(position);
         switch (position){
             case SupportKeyList.Advertise:
                 ViewFlipper viewFlipper = (ViewFlipper) convertView.findViewById(R.id.vf_menu_main);
@@ -73,11 +75,10 @@ public class AdapterMenuMain extends ArrayAdapter {
                 convertView.findViewById(R.id.constrainLayout_menu_main).setVisibility(View.VISIBLE);
 
                 ImageView imageView = (ImageView) convertView.findViewById(R.id.ivMenuType_menu_main);
-                TextView textView = (TextView) convertView.findViewById(R.id.tvName_menu_main);
 
                 String[] arraylink_MenunType = activity.getResources().getStringArray(R.array.link_MenuPhotos);
-                imageLoad.ImageLoad(arraylink_MenunType[position-1], imageView);
-                textView.setText(menuMain.getName());
+                imageLoad.ImageLoad(menuMainArrayList.get(position-1).getUrl(), imageView);
+//                textView.setText(menuMain.getName());
                 break;
             default:
                 LinearLayout linearLayout = (LinearLayout) convertView.findViewById(R.id.linear_ivFashion_menu_main);
