@@ -83,10 +83,22 @@
     <!-- Ngành thời trang -->
     <string name="text_so_luong_nganh_thoi_trang">sản phẩm</string>
     <string name="loc_san_pham">Lọc</string>
+
     <!-- Xu hướng thời trang -->
     <string name="xem_san_pham">XEM CÁC SẢN PHẨM</string>
 
     <!-- Sản phẩm -->
     <string name="description_san_pham">MÔ TẢ</string>
     <string name="details">CHI TIẾT</string>
+
+    <!-- Fragment Dang Ky -->
+    <string name="email_fragment_DangKy">Email(username):*</string>
+    <string name="password_fragment_DangKy">Password:*</string>
+    <string name="note_password_fragment_DangKy">Your password needs to contain least characters. User upper and lowercase letters together with number to make it more secure</string>
+    <string name="re_type_password_fragment_DangKy">Re-type password*</string>
+    <string name="name_fragment_DangKy">Name:</string>
+    <string name="privacy_policy_fragment_DangKy">By clicking Register I accept the Privacy Policy</string>
+    <string name="register_fragment_DangKy">Register</string>
+    <string name="read_the_story">READ THE STORY</string>
+
 </resources>
