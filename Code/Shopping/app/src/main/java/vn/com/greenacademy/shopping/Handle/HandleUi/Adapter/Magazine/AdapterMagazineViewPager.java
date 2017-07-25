@@ -17,7 +17,7 @@ import vn.com.greenacademy.shopping.Fragment.Main.Magazine.MagazineRecyclerViewF
 public class AdapterMagazineViewPager extends FragmentPagerAdapter {
     String magazineType;
     Context context;
-    String[] title = {"ALL","FASHION","BEAUTY","CULTURE","VIDEO"};
+    String[] title = {"ALL","FASHION","BEAUTY","CULTURE","VIDEO","VIDEO","VIDEO"};
     public AdapterMagazineViewPager(FragmentManager fm, Context context, String magazineType) {
         super(fm);
         this.magazineType = magazineType;
@@ -31,7 +31,7 @@ public class AdapterMagazineViewPager extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
-        return 5;
+        return 7;
     }
 
     public String getTitle (int position){

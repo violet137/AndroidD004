@@ -31,9 +31,9 @@
     <dimen name="imageView_layout_margin_left">10dp</dimen>
 
     <!-- fragment menu main -->
-    <dimen name="viewFlipper_height">300dp</dimen>
+    <dimen name="viewFlipper_height">280dp</dimen>
     <dimen name="ConstraintLayout_height">100dp</dimen>
-    <dimen name="imageView_constrain_height">150dp</dimen>
+    <dimen name="imageView_constrain_height">130dp</dimen>
     <dimen name="imageView_height">280dp</dimen>
     <dimen name="textView_layout_marginTop">100dp</dimen>
     <dimen name="textView_paddingLeft">10dp</dimen>

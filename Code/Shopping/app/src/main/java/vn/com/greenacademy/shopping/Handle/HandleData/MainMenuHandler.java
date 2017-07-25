@@ -108,6 +108,12 @@ public class MainMenuHandler {
                     menuMain.setId(menuPhoto.getFashionTypeArrayList().get(i).getLoaiThoiTrang());
                     mainArrayList.add(menuMain);
                 }
+                for (int i = 0; i < 4; i++) {
+                    MenuMain menuMain = new MenuMain();
+                    menuMain.setUrl(menuPhoto.getFashionTypeArrayList().get(1).getLinkHinh());
+                    menuMain.setId(menuPhoto.getFashionTypeArrayList().get(1).getLoaiThoiTrang());
+                    mainArrayList.add(menuMain);
+                }
                 adapterMenuMain = new AdapterMenuMain(activity, R.layout.item_listview_menu_main, mainArrayList,onClickListener);
                 listView.setAdapter(adapterMenuMain);
             }
