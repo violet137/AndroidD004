@@ -42,7 +42,13 @@ public class AdapterSlideMenu extends ArrayAdapter {
         final SlideMenu slideMenu = arrayList.get(position);
 
         TextView tvName = (TextView) convertView.findViewById(R.id.tvName_item_slide_menu);
+
         ImageView ivIcon = (ImageView) convertView.findViewById(R.id.ivIcon_item_slide_menu);
+
+        if (position>0 && position<5) {
+            ivIcon.setVisibility(View.INVISIBLE);
+        }
+
         if (position == 4){
             convertView.findViewById(R.id.divider_item_slide_menu).setVisibility(View.VISIBLE);
         }
