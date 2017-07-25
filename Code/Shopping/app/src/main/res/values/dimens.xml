@@ -68,6 +68,7 @@
     <!-- Thông tin sản phẩm -->
     <dimen name="text_size_title_description_san_pham">20sp</dimen>
     <dimen name="text_size_description_san_pham">15sp</dimen>
+    <dimen name="button_thoat_size_san_pham">40dp</dimen>
     <dimen name="button_info_size">40dp</dimen>
     <dimen name="button_info_margin_top">130dp</dimen>
     <dimen name="top_info_horizontal_padding">10dp</dimen>
@@ -78,6 +79,12 @@
     <dimen name="gia_tien_horizontal_padding">10dp</dimen>
     <dimen name="gia_tien_margin_bottom">200dp</dimen>
 
+    <!-- Dialog description sản phẩm -->
+    <dimen name="dialog_chi_tiet_san_pham_width">950dp</dimen>
+    <dimen name="dialog_chi_tiet_san_pham_height">1100dp</dimen>
+    <dimen name="chi_tiet_san_pham_horizontal_padding">20dp</dimen>
+    <dimen name="button_image_margin">10dp</dimen>
+    <dimen name="content_vertical_margin">20dp</dimen>
     <!-- Fragment Dang Ky -->
     <dimen name="layout_margin_linear_main_fragment_DangKy">15dp</dimen>
     <dimen name="layout_marginTop_linear_child_fragment_DangKy">10dp</dimen>
