@@ -5,13 +5,23 @@ package vn.com.greenacademy.shopping.Model;
  */
 
 public class AdvertisePhoto {
-    int id;
+    long id;
+    String HinhDaiDien;
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
+
+    public String getHinhDaiDien() {
+        return HinhDaiDien;
+    }
+
+    public void setHinhDaiDien(String hinhDaiDien) {
+        HinhDaiDien = hinhDaiDien;
+    }
+
 }

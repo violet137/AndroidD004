@@ -7,5 +7,5 @@ import vn.com.greenacademy.shopping.Model.MenuPhoto;
  */
 
 public interface UrlPhotoCallBack {
-    void urlCallBack(MenuPhoto menuPhoto);
+    void urlCallBack(MenuPhoto menuPhoto,int flag);
 }

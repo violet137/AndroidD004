@@ -10,30 +10,31 @@ import org.json.JSONObject;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
 import vn.com.greenacademy.shopping.Interface.UrlPhotoCallBack;
+import vn.com.greenacademy.shopping.Model.AdvertisePhoto;
 import vn.com.greenacademy.shopping.Model.FashionType;
+import vn.com.greenacademy.shopping.Model.IDNew;
 import vn.com.greenacademy.shopping.Model.MenuPhoto;
-import vn.com.greenacademy.shopping.Util.ServerUrl;
 import vn.com.greenacademy.shopping.Util.SupportKeyList;
 
 /**
- * Created by ADMIN on 7/18/2017.
+ * Created by ADMIN on 7/25/2017.
  */
 
-public class GetMainMenuPhotos extends AsyncTask<String,Void,String> {
+public class GetAdvertise  extends AsyncTask<String, Object, String> {
     UrlPhotoCallBack urlPhotoCallBack;
 
-    public GetMainMenuPhotos(UrlPhotoCallBack urlPhotoCallBack) {
+    public GetAdvertise (UrlPhotoCallBack urlPhotoCallBack) {
         this.urlPhotoCallBack = urlPhotoCallBack;
     }
-
     @Override
-    protected String doInBackground(String[] params) {
+    protected String doInBackground(String... params) {
         URL url = null;
         try {
             url = new URL(params[0]);
@@ -63,42 +64,32 @@ public class GetMainMenuPhotos extends AsyncTask<String,Void,String> {
     }
 
     @Override
-    protected void onPostExecute(String o) {
-        super.onPostExecute(o);
-        ParDataGetMainMenuPhotos par = new ParDataGetMainMenuPhotos(o);
-        urlPhotoCallBack.urlCallBack(par.parData(), SupportKeyList.Products_Url);
-//        if (!o.equals("false")){
-//            ParDataGetMainMenuPhotos par = new ParDataGetMainMenuPhotos(o);
-//            urlPhotoCallBack.urlCallBack(par.parData());
-//        }else {
-//            Log.d("GetMainMenuPhotos", "FALSE");
-//        }
-
+    protected void onPostExecute(String aVoid) {
+        ParDataGetAdvertise par = new ParDataGetAdvertise(aVoid);
+        urlPhotoCallBack.urlCallBack(par.parData(), SupportKeyList.Advertise_Url);
     }
-
 }
-
-class ParDataGetMainMenuPhotos{
+class ParDataGetAdvertise {
     String data;
-    public ParDataGetMainMenuPhotos (String data) {
+    public ParDataGetAdvertise (String data) {
         this.data=data;
     }
 
     public MenuPhoto parData(){
         MenuPhoto result = new MenuPhoto();
-        ArrayList<FashionType> temp;
+        ArrayList<AdvertisePhoto> temp;
         try {
             JSONObject root = new JSONObject(data);
-            JSONArray jsonArray = root.getJSONArray("LoaiThoiTrangTranfers");
+            JSONArray jsonArray = root.getJSONArray("KhuyenMaiTranfers");
             temp = new ArrayList<>();
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
-                FashionType fashionType = new FashionType();
-                fashionType.setLinkHinh(jsonObject.getString("LinkHinh"));
-                fashionType.setLoaiThoiTrang(jsonObject.getString("loaiThoiTrang"));
-                temp.add(fashionType);
+                AdvertisePhoto advertisePhoto = new AdvertisePhoto();
+                advertisePhoto.setId(jsonObject.getLong("Id"));
+                advertisePhoto.setHinhDaiDien(jsonObject.getString("HinhDaiDien"));
+                temp.add(advertisePhoto);
             }
-            result.setFashionTypeArrayList(temp);
+            result.setAdvertisePhotoArrayList(temp);
             result.setStatus(root.getInt("Status"));
             result.setDescription(root.getString("Description"));
         } catch (JSONException e) {

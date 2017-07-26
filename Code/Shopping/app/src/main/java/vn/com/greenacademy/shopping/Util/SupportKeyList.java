@@ -46,11 +46,8 @@ public class SupportKeyList {
     public static final String TAG_DETAILS_SAN_PHAM = "DetailsSanPham";
     //Key Menu Main
     public static final int Advertise = 0;
-    public static final int Ladies = 1;
-    public static final int Men = 2;
-    public static final int Kids = 3;
-    public static final int Home = 4;
-    public static final int Magazine = 5;
+    public static final int Products = 1;
+    public static final int Banner = 2;
 
     //Key Menu Main
     public static final int Products_slide = 0;
@@ -77,6 +74,11 @@ public class SupportKeyList {
     public static final int Magazine_BEAUTY = 2;
     public static final int Magazine_CULURE = 3;
     public static final int Magazine_VIDEO = 4;
+
+    // flag async get photo url
+    public static final int Advertise_Url = 0;
+    public static final int Products_Url = 1;
+    public static final int Banner_Url = 2;
 
 
 }

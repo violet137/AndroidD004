@@ -10,7 +10,6 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import vn.com.greenacademy.shopping.Handle.HandleData.MainMenuHandler;
-import vn.com.greenacademy.shopping.Network.AsynTask.GetMainMenuPhotos;
 import vn.com.greenacademy.shopping.R;
 import vn.com.greenacademy.shopping.Util.Ui.BaseFragment;
 
@@ -36,17 +35,12 @@ public class MainFragment extends Fragment {
 
         //Xử lý sự kiện
         mainMenuHandler = new MainMenuHandler(getActivity());
-        lv_menu_main.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                mainMenuHandler.itemClickMenu(position);
-            }
-        });
-        mainMenuHandler.clickAdvertise();
 
-        //Khởi tạo giá trị
-        mainMenuHandler.displayListview(lv_menu_main);
-        mainMenuHandler.loadData();
+        // ham dieu khien click item tren menu main
+        mainMenuHandler.clickItemMenuMain();
+
+        //load du lieu len mang hinh
+        mainMenuHandler.loadData(lv_menu_main);
 
         return view;
     }
