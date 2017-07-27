@@ -76,7 +76,7 @@ public class AdapterMenuMain extends ArrayAdapter {
                     image.setTag(advertisePhoto);
 
                     image.setOnClickListener(onClickListenerAdvertise);
-                    image.setScaleType(ImageView.ScaleType.FIT_XY);
+                    image.setScaleType(ImageView.ScaleType.CENTER_CROP);
 
                     imageLoad.ImageLoad(menuMainArrayList.get(position).getAdvertiseMenuMains().get(i).getHinhDaiDien(), image);
                     viewFlipper.addView(image);
@@ -90,11 +90,13 @@ public class AdapterMenuMain extends ArrayAdapter {
                         convertView.findViewById(R.id.constrainLayout_menu_main).setVisibility(View.VISIBLE);
 
                         ImageView imageViewProducts = (ImageView) convertView.findViewById(R.id.ivMenuType_menu_main);
+                        TextView textView = (TextView) convertView.findViewById(R.id.tvName_menu_main);
 
                         ProductsPhoto productsPhoto = new ProductsPhoto();
                         productsPhoto.setId(menuMainArrayList.get(position).getId());
                         imageViewProducts.setTag( productsPhoto);
 
+                        textView.setText(menuMainArrayList.get(position).getName());
                         imageViewProducts.setOnClickListener(onClickListenerProducts);
 
                         imageLoad.ImageLoad(menuMainArrayList.get(position).getUrl(), imageViewProducts);

@@ -33,12 +33,12 @@
     <!-- fragment menu main -->
     <dimen name="viewFlipper_height">280dp</dimen>
     <dimen name="ConstraintLayout_height">100dp</dimen>
-    <dimen name="imageView_constrain_height">130dp</dimen>
+    <dimen name="imageView_constrain_height">145dp</dimen>
     <dimen name="imageView_height">280dp</dimen>
     <dimen name="textView_layout_marginTop">100dp</dimen>
     <dimen name="textView_paddingLeft">10dp</dimen>
     <dimen name="textView_paddingRight">10dp</dimen>
-    <dimen name="textView_textSize">20dp</dimen>
+    <dimen name="textView_textSize">18dp</dimen>
     <dimen name="btnDiviver_marginBottom">5dp</dimen>
     <dimen name="btnDiviver_layout_height">10dp</dimen>
     <dimen name="tai_khoan_marginTop">35dp</dimen>

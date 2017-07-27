@@ -122,6 +122,7 @@ public class MainMenuHandler implements UrlPhotoCallBack {
                     menuMain.setFlag(SupportKeyList.Products);
                     menuMain.setUrl(menuPhoto.getFashionTypeArrayList().get(i).getLinkHinh());
                     menuMain.setId(menuPhoto.getFashionTypeArrayList().get(i).getLoaiThoiTrang());
+                    menuMain.setName(menuPhoto.getFashionTypeArrayList().get(i).getTen());
                     mainArrayList.add(menuMain);
                 }
 

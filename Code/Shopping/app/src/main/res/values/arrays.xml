@@ -13,18 +13,18 @@
     </array>
 
     <string-array name="name_slide_menu">
-        <item>Products</item>
-        <item>Ladies</item>
-        <item>Men</item>
-        <item>Kids</item>
-        <item>Home</item>
+        <item>Sản Phẩm</item>
+        <item>Nữ</item>
+        <item>Nam</item>
+        <item>Trẻ Em</item>
+        <item>Trang Trí</item>
 
-        <item>Sale</item>
-        <item>Magazine</item>
-        <item>Wish List</item>
-        <item>My Shopping</item>
-        <item>Find a store</item>
-        <item>Newsletter</item>
+        <item>Giảm Giá</item>
+        <item>Tạp Chí</item>
+        <item>Giỏ Hàng</item>
+        <item>Tài Khoản</item>
+        <item>Cửa Hàng</item>
+        <item>Góp Ý</item>
     </string-array>
 
     <string-array name="icon_slide_menu">

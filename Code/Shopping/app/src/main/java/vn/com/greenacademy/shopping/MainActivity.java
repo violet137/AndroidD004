@@ -26,7 +26,7 @@ import vn.com.greenacademy.shopping.Util.SharePreference.MySharedPreferences;
 import vn.com.greenacademy.shopping.Util.SupportKeyList;
 import vn.com.greenacademy.shopping.Util.Ui.BaseFragment;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener, DataCallBack {
+public class MainActivity extends AppCompatActivity implements DataCallBack {
     ListView lv_item_slide_menu;
 
 //    ArrayList<SlideMenu> arrayModeSlideMenus;
@@ -57,9 +57,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         lv_item_slide_menu = (ListView) findViewById(R.id.lv_item_slide_menu);
 
         //Xử lý sự kiện
-        navigationView.findViewById(R.id.ivUser_nav_hear).setOnClickListener(this);
-        navigationView.findViewById(R.id.tvName_nav_hear).setOnClickListener(this);
-        navigationView.findViewById(R.id.tvEmail_nav_hear).setOnClickListener(this);
+//        navigationView.findViewById(R.id.ivUser_nav_hear).setOnClickListener(this);
+//        navigationView.findViewById(R.id.tvName_nav_hear).setOnClickListener(this);
+//        navigationView.findViewById(R.id.tvEmail_nav_hear).setOnClickListener(this);
         final SlideMenuHandler slideMenuHandler = new SlideMenuHandler(this);
         lv_item_slide_menu.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -88,17 +88,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         baseFragment.ChuyenFragment(new SplashScreenFragment(getSupportActionBar(), drawerLayout), null, false);
     }
 
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()){
-            case R.id.ivUser_nav_hear:
-            case R.id.tvName_nav_hear:
-            case R.id.tvEmail_nav_hear:
-                // vao trang thong tin tai khoan
-                Toast.makeText(this, "Thông tin cá nhân", Toast.LENGTH_SHORT).show();
-                break;
-        }
-    }
+
 
     @Override
     public void onBackPressed() {

@@ -12,6 +12,15 @@ public class MenuMain {
     String id;
     int flag;
     String type;
+    String name;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public String getType() {
         return type;

@@ -7,6 +7,15 @@ package vn.com.greenacademy.shopping.Model;
 public class FashionType {
     String loaiThoiTrang;
     String LinkHinh;
+    String Ten;
+
+    public String getTen() {
+        return Ten;
+    }
+
+    public void setTen(String ten) {
+        Ten = ten;
+    }
 
     public String getLoaiThoiTrang() {
         return loaiThoiTrang;

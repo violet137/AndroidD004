@@ -94,6 +94,7 @@ class ParDataGetMainMenuPhotos{
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
                 FashionType fashionType = new FashionType();
+                fashionType.setTen(jsonObject.getString("Ten"));
                 fashionType.setLinkHinh(jsonObject.getString("LinkHinh"));
                 fashionType.setLoaiThoiTrang(jsonObject.getString("loaiThoiTrang"));
                 temp.add(fashionType);
