@@ -9,6 +9,8 @@ import android.widget.ListView;
 import java.util.ArrayList;
 
 import vn.com.greenacademy.shopping.Fragment.Main.Magazine.MagazineFragment;
+import vn.com.greenacademy.shopping.Fragment.Main.MainFragment;
+import vn.com.greenacademy.shopping.Fragment.Store.FindStoreFragment;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.AdapterSlideMenu;
 import vn.com.greenacademy.shopping.Fragment.Main.MyShopping.MyShoppingFragment;
 import vn.com.greenacademy.shopping.Model.SlideMenu;
@@ -39,6 +41,11 @@ public class SlideMenuHandler {
         switch (position){
             case SupportKeyList.Products_slide:
                 temp = "Products";
+                while(count > 0){
+                    baseFragment.XoaFragment();
+                    count--;
+                }
+                baseFragment.ChuyenFragment(new MainFragment(), SupportKeyList.TAG_FRAGMENT_MAIN, true);
                 break;
             case SupportKeyList.Ladies_slide:
                 temp = "Ladies";
@@ -51,6 +58,9 @@ public class SlideMenuHandler {
                 break;
             case SupportKeyList.Home_slide:
                 temp = "Home";
+                break;
+            case SupportKeyList.Sale_slide:
+                temp = "Support";
                 break;
             case SupportKeyList.Magazine_slide:
                 temp = "Magazine";
@@ -71,11 +81,13 @@ public class SlideMenuHandler {
                 }
                 baseFragment.ChuyenFragment(new MyShoppingFragment(), SupportKeyList.TAG_FRAGMENT_MY_SHOPPING, true);
                 break;
-            case SupportKeyList.Support_slide:
-                temp = "Support";
-                break;
             case SupportKeyList.Find_a_store_slide:
                 temp = "Find a store";
+                while(count > 0){
+                    baseFragment.XoaFragment();
+                    count--;
+                }
+                baseFragment.ChuyenFragment(new FindStoreFragment(), SupportKeyList.TAG_FRAGMENT_FINDSTORE, true);
                 break;
             case SupportKeyList.Newsletter_slide:
                 temp = "Newsletter";

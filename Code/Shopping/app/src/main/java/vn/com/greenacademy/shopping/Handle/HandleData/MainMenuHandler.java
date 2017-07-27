@@ -101,7 +101,6 @@ public class MainMenuHandler implements UrlPhotoCallBack {
 
     @Override
     public void urlCallBack(MenuPhoto menuPhoto, int flag) {
-        boolean flag_finish_loadata = false;
         MenuMain menuMain;
         switch (flag){
             case SupportKeyList.Advertise_Url:
@@ -136,14 +135,10 @@ public class MainMenuHandler implements UrlPhotoCallBack {
                     menuMain.setType(menuPhoto.getBannerPhotoArrayList().get(i).getLoaiBanner());
                     mainArrayList.add(menuMain);
                 }
-                flag_finish_loadata = true;
+                displayListview();
                 break;
             default:
                 break;
-        }
-
-        if (flag_finish_loadata){
-            displayListview();
         }
     }
 }

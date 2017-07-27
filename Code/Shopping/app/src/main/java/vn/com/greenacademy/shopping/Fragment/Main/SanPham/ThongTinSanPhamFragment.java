@@ -69,7 +69,7 @@ public class ThongTinSanPhamFragment extends Fragment implements View.OnClickLis
 
     @Override
     public void onClick(View v) {
-        if (v.getId() == R.id.button_info_san_pham)
-            new DetailsSanPhamFragment(getActivity()).show();
+//        if (v.getId() == R.id.button_info_san_pham)
+//            new DetailsSanPhamFragment(getActivity()).show();
     }
 }
