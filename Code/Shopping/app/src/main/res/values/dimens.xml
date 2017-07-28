@@ -102,5 +102,11 @@
     <!-- Slide Menu -->
     <dimen name="imageView_padding_10dp">10dp</dimen>
 
+    <!-- Slide Menu -->
+    <dimen name="textView_layout_width">80dp</dimen>
+    <dimen name="textView_textSize_find_store">18dp</dimen>
+    <dimen name="linearLayout_padding">10dp</dimen>
+
+
 
 </resources>

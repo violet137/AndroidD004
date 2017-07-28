@@ -3,24 +3,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="vn.com.greenacademy.shopping.Fragment.Main.Magazine.MagazineFragment">
+    tools:context=".Fragment.Magazine.MagazineFragment">
 
     <!-- TODO: Update blank fragment layout -->
 
-    <HorizontalScrollView
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tabLayout_magazine_fragment"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:scrollbars="none"
-        >
+        android:background="@color/cardview_light_background">
 
-        <android.support.design.widget.TabLayout
-            android:id="@+id/tabLayout_magazine_fragment"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/cardview_light_background">
-
-        </android.support.design.widget.TabLayout>
-    </HorizontalScrollView>
+    </android.support.design.widget.TabLayout>
 
     <android.support.v4.view.ViewPager
         android:id="@+id/viewPager_magazine_fragment"

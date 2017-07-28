@@ -1,4 +1,4 @@
-package vn.com.greenacademy.shopping.Fragment.Main.Magazine;
+package vn.com.greenacademy.shopping.Fragment.Magazine;
 
 
 import android.os.Bundle;
@@ -8,10 +8,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
+
+import java.util.ArrayList;
 
 import vn.com.greenacademy.shopping.Handle.HandleData.MagazineHandler;
-import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.Magazine.AdapterMagazineRecyclerView;
+import vn.com.greenacademy.shopping.Model.MagazineType;
 import vn.com.greenacademy.shopping.R;
 
 /**
@@ -20,9 +21,12 @@ import vn.com.greenacademy.shopping.R;
 public class MagazineRecyclerViewFragment extends Fragment {
 
     int positionViewPagger;
-    public MagazineRecyclerViewFragment(int positionViewPagger) {
+    ArrayList<MagazineType> magazineTypeArrayList;
+
+    public MagazineRecyclerViewFragment(int positionViewPagger, ArrayList<MagazineType> magazineTypeArrayList) {
         // Required empty public constructor
         this.positionViewPagger = positionViewPagger;
+        this.magazineTypeArrayList = magazineTypeArrayList;
     }
 
 
@@ -42,7 +46,7 @@ public class MagazineRecyclerViewFragment extends Fragment {
         magazineHandler.clickItem(recyclerView);
 
         // ham đổ dữ liệu lên recyclerView
-        magazineHandler.displayView(recyclerView,positionViewPagger);
+        magazineHandler.setLayout(recyclerView,positionViewPagger, magazineTypeArrayList);
 
         return view;
     }

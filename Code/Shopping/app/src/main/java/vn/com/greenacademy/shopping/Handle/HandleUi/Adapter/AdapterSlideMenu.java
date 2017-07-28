@@ -24,10 +24,10 @@ public class AdapterSlideMenu extends ArrayAdapter {
     int layoutItem;
     ArrayList<SlideMenu> arrayList;
 
-    public AdapterSlideMenu(Activity activity, int resource, ArrayList<SlideMenu> objects){
-        super(activity,resource,objects);
+    public AdapterSlideMenu(Activity activity, int layoutItem, ArrayList<SlideMenu> objects){
+        super(activity,layoutItem,objects);
         this.activity = activity;
-        layoutItem=resource;
+        this.layoutItem=layoutItem;
         arrayList=objects;
     }
 
