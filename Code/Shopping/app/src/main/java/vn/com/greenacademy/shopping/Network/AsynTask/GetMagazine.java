@@ -14,22 +14,20 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
+import vn.com.greenacademy.shopping.Interface.MagazineCallBack;
 import vn.com.greenacademy.shopping.Interface.StoreCallBack;
-import vn.com.greenacademy.shopping.Interface.UrlPhotoCallBack;
-import vn.com.greenacademy.shopping.Model.BannerPhoto;
-import vn.com.greenacademy.shopping.Model.MenuPhoto;
+import vn.com.greenacademy.shopping.Model.Magazine;
 import vn.com.greenacademy.shopping.Model.Store;
-import vn.com.greenacademy.shopping.Util.SupportKeyList;
 
 /**
- * Created by ADMIN on 7/27/2017.
+ * Created by ADMIN on 7/28/2017.
  */
 
-public class GetStore extends AsyncTask<String, Object, String> {
-    StoreCallBack storeCallBack;
+public class GetMagazine extends AsyncTask<String, Object, String> {
+    MagazineCallBack magazineCallBack;
 
-    public GetStore (StoreCallBack storeCallBack) {
-        this.storeCallBack = storeCallBack;
+    public GetMagazine (MagazineCallBack magazineCallBack) {
+        this.magazineCallBack = magazineCallBack;
     }
     @Override
     protected String doInBackground(String... params) {
@@ -63,45 +61,33 @@ public class GetStore extends AsyncTask<String, Object, String> {
 
     @Override
     protected void onPostExecute(String aVoid) {
-        ParDataGetStore par = new ParDataGetStore(aVoid);
-        storeCallBack.storeCallBack(par.parData());
+        ParDataGetMagazine par = new ParDataGetMagazine(aVoid);
+        magazineCallBack.magazineCallBack(par.parData());
     }
 }
-class ParDataGetStore {
+class ParDataGetMagazine {
     String data;
-    public ParDataGetStore (String data) {
+    public ParDataGetMagazine (String data) {
         this.data=data;
     }
 
-    public ArrayList<Store> parData(){
-        ArrayList<Store> result = new ArrayList<>();
+    public ArrayList<Magazine> parData(){
+        ArrayList<Magazine> result = new ArrayList<>();
         try {
             JSONObject root = new JSONObject(data);
             if (root.getInt("Status") == 1){
                 JSONArray jsonArray = root.getJSONArray("CuaHangTranfers");
                 for (int i = 0; i < jsonArray.length(); i++) {
                     JSONObject jsonObject = jsonArray.getJSONObject(i);
-                    Store store = new Store();
-                    store.setId(jsonObject.getInt("Id"));
-                    store.setTenCuaHang(jsonObject.getString("TenCuaHang"));
-                    store.setDiaChi(jsonObject.getString("DiaChi"));
-                    store.setLat(jsonObject.getDouble("Lat"));
-                    store.setLng(jsonObject.getDouble("Lng"));
-                    store.setLinkAnh(jsonObject.getString("LinkAnh"));
-                    store.setGioMoCua(jsonObject.getString("GioMoCua"));
-                    store.setSoDienThoai(jsonObject.getString("SoDienThoai"));
-                    store.setDanhGia(jsonObject.getLong("DanhGia"));
+                    Magazine magazine = new Magazine();
 
-                    ArrayList<String> stringArrayListLoaiThoiTrang = new ArrayList<>();
-                    JSONArray jsonArrayLoaiThoiTrang = jsonObject.getJSONArray("LoaiThoiTrang");
-                    for (int j = 0; j < jsonArrayLoaiThoiTrang.length(); j++) {
-                        String jsonObjectLoaiThoiTrang = jsonArrayLoaiThoiTrang.getString(j);
-
-                        stringArrayListLoaiThoiTrang.add(jsonObjectLoaiThoiTrang);
-                    }
-                    store.setLoaiThoiTrang(stringArrayListLoaiThoiTrang);
-
-                    result.add(store);
+                    magazine.setIdTapChi(jsonObject.getInt("IdTapChi"));
+                    magazine.setLoaiTapChi(jsonObject.getString("LoaiTapChi"));
+                    magazine.setTen(jsonObject.getString("Ten"));
+                    magazine.setMoTa(jsonObject.getString("MoTa"));
+                    magazine.setLinkHinh(jsonObject.getString("LinkHinh"));
+//
+                    result.add(magazine);
                 }
             }
 //            result.setDescription(root.getString("Description"));

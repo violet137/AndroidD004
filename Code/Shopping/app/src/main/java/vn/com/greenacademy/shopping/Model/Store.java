@@ -14,6 +14,33 @@ public class Store {
     double Lng;
     String LinkAnh;
     ArrayList<String> LoaiThoiTrang;
+    String GioMoCua ;
+    String SoDienThoai ;
+    long DanhGia;
+
+    public String getGioMoCua() {
+        return GioMoCua;
+    }
+
+    public void setGioMoCua(String gioMoCua) {
+        GioMoCua = gioMoCua;
+    }
+
+    public String getSoDienThoai() {
+        return SoDienThoai;
+    }
+
+    public void setSoDienThoai(String soDienThoai) {
+        SoDienThoai = soDienThoai;
+    }
+
+    public long getDanhGia() {
+        return DanhGia;
+    }
+
+    public void setDanhGia(long danhGia) {
+        DanhGia = danhGia;
+    }
 
     public int getId() {
         return Id;

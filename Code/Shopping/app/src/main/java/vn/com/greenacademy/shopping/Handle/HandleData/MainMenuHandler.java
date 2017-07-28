@@ -74,6 +74,8 @@ public class MainMenuHandler implements UrlPhotoCallBack {
                 Toast.makeText(activity, String.valueOf(bannerPhoto.getId()) + " " + bannerPhoto.getLoaiBanner(), Toast.LENGTH_SHORT).show();
             }
         };
+
+
     }
 
     // tai du lieu tu adapter len list

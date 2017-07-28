@@ -10,6 +10,7 @@ public class ServerUrl {
     public static final String HomeUrl = ServerLink + "api/Home/";
     public static final String DangNhapUrl = ServerLink + "api/Auth/Login";
     public static final String StoreUrl = ServerLink + "api/CuaHang/";
+    public static final String MagazineUrl = ServerLink + "api/TapChi/";
 
     public static final String DangKyUrl = ServerLink + "TaiKhoan/DangKy";
     public static final String DataUrl = ServerLink + "";
@@ -18,6 +19,8 @@ public class ServerUrl {
     public static final String UrlDanhSachKhuyenMai = HomeUrl + "KhuyenMai";
     public static final String UrlDanhBannerHome = HomeUrl + "BannerHome";
     public static final String UrlDanhSachStore = StoreUrl + "DanhSachCuaHang";
+    public static final String UrlDanhSachMagazine = MagazineUrl + "";
+    public static final String UrlDanhSachMagazineType = MagazineUrl + "LoaiThoiTrang";
 
 
 }
