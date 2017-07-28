@@ -4,9 +4,11 @@ package vn.com.greenacademy.shopping.Fragment.Main.SanPham;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.support.v7.widget.PopupMenu;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -22,6 +24,8 @@ import static vn.com.greenacademy.shopping.Util.SupportKeyList.TAG_DETAILS_SAN_P
  * A simple {@link Fragment} subclass.
  */
 public class ThongTinSanPhamFragment extends Fragment implements View.OnClickListener {
+    Button btnSizeInfo;
+
     private BaseFragment baseFragment;
     private ArrayList<SanPham> listSanPham = new ArrayList<>();
     private int position;
@@ -39,8 +43,10 @@ public class ThongTinSanPhamFragment extends Fragment implements View.OnClickLis
         final TextView tvTenVaMau = (TextView) root.findViewById(R.id.ten_va_mau_fragment_san_pham);
         final TextView tvSoLuong = (TextView) root.findViewById(R.id.so_luong_fragment_san_pham);
         ViewPager pagerSanPham = (ViewPager) root.findViewById(R.id.pager_fragment_san_pham);
+        btnSizeInfo = (Button) root.findViewById(R.id.button_size_info_san_pham);
 
         root.findViewById(R.id.button_info_san_pham).setOnClickListener(this);
+        btnSizeInfo.setOnClickListener(this);
 
         baseFragment = new BaseFragment(getActivity().getSupportFragmentManager());
         pagerSanPham.setAdapter(new SanPhamPagerAdapter(getActivity().getSupportFragmentManager(),listSanPham));
@@ -69,7 +75,15 @@ public class ThongTinSanPhamFragment extends Fragment implements View.OnClickLis
 
     @Override
     public void onClick(View v) {
-//        if (v.getId() == R.id.button_info_san_pham)
-//            new DetailsSanPhamFragment(getActivity()).show();
+        switch (v.getId()){
+            case R.id.button_info_san_pham:
+                new DetailsSanPhamFragment(getActivity(),null,null).show();
+                break;
+            case R.id.button_size_info_san_pham:
+                PopupMenu popupMenu = new PopupMenu(getActivity(), btnSizeInfo);
+                popupMenu.inflate(R.menu.menu_tool_bar);
+                popupMenu.show();
+                break;
+        }
     }
 }

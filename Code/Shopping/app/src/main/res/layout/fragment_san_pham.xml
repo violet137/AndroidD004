@@ -1,11 +1,13 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="vn.com.greenacademy.shopping.Fragment.Main.SanPham.ThongTinSanPhamFragment">
 
     <!-- Top info -->
     <LinearLayout
+        android:id="@+id/top_info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -41,24 +43,86 @@
     <android.support.v4.view.ViewPager
         android:id="@+id/pager_fragment_san_pham"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:layout_below="@id/top_info"
+        android:layout_above="@+id/bottom_info"/>
+
+    <!-- Nút share -->
+    <ImageButton
+        android:id="@+id/button_share_san_pham"
+        android:layout_width="@dimen/button_info_size"
+        android:layout_height="@dimen/button_info_size"
+        android:layout_below="@id/top_info"
+        android:src="@drawable/ic_menu_share"
+        android:background="@drawable/shape_button_scrim"
+        android:layout_marginTop="@dimen/button_share_margin_top" />
 
     <!-- Nút thông tin -->
     <ImageButton
         android:id="@+id/button_info_san_pham"
         android:layout_width="@dimen/button_info_size"
         android:layout_height="@dimen/button_info_size"
-        android:src="@android:drawable/ic_menu_info_details"
-        android:background="@null"
-        android:layout_marginTop="@dimen/button_info_margin_top" />
+        android:layout_below="@id/button_share_san_pham"
+        android:layout_marginTop="@dimen/button_info_margin_top"
+        android:background="@drawable/shape_button_scrim"
+        android:src="@android:drawable/ic_menu_info_details" />
 
     <!-- Bottom info -->
     <LinearLayout
+        android:id="@+id/bottom_info"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="55dp"
         android:orientation="horizontal"
         android:layout_gravity="bottom"
+        android:layout_alignParentBottom="true"
         android:background="@drawable/scrim">
 
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:srcCompat="@android:drawable/ic_menu_sort_by_size" />
+
+        <View
+            android:layout_width="0.1dp"
+            android:layout_height="match_parent"
+            android:background="@android:color/darker_gray"/>
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/red"
+            android:layout_margin="5dp"/>
+
+        <View
+            android:layout_width="0.1dp"
+            android:layout_height="match_parent"
+            android:background="@android:color/darker_gray"/>
+
+        <Button
+            android:id="@+id/button_size_info_san_pham"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/shape_button_scrim"
+            android:text="size"
+            android:textColor="@color/colorText"
+            android:layout_margin="5dp"/>
+
+        <View
+            android:layout_width="0.1dp"
+            android:layout_height="match_parent"
+            android:background="@android:color/darker_gray"/>
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:srcCompat="@drawable/shopping_bag" />
+
     </LinearLayout>
-</FrameLayout>
+</RelativeLayout>

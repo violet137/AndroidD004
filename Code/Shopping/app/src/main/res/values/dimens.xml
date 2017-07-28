@@ -70,7 +70,8 @@
     <dimen name="text_size_description_san_pham">15sp</dimen>
     <dimen name="button_thoat_size_san_pham">40dp</dimen>
     <dimen name="button_info_size">40dp</dimen>
-    <dimen name="button_info_margin_top">130dp</dimen>
+    <dimen name="button_share_margin_top">30dp</dimen>
+    <dimen name="button_info_margin_top">20dp</dimen>
     <dimen name="top_info_horizontal_padding">10dp</dimen>
     <dimen name="top_info_vertical_padding">3dp</dimen>
     <dimen name="text_size_info_san_pham">19sp</dimen>

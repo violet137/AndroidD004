@@ -52,7 +52,7 @@ public class DetailsSanPhamFragment extends Dialog implements View.OnClickListen
     private void configDialog(View root) {
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(root);
-        this.getWindow().setBackgroundDrawableResource(R.drawable.scrim);
+        this.getWindow().setBackgroundDrawableResource(R.drawable.dialog_scrim);
         this.getWindow().setLayout((int) (this.getContext().getResources().getDimension(R.dimen.dialog_chi_tiet_san_pham_width) / this.getContext().getResources().getDisplayMetrics().density), (int) (getContext().getResources().getDimension(R.dimen.dialog_chi_tiet_san_pham_height) / this.getContext().getResources().getDisplayMetrics().density));
     }
 }
