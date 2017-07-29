@@ -47,6 +47,8 @@ public class DiaLogStoreDetail extends DialogFragment implements View.OnClickLis
         ImageLoad imageLoad = new ImageLoad(getActivity());
         imageLoad.ImageLoad(store.getLinkAnh(), ivPhoto);
 
+        btnPhone.setText(store.getSoDienThoai());
+
         tvName.setText(store.getTenCuaHang()!=null? store.getTenCuaHang():"");
         tvDiaChi.setText(store.getDiaChi() !=null? store.getDiaChi():"");
         tvOpenHours.setText(store.getGioMoCua() !=null? store.getGioMoCua():"");
@@ -56,9 +58,9 @@ public class DiaLogStoreDetail extends DialogFragment implements View.OnClickLis
             String productsType = "";
             for (int i = 0; i < store.getLoaiThoiTrang().size(); i++) {
                 if (i==0){
-                    productsType = store.getLoaiThoiTrang().get(i);
+                    productsType = store.getLoaiThoiTrang().get(i).getTen();
                 }else {
-                    productsType = productsType + " - " + store.getLoaiThoiTrang().get(i);
+                    productsType = productsType + " - " + store.getLoaiThoiTrang().get(i).getTen();
                 }
             }
             tvType.setText(productsType);

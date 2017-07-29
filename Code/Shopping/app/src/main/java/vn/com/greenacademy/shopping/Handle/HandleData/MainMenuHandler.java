@@ -86,10 +86,6 @@ public class MainMenuHandler implements UrlPhotoCallBack {
 
     // tai du lieu tu file xml cua may vao doi tuong array de dua vao adapter
     public void setListView(ListView listView) {
-        this.listView = listView;
-    }
-
-    public void getDataMenuMain(){
         GetAdvertise getAdvertise = new GetAdvertise(this);
         getAdvertise.execute(ServerUrl.UrlDanhSachKhuyenMai);
 
@@ -99,7 +95,10 @@ public class MainMenuHandler implements UrlPhotoCallBack {
         GetBanner getBanner  = new GetBanner(this);
         getBanner.execute(ServerUrl.UrlDanhBannerHome);
 
+        this.listView = listView;
     }
+
+
 
     @Override
     public void urlCallBack(MenuPhoto menuPhoto, int flag) {
@@ -138,8 +137,6 @@ public class MainMenuHandler implements UrlPhotoCallBack {
                     menuMain.setType(menuPhoto.getBannerPhotoArrayList().get(i).getLoaiBanner());
                     mainArrayList.add(menuMain);
                 }
-
-
                 displayListview();
                 break;
             default:

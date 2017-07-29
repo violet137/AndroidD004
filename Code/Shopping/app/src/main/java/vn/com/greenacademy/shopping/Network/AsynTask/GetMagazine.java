@@ -76,7 +76,7 @@ class ParDataGetMagazine {
         try {
             JSONObject root = new JSONObject(data);
             if (root.getInt("Status") == 1){
-                JSONArray jsonArray = root.getJSONArray("CuaHangTranfers");
+                JSONArray jsonArray = root.getJSONArray("TapChiTranfers");
                 for (int i = 0; i < jsonArray.length(); i++) {
                     JSONObject jsonObject = jsonArray.getJSONObject(i);
                     Magazine magazine = new Magazine();

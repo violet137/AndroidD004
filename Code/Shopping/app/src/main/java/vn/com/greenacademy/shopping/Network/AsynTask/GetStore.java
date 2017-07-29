@@ -17,6 +17,7 @@ import java.util.ArrayList;
 import vn.com.greenacademy.shopping.Interface.StoreCallBack;
 import vn.com.greenacademy.shopping.Interface.UrlPhotoCallBack;
 import vn.com.greenacademy.shopping.Model.BannerPhoto;
+import vn.com.greenacademy.shopping.Model.FashionType;
 import vn.com.greenacademy.shopping.Model.MenuPhoto;
 import vn.com.greenacademy.shopping.Model.Store;
 import vn.com.greenacademy.shopping.Util.SupportKeyList;
@@ -75,6 +76,7 @@ class ParDataGetStore {
 
     public ArrayList<Store> parData(){
         ArrayList<Store> result = new ArrayList<>();
+        ArrayList<FashionType> temp;
         try {
             JSONObject root = new JSONObject(data);
             if (root.getInt("Status") == 1){
@@ -91,15 +93,28 @@ class ParDataGetStore {
                     store.setGioMoCua(jsonObject.getString("GioMoCua"));
                     store.setSoDienThoai(jsonObject.getString("SoDienThoai"));
                     store.setDanhGia(jsonObject.getLong("DanhGia"));
-
-                    ArrayList<String> stringArrayListLoaiThoiTrang = new ArrayList<>();
-                    JSONArray jsonArrayLoaiThoiTrang = jsonObject.getJSONArray("LoaiThoiTrang");
-                    for (int j = 0; j < jsonArrayLoaiThoiTrang.length(); j++) {
-                        String jsonObjectLoaiThoiTrang = jsonArrayLoaiThoiTrang.getString(j);
-
-                        stringArrayListLoaiThoiTrang.add(jsonObjectLoaiThoiTrang);
+//
+//                    ArrayList<String> stringArrayListLoaiThoiTrang = new ArrayList<>();
+//                    JSONArray jsonArrayLoaiThoiTrang = jsonObject.getJSONArray("LoaiThoiTrang");
+//                    for (int j = 0; j < jsonArrayLoaiThoiTrang.length(); j++) {
+//                        String jsonObjectLoaiThoiTrang = jsonArrayLoaiThoiTrang.getString(j);
+//
+//                        stringArrayListLoaiThoiTrang.add(jsonObjectLoaiThoiTrang);
+//                    }
+//                    store.setLoaiThoiTrang(stringArrayListLoaiThoiTrang);
+//                    JSONArray jsonArray = root.getJSONArray("LoaiThoiTrangTranfers");
+//
+                    temp = new ArrayList<>();
+                    JSONArray jsonArrayFashionType = jsonObject.getJSONArray("LoaiThoiTrang");
+                    for (int j = 0; j < jsonArrayFashionType.length(); j++) {
+                        JSONObject jsonObjectFashionType = jsonArrayFashionType.getJSONObject(j);
+                        FashionType fashionType = new FashionType();
+                        fashionType.setTen(jsonObjectFashionType.getString("Ten"));
+                        fashionType.setLoaiThoiTrang(jsonObjectFashionType.getString("loaiThoiTrang"));
+                        temp.add(fashionType);
                     }
-                    store.setLoaiThoiTrang(stringArrayListLoaiThoiTrang);
+                    store.setLoaiThoiTrang(temp);
+
 
                     result.add(store);
                 }

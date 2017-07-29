@@ -13,13 +13,14 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:maxLines="1"
-        android:text="TextView" />
+        android:text="TextView"
+        android:visibility="gone" />
 
     <ImageView
         android:id="@+id/imageView_item_magazine"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:scaleType="fitXY"
+        android:layout_width="@dimen/iv_layout_width_360dp"
+        android:layout_height="@dimen/iv_layout_height_280dp"
+        android:scaleType="centerCrop"
         app:srcCompat="@drawable/banner_xu_huong_thoi_trang" />
 
     <TextView
@@ -29,7 +30,8 @@
         android:gravity="center"
         android:maxLines="1"
         android:text="TextView"
-        android:textSize="@dimen/text_size_15dp" />
+        android:textSize="@dimen/text_size_15dp"
+        android:visibility="gone" />
 
     <TextView
         android:id="@+id/tvName_item_magazine"
@@ -38,6 +40,7 @@
         android:gravity="center"
         android:maxLines="2"
         android:text="TextView"
+        android:textColor="@color/cardview_dark_background"
         android:textSize="@dimen/text_size_40dp" />
 
     <TextView
@@ -47,7 +50,8 @@
         android:gravity="center"
         android:maxLines="4"
         android:text="TextView"
-        android:textSize="@dimen/text_size_20dp" />
+        android:textColor="@color/cardview_dark_background"
+        android:textSize="@dimen/text_size_15dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -58,5 +62,11 @@
         android:text="@string/read_the_story"
         android:textColor="#ff000000"
         android:textSize="@dimen/text_size_10dp" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/btnDiviver_1px"
+        android:layout_marginTop="@dimen/layout_margin_10dp"
+        android:background="@color/colorPrimaryDark" />
 
 </LinearLayout>

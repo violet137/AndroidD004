@@ -13,7 +13,7 @@ public class Store {
     double Lat;
     double Lng;
     String LinkAnh;
-    ArrayList<String> LoaiThoiTrang;
+    ArrayList<FashionType> LoaiThoiTrang;
     String GioMoCua ;
     String SoDienThoai ;
     long DanhGia;
@@ -90,11 +90,11 @@ public class Store {
         LinkAnh = linkAnh;
     }
 
-    public ArrayList<String> getLoaiThoiTrang() {
+    public ArrayList<FashionType> getLoaiThoiTrang() {
         return LoaiThoiTrang;
     }
 
-    public void setLoaiThoiTrang(ArrayList<String> loaiThoiTrang) {
+    public void setLoaiThoiTrang(ArrayList<FashionType> loaiThoiTrang) {
         LoaiThoiTrang = loaiThoiTrang;
     }
 }

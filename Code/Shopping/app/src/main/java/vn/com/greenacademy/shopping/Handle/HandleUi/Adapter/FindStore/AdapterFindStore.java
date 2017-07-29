@@ -53,9 +53,9 @@ public class AdapterFindStore extends ArrayAdapter {
         String loaiThoiTrang = "";
         for (int i = 0; i < store.getLoaiThoiTrang().size(); i++) {
             if (i==0){
-                loaiThoiTrang += store.getLoaiThoiTrang().get(i);
+                loaiThoiTrang += store.getLoaiThoiTrang().get(i).getTen();
             }else {
-                loaiThoiTrang = loaiThoiTrang + " - " + store.getLoaiThoiTrang().get(i);
+                loaiThoiTrang = loaiThoiTrang + " - " + store.getLoaiThoiTrang().get(i).getTen();
             }
         }
         tvLoai.setText(loaiThoiTrang);
