@@ -17,8 +17,8 @@
 
             <ImageView
                 android:id="@+id/ivPhoto_dialog_StoreDeatil"
-                android:layout_width="360dp"
-                android:layout_height="280dp"
+                android:layout_width="@dimen/iv_layout_width_360dp"
+                android:layout_height="@dimen/iv_layout_height_280dp"
                 android:scaleType="centerCrop"
                 app:srcCompat="@drawable/banner_test2" />
 
@@ -26,7 +26,6 @@
                 android:id="@+id/ratingBar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:elevation="0dp"
                 android:isIndicator="true"
                 android:numStars="4"
                 android:rating="2" />

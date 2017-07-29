@@ -15,6 +15,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.ArrayList;
@@ -120,6 +121,16 @@ public class FindStoreHandler implements StoreCallBack, OnMapReadyCallback {
 //                return false;
 //            }
 //        });
+
+        mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+            @Override
+            public boolean onMarkerClick(Marker marker) {
+
+                DiaLogStoreDetail diaLogStoreDetail = new DiaLogStoreDetail(storeArrayList.get(2));
+                diaLogStoreDetail.show(((AppCompatActivity)activity).getSupportFragmentManager(), "dialogStoreDetail" );
+                return false;
+            }
+        });
     }
 
     private void showMarker(ArrayList<Store> storeArrayList) {
