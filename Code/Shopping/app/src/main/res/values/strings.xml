@@ -102,4 +102,10 @@
     <string name="read_the_story">READ THE STORY</string>
     <string name="title_activity_maps">Map</string>
 
+    <!-- Fragment Dang Ky -->
+    <string name="Directions">Chỉ Đường</string>
+    <string name="Phone_Number">+84 5678 9999 </string>
+    <string name="In_This_Store_You_Can_Find">Các loại sản phẩm của cửa hàng</string>
+    <string name="Opening_Hours">Giờ mở cửa</string>
+
 </resources>

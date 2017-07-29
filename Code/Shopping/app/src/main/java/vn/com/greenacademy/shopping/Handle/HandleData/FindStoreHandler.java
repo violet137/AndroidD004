@@ -6,6 +6,9 @@ import android.content.pm.PackageManager;
 import android.location.Location;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -17,6 +20,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import java.util.ArrayList;
 
 import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.FindStore.AdapterFindStore;
+import vn.com.greenacademy.shopping.Handle.HandleUi.Dialog.DiaLogStoreDetail;
 import vn.com.greenacademy.shopping.Interface.StoreCallBack;
 import vn.com.greenacademy.shopping.Model.Store;
 import vn.com.greenacademy.shopping.R;
@@ -32,6 +36,7 @@ public class FindStoreHandler implements StoreCallBack, OnMapReadyCallback {
     private GoogleMap mMap;
     Activity activity;
     ListView listView;
+    ArrayList<Store> storeArrayList;
 
     //// [Filter Start] ////
 
@@ -44,6 +49,14 @@ public class FindStoreHandler implements StoreCallBack, OnMapReadyCallback {
     //// [listView Dia Chi start] ////
     public void setListView(ListView listView){
         this.listView = listView;
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                DiaLogStoreDetail diaLogStoreDetail = new DiaLogStoreDetail(storeArrayList.get(position));
+                diaLogStoreDetail.show(((AppCompatActivity)activity).getSupportFragmentManager(), "dialogStoreDetail" );
+            }
+        });
     }
     //// [listView Dia Chi end] ////
 
@@ -55,6 +68,7 @@ public class FindStoreHandler implements StoreCallBack, OnMapReadyCallback {
 
     @Override
     public void storeCallBack(ArrayList<Store> storeArrayList) {
+        this.storeArrayList = storeArrayList;
         // load data len listview
         AdapterFindStore adapterFindStore = new AdapterFindStore(activity, R.layout.item_find_store, storeArrayList);
         listView.setAdapter(adapterFindStore);
