@@ -74,6 +74,8 @@ public class FindStoreFragment extends Fragment {
 
         findStoreHandler.setListView(listView);
 
+        findStoreHandler.getMyLocation();
+
         GetStore getStore = new GetStore(findStoreHandler);
         getStore.execute(ServerUrl.UrlDanhSachStore);
 

@@ -2,14 +2,17 @@ package vn.com.greenacademy.shopping.Handle.HandleData;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.Context;
 import android.content.pm.PackageManager;
 import android.location.Location;
+import android.location.LocationManager;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -17,6 +20,8 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.FindStore.AdapterFindStore;
@@ -36,14 +41,17 @@ public class FindStoreHandler implements StoreCallBack, OnMapReadyCallback {
     Activity activity;
     ListView listView;
     ArrayList<Store> storeArrayList;
+    Location location;
+
+    public FindStoreHandler(Activity activity) {
+        this.activity = activity;
+    }
 
     //// [dialog store detail Start] ////
     public void showDialog(int position){
-        DiaLogStoreDetail diaLogStoreDetail = new DiaLogStoreDetail(storeArrayList.get(position));
+        DiaLogStoreDetail diaLogStoreDetail = new DiaLogStoreDetail(storeArrayList.get(position), location.getLatitude(), location.getLongitude());
         diaLogStoreDetail.show(((AppCompatActivity)activity).getSupportFragmentManager(), "dialogStoreDetail" );
     }
-
-
     //// [dialog store detail end] ////
 
 
@@ -64,8 +72,15 @@ public class FindStoreHandler implements StoreCallBack, OnMapReadyCallback {
 
 
     //// [ Google map start ] ///////
-    public FindStoreHandler(Activity activity) {
-        this.activity = activity;
+
+    public void getMyLocation(){
+        LocationManager mlocationManager = (LocationManager) activity.getSystemService(Context.LOCATION_SERVICE);
+        if (ActivityCompat.checkSelfPermission(activity, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
+                || ActivityCompat.checkSelfPermission(activity, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            location = mlocationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+        }else {
+            Toast.makeText(getApplicationContext(), "ko the lay vi tri" , Toast.LENGTH_LONG).show();
+        }
     }
 
     @Override
@@ -73,7 +88,8 @@ public class FindStoreHandler implements StoreCallBack, OnMapReadyCallback {
         this.storeArrayList = storeArrayList;
 
         // load data len listview
-        AdapterFindStore adapterFindStore = new AdapterFindStore(activity, R.layout.item_find_store, storeArrayList);
+        AdapterFindStore adapterFindStore = new AdapterFindStore(activity, R.layout.item_find_store, storeArrayList,
+                location.getLatitude(), location.getLongitude());
         listView.setAdapter(adapterFindStore);
 
         // show map marker

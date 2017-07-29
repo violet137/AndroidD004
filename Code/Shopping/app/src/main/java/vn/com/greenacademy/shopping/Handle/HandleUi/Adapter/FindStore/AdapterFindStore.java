@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import vn.com.greenacademy.shopping.Model.SlideMenu;
@@ -24,12 +25,17 @@ public class AdapterFindStore extends ArrayAdapter {
     Activity activity;
     int layoutItem;
     ArrayList<Store> arrayList;
+    double myLat;
+    double myLng;
 
-    public AdapterFindStore(Activity activity, int layoutItem, ArrayList<Store> objects){
+    public AdapterFindStore(Activity activity, int layoutItem, ArrayList<Store> objects,
+                            double myLat, double myLng){
         super(activity,layoutItem,objects);
         this.activity = activity;
         this.layoutItem=layoutItem;
         arrayList=objects;
+        this.myLat = myLat;
+        this.myLng = myLng;
     }
 
 
@@ -47,8 +53,10 @@ public class AdapterFindStore extends ArrayAdapter {
         TextView tvDiaChi = (TextView) convertView.findViewById(R.id.tvDiaChi_find_store);
         TextView tvLoai = (TextView) convertView.findViewById(R.id.tvLoai_find_store);
 
+
+
         tvName.setText(store.getTenCuaHang());
-//        tvKhoangCach.setText(store.());
+        tvKhoangCach.setText(tinhDuongChimBay(store.getLat(), store.getLng()) + " Km");
         tvDiaChi.setText(store.getDiaChi());
         String loaiThoiTrang = "";
         for (int i = 0; i < store.getLoaiThoiTrang().size(); i++) {
@@ -60,6 +68,29 @@ public class AdapterFindStore extends ArrayAdapter {
         }
         tvLoai.setText(loaiThoiTrang);
 
+
+
         return convertView;
+    }
+
+    private String tinhDuongChimBay(double lat, double lng) {
+        final int banKinhTraiDat = 6317;
+        double dLat = (lat-myLat)*(Math.PI/180);
+        double dLng = (lng-myLng)*(Math.PI/180);
+
+        double latToRad = lat*(Math.PI/180);
+        double mylatToRad = myLat*(Math.PI/180);
+
+        double a = Math.sin(dLat / 2) * Math.sin(dLat / 2)
+                + Math.cos(latToRad) * Math.cos(mylatToRad) * Math.sin(dLng / 2) * Math.sin(dLng / 2);
+
+        double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+        float result = (float) (banKinhTraiDat * c);
+
+        // format lại số
+        DecimalFormat decimalFormat = new DecimalFormat("###.##");
+
+        return decimalFormat.format(result);
     }
 }

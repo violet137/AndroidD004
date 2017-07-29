@@ -116,7 +116,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@color/cardview_dark_background"
-                    android:drawableLeft="@drawable/cast_ic_expanded_controller_closed_caption"
+                    android:drawableLeft="@android:drawable/ic_menu_mylocation"
                     android:text="@string/Directions"
                     android:textColor="@color/cardview_light_background" />
 
