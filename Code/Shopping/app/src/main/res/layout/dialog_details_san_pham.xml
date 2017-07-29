@@ -13,7 +13,8 @@
         android:layout_height="@dimen/button_thoat_size_san_pham"
         android:layout_gravity="end"
         android:layout_margin="@dimen/button_image_margin"
-        app:srcCompat="@drawable/mr_dialog_close_light" />
+        app:srcCompat="@drawable/ic_cancel"
+        android:background="@drawable/shape_button_scrim"/>
 
     <View
         android:layout_width="match_parent"

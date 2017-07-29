@@ -256,18 +256,23 @@ public class GoiAPIServerAsyncTask extends AsyncTask<String, Void, String> {
 
     private void XuLyData(String result) {
         try {
+            //Parse data
             JSONObject root = new JSONObject(result);
             XuHuongThoiTrang xuHuongThoiTrang = new XuHuongThoiTrang();
-            xuHuongThoiTrang.setTenXuHuong(root.getString("TenXuHuong"));
-            xuHuongThoiTrang.setBanner(root.getString("Banner"));
+            xuHuongThoiTrang.setIdXuHuong(root.getInt("IdXuHuong"));
+            xuHuongThoiTrang.setVideo(root.getBoolean("isVideo"));
+            xuHuongThoiTrang.setLinkHinhMoTa(root.getString("LinkHinhMoTa"));
+            xuHuongThoiTrang.setHinhDaiDien(root.getString("HinhDaiDien"));
             //List set đồ
             JSONArray jsonArrSetDo = root.getJSONArray("SetDo");
             for (int i = 0; i < jsonArrSetDo.length(); i++) {
                 JSONObject objSetDo = jsonArrSetDo.getJSONObject(i);
                 SetDo setDo = new SetDo();
-                setDo.setTenSetDo(objSetDo.getString("TenSetDo"));
+                setDo.setIdSetDo(objSetDo.getInt("Id"));
+                setDo.setTenSetDo(objSetDo.getString("Ten"));
                 setDo.setDescriptionSetDo(objSetDo.getString("Description"));
-                setDo.setHinhSetDo(objSetDo.getString("Hinh"));
+                setDo.setHinhMoTa(objSetDo.getString("HinhDaiDien"));
+                setDo.setNgayTao(objSetDo.getString("NgayTao"));
                 //List sản phẩm
                 JSONArray jsonArrSanPham = objSetDo.getJSONArray("SanPham");
                 for (int j = 0; j < jsonArrSanPham.length(); j++) {
@@ -278,8 +283,11 @@ public class GoiAPIServerAsyncTask extends AsyncTask<String, Void, String> {
                     sanPham.setLoaiSanPham(objSanPham.getString("Loai"));
                     sanPham.setChiTietSanPham(objSanPham.getString("ChiTiet"));
                     //...
+                    setDo.getListSanPham().add(sanPham);
                 }
             }
+
+            //Truyền kết quả về cho class yêu cầu
             Bundle data = new Bundle();
             data.putSerializable("DataXuHuongThoiTrang", xuHuongThoiTrang);
             dataCallBack.KetQua(SupportKeyList.LAY_DATA_THANH_CONG, data);

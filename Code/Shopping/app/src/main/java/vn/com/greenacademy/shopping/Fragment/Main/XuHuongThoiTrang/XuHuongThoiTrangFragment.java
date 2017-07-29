@@ -13,8 +13,10 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import vn.com.greenacademy.shopping.Handle.HandleData.ImageLoad;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.SanPham.ListSanPhamAdapter;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.XuHuongThoiTrang.ListSetDoAdapter;
+import vn.com.greenacademy.shopping.Handle.HandleUi.Dialog.LoadingDialog;
 import vn.com.greenacademy.shopping.Interface.DataCallBack;
 import vn.com.greenacademy.shopping.Interface.SetDoCallBack;
 import vn.com.greenacademy.shopping.Model.SanPham;
@@ -30,18 +32,23 @@ import vn.com.greenacademy.shopping.Util.Ui.BaseFragment;
  * A simple {@link Fragment} subclass.
  */
 public class XuHuongThoiTrangFragment extends Fragment implements DataCallBack, SetDoCallBack {
-    private XuHuongThoiTrang xuHuongThoiTrang;
+    private ImageView vBanner;
+    private RecyclerView vListSetDo;
+    private RecyclerView vListSanPham;
 
+    private XuHuongThoiTrang xuHuongThoiTrang;
+    private LoadingDialog loadingDialog;
     //Data test
+    private XuHuongThoiTrang testXuHuongThoiTrang;
     private int[] listDataBanner;
     private int position;
 
-    public XuHuongThoiTrangFragment(String idXuHuong){
-        new GoiAPIServerAsyncTask(this).execute(SupportKeyList.API_DATA_XU_HUONG_THOI_TRANG, ServerUrl.DataUrl, idXuHuong);
-    }
+//    public XuHuongThoiTrangFragment(long idXuHuong){
+//        new GoiAPIServerAsyncTask(this).execute(SupportKeyList.API_DATA_XU_HUONG_THOI_TRANG, ServerUrl.DataUrl, String.valueOf(idXuHuong));
+//    }
 
-    public XuHuongThoiTrangFragment(int pos) {
-        position = pos;
+    public XuHuongThoiTrangFragment(int position) {
+        this.position = position;
     }
 
     @Override
@@ -49,29 +56,39 @@ public class XuHuongThoiTrangFragment extends Fragment implements DataCallBack, 
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_xu_huong_thoi_trang, container, false);
-        ImageView vBanner = (ImageView) root.findViewById(R.id.head_image_fragment_xu_huong_thoi_trang);
-        RecyclerView vListSetDo = (RecyclerView) root.findViewById(R.id.list_set_do_fragment_xu_huong_thoi_trang);
-        RecyclerView vListSanPham = (RecyclerView) root.findViewById(R.id.list_san_pham_fragment_xu_huong_thoi_trang);
+        vBanner = (ImageView) root.findViewById(R.id.head_image_fragment_xu_huong_thoi_trang);
+        vListSetDo = (RecyclerView) root.findViewById(R.id.list_set_do_fragment_xu_huong_thoi_trang);
+        vListSanPham = (RecyclerView) root.findViewById(R.id.list_san_pham_fragment_xu_huong_thoi_trang);
 
+        loadingDialog = new LoadingDialog(getActivity(), new BaseFragment(getActivity().getSupportFragmentManager()));
+        loadingDialog.show();
         DataTest();
-        vBanner.setImageResource(listDataBanner[position]);
+        LoadUI();
+        return root;
+    }
+
+    private void LoadUI() {
+//        if(!xuHuongThoiTrang.isVideo()) {
+//            ImageLoad imageLoad = new ImageLoad(getActivity());
+//            imageLoad.ImageLoad(xuHuongThoiTrang.getLinkHinhMoTa(), vBanner);
+//        }
+        vBanner.setImageResource(listDataBanner[0]);
         //List set đồ
-        if (xuHuongThoiTrang.getListSetDo() != null) {
+        if (testXuHuongThoiTrang.getListSetDo() != null) {
             vListSetDo.setLayoutManager(new GridLayoutManager(getActivity(), 1));
             vListSetDo.setNestedScrollingEnabled(false);
-            vListSetDo.setAdapter(new ListSetDoAdapter(getActivity() , this, xuHuongThoiTrang.getListSetDo()));
+            vListSetDo.setAdapter(new ListSetDoAdapter(getActivity() , this, testXuHuongThoiTrang.getListSetDo()));
         }
         //List sản phẩm
         vListSanPham.setLayoutManager(new GridLayoutManager(getActivity(), 2));
         vListSanPham.setNestedScrollingEnabled(false);
-        vListSanPham.setAdapter(new ListSanPhamAdapter(getActivity(), xuHuongThoiTrang.getListSanPham(), new BaseFragment(getActivity().getSupportFragmentManager()), null));
-
-        return root;
+        vListSanPham.setAdapter(new ListSanPhamAdapter(getActivity(), testXuHuongThoiTrang.getListSanPham(), new BaseFragment(getActivity().getSupportFragmentManager()), null));
+        loadingDialog.dismiss();
     }
 
     @Override
     public void clickSetDo(int position) {
-        ChiTietSetDoDialog chiTietSetDoDialog = new ChiTietSetDoDialog(getActivity(), xuHuongThoiTrang.getListSetDo().get(position), new BaseFragment(getActivity().getSupportFragmentManager()));
+        ChiTietSetDoDialog chiTietSetDoDialog = new ChiTietSetDoDialog(getActivity(), testXuHuongThoiTrang.getListSetDo().get(position), new BaseFragment(getActivity().getSupportFragmentManager()));
         chiTietSetDoDialog.show();
     }
 
@@ -85,7 +102,7 @@ public class XuHuongThoiTrangFragment extends Fragment implements DataCallBack, 
                 SanPham sanPham = new SanPham("Sản phẩm " + String.valueOf(j+1), "Men", "Description " + String.valueOf(j+1), "Details " + String.valueOf(j+1), null, null, 20.99, null, 0);
                 listSanPhamSetDo.add(sanPham);
             }
-            listSetDo.add(new SetDo("Set đồ thứ " + String.valueOf(i), "Description " + String.valueOf(i), null, listSanPhamSetDo));
+            listSetDo.add(new SetDo(i, "Set đồ thứ " + String.valueOf(i), "Description " + String.valueOf(i),null,  null, listSanPhamSetDo));
         }
 
         //List Sản phẩm
@@ -93,7 +110,7 @@ public class XuHuongThoiTrangFragment extends Fragment implements DataCallBack, 
             SanPham sanPham = new SanPham("Sản phẩm " + String.valueOf(i+1), "Men", "Description " + String.valueOf(i+1), "Details " + String.valueOf(i+1), null, null, 20.99 + i, null, 0);
             listSanPham.add(sanPham);
         }
-        xuHuongThoiTrang = new XuHuongThoiTrang("testTenXuHuong", "Men", null, listSetDo, listSanPham);
+        testXuHuongThoiTrang = new XuHuongThoiTrang(0, "testTenXuHuong", null, false, "Men", null, listSetDo, listSanPham);
 
         //Data banner
         TypedArray tempListBanner = getActivity().getResources().obtainTypedArray(R.array.arr_hinh);
@@ -114,10 +131,13 @@ public class XuHuongThoiTrangFragment extends Fragment implements DataCallBack, 
                 break;
             case SupportKeyList.LAY_DATA_THANH_CONG:
                 xuHuongThoiTrang = (XuHuongThoiTrang) bundle.getSerializable("DataXuHuongThoiTrang");
+                DataTest();
+                LoadUI();
                 break;
             default:
                 break;
         }
+        loadingDialog.dismiss();
     }
 
 }

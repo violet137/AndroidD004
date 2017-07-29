@@ -41,9 +41,7 @@ public class MagazineFragment extends Fragment {
         final ViewPager viewPager = (ViewPager) view.findViewById(R.id.viewPager_magazine_fragment);
 
         MagazineHandler magazineHandler = new MagazineHandler(getActivity());
-
         magazineHandler.getMagazineType();
-
         magazineHandler.setLayoutMagazineFragment(viewPager, tabLayout);
 
         return view;

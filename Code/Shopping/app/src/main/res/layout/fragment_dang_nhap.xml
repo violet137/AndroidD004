@@ -12,7 +12,7 @@
         android:layout_height="@dimen/title_height"
         android:gravity="center_vertical"
         android:paddingLeft="@dimen/vertical_padding"
-        android:background="@color/colorPrimaryDark"
+        android:background="@color/colorAccent"
         android:text="@string/title_dang_nhap"
         android:textColor="@color/colorText"
         android:textSize="@dimen/title_size"

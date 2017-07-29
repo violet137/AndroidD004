@@ -20,7 +20,6 @@ public class MainFragment extends Fragment {
     ListView lv_menu_main;
 
     private MainMenuHandler mainMenuHandler = null;
-    private BaseFragment baseFragment;
 
     public MainFragment() {
 
@@ -34,7 +33,7 @@ public class MainFragment extends Fragment {
         lv_menu_main = (ListView) view.findViewById(R.id.lv_menu_mani);
 
         //Xử lý sự kiện
-        mainMenuHandler = new MainMenuHandler(getActivity());
+        mainMenuHandler = new MainMenuHandler(getActivity(), new BaseFragment(getActivity().getSupportFragmentManager()));
 
         // ham dieu khien click item tren menu main
         mainMenuHandler.clickItemMenuMain();

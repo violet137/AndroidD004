@@ -66,7 +66,7 @@ public class MagazineHandler implements MagazineCallBack, MagazineTypeCallBack {
 
     @Override
     public void magazineCallBack(ArrayList<Magazine> magazineArrayList) {
-//        AdapterMagazineRecyclerView adapterMagazineRecyclerView = new AdapterMagazineRecyclerView
+        //        AdapterMagazineRecyclerView adapterMagazineRecyclerView = new AdapterMagazineRecyclerView
 //                (activity,onClickListener,magazineArrayList);
 //        recyclerView.setAdapter(adapterMagazineRecyclerView);
     }

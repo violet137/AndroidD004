@@ -5,19 +5,20 @@ package vn.com.greenacademy.shopping.Model;
  */
 
 public class SanPham {
+    private long idSanPham;
     private String tenSanPham;
+    private String ngayTao;
     private String loaiSanPham;
     private String description;
     private String chiTietSanPham;
     private String[] hinhSanPham;
-    private String[] mauSanPham;
+    private String mauSanPham;
     private double giaSanPham;
     private String[] size;
     private int giamGia;
-
     public SanPham(){}
 
-    public SanPham(String tenSanPham, String loaiSanPham, String description, String chiTietSanPham, String[] hinhSanPham, String[] mauSanPham, double giaSanPham, String[] size, int giamGia) {
+    public SanPham(String tenSanPham, String loaiSanPham, String description, String chiTietSanPham, String[] hinhSanPham, String mauSanPham, double giaSanPham, String[] size, int giamGia) {
         this.tenSanPham = tenSanPham;
         this.loaiSanPham = loaiSanPham;
         this.description = description;
@@ -69,11 +70,11 @@ public class SanPham {
         this.hinhSanPham = hinhSanPham;
     }
 
-    public String[] getMauSanPham() {
+    public String getMauSanPham() {
         return mauSanPham;
     }
 
-    public void setMauSanPham(String[] mauSanPham) {
+    public void setMauSanPham(String mauSanPham) {
         this.mauSanPham = mauSanPham;
     }
 

@@ -1,17 +1,14 @@
 package vn.com.greenacademy.shopping.Handle.HandleData;
 
 import android.app.Activity;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import com.google.android.gms.analytics.ecommerce.Product;
-
 import java.util.ArrayList;
 
-import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.AdapterMenuMain;
 import vn.com.greenacademy.shopping.Fragment.Main.XuHuongThoiTrang.XuHuongThoiTrangFragment;
+import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.AdapterMenuMain;
 import vn.com.greenacademy.shopping.Interface.UrlPhotoCallBack;
 import vn.com.greenacademy.shopping.Model.AdvertisePhoto;
 import vn.com.greenacademy.shopping.Model.BannerPhoto;
@@ -37,13 +34,14 @@ public class MainMenuHandler implements UrlPhotoCallBack {
     Activity activity;
     View.OnClickListener onClickListenerAdvertise;
     View.OnClickListener onClickListenerProducts;
-    View.OnClickListener onClickListenerBanner;
+    View.OnClickListener onClickListenerHotTrend;
 
     ArrayList<MenuMain> mainArrayList = new ArrayList<>();
     ListView listView;
 
-    public MainMenuHandler(Activity activity) {
+    public MainMenuHandler(Activity activity, BaseFragment baseFragment) {
         this.activity = activity;
+        this.baseFragment = baseFragment;
     }
 
     // dieu khien phần click menu main
@@ -67,10 +65,11 @@ public class MainMenuHandler implements UrlPhotoCallBack {
         };
 
         // click phan bai bao va xu huong
-        onClickListenerBanner = new View.OnClickListener() {
+        onClickListenerHotTrend = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 BannerPhoto bannerPhoto  = (BannerPhoto) v.getTag();
+                baseFragment.ChuyenFragment(new XuHuongThoiTrangFragment(0), SupportKeyList.TAG_XU_HUONG_THOI_TRANG, true);
                 Toast.makeText(activity, String.valueOf(bannerPhoto.getId()) + " " + bannerPhoto.getLoaiBanner(), Toast.LENGTH_SHORT).show();
             }
         };
@@ -81,7 +80,7 @@ public class MainMenuHandler implements UrlPhotoCallBack {
     // tai du lieu tu adapter len list
     public void displayListview() {
         adapterMenuMain = new AdapterMenuMain(activity, R.layout.item_listview_menu_main, mainArrayList,
-                onClickListenerAdvertise, onClickListenerProducts, onClickListenerBanner);
+                onClickListenerAdvertise, onClickListenerProducts, onClickListenerHotTrend);
         listView.setAdapter(adapterMenuMain);
     }
 

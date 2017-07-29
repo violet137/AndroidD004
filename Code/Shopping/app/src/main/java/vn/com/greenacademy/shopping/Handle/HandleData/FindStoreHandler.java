@@ -17,17 +17,15 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-
 import java.util.ArrayList;
 
 import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.FindStore.AdapterFindStore;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Dialog.DiaLogStoreDetail;
 import vn.com.greenacademy.shopping.Interface.StoreCallBack;
 import vn.com.greenacademy.shopping.Model.Store;
-import vn.com.greenacademy.shopping.R;
 
 import static com.facebook.FacebookSdk.getApplicationContext;
-
+import vn.com.greenacademy.shopping.R;
 /**
  * Created by ADMIN on 7/28/2017.
  */
@@ -58,6 +56,7 @@ public class FindStoreHandler implements StoreCallBack, OnMapReadyCallback {
                 diaLogStoreDetail.show(((AppCompatActivity)activity).getSupportFragmentManager(), "dialogStoreDetail" );
             }
         });
+
     }
     //// [listView Dia Chi end] ////
 
@@ -70,6 +69,7 @@ public class FindStoreHandler implements StoreCallBack, OnMapReadyCallback {
     @Override
     public void storeCallBack(ArrayList<Store> storeArrayList) {
         this.storeArrayList = storeArrayList;
+
         // load data len listview
         AdapterFindStore adapterFindStore = new AdapterFindStore(activity, R.layout.item_find_store, storeArrayList);
         listView.setAdapter(adapterFindStore);

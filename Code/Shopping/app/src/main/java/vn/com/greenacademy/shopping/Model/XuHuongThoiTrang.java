@@ -8,19 +8,35 @@ import java.util.ArrayList;
  */
 
 public class XuHuongThoiTrang implements Serializable {
+    private long idXuHuong;
     private String tenXuHuong;
+    private String linkHinhMoTa;
+    private boolean isVideo;
     private String loai;
-    private String banner;
+    private String hinhDaiDien;
     private ArrayList<SetDo> listSetDo = new ArrayList<>();
     private ArrayList<SanPham> listSanPham = new ArrayList<>();
 
-    public XuHuongThoiTrang(){}
-    public XuHuongThoiTrang(String tenXuHuong, String loai, String banner, ArrayList<SetDo> listSetDo, ArrayList<SanPham> listSanPham) {
+    public XuHuongThoiTrang() {
+    }
+
+    public XuHuongThoiTrang(long idXuHuong, String tenXuHuong, String linkHinhMoTa, boolean isVideo, String loai, String hinhDaiDien, ArrayList<SetDo> listSetDo, ArrayList<SanPham> listSanPham) {
+        this.idXuHuong = idXuHuong;
         this.tenXuHuong = tenXuHuong;
+        this.linkHinhMoTa = linkHinhMoTa;
+        this.isVideo = isVideo;
         this.loai = loai;
-        this.banner = banner;
+        this.hinhDaiDien = hinhDaiDien;
         this.listSetDo = listSetDo;
         this.listSanPham = listSanPham;
+    }
+
+    public long getIdXuHuong() {
+        return idXuHuong;
+    }
+
+    public void setIdXuHuong(long idXuHuong) {
+        this.idXuHuong = idXuHuong;
     }
 
     public String getTenXuHuong() {
@@ -31,6 +47,22 @@ public class XuHuongThoiTrang implements Serializable {
         this.tenXuHuong = tenXuHuong;
     }
 
+    public String getLinkHinhMoTa() {
+        return linkHinhMoTa;
+    }
+
+    public void setLinkHinhMoTa(String linkHinhMoTa) {
+        this.linkHinhMoTa = linkHinhMoTa;
+    }
+
+    public boolean isVideo() {
+        return isVideo;
+    }
+
+    public void setVideo(boolean video) {
+        isVideo = video;
+    }
+
     public String getLoai() {
         return loai;
     }
@@ -39,12 +71,12 @@ public class XuHuongThoiTrang implements Serializable {
         this.loai = loai;
     }
 
-    public String getBanner() {
-        return banner;
+    public String getHinhDaiDien() {
+        return hinhDaiDien;
     }
 
-    public void setBanner(String banner) {
-        this.banner = banner;
+    public void setHinhDaiDien(String hinhDaiDien) {
+        this.hinhDaiDien = hinhDaiDien;
     }
 
     public ArrayList<SetDo> getListSetDo() {

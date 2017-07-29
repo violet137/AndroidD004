@@ -57,7 +57,6 @@ public class FindStoreFragment extends Fragment {
         final ListView listView = (ListView) view.findViewById(R.id.lvStore_find_store);
 
         final boolean[] flag = {true};
-
         view.findViewById(R.id.btnStore_find_store).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
