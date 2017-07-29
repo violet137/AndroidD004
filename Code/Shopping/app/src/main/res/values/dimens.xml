@@ -108,5 +108,9 @@
     <dimen name="textView_layout_width">80dp</dimen>
     <dimen name="textView_textSize_find_store">18dp</dimen>
     <dimen name="linearLayout_padding">10dp</dimen>
+    
+    <!-- dialog store detail -->
+    <dimen name="layout_object">10dp</dimen>
+    <dimen name="layout_margin_20dp">20dp</dimen>
 
 </resources>
