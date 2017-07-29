@@ -66,19 +66,21 @@
     <dimen name="item_list_san_pham_image_height">200dp</dimen>
 
     <!-- Thông tin sản phẩm -->
+    <dimen name="thong_tin_san_pham_horizontal_margin">10dp</dimen>
     <dimen name="text_size_title_description_san_pham">20sp</dimen>
     <dimen name="text_size_description_san_pham">15sp</dimen>
     <dimen name="button_thoat_size_san_pham">40dp</dimen>
-    <dimen name="button_info_size">40dp</dimen>
-    <dimen name="button_share_margin_top">30dp</dimen>
-    <dimen name="button_info_margin_top">20dp</dimen>
+    <dimen name="button_info_size">35dp</dimen>
+    <dimen name="button_share_margin_top">17dp</dimen>
+    <dimen name="button_info_margin_top">18dp</dimen>
     <dimen name="top_info_horizontal_padding">10dp</dimen>
-    <dimen name="top_info_vertical_padding">3dp</dimen>
-    <dimen name="text_size_info_san_pham">19sp</dimen>
+    <dimen name="top_info_vertical_padding">4dp</dimen>
+    <dimen name="text_size_ten_san_pham">17sp</dimen>
+    <dimen name="text_size_so_luong_san_pham">19sp</dimen>
     <dimen name="gia_tien_text_height_info_san_pham">35dp</dimen>
     <dimen name="gia_tien_text_size_info_san_pham">19sp</dimen>
     <dimen name="gia_tien_horizontal_padding">10dp</dimen>
-    <dimen name="gia_tien_margin_bottom">200dp</dimen>
+    <dimen name="gia_tien_margin_bottom">100dp</dimen>
 
     <!-- Dialog description sản phẩm -->
     <dimen name="dialog_chi_tiet_san_pham_width">950dp</dimen>
@@ -106,7 +108,5 @@
     <dimen name="textView_layout_width">80dp</dimen>
     <dimen name="textView_textSize_find_store">18dp</dimen>
     <dimen name="linearLayout_padding">10dp</dimen>
-
-
 
 </resources>
