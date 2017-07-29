@@ -37,11 +37,14 @@ public class FindStoreHandler implements StoreCallBack, OnMapReadyCallback {
     ListView listView;
     ArrayList<Store> storeArrayList;
 
-    //// [Filter Start] ////
+    //// [dialog store detail Start] ////
+    public void showDialog(int position){
+        DiaLogStoreDetail diaLogStoreDetail = new DiaLogStoreDetail(storeArrayList.get(position));
+        diaLogStoreDetail.show(((AppCompatActivity)activity).getSupportFragmentManager(), "dialogStoreDetail" );
+    }
 
 
-
-    //// [Filter end] ////
+    //// [dialog store detail end] ////
 
 
 
@@ -52,8 +55,7 @@ public class FindStoreHandler implements StoreCallBack, OnMapReadyCallback {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                DiaLogStoreDetail diaLogStoreDetail = new DiaLogStoreDetail(storeArrayList.get(position));
-                diaLogStoreDetail.show(((AppCompatActivity)activity).getSupportFragmentManager(), "dialogStoreDetail" );
+               showDialog(position);
             }
         });
 
@@ -81,10 +83,7 @@ public class FindStoreHandler implements StoreCallBack, OnMapReadyCallback {
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
-//        // Add a marker in Sydney and move the camera
-//        LatLng sydney = new LatLng(-34, 151);
-//        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney").snippet("ha hu ca lu mu mu"));
-//        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+
         Boolean mLocation = false;
         if (ContextCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED){
             mLocation = true;
@@ -100,34 +99,10 @@ public class FindStoreHandler implements StoreCallBack, OnMapReadyCallback {
             mMap.getUiSettings().setMyLocationButtonEnabled(false);
         }
 
-
-//        mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
-//            @Override
-//            public boolean onMarkerClick(final Marker marker) {
-//                MyDiaLogFragment myDiaLogFragment = new MyDiaLogFragment();
-//                myDiaLogFragment.show(getSupportFragmentManager(),"123" );
-//                MapMarkerTranfers mapMarkerTranfers = new MapMarkerTranfers();
-//                mapMarkerTranfers.setTen(marker.getTitle());
-//                mapMarkerTranfers.setMoTa(marker.getSnippet());
-//                mapMarkerTranfers.setLat(marker.getPosition().latitude);
-//                mapMarkerTranfers.setLng(marker.getPosition().longitude);
-//                View.OnClickListener onClickListener = new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View v) {
-//                        chiduong(vitrihientai,marker.getPosition());
-//                    }
-//                };
-//                myDiaLogFragment.setData(mapMarkerTranfers, onClickListener);
-//                return false;
-//            }
-//        });
-
         mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker marker) {
-
-                DiaLogStoreDetail diaLogStoreDetail = new DiaLogStoreDetail(storeArrayList.get(2));
-                diaLogStoreDetail.show(((AppCompatActivity)activity).getSupportFragmentManager(), "dialogStoreDetail" );
+                showDialog(Integer.parseInt(marker.getId().substring(1)));
                 return false;
             }
         });

@@ -22,13 +22,13 @@
                 android:scaleType="centerCrop"
                 app:srcCompat="@drawable/banner_test2" />
 
-            <RatingBar
-                android:id="@+id/ratingBar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:isIndicator="true"
-                android:numStars="4"
-                android:rating="2" />
+            <!--<RatingBar-->
+                <!--android:id="@+id/ratingBar"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:isIndicator="true"-->
+                <!--android:numStars="4"-->
+                <!--android:rating="2" />-->
 
             <LinearLayout
                 android:layout_width="match_parent"

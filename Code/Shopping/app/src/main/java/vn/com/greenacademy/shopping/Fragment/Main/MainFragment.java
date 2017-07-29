@@ -6,7 +6,6 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ListView;
 
 import vn.com.greenacademy.shopping.Handle.HandleData.MainMenuHandler;
@@ -39,7 +38,7 @@ public class MainFragment extends Fragment {
         mainMenuHandler.clickItemMenuMain();
 
         //load du lieu len mang hinh
-        mainMenuHandler.loadData(lv_menu_main);
+        mainMenuHandler.setListView(lv_menu_main);
 
         return view;
     }
