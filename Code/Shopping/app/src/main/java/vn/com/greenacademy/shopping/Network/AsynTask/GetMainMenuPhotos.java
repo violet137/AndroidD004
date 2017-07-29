@@ -39,7 +39,7 @@ public class GetMainMenuPhotos extends AsyncTask<String,Void,String> {
             url = new URL(params[0]);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             // sever tra du lieu ve kiei xml
-            connection.addRequestProperty("Accept", "text/json");
+            connection.addRequestProperty("Accept", "application/json");
             // phuong thuc truyen len sever
             connection.setRequestMethod("GET");
             connection.connect();
