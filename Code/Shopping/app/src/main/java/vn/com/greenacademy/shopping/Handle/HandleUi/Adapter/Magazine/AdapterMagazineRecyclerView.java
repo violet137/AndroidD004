@@ -35,9 +35,7 @@ public class AdapterMagazineRecyclerView extends RecyclerView.Adapter<MagazineHo
         this.context = context;
         mLayoutInflater = LayoutInflater.from(context);
         this.onClickListener=onClickListener;
-        this.positionViewPagger = positionViewPagger;
         this.magazineArrayList=magazineArrayList;
-        this.magazineTypeArrayList = magazineTypeArrayList;
     }
 
     public AdapterMagazineRecyclerView(Context context, View.OnClickListener onClickListener, int positionViewPagger,
@@ -59,36 +57,9 @@ public class AdapterMagazineRecyclerView extends RecyclerView.Adapter<MagazineHo
     @Override
     public void onBindViewHolder(MagazineHolder holder, int position) {
         String nameViewPager = null;
-//        ArrayList<Magazine> magazinesThoiTrang = new ArrayList<>();
-//        ArrayList<Magazine> magazinesChanDung = new ArrayList<>();
-//        ArrayList<Magazine> magazinesLamDep = new ArrayList<>();
-//        ArrayList<Magazine> magazinesPhongCach = new ArrayList<>();
-//        ArrayList<Magazine> magazinesSongKhoe = new ArrayList<>();
-//        ArrayList<Magazine> magazinesTanHuong = new ArrayList<>();
-//        ArrayList<Magazine> magazinesVideo = new ArrayList<>();
 
-        //        final Magazine magazine = magazineArrayList.get(position);
+        final Magazine magazine = magazineArrayList.get(position);
 
-
-//        switch (positionViewPagger){
-//            case SupportKeyList.Magazine_ALL:
-//                nameViewPager = "ALL";
-//                break;
-//            case SupportKeyList.Magazine_FASHION:
-//                nameViewPager = "FASHION";
-//                break;
-//            case SupportKeyList.Magazine_BEAUTY:
-//                nameViewPager = "BEAUTY";
-//                break;
-//            case SupportKeyList.Magazine_CULURE:
-//                nameViewPager = "CULURE";
-//                break;
-//            case SupportKeyList.Magazine_VIDEO:
-//                nameViewPager = "VIDEO";
-//                break;
-//            default:
-//                break;
-//        }
         nameViewPager = magazineTypeArrayList.get(positionViewPagger).getTen();
 
         Item_recyclerView_magazine item_recyclerView_magazine = new Item_recyclerView_magazine();
@@ -99,33 +70,13 @@ public class AdapterMagazineRecyclerView extends RecyclerView.Adapter<MagazineHo
         holder.itemView.setTag(item_recyclerView_magazine);
         holder.itemView.setOnClickListener(onClickListener);
 
-//        setData(holder, magazine);
+        setData(holder, magazine);
 
     }
 
     @Override
     public int getItemCount() {
-        switch (positionViewPagger){
-            case SupportKeyList.Magazine_ALL:
-                return 20;
-
-            case SupportKeyList.Magazine_FASHION:
-                return  4;
-
-            case SupportKeyList.Magazine_BEAUTY:
-                return  8;
-
-            case SupportKeyList.Magazine_CULURE:
-                return  10;
-
-            case SupportKeyList.Magazine_VIDEO:
-                return  2;
-
-            default:
-                return  5;
-
-        }
-        //        return magazineArrayList.size();
+        return magazineArrayList.size();
 
     }
 

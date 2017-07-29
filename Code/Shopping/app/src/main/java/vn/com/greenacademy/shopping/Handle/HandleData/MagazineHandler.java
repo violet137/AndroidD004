@@ -52,23 +52,23 @@ public class MagazineHandler implements MagazineCallBack, MagazineTypeCallBack {
     }
 
     public void setLayoutRecyclerView(RecyclerView recyclerView, int positionViewPagger, ArrayList<MagazineType> magazineTypeArrayList) {
-//        this.recyclerView = recyclerView;
-//        this.positionViewPagger = positionViewPagger;
-//        this.magazineTypeArrayList = magazineTypeArrayList;
-//
-//        GetMagazine getMagazine = new GetMagazine(this);
-//        getMagazine.execute(ServerUrl.UrlDanhSachMagazine+magazineTypeArrayList.get(positionViewPagger).getLoaiTapChi());
+        this.recyclerView = recyclerView;
+        this.positionViewPagger = positionViewPagger;
+        this.magazineTypeArrayList = magazineTypeArrayList;
 
-        AdapterMagazineRecyclerView adapterMagazineRecyclerView = new AdapterMagazineRecyclerView
-                (activity,onClickListener,positionViewPagger, magazineTypeArrayList);
-        recyclerView.setAdapter(adapterMagazineRecyclerView);
+        GetMagazine getMagazine = new GetMagazine(this);
+        getMagazine.execute(ServerUrl.UrlDanhSachMagazine+magazineTypeArrayList.get(positionViewPagger).getLoaiTapChi());
+
+//        AdapterMagazineRecyclerView adapterMagazineRecyclerView = new AdapterMagazineRecyclerView
+//                (activity,onClickListener,positionViewPagger, magazineTypeArrayList);
+//        recyclerView.setAdapter(adapterMagazineRecyclerView);
     }
 
     @Override
     public void magazineCallBack(ArrayList<Magazine> magazineArrayList) {
-        //        AdapterMagazineRecyclerView adapterMagazineRecyclerView = new AdapterMagazineRecyclerView
-//                (activity,onClickListener,magazineArrayList);
-//        recyclerView.setAdapter(adapterMagazineRecyclerView);
+        AdapterMagazineRecyclerView adapterMagazineRecyclerView = new AdapterMagazineRecyclerView
+                (activity,onClickListener,magazineArrayList);
+        recyclerView.setAdapter(adapterMagazineRecyclerView);
     }
 
     @Override
