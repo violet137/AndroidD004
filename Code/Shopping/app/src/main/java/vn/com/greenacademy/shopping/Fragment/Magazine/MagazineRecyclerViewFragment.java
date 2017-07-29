@@ -40,13 +40,14 @@ public class MagazineRecyclerViewFragment extends Fragment {
         recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 1));
 
         // magazineHandler doi tượng dieu khien cuc recyclerView
-        MagazineHandler magazineHandler = new MagazineHandler(getContext());
+        MagazineHandler magazineHandler = new MagazineHandler(getActivity());
+
 
         // ham nhan su kien click item tren view
         magazineHandler.clickItem(recyclerView);
 
         // ham đổ dữ liệu lên recyclerView
-        magazineHandler.setLayout(recyclerView,positionViewPagger, magazineTypeArrayList);
+        magazineHandler.setLayoutRecyclerView(recyclerView,positionViewPagger, magazineTypeArrayList);
 
         return view;
     }

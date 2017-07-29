@@ -30,8 +30,8 @@ public class AdapterMagazineRecyclerView extends RecyclerView.Adapter<MagazineHo
     ArrayList<Magazine> magazineArrayList;
     ArrayList<MagazineType> magazineTypeArrayList;
 
-    public AdapterMagazineRecyclerView(Context context, View.OnClickListener onClickListener, int positionViewPagger,
-                                       ArrayList<Magazine> magazineArrayList, ArrayList<MagazineType> magazineTypeArrayList) {
+    public AdapterMagazineRecyclerView(Context context, View.OnClickListener onClickListener,
+                                       ArrayList<Magazine> magazineArrayList) {
         this.context = context;
         mLayoutInflater = LayoutInflater.from(context);
         this.onClickListener=onClickListener;
@@ -59,15 +59,16 @@ public class AdapterMagazineRecyclerView extends RecyclerView.Adapter<MagazineHo
     @Override
     public void onBindViewHolder(MagazineHolder holder, int position) {
         String nameViewPager = null;
-        ArrayList<Magazine> magazinesThoiTrang = new ArrayList<>();
-        ArrayList<Magazine> magazinesChanDung = new ArrayList<>();
-        ArrayList<Magazine> magazinesLamDep = new ArrayList<>();
-        ArrayList<Magazine> magazinesPhongCach = new ArrayList<>();
-        ArrayList<Magazine> magazinesSongKhoe = new ArrayList<>();
-        ArrayList<Magazine> magazinesTanHuong = new ArrayList<>();
-        ArrayList<Magazine> magazinesVideo = new ArrayList<>();
+//        ArrayList<Magazine> magazinesThoiTrang = new ArrayList<>();
+//        ArrayList<Magazine> magazinesChanDung = new ArrayList<>();
+//        ArrayList<Magazine> magazinesLamDep = new ArrayList<>();
+//        ArrayList<Magazine> magazinesPhongCach = new ArrayList<>();
+//        ArrayList<Magazine> magazinesSongKhoe = new ArrayList<>();
+//        ArrayList<Magazine> magazinesTanHuong = new ArrayList<>();
+//        ArrayList<Magazine> magazinesVideo = new ArrayList<>();
 
-        final Magazine magazine = null;
+        //        final Magazine magazine = magazineArrayList.get(position);
+
 
 //        switch (positionViewPagger){
 //            case SupportKeyList.Magazine_ALL:
@@ -124,6 +125,8 @@ public class AdapterMagazineRecyclerView extends RecyclerView.Adapter<MagazineHo
                 return  5;
 
         }
+        //        return magazineArrayList.size();
+
     }
 
     public void setData(MagazineHolder holder,Magazine magazine){

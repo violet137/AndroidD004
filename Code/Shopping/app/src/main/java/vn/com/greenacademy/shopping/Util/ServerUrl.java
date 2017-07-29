@@ -19,7 +19,7 @@ public class ServerUrl {
     public static final String UrlDanhSachKhuyenMai = HomeUrl + "KhuyenMai";
     public static final String UrlDanhBannerHome = HomeUrl + "BannerHome";
     public static final String UrlDanhSachStore = StoreUrl + "DanhSachCuaHang";
-    public static final String UrlDanhSachMagazine = MagazineUrl + "";
+    public static final String UrlDanhSachMagazine = MagazineUrl + "TapChi?loaiTapChi=";
     public static final String UrlDanhSachMagazineType = MagazineUrl + "LoaiThoiTrang";
 
 

@@ -12,6 +12,7 @@ import android.widget.ScrollView;
 
 import java.util.ArrayList;
 
+import vn.com.greenacademy.shopping.Handle.HandleData.MagazineHandler;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.Magazine.AdapterMagazineViewPager;
 import vn.com.greenacademy.shopping.Interface.MagazineTypeCallBack;
 import vn.com.greenacademy.shopping.Model.MagazineType;
@@ -39,48 +40,9 @@ public class MagazineFragment extends Fragment {
         final TabLayout tabLayout = (TabLayout) view.findViewById(R.id.tabLayout_magazine_fragment);
         final ViewPager viewPager = (ViewPager) view.findViewById(R.id.viewPager_magazine_fragment);
 
-        MagazineTypeCallBack magazineTypeCallBack = new MagazineTypeCallBack() {
-            @Override
-            public void magazineTypeCallBack(ArrayList<MagazineType> magazineTypes) {
-                AdapterMagazineViewPager adapter = new AdapterMagazineViewPager(
-                        getActivity().getSupportFragmentManager(),getContext(),magazineTypes.get(0).getTen(), magazineTypes);
-                viewPager.setAdapter(adapter);
-
-                for (int i = 0; i < adapter.getCount(); i++) {
-                    tabLayout.addTab(tabLayout.newTab().setText(adapter.getTitle(i)));
-                }
-
-            }
-        };
-
-        GetMagazineType getMagazineType = new GetMagazineType(magazineTypeCallBack);
-        getMagazineType.execute(ServerUrl.UrlDanhSachMagazineType);
-
-
-        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
-
-        // set su kien scroll cho tabLayout
-        tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
-
-        // set su kien click tablayout thay doi viewPagger
-        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                // thay doi view pager khi click vao tab layout
-                viewPager.setCurrentItem(tab.getPosition());
-
-            }
-
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-            }
-        });
-
+        MagazineHandler magazineHandler = new MagazineHandler(getActivity());
+        magazineHandler.getMagazineType();
+        magazineHandler.setLayoutMagazineFragment(viewPager, tabLayout);
 
         return view;
     }

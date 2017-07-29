@@ -1,5 +1,6 @@
 package vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.Magazine;
 
+import android.app.Activity;
 import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -19,13 +20,13 @@ import vn.com.greenacademy.shopping.Util.ServerUrl;
 
 public class AdapterMagazineViewPager extends FragmentPagerAdapter {
     String magazineType;
-    Context context;
+    Activity activity;
     ArrayList<MagazineType> magazineTypeArrayList;
 
-    public AdapterMagazineViewPager(FragmentManager fm, Context context, String magazineType, ArrayList<MagazineType> magazineTypeArrayList) {
+    public AdapterMagazineViewPager(FragmentManager fm, Activity activity, String magazineType, ArrayList<MagazineType> magazineTypeArrayList) {
         super(fm);
         this.magazineType = magazineType;
-        this.context = context;
+        this.activity = activity;
         this.magazineTypeArrayList = magazineTypeArrayList;
     }
 
