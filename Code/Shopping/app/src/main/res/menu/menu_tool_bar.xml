@@ -18,5 +18,17 @@
             android:id="@+id/dang_xuat_toolbar"
             android:title="Đăng xuất"
             app:showAsAction="always" />
+
+        <item
+            android:id="@+id/my_bag_toolbar"
+            android:icon="@drawable/shopping_bag"
+            android:title="Shopping bag"
+            app:showAsAction="always" />
+
+        <item
+            android:id="@+id/find_store_toolbar"
+            android:icon="@drawable/find_a_store"
+            android:title="Find a store"
+            app:showAsAction="always" />
     </group>
 </menu>

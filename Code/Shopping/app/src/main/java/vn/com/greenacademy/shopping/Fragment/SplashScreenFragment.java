@@ -37,7 +37,7 @@ public class SplashScreenFragment extends Fragment {
         drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
         View root = inflater.inflate(R.layout.fragment_splash_screen, container, false);
 
-        baseFragment = new BaseFragment(getActivity().getSupportFragmentManager());
+        baseFragment = new BaseFragment(getActivity(),  getActivity().getSupportFragmentManager());
         //Load màn hình splash
         new Handler().postDelayed(new Runnable() {
             @Override

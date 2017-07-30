@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity implements DataCallBack {
         //Khởi tạo, thiết lập giá trị
         mySharedPref = new MySharedPreferences(this, SupportKeyList.SHAREDPREF_TEN_FILE);
         dataHandler = new DataHandler(this);
-        baseFragment = new BaseFragment(getSupportFragmentManager());
+        baseFragment = new BaseFragment(this, getSupportFragmentManager());
         slideMenuHandler.loadData();
         slideMenuHandler.displayListview(lv_item_slide_menu);
 
@@ -119,9 +119,13 @@ public class MainActivity extends AppCompatActivity implements DataCallBack {
             switch (fragment.getTag()){
                 case SupportKeyList.TAG_FRAGMENT_MAIN:
                     menu.findItem(R.id.search_toolbar).setVisible(true);
+                    menu.findItem(R.id.my_bag_toolbar).setVisible(true);
                     menu.findItem(R.id.dang_nhap_toolbar).setVisible(false);
                     menu.findItem(R.id.dang_xuat_toolbar).setVisible(false);
+                    menu.findItem(R.id.find_store_toolbar).setVisible(false);
+                    menu.findItem(R.id.my_bag_toolbar).setVisible(true);
                     break;
+
                 case SupportKeyList.TAG_FRAGMENT_MY_SHOPPING:
                     if (mySharedPref.getDaDangNhap()) {
                         if(!mySharedPref.getLuuDangNhap()) {
@@ -136,7 +140,17 @@ public class MainActivity extends AppCompatActivity implements DataCallBack {
                         menu.findItem(R.id.dang_xuat_toolbar).setVisible(false);
                     }
                     menu.findItem(R.id.search_toolbar).setVisible(false);
+                    menu.findItem(R.id.find_store_toolbar).setVisible(false);
+                    menu.findItem(R.id.my_bag_toolbar).setVisible(false);
                     break;
+
+                case SupportKeyList.TAG_FRAGMENT_FINDSTORE:
+                    menu.findItem(R.id.find_store_toolbar).setVisible(true);
+                    menu.findItem(R.id.search_toolbar).setVisible(false);
+                    menu.findItem(R.id.dang_nhap_toolbar).setVisible(false);
+                    menu.findItem(R.id.dang_xuat_toolbar).setVisible(false);
+                    menu.findItem(R.id.my_bag_toolbar).setVisible(false);
+
                 default:
                     menu.clear();
                     break;
@@ -144,6 +158,7 @@ public class MainActivity extends AppCompatActivity implements DataCallBack {
             return true;
         }
         menu.findItem(R.id.search_toolbar).setVisible(true);
+        menu.findItem(R.id.my_bag_toolbar).setVisible(true);
         menu.findItem(R.id.dang_nhap_toolbar).setVisible(false);
         menu.findItem(R.id.dang_xuat_toolbar).setVisible(false);
         return true;
@@ -168,6 +183,13 @@ public class MainActivity extends AppCompatActivity implements DataCallBack {
                     case SupportKeyList.ACCOUNT_FACEBOOK:
                         break;
                 }
+                break;
+            case R.id.find_store_toolbar:
+                Toast.makeText(this, "Find a store", Toast.LENGTH_LONG).show();
+                break;
+
+            case R.id.my_bag_toolbar:
+                Toast.makeText(this, "My bag", Toast.LENGTH_LONG).show();
                 break;
             default:
                 return super.onOptionsItemSelected(item);
