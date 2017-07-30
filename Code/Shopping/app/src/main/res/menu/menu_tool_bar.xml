@@ -27,7 +27,7 @@
 
         <item
             android:id="@+id/find_store_toolbar"
-            android:icon="@android:drawable/ic_menu_mapmode"
+            android:icon="?android:attr/actionModeFindDrawable"
             android:title="Find a store"
             app:showAsAction="always" />
     </group>
