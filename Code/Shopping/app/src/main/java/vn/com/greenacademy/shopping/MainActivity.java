@@ -19,16 +19,16 @@ import android.widget.Toast;
 
 import vn.com.greenacademy.shopping.Fragment.Main.MyShopping.TaiKhoan.DangNhapFragment;
 import vn.com.greenacademy.shopping.Fragment.SplashScreenFragment;
+import vn.com.greenacademy.shopping.Fragment.Store.FindStoreFragment;
 import vn.com.greenacademy.shopping.Handle.HandleData.DataHandler;
 import vn.com.greenacademy.shopping.Handle.HandleData.GoogleHandler;
 import vn.com.greenacademy.shopping.Handle.HandleData.SlideMenuHandler;
 import vn.com.greenacademy.shopping.Interface.DataCallBack;
-import vn.com.greenacademy.shopping.Interface.FindStoreListenerCallBack;
 import vn.com.greenacademy.shopping.Util.SharePreference.MySharedPreferences;
 import vn.com.greenacademy.shopping.Util.SupportKeyList;
 import vn.com.greenacademy.shopping.Util.Ui.BaseFragment;
 
-public class MainActivity extends AppCompatActivity implements DataCallBack, FindStoreListenerCallBack {
+public class MainActivity extends AppCompatActivity implements DataCallBack {
     ListView lv_item_slide_menu;
 
 //    ArrayList<SlideMenu> arrayModeSlideMenus;
@@ -48,7 +48,6 @@ public class MainActivity extends AppCompatActivity implements DataCallBack, Fin
     public static TextView textViewMain;
     SlideMenuHandler slideMenuHandler;
     boolean trangThaiListFindStore = false;
-    ListView listViewFindStore;
 
     @Override()
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,7 +75,7 @@ public class MainActivity extends AppCompatActivity implements DataCallBack, Fin
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 //modeSlideMenu = arrayModeSlideMenus.get(position);
-                slideMenuHandler.itemClickListener(position, baseFragment,MainActivity.this);
+                slideMenuHandler.itemClickListener(position, baseFragment);
                 // dong slide menu
                 if (drawerLayout.isDrawerOpen(GravityCompat.START)){
                     drawerLayout.closeDrawer(GravityCompat.START);
@@ -211,11 +210,11 @@ public class MainActivity extends AppCompatActivity implements DataCallBack, Fin
             case R.id.find_store_toolbar:
                 if (trangThaiListFindStore){
                     trangThaiListFindStore = false;
-                    listViewFindStore.setVisibility(View.GONE);
+                    FindStoreFragment.listView.setVisibility(View.GONE);
                     textViewMain.setVisibility(View.GONE);
                 } else {
                     trangThaiListFindStore = true;
-                    listViewFindStore.setVisibility(View.VISIBLE);
+                    FindStoreFragment.listView.setVisibility(View.VISIBLE);
                     textViewMain.setText("Danh sách các cửa hàng");
                     textViewMain.setVisibility(View.VISIBLE);
                 }
@@ -243,8 +242,4 @@ public class MainActivity extends AppCompatActivity implements DataCallBack, Fin
         }
     }
 
-    @Override
-    public void listViewCallBack(ListView listView) {
-        listViewFindStore = listView;
-    }
 }

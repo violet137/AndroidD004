@@ -1,56 +1,29 @@
 package vn.com.greenacademy.shopping.Fragment.Store;
 
 
-import android.Manifest;
-import android.content.pm.PackageManager;
-import android.location.Location;
-import android.location.LocationManager;
 import android.os.Bundle;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Toast;
 
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.Marker;
-import com.google.android.gms.maps.model.MarkerOptions;
-
-import java.util.ArrayList;
 
 import vn.com.greenacademy.shopping.Handle.HandleData.FindStoreHandler;
-import vn.com.greenacademy.shopping.Interface.FindStoreListenerCallBack;
-import vn.com.greenacademy.shopping.Interface.StoreCallBack;
 import vn.com.greenacademy.shopping.MainActivity;
-import vn.com.greenacademy.shopping.Model.Store;
 import vn.com.greenacademy.shopping.Network.AsynTask.GetStore;
 import vn.com.greenacademy.shopping.R;
 import vn.com.greenacademy.shopping.Util.ServerUrl;
-
-import static android.content.Context.LOCATION_SERVICE;
-import static com.facebook.FacebookSdk.getApplicationContext;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class FindStoreFragment extends Fragment {
 
-
-    FindStoreListenerCallBack findStoreListenerCallBack;
-
-    public FindStoreFragment(FindStoreListenerCallBack findStoreListenerCallBack ) {
-        this.findStoreListenerCallBack = findStoreListenerCallBack;
+    public FindStoreFragment(  ) {
     }
-
+    public static  ListView listView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -60,9 +33,7 @@ public class FindStoreFragment extends Fragment {
 
         View view =  inflater.inflate(R.layout.fragment_find_store, container, false);
 
-        final ListView listView = (ListView) view.findViewById(R.id.lvStore_find_store);
-
-        findStoreListenerCallBack.listViewCallBack(listView);
+        listView = (ListView) view.findViewById(R.id.lvStore_find_store);
 
         FindStoreHandler findStoreHandler = new FindStoreHandler(getActivity());
 
