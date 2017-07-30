@@ -2,7 +2,6 @@ package vn.com.greenacademy.shopping;
 
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -15,6 +14,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import vn.com.greenacademy.shopping.Fragment.Main.MyShopping.TaiKhoan.DangNhapFragment;
@@ -23,11 +23,12 @@ import vn.com.greenacademy.shopping.Handle.HandleData.DataHandler;
 import vn.com.greenacademy.shopping.Handle.HandleData.GoogleHandler;
 import vn.com.greenacademy.shopping.Handle.HandleData.SlideMenuHandler;
 import vn.com.greenacademy.shopping.Interface.DataCallBack;
+import vn.com.greenacademy.shopping.Interface.FindStoreListenerCallBack;
 import vn.com.greenacademy.shopping.Util.SharePreference.MySharedPreferences;
 import vn.com.greenacademy.shopping.Util.SupportKeyList;
 import vn.com.greenacademy.shopping.Util.Ui.BaseFragment;
 
-public class MainActivity extends AppCompatActivity implements DataCallBack {
+public class MainActivity extends AppCompatActivity implements DataCallBack, FindStoreListenerCallBack {
     ListView lv_item_slide_menu;
 
 //    ArrayList<SlideMenu> arrayModeSlideMenus;
@@ -44,6 +45,11 @@ public class MainActivity extends AppCompatActivity implements DataCallBack {
     private DataHandler dataHandler;
     private MySharedPreferences mySharedPref;
 
+    TextView textViewMain;
+    SlideMenuHandler slideMenuHandler;
+    boolean trangThaiListFindStore = false;
+    ListView listViewFindStore;
+
     @Override()
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,19 +60,23 @@ public class MainActivity extends AppCompatActivity implements DataCallBack {
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        View navigationView = findViewById(R.id.nav_menu_main);
         lv_item_slide_menu = (ListView) findViewById(R.id.lv_item_slide_menu);
 
+        View navigationView = findViewById(R.id.nav_menu_main);
         //Xử lý sự kiện
 //        navigationView.findViewById(R.id.ivUser_nav_hear).setOnClickListener(this);
 //        navigationView.findViewById(R.id.tvName_nav_hear).setOnClickListener(this);
 //        navigationView.findViewById(R.id.tvEmail_nav_hear).setOnClickListener(this);
-        final SlideMenuHandler slideMenuHandler = new SlideMenuHandler(this);
+
+        slideMenuHandler = new SlideMenuHandler(this);
+
+        textViewMain = (TextView) findViewById(R.id.tvName_contnt_main);
+
         lv_item_slide_menu.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 //modeSlideMenu = arrayModeSlideMenus.get(position);
-                slideMenuHandler.itemClickListener(position, baseFragment);
+                slideMenuHandler.itemClickListener(position, baseFragment, textViewMain,MainActivity.this);
                 // dong slide menu
                 if (drawerLayout.isDrawerOpen(GravityCompat.START)){
                     drawerLayout.closeDrawer(GravityCompat.START);
@@ -89,8 +99,6 @@ public class MainActivity extends AppCompatActivity implements DataCallBack {
         //Chạy màn hình splash
         baseFragment.ChuyenFragment(new SplashScreenFragment(getSupportActionBar(), drawerLayout), null, false);
     }
-
-
 
     @Override
     public void onBackPressed() {
@@ -120,14 +128,27 @@ public class MainActivity extends AppCompatActivity implements DataCallBack {
         if(fragment != null && fragment.getTag() != null) {
             switch (fragment.getTag()){
                 case SupportKeyList.TAG_FRAGMENT_MAIN:
+<<<<<<< HEAD
                     menu.findItem(R.id.search_toolbar).setVisible(true);
                     menu.findItem(R.id.my_bag_toolbar).setVisible(true);
                     menu.findItem(R.id.find_store_toolbar).setVisible(false);
                     menu.findItem(R.id.dang_nhap_toolbar).setVisible(false);
                     menu.findItem(R.id.dang_xuat_toolbar).setVisible(false);
+=======
+                    // [start] group item find store
+                    menu.setGroupVisible(R.id.group_find_store,false);
+                    // [end]
+
+                    // [start] group 1
+                    menu.setGroupVisible(R.id.group1,false);
+                    // [end]
+>>>>>>> ae12150e0f2bcee9ce8839f4f7780592a9643ea6
                     break;
 
                 case SupportKeyList.TAG_FRAGMENT_MY_SHOPPING:
+                    // [start] group item find store
+                    menu.setGroupVisible(R.id.group_find_store,false);
+                    // [end]
                     if (mySharedPref.getDaDangNhap()) {
                         if(!mySharedPref.getLuuDangNhap()) {
                             menu.findItem(R.id.dang_nhap_toolbar).setVisible(true);
@@ -153,6 +174,7 @@ public class MainActivity extends AppCompatActivity implements DataCallBack {
                     menu.findItem(R.id.dang_nhap_toolbar).setVisible(false);
                     menu.findItem(R.id.dang_xuat_toolbar).setVisible(false);
                     break;
+<<<<<<< HEAD
 
                 case SupportKeyList.TAG_FRAGMENT_FINDSTORE:
                     menu.findItem(R.id.find_store_toolbar).setVisible(true);
@@ -162,6 +184,16 @@ public class MainActivity extends AppCompatActivity implements DataCallBack {
                     menu.findItem(R.id.my_bag_toolbar).setVisible(false);
                     break;
 
+=======
+                case SupportKeyList.TAG_FRAGMENT_FINDSTORE:
+                    menu.setGroupVisible(R.id.group1,false);
+                    menu.findItem(R.id.show_list_dia_chi_store).setVisible(true);
+                    break;
+
+                case SupportKeyList.TAG_FRAGMENT_MAGAZINE:
+                    menu.close();
+
+>>>>>>> ae12150e0f2bcee9ce8839f4f7780592a9643ea6
                 default:
                     menu.clear();
                     break;
@@ -173,6 +205,9 @@ public class MainActivity extends AppCompatActivity implements DataCallBack {
         menu.findItem(R.id.find_store_toolbar).setVisible(false);
         menu.findItem(R.id.dang_nhap_toolbar).setVisible(false);
         menu.findItem(R.id.dang_xuat_toolbar).setVisible(false);
+        // [start] group item find store
+        menu.setGroupVisible(R.id.group_find_store,false);
+        // [end]
         return true;
     }
 
@@ -196,12 +231,26 @@ public class MainActivity extends AppCompatActivity implements DataCallBack {
                         break;
                 }
                 break;
+<<<<<<< HEAD
             case R.id.find_store_toolbar:
                 Toast.makeText(this, "Find a store", Toast.LENGTH_LONG).show();
                 break;
 
             case R.id.my_bag_toolbar:
                 Toast.makeText(this, "My bag", Toast.LENGTH_LONG).show();
+=======
+            case R.id.show_list_dia_chi_store:
+                if (trangThaiListFindStore){
+                    trangThaiListFindStore = false;
+                    listViewFindStore.setVisibility(View.GONE);
+                    textViewMain.setVisibility(View.GONE);
+                } else {
+                    trangThaiListFindStore = true;
+                    listViewFindStore.setVisibility(View.VISIBLE);
+                    textViewMain.setText("Danh sách các cửa hàng");
+                    textViewMain.setVisibility(View.VISIBLE);
+                }
+>>>>>>> ae12150e0f2bcee9ce8839f4f7780592a9643ea6
                 break;
             default:
                 return super.onOptionsItemSelected(item);
@@ -219,5 +268,10 @@ public class MainActivity extends AppCompatActivity implements DataCallBack {
                 baseFragment.ChuyenFragment(new DangNhapFragment(), SupportKeyList.TAG_FRAGMENT_DANG_NHAP, false);
                 break;
         }
+    }
+
+    @Override
+    public void listViewCallBack(ListView listView) {
+        listViewFindStore = listView;
     }
 }

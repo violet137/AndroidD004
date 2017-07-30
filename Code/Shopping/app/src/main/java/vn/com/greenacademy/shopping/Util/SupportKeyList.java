@@ -36,6 +36,7 @@ public class SupportKeyList {
     public static final String TAG_FRAGMENT_MAIN = "MainFragment";
     public static final String TAG_FRAGMENT_MY_SHOPPING = "MyShopping";
     public static final String TAG_FRAGMENT_MAGAZINE = "Magazine";
+    public static final String TAG_FRAGMENT_MAGAZINE_DETAIL = "MagazineDetail";
     public static final String TAG_FRAGMENT_DANG_NHAP = "DangNhap";
     public static final String TAG_FRAGMENT_DANG_NHAP_KHONG_LUU = "DangNhapKhongLuu";
     public static final String TAG_FRAGMENT_TAI_KHOAN = "TaiKhoan";

@@ -89,6 +89,7 @@ public class DiaLogStoreDetail extends DialogFragment implements View.OnClickLis
                 startActivity(intent);
                 break;
             case R.id.btnPhone_dialog_StoreDetail:
+
                 break;
         }
     }

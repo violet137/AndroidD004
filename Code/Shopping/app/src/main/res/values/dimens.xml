@@ -9,6 +9,9 @@
     <dimen name="vertical_padding">12dp</dimen>
     <dimen name="shape_corners_radius">4dp</dimen>
     <dimen name="shape_stroke_width">0.1dp</dimen>
+    <dimen name="textView_pandding_left_15dp">15dp</dimen>
+    <dimen name="textView_pandding_top_3dp">3dp</dimen>
+    <dimen name="textView_pandding_bottom_3dp">3dp</dimen>
 
     <!-- Đăng nhập -->
     <dimen name="text_size">15sp</dimen>

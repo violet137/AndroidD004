@@ -54,6 +54,7 @@
         android:textSize="@dimen/text_size_15dp" />
 
     <TextView
+        android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/text_layout_height_15dp"
         android:background="@color/cast_expanded_controller_ad_container_white_stripe_color"
@@ -61,6 +62,7 @@
         android:gravity="center"
         android:text="@string/read_the_story"
         android:textColor="#ff000000"
+        android:layout_marginTop="@dimen/textView_pandding_top_3dp"
         android:textSize="@dimen/text_size_10dp" />
 
     <Button

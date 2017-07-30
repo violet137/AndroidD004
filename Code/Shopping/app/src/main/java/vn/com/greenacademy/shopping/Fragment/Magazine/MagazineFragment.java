@@ -8,26 +8,20 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ScrollView;
+import android.widget.TextView;
 
-import java.util.ArrayList;
-
-import vn.com.greenacademy.shopping.Handle.HandleData.MagazineHandler;
-import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.Magazine.AdapterMagazineViewPager;
-import vn.com.greenacademy.shopping.Interface.MagazineTypeCallBack;
-import vn.com.greenacademy.shopping.Model.MagazineType;
-import vn.com.greenacademy.shopping.Network.AsynTask.GetMagazineType;
+import vn.com.greenacademy.shopping.Handle.HandleData.Magazine.MagazineHandler;
 import vn.com.greenacademy.shopping.R;
-import vn.com.greenacademy.shopping.Util.ServerUrl;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class MagazineFragment extends Fragment {
 
-
-    public MagazineFragment() {
+    TextView textViewMain;
+    public MagazineFragment(TextView textViewMain) {
         // Required empty public constructor
+        this.textViewMain = textViewMain;
     }
 
 
@@ -42,7 +36,13 @@ public class MagazineFragment extends Fragment {
 
         MagazineHandler magazineHandler = new MagazineHandler(getActivity());
         magazineHandler.getMagazineType();
-        magazineHandler.setLayoutMagazineFragment(viewPager, tabLayout);
+        magazineHandler.setLayoutMagazineFragment(viewPager, tabLayout, textViewMain);
+
+        textViewMain.setVisibility(View.VISIBLE);
+        textViewMain.setText("Magazine");
+
+        //reset option menu
+        getActivity().supportInvalidateOptionsMenu();
 
         return view;
     }

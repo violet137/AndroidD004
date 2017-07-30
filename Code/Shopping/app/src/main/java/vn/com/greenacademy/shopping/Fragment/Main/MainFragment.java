@@ -40,6 +40,9 @@ public class MainFragment extends Fragment {
         //load du lieu len mang hinh
         mainMenuHandler.setListView(lv_menu_main);
 
+        //reset option menu
+        getActivity().supportInvalidateOptionsMenu();
+
         return view;
     }
 }
