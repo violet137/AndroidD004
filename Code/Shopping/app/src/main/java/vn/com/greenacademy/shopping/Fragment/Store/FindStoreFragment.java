@@ -28,6 +28,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import java.util.ArrayList;
 
 import vn.com.greenacademy.shopping.Handle.HandleData.FindStoreHandler;
+import vn.com.greenacademy.shopping.Interface.FindStoreListenerCallBack;
 import vn.com.greenacademy.shopping.Interface.StoreCallBack;
 import vn.com.greenacademy.shopping.Model.Store;
 import vn.com.greenacademy.shopping.Network.AsynTask.GetStore;
@@ -43,8 +44,10 @@ import static com.facebook.FacebookSdk.getApplicationContext;
 public class FindStoreFragment extends Fragment {
 
 
-    public FindStoreFragment() {
-        // Required empty public constructor
+    FindStoreListenerCallBack findStoreListenerCallBack;
+
+    public FindStoreFragment(FindStoreListenerCallBack findStoreListenerCallBack ) {
+        this.findStoreListenerCallBack = findStoreListenerCallBack;
     }
 
 
@@ -56,19 +59,7 @@ public class FindStoreFragment extends Fragment {
 
         final ListView listView = (ListView) view.findViewById(R.id.lvStore_find_store);
 
-        final boolean[] flag = {true};
-        view.findViewById(R.id.btnStore_find_store).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (flag[0]){
-                    flag[0] = false;
-                    listView.setVisibility(View.VISIBLE);
-                } else {
-                    flag[0] = true;
-                    listView.setVisibility(View.GONE);
-                }
-            }
-        });
+        findStoreListenerCallBack.listViewCallBack(listView);
 
         FindStoreHandler findStoreHandler = new FindStoreHandler(getActivity());
 

@@ -128,27 +128,14 @@ public class MainActivity extends AppCompatActivity implements DataCallBack, Fin
         if(fragment != null && fragment.getTag() != null) {
             switch (fragment.getTag()){
                 case SupportKeyList.TAG_FRAGMENT_MAIN:
-<<<<<<< HEAD
                     menu.findItem(R.id.search_toolbar).setVisible(true);
                     menu.findItem(R.id.my_bag_toolbar).setVisible(true);
                     menu.findItem(R.id.find_store_toolbar).setVisible(false);
                     menu.findItem(R.id.dang_nhap_toolbar).setVisible(false);
                     menu.findItem(R.id.dang_xuat_toolbar).setVisible(false);
-=======
-                    // [start] group item find store
-                    menu.setGroupVisible(R.id.group_find_store,false);
-                    // [end]
-
-                    // [start] group 1
-                    menu.setGroupVisible(R.id.group1,false);
-                    // [end]
->>>>>>> ae12150e0f2bcee9ce8839f4f7780592a9643ea6
                     break;
 
                 case SupportKeyList.TAG_FRAGMENT_MY_SHOPPING:
-                    // [start] group item find store
-                    menu.setGroupVisible(R.id.group_find_store,false);
-                    // [end]
                     if (mySharedPref.getDaDangNhap()) {
                         if(!mySharedPref.getLuuDangNhap()) {
                             menu.findItem(R.id.dang_nhap_toolbar).setVisible(true);
@@ -174,7 +161,6 @@ public class MainActivity extends AppCompatActivity implements DataCallBack, Fin
                     menu.findItem(R.id.dang_nhap_toolbar).setVisible(false);
                     menu.findItem(R.id.dang_xuat_toolbar).setVisible(false);
                     break;
-<<<<<<< HEAD
 
                 case SupportKeyList.TAG_FRAGMENT_FINDSTORE:
                     menu.findItem(R.id.find_store_toolbar).setVisible(true);
@@ -184,16 +170,9 @@ public class MainActivity extends AppCompatActivity implements DataCallBack, Fin
                     menu.findItem(R.id.my_bag_toolbar).setVisible(false);
                     break;
 
-=======
-                case SupportKeyList.TAG_FRAGMENT_FINDSTORE:
-                    menu.setGroupVisible(R.id.group1,false);
-                    menu.findItem(R.id.show_list_dia_chi_store).setVisible(true);
-                    break;
-
                 case SupportKeyList.TAG_FRAGMENT_MAGAZINE:
                     menu.close();
 
->>>>>>> ae12150e0f2bcee9ce8839f4f7780592a9643ea6
                 default:
                     menu.clear();
                     break;
@@ -205,9 +184,6 @@ public class MainActivity extends AppCompatActivity implements DataCallBack, Fin
         menu.findItem(R.id.find_store_toolbar).setVisible(false);
         menu.findItem(R.id.dang_nhap_toolbar).setVisible(false);
         menu.findItem(R.id.dang_xuat_toolbar).setVisible(false);
-        // [start] group item find store
-        menu.setGroupVisible(R.id.group_find_store,false);
-        // [end]
         return true;
     }
 
@@ -231,15 +207,8 @@ public class MainActivity extends AppCompatActivity implements DataCallBack, Fin
                         break;
                 }
                 break;
-<<<<<<< HEAD
-            case R.id.find_store_toolbar:
-                Toast.makeText(this, "Find a store", Toast.LENGTH_LONG).show();
-                break;
 
-            case R.id.my_bag_toolbar:
-                Toast.makeText(this, "My bag", Toast.LENGTH_LONG).show();
-=======
-            case R.id.show_list_dia_chi_store:
+            case R.id.find_store_toolbar:
                 if (trangThaiListFindStore){
                     trangThaiListFindStore = false;
                     listViewFindStore.setVisibility(View.GONE);
@@ -250,8 +219,12 @@ public class MainActivity extends AppCompatActivity implements DataCallBack, Fin
                     textViewMain.setText("Danh sách các cửa hàng");
                     textViewMain.setVisibility(View.VISIBLE);
                 }
->>>>>>> ae12150e0f2bcee9ce8839f4f7780592a9643ea6
                 break;
+
+            case R.id.my_bag_toolbar:
+                Toast.makeText(this, "My bag", Toast.LENGTH_LONG).show();
+                break;
+
             default:
                 return super.onOptionsItemSelected(item);
         }
