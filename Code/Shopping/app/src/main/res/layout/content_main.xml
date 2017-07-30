@@ -23,6 +23,20 @@
     </android.support.v7.widget.Toolbar>
 
     <!-- Thay fragment -->
+    <TextView
+        android:id="@+id/tvName_contnt_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/cardview_light_background"
+        android:background="@color/cardview_dark_background"
+        android:textStyle="bold"
+        android:textSize="@dimen/text_size_15dp"
+        android:paddingStart="@dimen/textView_pandding_left_15dp"
+        android:paddingTop="@dimen/textView_pandding_top_3dp"
+        android:paddingBottom="@dimen/textView_pandding_bottom_3dp"
+        android:text="TextView"
+        android:visibility="gone"/>
+
     <FrameLayout
         android:id="@+id/content_main"
         android:layout_width="match_parent"

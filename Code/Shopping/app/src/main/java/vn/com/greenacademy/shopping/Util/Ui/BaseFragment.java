@@ -1,11 +1,21 @@
 package vn.com.greenacademy.shopping.Util.Ui;
 
+import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.ViewPager;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
+import vn.com.greenacademy.shopping.Handle.HandleData.Magazine.MagazineHandler;
 import vn.com.greenacademy.shopping.R;
+
+import static vn.com.greenacademy.shopping.R.id.textView;
 
 /**
  * Created by zzzzz on 7/10/2017.

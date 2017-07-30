@@ -1,4 +1,4 @@
-package vn.com.greenacademy.shopping.Handle.HandleData;
+package vn.com.greenacademy.shopping.Handle.HandleData.Magazine;
 
 import android.app.Activity;
 import android.content.Context;
@@ -7,10 +7,13 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import vn.com.greenacademy.shopping.Fragment.Magazine.MagazineDetailFragment;
+import vn.com.greenacademy.shopping.Fragment.Main.XuHuongThoiTrang.XuHuongThoiTrangFragment;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.Magazine.AdapterMagazineRecyclerView;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.Magazine.AdapterMagazineViewPager;
 import vn.com.greenacademy.shopping.Interface.MagazineCallBack;
@@ -22,6 +25,7 @@ import vn.com.greenacademy.shopping.Network.AsynTask.GetMagazine;
 import vn.com.greenacademy.shopping.Network.AsynTask.GetMagazineType;
 import vn.com.greenacademy.shopping.Util.ServerUrl;
 import vn.com.greenacademy.shopping.Util.SupportKeyList;
+import vn.com.greenacademy.shopping.Util.Ui.BaseFragment;
 
 /**
  * Created by ADMIN on 7/23/2017.
@@ -36,17 +40,23 @@ public class MagazineHandler implements MagazineCallBack, MagazineTypeCallBack {
     RecyclerView recyclerView;
     int positionViewPagger;
     ArrayList<MagazineType> magazineTypeArrayList;
+    TextView textView;
+
 
     public MagazineHandler(Activity activity) {
         this.activity = activity;
     }
 
-    public void clickItem(RecyclerView recyclerView){
+    public void clickItem(final TextView textView){
         onClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(activity, String.valueOf(((Item_recyclerView_magazine)v.getTag()).getId())
-                        + " " + ((Item_recyclerView_magazine)v.getTag()).getName() ,Toast.LENGTH_SHORT).show();
+                BaseFragment baseFragment = new BaseFragment(((AppCompatActivity)activity).getSupportFragmentManager());
+                baseFragment.ChuyenFragment(new MagazineDetailFragment(String.valueOf(((Item_recyclerView_magazine)v.getTag())
+                        .getId()), textView), SupportKeyList.TAG_FRAGMENT_MAGAZINE_DETAIL, true);
+
+//                Toast.makeText(activity, String.valueOf(((Item_recyclerView_magazine)v.getTag()).getId())
+//                        + " " + ((Item_recyclerView_magazine)v.getTag()).getName() ,Toast.LENGTH_SHORT).show();
             }
         };
     }
@@ -74,7 +84,8 @@ public class MagazineHandler implements MagazineCallBack, MagazineTypeCallBack {
     @Override
     public void magazineTypeCallBack(ArrayList<MagazineType> magazineTypes) {
         AdapterMagazineViewPager adapter = new AdapterMagazineViewPager(
-                ((AppCompatActivity)activity).getSupportFragmentManager(),activity,magazineTypes.get(0).getTen(), magazineTypes);
+                ((AppCompatActivity)activity).getSupportFragmentManager(),
+                activity,magazineTypes.get(0).getTen(), magazineTypes, textView);
         viewPager.setAdapter(adapter);
 
         for (int i = 0; i < adapter.getCount(); i++) {
@@ -88,9 +99,10 @@ public class MagazineHandler implements MagazineCallBack, MagazineTypeCallBack {
         getMagazineType.execute(ServerUrl.UrlDanhSachMagazineType);
     }
 
-    public void setLayoutMagazineFragment(final ViewPager viewPager, TabLayout tabLayout) {
+    public void setLayoutMagazineFragment(final ViewPager viewPager, TabLayout tabLayout, TextView textView) {
         this.viewPager = viewPager;
         this.tabLayout = tabLayout;
+        this.textView = textView;
 
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
 

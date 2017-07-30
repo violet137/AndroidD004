@@ -64,7 +64,7 @@ public class AdapterMagazineRecyclerView extends RecyclerView.Adapter<MagazineHo
 
         Item_recyclerView_magazine item_recyclerView_magazine = new Item_recyclerView_magazine();
 
-        item_recyclerView_magazine.setId(position);
+        item_recyclerView_magazine.setId(magazine.getIdTapChi());
 //        item_recyclerView_magazine.setName(nameViewPager);
 
         holder.itemView.setTag(item_recyclerView_magazine);

@@ -14,6 +14,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import vn.com.greenacademy.shopping.Fragment.Main.MyShopping.TaiKhoan.DangNhapFragment;
@@ -43,6 +44,8 @@ public class MainActivity extends AppCompatActivity implements DataCallBack {
     private DataHandler dataHandler;
     private MySharedPreferences mySharedPref;
 
+    TextView textView;
+
     @Override()
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,19 +56,23 @@ public class MainActivity extends AppCompatActivity implements DataCallBack {
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        View navigationView = findViewById(R.id.nav_menu_main);
         lv_item_slide_menu = (ListView) findViewById(R.id.lv_item_slide_menu);
 
+        View navigationView = findViewById(R.id.nav_menu_main);
         //Xử lý sự kiện
 //        navigationView.findViewById(R.id.ivUser_nav_hear).setOnClickListener(this);
 //        navigationView.findViewById(R.id.tvName_nav_hear).setOnClickListener(this);
 //        navigationView.findViewById(R.id.tvEmail_nav_hear).setOnClickListener(this);
+
         final SlideMenuHandler slideMenuHandler = new SlideMenuHandler(this);
+
+        textView = (TextView) findViewById(R.id.tvName_contnt_main);
+
         lv_item_slide_menu.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 //modeSlideMenu = arrayModeSlideMenus.get(position);
-                slideMenuHandler.itemClickListener(position, baseFragment);
+                slideMenuHandler.itemClickListener(position, baseFragment, textView);
                 // dong slide menu
                 if (drawerLayout.isDrawerOpen(GravityCompat.START)){
                     drawerLayout.closeDrawer(GravityCompat.START);
@@ -87,8 +94,6 @@ public class MainActivity extends AppCompatActivity implements DataCallBack {
         //Chạy màn hình splash
         baseFragment.ChuyenFragment(new SplashScreenFragment(getSupportActionBar(), drawerLayout), null, false);
     }
-
-
 
     @Override
     public void onBackPressed() {

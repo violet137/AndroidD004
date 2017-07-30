@@ -3,7 +3,9 @@ package vn.com.greenacademy.shopping.Handle.HandleData;
 import android.app.Activity;
 import android.content.res.TypedArray;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -34,9 +36,10 @@ public class SlideMenuHandler {
     }
 
     // xu ly su kien click cua nguoi dung
-    public void itemClickListener(int position, BaseFragment baseFragment) {
+    public void itemClickListener(int position, BaseFragment baseFragment, TextView textView) {
         String temp ;
         int count = ((AppCompatActivity)activity).getSupportFragmentManager().getBackStackEntryCount();
+        textView.setVisibility(View.GONE);
         switch (position){
             case SupportKeyList.Products_slide:
                 temp = "Products";
@@ -67,7 +70,7 @@ public class SlideMenuHandler {
                     baseFragment.XoaFragment();
                     count--;
                 }
-                baseFragment.ChuyenFragment(new MagazineFragment(), SupportKeyList.TAG_FRAGMENT_MAGAZINE, true);
+                baseFragment.ChuyenFragment(new MagazineFragment(textView), SupportKeyList.TAG_FRAGMENT_MAGAZINE, true);
                 break;
             case SupportKeyList.Wish_list_slide:
                 temp = "Wish list";
