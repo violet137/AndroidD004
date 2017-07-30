@@ -40,20 +40,20 @@ public class MagazineHandler implements MagazineCallBack, MagazineTypeCallBack {
     RecyclerView recyclerView;
     int positionViewPagger;
     ArrayList<MagazineType> magazineTypeArrayList;
-    TextView textView;
+    TextView textViewMain;
 
 
     public MagazineHandler(Activity activity) {
         this.activity = activity;
     }
 
-    public void clickItem(final TextView textView){
+    public void clickItem(final TextView textViewMain){
         onClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 BaseFragment baseFragment = new BaseFragment(((AppCompatActivity)activity).getSupportFragmentManager());
                 baseFragment.ChuyenFragment(new MagazineDetailFragment(String.valueOf(((Item_recyclerView_magazine)v.getTag())
-                        .getId()), textView), SupportKeyList.TAG_FRAGMENT_MAGAZINE_DETAIL, true);
+                        .getId()), textViewMain), SupportKeyList.TAG_FRAGMENT_MAGAZINE_DETAIL, true);
 
 //                Toast.makeText(activity, String.valueOf(((Item_recyclerView_magazine)v.getTag()).getId())
 //                        + " " + ((Item_recyclerView_magazine)v.getTag()).getName() ,Toast.LENGTH_SHORT).show();
@@ -85,7 +85,7 @@ public class MagazineHandler implements MagazineCallBack, MagazineTypeCallBack {
     public void magazineTypeCallBack(ArrayList<MagazineType> magazineTypes) {
         AdapterMagazineViewPager adapter = new AdapterMagazineViewPager(
                 ((AppCompatActivity)activity).getSupportFragmentManager(),
-                activity,magazineTypes.get(0).getTen(), magazineTypes, textView);
+                activity,magazineTypes.get(0).getTen(), magazineTypes, textViewMain);
         viewPager.setAdapter(adapter);
 
         for (int i = 0; i < adapter.getCount(); i++) {
@@ -99,10 +99,10 @@ public class MagazineHandler implements MagazineCallBack, MagazineTypeCallBack {
         getMagazineType.execute(ServerUrl.UrlDanhSachMagazineType);
     }
 
-    public void setLayoutMagazineFragment(final ViewPager viewPager, TabLayout tabLayout, TextView textView) {
+    public void setLayoutMagazineFragment(final ViewPager viewPager, TabLayout tabLayout, TextView textViewMain) {
         this.viewPager = viewPager;
         this.tabLayout = tabLayout;
-        this.textView = textView;
+        this.textViewMain = textViewMain;
 
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
 

@@ -18,10 +18,10 @@ import vn.com.greenacademy.shopping.R;
  */
 public class MagazineFragment extends Fragment {
 
-    TextView textView;
-    public MagazineFragment(TextView textView) {
+    TextView textViewMain;
+    public MagazineFragment(TextView textViewMain) {
         // Required empty public constructor
-        this.textView = textView;
+        this.textViewMain = textViewMain;
     }
 
 
@@ -36,10 +36,13 @@ public class MagazineFragment extends Fragment {
 
         MagazineHandler magazineHandler = new MagazineHandler(getActivity());
         magazineHandler.getMagazineType();
-        magazineHandler.setLayoutMagazineFragment(viewPager, tabLayout, textView);
+        magazineHandler.setLayoutMagazineFragment(viewPager, tabLayout, textViewMain);
 
-        textView.setVisibility(View.VISIBLE);
-        textView.setText("Magazine");
+        textViewMain.setVisibility(View.VISIBLE);
+        textViewMain.setText("Magazine");
+
+        //reset option menu
+        getActivity().supportInvalidateOptionsMenu();
 
         return view;
     }

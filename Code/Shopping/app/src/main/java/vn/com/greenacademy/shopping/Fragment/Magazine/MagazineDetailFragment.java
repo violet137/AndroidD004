@@ -22,11 +22,11 @@ import vn.com.greenacademy.shopping.Util.Ui.BaseFragment;
 public class MagazineDetailFragment extends Fragment {
 
     String id;
-    TextView textView;
-    public MagazineDetailFragment(String id, TextView textView) {
+    TextView textViewMain;
+    public MagazineDetailFragment(String id, TextView textViewMain) {
         // Required empty public constructor
         this.id = id;
-        this.textView = textView;
+        this.textViewMain = textViewMain;
 
     }
 
@@ -41,7 +41,7 @@ public class MagazineDetailFragment extends Fragment {
 
         MagazineDetailHandle magazineDetailHandle = new MagazineDetailHandle(getActivity());
 
-        magazineDetailHandle.setLayout(myWebView,textView);
+        magazineDetailHandle.setLayout(myWebView,textViewMain);
 
         magazineDetailHandle.getData(id);
 

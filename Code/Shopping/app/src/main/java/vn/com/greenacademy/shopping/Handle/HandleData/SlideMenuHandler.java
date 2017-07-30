@@ -14,6 +14,7 @@ import vn.com.greenacademy.shopping.Fragment.Main.MainFragment;
 import vn.com.greenacademy.shopping.Fragment.Store.FindStoreFragment;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.AdapterSlideMenu;
 import vn.com.greenacademy.shopping.Fragment.Main.MyShopping.MyShoppingFragment;
+import vn.com.greenacademy.shopping.Interface.FindStoreListenerCallBack;
 import vn.com.greenacademy.shopping.Model.SlideMenu;
 import vn.com.greenacademy.shopping.R;
 import vn.com.greenacademy.shopping.Util.SupportKeyList;
@@ -36,10 +37,10 @@ public class SlideMenuHandler {
     }
 
     // xu ly su kien click cua nguoi dung
-    public void itemClickListener(int position, BaseFragment baseFragment, TextView textView) {
+    public void itemClickListener(int position, BaseFragment baseFragment, TextView textViewMain, FindStoreListenerCallBack findStoreListenerCallBack) {
         String temp ;
         int count = ((AppCompatActivity)activity).getSupportFragmentManager().getBackStackEntryCount();
-        textView.setVisibility(View.GONE);
+        textViewMain.setVisibility(View.GONE);
         switch (position){
             case SupportKeyList.Products_slide:
                 temp = "Products";
@@ -70,7 +71,7 @@ public class SlideMenuHandler {
                     baseFragment.XoaFragment();
                     count--;
                 }
-                baseFragment.ChuyenFragment(new MagazineFragment(textView), SupportKeyList.TAG_FRAGMENT_MAGAZINE, true);
+                baseFragment.ChuyenFragment(new MagazineFragment(textViewMain), SupportKeyList.TAG_FRAGMENT_MAGAZINE, true);
                 break;
             case SupportKeyList.Wish_list_slide:
                 temp = "Wish list";
@@ -89,7 +90,7 @@ public class SlideMenuHandler {
                     baseFragment.XoaFragment();
                     count--;
                 }
-                baseFragment.ChuyenFragment(new FindStoreFragment(), SupportKeyList.TAG_FRAGMENT_FINDSTORE, true);
+                baseFragment.ChuyenFragment(new FindStoreFragment(findStoreListenerCallBack), SupportKeyList.TAG_FRAGMENT_FINDSTORE, true);
                 break;
             case SupportKeyList.Newsletter_slide:
                 temp = "Newsletter";

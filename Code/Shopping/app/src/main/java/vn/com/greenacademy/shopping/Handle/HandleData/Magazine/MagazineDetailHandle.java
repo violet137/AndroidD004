@@ -22,20 +22,20 @@ import vn.com.greenacademy.shopping.Util.ServerUrl;
 public class MagazineDetailHandle implements MagazineDetailCallBack{
     Activity activity;
     WebView myWebView;
-    TextView textView;
+    TextView textViewMain;
 
     public MagazineDetailHandle(Activity activity) {
         this.activity = activity;
     }
 
     public void getData(String id){
-        GetMagazineDetail getMagazineDetail = new GetMagazineDetail(this,textView);
+        GetMagazineDetail getMagazineDetail = new GetMagazineDetail(this,textViewMain);
         getMagazineDetail.execute(ServerUrl.UrlMagazineDetail+id);
     }
 
-    public void setLayout(WebView myWebView, TextView textView){
+    public void setLayout(WebView myWebView, TextView textViewMain){
         this.myWebView = myWebView;
-        this.textView = textView;
+        this.textViewMain = textViewMain;
         WebSettings webSettings = myWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
         myWebView.addJavascriptInterface(new WebAppInterface(activity), "android");
@@ -71,9 +71,9 @@ public class MagazineDetailHandle implements MagazineDetailCallBack{
     }
 
     @Override
-    public void magazineDetailCallBack(MagazineDetail magazineDetail, TextView textView) {
-        textView.setVisibility(View.VISIBLE);
-        textView.setText(magazineDetail.getTen());
+    public void magazineDetailCallBack(MagazineDetail magazineDetail, TextView textViewMain) {
+        textViewMain.setVisibility(View.VISIBLE);
+        textViewMain.setText(magazineDetail.getTen());
         viewWebInApp(magazineDetail.getNoiDung());
     }
 }

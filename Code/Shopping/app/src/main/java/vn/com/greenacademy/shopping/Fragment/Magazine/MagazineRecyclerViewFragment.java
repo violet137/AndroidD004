@@ -23,13 +23,14 @@ public class MagazineRecyclerViewFragment extends Fragment {
 
     int positionViewPagger;
     ArrayList<MagazineType> magazineTypeArrayList;
-    TextView textView;
+    TextView textViewMain;
 
-    public MagazineRecyclerViewFragment(int positionViewPagger, ArrayList<MagazineType> magazineTypeArrayList, TextView textView) {
+    public MagazineRecyclerViewFragment(int positionViewPagger, ArrayList<MagazineType> magazineTypeArrayList,
+                                        TextView textViewMain) {
         // Required empty public constructor
         this.positionViewPagger = positionViewPagger;
         this.magazineTypeArrayList = magazineTypeArrayList;
-        this.textView =textView;
+        this.textViewMain =textViewMain;
     }
 
 
@@ -47,7 +48,7 @@ public class MagazineRecyclerViewFragment extends Fragment {
 
 
         // ham nhan su kien click item tren view
-        magazineHandler.clickItem(textView);
+        magazineHandler.clickItem(textViewMain);
 
         // ham đổ dữ liệu lên recyclerView
         magazineHandler.setLayoutRecyclerView(recyclerView,positionViewPagger, magazineTypeArrayList);

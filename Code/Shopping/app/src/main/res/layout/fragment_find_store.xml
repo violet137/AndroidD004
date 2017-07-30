@@ -25,17 +25,8 @@
         android:layout_height="match_parent"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/btnStore_find_store"
-        android:background="@color/cardview_light_background"
-        android:visibility="gone" />
+        android:visibility="gone"
+        android:background="@color/cardview_light_background" />
 
-    <Button
-        android:id="@+id/btnStore_find_store"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
 
 </RelativeLayout>
