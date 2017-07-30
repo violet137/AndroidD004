@@ -30,6 +30,7 @@ import java.util.ArrayList;
 import vn.com.greenacademy.shopping.Handle.HandleData.FindStoreHandler;
 import vn.com.greenacademy.shopping.Interface.FindStoreListenerCallBack;
 import vn.com.greenacademy.shopping.Interface.StoreCallBack;
+import vn.com.greenacademy.shopping.MainActivity;
 import vn.com.greenacademy.shopping.Model.Store;
 import vn.com.greenacademy.shopping.Network.AsynTask.GetStore;
 import vn.com.greenacademy.shopping.R;
@@ -55,6 +56,8 @@ public class FindStoreFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        MainActivity.textViewMain.setVisibility(View.GONE);
+
         View view =  inflater.inflate(R.layout.fragment_find_store, container, false);
 
         final ListView listView = (ListView) view.findViewById(R.id.lvStore_find_store);

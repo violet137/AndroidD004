@@ -23,20 +23,18 @@ public class AdapterMagazineViewPager extends FragmentPagerAdapter {
     String magazineType;
     Activity activity;
     ArrayList<MagazineType> magazineTypeArrayList;
-    TextView textViewMain;
 
     public AdapterMagazineViewPager(FragmentManager fm, Activity activity, String magazineType,
-                                    ArrayList<MagazineType> magazineTypeArrayList, TextView textViewMain) {
+                                    ArrayList<MagazineType> magazineTypeArrayList) {
         super(fm);
         this.magazineType = magazineType;
         this.activity = activity;
         this.magazineTypeArrayList = magazineTypeArrayList;
-        this.textViewMain = textViewMain;
     }
 
     @Override
     public Fragment getItem(int position) {
-        return new MagazineRecyclerViewFragment(position, magazineTypeArrayList, textViewMain);
+        return new MagazineRecyclerViewFragment(position, magazineTypeArrayList);
     }
 
     @Override

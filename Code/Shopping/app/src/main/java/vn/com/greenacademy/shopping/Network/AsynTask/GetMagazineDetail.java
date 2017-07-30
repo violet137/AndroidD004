@@ -26,11 +26,9 @@ import vn.com.greenacademy.shopping.Model.MagazineDetail;
 
 public class GetMagazineDetail extends AsyncTask<String, Object, String> {
     MagazineDetailCallBack magazineDetailCallBack;
-    TextView textViewMain;
 
-    public GetMagazineDetail(MagazineDetailCallBack magazineDetailCallBack, TextView textViewMain) {
+    public GetMagazineDetail(MagazineDetailCallBack magazineDetailCallBack) {
         this.magazineDetailCallBack = magazineDetailCallBack;
-        this.textViewMain =textViewMain;
     }
     @Override
     protected String doInBackground(String... params) {
@@ -65,7 +63,7 @@ public class GetMagazineDetail extends AsyncTask<String, Object, String> {
     @Override
     protected void onPostExecute(String aVoid) {
         ParDataGetMagazineDetail par = new ParDataGetMagazineDetail(aVoid);
-        magazineDetailCallBack.magazineDetailCallBack(par.parData(),textViewMain);
+        magazineDetailCallBack.magazineDetailCallBack(par.parData());
     }
 }
 class ParDataGetMagazineDetail {

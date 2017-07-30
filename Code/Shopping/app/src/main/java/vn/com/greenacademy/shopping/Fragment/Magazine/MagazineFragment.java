@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import vn.com.greenacademy.shopping.Handle.HandleData.Magazine.MagazineHandler;
+import vn.com.greenacademy.shopping.MainActivity;
 import vn.com.greenacademy.shopping.R;
 
 /**
@@ -18,10 +19,8 @@ import vn.com.greenacademy.shopping.R;
  */
 public class MagazineFragment extends Fragment {
 
-    TextView textViewMain;
-    public MagazineFragment(TextView textViewMain) {
+    public MagazineFragment() {
         // Required empty public constructor
-        this.textViewMain = textViewMain;
     }
 
 
@@ -36,10 +35,10 @@ public class MagazineFragment extends Fragment {
 
         MagazineHandler magazineHandler = new MagazineHandler(getActivity());
         magazineHandler.getMagazineType();
-        magazineHandler.setLayoutMagazineFragment(viewPager, tabLayout, textViewMain);
+        magazineHandler.setLayoutMagazineFragment(viewPager, tabLayout);
 
-        textViewMain.setVisibility(View.VISIBLE);
-        textViewMain.setText("Magazine");
+        MainActivity.textViewMain.setVisibility(View.VISIBLE);
+        MainActivity.textViewMain.setText("Magazine");
 
         //reset option menu
         getActivity().supportInvalidateOptionsMenu();

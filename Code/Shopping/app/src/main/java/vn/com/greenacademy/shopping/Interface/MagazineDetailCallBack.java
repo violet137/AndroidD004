@@ -9,5 +9,5 @@ import vn.com.greenacademy.shopping.Model.MagazineDetail;
  */
 
 public interface MagazineDetailCallBack {
-    void magazineDetailCallBack(MagazineDetail magazineDetail, TextView textView);
+    void magazineDetailCallBack(MagazineDetail magazineDetail);
 }

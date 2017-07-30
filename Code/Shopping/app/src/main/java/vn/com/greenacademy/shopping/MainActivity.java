@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity implements DataCallBack, Fin
     private DataHandler dataHandler;
     private MySharedPreferences mySharedPref;
 
-    TextView textViewMain;
+    public static TextView textViewMain;
     SlideMenuHandler slideMenuHandler;
     boolean trangThaiListFindStore = false;
     ListView listViewFindStore;
@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity implements DataCallBack, Fin
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 //modeSlideMenu = arrayModeSlideMenus.get(position);
-                slideMenuHandler.itemClickListener(position, baseFragment, textViewMain,MainActivity.this);
+                slideMenuHandler.itemClickListener(position, baseFragment,MainActivity.this);
                 // dong slide menu
                 if (drawerLayout.isDrawerOpen(GravityCompat.START)){
                     drawerLayout.closeDrawer(GravityCompat.START);

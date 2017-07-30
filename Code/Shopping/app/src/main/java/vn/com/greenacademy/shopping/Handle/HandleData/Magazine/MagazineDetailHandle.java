@@ -7,10 +7,10 @@ import android.net.Uri;
 import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import vn.com.greenacademy.shopping.Interface.MagazineDetailCallBack;
+import vn.com.greenacademy.shopping.MainActivity;
 import vn.com.greenacademy.shopping.Model.MagazineDetail;
 import vn.com.greenacademy.shopping.Network.AsynTask.GetMagazineDetail;
 import vn.com.greenacademy.shopping.Util.ServerUrl;
@@ -22,20 +22,18 @@ import vn.com.greenacademy.shopping.Util.ServerUrl;
 public class MagazineDetailHandle implements MagazineDetailCallBack{
     Activity activity;
     WebView myWebView;
-    TextView textViewMain;
 
     public MagazineDetailHandle(Activity activity) {
         this.activity = activity;
     }
 
     public void getData(String id){
-        GetMagazineDetail getMagazineDetail = new GetMagazineDetail(this,textViewMain);
+        GetMagazineDetail getMagazineDetail = new GetMagazineDetail(this);
         getMagazineDetail.execute(ServerUrl.UrlMagazineDetail+id);
     }
 
-    public void setLayout(WebView myWebView, TextView textViewMain){
+    public void setLayout(WebView myWebView){
         this.myWebView = myWebView;
-        this.textViewMain = textViewMain;
         WebSettings webSettings = myWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
         myWebView.addJavascriptInterface(new WebAppInterface(activity), "android");
@@ -71,9 +69,9 @@ public class MagazineDetailHandle implements MagazineDetailCallBack{
     }
 
     @Override
-    public void magazineDetailCallBack(MagazineDetail magazineDetail, TextView textViewMain) {
-        textViewMain.setVisibility(View.VISIBLE);
-        textViewMain.setText(magazineDetail.getTen());
+    public void magazineDetailCallBack(MagazineDetail magazineDetail) {
+        MainActivity.textViewMain.setVisibility(View.VISIBLE);
+        MainActivity.textViewMain.setText(magazineDetail.getTen());
         viewWebInApp(magazineDetail.getNoiDung());
     }
 }
