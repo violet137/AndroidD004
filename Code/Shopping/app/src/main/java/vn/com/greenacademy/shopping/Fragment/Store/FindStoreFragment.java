@@ -84,6 +84,7 @@ public class FindStoreFragment extends Fragment {
 
         mapFragment.getMapAsync(findStoreHandler);
 
+        getActivity().supportInvalidateOptionsMenu();
         return view;
     }
 

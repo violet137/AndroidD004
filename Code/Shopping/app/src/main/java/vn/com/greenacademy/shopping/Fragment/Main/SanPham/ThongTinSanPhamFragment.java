@@ -81,6 +81,8 @@ public class ThongTinSanPhamFragment extends Fragment implements View.OnClickLis
         });
         tvTenVaMau.setText(listSanPham.get(position).getTenSanPham() + " - Khaki Green");
         tvSoLuong.setText(String.valueOf(position + 1) + "/" + String.valueOf(listSanPham.size()));
+
+        getActivity().supportInvalidateOptionsMenu();
         return root;
     }
 

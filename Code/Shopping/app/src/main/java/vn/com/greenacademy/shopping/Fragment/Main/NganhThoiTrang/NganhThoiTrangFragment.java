@@ -33,6 +33,7 @@ public class NganhThoiTrangFragment extends Fragment {
         ListView listPhanLoai = (ListView) root.findViewById(R.id.list_phan_loai);
         RecyclerView listSanPham = (RecyclerView) root.findViewById(R.id.list_san_pham_nganh_thoi_trang);
 
+        getActivity().supportInvalidateOptionsMenu();
         return root;
     }
 

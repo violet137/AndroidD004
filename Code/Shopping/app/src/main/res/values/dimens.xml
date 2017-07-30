@@ -4,6 +4,7 @@
     <dimen name="toolbar_height">55dp</dimen>
     <dimen name="title_height">30dp</dimen>
     <dimen name="title_size">17sp</dimen>
+    <dimen name="toolbar_elevation">4dp</dimen>
     <dimen name="horizontal_padding">15dp</dimen>
     <dimen name="vertical_padding">12dp</dimen>
     <dimen name="shape_corners_radius">4dp</dimen>

@@ -15,14 +15,9 @@ import vn.com.greenacademy.shopping.R;
 
 public class BaseFragment extends Fragment {
     private FragmentManager fragmentManager;
-    private MainActivity activity;
 
     public BaseFragment(FragmentManager fragmentManager){
         this.fragmentManager = fragmentManager;
-    }
-    public BaseFragment(Activity activity, FragmentManager fragmentManager){
-        this.fragmentManager = fragmentManager;
-        this.activity = (MainActivity) activity;
     }
 
     public void ChuyenFragment(Fragment toFragment, @Nullable String tag, boolean toBackStack){
@@ -32,7 +27,6 @@ public class BaseFragment extends Fragment {
             transaction.replace(R.id.content_main, toFragment, tag).addToBackStack(tag).commit();
         else
             transaction.replace(R.id.content_main, toFragment, tag).commit();
-       activity.supportInvalidateOptionsMenu();
     }
 
     public void XoaFragment(){

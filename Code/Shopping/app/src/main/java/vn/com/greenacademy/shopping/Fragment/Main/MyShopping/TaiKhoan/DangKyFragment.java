@@ -55,6 +55,8 @@ public class DangKyFragment extends Fragment implements ErrorCallBack {
                 }
             }
         });
+
+        getActivity().supportInvalidateOptionsMenu();
         return view;
     }
 

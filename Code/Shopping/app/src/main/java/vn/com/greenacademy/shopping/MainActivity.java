@@ -1,5 +1,6 @@
 package vn.com.greenacademy.shopping;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -76,12 +77,13 @@ public class MainActivity extends AppCompatActivity implements DataCallBack {
         //Khởi tạo, thiết lập giá trị
         mySharedPref = new MySharedPreferences(this, SupportKeyList.SHAREDPREF_TEN_FILE);
         dataHandler = new DataHandler(this);
-        baseFragment = new BaseFragment(this, getSupportFragmentManager());
+        baseFragment = new BaseFragment(getSupportFragmentManager());
         slideMenuHandler.loadData();
         slideMenuHandler.displayListview(lv_item_slide_menu);
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, 0, 0);
         drawerLayout.addDrawerListener(toggle);
+        toggle.getDrawerArrowDrawable().setColor(Color.parseColor("#ffcc0000"));
         toggle.syncState();
 
         //Chạy màn hình splash
@@ -120,10 +122,9 @@ public class MainActivity extends AppCompatActivity implements DataCallBack {
                 case SupportKeyList.TAG_FRAGMENT_MAIN:
                     menu.findItem(R.id.search_toolbar).setVisible(true);
                     menu.findItem(R.id.my_bag_toolbar).setVisible(true);
+                    menu.findItem(R.id.find_store_toolbar).setVisible(false);
                     menu.findItem(R.id.dang_nhap_toolbar).setVisible(false);
                     menu.findItem(R.id.dang_xuat_toolbar).setVisible(false);
-                    menu.findItem(R.id.find_store_toolbar).setVisible(false);
-                    menu.findItem(R.id.my_bag_toolbar).setVisible(true);
                     break;
 
                 case SupportKeyList.TAG_FRAGMENT_MY_SHOPPING:
@@ -144,12 +145,22 @@ public class MainActivity extends AppCompatActivity implements DataCallBack {
                     menu.findItem(R.id.my_bag_toolbar).setVisible(false);
                     break;
 
+                case SupportKeyList.TAG_XU_HUONG_THOI_TRANG:
+                case SupportKeyList.TAG_THONG_TIN_SAN_PHAM:
+                    menu.findItem(R.id.my_bag_toolbar).setVisible(true);
+                    menu.findItem(R.id.find_store_toolbar).setVisible(false);
+                    menu.findItem(R.id.search_toolbar).setVisible(false);
+                    menu.findItem(R.id.dang_nhap_toolbar).setVisible(false);
+                    menu.findItem(R.id.dang_xuat_toolbar).setVisible(false);
+                    break;
+
                 case SupportKeyList.TAG_FRAGMENT_FINDSTORE:
                     menu.findItem(R.id.find_store_toolbar).setVisible(true);
                     menu.findItem(R.id.search_toolbar).setVisible(false);
                     menu.findItem(R.id.dang_nhap_toolbar).setVisible(false);
                     menu.findItem(R.id.dang_xuat_toolbar).setVisible(false);
                     menu.findItem(R.id.my_bag_toolbar).setVisible(false);
+                    break;
 
                 default:
                     menu.clear();
@@ -159,6 +170,7 @@ public class MainActivity extends AppCompatActivity implements DataCallBack {
         }
         menu.findItem(R.id.search_toolbar).setVisible(true);
         menu.findItem(R.id.my_bag_toolbar).setVisible(true);
+        menu.findItem(R.id.find_store_toolbar).setVisible(false);
         menu.findItem(R.id.dang_nhap_toolbar).setVisible(false);
         menu.findItem(R.id.dang_xuat_toolbar).setVisible(false);
         return true;

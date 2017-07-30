@@ -64,6 +64,8 @@ public class XuHuongThoiTrangFragment extends Fragment implements DataCallBack, 
         loadingDialog.show();
         DataTest();
         LoadUI();
+
+        getActivity().supportInvalidateOptionsMenu();
         return root;
     }
 
