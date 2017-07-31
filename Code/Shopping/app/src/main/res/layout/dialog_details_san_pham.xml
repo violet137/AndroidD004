@@ -8,7 +8,7 @@
 
     <!-- Nút hủy -->
     <ImageView
-        android:id="@+id/thoat_button_chi_tiet_set_do"
+        android:id="@+id/thoat_button_chi_tiet_san_pham"
         android:layout_width="@dimen/button_thoat_size_san_pham"
         android:layout_height="@dimen/button_thoat_size_san_pham"
         android:layout_gravity="end"

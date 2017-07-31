@@ -58,6 +58,8 @@
         android:paddingLeft="@dimen/vertical_padding"
         android:background="@color/colorSecondaryDark"
         android:visibility="gone"
+        android:maxLines="1"
+        android:ellipsize="end"
         android:text="TÊN MỤC"
         android:textColor="@color/colorText"
         android:textSize="@dimen/title_size"

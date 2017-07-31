@@ -36,7 +36,7 @@ public class DetailsSanPhamFragment extends Dialog implements View.OnClickListen
         TextView tvDescription = (TextView) root.findViewById(R.id.description_text_chi_tiet_san_pham);
         TextView tvChiTiet = (TextView) root.findViewById(R.id.details_text_chi_tiet_san_pham);
 
-        root.findViewById(R.id.thoat_button_chi_tiet_set_do).setOnClickListener(this);
+        root.findViewById(R.id.thoat_button_chi_tiet_san_pham).setOnClickListener(this);
 
 //        tvDescription.setText(description);
 //        tvChiTiet.setText(details);
@@ -45,7 +45,7 @@ public class DetailsSanPhamFragment extends Dialog implements View.OnClickListen
 
     @Override
     public void onClick(View view) {
-        if (view.getId() == R.id.thoat_button_chi_tiet_set_do)
+        if (view.getId() == R.id.thoat_button_chi_tiet_san_pham)
             dismiss();
     }
 

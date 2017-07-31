@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.Toast;
+import android.widget.VideoView;
 
 import java.util.ArrayList;
 
@@ -33,18 +34,20 @@ import vn.com.greenacademy.shopping.Util.Ui.BaseFragment;
  */
 public class XuHuongThoiTrangFragment extends Fragment implements DataCallBack, SetDoCallBack {
     private ImageView vBanner;
+    private VideoView vVideoBanner;
     private RecyclerView vListSetDo;
     private RecyclerView vListSanPham;
 
-    private XuHuongThoiTrang xuHuongThoiTrang;
     private LoadingDialog loadingDialog;
+    private XuHuongThoiTrang xuHuongThoiTrang;
+    private long idXuHuong;
     //Data test
     private XuHuongThoiTrang testXuHuongThoiTrang;
     private int[] listDataBanner;
     private int position;
 
 //    public XuHuongThoiTrangFragment(long idXuHuong){
-//        new GoiAPIServerAsyncTask(this).execute(SupportKeyList.API_DATA_XU_HUONG_THOI_TRANG, ServerUrl.DataUrl, String.valueOf(idXuHuong));
+//        this.idXuHuong = idXuHuong;
 //    }
 
     public XuHuongThoiTrangFragment(int position) {
@@ -57,6 +60,7 @@ public class XuHuongThoiTrangFragment extends Fragment implements DataCallBack, 
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_xu_huong_thoi_trang, container, false);
         vBanner = (ImageView) root.findViewById(R.id.head_image_fragment_xu_huong_thoi_trang);
+        vVideoBanner =(VideoView) root.findViewById(R.id.head_video_fragment_xu_huong_thoi_trang);
         vListSetDo = (RecyclerView) root.findViewById(R.id.list_set_do_fragment_xu_huong_thoi_trang);
         vListSanPham = (RecyclerView) root.findViewById(R.id.list_san_pham_fragment_xu_huong_thoi_trang);
 
@@ -64,6 +68,8 @@ public class XuHuongThoiTrangFragment extends Fragment implements DataCallBack, 
         loadingDialog.show();
         DataTest();
         LoadUI();
+
+        new GoiAPIServerAsyncTask(this).execute(SupportKeyList.API_DATA_XU_HUONG_THOI_TRANG, ServerUrl.XuHuongThoiTrangUrl + String.valueOf(idXuHuong), String.valueOf(idXuHuong));
 
         getActivity().supportInvalidateOptionsMenu();
         return root;
@@ -73,6 +79,9 @@ public class XuHuongThoiTrangFragment extends Fragment implements DataCallBack, 
 //        if(!xuHuongThoiTrang.isVideo()) {
 //            ImageLoad imageLoad = new ImageLoad(getActivity());
 //            imageLoad.ImageLoad(xuHuongThoiTrang.getLinkHinhMoTa(), vBanner);
+//        } else {
+//            vVideoBanner.setVisibility(View.VISIBLE);
+//            vVideoBanner.setVideoURI(xuHuongThoiTrang.getLinkHinhMoTa());
 //        }
         vBanner.setImageResource(listDataBanner[0]);
         //List set đồ

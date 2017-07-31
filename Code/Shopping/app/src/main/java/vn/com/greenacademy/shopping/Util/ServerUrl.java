@@ -7,14 +7,15 @@ package vn.com.greenacademy.shopping.Util;
 public class ServerUrl {
     public static final String ServerLink="http://tamod.vn:8050/";
 
-    public static final String HomeUrl = ServerLink + "api/Home/";
+    //Tài khoản
     public static final String DangNhapUrl = ServerLink + "api/Auth/Login";
+    public static final String DangKyUrl = ServerLink + "TaiKhoan/DangKy";
+
+    //Data
+    public static final String HomeUrl = ServerLink + "api/Home/";
     public static final String StoreUrl = ServerLink + "api/CuaHang/";
     public static final String MagazineUrl = ServerLink + "api/TapChi/";
-
-    public static final String DangKyUrl = ServerLink + "TaiKhoan/DangKy";
-    public static final String DataUrl = ServerLink + "";
-
+    public static final String XuHuongThoiTrangUrl = ServerLink + "api/XuHuongTtrang/XuHuongTtrangById?idXuHuong=";
     public static final String UrlDanhSachThoiTrang = HomeUrl + "DanhSachThoiTrang";
     public static final String UrlDanhSachKhuyenMai = HomeUrl + "KhuyenMai";
     public static final String UrlDanhBannerHome = HomeUrl + "BannerHome";

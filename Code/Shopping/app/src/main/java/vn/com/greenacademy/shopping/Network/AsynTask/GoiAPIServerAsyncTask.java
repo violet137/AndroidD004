@@ -139,13 +139,11 @@ public class GoiAPIServerAsyncTask extends AsyncTask<String, Void, String> {
 
                         //Kiểm tra kết nối thành công
                         if (conn.getResponseCode() == HttpURLConnection.HTTP_OK || conn.getResponseCode() == HttpURLConnection.HTTP_CREATED){
-                            //Lấy status server trả về kiểm tra đăng nhập thành công hay không
                             InputStream inputStream = conn.getInputStream();
                             ByteArrayOutputStream result = new ByteArrayOutputStream();
                             byte[] buffer = new byte[1024];
                             int lenght;
 
-                            //Ghép từng đoạn data server trả về
                             while((lenght = inputStream.read(buffer)) != -1)
                                 result.write(buffer, 0, lenght);
 
@@ -160,7 +158,7 @@ public class GoiAPIServerAsyncTask extends AsyncTask<String, Void, String> {
 
                 case SupportKeyList.API_DATA_XU_HUONG_THOI_TRANG:
                     try {
-                        conn.setRequestProperty("Accept", "json");
+                        conn.setRequestProperty("Accept", "application/json");
                         conn.setRequestMethod("GET");
                         conn.connect();
 
@@ -169,11 +167,11 @@ public class GoiAPIServerAsyncTask extends AsyncTask<String, Void, String> {
                             ByteArrayOutputStream result = new ByteArrayOutputStream();
                             byte[] buffer = new byte[1024];
                             int length;
-                            while((length = inputStream.read(buffer)) == -1){
+                            while((length = inputStream.read(buffer)) != -1){
                                 result.write(buffer, 0, length);
                             }
 
-                            JSONObject object = new JSONObject(result.toString());
+                            JSONObject object = new JSONObject(result.toString("UTF-8"));
                             if (object.getInt("Status") == 1){
                                 return result.toString("UTF-8");
                             }
