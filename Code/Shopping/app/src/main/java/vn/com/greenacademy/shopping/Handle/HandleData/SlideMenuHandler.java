@@ -8,10 +8,12 @@ import android.widget.ListView;
 import java.util.ArrayList;
 
 import vn.com.greenacademy.shopping.Fragment.Magazine.MagazineFragment;
+import vn.com.greenacademy.shopping.Fragment.Main.DanhMucSanPham.DanhMucSPFragment;
 import vn.com.greenacademy.shopping.Fragment.Main.MainFragment;
 import vn.com.greenacademy.shopping.Fragment.Store.FindStoreFragment;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.AdapterSlideMenu;
 import vn.com.greenacademy.shopping.Fragment.Main.MyShopping.MyShoppingFragment;
+import vn.com.greenacademy.shopping.Model.ProductsPhoto;
 import vn.com.greenacademy.shopping.Model.SlideMenu;
 import vn.com.greenacademy.shopping.R;
 import vn.com.greenacademy.shopping.Util.SupportKeyList;
@@ -48,15 +50,35 @@ public class SlideMenuHandler {
                 break;
             case SupportKeyList.Ladies_slide:
                 temp = "Ladies";
+                while(count > 0){
+                    baseFragment.XoaFragment();
+                    count--;
+                }
+                baseFragment.ChuyenFragment(new DanhMucSPFragment("Nu"), SupportKeyList.TAG_DANH_MUC_SAN_PHAM, true);
                 break;
             case SupportKeyList.Men_slide:
                 temp = "Men";
+                while(count > 0){
+                    baseFragment.XoaFragment();
+                    count--;
+                }
+                baseFragment.ChuyenFragment(new DanhMucSPFragment("Nam"), SupportKeyList.TAG_DANH_MUC_SAN_PHAM, true);
                 break;
             case SupportKeyList.Kids_slide:
                 temp = "Kids";
+                while(count > 0){
+                    baseFragment.XoaFragment();
+                    count--;
+                }
+                baseFragment.ChuyenFragment(new DanhMucSPFragment("TreEm"), SupportKeyList.TAG_DANH_MUC_SAN_PHAM, true);
                 break;
             case SupportKeyList.Home_slide:
                 temp = "Home";
+                while(count > 0){
+                    baseFragment.XoaFragment();
+                    count--;
+                }
+                baseFragment.ChuyenFragment(new DanhMucSPFragment("Home"), SupportKeyList.TAG_DANH_MUC_SAN_PHAM, true);
                 break;
             case SupportKeyList.Sale_slide:
                 temp = "Support";
