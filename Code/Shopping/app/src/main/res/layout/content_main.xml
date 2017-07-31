@@ -12,33 +12,58 @@
         android:layout_height="@dimen/toolbar_height"
         android:background="@color/colorPrimary"
         android:elevation="@dimen/toolbar_elevation">
-        <TextView
-            android:id="@+id/tvTiltleDangNhap_FragmentDangNhap"
+        <!-- Test Logo -->
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:gravity="center"
-            android:text="@string/app_name"
-            android:textColor="@android:color/holo_red_dark"
-            android:textSize="25sp"
-            android:textStyle="italic"
-            android:typeface="serif" />
+            android:orientation="horizontal"
+            android:gravity="bottom">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="F"
+                android:textColor="@android:color/holo_red_dark"
+                android:textSize="30sp"
+                android:textStyle="italic"
+                android:typeface="serif" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="&amp;"
+                android:textSize="15sp"
+                android:textColor="@android:color/holo_red_dark"
+                android:textStyle="italic"
+                android:typeface="serif" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="L"
+                android:textColor="@android:color/holo_red_dark"
+                android:textSize="30sp"
+                android:textStyle="italic"
+                android:typeface="serif"  />
+        </LinearLayout>
     </android.support.v7.widget.Toolbar>
 
-    <!-- Thay fragment -->
+    <!-- Title -->
     <TextView
-        android:id="@+id/tvName_contnt_main"
+        android:id="@+id/text_ten_muc_content_main"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="@color/cardview_light_background"
-        android:background="@color/cardview_dark_background"
-        android:textStyle="bold"
-        android:textSize="@dimen/text_size_15dp"
-        android:paddingStart="@dimen/textView_pandding_left_15dp"
-        android:paddingTop="@dimen/textView_pandding_top_3dp"
-        android:paddingBottom="@dimen/textView_pandding_bottom_3dp"
-        android:text="TextView"
-        android:visibility="gone"/>
+        android:layout_height="@dimen/title_height"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/vertical_padding"
+        android:background="@color/colorSecondaryDark"
+        android:visibility="gone"
+        android:text="TÊN MỤC"
+        android:textColor="@color/colorText"
+        android:textSize="@dimen/title_size"
+        android:textStyle="bold" />
 
+    <!-- Thay fragment -->
     <FrameLayout
         android:id="@+id/content_main"
         android:layout_width="match_parent"

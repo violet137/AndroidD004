@@ -105,8 +105,6 @@
     <dimen name="text_layout_height_15dp">15dp</dimen>
     <dimen name="btnDiviver_1px">1px</dimen>
 
-
-
     <!-- Slide Menu -->
     <dimen name="imageView_padding_10dp">10dp</dimen>
 

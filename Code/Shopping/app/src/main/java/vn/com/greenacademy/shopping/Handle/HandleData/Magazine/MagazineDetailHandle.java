@@ -70,8 +70,8 @@ public class MagazineDetailHandle implements MagazineDetailCallBack{
 
     @Override
     public void magazineDetailCallBack(MagazineDetail magazineDetail) {
-        MainActivity.textViewMain.setVisibility(View.VISIBLE);
-        MainActivity.textViewMain.setText(magazineDetail.getTen());
+        MainActivity.tvTenMuc.setVisibility(View.VISIBLE);
+        MainActivity.tvTenMuc.setText(magazineDetail.getTen());
         viewWebInApp(magazineDetail.getNoiDung());
     }
 }

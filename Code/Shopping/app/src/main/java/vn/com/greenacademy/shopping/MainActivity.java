@@ -1,7 +1,13 @@
 package vn.com.greenacademy.shopping;
 
+import android.*;
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -17,6 +23,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import vn.com.greenacademy.shopping.Fragment.Main.MainFragment;
 import vn.com.greenacademy.shopping.Fragment.Main.MyShopping.TaiKhoan.DangNhapFragment;
 import vn.com.greenacademy.shopping.Fragment.SplashScreenFragment;
 import vn.com.greenacademy.shopping.Handle.HandleData.DataHandler;
@@ -45,10 +52,12 @@ public class MainActivity extends AppCompatActivity implements DataCallBack, Fin
     private DataHandler dataHandler;
     private MySharedPreferences mySharedPref;
 
-    public static TextView textViewMain;
+    public static TextView tvTenMuc;
     SlideMenuHandler slideMenuHandler;
     boolean trangThaiListFindStore = false;
     ListView listViewFindStore;
+
+    public static final int MY_PERMISSIONS_REQUEST_CODE = 1;
 
     @Override()
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +68,7 @@ public class MainActivity extends AppCompatActivity implements DataCallBack, Fin
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
+        tvTenMuc = (TextView) findViewById(R.id.text_ten_muc_content_main);
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         lv_item_slide_menu = (ListView) findViewById(R.id.lv_item_slide_menu);
 
@@ -69,9 +79,6 @@ public class MainActivity extends AppCompatActivity implements DataCallBack, Fin
 //        navigationView.findViewById(R.id.tvEmail_nav_hear).setOnClickListener(this);
 
         slideMenuHandler = new SlideMenuHandler(this);
-
-        textViewMain = (TextView) findViewById(R.id.tvName_contnt_main);
-
         lv_item_slide_menu.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -212,12 +219,12 @@ public class MainActivity extends AppCompatActivity implements DataCallBack, Fin
                 if (trangThaiListFindStore){
                     trangThaiListFindStore = false;
                     listViewFindStore.setVisibility(View.GONE);
-                    textViewMain.setVisibility(View.GONE);
+                    tvTenMuc.setVisibility(View.GONE);
                 } else {
                     trangThaiListFindStore = true;
                     listViewFindStore.setVisibility(View.VISIBLE);
-                    textViewMain.setText("Danh sách các cửa hàng");
-                    textViewMain.setVisibility(View.VISIBLE);
+                    tvTenMuc.setText("Danh sách các cửa hàng");
+                    tvTenMuc.setVisibility(View.VISIBLE);
                 }
                 break;
 
@@ -240,6 +247,19 @@ public class MainActivity extends AppCompatActivity implements DataCallBack, Fin
                 Toast.makeText(this, "dang xuat thanh cong", Toast.LENGTH_SHORT).show();
                 baseFragment.ChuyenFragment(new DangNhapFragment(), SupportKeyList.TAG_FRAGMENT_DANG_NHAP, false);
                 break;
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        switch (requestCode){
+            case MY_PERMISSIONS_REQUEST_CODE:
+                if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                    baseFragment.ChuyenFragment(new MainFragment(), SupportKeyList.TAG_FRAGMENT_MAGAZINE, false);
+                } else{
+                    finish();
+                }
+                return;
         }
     }
 

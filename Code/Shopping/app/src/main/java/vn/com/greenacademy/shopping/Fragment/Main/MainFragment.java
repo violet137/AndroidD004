@@ -28,7 +28,7 @@ public class MainFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        MainActivity.textViewMain.setVisibility(View.GONE);
+        MainActivity.tvTenMuc.setVisibility(View.GONE);
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_main, container, false);
         lv_menu_main = (ListView) view.findViewById(R.id.lv_menu_mani);
