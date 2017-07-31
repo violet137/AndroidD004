@@ -1,9 +1,16 @@
 package vn.com.greenacademy.shopping;
 
+import android.*;
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.view.View;
+
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -17,6 +24,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import vn.com.greenacademy.shopping.Fragment.Main.MainFragment;
 import vn.com.greenacademy.shopping.Fragment.Main.MyShopping.TaiKhoan.DangNhapFragment;
 import vn.com.greenacademy.shopping.Fragment.SplashScreenFragment;
 import vn.com.greenacademy.shopping.Fragment.Store.FindStoreFragment;
@@ -45,9 +53,11 @@ public class MainActivity extends AppCompatActivity implements DataCallBack {
     private DataHandler dataHandler;
     private MySharedPreferences mySharedPref;
 
-    public static TextView textViewMain;
+    public static TextView tvTenMuc;
     SlideMenuHandler slideMenuHandler;
     boolean trangThaiListFindStore = false;
+
+    public static final int MY_PERMISSIONS_REQUEST_CODE = 1;
 
     @Override()
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,7 +79,7 @@ public class MainActivity extends AppCompatActivity implements DataCallBack {
 
         slideMenuHandler = new SlideMenuHandler(this);
 
-        textViewMain = (TextView) findViewById(R.id.tvName_contnt_main);
+        tvTenMuc = (TextView) findViewById(R.id.text_ten_muc_content_main);
 
         lv_item_slide_menu.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -211,12 +221,12 @@ public class MainActivity extends AppCompatActivity implements DataCallBack {
                 if (trangThaiListFindStore){
                     trangThaiListFindStore = false;
                     FindStoreFragment.listView.setVisibility(View.GONE);
-                    textViewMain.setVisibility(View.GONE);
+                    tvTenMuc.setVisibility(View.GONE);
                 } else {
                     trangThaiListFindStore = true;
                     FindStoreFragment.listView.setVisibility(View.VISIBLE);
-                    textViewMain.setText("Danh sách các cửa hàng");
-                    textViewMain.setVisibility(View.VISIBLE);
+                    tvTenMuc.setText("Danh sách các cửa hàng");
+                    tvTenMuc.setVisibility(View.VISIBLE);
                 }
                 break;
 
@@ -239,6 +249,18 @@ public class MainActivity extends AppCompatActivity implements DataCallBack {
                 Toast.makeText(this, "dang xuat thanh cong", Toast.LENGTH_SHORT).show();
                 baseFragment.ChuyenFragment(new DangNhapFragment(), SupportKeyList.TAG_FRAGMENT_DANG_NHAP, false);
                 break;
+        }
+    }
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        switch (requestCode){
+            case MY_PERMISSIONS_REQUEST_CODE:
+                if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                    baseFragment.ChuyenFragment(new MainFragment(), SupportKeyList.TAG_FRAGMENT_MAGAZINE, false);
+                } else{
+                    finish();
+                }
+                return;
         }
     }
 

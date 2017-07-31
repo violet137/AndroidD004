@@ -29,7 +29,7 @@ public class FindStoreFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        MainActivity.textViewMain.setVisibility(View.GONE);
+        MainActivity.tvTenMuc.setVisibility(View.GONE);
 
         View view =  inflater.inflate(R.layout.fragment_find_store, container, false);
 
