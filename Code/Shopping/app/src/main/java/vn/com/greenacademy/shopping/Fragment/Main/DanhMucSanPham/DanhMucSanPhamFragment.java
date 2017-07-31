@@ -26,6 +26,7 @@ public class DanhMucSanPhamFragment extends Fragment {
         TextView tv_danhmucsp= (TextView) view.findViewById(R.id.tv_danhmucsp);
         ListView lv_danhmucsp = (ListView) view.findViewById(R.id.lview_danhmucsp);
         ImageView image_danhmucsp = (ImageView) view.findViewById(R.id.img_danhmucsp);
+
         asyncTask = new DanhMucSanPhamAsyncTask(getContext(),tv_danhmucsp,lv_danhmucsp,image_danhmucsp);
         asyncTask.execute("nam");
 

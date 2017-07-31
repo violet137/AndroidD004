@@ -16,9 +16,10 @@ import vn.com.greenacademy.shopping.R;
  */
 public class DanhMucSPFragment extends Fragment {
 
-
-    public DanhMucSPFragment() {
+    String loaiSP;
+    public DanhMucSPFragment(String loaiSP) {
         // Required empty public constructor
+        this.loaiSP = loaiSP;
     }
 
 
@@ -30,9 +31,9 @@ public class DanhMucSPFragment extends Fragment {
 
         ListView listView = (ListView) view.findViewById(R.id.lvDanhMuc_DanhMucSP_Fragment);
 
-        DanhMucSPHandler danhMucSPHandler = new DanhMucSPHandler();
+        DanhMucSPHandler danhMucSPHandler = new DanhMucSPHandler(getActivity());
 
-        danhMucSPHandler.setListView(listView);
+        danhMucSPHandler.setListView(listView, loaiSP);
 
         return view;
     }
