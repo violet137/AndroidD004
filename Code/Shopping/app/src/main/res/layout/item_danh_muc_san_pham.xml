@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/iv_itemDanhMucSP"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/imageView_height"
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/banner_xu_huong_thoi_trang"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/tvName_itemDanhMucSP"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/cardview_dark_background"
+        android:paddingTop="@dimen/layout_margin_10dp"
+        android:paddingStart="@dimen/layout_margin_10dp"
+        android:paddingBottom="@dimen/layout_margin_10dp"
+        android:text="TextView" />
+</LinearLayout>
