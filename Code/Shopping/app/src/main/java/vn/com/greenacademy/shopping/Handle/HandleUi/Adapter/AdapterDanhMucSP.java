@@ -55,11 +55,19 @@ public class AdapterDanhMucSP extends ArrayAdapter {
                 ImageView imageView = (ImageView) convertView.findViewById(R.id.iv_itemDanhMucSP);
                 convertView.findViewById(R.id.tvName_itemDanhMucSP).setVisibility(View.GONE);
 
-                imageView.setTag(mucSanPhams.get(position));
-                imageView.setOnClickListener(onClickListener);
+                if (mucSanPhams.get(position).getLinkAnh().equals("")){
+                    imageView.setTag(mucSanPhams.get(position));
+                    imageView.setOnClickListener(onClickListener);
 
-                imageView.setVisibility(View.VISIBLE);
-                imageLoad.ImageLoad(mucSanPhams.get(position).getLinkAnh(), imageView);
+                    imageView.setVisibility(View.VISIBLE);
+                    imageLoad.ImageLoad("https://lmt.com.vn/media/k2/items/cache/4251dec72b18ac89643edfb7a8300016_XL.jpg", imageView);
+                }else {
+                    imageView.setTag(mucSanPhams.get(position));
+                    imageView.setOnClickListener(onClickListener);
+
+                    imageView.setVisibility(View.VISIBLE);
+                    imageLoad.ImageLoad(mucSanPhams.get(position).getLinkAnh(), imageView);
+                }
                 break;
 
             default:

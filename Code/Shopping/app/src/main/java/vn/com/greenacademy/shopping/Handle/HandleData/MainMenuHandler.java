@@ -7,6 +7,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import vn.com.greenacademy.shopping.Fragment.Magazine.MagazineFragment;
 import vn.com.greenacademy.shopping.Fragment.Main.DanhMucSanPham.DanhMucSPFragment;
 import vn.com.greenacademy.shopping.Fragment.Main.XuHuongThoiTrang.XuHuongThoiTrangFragment;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.AdapterMenuMain;
@@ -61,7 +62,11 @@ public class MainMenuHandler implements UrlPhotoCallBack {
             @Override
             public void onClick(View v) {
                 ProductsPhoto productsPhoto = (ProductsPhoto) v.getTag();
-                baseFragment.ChuyenFragment(new DanhMucSPFragment(((ProductsPhoto) v.getTag()).getId()), SupportKeyList.TAG_DANH_MUC_SAN_PHAM, true);
+                if (((ProductsPhoto) v.getTag()).getId().equals("TapChi")){
+                    baseFragment.ChuyenFragment(new MagazineFragment(), SupportKeyList.TAG_FRAGMENT_MAGAZINE, true);
+                }else {
+                    baseFragment.ChuyenFragment(new DanhMucSPFragment(((ProductsPhoto) v.getTag()).getId()), SupportKeyList.TAG_DANH_MUC_SAN_PHAM, true);
+                }
                 Toast.makeText(activity, productsPhoto.getId(), Toast.LENGTH_SHORT).show();
             }
         };
