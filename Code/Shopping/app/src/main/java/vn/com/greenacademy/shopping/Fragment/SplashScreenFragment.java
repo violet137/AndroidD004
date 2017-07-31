@@ -56,7 +56,15 @@ public class SplashScreenFragment extends Fragment {
                     ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, MY_PERMISSIONS_REQUEST_CODE);
                 }
             } else {
-                baseFragment.ChuyenFragment(new MainFragment(), SupportKeyList.TAG_FRAGMENT_MAIN, false);
+                //Load màn hình splash
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        actionBar.show();
+                        drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
+                        baseFragment.ChuyenFragment(new MainFragment(), SupportKeyList.TAG_FRAGMENT_MAIN, false);
+                    }
+                }, DELAY_TIME);
             }
         } else {
             //Load màn hình splash
