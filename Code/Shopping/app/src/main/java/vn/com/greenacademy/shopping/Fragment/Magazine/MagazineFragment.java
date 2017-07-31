@@ -8,7 +8,6 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import vn.com.greenacademy.shopping.Handle.HandleData.Magazine.MagazineHandler;
 import vn.com.greenacademy.shopping.MainActivity;
@@ -37,8 +36,8 @@ public class MagazineFragment extends Fragment {
         magazineHandler.getMagazineType();
         magazineHandler.setLayoutMagazineFragment(viewPager, tabLayout);
 
-        MainActivity.textViewMain.setVisibility(View.VISIBLE);
-        MainActivity.textViewMain.setText("Magazine");
+        MainActivity.tvTenMuc.setVisibility(View.VISIBLE);
+        MainActivity.tvTenMuc.setText("Magazine");
 
         //reset option menu
         getActivity().supportInvalidateOptionsMenu();

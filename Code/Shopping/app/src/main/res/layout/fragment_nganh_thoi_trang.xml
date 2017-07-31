@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/title_height"
         android:orientation="horizontal"
-        android:background="@color/colorAccent">
+        android:background="@color/colorSecondaryDark">
         <!-- Title -->
         <TextView
             android:id="@+id/text_loai_nganh_thoi_trang"
