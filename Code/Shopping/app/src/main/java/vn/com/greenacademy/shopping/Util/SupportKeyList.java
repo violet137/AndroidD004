@@ -43,6 +43,7 @@ public class SupportKeyList {
     public static final String TAG_FRAGMENT_THONG_TIN_CA_NHAN = "ThongTinCaNhan";
     public static final String TAG_FRAGMENT_DANG_KY = "DangKy";
     public static final String TAG_XU_HUONG_THOI_TRANG = "XuHuongThoiTrang";
+    public static final String TAG_DANH_MUC_SAN_PHAM = "DanhMucSanPham";
     public static final String TAG_THONG_TIN_SAN_PHAM = "ThongTinSanPham";
     public static final String TAG_DETAILS_SAN_PHAM = "DetailsSanPham";
     public static final String TAG_FRAGMENT_FINDSTORE = "Store";
@@ -82,6 +83,9 @@ public class SupportKeyList {
     public static final int Advertise_Url = 0;
     public static final int Products_Url = 1;
     public static final int Banner_Url = 2;
+
+    // flag async get photo url
+    public static final int ivDanhMucSP = 0;
 
 
 }
