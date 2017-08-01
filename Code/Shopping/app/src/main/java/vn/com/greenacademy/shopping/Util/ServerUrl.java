@@ -16,6 +16,8 @@ public class ServerUrl {
     public static final String StoreUrl = ServerLink + "api/CuaHang/";
     public static final String MagazineUrl = ServerLink + "api/TapChi/";
     public static final String XuHuongThoiTrangUrl = ServerLink + "api/XuHuongTtrang/XuHuongTtrangById?idXuHuong=";
+
+
     public static final String UrlDanhSachThoiTrang = HomeUrl + "DanhSachThoiTrang";
     public static final String UrlDanhSachKhuyenMai = HomeUrl + "KhuyenMai";
     public static final String UrlDanhBannerHome = HomeUrl + "BannerHome";
@@ -24,6 +26,7 @@ public class ServerUrl {
     public static final String UrlDanhSachMagazineType = MagazineUrl + "LoaiThoiTrang";
     public static final String UrlMagazineDetail = MagazineUrl + "ChiTietTapChi?idTapChi=";
     public static final String UrlDanhMucSP = HomeUrl + "DanhMucHang?loaiThoiTrang=";
+    public static final String UrlKhuyenMai = HomeUrl + "KhuyenMai";
 
 
 }

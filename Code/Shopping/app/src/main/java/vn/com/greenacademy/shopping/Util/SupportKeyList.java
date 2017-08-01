@@ -47,6 +47,7 @@ public class SupportKeyList {
     public static final String TAG_THONG_TIN_SAN_PHAM = "ThongTinSanPham";
     public static final String TAG_DETAILS_SAN_PHAM = "DetailsSanPham";
     public static final String TAG_FRAGMENT_FINDSTORE = "Store";
+    public static final String TAG_FRAGMENT_SALE = "Sale";
 
     //Key Menu Main
     public static final int Advertise = 0;

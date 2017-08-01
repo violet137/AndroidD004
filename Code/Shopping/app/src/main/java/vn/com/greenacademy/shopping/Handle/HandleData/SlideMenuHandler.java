@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import vn.com.greenacademy.shopping.Fragment.Magazine.MagazineFragment;
 import vn.com.greenacademy.shopping.Fragment.Main.DanhMucSanPham.DanhMucSPFragment;
 import vn.com.greenacademy.shopping.Fragment.Main.MainFragment;
+import vn.com.greenacademy.shopping.Fragment.Sale.SaleFragment;
 import vn.com.greenacademy.shopping.Fragment.Store.FindStoreFragment;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.AdapterSlideMenu;
 import vn.com.greenacademy.shopping.Fragment.Main.MyShopping.MyShoppingFragment;
@@ -82,6 +83,11 @@ public class SlideMenuHandler {
                 break;
             case SupportKeyList.Sale_slide:
                 temp = "Support";
+                while(count > 0){
+                    baseFragment.XoaFragment();
+                    count--;
+                }
+                baseFragment.ChuyenFragment(new SaleFragment(), SupportKeyList.TAG_FRAGMENT_SALE, true);
                 break;
             case SupportKeyList.Magazine_slide:
                 temp = "Magazine";
