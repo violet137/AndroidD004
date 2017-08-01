@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 
 import android.support.design.widget.NavigationView;
@@ -80,6 +81,7 @@ public class MainActivity extends AppCompatActivity implements DataCallBack {
         slideMenuHandler = new SlideMenuHandler(this);
 
         tvTenMuc = (TextView) findViewById(R.id.text_ten_muc_content_main);
+        tvTenMuc.setMovementMethod(new ScrollingMovementMethod());
 
         lv_item_slide_menu.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

@@ -98,7 +98,7 @@
 
     <!-- Fragment Magazine -->
     <dimen name="layout_margin_10dp">10dp</dimen>
-    <dimen name="text_size_40dp">40dp</dimen>
+    <dimen name="text_size_item_magazine">35dp</dimen>
     <dimen name="text_size_20dp">20dp</dimen>
     <dimen name="text_size_15dp">15dp</dimen>
     <dimen name="text_size_10dp">10dp</dimen>

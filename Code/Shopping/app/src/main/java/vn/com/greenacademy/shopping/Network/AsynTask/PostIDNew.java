@@ -14,13 +14,20 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import vn.com.greenacademy.shopping.Interface.ErrorCallBack;
 import vn.com.greenacademy.shopping.Model.IDNew;
+import vn.com.greenacademy.shopping.Util.SupportKeyList;
 
 /**
  * Created by ADMIN on 7/19/2017.
  */
 
 public class PostIDNew  extends AsyncTask<Object, Object, String> {
+
+    ErrorCallBack errorCallBack;
+    public PostIDNew(ErrorCallBack errorCallBack) {
+        this.errorCallBack = errorCallBack;
+    }
 //    String id;
 //    String pass;
 //    String name;
@@ -35,7 +42,7 @@ public class PostIDNew  extends AsyncTask<Object, Object, String> {
     protected String doInBackground(Object... params) {
         URL url = null;
         try {
-            url = new URL("http://tamod.vn:9045/TaiKhoan/DangKy");
+            url = new URL((String) params[0]);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             // sever tra du lieu ve kiei xml
             connection.addRequestProperty("Accept", "text/json");
@@ -43,18 +50,18 @@ public class PostIDNew  extends AsyncTask<Object, Object, String> {
             connection.addRequestProperty("Content-Type", "application/json");
             // phuong thuc truyen len sever
             connection.setRequestMethod("POST");
+
+            connection.connect();
             // gui data
             OutputStream outputStream = connection.getOutputStream();
             JSONObject object = new JSONObject();
-            object.put("Username", params[0]);
-            object.put("MatKhau", params[1]);
-            object.put("TenHienThi", params[2]);
+            object.put("Username", params[1]);
+            object.put("Pwd", params[2]);
+            object.put("Ten", params[3]);
             String json = object.toString();
             outputStream.write(json.getBytes());
-            connection.connect();
 
             if (connection.getResponseCode() == HttpURLConnection.HTTP_OK || connection.getResponseCode() == HttpURLConnection.HTTP_CREATED) {
-                Log.d("abc","def");
 
                 InputStream inputStream = connection.getInputStream();
                 ByteArrayOutputStream result = new ByteArrayOutputStream();
@@ -65,6 +72,8 @@ public class PostIDNew  extends AsyncTask<Object, Object, String> {
                 }
                 return result.toString("UTF-8");
 
+            } else if (connection.getResponseCode() == 500){
+                Log.d("Loi Server", "doInBackground: ");
             }
         } catch (MalformedURLException e) {
             e.printStackTrace();
@@ -73,20 +82,18 @@ public class PostIDNew  extends AsyncTask<Object, Object, String> {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-        return "";
+        return "false";
     }
 
     @Override
     protected void onPostExecute(String aVoid) {
         ParDataPostIDNew par = new ParDataPostIDNew(aVoid);
         try {
-            IDNew idNew = par.parData();
-//            taiKhoan.getToken();
-//            taiKhoan.getStatus();
-//            taiKhoan.getDescription();
+            errorCallBack.errorCallBack(String.valueOf(par.parData()), SupportKeyList.Email_Error);
         } catch (JSONException e) {
             e.printStackTrace();
         }
+
     }
 }
 class ParDataPostIDNew {
@@ -95,12 +102,9 @@ class ParDataPostIDNew {
     public ParDataPostIDNew(String data) {
         this.data = data;
     }
-    public IDNew parData() throws JSONException {
-        IDNew result = new IDNew();
+
+    public int parData() throws JSONException {
         JSONObject root = new JSONObject(data);
-//        result.setDescription(root.getString("Description"));
-//        result.setStatus(root.getInt("Status"));
-//        result.setToken(root.getString("Token"));
-        return result;
+        return root.getInt("Status");
     }
 }

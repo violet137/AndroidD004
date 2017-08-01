@@ -43,7 +43,7 @@ public class MagazineFragment extends Fragment {
         magazineHandler.setLayoutMagazineFragment(viewPager, tabLayout);
 
         MainActivity.tvTenMuc.setVisibility(View.VISIBLE);
-        MainActivity.tvTenMuc.setText("Magazine");
+        MainActivity.tvTenMuc.setText("Tạp Chí");
 
         //reset option menu
         getActivity().supportInvalidateOptionsMenu();

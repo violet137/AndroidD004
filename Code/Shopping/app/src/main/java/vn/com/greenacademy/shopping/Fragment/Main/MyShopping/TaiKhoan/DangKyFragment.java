@@ -42,17 +42,20 @@ public class DangKyFragment extends Fragment implements ErrorCallBack {
         final EditText etEmail = (EditText) view.findViewById(R.id.etEmail_fragmentDangKy);
         final EditText etPassword = (EditText) view.findViewById(R.id.etPassword_fragmentDangKy);
         final EditText etRePassword = (EditText) view.findViewById(R.id.etRePassword_fragmentDangKy);
+        final EditText etName = (EditText) view.findViewById(R.id.etName_fragmentDangKy);
 
         view.findViewById(R.id.btnRegister_fragmentDangKy).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 DangKyTkHandler dangKyTkHandler = new DangKyTkHandler(getActivity(), DangKyFragment.this);
-                if (dangKyTkHandler.createAccount(etEmail.getText().toString(),
-                        etPassword.getText().toString(),etRePassword.getText().toString())){
-                    Toast.makeText(getActivity(), "Tạo tài khoản thành công", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(getActivity(), "Không thể tạo tài khoản", Toast.LENGTH_SHORT).show();
-                }
+
+                dangKyTkHandler.createAccount(etEmail.getText().toString(),
+                        etPassword.getText().toString(),etRePassword.getText().toString(), etName.getText().toString());
+//                if (){
+//                    Toast.makeText(getActivity(), "Tạo tài khoản thành công", Toast.LENGTH_SHORT).show();
+//                } else {
+//                    Toast.makeText(getActivity(), "Không thể tạo tài khoản", Toast.LENGTH_SHORT).show();
+//                }
             }
         });
 
@@ -65,7 +68,20 @@ public class DangKyFragment extends Fragment implements ErrorCallBack {
         switch (errorPosition){
             case SupportKeyList.Email_Error:
                 tvEmail.setTextColor(Color.RED);
-                tvEmail.setText("Email(username):*  " + error);
+                String err ="";
+                switch (error){
+                    case "0":
+                        err = "Không Thể Tạo Tài Khoản";
+                        break;
+                    case "1":
+                        tvEmail.setTextColor(Color.BLACK);
+                        Toast.makeText(getActivity(), "Tạo tài Khoản Thành Công", Toast.LENGTH_SHORT).show();
+                        break;
+                    case "-1":
+                        err = "Tài Khoản Đã Tồn Tại";
+                        break;
+                }
+                tvEmail.setText("Email(username):*  " + err);
                 break;
             case SupportKeyList.Password_Error:
                 tvPassword.setTextColor(Color.RED);

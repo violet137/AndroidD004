@@ -9,7 +9,7 @@ public class ServerUrl {
 
     //Tài khoản
     public static final String DangNhapUrl = ServerLink + "api/Auth/Login";
-    public static final String DangKyUrl = ServerLink + "TaiKhoan/DangKy";
+    public static final String DangKyUrl = ServerLink + "api/Auth/Register";
 
     //Data
     public static final String HomeUrl = ServerLink + "api/Home/";

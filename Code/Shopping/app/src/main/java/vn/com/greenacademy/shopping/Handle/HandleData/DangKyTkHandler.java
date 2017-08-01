@@ -4,6 +4,7 @@ import android.app.Activity;
 
 import vn.com.greenacademy.shopping.Interface.ErrorCallBack;
 import vn.com.greenacademy.shopping.Network.AsynTask.PostIDNew;
+import vn.com.greenacademy.shopping.Util.ServerUrl;
 import vn.com.greenacademy.shopping.Util.SupportKeyList;
 
 /**
@@ -19,11 +20,11 @@ public class DangKyTkHandler {
         this.errorCallBack = errorCallBack;
     }
 
-    public boolean createAccount(String email, String password, String rePassword) {
+    public void createAccount(String email, String password, String rePassword, String name) {
         if (kiemTraPassHopLe(password)){
             // so sanh rePassword co trung khop voi password ko
             if (password.equals(rePassword)){
-                postIDtoServer(email,password);
+                postIDtoServer(email,password, name);
             }else {
                 errorCallBack.errorCallBack("password không trùng khớp", SupportKeyList.Re_type_Password_Error);
             }
@@ -31,13 +32,11 @@ public class DangKyTkHandler {
             errorCallBack.errorCallBack("Độ bảo mật kém", SupportKeyList.Password_Error);
 //            errorCallBack.errorCallBack("Tài Khoản đã được sử dung", SupportKeyList.Email_Error);
         }
-
-        return true;
     }
 
-    private void postIDtoServer(String email, String password) {
-        PostIDNew postIDNew = new PostIDNew();
-        postIDNew.execute(email, password);
+    private void postIDtoServer(String email, String password, String name) {
+        PostIDNew postIDNew = new PostIDNew(errorCallBack);
+        postIDNew.execute(ServerUrl.DangKyUrl,email, password, name);
     }
 
     private boolean kiemTraPassHopLe(String password) {
