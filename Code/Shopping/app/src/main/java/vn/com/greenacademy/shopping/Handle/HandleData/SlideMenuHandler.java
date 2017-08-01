@@ -24,15 +24,10 @@ import vn.com.greenacademy.shopping.Util.Ui.BaseFragment;
  * Created by ADMIN on 7/16/2017.
  */
 
-public class SlideMenuHandler {
-
-    ArrayList<SlideMenu> arraySlideMenus;
-    int[] arrIcon;
-    String[] arrName;
-    AdapterSlideMenu adapterSlideMenu;
-    Activity activity;
+public class SlideMenuHandler extends LoadDataSlideMenuHandler{
 
     public SlideMenuHandler(Activity activity) {
+        super(activity);
         this.activity = activity;
     }
 
@@ -123,13 +118,25 @@ public class SlideMenuHandler {
                 temp = "null";
                 break;
         }
-//        Toast.makeText(activity, temp, Toast.LENGTH_SHORT).show();
     }
 
     // tai du lieu tu adapter len list
-    public void displayListview(ListView listView) {
-        adapterSlideMenu = new AdapterSlideMenu(activity, R.layout.item_slide_menu, arraySlideMenus);
-        listView.setAdapter(adapterSlideMenu);
+    public AdapterSlideMenu displayListview() {
+        AdapterSlideMenu adapterSlideMenu = new AdapterSlideMenu(activity, R.layout.item_slide_menu,
+                LoadDataSlideMenuHandler.arraySlideMenus);
+        return adapterSlideMenu;
+    }
+}
+
+class LoadDataSlideMenuHandler{
+
+    int[] arrIcon;
+    String[] arrName;
+    Activity activity;
+    public static ArrayList<SlideMenu> arraySlideMenus;
+
+    public LoadDataSlideMenuHandler(Activity activity) {
+        this.activity = activity;
     }
 
     // tai du lieu tu file xml cua may vao doi tuong array de dua vao adapter
@@ -148,8 +155,7 @@ public class SlideMenuHandler {
             slideMenu.setIcon(arrIcon[i]);
             arraySlideMenus.add(slideMenu);
         }
-
     }
 
-
 }
+

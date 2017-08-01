@@ -8,7 +8,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
+import java.util.ArrayList;
+
 import vn.com.greenacademy.shopping.Handle.HandleData.DanhMucSPHandler;
+import vn.com.greenacademy.shopping.Interface.MucSPCallBack;
+import vn.com.greenacademy.shopping.Model.MucSanPham;
 import vn.com.greenacademy.shopping.R;
 
 /**
@@ -17,6 +21,8 @@ import vn.com.greenacademy.shopping.R;
 public class DanhMucSPFragment extends Fragment {
 
     String loaiSP;
+    public static MucSPCallBack mucSPCallBack;
+
     public DanhMucSPFragment(String loaiSP) {
         // Required empty public constructor
         this.loaiSP = loaiSP;
@@ -29,11 +35,19 @@ public class DanhMucSPFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_danh_muc_s, container, false);
 
-        ListView listView = (ListView) view.findViewById(R.id.lvDanhMuc_DanhMucSP_Fragment);
+        final ListView listView = (ListView) view.findViewById(R.id.lvDanhMuc_DanhMucSP_Fragment);
 
-        DanhMucSPHandler danhMucSPHandler = new DanhMucSPHandler(getActivity());
+        final DanhMucSPHandler danhMucSPHandler = new DanhMucSPHandler(getActivity());
 
-        danhMucSPHandler.setListView(listView, loaiSP);
+        mucSPCallBack = new MucSPCallBack() {
+            @Override
+            public void callBack(ArrayList<MucSanPham> mucSanPhamArrayList) {
+                listView.setAdapter(danhMucSPHandler.displayListView(mucSanPhamArrayList));
+            }
+        };
+
+        danhMucSPHandler.getDataServer(loaiSP);
+
 
         return view;
     }

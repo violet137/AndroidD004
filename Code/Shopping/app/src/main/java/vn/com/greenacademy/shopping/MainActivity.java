@@ -71,6 +71,8 @@ public class MainActivity extends AppCompatActivity implements DataCallBack {
 
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         lv_item_slide_menu = (ListView) findViewById(R.id.lv_item_slide_menu);
+        tvTenMuc = (TextView) findViewById(R.id.text_ten_muc_content_main);
+        tvTenMuc.setMovementMethod(new ScrollingMovementMethod());
 
         View navigationView = findViewById(R.id.nav_menu_main);
         //Xử lý sự kiện
@@ -79,9 +81,8 @@ public class MainActivity extends AppCompatActivity implements DataCallBack {
 //        navigationView.findViewById(R.id.tvEmail_nav_hear).setOnClickListener(this);
 
         slideMenuHandler = new SlideMenuHandler(this);
-
-        tvTenMuc = (TextView) findViewById(R.id.text_ten_muc_content_main);
-        tvTenMuc.setMovementMethod(new ScrollingMovementMethod());
+        slideMenuHandler.loadData();
+        lv_item_slide_menu.setAdapter(slideMenuHandler.displayListview());
 
         lv_item_slide_menu.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -99,8 +100,6 @@ public class MainActivity extends AppCompatActivity implements DataCallBack {
         mySharedPref = new MySharedPreferences(this, SupportKeyList.SHAREDPREF_TEN_FILE);
         dataHandler = new DataHandler(this);
         baseFragment = new BaseFragment(getSupportFragmentManager());
-        slideMenuHandler.loadData();
-        slideMenuHandler.displayListview(lv_item_slide_menu);
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, 0, 0);
         drawerLayout.addDrawerListener(toggle);

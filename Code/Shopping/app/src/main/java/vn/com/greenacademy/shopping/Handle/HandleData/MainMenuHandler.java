@@ -1,18 +1,16 @@
 package vn.com.greenacademy.shopping.Handle.HandleData;
 
 import android.app.Activity;
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 
 import vn.com.greenacademy.shopping.Fragment.Magazine.MagazineFragment;
 import vn.com.greenacademy.shopping.Fragment.Main.DanhMucSanPham.DanhMucSPFragment;
+import vn.com.greenacademy.shopping.Fragment.Main.MainFragment;
 import vn.com.greenacademy.shopping.Fragment.Main.XuHuongThoiTrang.XuHuongThoiTrangFragment;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.AdapterMenuMain;
-import vn.com.greenacademy.shopping.Interface.DataCallBack;
 import vn.com.greenacademy.shopping.Interface.UrlPhotoCallBack;
 import vn.com.greenacademy.shopping.Model.AdvertisePhoto;
 import vn.com.greenacademy.shopping.Model.BannerPhoto;
@@ -31,24 +29,20 @@ import vn.com.greenacademy.shopping.Util.Ui.BaseFragment;
  * Created by ADMIN on 7/18/2017.
  */
 
-public class MainMenuHandler implements UrlPhotoCallBack {
+public class MainMenuHandler extends LoadDataMainMenuHandler{
 
-    AdapterMenuMain adapterMenuMain;
     private BaseFragment baseFragment;
     Activity activity;
+
     View.OnClickListener onClickListenerAdvertise;
     View.OnClickListener onClickListenerProducts;
     View.OnClickListener onClickListenerHotTrend;
 
-    ArrayList<MenuMain> mainArrayList = new ArrayList<>();
-    ListView listView;
 
     public MainMenuHandler(Activity activity, BaseFragment baseFragment) {
         this.activity = activity;
         this.baseFragment = baseFragment;
     }
-
-
 
     // dieu khien phần click menu main
     public void clickItemMenuMain(){
@@ -98,19 +92,21 @@ public class MainMenuHandler implements UrlPhotoCallBack {
                 Toast.makeText(activity, String.valueOf(bannerPhoto.getId()) + " " + bannerPhoto.getLoaiBanner(), Toast.LENGTH_SHORT).show();
             }
         };
-
-
     }
-
     // tai du lieu tu adapter len list
-    public void displayListview() {
-        adapterMenuMain = new AdapterMenuMain(activity, R.layout.item_listview_menu_main, mainArrayList,
+    public AdapterMenuMain getAdapter (ArrayList<MenuMain> menuMainArrayList) {
+        AdapterMenuMain adapterMenuMain = new AdapterMenuMain(activity, R.layout.item_listview_menu_main, menuMainArrayList,
                 onClickListenerAdvertise, onClickListenerProducts, onClickListenerHotTrend);
-        listView.setAdapter(adapterMenuMain);
+        return adapterMenuMain;
     }
+}
+
+class LoadDataMainMenuHandler implements UrlPhotoCallBack{
+
+    ArrayList<MenuMain> mainArrayList = new ArrayList<>();
 
     // tai du lieu tu file xml cua may vao doi tuong array de dua vao adapter
-    public void setListView(ListView listView) {
+    public void getDataServer() {
         GetAdvertise getAdvertise = new GetAdvertise(this);
         getAdvertise.execute(ServerUrl.UrlDanhSachKhuyenMai);
 
@@ -120,10 +116,7 @@ public class MainMenuHandler implements UrlPhotoCallBack {
         GetBanner getBanner  = new GetBanner(this);
         getBanner.execute(ServerUrl.UrlDanhBannerHome);
 
-        this.listView = listView;
     }
-
-
 
     @Override
     public void urlCallBack(MenuPhoto menuPhoto, int flag) {
@@ -163,10 +156,17 @@ public class MainMenuHandler implements UrlPhotoCallBack {
                     mainArrayList.add(menuMain);
                 }
 
-                displayListview();
+                finishLoadData(true);
+
                 break;
             default:
                 break;
+        }
+    }
+
+    public void finishLoadData(boolean flag){
+        if (flag){
+            MainFragment.listMainMenuCallBack.callBack(mainArrayList);
         }
     }
 }
