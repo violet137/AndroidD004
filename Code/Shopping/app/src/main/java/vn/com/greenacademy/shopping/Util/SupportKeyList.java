@@ -53,6 +53,9 @@ public class SupportKeyList {
     public static final int Advertise = 0;
     public static final int Products = 1;
     public static final int Banner = 2;
+    public static final String KhuyenMai_BannerType = "KhuyenMai";
+    public static final String XuHuong_BannerType = "XuHuongThoiTrang";
+    public static final String TapChi_BannerType = "TapChi";
 
     //Key Menu Main
     public static final int Products_slide = 0;

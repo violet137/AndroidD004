@@ -2,6 +2,7 @@ package vn.com.greenacademy.shopping.Fragment.Main;
 
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 
 import vn.com.greenacademy.shopping.Handle.HandleData.MainMenuHandler;
+import vn.com.greenacademy.shopping.Interface.DataCallBack;
 import vn.com.greenacademy.shopping.MainActivity;
 import vn.com.greenacademy.shopping.R;
 import vn.com.greenacademy.shopping.Util.Ui.BaseFragment;

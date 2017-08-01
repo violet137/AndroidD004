@@ -9,8 +9,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
+
 import vn.com.greenacademy.shopping.Handle.HandleData.Magazine.MagazineHandler;
+import vn.com.greenacademy.shopping.Interface.MagazineCallBack;
 import vn.com.greenacademy.shopping.MainActivity;
+import vn.com.greenacademy.shopping.Model.Magazine;
 import vn.com.greenacademy.shopping.R;
 
 /**
@@ -22,6 +26,7 @@ public class MagazineFragment extends Fragment {
         // Required empty public constructor
     }
 
+    MagazineHandler magazineHandler;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -32,7 +37,8 @@ public class MagazineFragment extends Fragment {
         final TabLayout tabLayout = (TabLayout) view.findViewById(R.id.tabLayout_magazine_fragment);
         final ViewPager viewPager = (ViewPager) view.findViewById(R.id.viewPager_magazine_fragment);
 
-        MagazineHandler magazineHandler = new MagazineHandler(getActivity());
+
+        magazineHandler = new MagazineHandler(getActivity());
         magazineHandler.getMagazineType();
         magazineHandler.setLayoutMagazineFragment(viewPager, tabLayout);
 
@@ -44,5 +50,4 @@ public class MagazineFragment extends Fragment {
 
         return view;
     }
-
 }
