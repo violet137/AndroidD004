@@ -50,26 +50,26 @@
         android:layout_above="@+id/bottom_info"/>
 
     <!-- Nút share -->
-    <ImageButton
+    <ImageView
         android:id="@+id/button_share_san_pham"
         android:layout_width="@dimen/button_info_size"
         android:layout_height="@dimen/button_info_size"
         android:layout_below="@id/top_info"
         android:layout_marginTop="@dimen/button_share_margin_top"
         android:layout_marginLeft="@dimen/thong_tin_san_pham_horizontal_margin"
-        android:src="@drawable/ic_menu_share"
+        android:src="@drawable/ic_share_san_pham"
         android:background="@drawable/shape_button_scrim" />
 
     <!-- Nút thông tin -->
-    <ImageButton
+    <ImageView
         android:id="@+id/button_info_san_pham"
         android:layout_width="@dimen/button_info_size"
         android:layout_height="@dimen/button_info_size"
         android:layout_below="@id/button_share_san_pham"
         android:layout_marginTop="@dimen/button_info_margin_top"
         android:layout_marginLeft="@dimen/thong_tin_san_pham_horizontal_margin"
-        android:background="@drawable/shape_button_scrim"
-        android:src="@android:drawable/ic_menu_info_details" />
+        android:src="@drawable/ic_button_info_san_pham"
+        android:background="@drawable/shape_button_scrim" />
 
     <!-- Bottom info -->
     <LinearLayout
