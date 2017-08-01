@@ -1,6 +1,7 @@
 package vn.com.greenacademy.shopping.Handle.HandleData;
 
 import android.app.Activity;
+import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -11,6 +12,7 @@ import vn.com.greenacademy.shopping.Fragment.Magazine.MagazineFragment;
 import vn.com.greenacademy.shopping.Fragment.Main.DanhMucSanPham.DanhMucSPFragment;
 import vn.com.greenacademy.shopping.Fragment.Main.XuHuongThoiTrang.XuHuongThoiTrangFragment;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.AdapterMenuMain;
+import vn.com.greenacademy.shopping.Interface.DataCallBack;
 import vn.com.greenacademy.shopping.Interface.UrlPhotoCallBack;
 import vn.com.greenacademy.shopping.Model.AdvertisePhoto;
 import vn.com.greenacademy.shopping.Model.BannerPhoto;
@@ -46,6 +48,8 @@ public class MainMenuHandler implements UrlPhotoCallBack {
         this.baseFragment = baseFragment;
     }
 
+
+
     // dieu khien phần click menu main
     public void clickItemMenuMain(){
         // click phan quang cao
@@ -76,6 +80,20 @@ public class MainMenuHandler implements UrlPhotoCallBack {
             @Override
             public void onClick(View v) {
                 BannerPhoto bannerPhoto  = (BannerPhoto) v.getTag();
+                switch (bannerPhoto.getLoaiBanner()){
+                    case SupportKeyList.KhuyenMai_BannerType:
+                        Toast.makeText(activity, String.valueOf(bannerPhoto.getId()) + " " + bannerPhoto.getLoaiBanner(), Toast.LENGTH_SHORT).show();
+
+                        break;
+                    case SupportKeyList.XuHuong_BannerType:
+                        Toast.makeText(activity, String.valueOf(bannerPhoto.getId()) + " " + bannerPhoto.getLoaiBanner(), Toast.LENGTH_SHORT).show();
+
+                        break;
+                    case SupportKeyList.TapChi_BannerType:
+                        Toast.makeText(activity, String.valueOf(bannerPhoto.getId()) + " " + bannerPhoto.getLoaiBanner(), Toast.LENGTH_SHORT).show();
+
+                        break;
+                }
                 baseFragment.ChuyenFragment(new XuHuongThoiTrangFragment(0), SupportKeyList.TAG_XU_HUONG_THOI_TRANG, true);
                 Toast.makeText(activity, String.valueOf(bannerPhoto.getId()) + " " + bannerPhoto.getLoaiBanner(), Toast.LENGTH_SHORT).show();
             }
@@ -144,6 +162,7 @@ public class MainMenuHandler implements UrlPhotoCallBack {
                     menuMain.setType(menuPhoto.getBannerPhotoArrayList().get(i).getLoaiBanner());
                     mainArrayList.add(menuMain);
                 }
+
                 displayListview();
                 break;
             default:
