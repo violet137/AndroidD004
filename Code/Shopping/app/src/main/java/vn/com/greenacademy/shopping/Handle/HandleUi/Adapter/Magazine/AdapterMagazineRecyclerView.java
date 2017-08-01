@@ -2,6 +2,7 @@ package vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.Magazine;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Typeface;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,7 +17,6 @@ import vn.com.greenacademy.shopping.Model.Item_recyclerView_magazine;
 import vn.com.greenacademy.shopping.Model.Magazine;
 import vn.com.greenacademy.shopping.Model.MagazineType;
 import vn.com.greenacademy.shopping.R;
-import vn.com.greenacademy.shopping.Util.SupportKeyList;
 
 /**
  * Created by ADMIN on 7/22/2017.
@@ -83,8 +83,9 @@ public class AdapterMagazineRecyclerView extends RecyclerView.Adapter<MagazineHo
     public void setData(MagazineHolder holder,Magazine magazine){
         holder.tvName.setText(magazine.getTen());
 //        holder.tvTime.setText(magazine);
+//        holder.tvName.setTypeface(Typeface.createFromAsset(context.getAssets(), "centuryschoolbook.TTF"));
         holder.tvType.setText(magazine.getLoaiTapChi());
-        holder.tvDetail.setText(magazine.getMoTa());
+        holder.tvDetail.setText("  "+magazine.getMoTa());
 
         ImageLoad imageLoad = new ImageLoad((Activity)context);
         imageLoad.ImageLoad(magazine.getLinkHinh(),holder.imageView);

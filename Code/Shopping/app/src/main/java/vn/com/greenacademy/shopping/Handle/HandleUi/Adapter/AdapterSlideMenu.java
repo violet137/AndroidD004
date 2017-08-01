@@ -50,7 +50,7 @@ public class AdapterSlideMenu extends ArrayAdapter {
         }
 
         if (position == 4){
-            convertView.findViewById(R.id.divider_item_slide_menu).setVisibility(View.VISIBLE);
+            convertView.findViewById(R.id.tvDivider_item_slide_menu).setVisibility(View.VISIBLE);
         }
 
         tvName.setText(slideMenu.getTen());

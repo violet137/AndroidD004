@@ -30,12 +30,13 @@
             android:layout_weight="1"
             android:text="TextView"
             android:textColor="#ff000000"/>
+
     </LinearLayout>
 
-    <Button
-        android:id="@+id/divider_item_slide_menu"
+    <TextView
+        android:id="@+id/tvDivider_item_slide_menu"
         android:layout_width="match_parent"
         android:layout_height="1px"
-        android:background="#f4f3f3"
+        android:background="#3c494949"
         android:visibility="gone" />
 </LinearLayout>

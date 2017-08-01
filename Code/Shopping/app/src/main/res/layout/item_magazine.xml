@@ -24,6 +24,16 @@
         app:srcCompat="@drawable/banner_xu_huong_thoi_trang" />
 
     <TextView
+        android:id="@+id/tvName_item_magazine"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:maxLines="2"
+        android:text="TextView"
+        android:textColor="#ff000000"
+        android:textSize="@dimen/text_size_40dp" />
+
+    <TextView
         android:id="@+id/tvType_item_magazine"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -34,35 +44,27 @@
         android:visibility="gone" />
 
     <TextView
-        android:id="@+id/tvName_item_magazine"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:maxLines="2"
-        android:text="TextView"
-        android:textColor="@color/cardview_dark_background"
-        android:textSize="@dimen/text_size_40dp" />
-
-    <TextView
         android:id="@+id/tvDetail_item_magazine"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/textView_paddingRight"
         android:gravity="center"
-        android:maxLines="4"
+        android:maxLines="3"
         android:text="TextView"
-        android:textColor="@color/cardview_dark_background"
         android:textSize="@dimen/text_size_15dp" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/text_layout_height_15dp"
-        android:background="@color/cast_expanded_controller_ad_container_white_stripe_color"
+        android:layout_marginTop="@dimen/layout_margin_20dp"
+        android:background="#69666666"
         android:drawableLeft="@drawable/ic_media_play_light"
         android:gravity="center"
+        android:paddingLeft="-10dp"
+        android:paddingRight="@dimen/layout_margin_10dp"
         android:text="@string/read_the_story"
         android:textColor="#ff000000"
-        android:layout_marginTop="@dimen/textView_pandding_top_3dp"
         android:textSize="@dimen/text_size_10dp" />
 
     <Button
