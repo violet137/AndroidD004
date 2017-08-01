@@ -38,18 +38,30 @@ public class MagazineRecyclerViewFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_recycler_view, container, false);
 
-        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.view_recyclerView_fragment);
+        final RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.view_recyclerView_fragment);
         recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 1));
 
         // magazineHandler doi tượng dieu khien cuc recyclerView
-        MagazineHandler magazineHandler = new MagazineHandler(getActivity());
+        final MagazineHandler magazineHandler = new MagazineHandler(getActivity());
 
 
         // ham nhan su kien click item tren view
         magazineHandler.clickItem();
 
-        // ham đổ dữ liệu lên recyclerView
-        magazineHandler.setLayoutRecyclerView(recyclerView,positionViewPagger, magazineTypeArrayList);
+        Thread thread=new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                // ham đổ dữ liệu lên recyclerView
+                magazineHandler.setLayoutRecyclerView(recyclerView,positionViewPagger, magazineTypeArrayList);
+            }
+        });
+        thread.start();
+
 
         return view;
     }
