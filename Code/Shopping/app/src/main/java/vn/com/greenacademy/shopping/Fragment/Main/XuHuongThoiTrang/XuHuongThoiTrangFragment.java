@@ -69,7 +69,7 @@ public class XuHuongThoiTrangFragment extends Fragment implements DataCallBack, 
         DataTest();
         LoadUI();
 
-        new GoiAPIServerAsyncTask(this).execute(SupportKeyList.API_DATA_XU_HUONG_THOI_TRANG, ServerUrl.XuHuongThoiTrangUrl + String.valueOf(idXuHuong), String.valueOf(idXuHuong));
+//        new GoiAPIServerAsyncTask(this).execute(SupportKeyList.API_DATA_XU_HUONG_THOI_TRANG, ServerUrl.XuHuongThoiTrangUrl + String.valueOf(idXuHuong), String.valueOf(idXuHuong));
 
         getActivity().supportInvalidateOptionsMenu();
         return root;

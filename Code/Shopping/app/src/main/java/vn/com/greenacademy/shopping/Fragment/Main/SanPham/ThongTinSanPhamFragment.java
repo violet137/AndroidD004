@@ -4,12 +4,10 @@ package vn.com.greenacademy.shopping.Fragment.Main.SanPham;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
-import android.support.v7.widget.PopupMenu;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,7 +21,6 @@ import vn.com.greenacademy.shopping.R;
 import vn.com.greenacademy.shopping.Util.Ui.BaseFragment;
 
 import static com.facebook.FacebookSdk.getApplicationContext;
-import static vn.com.greenacademy.shopping.Util.SupportKeyList.TAG_DETAILS_SAN_PHAM;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -45,7 +42,7 @@ public class ThongTinSanPhamFragment extends Fragment implements View.OnClickLis
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View root = inflater.inflate(R.layout.fragment_san_pham, container, false);
+        View root = inflater.inflate(R.layout.fragment_thong_tin_san_pham, container, false);
         final TextView tvTenVaMau = (TextView) root.findViewById(R.id.ten_va_mau_fragment_san_pham);
         final TextView tvSoLuong = (TextView) root.findViewById(R.id.so_luong_fragment_san_pham);
         ViewPager pagerSanPham = (ViewPager) root.findViewById(R.id.pager_fragment_san_pham);
