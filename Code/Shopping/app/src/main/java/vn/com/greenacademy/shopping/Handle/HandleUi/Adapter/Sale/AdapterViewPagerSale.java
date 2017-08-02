@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import java.util.ArrayList;
 
 import vn.com.greenacademy.shopping.Fragment.Sale.SaleProductFragment;
+import vn.com.greenacademy.shopping.Model.ThongTinSanPham.SanPham;
 
 /**
  * Created by ADMIN on 8/2/2017.

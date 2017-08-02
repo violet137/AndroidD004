@@ -14,6 +14,7 @@ import android.widget.VideoView;
 
 import java.util.ArrayList;
 
+import vn.com.greenacademy.shopping.Handle.HandleData.ImageLoad;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.SanPham.ListSanPhamAdapter;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.XuHuongThoiTrang.ListSetDoAdapter;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Dialog.LoadingDialog;
@@ -22,7 +23,9 @@ import vn.com.greenacademy.shopping.Interface.SetDoCallBack;
 import vn.com.greenacademy.shopping.Model.ThongTinSanPham.SanPham;
 import vn.com.greenacademy.shopping.Model.SetDo;
 import vn.com.greenacademy.shopping.Model.XuHuongThoiTrang;
+import vn.com.greenacademy.shopping.Network.AsynTask.GoiAPIServerAsyncTask;
 import vn.com.greenacademy.shopping.R;
+import vn.com.greenacademy.shopping.Util.ServerUrl;
 import vn.com.greenacademy.shopping.Util.SupportKeyList;
 import vn.com.greenacademy.shopping.Util.Ui.BaseFragment;
 
@@ -43,9 +46,9 @@ public class XuHuongThoiTrangFragment extends Fragment implements DataCallBack, 
     private int[] listDataBanner;
     private int position;
 
-//    public XuHuongThoiTrangFragment(long idXuHuong){
-//        this.idXuHuong = idXuHuong;
-//    }
+    public XuHuongThoiTrangFragment(long idXuHuong){
+        this.idXuHuong = idXuHuong;
+    }
 
     public XuHuongThoiTrangFragment(int position) {
         this.position = position;
@@ -63,24 +66,23 @@ public class XuHuongThoiTrangFragment extends Fragment implements DataCallBack, 
 
         loadingDialog = new LoadingDialog(getActivity(), new BaseFragment(getActivity().getSupportFragmentManager()));
         loadingDialog.show();
-        DataTest();
-        LoadUI();
 
-//        new GoiAPIServerAsyncTask(this).execute(SupportKeyList.API_DATA_XU_HUONG_THOI_TRANG, ServerUrl.XuHuongThoiTrangUrl + String.valueOf(idXuHuong), String.valueOf(idXuHuong));
+        new GoiAPIServerAsyncTask(this).execute(SupportKeyList.API_DATA_XU_HUONG_THOI_TRANG, ServerUrl.XuHuongThoiTrangUrl + String.valueOf(idXuHuong), String.valueOf(idXuHuong));
 
         getActivity().supportInvalidateOptionsMenu();
         return root;
     }
 
     private void LoadUI() {
-//        if(!xuHuongThoiTrang.isVideo()) {
-//            ImageLoad imageLoad = new ImageLoad(getActivity());
-//            imageLoad.ImageLoad(xuHuongThoiTrang.getLinkHinhMoTa(), vBanner);
-//        } else {
+        if(!xuHuongThoiTrang.isVideo()) {
+            ImageLoad imageLoad = new ImageLoad(getActivity());
+            imageLoad.ImageLoad(xuHuongThoiTrang.getHinhDaiDien(), vBanner);
+        }
+//        else {
 //            vVideoBanner.setVisibility(View.VISIBLE);
 //            vVideoBanner.setVideoURI(xuHuongThoiTrang.getLinkHinhMoTa());
 //        }
-        vBanner.setImageResource(listDataBanner[0]);
+//        vBanner.setImageResource(listDataBanner[0]);
         //List set đồ
         if (testXuHuongThoiTrang.getListSetDo() != null) {
             vListSetDo.setLayoutManager(new GridLayoutManager(getActivity(), 1));
@@ -107,15 +109,15 @@ public class XuHuongThoiTrangFragment extends Fragment implements DataCallBack, 
         //List set đồ
         for (int i = 0; i < 2; i++) {
             for (int j = 0; j < 3; j++) {
-                SanPham sanPham = new SanPham("Sản phẩm " + String.valueOf(j+1), "Men", "Description " + String.valueOf(j+1), "Details " + String.valueOf(j+1), null, null, 20.99, null, 0);
+                SanPham sanPham = new SanPham(0, 0, "Sản phẩm " + String.valueOf(j+1), "3/8", "Men", "Description " + String.valueOf(j+1), "Details " + String.valueOf(j+1), null, null, null, null,  100, 0);
                 listSanPhamSetDo.add(sanPham);
             }
-            listSetDo.add(new SetDo(i, "Set đồ thứ " + String.valueOf(i), "Description " + String.valueOf(i),null,  null, listSanPhamSetDo));
+            listSetDo.add(new SetDo(i, "Set đồ thứ " + String.valueOf(i), "Description " + String.valueOf(i), null, false, null, "3/8", listSanPhamSetDo));
         }
 
         //List Sản phẩm
         for (int i = 0; i < 7; i++) {
-            SanPham sanPham = new SanPham("Sản phẩm " + String.valueOf(i+1), "Men", "Description " + String.valueOf(i+1), "Details " + String.valueOf(i+1), null, null, 20.99 + i, null, 0);
+            SanPham sanPham = new SanPham(0, 0, "Sản phẩm " + String.valueOf(i+1), "3/8", "Men", "Description " + String.valueOf(i+1), "Details " + String.valueOf(i+1), null, null, null, null,  100, 0);
             listSanPham.add(sanPham);
         }
         testXuHuongThoiTrang = new XuHuongThoiTrang(0, "testTenXuHuong", null, false, "Men", null, listSetDo, listSanPham);

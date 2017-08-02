@@ -2,6 +2,8 @@ package vn.com.greenacademy.shopping.Model;
 
 import java.util.ArrayList;
 
+import vn.com.greenacademy.shopping.Model.ThongTinSanPham.SanPham;
+
 /**
  * Created by ADMIN on 8/1/2017.
  */

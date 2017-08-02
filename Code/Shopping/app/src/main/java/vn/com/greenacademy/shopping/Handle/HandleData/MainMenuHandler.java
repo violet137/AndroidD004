@@ -81,15 +81,13 @@ public class MainMenuHandler extends LoadDataMainMenuHandler{
                         break;
                     case SupportKeyList.XuHuong_BannerType:
                         Toast.makeText(activity, String.valueOf(bannerPhoto.getId()) + " " + bannerPhoto.getLoaiBanner(), Toast.LENGTH_SHORT).show();
-
+                        baseFragment.ChuyenFragment(new XuHuongThoiTrangFragment(bannerPhoto.getId()), SupportKeyList.TAG_XU_HUONG_THOI_TRANG, true);
                         break;
                     case SupportKeyList.TapChi_BannerType:
                         Toast.makeText(activity, String.valueOf(bannerPhoto.getId()) + " " + bannerPhoto.getLoaiBanner(), Toast.LENGTH_SHORT).show();
 
                         break;
                 }
-                baseFragment.ChuyenFragment(new XuHuongThoiTrangFragment(0), SupportKeyList.TAG_XU_HUONG_THOI_TRANG, true);
-                Toast.makeText(activity, String.valueOf(bannerPhoto.getId()) + " " + bannerPhoto.getLoaiBanner(), Toast.LENGTH_SHORT).show();
             }
         };
     }
