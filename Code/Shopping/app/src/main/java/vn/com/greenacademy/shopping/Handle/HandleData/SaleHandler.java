@@ -8,11 +8,8 @@ import java.util.ArrayList;
 
 import vn.com.greenacademy.shopping.Fragment.Sale.SaleFragment;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.AdapterSale;
-import vn.com.greenacademy.shopping.Interface.ProductDetail;
 import vn.com.greenacademy.shopping.Interface.SaleCallBack;
 import vn.com.greenacademy.shopping.Model.Sale;
-import vn.com.greenacademy.shopping.Model.SanPham;
-import vn.com.greenacademy.shopping.Network.AsynTask.GetProductsIformation;
 import vn.com.greenacademy.shopping.Network.AsynTask.GetSale;
 import vn.com.greenacademy.shopping.Util.ServerUrl;
 

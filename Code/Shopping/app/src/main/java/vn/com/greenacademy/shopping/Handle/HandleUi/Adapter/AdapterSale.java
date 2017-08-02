@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -65,18 +66,29 @@ public class AdapterSale extends RecyclerView.Adapter<SaleHolder>{
         ImageLoad imageLoad = new ImageLoad((Activity)context);
         imageLoad.ImageLoad(saleArrayList.get(position).getHinhDaiDien(),holder.imageView);
 
+        holder.tvName.setText(saleArrayList.get(position).getTen());
+        holder.tvMoTa.setText(saleArrayList.get(position).getMota());
+
     }
 
 }
 class SaleHolder extends RecyclerView.ViewHolder {
     ImageView imageView;
     ViewPager viewPager;
+    ImageView ivIcon;
+    TextView tvName;
+    TextView tvMoTa;
 
     public SaleHolder(View itemView) {
         super(itemView);
 
         imageView = (ImageView) itemView.findViewById(R.id.iv_itemSale);
         viewPager = (ViewPager) imageView.findViewById(R.id.vp_itemSale);
+        ivIcon = (ImageView) itemView.findViewById(R.id.ivIcon__itemSale);
+        tvName = (TextView) itemView.findViewById(R.id.tvName_itemSale);
+        tvMoTa = (TextView) itemView.findViewById(R.id.tvMoTa_itemSale);
+
+
     }
 
 }

@@ -7,18 +7,6 @@
     tools:context="vn.com.greenacademy.shopping.Fragment.Main.MyShopping.TaiKhoan.DangNhapFragment">
 
     <!-- Title -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/title_height"
-        android:gravity="center_vertical"
-        android:paddingLeft="@dimen/vertical_padding"
-        android:background="@color/colorSecondaryDark"
-        android:text="@string/title_dang_nhap"
-        android:textColor="@color/colorText"
-        android:textSize="@dimen/title_size"
-        android:textStyle="bold"/>
-
-    <!-- Khung đăng nhập -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -103,6 +91,19 @@
             android:text="@string/nut_dang_nhap"
             android:textColor="@color/colorChuButtonDangNhap" />
     </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title_height"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/vertical_padding"
+        android:background="@color/colorSecondaryDark"
+        android:text="@string/title_dang_nhap"
+        android:textColor="@color/colorText"
+        android:textSize="@dimen/title_size"
+        android:textStyle="bold"/>
+
+    <!-- Khung đăng nhập -->
 
     <!-- Đăng ký -->
     <TextView

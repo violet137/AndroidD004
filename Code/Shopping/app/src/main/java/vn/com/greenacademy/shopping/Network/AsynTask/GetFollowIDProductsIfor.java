@@ -14,7 +14,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
-import vn.com.greenacademy.shopping.Interface.ProductDetail;
+import vn.com.greenacademy.shopping.Interface.ProductDetailCallBack;
 import vn.com.greenacademy.shopping.Model.HinhTheoMau;
 import vn.com.greenacademy.shopping.Model.SanPham;
 
@@ -22,11 +22,11 @@ import vn.com.greenacademy.shopping.Model.SanPham;
  * Created by ADMIN on 8/2/2017.
  */
 
-public class GetProductsIformation extends AsyncTask<String, Object, String> {
-    ProductDetail productDetail;
+public class GetFollowIDProductsIfor extends AsyncTask<String, Object, String> {
+    ProductDetailCallBack productDetailCallBack;
 
-    public GetProductsIformation (ProductDetail productDetail) {
-        this.productDetail = productDetail;
+    public GetFollowIDProductsIfor(ProductDetailCallBack productDetailCallBack) {
+        this.productDetailCallBack = productDetailCallBack;
     }
     @Override
     protected String doInBackground(String... params) {
@@ -60,13 +60,13 @@ public class GetProductsIformation extends AsyncTask<String, Object, String> {
 
     @Override
     protected void onPostExecute(String aVoid) {
-        ParDataGetProductsIformation par = new ParDataGetProductsIformation(aVoid);
-        productDetail.callBack(par.parData());
+        ParDataGetFollowIDProductsIfor par = new ParDataGetFollowIDProductsIfor(aVoid);
+        productDetailCallBack.callBack(par.parData());
     }
 }
-class ParDataGetProductsIformation {
+class ParDataGetFollowIDProductsIfor {
     String data;
-    public ParDataGetProductsIformation (String data) {
+    public ParDataGetFollowIDProductsIfor (String data) {
         this.data=data;
     }
 
