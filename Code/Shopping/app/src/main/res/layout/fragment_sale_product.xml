@@ -2,13 +2,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="vn.com.greenacademy.shopping.Fragment.Sale.SaleFragment">
+    tools:context="vn.com.greenacademy.shopping.Fragment.Sale.SaleProductFragment">
 
     <!-- TODO: Update blank fragment layout -->
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_SaleFragment"
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/cardview_light_background" />
+        android:text="@string/hello_blank_fragment" />
+
 </FrameLayout>

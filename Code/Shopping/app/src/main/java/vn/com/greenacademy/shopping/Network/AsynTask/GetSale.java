@@ -14,9 +14,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
-import vn.com.greenacademy.shopping.Interface.MagazineTypeCallBack;
 import vn.com.greenacademy.shopping.Interface.SaleCallBack;
-import vn.com.greenacademy.shopping.Model.MagazineType;
 import vn.com.greenacademy.shopping.Model.Sale;
 
 /**
@@ -77,6 +75,7 @@ class ParDataGetSale {
             JSONObject root = new JSONObject(data);
             if (root.getInt("Status") == 1){
                 JSONArray jsonArray = root.getJSONArray("KhuyenMaiTranfers");
+                ArrayList<Integer> temp;
                 for (int i = 0; i < jsonArray.length(); i++) {
                     JSONObject jsonObject = jsonArray.getJSONObject(i);
                     Sale sale = new Sale();
@@ -85,6 +84,14 @@ class ParDataGetSale {
                     sale.setHinhDaiDien(jsonObject.getString("HinhDaiDien"));
                     sale.setMota(jsonObject.getString("Mota"));
                     sale.setTen(jsonObject.getString("Ten"));
+
+                    temp = new ArrayList<>();
+                    JSONArray jsonArrayListSanPham = jsonObject.getJSONArray("ListSanPham");
+                    for (int j = 0; j < jsonArrayListSanPham.length(); j++) {
+                        temp.add(jsonArrayListSanPham.getInt(j));
+                    }
+
+                    sale.setListIDSanPham(temp);
 
                     result.add(sale);
                 }

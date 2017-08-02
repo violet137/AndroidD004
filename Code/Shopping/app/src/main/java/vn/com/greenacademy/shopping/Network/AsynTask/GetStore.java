@@ -93,7 +93,7 @@ class ParDataGetStore {
                     store.setGioMoCua(jsonObject.getString("GioMoCua"));
                     store.setSoDienThoai(jsonObject.getString("SoDienThoai"));
                     store.setDanhGia(jsonObject.getLong("DanhGia"));
-//
+
 //                    ArrayList<String> stringArrayListLoaiThoiTrang = new ArrayList<>();
 //                    JSONArray jsonArrayLoaiThoiTrang = jsonObject.getJSONArray("LoaiThoiTrang");
 //                    for (int j = 0; j < jsonArrayLoaiThoiTrang.length(); j++) {
@@ -103,7 +103,7 @@ class ParDataGetStore {
 //                    }
 //                    store.setLoaiThoiTrang(stringArrayListLoaiThoiTrang);
 //                    JSONArray jsonArray = root.getJSONArray("LoaiThoiTrangTranfers");
-//
+
                     temp = new ArrayList<>();
                     JSONArray jsonArrayFashionType = jsonObject.getJSONArray("LoaiThoiTrang");
                     for (int j = 0; j < jsonArrayFashionType.length(); j++) {
