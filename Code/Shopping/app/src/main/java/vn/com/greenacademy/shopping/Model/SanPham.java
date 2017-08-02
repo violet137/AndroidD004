@@ -1,5 +1,7 @@
 package vn.com.greenacademy.shopping.Model;
 
+import java.util.ArrayList;
+
 /**
  * Created by zzzzz on 7/15/2017.
  */
@@ -16,6 +18,97 @@ public class SanPham {
     private double giaSanPham;
     private String[] size;
     private int giamGia;
+
+    // moddel theo server
+    ArrayList<HinhTheoMau> hinhTheoMauArrayList;
+    String[] mauSac;
+    String[] spPhuHop;
+    int danhMucHangId;
+    int id;
+    long giaTien;
+    long giaTienGiam;
+    String moTa;
+
+    public String getMoTa() {
+        return moTa;
+    }
+
+    public void setMoTa(String moTa) {
+        this.moTa = moTa;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public long getGiaTien() {
+        return giaTien;
+    }
+
+    public void setGiaTien(long giaTien) {
+        this.giaTien = giaTien;
+    }
+
+    public long getGiaTienGiam() {
+        return giaTienGiam;
+    }
+
+    public void setGiaTienGiam(long giaTienGiam) {
+        this.giaTienGiam = giaTienGiam;
+    }
+
+    public String[] getSpPhuHop() {
+        return spPhuHop;
+    }
+
+    public void setSpPhuHop(String[] spPhuHop) {
+        this.spPhuHop = spPhuHop;
+    }
+
+    public int getDanhMucHangId() {
+        return danhMucHangId;
+    }
+
+    public void setDanhMucHangId(int danhMucHangId) {
+        this.danhMucHangId = danhMucHangId;
+    }
+
+    public long getIdSanPham() {
+        return idSanPham;
+    }
+
+    public void setIdSanPham(long idSanPham) {
+        this.idSanPham = idSanPham;
+    }
+
+    public String getNgayTao() {
+        return ngayTao;
+    }
+
+    public void setNgayTao(String ngayTao) {
+        this.ngayTao = ngayTao;
+    }
+
+    public ArrayList<HinhTheoMau> getHinhTheoMauArrayList() {
+        return hinhTheoMauArrayList;
+    }
+
+    public void setHinhTheoMauArrayList(ArrayList<HinhTheoMau> hinhTheoMauArrayList) {
+        this.hinhTheoMauArrayList = hinhTheoMauArrayList;
+    }
+
+    public String[] getMauSac() {
+        return mauSac;
+    }
+
+    public void setMauSac(String[] mauSac) {
+        this.mauSac = mauSac;
+    }
+
     public SanPham(){}
 
     public SanPham(String tenSanPham, String loaiSanPham, String description, String chiTietSanPham, String[] hinhSanPham, String mauSanPham, double giaSanPham, String[] size, int giamGia) {

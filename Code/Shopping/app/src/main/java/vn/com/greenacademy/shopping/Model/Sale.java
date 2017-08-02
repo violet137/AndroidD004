@@ -1,5 +1,7 @@
 package vn.com.greenacademy.shopping.Model;
 
+import java.util.ArrayList;
+
 /**
  * Created by ADMIN on 8/1/2017.
  */
@@ -9,6 +11,24 @@ public class Sale {
     String Ten;
     String HinhDaiDien;
     String Mota;
+    ArrayList<Integer> listIDSanPham;
+    ArrayList<SanPham> sanPhamArrayList;
+
+    public ArrayList<SanPham> getSanPhamArrayList() {
+        return sanPhamArrayList;
+    }
+
+    public void setSanPhamArrayList(ArrayList<SanPham> sanPhamArrayList) {
+        this.sanPhamArrayList = sanPhamArrayList;
+    }
+
+    public ArrayList<Integer> getListIDSanPham() {
+        return listIDSanPham;
+    }
+
+    public void setListIDSanPham(ArrayList<Integer> listIDSanPham) {
+        this.listIDSanPham = listIDSanPham;
+    }
 
     public int getId() {
         return Id;

@@ -3,6 +3,7 @@ package vn.com.greenacademy.shopping.Handle.HandleUi.Adapter;
 import android.app.Activity;
 import android.content.Context;
 import android.support.annotation.NonNull;
+import android.support.v4.view.ViewPager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -69,10 +70,13 @@ public class AdapterSale extends RecyclerView.Adapter<SaleHolder>{
 }
 class SaleHolder extends RecyclerView.ViewHolder {
     ImageView imageView;
+    ViewPager viewPager;
+
     public SaleHolder(View itemView) {
         super(itemView);
 
         imageView = (ImageView) itemView.findViewById(R.id.iv_itemSale);
+        viewPager = (ViewPager) imageView.findViewById(R.id.vp_itemSale);
     }
 
 }
