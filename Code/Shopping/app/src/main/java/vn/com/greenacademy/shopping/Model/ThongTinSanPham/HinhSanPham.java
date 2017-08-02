@@ -8,6 +8,9 @@ public class HinhSanPham {
     private String[] linkHinh;
     private String mau;
 
+    public HinhSanPham() {
+    }
+
     public HinhSanPham(String[] linkHinh, String mau) {
         this.linkHinh = linkHinh;
         this.mau = mau;

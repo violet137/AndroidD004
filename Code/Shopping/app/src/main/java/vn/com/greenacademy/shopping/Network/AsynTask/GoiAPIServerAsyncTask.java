@@ -283,7 +283,7 @@ public class GoiAPIServerAsyncTask extends AsyncTask<String, Void, String> {
                 JSONArray jsonArrSanPham = objSetDo.getJSONArray("SanPham");
                 SanPham sanPham;
                 for (int j = 0; j < jsonArrSanPham.length(); j++) {
-                    JSONObject objSanPham = jsonArrSanPham.getJSONObject(j);
+                    JSONObject objSanPham = objSetDo.getJSONArray("SanPham").getJSONObject(j);
                     sanPham = new SanPham();
                     sanPham.setIdSanPham(objSanPham.getInt("Id"));
                     sanPham.setTenSanPham(objSanPham.getString("TenSanPham"));
@@ -303,18 +303,34 @@ public class GoiAPIServerAsyncTask extends AsyncTask<String, Void, String> {
                         JSONArray arrListHinh = objHinhSanPham.getJSONArray("LinkHinh");
                         String[] listHinh = new String[arrHinhSanPham.length()];
                         for (int l = 0; l < listHinh.length; l++) {
-                            listHinh[l] = arrListHinh.getJSONObject(0).getString("");
+                            listHinh[l] = arrListHinh.getString(l);
                         }
                         listHinhSanPham.add(hinhSanPham);
                     }
                     sanPham.setHinhSanPham(listHinhSanPham);
+
                     //Màu sắc
-                    JSONArray arrMauSac = objSanPham.getJSONArray("MauSac");
-                    String[] mauSanPham = new String[arrMauSac.length()];
-                    for (int k = 0; k < arrMauSac.length(); k++) {
-                        mauSanPham[k] = arrMauSac.getJSONObject(k).getString("");
+                    String[] listMauSanPham = new String[objSanPham.getJSONArray("MauSac").length()];
+                    for (int k = 0; k < objSanPham.getJSONArray("MauSac").length(); k++) {
+                        listMauSanPham[k] = objSanPham.getJSONArray("MauSac").getString(k);
                     }
-                    sanPham.setMauSanPham(mauSanPham);
+                    sanPham.setMauSanPham(listMauSanPham);
+
+                    //Size
+                    String[] listSize = new String[objSanPham.getJSONArray("Size").length()];
+                    for (int k = 0; k < objSanPham.getJSONArray("Size").length(); k++) {
+                        listSize[k] = objSanPham.getJSONArray("Size").getString(k);
+                    }
+                    sanPham.setSize(listSize);
+
+                    //Sản phẩm phù hợp
+                    String[] listSanPhamPhuHop = new String[jsonObject.getJSONArray("SpPhuHop").length()];
+                    for (int k = 0; k < jsonObject.getJSONArray("SpPhuHop").length(); k++) {
+                        listSanPhamPhuHop[j] = jsonObject.getJSONArray("SpPhuHop").getString(k);
+                    }
+                    sanPham.setSanPhamPhuHop(listSanPhamPhuHop);
+
+                    sanPham.setDanhMucHangId(jsonObject.getInt("DanhMucHangId"));
                     setDo.getListSanPham().add(sanPham);
                 }
             }

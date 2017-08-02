@@ -19,13 +19,13 @@ public class SanPham {
     private ArrayList<HinhSanPham> hinhSanPham;
     private String[] mauSanPham;
     private String[] size;
-    private int[] sanPhamPhuHop;
+    private String[] sanPhamPhuHop;
     private long giaSanPham;
     private long giamGia;
 
     public SanPham(){}
 
-    public SanPham(long idSanPham, long danhMucHangId, String tenSanPham, String ngayTao, String loaiSanPham, String description, String chiTietSanPham, ArrayList<HinhSanPham> hinhSanPham, String[] mauSanPham, String[] size, int[] sanPhamPhuHop, long giaSanPham, long giamGia) {
+    public SanPham(long idSanPham, long danhMucHangId, String tenSanPham, String ngayTao, String loaiSanPham, String description, String chiTietSanPham, ArrayList<HinhSanPham> hinhSanPham, String[] mauSanPham, String[] size, String[] sanPhamPhuHop, long giaSanPham, long giamGia) {
         this.idSanPham = idSanPham;
         this.danhMucHangId = danhMucHangId;
         this.tenSanPham = tenSanPham;
@@ -121,11 +121,11 @@ public class SanPham {
         this.size = size;
     }
 
-    public int[] getSanPhamPhuHop() {
+    public String[] getSanPhamPhuHop() {
         return sanPhamPhuHop;
     }
 
-    public void setSanPhamPhuHop(int[] sanPhamPhuHop) {
+    public void setSanPhamPhuHop(String[] sanPhamPhuHop) {
         this.sanPhamPhuHop = sanPhamPhuHop;
     }
 
