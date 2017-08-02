@@ -35,7 +35,9 @@
 
     <TextView
         android:id="@+id/tvMoTa_itemSale"
+        android:paddingLeft="@dimen/ll_layout_padding_5dp"
         android:layout_width="match_parent"
+        android:maxLines="3"
         android:layout_height="wrap_content"
         android:textColor="@color/cardview_dark_background"
         android:layout_marginBottom="@dimen/ll_layout_padding_5dp"
@@ -54,6 +56,5 @@
         android:layout_height="@dimen/vp_layout_height_150dp">
 
     </android.support.v4.view.ViewPager>
-
 
 </LinearLayout>

@@ -16,6 +16,7 @@ import vn.com.greenacademy.shopping.Fragment.Magazine.MagazineDetailFragment;
 import vn.com.greenacademy.shopping.Fragment.Main.XuHuongThoiTrang.XuHuongThoiTrangFragment;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.Magazine.AdapterMagazineRecyclerView;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.Magazine.AdapterMagazineViewPager;
+import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.Sale.AdapterViewPagerSale;
 import vn.com.greenacademy.shopping.Interface.MagazineCallBack;
 import vn.com.greenacademy.shopping.Interface.MagazineTypeCallBack;
 import vn.com.greenacademy.shopping.Model.Item_recyclerView_magazine;
@@ -85,6 +86,7 @@ public class MagazineHandler implements MagazineCallBack, MagazineTypeCallBack {
         AdapterMagazineViewPager adapter = new AdapterMagazineViewPager(
                 ((AppCompatActivity)activity).getSupportFragmentManager(),
                 activity,magazineTypes.get(0).getTen(), magazineTypes);
+
         viewPager.setAdapter(adapter);
 
         for (int i = 0; i < adapter.getCount(); i++) {
