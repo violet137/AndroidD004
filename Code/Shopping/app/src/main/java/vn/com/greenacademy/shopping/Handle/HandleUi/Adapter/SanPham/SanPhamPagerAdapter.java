@@ -7,7 +7,7 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import java.util.ArrayList;
 
 import vn.com.greenacademy.shopping.Fragment.Main.SanPham.SanPhamPagerFragment;
-import vn.com.greenacademy.shopping.Model.SanPham;
+import vn.com.greenacademy.shopping.Model.ThongTinSanPham.SanPham;
 
 /**
  * Created by zzzzz on 7/17/2017.

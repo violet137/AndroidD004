@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.SanPham.SanPhamPagerAdapter;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Model.QuickActionItem;
 import vn.com.greenacademy.shopping.Handle.HandleUi.SanPham.QuickActionPopup;
-import vn.com.greenacademy.shopping.Model.SanPham;
+import vn.com.greenacademy.shopping.Model.ThongTinSanPham.SanPham;
 import vn.com.greenacademy.shopping.R;
 import vn.com.greenacademy.shopping.Util.Ui.BaseFragment;
 

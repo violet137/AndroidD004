@@ -3,6 +3,8 @@ package vn.com.greenacademy.shopping.Model;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+import vn.com.greenacademy.shopping.Model.ThongTinSanPham.SanPham;
+
 /**
  * Created by zzzzz on 7/15/2017.
  */

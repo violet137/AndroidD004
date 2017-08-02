@@ -14,18 +14,15 @@ import android.widget.VideoView;
 
 import java.util.ArrayList;
 
-import vn.com.greenacademy.shopping.Handle.HandleData.ImageLoad;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.SanPham.ListSanPhamAdapter;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.XuHuongThoiTrang.ListSetDoAdapter;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Dialog.LoadingDialog;
 import vn.com.greenacademy.shopping.Interface.DataCallBack;
 import vn.com.greenacademy.shopping.Interface.SetDoCallBack;
-import vn.com.greenacademy.shopping.Model.SanPham;
+import vn.com.greenacademy.shopping.Model.ThongTinSanPham.SanPham;
 import vn.com.greenacademy.shopping.Model.SetDo;
 import vn.com.greenacademy.shopping.Model.XuHuongThoiTrang;
-import vn.com.greenacademy.shopping.Network.AsynTask.GoiAPIServerAsyncTask;
 import vn.com.greenacademy.shopping.R;
-import vn.com.greenacademy.shopping.Util.ServerUrl;
 import vn.com.greenacademy.shopping.Util.SupportKeyList;
 import vn.com.greenacademy.shopping.Util.Ui.BaseFragment;
 

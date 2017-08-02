@@ -6,13 +6,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-
-import vn.com.greenacademy.shopping.Fragment.Main.SanPham.ThongTinSanPhamFragment;
-import vn.com.greenacademy.shopping.Model.SanPham;
 import vn.com.greenacademy.shopping.R;
-import vn.com.greenacademy.shopping.Util.SupportKeyList;
-import vn.com.greenacademy.shopping.Util.Ui.BaseFragment;
 
 /**
  * Created by zzzzz on 7/15/2017.

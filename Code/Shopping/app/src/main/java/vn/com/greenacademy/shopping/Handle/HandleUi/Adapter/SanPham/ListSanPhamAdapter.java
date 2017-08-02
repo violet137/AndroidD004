@@ -1,7 +1,6 @@
 package vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.SanPham;
 
 import android.content.Context;
-import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,7 +11,7 @@ import java.util.ArrayList;
 import vn.com.greenacademy.shopping.Fragment.Main.SanPham.ThongTinSanPhamFragment;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Model.ViewHolder.SanPhamHolder;
 import vn.com.greenacademy.shopping.Interface.SanPhamCallBack;
-import vn.com.greenacademy.shopping.Model.SanPham;
+import vn.com.greenacademy.shopping.Model.ThongTinSanPham.SanPham;
 import vn.com.greenacademy.shopping.R;
 import vn.com.greenacademy.shopping.Util.SupportKeyList;
 import vn.com.greenacademy.shopping.Util.Ui.BaseFragment;
