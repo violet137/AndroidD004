@@ -152,6 +152,8 @@ public class GoiAPIServerAsyncTask extends AsyncTask<String, Void, String> {
                             JSONObject jsonObject = new JSONObject(result.toString());
                             if(jsonObject.getInt("Status") == 1)
                                 return SupportKeyList.DANG_KY_THANH_CONG;
+                        } else if (conn.getResponseCode() == 500){
+                            return SupportKeyList.LOI_KET_NOI;
                         }
                     } catch (JSONException e) {
                         return SupportKeyList.LOI_DATA;
@@ -160,6 +162,7 @@ public class GoiAPIServerAsyncTask extends AsyncTask<String, Void, String> {
 
                 case SupportKeyList.API_DATA_XU_HUONG_THOI_TRANG:
                     try {
+                        //Cài đặt các thiết lập gửi server
                         conn.setRequestProperty("Accept", "application/json");
                         conn.setRequestMethod("GET");
                         conn.connect();

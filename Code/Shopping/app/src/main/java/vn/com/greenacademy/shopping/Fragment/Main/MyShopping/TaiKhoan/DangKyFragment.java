@@ -48,14 +48,7 @@ public class DangKyFragment extends Fragment implements ErrorCallBack {
             @Override
             public void onClick(View v) {
                 DangKyTkHandler dangKyTkHandler = new DangKyTkHandler(getActivity(), DangKyFragment.this);
-
-                dangKyTkHandler.createAccount(etEmail.getText().toString(),
-                        etPassword.getText().toString(),etRePassword.getText().toString(), etName.getText().toString());
-//                if (){
-//                    Toast.makeText(getActivity(), "Tạo tài khoản thành công", Toast.LENGTH_SHORT).show();
-//                } else {
-//                    Toast.makeText(getActivity(), "Không thể tạo tài khoản", Toast.LENGTH_SHORT).show();
-//                }
+                dangKyTkHandler.createAccount(etEmail.getText().toString(), etPassword.getText().toString(),etRePassword.getText().toString(), etName.getText().toString());
             }
         });
 

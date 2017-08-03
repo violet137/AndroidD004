@@ -86,8 +86,8 @@ public class PostIDNew  extends AsyncTask<Object, Object, String> {
     }
 
     @Override
-    protected void onPostExecute(String aVoid) {
-        ParDataPostIDNew par = new ParDataPostIDNew(aVoid);
+    protected void onPostExecute(String result) {
+        ParDataPostIDNew par = new ParDataPostIDNew(result);
         try {
             errorCallBack.errorCallBack(String.valueOf(par.parData()), SupportKeyList.Email_Error);
         } catch (JSONException e) {

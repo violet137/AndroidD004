@@ -31,21 +31,21 @@ public class GetServerData extends AsyncTask<String, Object, String> {
         try {
             url = new URL(params[0]);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-            // sever tra du lieu ve kiei xml
-            connection.addRequestProperty("Accept", "application/json");
-            // phuong thuc truyen len sever
+            //Cài đặt các thiết lập gửi server
+            connection.setRequestProperty("Accept", "application/json");
             connection.setRequestMethod("GET");
             connection.connect();
-            if (connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
+
+            //Kiểm tra kết nối
+            if (connection.getResponseCode() == HttpURLConnection.HTTP_OK || connection.getResponseCode() == HttpURLConnection.HTTP_CREATED){
                 InputStream inputStream = connection.getInputStream();
                 ByteArrayOutputStream result = new ByteArrayOutputStream();
                 byte[] buffer = new byte[1024];
-                int leght;
-                while ((leght = inputStream.read(buffer)) != -1) {
-                    result.write(buffer, 0, leght);
+                int length;
+                while((length = inputStream.read(buffer)) != -1){
+                    result.write(buffer, 0, length);
                 }
                 return result.toString("UTF-8");
-
             }
         } catch (MalformedURLException e) {
             e.printStackTrace();
