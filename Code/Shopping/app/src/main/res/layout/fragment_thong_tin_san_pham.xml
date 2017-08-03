@@ -68,6 +68,7 @@
         android:layout_below="@id/button_share_san_pham"
         android:layout_marginTop="@dimen/button_info_margin_top"
         android:layout_marginLeft="@dimen/thong_tin_san_pham_horizontal_margin"
+        android:padding="4dp"
         android:src="@drawable/ic_button_info_san_pham"
         android:background="@drawable/shape_button_scrim" />
 
