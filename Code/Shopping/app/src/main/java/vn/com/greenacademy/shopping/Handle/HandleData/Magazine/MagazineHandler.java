@@ -1,29 +1,24 @@
 package vn.com.greenacademy.shopping.Handle.HandleData.Magazine;
 
 import android.app.Activity;
-import android.content.Context;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
 import vn.com.greenacademy.shopping.Fragment.Magazine.MagazineDetailFragment;
-import vn.com.greenacademy.shopping.Fragment.Main.XuHuongThoiTrang.XuHuongThoiTrangFragment;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.Magazine.AdapterMagazineRecyclerView;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.Magazine.AdapterMagazineViewPager;
-import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.Sale.AdapterViewPagerSale;
-import vn.com.greenacademy.shopping.Interface.MagazineCallBack;
-import vn.com.greenacademy.shopping.Interface.MagazineTypeCallBack;
+import vn.com.greenacademy.shopping.Handle.ParseData.Magazine.ParseMagazine;
+import vn.com.greenacademy.shopping.Handle.ParseData.Magazine.ParseMagazineType;
+import vn.com.greenacademy.shopping.Interface.ServerCallBack;
 import vn.com.greenacademy.shopping.Model.Item_recyclerView_magazine;
 import vn.com.greenacademy.shopping.Model.Magazine;
 import vn.com.greenacademy.shopping.Model.MagazineType;
-import vn.com.greenacademy.shopping.Network.AsynTask.GetMagazine;
-import vn.com.greenacademy.shopping.Network.AsynTask.GetMagazineType;
+import vn.com.greenacademy.shopping.Network.AsynTask.GetServerData;
 import vn.com.greenacademy.shopping.Util.ServerUrl;
 import vn.com.greenacademy.shopping.Util.SupportKeyList;
 import vn.com.greenacademy.shopping.Util.Ui.BaseFragment;
@@ -32,7 +27,7 @@ import vn.com.greenacademy.shopping.Util.Ui.BaseFragment;
  * Created by ADMIN on 7/23/2017.
  */
 
-public class MagazineHandler implements MagazineCallBack, MagazineTypeCallBack {
+public class MagazineHandler implements ServerCallBack {
 
     Activity activity;
     View.OnClickListener onClickListener;
@@ -66,38 +61,35 @@ public class MagazineHandler implements MagazineCallBack, MagazineTypeCallBack {
         this.positionViewPagger = positionViewPagger;
         this.magazineTypeArrayList = magazineTypeArrayList;
 
-        GetMagazine getMagazine = new GetMagazine(this);
-        getMagazine.execute(ServerUrl.UrlDanhSachMagazine+magazineTypeArrayList.get(positionViewPagger).getLoaiTapChi());
+//        GetMagazine getMagazine = new GetMagazine(this);
+//        getMagazine.execute(ServerUrl.UrlDanhSachMagazine+magazineTypeArrayList.get(positionViewPagger).getLoaiTapChi());
+
+        GetServerData getServerData = new GetServerData(this);
+        getServerData.execute(ServerUrl.UrlDanhSachMagazine+magazineTypeArrayList.get(positionViewPagger).getLoaiTapChi(),SupportKeyList.Magazine);
+
 
 //        AdapterMagazineRecyclerView adapterMagazineRecyclerView = new AdapterMagazineRecyclerView
 //                (activity,onClickListener,positionViewPagger, magazineTypeArrayList);
 //        recyclerView.setAdapter(adapterMagazineRecyclerView);
     }
 
-    @Override
-    public void magazineCallBack(ArrayList<Magazine> magazineArrayList) {
-        AdapterMagazineRecyclerView adapterMagazineRecyclerView = new AdapterMagazineRecyclerView
-                (activity,onClickListener,magazineArrayList);
-        recyclerView.setAdapter(adapterMagazineRecyclerView);
-    }
+//    @Override
+//    public void magazineCallBack(ArrayList<Magazine> magazineArrayList) {
+//
+//    }
 
-    @Override
-    public void magazineTypeCallBack(ArrayList<MagazineType> magazineTypes) {
-        AdapterMagazineViewPager adapter = new AdapterMagazineViewPager(
-                ((AppCompatActivity)activity).getSupportFragmentManager(),
-                activity,magazineTypes.get(0).getTen(), magazineTypes);
-
-        viewPager.setAdapter(adapter);
-
-        for (int i = 0; i < adapter.getCount(); i++) {
-            tabLayout.addTab(tabLayout.newTab().setText(adapter.getTitle(i)));
-        }
-    }
+//    @Override
+//    public void magazineTypeCallBack(ArrayList<MagazineType> magazineTypes) {
+//
+//    }
 
 
     public void getMagazineType() {
-        GetMagazineType getMagazineType = new GetMagazineType(this);
-        getMagazineType.execute(ServerUrl.UrlDanhSachMagazineType);
+//        GetMagazineType getMagazineType = new GetMagazineType(this);
+//        getMagazineType.execute(ServerUrl.UrlDanhSachMagazineType);
+
+        GetServerData getServerData = new GetServerData(this);
+        getServerData.execute(ServerUrl.UrlDanhSachMagazineType, SupportKeyList.MagazineType);
     }
 
     public void setLayoutMagazineFragment(final ViewPager viewPager, TabLayout tabLayout) {
@@ -127,5 +119,42 @@ public class MagazineHandler implements MagazineCallBack, MagazineTypeCallBack {
             public void onTabReselected(TabLayout.Tab tab) {
             }
         });
+    }
+
+    @Override
+    public void serverCallBack(String dataServer) {
+    }
+
+
+    @Override
+    public void serverCallBack(String dataServer, String key) {
+        switch (key){
+            case SupportKeyList.Magazine:
+                ParseMagazine parseMagazine = new ParseMagazine(dataServer);
+                containerMagazine(parseMagazine.parData());
+                break;
+            case SupportKeyList.MagazineType:
+                ParseMagazineType parseMagazineType = new ParseMagazineType(dataServer);
+                containerMagazineType(parseMagazineType.parData());
+                break;
+        }
+    }
+
+    private void containerMagazine(ArrayList<Magazine> magazines) {
+        AdapterMagazineRecyclerView adapterMagazineRecyclerView = new AdapterMagazineRecyclerView
+                (activity,onClickListener,magazines);
+        recyclerView.setAdapter(adapterMagazineRecyclerView);
+    }
+
+    private void containerMagazineType(ArrayList<MagazineType> magazineTypeArrayList) {
+        AdapterMagazineViewPager adapter = new AdapterMagazineViewPager(
+                ((AppCompatActivity)activity).getSupportFragmentManager(),
+                activity,magazineTypeArrayList.get(0).getTen(), magazineTypeArrayList);
+
+        viewPager.setAdapter(adapter);
+
+        for (int i = 0; i < adapter.getCount(); i++) {
+            tabLayout.addTab(tabLayout.newTab().setText(adapter.getTitle(i)));
+        }
     }
 }

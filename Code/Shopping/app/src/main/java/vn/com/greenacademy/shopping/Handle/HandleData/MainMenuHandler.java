@@ -11,15 +11,16 @@ import vn.com.greenacademy.shopping.Fragment.Main.DanhMucSanPham.DanhMucSPFragme
 import vn.com.greenacademy.shopping.Fragment.Main.MainFragment;
 import vn.com.greenacademy.shopping.Fragment.Main.XuHuongThoiTrang.XuHuongThoiTrangFragment;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.AdapterMenuMain;
-import vn.com.greenacademy.shopping.Interface.UrlPhotoCallBack;
+import vn.com.greenacademy.shopping.Handle.ParseData.Main.ParseAdvertise;
+import vn.com.greenacademy.shopping.Handle.ParseData.Main.ParseBanner;
+import vn.com.greenacademy.shopping.Handle.ParseData.Main.ParseMyProducts;
+import vn.com.greenacademy.shopping.Interface.ServerCallBack;
 import vn.com.greenacademy.shopping.Model.AdvertisePhoto;
 import vn.com.greenacademy.shopping.Model.BannerPhoto;
 import vn.com.greenacademy.shopping.Model.MenuMain;
 import vn.com.greenacademy.shopping.Model.MenuPhoto;
 import vn.com.greenacademy.shopping.Model.ProductsPhoto;
-import vn.com.greenacademy.shopping.Network.AsynTask.GetAdvertise;
-import vn.com.greenacademy.shopping.Network.AsynTask.GetBanner;
-import vn.com.greenacademy.shopping.Network.AsynTask.GetMainMenuPhotos;
+import vn.com.greenacademy.shopping.Network.AsynTask.GetServerData;
 import vn.com.greenacademy.shopping.R;
 import vn.com.greenacademy.shopping.Util.ServerUrl;
 import vn.com.greenacademy.shopping.Util.SupportKeyList;
@@ -99,27 +100,106 @@ public class MainMenuHandler extends LoadDataMainMenuHandler{
     }
 }
 
-class LoadDataMainMenuHandler implements UrlPhotoCallBack{
+class LoadDataMainMenuHandler implements ServerCallBack{
 
     ArrayList<MenuMain> mainArrayList = new ArrayList<>();
-
+    GetServerData getServerData;
     // tai du lieu tu file xml cua may vao doi tuong array de dua vao adapter
     public void getDataServer() {
-        GetAdvertise getAdvertise = new GetAdvertise(this);
-        getAdvertise.execute(ServerUrl.UrlDanhSachKhuyenMai);
+//        GetAdvertise getAdvertise = new GetA;dvertise(this);
+//        getAdvertise.execute(ServerUrl.UrlDanhSachKhuyenMai);
+        getServerData = new GetServerData(this);
+        getServerData.execute(ServerUrl.UrlDanhSachKhuyenMai, String.valueOf(SupportKeyList.Advertise_Url));
 
-        GetMainMenuPhotos getMainMenuPhotos  = new GetMainMenuPhotos(this);
-        getMainMenuPhotos.execute(ServerUrl.UrlDanhSachThoiTrang);
+//        GetMainMenuPhotos getMainMenuPhotos  = new GetMainMenuPhotos(this);
+//        getMainMenuPhotos.execute(ServerUrl.UrlDanhSachThoiTrang);
+        getServerData = new GetServerData(this);
+        getServerData.execute(ServerUrl.UrlDanhSachThoiTrang, String.valueOf(SupportKeyList.Products_Url));
 
-        GetBanner getBanner  = new GetBanner(this);
-        getBanner.execute(ServerUrl.UrlDanhBannerHome);
+//        GetBanner getBanner  = new GetBanner(this);
+//        getBanner.execute(ServerUrl.UrlDanhBannerHome);
+        getServerData = new GetServerData(this);
+        getServerData.execute(ServerUrl.UrlDanhBannerHome, String.valueOf(SupportKeyList.Banner_Url));
 
     }
 
+//    @Override
+//    public void urlCallBack(MenuPhoto menuPhoto, int flag) {
+//        MenuMain menuMain;
+//        switch (flag){
+//            case SupportKeyList.Advertise_Url:
+//                menuMain = new MenuMain();
+//                ArrayList<AdvertisePhoto> advertisePhotos = new ArrayList<>();
+//                for (int i = 0; i < menuPhoto.getAdvertisePhotoArrayList().size(); i++) {
+//                    AdvertisePhoto advertisePhoto = new AdvertisePhoto();
+//                    advertisePhoto.setHinhDaiDien(menuPhoto.getAdvertisePhotoArrayList().get(i).getHinhDaiDien());
+//                    advertisePhoto.setId(menuPhoto.getAdvertisePhotoArrayList().get(i).getId());
+//                    advertisePhotos.add(advertisePhoto);
+//                }
+//                menuMain.setAdvertiseMenuMains(advertisePhotos);
+//                mainArrayList.add(menuMain);
+//                break;
+//
+//            case SupportKeyList.Products_Url:
+//                for (int i = 0; i < menuPhoto.getFashionTypeArrayList().size(); i++) {
+//                    menuMain = new MenuMain();
+//                    menuMain.setFlag(SupportKeyList.Products);
+//                    menuMain.setUrl(menuPhoto.getFashionTypeArrayList().get(i).getLinkHinh());
+//                    menuMain.setId(menuPhoto.getFashionTypeArrayList().get(i).getLoaiThoiTrang());
+//                    menuMain.setName(menuPhoto.getFashionTypeArrayList().get(i).getTen());
+//                    mainArrayList.add(menuMain);
+//                }
+//
+//                break;
+//            case SupportKeyList.Banner_Url:
+//                for (int i = 0; i < menuPhoto.getBannerPhotoArrayList().size(); i++) {
+//                    menuMain = new MenuMain();
+//                    menuMain.setFlag(SupportKeyList.Banner);
+//                    menuMain.setUrl(menuPhoto.getBannerPhotoArrayList().get(i).getLinkAnh());
+//                    menuMain.setId(String.valueOf(menuPhoto.getBannerPhotoArrayList().get(i).getId()));
+//                    menuMain.setType(menuPhoto.getBannerPhotoArrayList().get(i).getLoaiBanner());
+//                    mainArrayList.add(menuMain);
+//                }
+//
+//                finishLoadData(true);
+//
+//                break;
+//            default:
+//                break;
+//        }
+//    }
+
     @Override
-    public void urlCallBack(MenuPhoto menuPhoto, int flag) {
+    public void serverCallBack(String dataServer) {
+    }
+
+    @Override
+    public void serverCallBack(String dataServer, String key) {
+        switch (Integer.parseInt(key)){
+              case SupportKeyList.Advertise_Url:
+                  ParseAdvertise parseAdvertise = new ParseAdvertise(dataServer);
+                  containerData(parseAdvertise.parData(), key);
+                  break;
+
+              case SupportKeyList.Products_Url:
+                  ParseMyProducts parseMyProducts = new ParseMyProducts(dataServer);
+                  containerData(parseMyProducts.parData(), key);
+                  break;
+
+              case SupportKeyList.Banner_Url:
+                  ParseBanner parseBanner = new ParseBanner(dataServer);
+                  containerData(parseBanner.parData(), key);
+                  break;
+              default:
+                  break;
+
+        }
+
+    }
+
+    private void containerData(MenuPhoto menuPhoto, String key) {
         MenuMain menuMain;
-        switch (flag){
+        switch (Integer.parseInt(key)){
             case SupportKeyList.Advertise_Url:
                 menuMain = new MenuMain();
                 ArrayList<AdvertisePhoto> advertisePhotos = new ArrayList<>();
@@ -167,4 +247,5 @@ class LoadDataMainMenuHandler implements UrlPhotoCallBack{
             MainFragment.listMainMenuCallBack.callBack(mainArrayList);
         }
     }
+
 }

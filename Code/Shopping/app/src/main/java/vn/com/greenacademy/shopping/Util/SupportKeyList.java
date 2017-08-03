@@ -46,7 +46,7 @@ public class SupportKeyList {
     public static final String TAG_DANH_MUC_SAN_PHAM = "DanhMucSanPham";
     public static final String TAG_THONG_TIN_SAN_PHAM = "ThongTinSanPham";
     public static final String TAG_DETAILS_SAN_PHAM = "DetailsSanPham";
-    public static final String TAG_FRAGMENT_FINDSTORE = "Store";
+    public static final String TAG_FRAGMENT_FINDSTORE = "ParseStore";
     public static final String TAG_FRAGMENT_SALE = "Sale";
 
     //Key Menu Main
@@ -77,7 +77,8 @@ public class SupportKeyList {
     public static final int Connect_Error = 4;
 
     //key viewPager Magazine
-    public static final int Magazine_ALL = 0;
+    public static final String Magazine = "Magazine";
+    public static final String MagazineType = "MagazineType";
     public static final int Magazine_FASHION = 1;
     public static final int Magazine_BEAUTY = 2;
     public static final int Magazine_CULURE = 3;

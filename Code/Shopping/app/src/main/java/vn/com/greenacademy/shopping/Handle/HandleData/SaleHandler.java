@@ -10,9 +10,12 @@ import java.util.ArrayList;
 import vn.com.greenacademy.shopping.Fragment.Sale.SaleFragment;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.Sale.AdapterSale;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.Sale.AdapterViewPagerSale;
+import vn.com.greenacademy.shopping.Handle.ParseData.Sale.ParseSale;
 import vn.com.greenacademy.shopping.Interface.SaleCallBack;
+import vn.com.greenacademy.shopping.Interface.ServerCallBack;
 import vn.com.greenacademy.shopping.Model.Sale;
 import vn.com.greenacademy.shopping.Network.AsynTask.GetSale;
+import vn.com.greenacademy.shopping.Network.AsynTask.GetServerData;
 import vn.com.greenacademy.shopping.Util.ServerUrl;
 
 /**
@@ -41,7 +44,7 @@ public class SaleHandler extends LoadDataSaleHandler implements View.OnClickList
     }
 }
 
-class LoadDataSaleHandler implements SaleCallBack{
+class LoadDataSaleHandler implements ServerCallBack{
 
     Activity activity;
 
@@ -50,12 +53,31 @@ class LoadDataSaleHandler implements SaleCallBack{
     }
 
     public void getDataServer() {
-        GetSale getSale = new GetSale(this);
-        getSale.execute(ServerUrl.UrlKhuyenMai);
+//        GetSale getSale = new GetSale(this);
+//        getSale.execute(ServerUrl.UrlKhuyenMai);
+
+        GetServerData getServerData = new GetServerData(this);
+        getServerData.execute(ServerUrl.UrlKhuyenMai);
+
+
+    }
+
+//    @Override
+//    public void saleCallBack(ArrayList<Sale> saleArrayList) {
+//    }
+
+    @Override
+    public void serverCallBack(String dataServer) {
+        ParseSale parseSale = new ParseSale(dataServer);
+        containerData(parseSale.parData());
+    }
+
+    private void containerData(ArrayList<Sale> saleArrayList) {
+        SaleFragment.saleCallBack.saleCallBack(saleArrayList);
     }
 
     @Override
-    public void saleCallBack(ArrayList<Sale> saleArrayList) {
-        SaleFragment.saleCallBack.saleCallBack(saleArrayList);
+    public void serverCallBack(String dataServer, String key) {
+
     }
 }

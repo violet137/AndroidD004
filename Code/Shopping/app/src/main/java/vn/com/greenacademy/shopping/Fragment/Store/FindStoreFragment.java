@@ -12,6 +12,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 
 import vn.com.greenacademy.shopping.Handle.HandleData.FindStoreHandler;
 import vn.com.greenacademy.shopping.MainActivity;
+import vn.com.greenacademy.shopping.Network.AsynTask.GetServerData;
 import vn.com.greenacademy.shopping.Network.AsynTask.GetStore;
 import vn.com.greenacademy.shopping.R;
 import vn.com.greenacademy.shopping.Util.ServerUrl;
@@ -41,8 +42,11 @@ public class FindStoreFragment extends Fragment {
 
         findStoreHandler.getMyLocation();
 
-        GetStore getStore = new GetStore(findStoreHandler);
-        getStore.execute(ServerUrl.UrlDanhSachStore);
+//        GetStore getStore = new GetStore(findStoreHandler);
+//        getStore.execute(ServerUrl.UrlDanhSachStore);
+
+        GetServerData getServerData = new GetServerData(findStoreHandler);
+        getServerData.execute(ServerUrl.UrlDanhSachStore);
 
         SupportMapFragment mapFragment = (SupportMapFragment) getChildFragmentManager()
                 .findFragmentById(R.id.map_find_store);
@@ -57,10 +61,10 @@ public class FindStoreFragment extends Fragment {
 
 
 
-//    ArrayList<Store> storeArrayList = new ArrayList<>();
+//    ArrayList<ParseStore> storeArrayList = new ArrayList<>();
 //
 //    @Override
-//    public Store getMapMarker(MapMarker mapMarker) {
+//    public ParseStore getMapMarker(MapMarker mapMarker) {
 //        listall = mapMarker.getMapMarkerTranfersArrayList();
 //        for (int i = 0; i < listall.size(); i++) {
 //            switch (mapMarker.getMapMarkerTranfersArrayList().get(i).getLoaiMarker()){

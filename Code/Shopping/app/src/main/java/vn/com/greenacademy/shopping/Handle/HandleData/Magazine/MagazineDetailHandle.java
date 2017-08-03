@@ -9,17 +9,18 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.Toast;
 
-import vn.com.greenacademy.shopping.Interface.MagazineDetailCallBack;
+import vn.com.greenacademy.shopping.Handle.ParseData.Magazine.ParseMagazineDetail;
+import vn.com.greenacademy.shopping.Interface.ServerCallBack;
 import vn.com.greenacademy.shopping.MainActivity;
 import vn.com.greenacademy.shopping.Model.MagazineDetail;
-import vn.com.greenacademy.shopping.Network.AsynTask.GetMagazineDetail;
+import vn.com.greenacademy.shopping.Network.AsynTask.GetServerData;
 import vn.com.greenacademy.shopping.Util.ServerUrl;
 
 /**
  * Created by ADMIN on 7/30/2017.
  */
 
-public class MagazineDetailHandle implements MagazineDetailCallBack{
+public class MagazineDetailHandle implements ServerCallBack{
     Activity activity;
     WebView myWebView;
 
@@ -28,8 +29,11 @@ public class MagazineDetailHandle implements MagazineDetailCallBack{
     }
 
     public void getData(String id){
-        GetMagazineDetail getMagazineDetail = new GetMagazineDetail(this);
-        getMagazineDetail.execute(ServerUrl.UrlMagazineDetail+id);
+//        GetMagazineDetail getMagazineDetail = new GetMagazineDetail(this);
+//        getMagazineDetail.execute(ServerUrl.UrlMagazineDetail+id);
+
+        GetServerData getServerData = new GetServerData(this);
+        getServerData.execute(ServerUrl.UrlMagazineDetail+id);
     }
 
     public void setLayout(WebView myWebView){
@@ -39,7 +43,24 @@ public class MagazineDetailHandle implements MagazineDetailCallBack{
         myWebView.addJavascriptInterface(new WebAppInterface(activity), "android");
 
     }
-    
+
+    @Override
+    public void serverCallBack(String dataServer) {
+        ParseMagazineDetail parseMagazineDetail = new ParseMagazineDetail(dataServer);
+        containerData(parseMagazineDetail.parData());
+    }
+
+    private void containerData(MagazineDetail magazineDetail) {
+        MainActivity.tvTenMuc.setVisibility(View.VISIBLE);
+        MainActivity.tvTenMuc.setText(magazineDetail.getTen());
+        viewWebInApp(magazineDetail.getNoiDung());
+    }
+
+    @Override
+    public void serverCallBack(String dataServer, String key) {
+
+    }
+
     public class WebAppInterface {
         Context mContext;
 
@@ -68,10 +89,8 @@ public class MagazineDetailHandle implements MagazineDetailCallBack{
         activity.startActivity(intent2);
     }
 
-    @Override
-    public void magazineDetailCallBack(MagazineDetail magazineDetail) {
-        MainActivity.tvTenMuc.setVisibility(View.VISIBLE);
-        MainActivity.tvTenMuc.setText(magazineDetail.getTen());
-        viewWebInApp(magazineDetail.getNoiDung());
-    }
+//    @Override
+//    public void magazineDetailCallBack(MagazineDetail magazineDetail) {
+//
+//    }
 }
