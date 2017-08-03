@@ -88,8 +88,8 @@ public class DangKyFragment extends Fragment implements ErrorCallBack {
                 tvPassword.setText("Password:*  " + error);
                 break;
             case SupportKeyList.Re_type_Password_Error:
-                tvPassword.setTextColor(Color.RED);
-                tvPassword.setText("Re-type password*  " + error);
+                tvRePassword.setTextColor(Color.RED);
+                tvRePassword.setText("Re-type password*  " + error);
                 break;
             case SupportKeyList.Connect_Error:
                 Toast.makeText(getActivity(), "Không thể kết nối", Toast.LENGTH_SHORT).show();
