@@ -77,11 +77,11 @@ public class AdapterSale extends RecyclerView.Adapter<SaleHolder>{
 
         holder.tvName.setText(saleArrayList.get(position).getTen());
         holder.tvMoTa.setText("  "+saleArrayList.get(position).getMota());
-        
-//        AdapterViewPagerSale adapterViewPagerSale = new AdapterViewPagerSale(
-//                ((AppCompatActivity)context).getSupportFragmentManager(),(Activity) context);
-//
-//        holder.viewPager.setAdapter(adapterViewPagerSale);
+
+        AdapterViewPagerSale adapterViewPagerSale = new AdapterViewPagerSale(
+                ((AppCompatActivity)context).getSupportFragmentManager(),(Activity) context);
+
+        holder.viewPager.setAdapter(adapterViewPagerSale);
 
     }
 }
@@ -91,7 +91,6 @@ class SaleHolder extends RecyclerView.ViewHolder {
     ImageView ivIcon;
     TextView tvName;
     TextView tvMoTa;
-    DataCallBack dataCallBack;
 
     public SaleHolder(View itemView) {
         super(itemView);

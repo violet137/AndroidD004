@@ -26,6 +26,8 @@ import java.util.ArrayList;
 
 import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.FindStore.AdapterFindStore;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Dialog.DiaLogStoreDetail;
+import vn.com.greenacademy.shopping.Handle.ParseData.Store.ParseStore;
+import vn.com.greenacademy.shopping.Interface.ServerCallBack;
 import vn.com.greenacademy.shopping.Interface.StoreCallBack;
 import vn.com.greenacademy.shopping.Model.Store;
 
@@ -35,7 +37,7 @@ import vn.com.greenacademy.shopping.R;
  * Created by ADMIN on 7/28/2017.
  */
 
-public class FindStoreHandler implements StoreCallBack, OnMapReadyCallback {
+public class FindStoreHandler implements OnMapReadyCallback, ServerCallBack {
 
     private GoogleMap mMap;
     Activity activity;
@@ -83,18 +85,10 @@ public class FindStoreHandler implements StoreCallBack, OnMapReadyCallback {
         }
     }
 
-    @Override
-    public void storeCallBack(ArrayList<Store> storeArrayList) {
-        this.storeArrayList = storeArrayList;
-
-        // load data len listview
-        AdapterFindStore adapterFindStore = new AdapterFindStore(activity, R.layout.item_find_store, storeArrayList,
-                location.getLatitude(), location.getLongitude());
-        listView.setAdapter(adapterFindStore);
-
-        // show map marker
-        showMarker(storeArrayList);
-    }
+//    @Override
+//    public void storeCallBack(ArrayList<Store> storeArrayList) {
+//
+//    }
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
@@ -132,6 +126,29 @@ public class FindStoreHandler implements StoreCallBack, OnMapReadyCallback {
 
         }
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(storeArrayList.get(0).getLat(), storeArrayList.get(0).getLng()),15));
+    }
+
+    @Override
+    public void serverCallBack(String dataServer) {
+        ParseStore parseStore = new ParseStore(dataServer);
+        containerData(parseStore.parData());
+    }
+
+    private void containerData(ArrayList<Store> storeArrayList) {
+        this.storeArrayList = storeArrayList;
+
+        // load data len listview
+        AdapterFindStore adapterFindStore = new AdapterFindStore(activity, R.layout.item_find_store, storeArrayList,
+                location.getLatitude(), location.getLongitude());
+        listView.setAdapter(adapterFindStore);
+
+        // show map marker
+        showMarker(storeArrayList);
+    }
+
+    @Override
+    public void serverCallBack(String dataServer, String key) {
+
     }
 
 
