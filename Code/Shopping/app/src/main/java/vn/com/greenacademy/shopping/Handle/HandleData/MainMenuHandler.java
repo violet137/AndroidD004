@@ -11,9 +11,9 @@ import vn.com.greenacademy.shopping.Fragment.Main.DanhMucSanPham.DanhMucSPFragme
 import vn.com.greenacademy.shopping.Fragment.Main.MainFragment;
 import vn.com.greenacademy.shopping.Fragment.Main.XuHuongThoiTrang.XuHuongThoiTrangFragment;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.AdapterMenuMain;
-import vn.com.greenacademy.shopping.Handle.ParseData.Main.ParseAdvertise;
-import vn.com.greenacademy.shopping.Handle.ParseData.Main.ParseBanner;
-import vn.com.greenacademy.shopping.Handle.ParseData.Main.ParseMyProducts;
+import vn.com.greenacademy.shopping.Handle.HandleData.ParseData.Main.ParseAdvertise;
+import vn.com.greenacademy.shopping.Handle.HandleData.ParseData.Main.ParseBanner;
+import vn.com.greenacademy.shopping.Handle.HandleData.ParseData.Main.ParseMyProducts;
 import vn.com.greenacademy.shopping.Interface.ServerCallBack;
 import vn.com.greenacademy.shopping.Model.AdvertisePhoto;
 import vn.com.greenacademy.shopping.Model.BannerPhoto;

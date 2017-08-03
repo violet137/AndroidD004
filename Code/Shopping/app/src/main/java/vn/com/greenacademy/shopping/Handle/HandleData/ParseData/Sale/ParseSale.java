@@ -1,4 +1,4 @@
-package vn.com.greenacademy.shopping.Handle.ParseData.Sale;
+package vn.com.greenacademy.shopping.Handle.HandleData.ParseData.Sale;
 
 import org.json.JSONArray;
 import org.json.JSONException;

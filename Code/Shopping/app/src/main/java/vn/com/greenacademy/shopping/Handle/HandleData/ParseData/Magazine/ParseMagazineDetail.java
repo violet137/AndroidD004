@@ -1,4 +1,4 @@
-package vn.com.greenacademy.shopping.Handle.ParseData.Magazine;
+package vn.com.greenacademy.shopping.Handle.HandleData.ParseData.Magazine;
 
 import org.json.JSONException;
 import org.json.JSONObject;
