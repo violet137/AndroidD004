@@ -1,7 +1,6 @@
 package vn.com.greenacademy.shopping.Handle.HandleData;
 
 import android.app.Activity;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Toast;
 
@@ -9,9 +8,7 @@ import java.util.ArrayList;
 
 import vn.com.greenacademy.shopping.Fragment.Sale.SaleFragment;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.Sale.AdapterSale;
-import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.Sale.AdapterViewPagerSale;
-import vn.com.greenacademy.shopping.Handle.ParseData.Sale.ParseSale;
-import vn.com.greenacademy.shopping.Interface.SaleCallBack;
+import vn.com.greenacademy.shopping.Handle.HandleData.ParseData.Sale.ParseSale;
 import vn.com.greenacademy.shopping.Interface.ServerCallBack;
 import vn.com.greenacademy.shopping.Model.Sale;
 import vn.com.greenacademy.shopping.Network.AsynTask.GetServerData;

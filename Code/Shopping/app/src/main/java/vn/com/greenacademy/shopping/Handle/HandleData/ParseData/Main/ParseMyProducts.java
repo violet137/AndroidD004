@@ -1,4 +1,4 @@
-package vn.com.greenacademy.shopping.Handle.ParseData.Main;
+package vn.com.greenacademy.shopping.Handle.HandleData.ParseData.Main;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -6,34 +6,35 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-import vn.com.greenacademy.shopping.Model.AdvertisePhoto;
+import vn.com.greenacademy.shopping.Model.FashionType;
 import vn.com.greenacademy.shopping.Model.MenuPhoto;
 
 /**
  * Created by ADMIN on 8/3/2017.
  */
 
-public class ParseAdvertise {
+public class ParseMyProducts {
     String data;
-    public ParseAdvertise (String data) {
+    public ParseMyProducts (String data) {
         this.data=data;
     }
 
     public MenuPhoto parData(){
         MenuPhoto result = new MenuPhoto();
-        ArrayList<AdvertisePhoto> temp;
+        ArrayList<FashionType> temp;
         try {
             JSONObject root = new JSONObject(data);
-            JSONArray jsonArray = root.getJSONArray("KhuyenMaiTranfers");
+            JSONArray jsonArray = root.getJSONArray("LoaiThoiTrangTranfers");
             temp = new ArrayList<>();
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
-                AdvertisePhoto advertisePhoto = new AdvertisePhoto();
-                advertisePhoto.setId(jsonObject.getLong("Id"));
-                advertisePhoto.setHinhDaiDien(jsonObject.getString("HinhDaiDien"));
-                temp.add(advertisePhoto);
+                FashionType fashionType = new FashionType();
+                fashionType.setTen(jsonObject.getString("Ten"));
+                fashionType.setLinkHinh(jsonObject.getString("LinkHinh"));
+                fashionType.setLoaiThoiTrang(jsonObject.getString("loaiThoiTrang"));
+                temp.add(fashionType);
             }
-            result.setAdvertisePhotoArrayList(temp);
+            result.setFashionTypeArrayList(temp);
             result.setStatus(root.getInt("Status"));
             result.setDescription(root.getString("Description"));
         } catch (JSONException e) {
@@ -42,4 +43,3 @@ public class ParseAdvertise {
         return result;
     }
 }
-

@@ -9,7 +9,7 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.Toast;
 
-import vn.com.greenacademy.shopping.Handle.ParseData.Magazine.ParseMagazineDetail;
+import vn.com.greenacademy.shopping.Handle.HandleData.ParseData.Magazine.ParseMagazineDetail;
 import vn.com.greenacademy.shopping.Interface.ServerCallBack;
 import vn.com.greenacademy.shopping.MainActivity;
 import vn.com.greenacademy.shopping.Model.MagazineDetail;

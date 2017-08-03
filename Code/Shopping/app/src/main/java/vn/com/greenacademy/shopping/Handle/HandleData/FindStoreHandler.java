@@ -21,14 +21,12 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.FindStore.AdapterFindStore;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Dialog.DiaLogStoreDetail;
-import vn.com.greenacademy.shopping.Handle.ParseData.Store.ParseStore;
+import vn.com.greenacademy.shopping.Handle.HandleData.ParseData.Store.ParseStore;
 import vn.com.greenacademy.shopping.Interface.ServerCallBack;
-import vn.com.greenacademy.shopping.Interface.StoreCallBack;
 import vn.com.greenacademy.shopping.Model.Store;
 
 import static com.facebook.FacebookSdk.getApplicationContext;
