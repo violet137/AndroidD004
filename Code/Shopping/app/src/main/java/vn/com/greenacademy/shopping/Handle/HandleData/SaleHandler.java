@@ -14,7 +14,6 @@ import vn.com.greenacademy.shopping.Handle.ParseData.Sale.ParseSale;
 import vn.com.greenacademy.shopping.Interface.SaleCallBack;
 import vn.com.greenacademy.shopping.Interface.ServerCallBack;
 import vn.com.greenacademy.shopping.Model.Sale;
-import vn.com.greenacademy.shopping.Network.AsynTask.GetSale;
 import vn.com.greenacademy.shopping.Network.AsynTask.GetServerData;
 import vn.com.greenacademy.shopping.Util.ServerUrl;
 

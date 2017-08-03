@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import vn.com.greenacademy.shopping.Fragment.Magazine.MagazineRecyclerViewFragment;
 import vn.com.greenacademy.shopping.Interface.MagazineTypeCallBack;
 import vn.com.greenacademy.shopping.Model.MagazineType;
-import vn.com.greenacademy.shopping.Network.AsynTask.GetMagazineType;
 import vn.com.greenacademy.shopping.Util.ServerUrl;
 
 /**

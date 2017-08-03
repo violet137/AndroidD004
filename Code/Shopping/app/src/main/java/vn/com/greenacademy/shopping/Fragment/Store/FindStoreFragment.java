@@ -13,7 +13,6 @@ import com.google.android.gms.maps.SupportMapFragment;
 import vn.com.greenacademy.shopping.Handle.HandleData.FindStoreHandler;
 import vn.com.greenacademy.shopping.MainActivity;
 import vn.com.greenacademy.shopping.Network.AsynTask.GetServerData;
-import vn.com.greenacademy.shopping.Network.AsynTask.GetStore;
 import vn.com.greenacademy.shopping.R;
 import vn.com.greenacademy.shopping.Util.ServerUrl;
 
