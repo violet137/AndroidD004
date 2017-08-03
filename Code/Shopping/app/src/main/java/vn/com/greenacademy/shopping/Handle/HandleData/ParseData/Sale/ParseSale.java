@@ -7,6 +7,8 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 import vn.com.greenacademy.shopping.Model.Sale;
+import vn.com.greenacademy.shopping.Model.ThongTinSanPham.HinhSanPham;
+import vn.com.greenacademy.shopping.Model.ThongTinSanPham.SanPham;
 
 /**
  * Created by ADMIN on 8/3/2017.
@@ -25,6 +27,8 @@ public class ParseSale {
             if (root.getInt("Status") == 1){
                 JSONArray jsonArray = root.getJSONArray("KhuyenMaiTranfers");
                 ArrayList<Integer> temp;
+                SanPham sanPham;
+                ArrayList<SanPham> sanPhamArrayList;
                 for (int i = 0; i < jsonArray.length(); i++) {
                     JSONObject jsonObject = jsonArray.getJSONObject(i);
                     Sale sale = new Sale();
@@ -33,14 +37,36 @@ public class ParseSale {
                     sale.setHinhDaiDien(jsonObject.getString("HinhDaiDien"));
                     sale.setMota(jsonObject.getString("Mota"));
                     sale.setTen(jsonObject.getString("Ten"));
+//
+//                    temp = new ArrayList<>();
+//                    JSONArray jsonArrayListSanPham = jsonObject.getJSONArray("ListSanPham");
+//                    for (int j = 0; j < jsonArrayListSanPham.length(); j++) {
+//                        temp.add(jsonArrayListSanPham.getInt(j));
+//                    }
+//
+//                    sale.setListIDSanPham(temp);
 
-                    temp = new ArrayList<>();
-                    JSONArray jsonArrayListSanPham = jsonObject.getJSONArray("ListSanPham");
-                    for (int j = 0; j < jsonArrayListSanPham.length(); j++) {
-                        temp.add(jsonArrayListSanPham.getInt(j));
+                    sanPhamArrayList = new ArrayList<>();
+//                    JSONObject rootProducts = new JSONObject(data);
+                    JSONArray listSanPham = jsonObject.getJSONArray("ListSanPham");
+                    for (int j = 0; j < listSanPham.length(); j++) {
+                        sanPham = new SanPham();
+                        sanPham.setIdSanPham(listSanPham.getJSONObject(j).getInt("Id"));
+                        sanPham.setTenSanPham(listSanPham.getJSONObject(j).getString("Ten"));
+                        sanPham.setGiaSanPham(listSanPham.getJSONObject(j).getLong("GiaTien"));
+                        sanPham.setGiamGia(listSanPham.getJSONObject(j).getLong("GiaGiam"));
+                        sanPham.setHinhDaiDien(listSanPham.getJSONObject(j).getString("HinhSp"));
+
+                        //Màu sắc
+                        String[] listMauSanPham = new String[listSanPham.getJSONObject(j).getJSONArray("Mau").length()];
+                        for (int k = 0; k < listSanPham.getJSONObject(j).getJSONArray("Mau").length(); k++) {
+                            listMauSanPham[k] = listSanPham.getJSONObject(j).getJSONArray("Mau").getString(k);
+                        }
+                        sanPham.setMauSanPham(listMauSanPham);
+
+                        sanPhamArrayList.add(sanPham);
                     }
-
-                    sale.setListIDSanPham(temp);
+                    sale.setSanPhamArrayList(sanPhamArrayList);
 
                     result.add(sale);
                 }

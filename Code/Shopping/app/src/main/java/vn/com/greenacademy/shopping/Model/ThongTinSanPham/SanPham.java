@@ -22,6 +22,7 @@ public class SanPham {
     private String[] sanPhamPhuHop;
     private long giaSanPham;
     private long giamGia;
+    private String hinhDaiDien;
 
     public SanPham(){}
 
@@ -39,6 +40,14 @@ public class SanPham {
         this.sanPhamPhuHop = sanPhamPhuHop;
         this.giaSanPham = giaSanPham;
         this.giamGia = giamGia;
+    }
+
+    public String getHinhDaiDien() {
+        return hinhDaiDien;
+    }
+
+    public void setHinhDaiDien(String hinhDaiDien) {
+        this.hinhDaiDien = hinhDaiDien;
     }
 
     public long getIdSanPham() {

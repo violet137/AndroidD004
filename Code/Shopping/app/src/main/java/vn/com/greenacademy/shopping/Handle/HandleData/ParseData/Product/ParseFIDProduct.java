@@ -24,6 +24,7 @@ public class ParseFIDProduct {
         try {
             JSONObject root = new JSONObject(data);
             if (root.getInt("Status") == 1){
+                /// co the co loi o dong  can 30 get jsonArray ko get jsonObject
                 JSONObject objSanPham = root.getJSONArray("SanPhamTranfers").getJSONObject(0);
                 sanPham = new SanPham();
                 sanPham.setIdSanPham(objSanPham.getInt("Id"));

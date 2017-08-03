@@ -18,27 +18,27 @@ public class AdapterViewPagerSale extends FragmentPagerAdapter {
     Activity activity;
     ArrayList<SanPham> sanPhamArrayList;
 
-//    public AdapterViewPagerSale(FragmentManager fm, Activity activity,
-//                                ArrayList<SanPham> sanPhamArrayList) {
-//        super(fm);
-//        this.activity = activity;
-//        this.sanPhamArrayList = sanPhamArrayList;
-//    }
-
-    public AdapterViewPagerSale(FragmentManager fm, Activity activity) {
+    public AdapterViewPagerSale(FragmentManager fm, Activity activity,
+                                ArrayList<SanPham> sanPhamArrayList) {
         super(fm);
         this.activity = activity;
+        this.sanPhamArrayList = sanPhamArrayList;
     }
+
+//    public AdapterViewPagerSale(FragmentManager fm, Activity activity) {
+//        super(fm);
+//        this.activity = activity;
+//    }
 
     @Override
     public Fragment getItem(int position) {
-        return new SaleProductFragment();
+        return new SaleProductFragment(sanPhamArrayList, position);
 //        return new MagazineRecyclerViewFragment(position, sanPhamArrayList);
     }
 
     @Override
     public int getCount() {
-        return 3;
+            return 3;
     }
 
 }
