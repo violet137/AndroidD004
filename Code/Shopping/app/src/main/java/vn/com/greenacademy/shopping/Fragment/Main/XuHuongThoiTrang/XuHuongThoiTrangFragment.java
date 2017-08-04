@@ -1,6 +1,5 @@
 package vn.com.greenacademy.shopping.Fragment.Main.XuHuongThoiTrang;
 
-import android.content.res.TypedArray;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
@@ -13,6 +12,7 @@ import android.widget.Toast;
 import android.widget.VideoView;
 
 import java.util.ArrayList;
+import java.util.Set;
 
 import vn.com.greenacademy.shopping.Handle.HandleData.ImageLoad;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.SanPham.ListSanPhamAdapter;
@@ -20,7 +20,6 @@ import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.XuHuongThoiTrang.Lis
 import vn.com.greenacademy.shopping.Handle.HandleUi.Dialog.LoadingDialog;
 import vn.com.greenacademy.shopping.Interface.DataCallBack;
 import vn.com.greenacademy.shopping.Interface.SetDoCallBack;
-import vn.com.greenacademy.shopping.Model.ThongTinSanPham.SanPham;
 import vn.com.greenacademy.shopping.Model.SetDo;
 import vn.com.greenacademy.shopping.Model.XuHuongThoiTrang;
 import vn.com.greenacademy.shopping.Network.AsynTask.GoiAPIServerAsyncTask;
@@ -41,18 +40,10 @@ public class XuHuongThoiTrangFragment extends Fragment implements DataCallBack, 
     private LoadingDialog loadingDialog;
     private XuHuongThoiTrang xuHuongThoiTrang;
     private long idXuHuong;
-    //Data test
-    private XuHuongThoiTrang testXuHuongThoiTrang;
-    private int[] listDataBanner;
-    private int position;
 
     public XuHuongThoiTrangFragment(long idXuHuong){
         this.idXuHuong = idXuHuong;
     }
-
-//    public XuHuongThoiTrangFragment(int position) {
-//        this.position = position;
-//    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -84,7 +75,7 @@ public class XuHuongThoiTrangFragment extends Fragment implements DataCallBack, 
 //        }
 
         //List set đồ
-        if (xuHuongThoiTrang.getListSetDo() != null) {
+        if (xuHuongThoiTrang.getListSetDo().size() != 0) {
             vListSetDo.setLayoutManager(new GridLayoutManager(getActivity(), 1));
             vListSetDo.setNestedScrollingEnabled(false);
             vListSetDo.setAdapter(new ListSetDoAdapter(getActivity() , this, xuHuongThoiTrang.getListSetDo(), imageLoad));
@@ -98,7 +89,7 @@ public class XuHuongThoiTrangFragment extends Fragment implements DataCallBack, 
 
     @Override
     public void clickSetDo(int position) {
-        ChiTietSetDoDialog chiTietSetDoDialog = new ChiTietSetDoDialog(getActivity(), testXuHuongThoiTrang.getListSetDo().get(position), new BaseFragment(getActivity().getSupportFragmentManager()));
+        ChiTietSetDoDialog chiTietSetDoDialog = new ChiTietSetDoDialog(getActivity(), xuHuongThoiTrang.getListSetDo().get(position), new BaseFragment(getActivity().getSupportFragmentManager()));
         chiTietSetDoDialog.show();
     }
 

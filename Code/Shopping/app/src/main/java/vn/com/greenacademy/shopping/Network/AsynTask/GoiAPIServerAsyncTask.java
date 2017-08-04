@@ -337,8 +337,8 @@ public class GoiAPIServerAsyncTask extends AsyncTask<String, Void, String> {
 //                    sanPham.setDanhMucHangId(objSanPham.getInt("DanhMucHangId"));
 //                    setDo.getListSanPham().add(sanPham);
 //                }
+                xuHuongThoiTrang.getListSetDo().add(setDo);
             }
-
             //List sản phẩm
             JSONArray jsonArrListSanPham =  objXuHuongThoiTrang.getJSONArray("ListSanPham");
             for (int j = 0; j < jsonArrListSanPham.length(); j++) {

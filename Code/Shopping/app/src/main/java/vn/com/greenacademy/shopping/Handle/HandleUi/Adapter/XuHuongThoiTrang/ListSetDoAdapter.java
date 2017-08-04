@@ -25,7 +25,7 @@ public class ListSetDoAdapter extends RecyclerView.Adapter<SetDoHolder> {
     private Context context;
     private SetDoCallBack setDoCallBack;
     private ImageLoad imageLoad;
-    private ArrayList<SetDo> listSetDo = null;
+    private ArrayList<SetDo> listSetDo =  new ArrayList<>();
 
     public ListSetDoAdapter(Context context, SetDoCallBack setDoCallBack, ArrayList<SetDo> listSetDo, ImageLoad imageLoad){
         this.context = context;
@@ -43,7 +43,7 @@ public class ListSetDoAdapter extends RecyclerView.Adapter<SetDoHolder> {
 
     @Override
     public void onBindViewHolder(final SetDoHolder holder, int position) {
-        if (!listSetDo.get(0).isVideo())
+        if (!listSetDo.get(position).isVideo())
             imageLoad.ImageLoad(listSetDo.get(position).getHinhDaiDien(), holder.imgSetDo);
         else {
 
