@@ -23,6 +23,7 @@ import vn.com.greenacademy.shopping.Handle.HandleData.ImageLoad;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.SanPham.SanPhamPagerAdapter;
 import vn.com.greenacademy.shopping.Interface.DataCallBack;
 import vn.com.greenacademy.shopping.Model.Sale;
+import vn.com.greenacademy.shopping.Model.ThongTinSanPham.SanPham;
 import vn.com.greenacademy.shopping.R;
 
 import static android.R.attr.fragment;
@@ -79,7 +80,7 @@ public class AdapterSale extends RecyclerView.Adapter<SaleHolder>{
         holder.tvMoTa.setText("  "+saleArrayList.get(position).getMota());
 
         AdapterViewPagerSale adapterViewPagerSale = new AdapterViewPagerSale(
-                ((AppCompatActivity)context).getSupportFragmentManager(),(Activity) context);
+                  ((AppCompatActivity)context).getSupportFragmentManager(),(Activity) context, saleArrayList.get(position).getSanPhamArrayList());
 
         holder.viewPager.setAdapter(adapterViewPagerSale);
 
