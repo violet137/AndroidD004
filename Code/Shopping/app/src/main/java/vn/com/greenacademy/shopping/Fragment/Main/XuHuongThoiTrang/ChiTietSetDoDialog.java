@@ -45,7 +45,7 @@ public class ChiTietSetDoDialog extends BottomSheetDialog implements SanPhamCall
         ibThoat.setOnClickListener(this);
 
         vListSanPham.setLayoutManager(new GridLayoutManager(context, 3));
-        vListSanPham.setAdapter(new ListSanPhamAdapter(context, setDo.getListSanPham(), baseFragment, this));
+        vListSanPham.setAdapter(new ListSanPhamAdapter(context, setDo.getListSanPham(), baseFragment, this, null));
         vListSanPham.setNestedScrollingEnabled(false);
         configBottomSheetBehavior(bottomSheetView);
 

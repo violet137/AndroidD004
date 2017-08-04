@@ -50,9 +50,9 @@ public class XuHuongThoiTrangFragment extends Fragment implements DataCallBack, 
         this.idXuHuong = idXuHuong;
     }
 
-    public XuHuongThoiTrangFragment(int position) {
-        this.position = position;
-    }
+//    public XuHuongThoiTrangFragment(int position) {
+//        this.position = position;
+//    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -74,25 +74,25 @@ public class XuHuongThoiTrangFragment extends Fragment implements DataCallBack, 
     }
 
     private void LoadUI() {
+        ImageLoad imageLoad = new ImageLoad(getActivity());
         if(!xuHuongThoiTrang.isVideo()) {
-            ImageLoad imageLoad = new ImageLoad(getActivity());
             imageLoad.ImageLoad(xuHuongThoiTrang.getHinhDaiDien(), vBanner);
         }
 //        else {
 //            vVideoBanner.setVisibility(View.VISIBLE);
 //            vVideoBanner.setVideoURI(xuHuongThoiTrang.getLinkHinhMoTa());
 //        }
-//        vBanner.setImageResource(listDataBanner[0]);
+
         //List set đồ
-        if (testXuHuongThoiTrang.getListSetDo() != null) {
+        if (xuHuongThoiTrang.getListSetDo() != null) {
             vListSetDo.setLayoutManager(new GridLayoutManager(getActivity(), 1));
             vListSetDo.setNestedScrollingEnabled(false);
-            vListSetDo.setAdapter(new ListSetDoAdapter(getActivity() , this, testXuHuongThoiTrang.getListSetDo()));
+            vListSetDo.setAdapter(new ListSetDoAdapter(getActivity() , this, xuHuongThoiTrang.getListSetDo(), imageLoad));
         }
         //List sản phẩm
         vListSanPham.setLayoutManager(new GridLayoutManager(getActivity(), 2));
         vListSanPham.setNestedScrollingEnabled(false);
-        vListSanPham.setAdapter(new ListSanPhamAdapter(getActivity(), testXuHuongThoiTrang.getListSanPham(), new BaseFragment(getActivity().getSupportFragmentManager()), null));
+        vListSanPham.setAdapter(new ListSanPhamAdapter(getActivity(), xuHuongThoiTrang.getListSanPham(), new BaseFragment(getActivity().getSupportFragmentManager()), null, imageLoad));
         loadingDialog.dismiss();
     }
 
@@ -102,33 +102,33 @@ public class XuHuongThoiTrangFragment extends Fragment implements DataCallBack, 
         chiTietSetDoDialog.show();
     }
 
-    public void DataTest(){
-        ArrayList<SetDo> listSetDo = new ArrayList<>();
-        ArrayList<SanPham> listSanPhamSetDo = new ArrayList<>();
-        ArrayList<SanPham> listSanPham = new ArrayList<>();
-        //List set đồ
-        for (int i = 0; i < 2; i++) {
-            for (int j = 0; j < 3; j++) {
-                SanPham sanPham = new SanPham(0, 0, "Sản phẩm " + String.valueOf(j+1), "3/8", "Men", "Description " + String.valueOf(j+1), "Details " + String.valueOf(j+1), null, null, null, null,  100, 0);
-                listSanPhamSetDo.add(sanPham);
-            }
-            listSetDo.add(new SetDo(i, "Set đồ thứ " + String.valueOf(i), "Description " + String.valueOf(i), null, false, null, "3/8", listSanPhamSetDo));
-        }
-
-        //List Sản phẩm
-        for (int i = 0; i < 7; i++) {
-            SanPham sanPham = new SanPham(0, 0, "Sản phẩm " + String.valueOf(i+1), "3/8", "Men", "Description " + String.valueOf(i+1), "Details " + String.valueOf(i+1), null, null, null, null,  100, 0);
-            listSanPham.add(sanPham);
-        }
-        testXuHuongThoiTrang = new XuHuongThoiTrang(0, "testTenXuHuong", null, false, "Men", null, listSetDo, listSanPham);
-
-        //Data banner
-        TypedArray tempListBanner = getActivity().getResources().obtainTypedArray(R.array.arr_hinh);
-        listDataBanner = new int[3];
-        for (int i = 0; i < 3; i++) {
-            listDataBanner[i] = tempListBanner.getResourceId(i, -1);
-        }
-    }
+//    public void DataTest(){
+//        ArrayList<SetDo> listSetDo = new ArrayList<>();
+//        ArrayList<SanPham> listSanPhamSetDo = new ArrayList<>();
+//        ArrayList<SanPham> listSanPham = new ArrayList<>();
+//        //List set đồ
+//        for (int i = 0; i < 2; i++) {
+//            for (int j = 0; j < 3; j++) {
+//                SanPham sanPham = new SanPham(0, 0, "Sản phẩm " + String.valueOf(j+1), "3/8", "Men", "Description " + String.valueOf(j+1), "Details " + String.valueOf(j+1), null, null, null, null,  100, 0);
+//                listSanPhamSetDo.add(sanPham);
+//            }
+//            listSetDo.add(new SetDo(i, "Set đồ thứ " + String.valueOf(i), "Description " + String.valueOf(i), null, false, null, "3/8", listSanPhamSetDo));
+//        }
+//
+//        //List Sản phẩm
+//        for (int i = 0; i < 7; i++) {
+//            SanPham sanPham = new SanPham(0, 0, "Sản phẩm " + String.valueOf(i+1), "3/8", "Men", "Description " + String.valueOf(i+1), "Details " + String.valueOf(i+1), null, null, null, null,  100, 0);
+//            listSanPham.add(sanPham);
+//        }
+//        testXuHuongThoiTrang = new XuHuongThoiTrang(0, "testTenXuHuong", null, false, "Men", null, listSetDo, listSanPham);
+//
+//        //Data banner
+//        TypedArray tempListBanner = getActivity().getResources().obtainTypedArray(R.array.arr_hinh);
+//        listDataBanner = new int[3];
+//        for (int i = 0; i < 3; i++) {
+//            listDataBanner[i] = tempListBanner.getResourceId(i, -1);
+//        }
+//    }
 
     @Override
     public void KetQua(String result, Bundle bundle) {
@@ -141,7 +141,6 @@ public class XuHuongThoiTrangFragment extends Fragment implements DataCallBack, 
                 break;
             case SupportKeyList.LAY_DATA_THANH_CONG:
                 xuHuongThoiTrang = (XuHuongThoiTrang) bundle.getSerializable("DataXuHuongThoiTrang");
-                DataTest();
                 LoadUI();
                 break;
             default:

@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import vn.com.greenacademy.shopping.Handle.HandleData.ImageLoad;
 import vn.com.greenacademy.shopping.Model.ThongTinSanPham.SanPham;
 import vn.com.greenacademy.shopping.R;
 
@@ -19,11 +20,13 @@ import vn.com.greenacademy.shopping.R;
  */
 public class SanPhamPagerFragment extends Fragment {
     private ArrayList<SanPham> listSanPham = new ArrayList<>();
+    private ImageLoad imageLoad;
     private int position;
 
     public SanPhamPagerFragment(int position, ArrayList<SanPham> listSanPham){
         this.listSanPham = listSanPham;
         this.position = position;
+        imageLoad = new ImageLoad(getActivity());
     }
 
     @Override
@@ -31,10 +34,11 @@ public class SanPhamPagerFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_san_pham_page, container, false);
-        ImageView hinhSanPham = (ImageView) root.findViewById(R.id.hinh_san_pham);
+        ImageView vHinhSanPham = (ImageView) root.findViewById(R.id.hinh_san_pham);
         TextView tvGia = (TextView) root.findViewById(R.id.gia_fragment_page_san_pham);
 
-        tvGia.setText(String.valueOf("$" + listSanPham.get(position).getGiaSanPham()));
+        imageLoad.ImageLoad(listSanPham.get(position).getHinhSanPham().get(0).getLinkHinh()[0], vHinhSanPham);
+        tvGia.setText(String.valueOf(listSanPham.get(position).getGiaSanPham()));
         return root;
     }
 

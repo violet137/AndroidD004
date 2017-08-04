@@ -4,6 +4,7 @@ package vn.com.greenacademy.shopping.Fragment.Main.SanPham;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,6 +50,7 @@ public class ThongTinSanPhamFragment extends Fragment implements View.OnClickLis
         btnSizeInfo = (Button) root.findViewById(R.id.button_size_san_pham);
 
         root.findViewById(R.id.button_info_san_pham).setOnClickListener(this);
+        root.findViewById(R.id.button_share_san_pham).setOnClickListener(this);
         root.findViewById(R.id.button_san_pham_khac).setOnClickListener(this);
         root.findViewById(R.id.button_hinh_san_pham).setOnClickListener(this);
         root.findViewById(R.id.button_color_san_pham).setOnClickListener(this);
@@ -67,7 +69,7 @@ public class ThongTinSanPhamFragment extends Fragment implements View.OnClickLis
 
             @Override
             public void onPageSelected(int position) {
-                tvTenVaMau.setText(listSanPham.get(position).getTenSanPham() + " - Khaki Green");
+                tvTenVaMau.setText(listSanPham.get(position).getTenSanPham() + " - " + listSanPham.get(position).getHinhSanPham().get(0).getMau());
                 tvSoLuong.setText(String.valueOf(position + 1) + "/" + String.valueOf(listSanPham.size()));
             }
 
@@ -87,7 +89,10 @@ public class ThongTinSanPhamFragment extends Fragment implements View.OnClickLis
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.button_info_san_pham:
-                new DetailsSanPhamFragment(getActivity(),null,null).show();
+                new DetailsSanPhamFragment(getActivity(), listSanPham.get(position).getDescription(), listSanPham.get(position).getChiTietSanPham()).show();
+                break;
+            case R.id.button_share_san_pham:
+                Toast.makeText(getActivity(), "Share", Toast.LENGTH_LONG).show();
                 break;
             case R.id.button_san_pham_khac:
                 Toast.makeText(getActivity(), "Sản phẩm khác", Toast.LENGTH_LONG).show();

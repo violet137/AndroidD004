@@ -7,7 +7,7 @@
     <color name="colorBackground">#FFF5F5F5</color>
     <color name="colorBackgroundFront">#ffff</color>
     <color name="colorText">#ffffffff</color>
-    <color name="colorTextDark">#FF424242</color>
+    <color name="colorTextDark">#000000</color>
     <color name="colorChuButtonDangNhap">#ffff</color>
     <color name="scrim">#90000000</color>
     <color name="scrimWhite">#C4FFFFFF</color>
