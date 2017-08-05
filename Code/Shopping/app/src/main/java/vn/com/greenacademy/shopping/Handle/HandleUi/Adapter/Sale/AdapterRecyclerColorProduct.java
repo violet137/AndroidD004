@@ -13,6 +13,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import vn.com.greenacademy.shopping.MainActivity;
 import vn.com.greenacademy.shopping.R;
 import vn.com.greenacademy.shopping.Util.SupportKeyList;
 
@@ -42,7 +43,7 @@ public class AdapterRecyclerColorProduct extends RecyclerView.Adapter<ColorProdu
 
     @Override
     public void onBindViewHolder(ColorProductHolder holder, int position) {
-//        holder.imageView.setBackground(Drawable.createFromPath("mau_cam"));
+        holder.imageView.setImageResource(MainActivity.mauSPArrayLis[MainActivity.doiMaMau(mauSanPham[position])]);
     }
 
     @Override

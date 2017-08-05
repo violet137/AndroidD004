@@ -10,6 +10,6 @@
         android:layout_width="@dimen/text_size_15dp"
         android:padding="@dimen/tv_padding_top_2dp"
         android:layout_height="@dimen/text_size_15dp"
-        android:layout_weight="1"
-        app:srcCompat="@drawable/black" />
+        android:scaleType="fitXY"
+        android:layout_weight="1"/>
 </LinearLayout>

@@ -65,8 +65,8 @@ public class AdapterSale extends RecyclerView.Adapter<SaleHolder>{
         ImageLoad imageLoad = new ImageLoad((Activity)context);
         imageLoad.load(saleArrayList.get(position).getHinhDaiDien(),holder.imageView);
 
-        holder.tvName.setText(saleArrayList.get(position).getTen());
-        holder.tvMoTa.setText("  "+saleArrayList.get(position).getMota());
+//        holder.tvName.setText(saleArrayList.get(position).getTen());
+//        holder.tvMoTa.setText("  "+saleArrayList.get(position).getMota());
 
         AdapterViewPagerSale adapterViewPagerSale = new AdapterViewPagerSale(
                   ((AppCompatActivity)context).getSupportFragmentManager(),(Activity) context, saleArrayList.get(position).getSanPhamArrayList());

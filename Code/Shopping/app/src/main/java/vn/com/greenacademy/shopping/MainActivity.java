@@ -1,13 +1,10 @@
 package vn.com.greenacademy.shopping;
 
-import android.*;
-import android.Manifest;
 import android.content.pm.PackageManager;
+import android.content.res.TypedArray;
 import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.text.method.ScrollingMovementMethod;
 import android.view.View;
@@ -57,6 +54,7 @@ public class MainActivity extends AppCompatActivity implements DataCallBack {
     public static TextView tvTenMuc;
     SlideMenuHandler slideMenuHandler;
     boolean trangThaiListFindStore = false;
+    public static int[] mauSPArrayLis;
 
     public static final int MY_PERMISSIONS_REQUEST_CODE = 1;
 
@@ -108,6 +106,59 @@ public class MainActivity extends AppCompatActivity implements DataCallBack {
 
         //Chạy màn hình splash
         baseFragment.ChuyenFragment(new SplashScreenFragment(getSupportActionBar(), drawerLayout), null, false);
+
+
+        // tao ban mau mau dang public
+        TypedArray arrayMauSP = getResources().obtainTypedArray(R.array.arr_mauSP);
+
+        mauSPArrayLis = new int[arrayMauSP.length()];
+        for(int i=0; i< arrayMauSP.length();i++){
+            mauSPArrayLis[i]=arrayMauSP.getResourceId(i,-1);
+        }
+
+    }
+
+    public static int doiMaMau(String maMau){
+        switch (maMau){
+                case "Cam":
+                    // cam
+                    return 0;
+                case "Den":
+                    // den
+                    return 1;
+                case "Do":
+                    // do
+                    return 2;
+                case "Hong":
+                    // hong
+                    return 3;
+                case "Nau":
+                    // nau
+                    return 4;
+                case "Reu":
+                    // reu
+                    return 5;
+                case "Tim":
+                    // tim
+                    return 6;
+                case "Vang":
+                    // vang
+                    return 7;
+                case "Xam":
+                    // xam
+                    return 8;
+                case "XanhDuong":
+                    // xanh duong
+                    return 9;
+                case "XanhLa":
+                    // xanh la
+                    return 10;
+                case "Trang":
+                    // trang
+                    return 11;
+                default:
+                    return 0;
+        }
     }
 
     @Override
