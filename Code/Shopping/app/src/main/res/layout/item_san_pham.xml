@@ -24,7 +24,6 @@
         android:text="Cotton Canvas Cushion Cover Set"
         android:textSize="@dimen/text_size"
         android:textStyle="bold"
-        android:textColor="@color/colorTextDark"
         android:maxLines="2"/>
 
     <!-- Giá -->
