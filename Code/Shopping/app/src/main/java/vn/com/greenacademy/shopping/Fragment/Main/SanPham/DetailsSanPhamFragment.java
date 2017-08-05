@@ -38,8 +38,8 @@ public class DetailsSanPhamFragment extends Dialog implements View.OnClickListen
 
         root.findViewById(R.id.thoat_button_chi_tiet_san_pham).setOnClickListener(this);
 
-//        tvDescription.setText(description);
-//        tvChiTiet.setText(details);
+        tvDescription.setText(description);
+        tvChiTiet.setText(details);
         configDialog(root);
     }
 

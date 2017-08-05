@@ -28,7 +28,7 @@ public class ParseFIDProduct {
                 JSONObject objSanPham = root.getJSONArray("SanPhamTranfers").getJSONObject(0);
                 sanPham = new SanPham();
                 sanPham.setIdSanPham(objSanPham.getInt("Id"));
-                sanPham.setTenSanPham(objSanPham.getString("TenSanPham"));
+                sanPham.setTenSanPham(objSanPham.getString("Ten"));
                 sanPham.setNgayTao(objSanPham.getString("NgayTao"));
                 sanPham.setGiaSanPham(objSanPham.getLong("GiaTien"));
                 sanPham.setGiamGia(objSanPham.getLong("GiaTienGiam"));
@@ -36,18 +36,22 @@ public class ParseFIDProduct {
                 sanPham.setLoaiSanPham(objSanPham.getString("LoaiThoiTrang"));
                 sanPham.setChiTietSanPham(objSanPham.getString("ChiTiet"));
 
-                //List hình
+                //Link hình
                 JSONArray arrHinhSanPham = objSanPham.getJSONArray("LinkHinh");
                 ArrayList<HinhSanPham> listHinhSanPham = new ArrayList<>();
                 for (int k = 0; k < arrHinhSanPham.length(); k++) {
                     JSONObject objHinhSanPham = arrHinhSanPham.getJSONObject(k);
                     HinhSanPham hinhSanPham = new HinhSanPham();
                     hinhSanPham.setMau(objHinhSanPham.getString("MauSac"));
-                    JSONArray arrListHinh = objHinhSanPham.getJSONArray("LinkHinh");
-                    String[] listHinh = new String[arrHinhSanPham.length()];
-                    for (int l = 0; l < listHinh.length; l++) {
-                        listHinh[l] = arrListHinh.getString(l);
+
+                    //List hình
+//                    JSONArray arrListHinh = objHinhSanPham.getJSONArray("LinkHinh");
+                    int test = objHinhSanPham.getJSONArray("LinkHinh").length();
+                    String[] listHinh = new String[objHinhSanPham.getJSONArray("LinkHinh").length()];
+                    for (int l = 0; l < objHinhSanPham.getJSONArray("LinkHinh").length(); l++) {
+                        listHinh[l] = objHinhSanPham.getJSONArray("LinkHinh").getString(l);
                     }
+                    hinhSanPham.setLinkHinh(listHinh);
                     listHinhSanPham.add(hinhSanPham);
                 }
                 sanPham.setHinhSanPham(listHinhSanPham);
@@ -67,11 +71,11 @@ public class ParseFIDProduct {
                 sanPham.setSize(listSize);
 
                 //Sản phẩm phù hợp
-                String[] listSanPhamPhuHop = new String[objSanPham.getJSONArray("SpPhuHop").length()];
-                for (int k = 0; k < objSanPham.getJSONArray("SpPhuHop").length(); k++) {
-                    listSanPhamPhuHop[k] = objSanPham.getJSONArray("SpPhuHop").getString(k);
-                }
-                sanPham.setSanPhamPhuHop(listSanPhamPhuHop);
+//                String[] listSanPhamPhuHop = new String[objSanPham.getJSONArray("SpPhuHop").length()];
+//                for (int k = 0; k < objSanPham.getJSONArray("SpPhuHop").length(); k++) {
+//                    listSanPhamPhuHop[k] = objSanPham.getJSONArray("SpPhuHop").getString(k);
+//                }
+//                sanPham.setSanPhamPhuHop(listSanPhamPhuHop);
 
                 sanPham.setDanhMucHangId(objSanPham.getInt("DanhMucHangId"));
             }

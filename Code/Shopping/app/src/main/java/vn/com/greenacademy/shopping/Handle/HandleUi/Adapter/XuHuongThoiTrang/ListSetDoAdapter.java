@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 
 import java.util.ArrayList;
 
+import vn.com.greenacademy.shopping.Handle.HandleData.ImageLoad;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Model.ViewHolder.SetDoHolder;
 import vn.com.greenacademy.shopping.Interface.SetDoCallBack;
 import vn.com.greenacademy.shopping.Model.SetDo;
@@ -23,12 +24,14 @@ import vn.com.greenacademy.shopping.R;
 public class ListSetDoAdapter extends RecyclerView.Adapter<SetDoHolder> {
     private Context context;
     private SetDoCallBack setDoCallBack;
-    private ArrayList<SetDo> listSetDo = null;
+    private ImageLoad imageLoad;
+    private ArrayList<SetDo> listSetDo =  new ArrayList<>();
 
-    public ListSetDoAdapter(Context context, SetDoCallBack setDoCallBack, ArrayList<SetDo> listSetDo){
+    public ListSetDoAdapter(Context context, SetDoCallBack setDoCallBack, ArrayList<SetDo> listSetDo, ImageLoad imageLoad){
         this.context = context;
         this.listSetDo = listSetDo;
         this.setDoCallBack = setDoCallBack;
+        this.imageLoad = imageLoad;
     }
 
     @Override
@@ -40,6 +43,11 @@ public class ListSetDoAdapter extends RecyclerView.Adapter<SetDoHolder> {
 
     @Override
     public void onBindViewHolder(final SetDoHolder holder, int position) {
+        if (!listSetDo.get(position).isVideo())
+            imageLoad.ImageLoad(listSetDo.get(position).getHinhDaiDien(), holder.imgSetDo);
+        else {
+
+        }
         //Description set đồ
         if (!listSetDo.get(position).getDescriptionSetDo().isEmpty()){
             holder.tvDescription.setText(listSetDo.get(position).getDescriptionSetDo());
