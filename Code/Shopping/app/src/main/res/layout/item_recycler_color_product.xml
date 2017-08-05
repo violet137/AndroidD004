@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="@dimen/text_size_15dp"
+    android:layout_height="@dimen/text_size_15dp">
+
+
+    <ImageView
+        android:id="@+id/ivMau_item_recycleView_color_product"
+        android:layout_width="@dimen/text_size_15dp"
+        android:padding="@dimen/tv_padding_top_2dp"
+        android:layout_height="@dimen/text_size_15dp"
+        android:layout_weight="1"
+        app:srcCompat="@drawable/black" />
+</LinearLayout>

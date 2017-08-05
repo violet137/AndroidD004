@@ -22,9 +22,11 @@
             <ImageView
                 android:id="@+id/iv_Sale_product_fragment"
                 android:layout_width="match_parent"
+                android:layout_height="@dimen/iv_layout_height_95dp"
+                android:layout_marginTop="@dimen/ll_layout_padding_5dp"
+                android:layout_marginLeft="@dimen/tv_padding_top_2dp"
+                android:layout_marginRight="@dimen/tv_padding_top_2dp"
                 android:scaleType="centerCrop"
-                android:layout_margin="@dimen/ll_layout_padding_5dp"
-                android:layout_height="@dimen/iv_layout_height_100dp"
                 app:srcCompat="@drawable/banner_test2" />
 
             <TextView
@@ -46,12 +48,13 @@
                 android:paddingTop="@dimen/tv_padding_top_2dp"
                 android:text="@string/San_Pham_Moi"
                 android:textColor="#ff000000"
-                android:textSize="@dimen/ll_layout_padding_5dp" />
+                android:textSize="@dimen/text_size_10dp" />
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/rvMau_Sale_product_fragment"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/text_size_15dp" />
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center" />
 
         </LinearLayout>
 
@@ -65,9 +68,11 @@
             <ImageView
                 android:id="@+id/iv2_Sale_product_fragment"
                 android:layout_width="match_parent"
+                android:layout_height="@dimen/iv_layout_height_95dp"
+                android:layout_marginLeft="@dimen/tv_padding_top_2dp"
+                android:layout_marginRight="@dimen/tv_padding_top_2dp"
+                android:layout_marginTop="@dimen/ll_layout_padding_5dp"
                 android:scaleType="centerCrop"
-                android:layout_margin="@dimen/ll_layout_padding_5dp"
-                android:layout_height="@dimen/iv_layout_height_100dp"
                 app:srcCompat="@drawable/banner_test2" />
 
             <TextView
@@ -89,12 +94,13 @@
                 android:paddingTop="@dimen/tv_padding_top_2dp"
                 android:text="@string/San_Pham_Moi"
                 android:textColor="#ff000000"
-                android:textSize="@dimen/ll_layout_padding_5dp" />
+                android:textSize="@dimen/text_size_10dp" />
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/rvMau2_Sale_product_fragment"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/text_size_15dp" />
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"  />
 
         </LinearLayout>
 
@@ -108,8 +114,10 @@
                 android:id="@+id/iv3_Sale_product_fragment"
                 android:layout_width="match_parent"
                 android:scaleType="centerCrop"
-                android:layout_margin="@dimen/ll_layout_padding_5dp"
-                android:layout_height="@dimen/iv_layout_height_100dp"
+                android:layout_marginTop="@dimen/ll_layout_padding_5dp"
+                android:layout_marginLeft="@dimen/tv_padding_top_2dp"
+                android:layout_marginRight="@dimen/tv_padding_top_2dp"
+                android:layout_height="@dimen/iv_layout_height_95dp"
                 app:srcCompat="@drawable/banner_test2" />
 
             <TextView
@@ -131,12 +139,13 @@
                 android:paddingTop="@dimen/tv_padding_top_2dp"
                 android:text="@string/San_Pham_Moi"
                 android:textColor="#ff000000"
-                android:textSize="@dimen/ll_layout_padding_5dp" />
+                android:textSize="@dimen/text_size_10dp" />
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/rvMau3_Sale_product_fragment"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/text_size_15dp" />
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"  />
 
         </LinearLayout>
 

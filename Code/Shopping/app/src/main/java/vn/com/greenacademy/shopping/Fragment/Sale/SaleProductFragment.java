@@ -3,6 +3,7 @@ package vn.com.greenacademy.shopping.Fragment.Sale;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 import vn.com.greenacademy.shopping.Handle.HandleData.ImageLoad;
+import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.Sale.AdapterRecyclerColorProduct;
 import vn.com.greenacademy.shopping.Model.ThongTinSanPham.SanPham;
 import vn.com.greenacademy.shopping.R;
 
@@ -68,6 +70,10 @@ public class SaleProductFragment extends Fragment {
 
         textView.setText(String.valueOf(sanPhamArrayList.get(position).getGiamGia()));
 
-    }
+        recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), sanPhamArrayList.get(position).getMauSanPham().length>4? 4 : sanPhamArrayList.get(position).getMauSanPham().length));
+        AdapterRecyclerColorProduct adapterRecyclerColorProduct = new AdapterRecyclerColorProduct(getContext(), sanPhamArrayList.get(position).getMauSanPham());
+        recyclerView.setAdapter(adapterRecyclerColorProduct);
 
+
+    }
 }

@@ -37,15 +37,15 @@ public class AdapterMagazineRecyclerView extends RecyclerView.Adapter<MagazineHo
         this.magazineArrayList=magazineArrayList;
     }
 
-    public AdapterMagazineRecyclerView(Context context, View.OnClickListener onClickListener, int positionViewPagger,
-                                       ArrayList<MagazineType> magazineTypeArrayList) {
-        this.context = context;
-        mLayoutInflater = LayoutInflater.from(context);
-        this.onClickListener=onClickListener;
-        this.positionViewPagger = positionViewPagger;
-        this.magazineTypeArrayList = magazineTypeArrayList;
-
-    }
+//    public AdapterMagazineRecyclerView(Context context, View.OnClickListener onClickListener, int positionViewPagger,
+//                                       ArrayList<MagazineType> magazineTypeArrayList) {
+//        this.context = context;
+//        mLayoutInflater = LayoutInflater.from(context);
+//        this.onClickListener=onClickListener;
+//        this.positionViewPagger = positionViewPagger;
+//        this.magazineTypeArrayList = magazineTypeArrayList;
+//
+//    }
 
     @Override
     public MagazineHolder onCreateViewHolder(ViewGroup parent, int viewType) {
