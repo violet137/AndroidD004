@@ -3,8 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="@dimen/ll_layout_padding_5dp"
-    android:background="#96f4f4f4"
     android:orientation="vertical"
     android:padding="@dimen/ll_layout_padding_5dp">
 
@@ -25,25 +23,25 @@
         <TextView
             android:id="@+id/tvName_itemSale"
             android:layout_width="wrap_content"
-            android:textStyle="bold"
-            android:textColor="@color/cardview_dark_background"
-            android:layout_marginLeft="@dimen/textView_pandding_bottom_3dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:layout_gravity="center"
-            android:text="TextView" />
+            android:layout_marginLeft="@dimen/textView_pandding_bottom_3dp"
+            android:layout_weight="1"
+            android:text="TextView"
+            android:textColor="@color/cardview_dark_background"
+            android:textStyle="bold" />
     </LinearLayout>
 
     <TextView
-        android:visibility="gone"
         android:id="@+id/tvMoTa_itemSale"
-        android:paddingLeft="@dimen/ll_layout_padding_5dp"
         android:layout_width="match_parent"
-        android:maxLines="3"
         android:layout_height="wrap_content"
-        android:textColor="@color/cardview_dark_background"
         android:layout_marginBottom="@dimen/ll_layout_padding_5dp"
-        android:text="TextView" />
+        android:maxLines="3"
+        android:paddingLeft="@dimen/ll_layout_padding_5dp"
+        android:text="TextView"
+        android:textColor="@color/cardview_dark_background"
+        android:visibility="gone" />
 
     <ImageView
         android:id="@+id/iv_itemSale"
@@ -55,8 +53,10 @@
     <android.support.v4.view.ViewPager
         android:id="@+id/vp_itemSale"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/vp_layout_height_150dp">
+        android:layout_height="@dimen/vp_layout_height_150dp"
+        android:background="#ffffff">
 
     </android.support.v4.view.ViewPager>
+
 
 </LinearLayout>

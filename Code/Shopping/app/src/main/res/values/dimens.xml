@@ -124,4 +124,9 @@
     <dimen name="ll_layout_padding_5dp">5dp</dimen>
     <dimen name="vp_layout_height_150dp">150dp</dimen>
 
+    <!-- item listview sale -->
+    <dimen name="ll_layout_with_125dp">125dp</dimen>
+    <dimen name="iv_layout_height_100dp">100dp</dimen>
+    <dimen name="tv_padding_top_2dp">2dp</dimen>
+
 </resources>

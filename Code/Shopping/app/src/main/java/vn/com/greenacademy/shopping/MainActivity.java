@@ -74,8 +74,8 @@ public class MainActivity extends AppCompatActivity implements DataCallBack {
         tvTenMuc = (TextView) findViewById(R.id.text_ten_muc_content_main);
         tvTenMuc.setMovementMethod(new ScrollingMovementMethod());
 
-        View navigationView = findViewById(R.id.nav_menu_main);
-        //Xử lý sự kiện
+//        View navigationView = findViewById(R.id.nav_menu_main);
+//        //Xử lý sự kiện
 //        navigationView.findViewById(R.id.ivUser_nav_hear).setOnClickListener(this);
 //        navigationView.findViewById(R.id.tvName_nav_hear).setOnClickListener(this);
 //        navigationView.findViewById(R.id.tvEmail_nav_hear).setOnClickListener(this);

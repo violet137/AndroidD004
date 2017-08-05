@@ -108,4 +108,9 @@
     <string name="In_This_Store_You_Can_Find">Các loại sản phẩm của cửa hàng</string>
     <string name="Opening_Hours">Giờ mở cửa</string>
 
+    <!-- item listview sale -->
+    <string name="San_Pham_Moi">Sản Phẩm Mới</string>
+
+
+
 </resources>

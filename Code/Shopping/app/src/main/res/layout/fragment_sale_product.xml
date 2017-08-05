@@ -12,146 +12,133 @@
         android:layout_height="match_parent"
         android:orientation="horizontal">
 
-        <FrameLayout
+
+        <LinearLayout
             android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:layout_height="match_parent">
+            android:orientation="vertical">
 
-            <LinearLayout
+            <ImageView
+                android:id="@+id/iv_Sale_product_fragment"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:scaleType="centerCrop"
+                android:layout_margin="@dimen/ll_layout_padding_5dp"
+                android:layout_height="@dimen/iv_layout_height_100dp"
+                app:srcCompat="@drawable/banner_test2" />
 
-                <ImageView
-                    android:id="@+id/ivAnh1_item_SaleProduct"
-                    android:scaleType="centerCrop"
-                    android:layout_margin="4dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="110dp"
-                    app:srcCompat="@drawable/banner_test2" />
+            <TextView
+                android:id="@+id/tvGia_Sale_product_fragment"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#ff00"
+                android:paddingLeft="@dimen/ll_layout_padding_5dp"
+                android:paddingRight="@dimen/ll_layout_padding_5dp"
+                android:maxLines="1"
+                android:text="100,000,0000,000" />
 
-                <TextView
-                    android:id="@+id/textView5"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:layout_marginLeft="@dimen/text_size_15dp"
-                    android:maxLines="1"
-                    android:visibility="gone"
-                    android:ellipsize="end"
-                    android:ems="5"
-                    android:text="ao dam viet as asdfbavsdjlhfjagsdufgasdufguasdglfasgdhfgaslu" />
+            <TextView
+                android:id="@+id/tvNewProduct_Sale_product_fragment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingTop="@dimen/tv_padding_top_2dp"
+                android:text="@string/San_Pham_Moi"
+                android:textColor="#ff000000"
+                android:textSize="@dimen/ll_layout_padding_5dp" />
 
-                <TextView
-                    android:id="@+id/tvGia1_item_SaleProduct"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:maxLines="1"
-                    android:text="TextView"
-                    android:textColor="#d4ff0303" />
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rvMau_Sale_product_fragment"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/text_size_15dp" />
 
-                <ListView
-                    android:layout_width="match_parent"
-                    android:layout_height="15dp"
-                    android:scrollbars="horizontal" />
-            </LinearLayout>
-        </FrameLayout>
+        </LinearLayout>
 
 
-        <FrameLayout
+        <LinearLayout
             android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:layout_height="match_parent">
+            android:orientation="vertical">
 
-            <LinearLayout
+            <ImageView
+                android:id="@+id/iv2_Sale_product_fragment"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:scaleType="centerCrop"
+                android:layout_margin="@dimen/ll_layout_padding_5dp"
+                android:layout_height="@dimen/iv_layout_height_100dp"
+                app:srcCompat="@drawable/banner_test2" />
 
-                <ImageView
-                    android:id="@+id/ivAnh2_item_SaleProduct"
-                    android:scaleType="centerCrop"
-                    android:layout_margin="4dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="110dp"
-                    app:srcCompat="@drawable/banner_test2" />
+            <TextView
+                android:id="@+id/tvGia2_Sale_product_fragment"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#ff00"
+                android:paddingLeft="@dimen/ll_layout_padding_5dp"
+                android:paddingRight="@dimen/ll_layout_padding_5dp"
+                android:maxLines="1"
+                android:text="100,000,0000,000" />
 
-                <TextView
-                    android:id="@+id/textView5"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:layout_marginLeft="@dimen/text_size_15dp"
-                    android:maxLines="1"
-                    android:visibility="gone"
-                    android:ellipsize="end"
-                    android:ems="5"
-                    android:text="ao dam viet as asdfbavsdjlhfjagsdufgasdufguasdglfasgdhfgaslu" />
+            <TextView
+                android:id="@+id/tvNewProduct2_Sale_product_fragment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingTop="@dimen/tv_padding_top_2dp"
+                android:text="@string/San_Pham_Moi"
+                android:textColor="#ff000000"
+                android:textSize="@dimen/ll_layout_padding_5dp" />
 
-                <TextView
-                    android:id="@+id/tvGia2_item_SaleProduct"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:maxLines="1"
-                    android:text="TextView"
-                    android:textColor="#d4ff0303" />
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rvMau2_Sale_product_fragment"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/text_size_15dp" />
 
-                <ListView
-                    android:layout_width="match_parent"
-                    android:layout_height="15dp"
-                    android:scrollbars="horizontal" />
-            </LinearLayout>
-        </FrameLayout>
+        </LinearLayout>
 
-
-
-        <FrameLayout
+        <LinearLayout
             android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_weight="1"
-            android:layout_height="match_parent">
+            android:orientation="vertical">
 
-            <LinearLayout
+            <ImageView
+                android:id="@+id/iv3_Sale_product_fragment"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
+                android:scaleType="centerCrop"
+                android:layout_margin="@dimen/ll_layout_padding_5dp"
+                android:layout_height="@dimen/iv_layout_height_100dp"
+                app:srcCompat="@drawable/banner_test2" />
 
-                <ImageView
-                    android:id="@+id/ivAnh3_item_SaleProduct"
-                    android:scaleType="centerCrop"
-                    android:layout_margin="4dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="110dp"
-                    app:srcCompat="@drawable/banner_test2" />
+            <TextView
+                android:id="@+id/tvGia3_Sale_product_fragment"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#ff00"
+                android:paddingLeft="@dimen/ll_layout_padding_5dp"
+                android:paddingRight="@dimen/ll_layout_padding_5dp"
+                android:maxLines="1"
+                android:text="100,000,0000,000" />
 
-                <TextView
-                    android:id="@+id/textView5"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:layout_marginLeft="@dimen/text_size_15dp"
-                    android:maxLines="1"
-                    android:visibility="gone"
-                    android:ellipsize="end"
-                    android:ems="5"
-                    android:text="ao dam viet as asdfbavsdjlhfjagsdufgasdufguasdglfasgdhfgaslu" />
+            <TextView
+                android:id="@+id/tvNewProduct3_Sale_product_fragment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingTop="@dimen/tv_padding_top_2dp"
+                android:text="@string/San_Pham_Moi"
+                android:textColor="#ff000000"
+                android:textSize="@dimen/ll_layout_padding_5dp" />
 
-                <TextView
-                    android:id="@+id/tvGia3_item_SaleProduct"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:maxLines="1"
-                    android:text="TextView"
-                    android:textColor="#d4ff0303"  />
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rvMau3_Sale_product_fragment"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/text_size_15dp" />
 
-                <ListView
-                    android:layout_width="match_parent"
-                    android:layout_height="15dp"
-                    android:scrollbars="horizontal" />
-            </LinearLayout>
-        </FrameLayout>
+        </LinearLayout>
 
     </LinearLayout>
 </FrameLayout>
