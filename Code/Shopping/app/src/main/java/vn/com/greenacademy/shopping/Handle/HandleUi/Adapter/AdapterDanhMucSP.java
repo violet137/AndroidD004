@@ -8,18 +8,12 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.ViewFlipper;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import vn.com.greenacademy.shopping.Handle.HandleData.ImageLoad;
-import vn.com.greenacademy.shopping.Model.AdvertisePhoto;
-import vn.com.greenacademy.shopping.Model.BannerPhoto;
-import vn.com.greenacademy.shopping.Model.DanhMucSP;
-import vn.com.greenacademy.shopping.Model.MenuMain;
 import vn.com.greenacademy.shopping.Model.MucSanPham;
-import vn.com.greenacademy.shopping.Model.ProductsPhoto;
 import vn.com.greenacademy.shopping.R;
 import vn.com.greenacademy.shopping.Util.SupportKeyList;
 
@@ -60,13 +54,13 @@ public class AdapterDanhMucSP extends ArrayAdapter {
                     imageView.setOnClickListener(onClickListener);
 
                     imageView.setVisibility(View.VISIBLE);
-                    imageLoad.ImageLoad("https://lmt.com.vn/media/k2/items/cache/4251dec72b18ac89643edfb7a8300016_XL.jpg", imageView);
+                    imageLoad.load("https://lmt.com.vn/media/k2/items/cache/4251dec72b18ac89643edfb7a8300016_XL.jpg", imageView);
                 }else {
                     imageView.setTag(mucSanPhams.get(position));
                     imageView.setOnClickListener(onClickListener);
 
                     imageView.setVisibility(View.VISIBLE);
-                    imageLoad.ImageLoad(mucSanPhams.get(position).getLinkAnh(), imageView);
+                    imageLoad.load(mucSanPhams.get(position).getLinkAnh(), imageView);
                 }
                 break;
 

@@ -6,7 +6,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -51,7 +50,7 @@ public class DiaLogStoreDetail extends DialogFragment implements View.OnClickLis
         btnPhone.setOnClickListener(this);
 
         ImageLoad imageLoad = new ImageLoad(getActivity());
-        imageLoad.ImageLoad(store.getLinkAnh(), ivPhoto);
+        imageLoad.load(store.getLinkAnh(), ivPhoto);
 
         btnPhone.setText(store.getSoDienThoai());
 

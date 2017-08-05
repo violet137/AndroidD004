@@ -2,7 +2,6 @@ package vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.Magazine;
 
 import android.app.Activity;
 import android.content.Context;
-import android.graphics.Typeface;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -88,7 +87,7 @@ public class AdapterMagazineRecyclerView extends RecyclerView.Adapter<MagazineHo
         holder.tvDetail.setText("  "+magazine.getMoTa());
 
         ImageLoad imageLoad = new ImageLoad((Activity)context);
-        imageLoad.ImageLoad(magazine.getLinkHinh(),holder.imageView);
+        imageLoad.load(magazine.getLinkHinh(),holder.imageView);
     }
 
 }

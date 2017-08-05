@@ -38,7 +38,13 @@ public class AdapterViewPagerSale extends FragmentPagerAdapter {
 
     @Override
     public int getCount() {
+        if (sanPhamArrayList.size() < 5){
+            return 1;
+        } else  if (sanPhamArrayList.size() < 8){
+            return 2;
+        }else{
             return 3;
+        }
     }
 
 }

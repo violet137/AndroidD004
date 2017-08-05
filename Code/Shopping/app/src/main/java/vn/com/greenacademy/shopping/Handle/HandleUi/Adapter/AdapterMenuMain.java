@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
 
@@ -17,9 +16,7 @@ import java.util.List;
 import vn.com.greenacademy.shopping.Handle.HandleData.ImageLoad;
 import vn.com.greenacademy.shopping.Model.AdvertisePhoto;
 import vn.com.greenacademy.shopping.Model.BannerPhoto;
-import vn.com.greenacademy.shopping.Model.FashionType;
 import vn.com.greenacademy.shopping.Model.MenuMain;
-import vn.com.greenacademy.shopping.Model.MenuPhoto;
 import vn.com.greenacademy.shopping.Model.ProductsPhoto;
 import vn.com.greenacademy.shopping.R;
 import vn.com.greenacademy.shopping.Util.SupportKeyList;
@@ -78,7 +75,7 @@ public class AdapterMenuMain extends ArrayAdapter {
                     image.setOnClickListener(onClickListenerAdvertise);
                     image.setScaleType(ImageView.ScaleType.CENTER_CROP);
 
-                    imageLoad.ImageLoad(menuMainArrayList.get(position).getAdvertiseMenuMains().get(i).getHinhDaiDien(), image);
+                    imageLoad.load(menuMainArrayList.get(position).getAdvertiseMenuMains().get(i).getHinhDaiDien(), image);
                     viewFlipper.addView(image);
                 }
                 viewFlipper.startFlipping();
@@ -99,7 +96,7 @@ public class AdapterMenuMain extends ArrayAdapter {
                         textView.setText(menuMainArrayList.get(position).getName());
                         imageViewProducts.setOnClickListener(onClickListenerProducts);
 
-                        imageLoad.ImageLoad(menuMainArrayList.get(position).getUrl(), imageViewProducts);
+                        imageLoad.load(menuMainArrayList.get(position).getUrl(), imageViewProducts);
                         if (count<position){
                             count = position;
                         }
@@ -120,7 +117,7 @@ public class AdapterMenuMain extends ArrayAdapter {
 
                         imageViewBanner.setOnClickListener(onClickListenerBanner);
 
-                        imageLoad.ImageLoad(menuMainArrayList.get(position).getUrl(), imageViewBanner);
+                        imageLoad.load(menuMainArrayList.get(position).getUrl(), imageViewBanner);
                         break;
 
                     default:

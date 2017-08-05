@@ -2,11 +2,6 @@ package vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.Sale;
 
 import android.app.Activity;
 import android.content.Context;
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
@@ -14,20 +9,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import vn.com.greenacademy.shopping.Fragment.Sale.SaleProductFragment;
 import vn.com.greenacademy.shopping.Handle.HandleData.ImageLoad;
-import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.SanPham.SanPhamPagerAdapter;
-import vn.com.greenacademy.shopping.Interface.DataCallBack;
 import vn.com.greenacademy.shopping.Model.Sale;
-import vn.com.greenacademy.shopping.Model.ThongTinSanPham.SanPham;
 import vn.com.greenacademy.shopping.R;
-
-import static android.R.attr.fragment;
 
 /**
  * Created by ADMIN on 8/1/2017.
@@ -75,7 +63,7 @@ public class AdapterSale extends RecyclerView.Adapter<SaleHolder>{
         holder.itemView.setOnClickListener(onClickListener);
 
         ImageLoad imageLoad = new ImageLoad((Activity)context);
-        imageLoad.ImageLoad(saleArrayList.get(position).getHinhDaiDien(),holder.imageView);
+        imageLoad.load(saleArrayList.get(position).getHinhDaiDien(),holder.imageView);
 
         holder.tvName.setText(saleArrayList.get(position).getTen());
         holder.tvMoTa.setText("  "+saleArrayList.get(position).getMota());

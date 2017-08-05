@@ -48,7 +48,7 @@ public class ListSanPhamAdapter extends RecyclerView.Adapter<SanPhamHolder> {
     @Override
     public void onBindViewHolder(final SanPhamHolder holder, final int position) {
         sanPham = listSanPham.get(position);
-        imageLoad.ImageLoad(sanPham.getHinhSanPham().get(0).getLinkHinh()[0], holder.imgSanPham);
+        imageLoad.load(sanPham.getHinhSanPham().get(0).getLinkHinh()[0], holder.imgSanPham);
         holder.tvTenSanPham.setText(sanPham.getTenSanPham());
         if (sanPham.getGiamGia() != 0){
             holder.tvGia.setText(String.valueOf(sanPham.getGiamGia()));

@@ -19,7 +19,7 @@ public class ImageLoad {
         this.activity = activity;
     }
 
-    public void ImageLoad(String url, ImageView imageView) {
+    public void load(String url, ImageView imageView) {
         Picasso.with(activity).load(url).into(imageView);
     }
 }

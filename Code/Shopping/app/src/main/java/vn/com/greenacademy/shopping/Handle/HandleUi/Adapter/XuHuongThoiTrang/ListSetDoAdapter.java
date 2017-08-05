@@ -1,10 +1,7 @@
 package vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.XuHuongThoiTrang;
 
 import android.content.Context;
-import android.content.res.TypedArray;
-import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.RecyclerView;
-import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -44,7 +41,7 @@ public class ListSetDoAdapter extends RecyclerView.Adapter<SetDoHolder> {
     @Override
     public void onBindViewHolder(final SetDoHolder holder, int position) {
         if (!listSetDo.get(position).isVideo())
-            imageLoad.ImageLoad(listSetDo.get(position).getHinhDaiDien(), holder.imgSetDo);
+            imageLoad.load(listSetDo.get(position).getHinhDaiDien(), holder.imgSetDo);
         else {
 
         }

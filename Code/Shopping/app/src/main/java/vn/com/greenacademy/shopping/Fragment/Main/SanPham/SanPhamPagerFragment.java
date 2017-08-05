@@ -37,7 +37,7 @@ public class SanPhamPagerFragment extends Fragment {
         ImageView vHinhSanPham = (ImageView) root.findViewById(R.id.hinh_san_pham);
         TextView tvGia = (TextView) root.findViewById(R.id.gia_fragment_page_san_pham);
 
-        imageLoad.ImageLoad(listSanPham.get(position).getHinhSanPham().get(0).getLinkHinh()[0], vHinhSanPham);
+        imageLoad.load(listSanPham.get(position).getHinhSanPham().get(0).getLinkHinh()[0], vHinhSanPham);
         tvGia.setText(String.valueOf(listSanPham.get(position).getGiaSanPham()));
         return root;
     }
