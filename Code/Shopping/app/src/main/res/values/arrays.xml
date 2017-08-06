@@ -77,5 +77,18 @@
 
     </string-array>
 
-
+    <array name="arr_mauSP">
+        <item>@drawable/mau_cam</item>
+        <item>@drawable/mau_den</item>
+        <item>@drawable/mau_do</item>
+        <item>@drawable/mau_hong</item>
+        <item>@drawable/mau_nau</item>
+        <item>@drawable/mau_reu</item>
+        <item>@drawable/mau_tim</item>
+        <item>@drawable/mau_vang</item>
+        <item>@drawable/mau_xam</item>
+        <item>@drawable/mau_xanh_duong</item>
+        <item>@drawable/mau_xanh_la</item>
+        <item>@drawable/mau_trang</item>
+    </array>
 </resources>

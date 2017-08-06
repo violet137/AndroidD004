@@ -1,13 +1,10 @@
 package vn.com.greenacademy.shopping;
 
-import android.*;
-import android.Manifest;
 import android.content.pm.PackageManager;
+import android.content.res.TypedArray;
 import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.text.method.ScrollingMovementMethod;
 import android.view.View;
@@ -26,7 +23,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import vn.com.greenacademy.shopping.Fragment.Main.MainFragment;
-import vn.com.greenacademy.shopping.Fragment.Main.MyShopping.GioHangFragment;
 import vn.com.greenacademy.shopping.Fragment.Main.MyShopping.TaiKhoan.DangNhapFragment;
 import vn.com.greenacademy.shopping.Fragment.SplashScreenFragment;
 import vn.com.greenacademy.shopping.Fragment.Store.FindStoreFragment;
@@ -40,7 +36,13 @@ import vn.com.greenacademy.shopping.Util.Ui.BaseFragment;
 
 public class MainActivity extends AppCompatActivity implements DataCallBack {
     ListView lv_item_slide_menu;
-    public static TextView tvTenMuc;
+
+//    ArrayList<SlideMenu> arrayModeSlideMenus;
+//    int[] arrIcon;
+//    String[] arrName;
+//    SlideMenu modeSlideMenu;
+//    AdapterSlideMenu adapterSlideMenu;
+
     DrawerLayout drawerLayout;
     Toolbar toolbar;
     NavigationView navigationView;
@@ -48,13 +50,12 @@ public class MainActivity extends AppCompatActivity implements DataCallBack {
     private BaseFragment baseFragment;
     private DataHandler dataHandler;
     private MySharedPreferences mySharedPref;
+
+    public static TextView tvTenMuc;
     SlideMenuHandler slideMenuHandler;
     boolean trangThaiListFindStore = false;
-//    ArrayList<SlideMenu> arrayModeSlideMenus;
-    //    int[] arrIcon;
-//    String[] arrName;
-//    SlideMenu modeSlideMenu;
-//    AdapterSlideMenu adapterSlideMenu;
+    public static int[] mauSPArrayLis;
+
     public static final int MY_PERMISSIONS_REQUEST_CODE = 1;
 
     @Override()
@@ -69,12 +70,17 @@ public class MainActivity extends AppCompatActivity implements DataCallBack {
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         lv_item_slide_menu = (ListView) findViewById(R.id.lv_item_slide_menu);
         tvTenMuc = (TextView) findViewById(R.id.text_ten_muc_content_main);
+        tvTenMuc.setMovementMethod(new ScrollingMovementMethod());
 
 //        View navigationView = findViewById(R.id.nav_menu_main);
 //        //Xử lý sự kiện
 //        navigationView.findViewById(R.id.ivUser_nav_hear).setOnClickListener(this);
 //        navigationView.findViewById(R.id.tvName_nav_hear).setOnClickListener(this);
 //        navigationView.findViewById(R.id.tvEmail_nav_hear).setOnClickListener(this);
+
+        slideMenuHandler = new SlideMenuHandler(this);
+        slideMenuHandler.loadData();
+        lv_item_slide_menu.setAdapter(slideMenuHandler.displayListview());
 
         lv_item_slide_menu.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -89,10 +95,6 @@ public class MainActivity extends AppCompatActivity implements DataCallBack {
         });
 
         //Khởi tạo, thiết lập giá trị
-        tvTenMuc.setMovementMethod(new ScrollingMovementMethod());
-        slideMenuHandler = new SlideMenuHandler(this);
-        slideMenuHandler.loadData();
-        lv_item_slide_menu.setAdapter(slideMenuHandler.displayListview());
         mySharedPref = new MySharedPreferences(this, SupportKeyList.SHAREDPREF_TEN_FILE);
         dataHandler = new DataHandler(this);
         baseFragment = new BaseFragment(getSupportFragmentManager());
@@ -104,6 +106,59 @@ public class MainActivity extends AppCompatActivity implements DataCallBack {
 
         //Chạy màn hình splash
         baseFragment.ChuyenFragment(new SplashScreenFragment(getSupportActionBar(), drawerLayout), null, false);
+
+
+        // tao ban mau mau dang public
+        TypedArray arrayMauSP = getResources().obtainTypedArray(R.array.arr_mauSP);
+
+        mauSPArrayLis = new int[arrayMauSP.length()];
+        for(int i=0; i< arrayMauSP.length();i++){
+            mauSPArrayLis[i]=arrayMauSP.getResourceId(i,-1);
+        }
+
+    }
+
+    public static int doiMaMau(String maMau){
+        switch (maMau){
+                case "Cam":
+                    // cam
+                    return 0;
+                case "Den":
+                    // den
+                    return 1;
+                case "Do":
+                    // do
+                    return 2;
+                case "Hong":
+                    // hong
+                    return 3;
+                case "Nau":
+                    // nau
+                    return 4;
+                case "Reu":
+                    // reu
+                    return 5;
+                case "Tim":
+                    // tim
+                    return 6;
+                case "Vang":
+                    // vang
+                    return 7;
+                case "Xam":
+                    // xam
+                    return 8;
+                case "XanhDuong":
+                    // xanh duong
+                    return 9;
+                case "XanhLa":
+                    // xanh la
+                    return 10;
+                case "Trang":
+                    // trang
+                    return 11;
+                default:
+                    return 0;
+        }
     }
 
     @Override
@@ -228,7 +283,7 @@ public class MainActivity extends AppCompatActivity implements DataCallBack {
                 break;
 
             case R.id.my_bag_toolbar:
-                baseFragment.ChuyenFragment(new GioHangFragment(), SupportKeyList.TAG_FRAGMENT_GIO_HANG, true);
+                Toast.makeText(this, "My bag", Toast.LENGTH_LONG).show();
                 break;
 
             default:
