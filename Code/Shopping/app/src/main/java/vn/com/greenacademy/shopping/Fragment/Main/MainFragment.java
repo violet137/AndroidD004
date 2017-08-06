@@ -22,31 +22,36 @@ import vn.com.greenacademy.shopping.Util.Ui.BaseFragment;
  */
 public class MainFragment extends Fragment {
 
+
+    // listMainMenuCallBack nhận dữ liệu hoàn chỉnh trên server trả về
     public static ListMainMenuCallBack listMainMenuCallBack;
 
+    // mainMenuHandler lớp điều khiển của MainFragment
     private MainMenuHandler mainMenuHandler = null;
-
-    public MainFragment() {
-
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        // MainFragment ko sử dụng tvTenMuc ngoai MainActivity
         MainActivity.tvTenMuc.setVisibility(View.GONE);
+
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_main, container, false);
 
+        // ánh xạ file xml
         final ListView lv_menu_main = (ListView) view.findViewById(R.id.lv_menu_mani);
 
         //Xử lý sự kiện
         mainMenuHandler = new MainMenuHandler(getActivity(), new BaseFragment(getActivity().getSupportFragmentManager()));
 
+        // goi hàm lấy dữ liệu trên server xuống
         mainMenuHandler.getDataServer();
 
+        // nhận dữ liệu server trả về
         listMainMenuCallBack = new ListMainMenuCallBack() {
             @Override
             public void callBack(ArrayList<MenuMain> menuMainArrayList) {
+                // gọi hàm Adapter và setAdapter cho lít view
                 lv_menu_main.setAdapter(mainMenuHandler.getAdapter(menuMainArrayList));
             }
         };

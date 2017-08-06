@@ -35,11 +35,11 @@
     <dimen name="imageView_layout_margin_left">10dp</dimen>
 
     <!-- fragment menu main -->
-    <dimen name="viewFlipper_height">280dp</dimen>
+    <dimen name="viewFlipper_height">277dp</dimen>
     <dimen name="ConstraintLayout_height">100dp</dimen>
-    <dimen name="imageView_constrain_height">145dp</dimen>
-    <dimen name="imageView_height">280dp</dimen>
-    <dimen name="textView_layout_marginTop">100dp</dimen>
+    <dimen name="imageView_constrain_height">142dp</dimen>
+    <dimen name="imageView_height">277dp</dimen>
+    <dimen name="textView_layout_marginTop">85dp</dimen>
     <dimen name="textView_paddingLeft">10dp</dimen>
     <dimen name="textView_paddingRight">10dp</dimen>
     <dimen name="textView_textSize">18dp</dimen>
@@ -48,6 +48,7 @@
     <dimen name="tai_khoan_marginTop">35dp</dimen>
     <dimen name="tai_khoan_vertical_margin">7dp</dimen>
     <dimen name="account_text_size">17sp</dimen>
+    <dimen name="layout_40dp">40dp</dimen>
 
     <!-- Thông tin cá nhân -->
     <dimen name="thong_tin_ca_nhan_vertical_margin">15dp</dimen>
@@ -109,6 +110,7 @@
 
     <!-- Fragment Magazine -->
     <dimen name="layout_margin_10dp">10dp</dimen>
+    <dimen name="layout_margin_8dp">8dp</dimen>
     <dimen name="text_size_item_magazine">35dp</dimen>
     <dimen name="text_size_20dp">20dp</dimen>
     <dimen name="text_size_15dp">15dp</dimen>
