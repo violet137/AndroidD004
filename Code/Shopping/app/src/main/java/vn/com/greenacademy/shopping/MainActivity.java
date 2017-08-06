@@ -26,6 +26,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import vn.com.greenacademy.shopping.Fragment.Main.MainFragment;
+import vn.com.greenacademy.shopping.Fragment.Main.MyShopping.GioHangFragment;
 import vn.com.greenacademy.shopping.Fragment.Main.MyShopping.TaiKhoan.DangNhapFragment;
 import vn.com.greenacademy.shopping.Fragment.SplashScreenFragment;
 import vn.com.greenacademy.shopping.Fragment.Store.FindStoreFragment;
@@ -39,13 +40,7 @@ import vn.com.greenacademy.shopping.Util.Ui.BaseFragment;
 
 public class MainActivity extends AppCompatActivity implements DataCallBack {
     ListView lv_item_slide_menu;
-
-//    ArrayList<SlideMenu> arrayModeSlideMenus;
-//    int[] arrIcon;
-//    String[] arrName;
-//    SlideMenu modeSlideMenu;
-//    AdapterSlideMenu adapterSlideMenu;
-
+    public static TextView tvTenMuc;
     DrawerLayout drawerLayout;
     Toolbar toolbar;
     NavigationView navigationView;
@@ -53,11 +48,13 @@ public class MainActivity extends AppCompatActivity implements DataCallBack {
     private BaseFragment baseFragment;
     private DataHandler dataHandler;
     private MySharedPreferences mySharedPref;
-
-    public static TextView tvTenMuc;
     SlideMenuHandler slideMenuHandler;
     boolean trangThaiListFindStore = false;
-
+//    ArrayList<SlideMenu> arrayModeSlideMenus;
+    //    int[] arrIcon;
+//    String[] arrName;
+//    SlideMenu modeSlideMenu;
+//    AdapterSlideMenu adapterSlideMenu;
     public static final int MY_PERMISSIONS_REQUEST_CODE = 1;
 
     @Override()
@@ -72,17 +69,12 @@ public class MainActivity extends AppCompatActivity implements DataCallBack {
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         lv_item_slide_menu = (ListView) findViewById(R.id.lv_item_slide_menu);
         tvTenMuc = (TextView) findViewById(R.id.text_ten_muc_content_main);
-        tvTenMuc.setMovementMethod(new ScrollingMovementMethod());
 
 //        View navigationView = findViewById(R.id.nav_menu_main);
 //        //Xử lý sự kiện
 //        navigationView.findViewById(R.id.ivUser_nav_hear).setOnClickListener(this);
 //        navigationView.findViewById(R.id.tvName_nav_hear).setOnClickListener(this);
 //        navigationView.findViewById(R.id.tvEmail_nav_hear).setOnClickListener(this);
-
-        slideMenuHandler = new SlideMenuHandler(this);
-        slideMenuHandler.loadData();
-        lv_item_slide_menu.setAdapter(slideMenuHandler.displayListview());
 
         lv_item_slide_menu.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -97,6 +89,10 @@ public class MainActivity extends AppCompatActivity implements DataCallBack {
         });
 
         //Khởi tạo, thiết lập giá trị
+        tvTenMuc.setMovementMethod(new ScrollingMovementMethod());
+        slideMenuHandler = new SlideMenuHandler(this);
+        slideMenuHandler.loadData();
+        lv_item_slide_menu.setAdapter(slideMenuHandler.displayListview());
         mySharedPref = new MySharedPreferences(this, SupportKeyList.SHAREDPREF_TEN_FILE);
         dataHandler = new DataHandler(this);
         baseFragment = new BaseFragment(getSupportFragmentManager());
@@ -232,7 +228,7 @@ public class MainActivity extends AppCompatActivity implements DataCallBack {
                 break;
 
             case R.id.my_bag_toolbar:
-                Toast.makeText(this, "My bag", Toast.LENGTH_LONG).show();
+                baseFragment.ChuyenFragment(new GioHangFragment(), SupportKeyList.TAG_FRAGMENT_GIO_HANG, true);
                 break;
 
             default:

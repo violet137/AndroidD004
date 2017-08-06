@@ -333,20 +333,22 @@
                     android:id="@+id/btnLuu_FragmentThongTinCaNhan"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/thong_tin_ca_nhan_horizontal_margin"
                     android:layout_weight="1"
                     android:background="@drawable/shape_button"
-                    android:layout_marginRight="@dimen/thong_tin_ca_nhan_horizontal_margin"
                     android:text="@string/nut_luu"
-                    android:textColor="@color/colorText"/>
+                    android:textColor="@color/colorText"
+                    android:textStyle="bold" />
                 <!-- Hủy -->
                 <Button
                     android:id="@+id/btnHuy_FragmentThongTinCaNhan"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/thong_tin_ca_nhan_horizontal_margin"
                     android:layout_weight="1"
                     android:background="@drawable/shape_button_gray"
-                    android:layout_marginRight="@dimen/thong_tin_ca_nhan_horizontal_margin"
-                    android:text="@string/nut_huy"/>
+                    android:text="@string/nut_huy"
+                    android:textStyle="bold" />
             </LinearLayout>
         </LinearLayout>
     </ScrollView>

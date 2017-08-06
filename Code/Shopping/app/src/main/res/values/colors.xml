@@ -5,7 +5,7 @@
     <color name="colorAccent">#000000</color>
     <color name="colorSecondaryDark">#FF424242</color>
     <color name="colorBackground">#FFF5F5F5</color>
-    <color name="colorBackgroundFront">#ffff</color>
+    <color name="colorBackgroundFront">#ffffffff</color>
     <color name="colorText">#ffffffff</color>
     <color name="colorTextDark">#000000</color>
     <color name="colorChuButtonDangNhap">#ffff</color>

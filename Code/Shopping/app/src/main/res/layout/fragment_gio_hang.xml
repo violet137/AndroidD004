@@ -1,0 +1,137 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorBackground"
+    tools:context="vn.com.greenacademy.shopping.Fragment.Main.MyShopping.GioHangFragment">
+
+    <!-- Title bar-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title_height"
+        android:orientation="horizontal"
+        android:background="@color/colorSecondaryDark">
+        <!-- Title -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/vertical_padding"
+            android:text="@string/title_gio_hang"
+            android:textColor="@color/colorText"
+            android:textSize="@dimen/title_size"
+            android:textStyle="bold"/>
+        <!-- Tên tài khoản -->
+        <TextView
+            android:id="@+id/tvTenTaiKhoan_FragmentGioHang"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textColor="@color/colorText"
+            android:textSize="@dimen/text_size"/>
+    </LinearLayout>
+
+    <!-- Messeage -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/gio_hang_vertical_padding"
+        android:paddingLeft="@dimen/horizontal_padding"
+        android:paddingRight="@dimen/horizontal_padding"
+        android:paddingBottom="@dimen/gio_hang_vertical_padding"
+        android:background="@drawable/shape_khung_dang_nhap">
+        <!-- Nội dung -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="@string/message_gio_hang"
+            android:textColor="@color/colorTextDark"
+            android:textSize="@dimen/gio_hang_text_size"
+            android:textStyle="bold"/>
+        <!-- Đăng nhập -->
+        <LinearLayout
+            android:id="@+id/dang_nhap_gio_hang"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="@dimen/dang_nhap_gio_hang_vertical_margin">
+            <!-- Message -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="@string/message_dang_nhap_gio_hang"
+                android:textColor="@color/colorTextDark"
+                android:textSize="@dimen/text_size"
+                android:typeface="serif"/>
+            <!-- Nút -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="@dimen/horizontal_padding">
+                <!-- Đăng ký -->
+                <Button
+                    android:id="@+id/btn_dang_ky_fragment_gio_hang"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginRight="@dimen/gio_hang_horizontal_margin"
+                    android:background="@drawable/shape_button_gray"
+                    android:text="@string/dang_ky"
+                    android:textSize="@dimen/text_size"
+                    android:textStyle="bold"/>
+                <!-- Đăng nhập -->
+                <Button
+                    android:id="@+id/btn_dang_nhap_fragment_gio_hang"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginLeft="@dimen/gio_hang_horizontal_margin"
+                    android:background="@drawable/shape_button"
+                    android:text="@string/nut_dang_nhap"
+                    android:textColor="@color/colorText"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/text_size"/>
+                </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Button tạo cảm hứng -->
+    <TextView
+        android:id="@+id/nut_inspiration_gio_hang"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/gio_hang_text_height"
+        android:paddingRight="@dimen/horizontal_padding"
+        android:paddingLeft="@dimen/horizontal_padding"
+        android:drawableLeft="@drawable/ic_menu_gallery"
+        android:layout_marginTop="@dimen/gio_hang_vertical_margin"
+        android:drawablePadding="10dp"
+        android:background="@android:color/white"
+        android:gravity="center_vertical"
+        android:text="@string/tao_cam_hung"
+        android:textSize="@dimen/text_size"
+        android:textColor="@color/colorTextDark"
+        android:textStyle="bold"/>
+
+    <!-- Button bắt đầu mua sắp -->
+    <TextView
+        android:id="@+id/nut_shopping_gio_hang"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/gio_hang_text_height"
+        android:paddingRight="@dimen/horizontal_padding"
+        android:paddingLeft="@dimen/horizontal_padding"
+        android:drawableLeft="@drawable/ic_menu_gallery"
+        android:drawablePadding="10dp"
+        android:background="@drawable/shape_khung_dang_nhap"
+        android:gravity="center_vertical"
+        android:text="@string/bat_dau_mua_sam"
+        android:textSize="@dimen/text_size"
+        android:textColor="@color/colorTextDark"
+        android:textStyle="bold"/>
+</LinearLayout>

@@ -21,7 +21,6 @@ public class BaseFragment extends Fragment {
     }
 
     public void ChuyenFragment(Fragment toFragment, @Nullable String tag, boolean toBackStack){
-        //name = null -> không lưu vào backstack
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         if(toBackStack)
             transaction.replace(R.id.content_main, toFragment, tag).addToBackStack(tag).commit();

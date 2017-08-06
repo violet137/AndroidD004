@@ -26,7 +26,6 @@
         android:layout_height="@dimen/item_list_set_do_image_height"
         android:paddingLeft="@dimen/xu_huong_thoi_trang_horizontal_padding"
         android:paddingRight="@dimen/xu_huong_thoi_trang_horizontal_padding"
-        app:srcCompat="@drawable/banner_test1"
         android:scaleType="fitXY"/>
 
     <!-- View products -->

@@ -8,8 +8,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import vn.com.greenacademy.shopping.Fragment.Main.XuHuongThoiTrang.XuHuongThoiTrangFragment;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Model.ViewHolder.XuHuongThoiTrangHolder;
 import vn.com.greenacademy.shopping.R;
+import vn.com.greenacademy.shopping.Util.SupportKeyList;
 import vn.com.greenacademy.shopping.Util.Ui.BaseFragment;
 
 /**
@@ -29,19 +31,25 @@ public class BannerXuHuongThoiTrangAdapter extends RecyclerView.Adapter<XuHuongT
     public XuHuongThoiTrangHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
         View root = inflater.inflate(R.layout.item_banner_xu_huong_thoi_trang, parent, false);
-        return new XuHuongThoiTrangHolder(root, baseFragment);
+        return new XuHuongThoiTrangHolder(root);
     }
 
     @Override
-    public void onBindViewHolder(XuHuongThoiTrangHolder holder, int position) {
+    public void onBindViewHolder(final XuHuongThoiTrangHolder holder, int position) {
         //Data test
         TypedArray tempListBanner = context.getResources().obtainTypedArray(R.array.arr_hinh);
         int[] listBanner = new int[3];
         for (int i = 0; i < 3; i++) {
             listBanner[i] = tempListBanner.getResourceId(i, -1);
         }
-
         holder.banner.setImageResource(listBanner[position]);
+
+        holder.banner.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                baseFragment.ChuyenFragment(new XuHuongThoiTrangFragment(holder.getLayoutPosition()), SupportKeyList.TAG_XU_HUONG_THOI_TRANG, true);
+            }
+        });
     }
 
     @Override

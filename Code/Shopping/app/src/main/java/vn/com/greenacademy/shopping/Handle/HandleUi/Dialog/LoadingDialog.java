@@ -1,8 +1,16 @@
 package vn.com.greenacademy.shopping.Handle.HandleUi.Dialog;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.util.DisplayMetrics;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 
 import vn.com.greenacademy.shopping.R;
 import vn.com.greenacademy.shopping.Util.Ui.BaseFragment;
@@ -27,6 +35,18 @@ public class LoadingDialog extends ProgressDialog {
         setCancelable(false);
         setInverseBackgroundForced(false);
         super.onCreate(savedInstanceState);
+    }
+
+    @Override
+    public void show() {
+        super.show();
+        setContentView(R.layout.loader);
+        DisplayMetrics displayMetrics = new DisplayMetrics();
+//        this.getWindow().getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+//        int height = displayMetrics.heightPixels;
+        this.getWindow().setBackgroundDrawable(new ColorDrawable(Color.WHITE));
+        this.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        this.getWindow().setDimAmount(0);
     }
 
     @Override
