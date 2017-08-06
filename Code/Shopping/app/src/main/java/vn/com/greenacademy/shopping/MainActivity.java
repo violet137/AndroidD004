@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity implements DataCallBack {
     public static TextView tvTenMuc;
     SlideMenuHandler slideMenuHandler;
     boolean trangThaiListFindStore = false;
-    public static int[] mauSPArrayLis;
+    public static TypedArray arrayMauSP;
 
     public static final int MY_PERMISSIONS_REQUEST_CODE = 1;
 
@@ -109,55 +109,49 @@ public class MainActivity extends AppCompatActivity implements DataCallBack {
 
 
         // tao ban mau mau dang public
-        TypedArray arrayMauSP = getResources().obtainTypedArray(R.array.arr_mauSP);
-
-        mauSPArrayLis = new int[arrayMauSP.length()];
-        for(int i=0; i< arrayMauSP.length();i++){
-            mauSPArrayLis[i]=arrayMauSP.getResourceId(i,-1);
-        }
-
+        arrayMauSP = getResources().obtainTypedArray(R.array.arr_mauSP);
     }
 
     public static int doiMaMau(String maMau){
         switch (maMau){
                 case "Cam":
                     // cam
-                    return 0;
+                    return arrayMauSP.getResourceId(Integer.parseInt("0"),-1);
                 case "Den":
                     // den
-                    return 1;
+                    return arrayMauSP.getResourceId(Integer.parseInt("1"),-1);
                 case "Do":
                     // do
-                    return 2;
+                    return arrayMauSP.getResourceId(Integer.parseInt("2"),-1);
                 case "Hong":
                     // hong
-                    return 3;
+                    return arrayMauSP.getResourceId(Integer.parseInt("3"),-1);
                 case "Nau":
                     // nau
-                    return 4;
+                    return arrayMauSP.getResourceId(Integer.parseInt("4"),-1);
                 case "Reu":
                     // reu
-                    return 5;
+                    return arrayMauSP.getResourceId(Integer.parseInt("5"),-1);
                 case "Tim":
                     // tim
-                    return 6;
+                    return arrayMauSP.getResourceId(Integer.parseInt("6"),-1);
                 case "Vang":
                     // vang
-                    return 7;
+                    return arrayMauSP.getResourceId(Integer.parseInt("7"),-1);
                 case "Xam":
                     // xam
-                    return 8;
+                    return arrayMauSP.getResourceId(Integer.parseInt("8"),-1);
                 case "XanhDuong":
                     // xanh duong
-                    return 9;
+                    return arrayMauSP.getResourceId(Integer.parseInt("9"),-1);
                 case "XanhLa":
                     // xanh la
-                    return 10;
+                    return arrayMauSP.getResourceId(Integer.parseInt("10"),-1);
                 case "Trang":
                     // trang
-                    return 11;
+                    return arrayMauSP.getResourceId(Integer.parseInt("11"),-1);
                 default:
-                    return 0;
+                    return arrayMauSP.getResourceId(Integer.parseInt("1"),-1);
         }
     }
 

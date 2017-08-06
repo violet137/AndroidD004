@@ -43,7 +43,7 @@ public class AdapterRecyclerColorProduct extends RecyclerView.Adapter<ColorProdu
 
     @Override
     public void onBindViewHolder(ColorProductHolder holder, int position) {
-        holder.imageView.setImageResource(MainActivity.mauSPArrayLis[MainActivity.doiMaMau(mauSanPham[position])]);
+        holder.imageView.setImageResource(MainActivity.doiMaMau(mauSanPham[position]));
     }
 
     @Override

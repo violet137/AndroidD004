@@ -10,6 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+        android:layout_marginBottom="@dimen/layout_margin_8dp"
         android:visibility="gone">
 
         <ViewFlipper
@@ -18,13 +19,6 @@
             android:layout_height="@dimen/viewFlipper_height">
 
         </ViewFlipper>
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/btnDiviver_layout_height"
-            android:layout_marginBottom="@dimen/btnDiviver_marginBottom"
-            android:layout_weight="1"
-            android:background="#46ebe7e7" />
     </LinearLayout>
 
 
@@ -76,15 +70,45 @@
             android:id="@+id/diviver_ivFashion_menu_main"
             android:layout_width="match_parent"
             android:layout_height="@dimen/btnDiviver_layout_height"
-            android:layout_marginBottom="@dimen/btnDiviver_marginBottom"
             android:layout_weight="1"
-            android:background="#46ebe7e7"
+            android:background="#ffffff"
             android:visibility="gone" />
 
         <ImageView
             android:id="@+id/ivFashion_menu_main"
             android:layout_width="match_parent"
             android:layout_height="@dimen/imageView_height"
+            android:layout_weight="1"
+            android:scaleType="centerCrop"
+            app:srcCompat="@null" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linear_ivMagazine_menu_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#000000"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <Button
+            android:id="@+id/btnMagazine_menu_main"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/layout_40dp"
+            android:layout_weight="1"
+            android:text="Magazine"
+            android:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/ivMagazine_menu_main"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/imageView_height"
+            android:layout_marginBottom="@dimen/layout_margin_10dp"
+            android:layout_marginLeft="@dimen/layout_margin_20dp"
+            android:layout_marginRight="@dimen/layout_margin_20dp"
+            android:layout_marginTop="@dimen/layout_margin_10dp"
             android:layout_weight="1"
             android:scaleType="centerCrop"
             app:srcCompat="@null" />

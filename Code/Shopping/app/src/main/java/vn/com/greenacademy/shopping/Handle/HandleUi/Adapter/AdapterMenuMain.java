@@ -34,9 +34,10 @@ public class AdapterMenuMain extends ArrayAdapter {
     View.OnClickListener onClickListenerProducts;
     View.OnClickListener onClickListenerBanner;
 
-    // bien dem so luong anh products
-    int count=0;
-
+    // bien dem so luong banner products
+    int countProduct =0;
+    // bien dem so luong banner trước banner magazine
+    int countBeforeMagazine =0;
     public AdapterMenuMain(Activity activity, int resource, ArrayList<MenuMain> objects,
                            View.OnClickListener onClickListenerAdvertise, View.OnClickListener onClickListenerProducts,
                            View.OnClickListener onClickListenerBanner){
@@ -56,33 +57,40 @@ public class AdapterMenuMain extends ArrayAdapter {
         //dinh nghia thanh phan giao dien cho tung item cua listview
         LayoutInflater inflater = activity.getLayoutInflater();
         convertView = inflater.inflate(layoutItem,null);
+
+        // imageLoad đùng để tải ảnh sủ dụng đường link ưeb
         ImageLoad imageLoad = new ImageLoad(activity);
 
         switch (position){
             case SupportKeyList.Advertise:
                 convertView.findViewById(R.id.linear_vf_menu_main).setVisibility(View.VISIBLE);
 
+                // viewFlipper dung để view anh theo thời gian
                 ViewFlipper viewFlipper = (ViewFlipper) convertView.findViewById(R.id.vf_menu_main);
 
                 for (int i = 0; i < menuMainArrayList.get(position).getAdvertiseMenuMains().size() ; i++) {
-                    // chu y neu ko tai hinh dc thi kiem t(ra lai mang
+                    // chu y neu ko tai hinh dc thi kiem tra lai mang
                     ImageView image = new ImageView(activity);
                     AdvertisePhoto advertisePhoto = new AdvertisePhoto();
 
                     advertisePhoto.setId(menuMainArrayList.get(position).getAdvertiseMenuMains().get(i).getId());
                     image.setTag(advertisePhoto);
 
+                    // set su kien click cho từng tấm ảnh
                     image.setOnClickListener(onClickListenerAdvertise);
                     image.setScaleType(ImageView.ScaleType.CENTER_CROP);
 
+                    // dùng hàm load ảnh của imageLoad để tải anh theo link web và set vào imageView
                     imageLoad.load(menuMainArrayList.get(position).getAdvertiseMenuMains().get(i).getHinhDaiDien(), image);
                     viewFlipper.addView(image);
                 }
+                // bắt đầu chuyển imageView
                 viewFlipper.startFlipping();
                 break;
 
             default:
                 switch (menuMainArrayList.get(position).getFlag()){
+                    // set du lieu cho loại item san pham
                     case SupportKeyList.Products:
                         convertView.findViewById(R.id.constrainLayout_menu_main).setVisibility(View.VISIBLE);
 
@@ -93,31 +101,59 @@ public class AdapterMenuMain extends ArrayAdapter {
                         productsPhoto.setId(menuMainArrayList.get(position).getId());
                         imageViewProducts.setTag( productsPhoto);
 
-                        textView.setText(menuMainArrayList.get(position).getName());
+                        // set su kien click cho từng tấm ảnh
                         imageViewProducts.setOnClickListener(onClickListenerProducts);
 
+                        textView.setText(menuMainArrayList.get(position).getName());
+
                         imageLoad.load(menuMainArrayList.get(position).getUrl(), imageViewProducts);
-                        if (count<position){
-                            count = position;
+                        if (countProduct <position){
+                            countProduct = position;
                         }
                         break;
 
+                    // set du liệu cho item xu hướng + ... + ...
                     case SupportKeyList.Banner:
-                        if ( position == count+1){
+                        if ( position == countProduct +1){
                             convertView.findViewById(R.id.diviver_ivFashion_menu_main).setVisibility(View.VISIBLE);
                         }
-                        convertView.findViewById(R.id.linear_ivFashion_menu_main).setVisibility(View.VISIBLE);
 
-                        ImageView imageViewBanner = (ImageView) convertView.findViewById(R.id.ivFashion_menu_main);
+                        if (menuMainArrayList.get(position).getType().equals("XuHuongThoiTrang")){
+                            if (position == countBeforeMagazine +1){
+                                convertView.findViewById(R.id.btnMagazine_menu_main).setVisibility(View.VISIBLE);
+                            }
+                            convertView.findViewById(R.id.linear_ivMagazine_menu_main).setVisibility(View.VISIBLE);
 
-                        BannerPhoto bannerPhoto = new BannerPhoto();
-                        bannerPhoto.setLoaiBanner(menuMainArrayList.get(position).getType());
-                        bannerPhoto.setId(Long.parseLong(menuMainArrayList.get(position).getId()));
-                        imageViewBanner.setTag( bannerPhoto);
+                            ImageView imageViewBanner = (ImageView) convertView.findViewById(R.id.ivMagazine_menu_main);
 
-                        imageViewBanner.setOnClickListener(onClickListenerBanner);
+                            BannerPhoto bannerPhoto = new BannerPhoto();
+                            bannerPhoto.setLoaiBanner(menuMainArrayList.get(position).getType());
+                            bannerPhoto.setId(Long.parseLong(menuMainArrayList.get(position).getId()));
+                            imageViewBanner.setTag( bannerPhoto);
 
-                        imageLoad.load(menuMainArrayList.get(position).getUrl(), imageViewBanner);
+                            // set su kien click cho từng tấm ảnh
+                            imageViewBanner.setOnClickListener(onClickListenerBanner);
+
+                            imageLoad.load(menuMainArrayList.get(position).getUrl(), imageViewBanner);
+                        } else {
+                            convertView.findViewById(R.id.linear_ivFashion_menu_main).setVisibility(View.VISIBLE);
+
+                            ImageView imageViewBanner = (ImageView) convertView.findViewById(R.id.ivFashion_menu_main);
+
+                            BannerPhoto bannerPhoto = new BannerPhoto();
+                            bannerPhoto.setLoaiBanner(menuMainArrayList.get(position).getType());
+                            bannerPhoto.setId(Long.parseLong(menuMainArrayList.get(position).getId()));
+                            imageViewBanner.setTag( bannerPhoto);
+
+                            // set su kien click cho từng tấm ảnh
+                            imageViewBanner.setOnClickListener(onClickListenerBanner);
+
+                            imageLoad.load(menuMainArrayList.get(position).getUrl(), imageViewBanner);
+
+                            if (countBeforeMagazine <position){
+                                countBeforeMagazine = position;
+                            }
+                        }
                         break;
 
                     default:
