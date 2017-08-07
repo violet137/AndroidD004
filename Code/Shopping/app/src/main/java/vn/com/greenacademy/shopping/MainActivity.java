@@ -23,6 +23,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import vn.com.greenacademy.shopping.Fragment.Main.MainFragment;
+import vn.com.greenacademy.shopping.Fragment.Main.MyShopping.GioHangFragment;
 import vn.com.greenacademy.shopping.Fragment.Main.MyShopping.TaiKhoan.DangNhapFragment;
 import vn.com.greenacademy.shopping.Fragment.SplashScreenFragment;
 import vn.com.greenacademy.shopping.Fragment.Store.FindStoreFragment;
@@ -232,7 +233,7 @@ public class MainActivity extends AppCompatActivity implements DataCallBack {
                 break;
 
             case R.id.my_bag_toolbar:
-                Toast.makeText(this, "My bag", Toast.LENGTH_LONG).show();
+                baseFragment.ChuyenFragment(new GioHangFragment(), SupportKeyList.TAG_FRAGMENT_GIO_HANG, true);
                 break;
 
             default:
