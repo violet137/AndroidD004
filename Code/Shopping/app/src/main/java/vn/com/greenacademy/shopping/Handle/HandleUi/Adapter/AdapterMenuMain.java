@@ -115,16 +115,19 @@ public class AdapterMenuMain extends ArrayAdapter {
                     // set du liệu cho item xu hướng + ... + ...
                     case SupportKeyList.Banner:
                         if ( position == countProduct +1){
-                            convertView.findViewById(R.id.diviver_ivFashion_menu_main).setVisibility(View.VISIBLE);
+                            convertView.findViewById(R.id.diviver_ivFashion_menu_main).setVisibility(View.INVISIBLE);
                         }
 
-                        if (menuMainArrayList.get(position).getType().equals("XuHuongThoiTrang")){
+                        if (menuMainArrayList.get(position).getType().equals("TapChi")){
                             if (position == countBeforeMagazine +1){
                                 convertView.findViewById(R.id.linear_tvMagazine_menu_main).setVisibility(View.VISIBLE);
                             }
                             convertView.findViewById(R.id.linear_ivMagazine_menu_main).setVisibility(View.VISIBLE);
 
                             ImageView imageViewBanner = (ImageView) convertView.findViewById(R.id.ivMagazine_menu_main);
+                            TextView tvLoai = (TextView) convertView.findViewById(R.id.tvLoai_tvMagazine_menu_main);
+                            TextView tvName = (TextView) convertView.findViewById(R.id.tvName_tvMagazine_menu_main);
+
 
                             BannerPhoto bannerPhoto = new BannerPhoto();
                             bannerPhoto.setLoaiBanner(menuMainArrayList.get(position).getType());
@@ -133,6 +136,9 @@ public class AdapterMenuMain extends ArrayAdapter {
 
                             // set su kien click cho từng tấm ảnh
                             imageViewBanner.setOnClickListener(onClickListenerBanner);
+
+                            tvLoai.setText(menuMainArrayList.get(position).getType());
+                            tvName.setText(menuMainArrayList.get(position).getName());
 
                             imageLoad.load(menuMainArrayList.get(position).getUrl(), imageViewBanner);
                         } else {

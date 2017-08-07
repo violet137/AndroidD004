@@ -88,8 +88,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#d0000000"
-        android:orientation="vertical"
-        android:visibility="gone">
+        android:visibility="gone"
+        android:orientation="vertical">
 
         <LinearLayout
             android:id="@+id/linear_tvMagazine_menu_main"
@@ -120,7 +120,7 @@
                 android:gravity="center"
                 android:text="Thế Giới Của Cảm Hứng"
                 android:textColor="@color/cardview_light_background"
-                android:textSize="@dimen/text_size_15dp"
+                android:textSize="@dimen/text_size_17dp"
                 android:textStyle="bold" />
 
             <Button
@@ -132,7 +132,8 @@
                 android:background="@color/cardview_light_background"
                 android:paddingLeft="@dimen/textView_pandding_left_15dp"
                 android:paddingRight="@dimen/textView_pandding_left_15dp"
-                android:text="Các bài Khác"
+                android:text="Đọc Các bài Khác"
+                android:textSize="@dimen/text_size_12dp"
                 android:textStyle="bold" />
         </LinearLayout>
 
@@ -147,6 +148,25 @@
             android:layout_weight="1"
             android:scaleType="centerCrop"
             app:srcCompat="@null" />
+
+        <TextView
+            android:id="@+id/tvLoai_tvMagazine_menu_main"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="@dimen/text_size_12dp"
+            android:textColor="@color/cardview_light_background"
+            android:text="TextView" />
+
+        <TextView
+            android:id="@+id/tvName_tvMagazine_menu_main"
+            android:gravity="center"
+            android:textSize="@dimen/layout_margin_20dp"
+            android:textColor="@color/cardview_light_background"
+            android:typeface="serif"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="TextView" />
     </LinearLayout>
 
 </LinearLayout>

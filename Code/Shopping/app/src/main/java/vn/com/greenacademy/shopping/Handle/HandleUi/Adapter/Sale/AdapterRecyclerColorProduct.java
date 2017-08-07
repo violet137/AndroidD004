@@ -1,5 +1,6 @@
 package vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.Sale;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
@@ -13,6 +14,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import vn.com.greenacademy.shopping.Handle.HandleData.SanPhamHandler;
 import vn.com.greenacademy.shopping.MainActivity;
 import vn.com.greenacademy.shopping.R;
 import vn.com.greenacademy.shopping.Util.SupportKeyList;
@@ -23,7 +25,7 @@ import vn.com.greenacademy.shopping.Util.SupportKeyList;
 
 public class AdapterRecyclerColorProduct extends RecyclerView.Adapter<ColorProductHolder>{
 
-    Context context;
+    public static Context context;
     LayoutInflater mLayoutInflater;
     String[] mauSanPham;
 
@@ -43,7 +45,7 @@ public class AdapterRecyclerColorProduct extends RecyclerView.Adapter<ColorProdu
 
     @Override
     public void onBindViewHolder(ColorProductHolder holder, int position) {
-        holder.imageView.setImageResource(MainActivity.doiMaMau(mauSanPham[position]));
+        holder.imageView.setImageResource(holder.sanPhamHandler.doiMaMau(mauSanPham[position]));
     }
 
     @Override
@@ -54,12 +56,14 @@ public class AdapterRecyclerColorProduct extends RecyclerView.Adapter<ColorProdu
 
 class ColorProductHolder extends RecyclerView.ViewHolder {
     ImageView imageView;
+    SanPhamHandler sanPhamHandler;
 
     public ColorProductHolder(View itemView) {
         super(itemView);
 
         imageView = (ImageView) itemView.findViewById(R.id.ivMau_item_recycleView_color_product);
 
+        sanPhamHandler = new SanPhamHandler((Activity)AdapterRecyclerColorProduct.context);
     }
 
 }
