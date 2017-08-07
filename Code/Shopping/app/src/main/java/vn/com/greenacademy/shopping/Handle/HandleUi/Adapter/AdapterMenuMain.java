@@ -120,7 +120,7 @@ public class AdapterMenuMain extends ArrayAdapter {
 
                         if (menuMainArrayList.get(position).getType().equals("XuHuongThoiTrang")){
                             if (position == countBeforeMagazine +1){
-                                convertView.findViewById(R.id.btnMagazine_menu_main).setVisibility(View.VISIBLE);
+                                convertView.findViewById(R.id.linear_tvMagazine_menu_main).setVisibility(View.VISIBLE);
                             }
                             convertView.findViewById(R.id.linear_ivMagazine_menu_main).setVisibility(View.VISIBLE);
 
