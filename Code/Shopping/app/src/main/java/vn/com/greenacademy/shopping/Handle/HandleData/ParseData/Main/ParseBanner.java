@@ -31,6 +31,10 @@ public class ParseBanner {
                 BannerPhoto bannerPhoto = new BannerPhoto();
                 bannerPhoto.setId(jsonObject.getLong("Id"));
                 bannerPhoto.setLinkAnh(jsonObject.getString("LinkAnh"));
+                if (jsonObject.getString("LoaiBanner").equals("TapChi")){
+                    bannerPhoto.setLoaiTapChi(jsonObject.getString("LoaiTapChi"));
+                    bannerPhoto.setName(jsonObject.getString("TenTapChi"));
+                }
                 bannerPhoto.setLoaiBanner(jsonObject.getString("LoaiBanner"));
                 temp.add(bannerPhoto);
             }

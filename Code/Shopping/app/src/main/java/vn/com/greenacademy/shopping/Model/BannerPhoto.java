@@ -8,6 +8,24 @@ public class BannerPhoto {
     long Id;
     String LinkAnh;
     String LoaiBanner;
+    String loaiTapChi;
+    String name;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getLoaiTapChi() {
+        return loaiTapChi;
+    }
+
+    public void setLoaiTapChi(String loaiTapChi) {
+        this.loaiTapChi = loaiTapChi;
+    }
 
     public long getId() {
         return Id;

@@ -10,6 +10,7 @@ import vn.com.greenacademy.shopping.Fragment.Magazine.MagazineFragment;
 import vn.com.greenacademy.shopping.Fragment.Main.DanhMucSanPham.DanhMucSPFragment;
 import vn.com.greenacademy.shopping.Fragment.Main.MainFragment;
 import vn.com.greenacademy.shopping.Fragment.Main.XuHuongThoiTrang.XuHuongThoiTrangFragment;
+import vn.com.greenacademy.shopping.Handle.HandleData.ParseData.Main.ParseNewProductList;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.AdapterMenuMain;
 import vn.com.greenacademy.shopping.Handle.HandleData.ParseData.Main.ParseAdvertise;
 import vn.com.greenacademy.shopping.Handle.HandleData.ParseData.Main.ParseBanner;
@@ -118,6 +119,24 @@ class LoadDataMainMenuHandler implements ServerCallBack{
 
     // getServerData đối tượng gọi lên server
     GetServerData getServerData;
+//    // tai du lieu tu file xml cua may vao doi tuong array de dua vao adapter
+//    public void getDataServer() {
+//        //sử dụng kiểu trả về 2 đối tượng của hàm getServerData
+//
+//        // lấy danh sách tất cả các banner quảng cáo
+//        getServerData = new GetServerData(this);
+//        getServerData.execute(ServerUrl.UrlDanhSachKhuyenMai, String.valueOf(SupportKeyList.Advertise_Url));
+//
+//        // lấy danh sách tất cả các banner sản phẩm
+//        getServerData = new GetServerData(this);
+//        getServerData.execute(ServerUrl.UrlDanhSachThoiTrang, String.valueOf(SupportKeyList.Products_Url));
+//
+//        // lấy danh sách các banner phần xu hướng + khuyến mãi + tạp chí
+//        getServerData = new GetServerData(this);
+//        getServerData.execute(ServerUrl.UrlDanhBannerHome, String.valueOf(SupportKeyList.Banner_Url));
+//
+//    }
+
     // tai du lieu tu file xml cua may vao doi tuong array de dua vao adapter
     public void getDataServer() {
         //sử dụng kiểu trả về 2 đối tượng của hàm getServerData
@@ -130,7 +149,11 @@ class LoadDataMainMenuHandler implements ServerCallBack{
         getServerData = new GetServerData(this);
         getServerData.execute(ServerUrl.UrlDanhSachThoiTrang, String.valueOf(SupportKeyList.Products_Url));
 
-        // lấy danh sách các banner phần xu hướng + khuyến mãi + tạp chí
+        // lấy danh sách một s61 sản phẩm mới lấy cố định 11 sản phẩm mới để lên đẹp layout
+        getServerData = new GetServerData(this);
+        getServerData.execute(ServerUrl.UrlDanhSachSPMoi+"11", String.valueOf(SupportKeyList.NewProduct_Url));
+
+        // lấy danh sách các banner phần xu hướng + tạp chí
         getServerData = new GetServerData(this);
         getServerData.execute(ServerUrl.UrlDanhBannerHome, String.valueOf(SupportKeyList.Banner_Url));
 
@@ -140,6 +163,37 @@ class LoadDataMainMenuHandler implements ServerCallBack{
     public void serverCallBack(String dataServer) {
     }
 
+//    @Override
+//    public void serverCallBack(String dataServer, String key) {
+//        // hàm trả về 2 đối tượng của server
+//
+//        // gọi hàm parse data
+//        switch (Integer.parseInt(key)){
+//            // parse cho banner quảng cáo
+//              case SupportKeyList.Advertise_Url:
+//                  ParseAdvertise parseAdvertise = new ParseAdvertise(dataServer);
+//                  containerData(parseAdvertise.parData(), key);
+//                  break;
+//
+//            // parse cho banner sản phẩm
+//              case SupportKeyList.Products_Url:
+//                  ParseMyProducts parseMyProducts = new ParseMyProducts(dataServer);
+//                  containerData(parseMyProducts.parData(), key);
+//                  break;
+//
+//            // parse cho banner xu hướng + khuyến mãi + tạp chí
+//              case SupportKeyList.Banner_Url:
+//                  ParseBanner parseBanner = new ParseBanner(dataServer);
+//                  containerData(parseBanner.parData(), key);
+//                  break;
+//
+//              default:
+//                  break;
+//
+//        }
+//
+//    }
+
     @Override
     public void serverCallBack(String dataServer, String key) {
         // hàm trả về 2 đối tượng của server
@@ -147,29 +201,82 @@ class LoadDataMainMenuHandler implements ServerCallBack{
         // gọi hàm parse data
         switch (Integer.parseInt(key)){
             // parse cho banner quảng cáo
-              case SupportKeyList.Advertise_Url:
-                  ParseAdvertise parseAdvertise = new ParseAdvertise(dataServer);
-                  containerData(parseAdvertise.parData(), key);
-                  break;
+            case SupportKeyList.Advertise_Url:
+                ParseAdvertise parseAdvertise = new ParseAdvertise(dataServer);
+                containerData(parseAdvertise.parData(), key);
+                break;
 
             // parse cho banner sản phẩm
-              case SupportKeyList.Products_Url:
-                  ParseMyProducts parseMyProducts = new ParseMyProducts(dataServer);
-                  containerData(parseMyProducts.parData(), key);
-                  break;
+            case SupportKeyList.Products_Url:
+                ParseMyProducts parseMyProducts = new ParseMyProducts(dataServer);
+                containerData(parseMyProducts.parData(), key);
+                break;
 
             // parse cho banner xu hướng + khuyến mãi + tạp chí
-              case SupportKeyList.Banner_Url:
-                  ParseBanner parseBanner = new ParseBanner(dataServer);
-                  containerData(parseBanner.parData(), key);
-                  break;
+            case SupportKeyList.Banner_Url:
+                ParseBanner parseBanner = new ParseBanner(dataServer);
+                containerData(parseBanner.parData(), key);
+                break;
 
-              default:
-                  break;
+            case SupportKeyList.NewProduct_Url:
+                ParseNewProductList parseNewProductList = new ParseNewProductList(dataServer);
+                containerData(parseNewProductList.parData(), key);
+                break;
+            default:
+                break;
 
         }
 
     }
+
+
+//    // hàm nhận dữ liệu sau khi parse xong
+//    private void containerData(MenuPhoto menuPhoto, String key) {
+//        MenuMain menuMain;
+//        // đưa dữ liệu sau khi parse xong vao mainArrayList
+//        switch (Integer.parseInt(key)){
+//            case SupportKeyList.Advertise_Url:
+//                menuMain = new MenuMain();
+//                ArrayList<AdvertisePhoto> advertisePhotos = new ArrayList<>();
+//                for (int i = 0; i < menuPhoto.getAdvertisePhotoArrayList().size(); i++) {
+//                    AdvertisePhoto advertisePhoto = new AdvertisePhoto();
+//                    advertisePhoto.setHinhDaiDien(menuPhoto.getAdvertisePhotoArrayList().get(i).getHinhDaiDien());
+//                    advertisePhoto.setId(menuPhoto.getAdvertisePhotoArrayList().get(i).getId());
+//                    advertisePhotos.add(advertisePhoto);
+//                }
+//                menuMain.setAdvertiseMenuMains(advertisePhotos);
+//                mainArrayList.add(menuMain);
+//                break;
+//
+//            case SupportKeyList.Products_Url:
+//                for (int i = 0; i < menuPhoto.getFashionTypeArrayList().size(); i++) {
+//                    menuMain = new MenuMain();
+//                    menuMain.setFlag(SupportKeyList.Products);
+//                    menuMain.setUrl(menuPhoto.getFashionTypeArrayList().get(i).getLinkHinh());
+//                    menuMain.setId(menuPhoto.getFashionTypeArrayList().get(i).getLoaiThoiTrang());
+//                    menuMain.setName(menuPhoto.getFashionTypeArrayList().get(i).getTen());
+//                    mainArrayList.add(menuMain);
+//                }
+//
+//                break;
+//            case SupportKeyList.Banner_Url:
+//                for (int i = 0; i < menuPhoto.getBannerPhotoArrayList().size(); i++) {
+//                    menuMain = new MenuMain();
+//                    menuMain.setFlag(SupportKeyList.Banner);
+//                    menuMain.setUrl(menuPhoto.getBannerPhotoArrayList().get(i).getLinkAnh());
+//                    menuMain.setId(String.valueOf(menuPhoto.getBannerPhotoArrayList().get(i).getId()));
+//                    menuMain.setType(menuPhoto.getBannerPhotoArrayList().get(i).getLoaiBanner());
+//                    mainArrayList.add(menuMain);
+//                }
+//
+//                // sau khi nhận dư iệu của 3 loại banner hoàn tất trong listView ManiMenu
+//                finishLoadData(true);
+//
+//                break;
+//            default:
+//                break;
+//        }
+//    }
 
     // hàm nhận dữ liệu sau khi parse xong
     private void containerData(MenuPhoto menuPhoto, String key) {
@@ -177,41 +284,55 @@ class LoadDataMainMenuHandler implements ServerCallBack{
         // đưa dữ liệu sau khi parse xong vao mainArrayList
         switch (Integer.parseInt(key)){
             case SupportKeyList.Advertise_Url:
-                menuMain = new MenuMain();
-                ArrayList<AdvertisePhoto> advertisePhotos = new ArrayList<>();
-                for (int i = 0; i < menuPhoto.getAdvertisePhotoArrayList().size(); i++) {
-                    AdvertisePhoto advertisePhoto = new AdvertisePhoto();
-                    advertisePhoto.setHinhDaiDien(menuPhoto.getAdvertisePhotoArrayList().get(i).getHinhDaiDien());
-                    advertisePhoto.setId(menuPhoto.getAdvertisePhotoArrayList().get(i).getId());
-                    advertisePhotos.add(advertisePhoto);
-                }
-                menuMain.setAdvertiseMenuMains(advertisePhotos);
-                mainArrayList.add(menuMain);
+//                menuMain = new MenuMain();
+//                ArrayList<AdvertisePhoto> advertisePhotos = new ArrayList<>();
+//                for (int i = 0; i < menuPhoto.getAdvertisePhotoArrayList().size(); i++) {
+//                    AdvertisePhoto advertisePhoto = new AdvertisePhoto();
+//                    advertisePhoto.setHinhDaiDien(menuPhoto.getAdvertisePhotoArrayList().get(i).getHinhDaiDien());
+//                    advertisePhoto.setId(menuPhoto.getAdvertisePhotoArrayList().get(i).getId());
+//                    advertisePhotos.add(advertisePhoto);
+//                }
+//                menuMain.setAdvertiseMenuMains(advertisePhotos);
+//                mainArrayList.add(menuMain);
                 break;
 
             case SupportKeyList.Products_Url:
-                for (int i = 0; i < menuPhoto.getFashionTypeArrayList().size(); i++) {
-                    menuMain = new MenuMain();
-                    menuMain.setFlag(SupportKeyList.Products);
-                    menuMain.setUrl(menuPhoto.getFashionTypeArrayList().get(i).getLinkHinh());
-                    menuMain.setId(menuPhoto.getFashionTypeArrayList().get(i).getLoaiThoiTrang());
-                    menuMain.setName(menuPhoto.getFashionTypeArrayList().get(i).getTen());
-                    mainArrayList.add(menuMain);
-                }
+//                for (int i = 0; i < menuPhoto.getFashionTypeArrayList().size(); i++) {
+//                    menuMain = new MenuMain();
+//                    menuMain.setFlag(SupportKeyList.Products);
+//                    menuMain.setUrl(menuPhoto.getFashionTypeArrayList().get(i).getLinkHinh());
+//                    menuMain.setId(menuPhoto.getFashionTypeArrayList().get(i).getLoaiThoiTrang());
+//                    menuMain.setName(menuPhoto.getFashionTypeArrayList().get(i).getTen());
+//                    mainArrayList.add(menuMain);
+//                }
+
+                break;
+            case SupportKeyList.NewProduct_Url:
+//                for (int i = 0; i < menuPhoto.getBannerPhotoArrayList().size(); i++) {
+//                    menuMain = new MenuMain();
+//                    menuMain.setFlag(SupportKeyList.Banner);
+//                    menuMain.setUrl(menuPhoto.getBannerPhotoArrayList().get(i).getLinkAnh());
+//                    menuMain.setId(String.valueOf(menuPhoto.getBannerPhotoArrayList().get(i).getId()));
+//                    menuMain.setType(menuPhoto.getBannerPhotoArrayList().get(i).getLoaiBanner());
+//                    mainArrayList.add(menuMain);
+//                }
+//
+//                // sau khi nhận dư iệu của 3 loại banner hoàn tất trong listView ManiMenu
+//                finishLoadData(true);
 
                 break;
             case SupportKeyList.Banner_Url:
-                for (int i = 0; i < menuPhoto.getBannerPhotoArrayList().size(); i++) {
-                    menuMain = new MenuMain();
-                    menuMain.setFlag(SupportKeyList.Banner);
-                    menuMain.setUrl(menuPhoto.getBannerPhotoArrayList().get(i).getLinkAnh());
-                    menuMain.setId(String.valueOf(menuPhoto.getBannerPhotoArrayList().get(i).getId()));
-                    menuMain.setType(menuPhoto.getBannerPhotoArrayList().get(i).getLoaiBanner());
-                    mainArrayList.add(menuMain);
-                }
-
-                // sau khi nhận dư iệu của 3 loại banner hoàn tất trong listView ManiMenu
-                finishLoadData(true);
+//                for (int i = 0; i < menuPhoto.getBannerPhotoArrayList().size(); i++) {
+//                    menuMain = new MenuMain();
+//                    menuMain.setFlag(SupportKeyList.Banner);
+//                    menuMain.setUrl(menuPhoto.getBannerPhotoArrayList().get(i).getLinkAnh());
+//                    menuMain.setId(String.valueOf(menuPhoto.getBannerPhotoArrayList().get(i).getId()));
+//                    menuMain.setType(menuPhoto.getBannerPhotoArrayList().get(i).getLoaiBanner());
+//                    mainArrayList.add(menuMain);
+//                }
+//
+//                // sau khi nhận dư iệu của 3 loại banner hoàn tất trong listView ManiMenu
+//                finishLoadData(true);
 
                 break;
             default:

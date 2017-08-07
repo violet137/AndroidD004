@@ -3,6 +3,7 @@ package vn.com.greenacademy.shopping.Fragment.Main;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,11 +36,16 @@ public class MainFragment extends Fragment {
         // MainFragment ko sử dụng tvTenMuc ngoai MainActivity
         MainActivity.tvTenMuc.setVisibility(View.GONE);
 
-        // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_main, container, false);
+//        // Inflate the layout for this fragment
+//        View view = inflater.inflate(R.layout.fragment_main, container, false);
+//
+//        // ánh xạ file xml
+//        final ListView lv_menu_main = (ListView) view.findViewById(R.id.lv_menu_mani);
 
-        // ánh xạ file xml
-        final ListView lv_menu_main = (ListView) view.findViewById(R.id.lv_menu_mani);
+        // Inflate the layout for this fragment
+        View view = inflater.inflate(R.layout.fragment_menu_home, container, false);
+
+        RecyclerView rvMenu = (RecyclerView) view.findViewById(R.id.rvMenu_MenuHome_fragment);
 
         //Xử lý sự kiện
         mainMenuHandler = new MainMenuHandler(getActivity(), new BaseFragment(getActivity().getSupportFragmentManager()));
@@ -51,8 +57,10 @@ public class MainFragment extends Fragment {
         listMainMenuCallBack = new ListMainMenuCallBack() {
             @Override
             public void callBack(ArrayList<MenuMain> menuMainArrayList) {
-                // gọi hàm Adapter và setAdapter cho lít view
-                lv_menu_main.setAdapter(mainMenuHandler.getAdapter(menuMainArrayList));
+////                 gọi hàm Adapter và setAdapter cho lít view
+//                lv_menu_main.setAdapter(mainMenuHandler.getAdapter(menuMainArrayList));
+
+
             }
         };
 

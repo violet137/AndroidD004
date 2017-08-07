@@ -89,6 +89,7 @@ public class SupportKeyList {
     public static final int Advertise_Url = 0;
     public static final int Products_Url = 1;
     public static final int Banner_Url = 2;
+    public static final int NewProduct_Url = 3;
 
     // flag async get photo url
     public static final int ivDanhMucSP = 0;
