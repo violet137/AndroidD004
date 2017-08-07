@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 import vn.com.greenacademy.shopping.Fragment.Main.SanPham.ThongTinSanPhamFragment;
 import vn.com.greenacademy.shopping.Handle.HandleData.ImageLoad;
+import vn.com.greenacademy.shopping.Handle.HandleData.SanPhamHandler;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Model.ViewHolder.SanPhamHolder;
 import vn.com.greenacademy.shopping.Interface.SanPhamCallBack;
 import vn.com.greenacademy.shopping.Model.ThongTinSanPham.SanPham;
@@ -51,10 +52,10 @@ public class ListSanPhamAdapter extends RecyclerView.Adapter<SanPhamHolder> {
         imageLoad.load(sanPham.getHinhSanPham().get(0).getLinkHinh()[0], holder.imgSanPham);
         holder.tvTenSanPham.setText(sanPham.getTenSanPham());
         if (sanPham.getGiamGia() != 0){
-            holder.tvGia.setText(String.valueOf(sanPham.getGiamGia()));
+            holder.tvGia.setText(SanPhamHandler.chuyenGia(sanPham.getGiamGia()));
             holder.tvGia.setTextColor(Color.RED);
         } else{
-            holder.tvGia.setText(String.valueOf(sanPham.getGiaSanPham()));
+            holder.tvGia.setText(SanPhamHandler.chuyenGia(sanPham.getGiaSanPham()));
         }
 
         holder.imgSanPham.setOnClickListener(new View.OnClickListener() {

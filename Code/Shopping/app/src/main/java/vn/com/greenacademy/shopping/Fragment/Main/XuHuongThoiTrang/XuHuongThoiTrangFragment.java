@@ -52,7 +52,7 @@ public class XuHuongThoiTrangFragment extends Fragment implements DataCallBack, 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         loadingDialog = new LoadingDialog(getActivity(), new BaseFragment(getActivity().getSupportFragmentManager()));
-//        loadingDialog.show();
+        loadingDialog.show();
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_xu_huong_thoi_trang, container, false);
         vBanner = (ImageView) root.findViewById(R.id.head_image_fragment_xu_huong_thoi_trang);
@@ -103,7 +103,7 @@ public class XuHuongThoiTrangFragment extends Fragment implements DataCallBack, 
                 scrollView.scrollTo(0, scrollPosition);
             }
         }, 150L);
-//        loadingDialog.dismiss();
+        loadingDialog.dismiss();
     }
 
     @Override
@@ -111,34 +111,6 @@ public class XuHuongThoiTrangFragment extends Fragment implements DataCallBack, 
         ChiTietSetDoDialog chiTietSetDoDialog = new ChiTietSetDoDialog(getActivity(), xuHuongThoiTrang.getListSetDo().get(position).getListSanPham(), new BaseFragment(getActivity().getSupportFragmentManager()));
         chiTietSetDoDialog.show();
     }
-
-//    public void DataTest(){
-//        ArrayList<SetDo> listSetDo = new ArrayList<>();
-//        ArrayList<SanPham> listSanPhamSetDo = new ArrayList<>();
-//        ArrayList<SanPham> listSanPham = new ArrayList<>();
-//        //List set đồ
-//        for (int i = 0; i < 2; i++) {
-//            for (int j = 0; j < 3; j++) {
-//                SanPham sanPham = new SanPham(0, 0, "Sản phẩm " + String.valueOf(j+1), "3/8", "Men", "Description " + String.valueOf(j+1), "Details " + String.valueOf(j+1), null, null, null, null,  100, 0);
-//                listSanPhamSetDo.add(sanPham);
-//            }
-//            listSetDo.add(new SetDo(i, "Set đồ thứ " + String.valueOf(i), "Description " + String.valueOf(i), null, false, null, "3/8", listSanPhamSetDo));
-//        }
-//
-//        //List Sản phẩm
-//        for (int i = 0; i < 7; i++) {
-//            SanPham sanPham = new SanPham(0, 0, "Sản phẩm " + String.valueOf(i+1), "3/8", "Men", "Description " + String.valueOf(i+1), "Details " + String.valueOf(i+1), null, null, null, null,  100, 0);
-//            listSanPham.add(sanPham);
-//        }
-//        testXuHuongThoiTrang = new XuHuongThoiTrang(0, "testTenXuHuong", null, false, "Men", null, listSetDo, listSanPham);
-//
-//        //Data banner
-//        TypedArray tempListBanner = getActivity().getResources().obtainTypedArray(R.array.arr_hinh);
-//        listDataBanner = new int[3];
-//        for (int i = 0; i < 3; i++) {
-//            listDataBanner[i] = tempListBanner.getResourceId(i, -1);
-//        }
-//    }
 
     @Override
     public void KetQua(String result, Bundle bundle) {

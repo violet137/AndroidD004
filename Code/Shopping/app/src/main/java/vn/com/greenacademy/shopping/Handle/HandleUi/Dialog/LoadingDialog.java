@@ -41,11 +41,11 @@ public class LoadingDialog extends ProgressDialog {
     public void show() {
         super.show();
         setContentView(R.layout.loader);
-        DisplayMetrics displayMetrics = new DisplayMetrics();
+//        DisplayMetrics displayMetrics = new DisplayMetrics();
 //        this.getWindow().getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
 //        int height = displayMetrics.heightPixels;
         this.getWindow().setBackgroundDrawable(new ColorDrawable(Color.WHITE));
-        this.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+//        this.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         this.getWindow().setDimAmount(0);
     }
 
