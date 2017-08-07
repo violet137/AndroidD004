@@ -27,6 +27,36 @@ public class SanPhamHandler {
         return formatGia.format(gia) + " đ";
     }
 
+    public static String chuyenTenMau(String mau){
+        switch (mau){
+            case "Cam":
+                return "Cam";
+            case "Den":
+                return "Đen";
+            case "Do":
+                return "Đỏ";
+            case "Hong":
+                return "Hồng";
+            case "Nau":
+                return "Nâu";
+            case "Reu":
+                return "Rêu";
+            case "Tim":
+                return "Tím";
+            case "Vang":
+                return "Vàng";
+            case "Xam":
+                return "Xám";
+            case "XanhDuong":
+                return "Xanh dương";
+            case "XanhLa":
+                return "Xanh lá";
+            case "Trang":
+                return "Trắng";
+            default:
+                return null;
+        }
+    }
     public int doiMaMau(String maMau){
         // tao ban mau mau
         arrayMauSP = activity.getResources().obtainTypedArray(R.array.arr_mauSP);
@@ -67,6 +97,8 @@ public class SanPhamHandler {
             case "Trang":
                 // trang
                 return arrayMauSP.getResourceId(Integer.parseInt("11"),-1);
+            case "more":
+                return arrayMauSP.getResourceId(Integer.parseInt("12"), -1);
             default:
                 return arrayMauSP.getResourceId(Integer.parseInt("1"),-1);
         }

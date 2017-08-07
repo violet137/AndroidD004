@@ -24,17 +24,26 @@ import vn.com.greenacademy.shopping.Util.SupportKeyList;
  */
 
 public class AdapterRecyclerColorProduct extends RecyclerView.Adapter<ColorProductHolder>{
-
     public static Context context;
+
     LayoutInflater mLayoutInflater;
-    String[] mauSanPham;
+    String[] mListMauSanPham;
 
-
-    public AdapterRecyclerColorProduct(Context context, String[] mauSanPham) {
+    public AdapterRecyclerColorProduct(Context context, String[] mListMauSanPham) {
         this.context = context;
         mLayoutInflater = LayoutInflater.from(context);
-        this.mauSanPham = mauSanPham;
 
+        //Thiết lập số lượng màu hiển thị
+        if (mListMauSanPham.length > SupportKeyList.SoMauHienThiToiDa) {
+            this.mListMauSanPham = new String[SupportKeyList.SoMauHienThiToiDa + 1];
+            for (int i = 0; i < this.mListMauSanPham.length; i++) {
+                if (i == this.mListMauSanPham.length -1)
+                    this.mListMauSanPham[i] = "more";
+                else
+                    this.mListMauSanPham[i] = mListMauSanPham[i];
+            }
+        } else
+            this.mListMauSanPham = mListMauSanPham;
     }
 
     @Override
@@ -45,12 +54,12 @@ public class AdapterRecyclerColorProduct extends RecyclerView.Adapter<ColorProdu
 
     @Override
     public void onBindViewHolder(ColorProductHolder holder, int position) {
-        holder.imageView.setImageResource(holder.sanPhamHandler.doiMaMau(mauSanPham[position]));
+        holder.imageView.setImageResource(holder.sanPhamHandler.doiMaMau(mListMauSanPham[position]));
     }
 
     @Override
     public int getItemCount() {
-        return mauSanPham.length;
+        return mListMauSanPham.length;
     }
 }
 

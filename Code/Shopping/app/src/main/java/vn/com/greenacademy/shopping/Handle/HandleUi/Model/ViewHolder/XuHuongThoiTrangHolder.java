@@ -4,10 +4,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 
-import vn.com.greenacademy.shopping.Fragment.Main.XuHuongThoiTrang.XuHuongThoiTrangFragment;
 import vn.com.greenacademy.shopping.R;
-import vn.com.greenacademy.shopping.Util.SupportKeyList;
-import vn.com.greenacademy.shopping.Util.Ui.BaseFragment;
 
 /**
  * Created by zzzzz on 7/13/2017.

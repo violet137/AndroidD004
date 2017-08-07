@@ -93,5 +93,6 @@ public class SupportKeyList {
     // flag async get photo url
     public static final int ivDanhMucSP = 0;
 
-
+    //Key giá trị
+    public static final int SoMauHienThiToiDa = 3;
 }

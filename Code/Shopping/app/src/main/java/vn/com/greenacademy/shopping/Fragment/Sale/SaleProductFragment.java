@@ -19,6 +19,7 @@ import vn.com.greenacademy.shopping.Handle.HandleData.ImageLoad;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.Sale.AdapterRecyclerColorProduct;
 import vn.com.greenacademy.shopping.Model.ThongTinSanPham.SanPham;
 import vn.com.greenacademy.shopping.R;
+import vn.com.greenacademy.shopping.Util.SupportKeyList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -78,7 +79,7 @@ public class SaleProductFragment extends Fragment implements View.OnClickListene
 
         textView.setText(String.valueOf(sanPhamArrayList.get(position).getGiamGia()));
 
-        recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), sanPhamArrayList.get(position).getMauSanPham().length>4? 4 : sanPhamArrayList.get(position).getMauSanPham().length));
+        recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), sanPhamArrayList.get(position).getMauSanPham().length> SupportKeyList.SoMauHienThiToiDa ? SupportKeyList.SoMauHienThiToiDa + 1 : sanPhamArrayList.get(position).getMauSanPham().length));
 
         AdapterRecyclerColorProduct adapterRecyclerColorProduct = new AdapterRecyclerColorProduct(
                 getContext(), sanPhamArrayList.get(position).getMauSanPham());

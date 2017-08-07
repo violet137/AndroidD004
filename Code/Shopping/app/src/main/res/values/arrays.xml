@@ -90,5 +90,6 @@
         <item>@drawable/mau_xanh_duong</item>
         <item>@drawable/mau_xanh_la</item>
         <item>@drawable/mau_trang</item>
+        <item>@drawable/ic_more_items</item>
     </array>
 </resources>
