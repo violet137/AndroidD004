@@ -11,7 +11,6 @@
         android:id="@+id/san_pham_image"
         android:layout_width="match_parent"
         android:layout_height="@dimen/item_list_san_pham_image_height"
-        app:srcCompat="@drawable/banner_test2"
         android:scaleType="fitXY"/>
 
     <!-- Tên sản phẩm -->
@@ -24,7 +23,6 @@
         android:text="Cotton Canvas Cushion Cover Set"
         android:textSize="@dimen/text_size"
         android:textStyle="bold"
-        android:textColor="@color/colorTextDark"
         android:maxLines="2"/>
 
     <!-- Giá -->

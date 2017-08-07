@@ -34,6 +34,13 @@
     <string name="title_message">Hi</string>
     <string name="item_title_tai_khoan">Tài khoản</string>
 
+    <!-- Giỏ hàng -->
+    <string name="title_gio_hang">GIỎ HÀNG</string>
+    <string name="message_gio_hang">Giỏ hàng của bạn chưa có sản phẩm</string>
+    <string name="message_dang_nhap_gio_hang">Đăng nhập để lưu các sản phẩm bạn muốn mua vào giỏ hàng.</string>
+    <string name="bat_dau_mua_sam">Bắt đầu mua sắm</string>
+    <string name="tao_cam_hung">Tạo cảm hứng</string>
+
     <!-- Đăng nhập -->
     <string name="title_dang_nhap">ĐĂNG NHẬP</string>
     <string name="title_user_name">Username:</string>
@@ -110,7 +117,6 @@
 
     <!-- item listview sale -->
     <string name="San_Pham_Moi">Sản Phẩm Mới</string>
-
 
 
 </resources>

@@ -20,6 +20,7 @@ import vn.com.greenacademy.shopping.Model.BannerPhoto;
 import vn.com.greenacademy.shopping.Model.MenuMain;
 import vn.com.greenacademy.shopping.Model.MenuPhoto;
 import vn.com.greenacademy.shopping.Model.ProductsPhoto;
+import vn.com.greenacademy.shopping.Model.XuHuongThoiTrang;
 import vn.com.greenacademy.shopping.Network.AsynTask.GetServerData;
 import vn.com.greenacademy.shopping.R;
 import vn.com.greenacademy.shopping.Util.ServerUrl;

@@ -13,9 +13,9 @@ import vn.com.greenacademy.shopping.Model.ThongTinSanPham.SanPham;
  * Created by ADMIN on 8/3/2017.
  */
 
-public class ParseFIDProduct {
+public class ParseSanPham {
     String data;
-    public ParseFIDProduct (String data) {
+    public ParseSanPham(String data) {
         this.data=data;
     }
 

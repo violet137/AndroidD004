@@ -1,5 +1,6 @@
 package vn.com.greenacademy.shopping.Fragment.Main.XuHuongThoiTrang;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -12,9 +13,13 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageButton;
 
+import java.util.ArrayList;
+
+import vn.com.greenacademy.shopping.Handle.HandleData.ImageLoad;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.SanPham.ListSanPhamAdapter;
 import vn.com.greenacademy.shopping.Interface.SanPhamCallBack;
 import vn.com.greenacademy.shopping.Model.SetDo;
+import vn.com.greenacademy.shopping.Model.ThongTinSanPham.SanPham;
 import vn.com.greenacademy.shopping.R;
 import vn.com.greenacademy.shopping.Util.Ui.BaseFragment;
 
@@ -25,13 +30,13 @@ import vn.com.greenacademy.shopping.Util.Ui.BaseFragment;
 public class ChiTietSetDoDialog extends BottomSheetDialog implements SanPhamCallBack, View.OnClickListener {
     private Context context;
     private BottomSheetBehavior bottomSheetBehavior;
-    private SetDo setDo;
+    private ArrayList<SanPham> mListSanPham;
     private BaseFragment baseFragment;
 
-    public ChiTietSetDoDialog(Context context, SetDo setDo, BaseFragment baseFragment) {
+    public ChiTietSetDoDialog(Context context, ArrayList<SanPham> mListSanPham, BaseFragment baseFragment) {
         super(context);
         this.context = context;
-        this.setDo = setDo;
+        this.mListSanPham = mListSanPham;
         this.baseFragment = baseFragment;
     }
 
@@ -44,8 +49,8 @@ public class ChiTietSetDoDialog extends BottomSheetDialog implements SanPhamCall
 
         ibThoat.setOnClickListener(this);
 
-        vListSanPham.setLayoutManager(new GridLayoutManager(context, 3));
-        vListSanPham.setAdapter(new ListSanPhamAdapter(context, setDo.getListSanPham(), baseFragment, this, null));
+        vListSanPham.setLayoutManager(new GridLayoutManager(context, mListSanPham.size() < 3 ? 2 : 3));
+        vListSanPham.setAdapter(new ListSanPhamAdapter(context, mListSanPham, baseFragment, this, new ImageLoad((Activity) context)));
         vListSanPham.setNestedScrollingEnabled(false);
         configBottomSheetBehavior(bottomSheetView);
 

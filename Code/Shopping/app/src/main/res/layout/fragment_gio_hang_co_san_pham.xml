@@ -1,0 +1,37 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorBackground"
+    tools:context="vn.com.greenacademy.shopping.Fragment.Main.MyShopping.GioHangFragment">
+
+    <!-- Title bar-->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title_height"
+        android:orientation="horizontal"
+        android:background="@color/colorSecondaryDark">
+        <!-- Title -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/vertical_padding"
+            android:text="@string/title_gio_hang"
+            android:textColor="@color/colorText"
+            android:textSize="@dimen/title_size"
+            android:textStyle="bold"/>
+        <!-- Tên tài khoản -->
+        <TextView
+            android:id="@+id/tvTenTaiKhoan_FragmentGioHang"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textColor="@color/colorText"
+            android:textSize="@dimen/text_size"/>
+    </LinearLayout>
+
+</LinearLayout>
