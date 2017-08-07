@@ -1,10 +1,15 @@
 package vn.com.greenacademy.shopping.Fragment.Main.SanPham;
 
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.text.Html;
+import android.text.SpannableString;
+import android.text.style.StrikethroughSpan;
+import android.text.style.StyleSpan;
+import android.text.style.TextAppearanceSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -61,6 +66,10 @@ public class ThongTinSanPhamFragment extends Fragment implements View.OnClickLis
         baseFragment = new BaseFragment(getActivity().getSupportFragmentManager());
         pagerSanPham.setAdapter(new SanPhamPagerAdapter(getActivity().getSupportFragmentManager(),listSanPham));
         pagerSanPham.setCurrentItem(position);
+
+        //Xử lý thông tin hiển thị
+        final SpannableString formatTenVaMau = new SpannableString(listSanPham.get(position).getTenSanPham() + " - " + listSanPham.get(position).getHinhSanPham().get(0).getMau());
+        formatTenVaMau.setSpan(new StyleSpan(Typeface.BOLD), 0, listSanPham.get(position).getTenSanPham().length(), 0);
         pagerSanPham.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -69,7 +78,7 @@ public class ThongTinSanPhamFragment extends Fragment implements View.OnClickLis
 
             @Override
             public void onPageSelected(int position) {
-                tvTenVaMau.setText(listSanPham.get(position).getTenSanPham() + " - " + listSanPham.get(position).getHinhSanPham().get(0).getMau());
+                tvTenVaMau.setText(formatTenVaMau);
                 tvSoLuong.setText(String.valueOf(position + 1) + "/" + String.valueOf(listSanPham.size()));
             }
 
@@ -78,7 +87,7 @@ public class ThongTinSanPhamFragment extends Fragment implements View.OnClickLis
 
             }
         });
-        tvTenVaMau.setText(listSanPham.get(position).getTenSanPham() + " - Khaki Green");
+        tvTenVaMau.setText(formatTenVaMau);
         tvSoLuong.setText(String.valueOf(position + 1) + "/" + String.valueOf(listSanPham.size()));
 
         getActivity().supportInvalidateOptionsMenu();
@@ -138,11 +147,11 @@ public class ThongTinSanPhamFragment extends Fragment implements View.OnClickLis
 
                 //filtering items by id
                 if (actionId == ID_MAIL) {
-                    Toast.makeText(getApplicationContext(), "Mail clicked", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Đỏ", Toast.LENGTH_SHORT).show();
                 } else if (actionId == ID_VLC) {
-                    Toast.makeText(getApplicationContext(), "VLC clicked", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Đen", Toast.LENGTH_SHORT).show();
                 } else if(actionId == ID_SAFARI){
-                    Toast.makeText(getApplicationContext(), "Safari clicked", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Vàng", Toast.LENGTH_SHORT).show();
                 }
             }
         });

@@ -101,9 +101,9 @@ public class XuHuongThoiTrangFragment extends Fragment implements DataCallBack, 
             @Override
             public void run() {
                 scrollView.scrollTo(0, scrollPosition);
+                loadingDialog.dismiss();
             }
         }, 150L);
-        loadingDialog.dismiss();
     }
 
     @Override

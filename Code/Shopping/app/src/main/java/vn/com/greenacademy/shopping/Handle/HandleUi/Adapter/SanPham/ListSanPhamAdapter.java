@@ -2,6 +2,7 @@ package vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.SanPham;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -53,7 +54,7 @@ public class ListSanPhamAdapter extends RecyclerView.Adapter<SanPhamHolder> {
         holder.tvTenSanPham.setText(sanPham.getTenSanPham());
         if (sanPham.getGiamGia() != 0){
             holder.tvGia.setText(SanPhamHandler.chuyenGia(sanPham.getGiamGia()));
-            holder.tvGia.setTextColor(Color.RED);
+            holder.tvGia.setTextColor(ContextCompat.getColor(context, android.R.color.holo_red_dark));
         } else{
             holder.tvGia.setText(SanPhamHandler.chuyenGia(sanPham.getGiaSanPham()));
         }

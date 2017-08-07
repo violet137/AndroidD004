@@ -14,15 +14,16 @@
     <TextView
         android:id="@+id/gia_fragment_page_san_pham"
         android:layout_width="wrap_content"
-        android:layout_height="@dimen/gia_tien_text_height_info_san_pham"
+        android:layout_height="wrap_content"
         android:layout_gravity="bottom|right"
         android:gravity="center"
+        android:paddingTop="@dimen/gia_tien_vertical_padding"
+        android:paddingBottom="@dimen/gia_tien_vertical_padding"
         android:paddingLeft="@dimen/gia_tien_horizontal_padding"
         android:paddingRight="@dimen/gia_tien_horizontal_padding"
         android:layout_marginBottom="@dimen/gia_tien_margin_bottom"
-        android:background="@drawable/shape_text"
+        android:background="@color/colorPrimary"
         android:text="$20.99"
-        android:textColor="@color/colorTextDark"
         android:textSize="@dimen/gia_tien_text_size_info_san_pham"
         android:textStyle="bold"/>
 </FrameLayout>

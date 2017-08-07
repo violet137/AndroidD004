@@ -26,8 +26,7 @@
             android:layout_weight="3"
             android:text="Patterned Duvet Cover Set - Khaki green"
             android:textColor="@color/colorText"
-            android:textSize="@dimen/text_size_ten_san_pham"
-            android:textStyle="bold"/>
+            android:textSize="@dimen/text_size_ten_san_pham"/>
 
         <!-- Số lượng -->
         <TextView

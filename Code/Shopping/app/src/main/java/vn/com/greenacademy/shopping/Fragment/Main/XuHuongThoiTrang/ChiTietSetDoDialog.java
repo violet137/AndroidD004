@@ -53,7 +53,6 @@ public class ChiTietSetDoDialog extends BottomSheetDialog implements SanPhamCall
         vListSanPham.setAdapter(new ListSanPhamAdapter(context, mListSanPham, baseFragment, this, new ImageLoad((Activity) context)));
         vListSanPham.setNestedScrollingEnabled(false);
         configBottomSheetBehavior(bottomSheetView);
-
     }
 
     @Override
@@ -74,12 +73,17 @@ public class ChiTietSetDoDialog extends BottomSheetDialog implements SanPhamCall
         bottomSheetBehavior.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
             @Override
             public void onStateChanged(@NonNull View bottomSheet, int newState) {
+                if (newState == BottomSheetBehavior.STATE_EXPANDED){
+                    bottomSheet.requestLayout();
+                    bottomSheet.invalidate();
+                }
                 if (newState == BottomSheetBehavior.STATE_DRAGGING)
-                    bottomSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+                    bottomSheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
             }
 
             @Override
             public void onSlide(@NonNull View bottomSheet, float slideOffset) {}
         });
     }
+
 }
