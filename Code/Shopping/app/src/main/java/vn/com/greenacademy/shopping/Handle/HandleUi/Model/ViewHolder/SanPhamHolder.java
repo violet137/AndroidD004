@@ -16,6 +16,7 @@ public class SanPhamHolder extends RecyclerView.ViewHolder {
     public ImageView imgSanPham;
     public TextView tvTenSanPham;
     public  TextView tvGia;
+    public RecyclerView recyclerViewListMau;
     public LinearLayout itemSanPham;
 
     public SanPhamHolder(View itemView) {
@@ -23,6 +24,7 @@ public class SanPhamHolder extends RecyclerView.ViewHolder {
         imgSanPham = (ImageView) itemView.findViewById(R.id.san_pham_image);
         tvTenSanPham = (TextView) itemView.findViewById(R.id.ten_san_pham_text_view);
         tvGia = (TextView) itemView.findViewById(R.id.gia_text_view);
+        recyclerViewListMau = (RecyclerView) itemView.findViewById(R.id.list_mau_recyclerview_item_san_pham);
         itemSanPham = (LinearLayout) itemView.findViewById(R.id.layout_item_san_pham);
     }
 }

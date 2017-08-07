@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import vn.com.greenacademy.shopping.Handle.HandleData.SanPhamHandler;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.SanPham.SanPhamPagerAdapter;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Model.QuickActionItem;
 import vn.com.greenacademy.shopping.Handle.HandleUi.SanPham.QuickActionPopup;
@@ -68,7 +69,7 @@ public class ThongTinSanPhamFragment extends Fragment implements View.OnClickLis
         pagerSanPham.setCurrentItem(position);
 
         //Xử lý thông tin hiển thị
-        final SpannableString formatTenVaMau = new SpannableString(listSanPham.get(position).getTenSanPham() + " - " + listSanPham.get(position).getHinhSanPham().get(0).getMau());
+        final SpannableString formatTenVaMau = new SpannableString(listSanPham.get(position).getTenSanPham() + " - " + SanPhamHandler.chuyenTenMau(listSanPham.get(position).getHinhSanPham().get(0).getMau()));
         formatTenVaMau.setSpan(new StyleSpan(Typeface.BOLD), 0, listSanPham.get(position).getTenSanPham().length(), 0);
         pagerSanPham.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
