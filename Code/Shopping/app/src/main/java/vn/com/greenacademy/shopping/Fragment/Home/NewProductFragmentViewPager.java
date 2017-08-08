@@ -117,7 +117,6 @@ public class NewProductFragmentViewPager extends Fragment {
         ItemHome itemHome = new ItemHome();
         itemHome.setFlagItemHome(SupportKeyList.ClickHome_NewProduct);
         itemHome.setId(String.valueOf(item.getIdSanPham()));
-        itemHome.setObject(item);
 
         llNewProduct.setTag(itemHome);
         llNewProduct.setOnClickListener(ClickListenerHomeItem.onClickListener);
