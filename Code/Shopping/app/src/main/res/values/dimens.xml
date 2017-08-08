@@ -39,7 +39,7 @@
     <dimen name="ConstraintLayout_height">100dp</dimen>
     <dimen name="imageView_constrain_height">142dp</dimen>
     <dimen name="imageView_height">277dp</dimen>
-    <dimen name="textView_layout_marginTop">85dp</dimen>
+    <dimen name="textView_layout_marginTop">105dp</dimen>
     <dimen name="textView_paddingLeft">10dp</dimen>
     <dimen name="textView_paddingRight">10dp</dimen>
     <dimen name="textView_textSize">18dp</dimen>
@@ -49,6 +49,8 @@
     <dimen name="tai_khoan_vertical_margin">7dp</dimen>
     <dimen name="account_text_size">17sp</dimen>
     <dimen name="layout_40dp">40dp</dimen>
+    <dimen name="vp_layout_height_400dp">400dp</dimen>
+    <dimen name="ll_layout_height_200dp">200dp</dimen>
 
     <!-- Thông tin cá nhân -->
     <dimen name="thong_tin_ca_nhan_vertical_margin">15dp</dimen>
@@ -121,6 +123,7 @@
     <dimen name="text_size_12dp">12dp</dimen>
     <dimen name="text_layout_height_22dp">22dp</dimen>
     <dimen name="btnDiviver_1px">1px</dimen>
+    <dimen name="btnDiviver_1dp">1dp</dimen>
 
     <!-- Slide Menu -->
     <dimen name="imageView_padding_10dp">10dp</dimen>
@@ -145,5 +148,7 @@
     <dimen name="ll_layout_with_125dp">125dp</dimen>
     <dimen name="iv_layout_height_95dp">95dp</dimen>
     <dimen name="tv_padding_top_2dp">2dp</dimen>
+
+
 
 </resources>

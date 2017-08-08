@@ -1,7 +1,10 @@
-package vn.com.greenacademy.shopping.Model;
+package vn.com.greenacademy.shopping.Model.Home;
 
 import java.util.ArrayList;
 
+import vn.com.greenacademy.shopping.Model.Home.AdvertisePhoto;
+import vn.com.greenacademy.shopping.Model.Home.BannerPhoto;
+import vn.com.greenacademy.shopping.Model.Home.FashionType;
 import vn.com.greenacademy.shopping.Model.ThongTinSanPham.SanPham;
 
 /**

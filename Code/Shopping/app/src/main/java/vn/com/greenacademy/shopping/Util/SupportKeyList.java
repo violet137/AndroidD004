@@ -51,9 +51,18 @@ public class SupportKeyList {
     public static final String TAG_FRAGMENT_SALE = "Sale";
 
     //Key Menu Main
+    public static final int Banner = -1;
     public static final int Advertise = 0;
     public static final int Products = 1;
-    public static final int Banner = 2;
+    public static final int NewProduct = 2;
+    public static final int Fashion = 3;
+
+    public static final int Advertise_Item = 0;
+    public static final int Products_Item = 1;
+    public static final int NewProduct_Item = 2;
+    public static final int Fashion_Item = 3;
+    public static final int Magazine_Item = 4;
+
     public static final String KhuyenMai_BannerType = "KhuyenMai";
     public static final String XuHuong_BannerType = "XuHuongThoiTrang";
     public static final String TapChi_BannerType = "TapChi";
@@ -86,14 +95,23 @@ public class SupportKeyList {
     public static final int Magazine_VIDEO = 4;
 
     // flag async get photo url
+    public static final int Banner_Url = -1;
     public static final int Advertise_Url = 0;
     public static final int Products_Url = 1;
-    public static final int Banner_Url = 2;
-    public static final int NewProduct_Url = 3;
+    public static final int NewProduct_Url = 2;
 
     // flag async get photo url
     public static final int ivDanhMucSP = 0;
 
     //Key giá trị
     public static final int SoMauHienThiToiDa = 3;
+
+    //Key Click listener
+    public static final int ClickHome_Button_Magazine = -1;
+    public static final int ClickHome_Advertise = 0;
+    public static final int ClickHome_Products = 1;
+    public static final int ClickHome_NewProduct = 2;
+    public static final int ClickHome_Fashion = 3;
+    public static final int ClickHome_Magazine = 4;
+
 }

@@ -1,0 +1,237 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/vp_layout_height_400dp"
+    tools:activity="vn.com.greenacademy.shopping.Fragment.Home.NewProductFragmentViewPager">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/ll_layout_height_200dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:id="@+id/llNewProduct_1_NewProductFragment"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/ivNewProduct_1_NewProductFragment"
+                    android:layout_width="match_parent"
+                    android:layout_margin="@dimen/imageView_padding_10dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:scaleType="centerCrop"
+                    app:srcCompat="@drawable/banner_xu_huong_thoi_trang" />
+
+                <TextView
+                    android:id="@+id/tvNameProduct_1_NewProductFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:paddingLeft="@dimen/layout_margin_10dp"
+                    android:paddingRight="@dimen/layout_margin_10dp"
+                    android:textColor="@color/cardview_dark_background"
+                    android:textStyle="bold"
+                    android:text="TextView" />
+
+                <TextView
+                    android:id="@+id/tvGiaProduct_1_NewProductFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/cardview_dark_background"
+                    android:gravity="center"
+                    android:text="TextView" />
+
+                <android.support.v7.widget.RecyclerView
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/text_size_15dp"
+                    android:id="@+id/rvMauProduct_1_NewProductFragment"
+                    android:layout_gravity="center">
+
+                </android.support.v7.widget.RecyclerView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:id="@+id/llNewProduct_2_NewProductFragment"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/ivNewProduct_2_NewProductFragment"
+                    android:layout_weight="1"
+                    android:scaleType="centerCrop"
+                    android:layout_margin="@dimen/imageView_padding_10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:srcCompat="@drawable/banner_test2" />
+                <TextView
+                    android:id="@+id/tvNameProduct_2_NewProductFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:paddingLeft="@dimen/layout_margin_10dp"
+                    android:paddingRight="@dimen/layout_margin_10dp"
+                    android:textColor="@color/cardview_dark_background"
+                    android:textStyle="bold"
+                    android:text="TextView" />
+
+                <TextView
+                    android:id="@+id/tvGiaProduct_2_NewProductFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/cardview_dark_background"
+                    android:gravity="center"
+                    android:text="TextView" />
+
+                <android.support.v7.widget.RecyclerView
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/text_size_15dp"
+                    android:id="@+id/rvMauProduct_2_NewProductFragment"
+                    android:layout_gravity="center">
+
+                </android.support.v7.widget.RecyclerView>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/ll_layout_height_200dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:id="@+id/llNewProduct_3_NewProductFragment"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/ivNewProduct_3_NewProductFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/imageView_padding_10dp"
+                    android:layout_weight="1"
+                    android:scaleType="centerCrop"
+                    app:srcCompat="@drawable/banner_test1" />
+
+                <TextView
+                    android:id="@+id/tvNameProduct_3_NewProductFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:paddingLeft="@dimen/layout_margin_10dp"
+                    android:paddingRight="@dimen/layout_margin_10dp"
+                    android:textColor="@color/cardview_dark_background"
+                    android:textStyle="bold"
+                    android:text="TextView" />
+
+                <TextView
+                    android:id="@+id/tvGiaProduct_3_NewProductFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/cardview_dark_background"
+                    android:gravity="center"
+                    android:text="TextView" />
+
+                <android.support.v7.widget.RecyclerView
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/text_size_15dp"
+                    android:id="@+id/rvMauProduct_3_NewProductFragment"
+                    android:layout_gravity="center">
+
+                </android.support.v7.widget.RecyclerView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/llNewProduct_4_NewProductFragment"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/ivNewProduct_4_NewProductFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/imageView_padding_10dp"
+                    android:layout_weight="1"
+                    android:scaleType="centerCrop"
+                    app:srcCompat="@drawable/banner_test2" />
+
+                <TextView
+                    android:id="@+id/tvNameProduct_4_NewProductFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="TextView"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:paddingLeft="@dimen/layout_margin_10dp"
+                    android:paddingRight="@dimen/layout_margin_10dp"
+                    android:textColor="@color/cardview_dark_background"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvGiaProduct_4_NewProductFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="TextView"
+                    android:textColor="@color/cardview_dark_background" />
+
+                <android.support.v7.widget.RecyclerView
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/text_size_15dp"
+                    android:id="@+id/rvMauProduct_4_NewProductFragment"
+                    android:layout_gravity="center">
+
+                </android.support.v7.widget.RecyclerView>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:id="@+id/llNewProduct_5_NewProductFragment"
+                android:visibility="gone"
+                android:orientation="vertical">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="@dimen/layout_margin_10dp"
+                    android:background="#dcc1c1c1">
+
+                    <TextView
+                        android:id="@+id/textView12"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/textView_pandding_top_3dp"
+                        android:background="@color/cardview_light_background"
+                        android:gravity="center"
+                        android:text="+"
+                        android:textSize="120dp" />
+                </FrameLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>

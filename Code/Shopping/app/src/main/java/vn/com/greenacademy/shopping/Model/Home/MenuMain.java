@@ -1,6 +1,9 @@
-package vn.com.greenacademy.shopping.Model;
+package vn.com.greenacademy.shopping.Model.Home;
 
 import java.util.ArrayList;
+
+import vn.com.greenacademy.shopping.Model.Home.AdvertisePhoto;
+import vn.com.greenacademy.shopping.Model.ThongTinSanPham.SanPham;
 
 /**
  * Created by ADMIN on 7/15/2017.
@@ -12,7 +15,25 @@ public class MenuMain {
     String id;
     int flag;
     String type;
+    ArrayList<SanPham> sanPhamArrayList;
     String name;
+    String magazineType;
+
+    public ArrayList<SanPham> getSanPhamArrayList() {
+        return sanPhamArrayList;
+    }
+
+    public void setSanPhamArrayList(ArrayList<SanPham> sanPhamArrayList) {
+        this.sanPhamArrayList = sanPhamArrayList;
+    }
+
+    public String getMagazineType() {
+        return magazineType;
+    }
+
+    public void setMagazineType(String magazineType) {
+        this.magazineType = magazineType;
+    }
 
     public String getName() {
         return name;

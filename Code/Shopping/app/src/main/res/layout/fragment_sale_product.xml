@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="@dimen/vp_layout_height_150dp"
-    tools:context="vn.com.greenacademy.shopping.Fragment.Sale.SaleProductFragment">
+    tools:context="vn.com.greenacademy.shopping.Fragment.Sale.SaleProductFragmentViewPager">
 
     <!-- TODO: Update blank fragment layout -->
 
@@ -23,7 +23,8 @@
             <ImageView
                 android:id="@+id/iv_Sale_product_fragment"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/iv_layout_height_95dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:layout_marginTop="@dimen/ll_layout_padding_5dp"
                 android:layout_marginLeft="@dimen/tv_padding_top_2dp"
                 android:layout_marginRight="@dimen/tv_padding_top_2dp"
@@ -54,7 +55,7 @@
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/rvMau_Sale_product_fragment"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="@dimen/text_size_15dp"
                 android:layout_gravity="center" />
 
         </LinearLayout>
@@ -70,7 +71,8 @@
             <ImageView
                 android:id="@+id/iv2_Sale_product_fragment"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/iv_layout_height_95dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:layout_marginLeft="@dimen/tv_padding_top_2dp"
                 android:layout_marginRight="@dimen/tv_padding_top_2dp"
                 android:layout_marginTop="@dimen/ll_layout_padding_5dp"
@@ -101,7 +103,7 @@
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/rvMau2_Sale_product_fragment"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="@dimen/text_size_15dp"
                 android:layout_gravity="center"  />
 
         </LinearLayout>
@@ -120,7 +122,8 @@
                 android:layout_marginTop="@dimen/ll_layout_padding_5dp"
                 android:layout_marginLeft="@dimen/tv_padding_top_2dp"
                 android:layout_marginRight="@dimen/tv_padding_top_2dp"
-                android:layout_height="@dimen/iv_layout_height_95dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
                 app:srcCompat="@drawable/banner_test2" />
 
             <TextView
@@ -147,7 +150,7 @@
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/rvMau3_Sale_product_fragment"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
+                android:layout_height="@dimen/text_size_15dp"
                 android:layout_gravity="center"  />
 
         </LinearLayout>

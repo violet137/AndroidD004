@@ -68,7 +68,7 @@ public class MagazineHandler implements ServerCallBack {
         getServerData.execute(ServerUrl.UrlDanhSachMagazine+magazineTypeArrayList.get(positionViewPagger).getLoaiTapChi(),SupportKeyList.Magazine);
 
 
-//        AdapterMagazineRecyclerView adapterMagazineRecyclerView = new AdapterMagazineRecyclerView
+//        AdapterHomeRecyclerView adapterMagazineRecyclerView = new AdapterHomeRecyclerView
 //                (activity,onClickListener,positionViewPagger, magazineTypeArrayList);
 //        recyclerView.setAdapter(adapterMagazineRecyclerView);
     }

@@ -37,7 +37,7 @@ public class AdapterMagazineRecyclerView extends RecyclerView.Adapter<MagazineHo
         this.magazineArrayList=magazineArrayList;
     }
 
-//    public AdapterMagazineRecyclerView(Context context, View.OnClickListener onClickListener, int positionViewPagger,
+//    public AdapterHomeRecyclerView(Context context, View.OnClickListener onClickListener, int positionViewPagger,
 //                                       ArrayList<MagazineType> magazineTypeArrayList) {
 //        this.context = context;
 //        mLayoutInflater = LayoutInflater.from(context);

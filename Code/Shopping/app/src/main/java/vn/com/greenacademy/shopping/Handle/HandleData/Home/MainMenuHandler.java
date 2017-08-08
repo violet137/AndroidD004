@@ -1,4 +1,4 @@
-package vn.com.greenacademy.shopping.Handle.HandleData;
+package vn.com.greenacademy.shopping.Handle.HandleData.Home;
 
 import android.app.Activity;
 import android.view.View;
@@ -8,22 +8,21 @@ import java.util.ArrayList;
 
 import vn.com.greenacademy.shopping.Fragment.Magazine.MagazineFragment;
 import vn.com.greenacademy.shopping.Fragment.Main.DanhMucSanPham.DanhMucSPFragment;
-import vn.com.greenacademy.shopping.Fragment.Main.MainFragment;
+import vn.com.greenacademy.shopping.Fragment.Home.MainFragment;
 import vn.com.greenacademy.shopping.Fragment.Main.XuHuongThoiTrang.XuHuongThoiTrangFragment;
 import vn.com.greenacademy.shopping.Handle.HandleData.ParseData.Main.ParseNewProductList;
-import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.AdapterMenuMain;
 import vn.com.greenacademy.shopping.Handle.HandleData.ParseData.Main.ParseAdvertise;
 import vn.com.greenacademy.shopping.Handle.HandleData.ParseData.Main.ParseBanner;
 import vn.com.greenacademy.shopping.Handle.HandleData.ParseData.Main.ParseMyProducts;
+import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.Home.AdapterHomeRecyclerView;
 import vn.com.greenacademy.shopping.Interface.ServerCallBack;
-import vn.com.greenacademy.shopping.Model.AdvertisePhoto;
-import vn.com.greenacademy.shopping.Model.BannerPhoto;
-import vn.com.greenacademy.shopping.Model.MenuMain;
-import vn.com.greenacademy.shopping.Model.MenuPhoto;
-import vn.com.greenacademy.shopping.Model.ProductsPhoto;
-import vn.com.greenacademy.shopping.Model.XuHuongThoiTrang;
+import vn.com.greenacademy.shopping.Model.Home.AdvertisePhoto;
+import vn.com.greenacademy.shopping.Model.Home.BannerPhoto;
+import vn.com.greenacademy.shopping.Model.Home.MenuMain;
+import vn.com.greenacademy.shopping.Model.Home.MenuPhoto;
+import vn.com.greenacademy.shopping.Model.Home.ProductsPhoto;
+import vn.com.greenacademy.shopping.Model.ThongTinSanPham.SanPham;
 import vn.com.greenacademy.shopping.Network.AsynTask.GetServerData;
-import vn.com.greenacademy.shopping.R;
 import vn.com.greenacademy.shopping.Util.ServerUrl;
 import vn.com.greenacademy.shopping.Util.SupportKeyList;
 import vn.com.greenacademy.shopping.Util.Ui.BaseFragment;
@@ -104,11 +103,17 @@ public class MainMenuHandler extends LoadDataMainMenuHandler{
             }
         };
     }
+//    // tai du lieu tu adapter len list
+//    public AdapterMenuMain getAdapter (ArrayList<MenuMain> menuMainArrayList) {
+//        AdapterMenuMain adapterMenuMain = new AdapterMenuMain(activity, R.layout.item_listview_menu_main, menuMainArrayList,
+//                onClickListenerAdvertise, onClickListenerProducts, onClickListenerHotTrend);
+//        return adapterMenuMain;
+//    }
+
     // tai du lieu tu adapter len list
-    public AdapterMenuMain getAdapter (ArrayList<MenuMain> menuMainArrayList) {
-        AdapterMenuMain adapterMenuMain = new AdapterMenuMain(activity, R.layout.item_listview_menu_main, menuMainArrayList,
-                onClickListenerAdvertise, onClickListenerProducts, onClickListenerHotTrend);
-        return adapterMenuMain;
+    public AdapterHomeRecyclerView getAdapter (ArrayList<MenuMain> menuMainArrayList) {
+        AdapterHomeRecyclerView adapter = new AdapterHomeRecyclerView(activity, menuMainArrayList);
+        return adapter;
     }
 }
 
@@ -284,58 +289,71 @@ class LoadDataMainMenuHandler implements ServerCallBack{
         // đưa dữ liệu sau khi parse xong vao mainArrayList
         switch (Integer.parseInt(key)){
             case SupportKeyList.Advertise_Url:
-//                menuMain = new MenuMain();
-//                ArrayList<AdvertisePhoto> advertisePhotos = new ArrayList<>();
-//                for (int i = 0; i < menuPhoto.getAdvertisePhotoArrayList().size(); i++) {
-//                    AdvertisePhoto advertisePhoto = new AdvertisePhoto();
-//                    advertisePhoto.setHinhDaiDien(menuPhoto.getAdvertisePhotoArrayList().get(i).getHinhDaiDien());
-//                    advertisePhoto.setId(menuPhoto.getAdvertisePhotoArrayList().get(i).getId());
-//                    advertisePhotos.add(advertisePhoto);
-//                }
-//                menuMain.setAdvertiseMenuMains(advertisePhotos);
-//                mainArrayList.add(menuMain);
+                menuMain = new MenuMain();
+                menuMain.setFlag(Integer.parseInt(key));
+                ArrayList<AdvertisePhoto> advertisePhotos = new ArrayList<>();
+                for (int i = 0; i < menuPhoto.getAdvertisePhotoArrayList().size(); i++) {
+                    AdvertisePhoto advertisePhoto = new AdvertisePhoto();
+                    advertisePhoto.setHinhDaiDien(menuPhoto.getAdvertisePhotoArrayList().get(i).getHinhDaiDien());
+                    advertisePhoto.setId(menuPhoto.getAdvertisePhotoArrayList().get(i).getId());
+                    advertisePhotos.add(advertisePhoto);
+                }
+                menuMain.setAdvertiseMenuMains(advertisePhotos);
+                mainArrayList.add(menuMain);
                 break;
 
             case SupportKeyList.Products_Url:
-//                for (int i = 0; i < menuPhoto.getFashionTypeArrayList().size(); i++) {
-//                    menuMain = new MenuMain();
-//                    menuMain.setFlag(SupportKeyList.Products);
-//                    menuMain.setUrl(menuPhoto.getFashionTypeArrayList().get(i).getLinkHinh());
-//                    menuMain.setId(menuPhoto.getFashionTypeArrayList().get(i).getLoaiThoiTrang());
-//                    menuMain.setName(menuPhoto.getFashionTypeArrayList().get(i).getTen());
-//                    mainArrayList.add(menuMain);
-//                }
+                for (int i = 0; i < menuPhoto.getFashionTypeArrayList().size(); i++) {
+                    menuMain = new MenuMain();
+                    menuMain.setFlag(Integer.parseInt(key));
+                    menuMain.setUrl(menuPhoto.getFashionTypeArrayList().get(i).getLinkHinh());
+                    menuMain.setId(menuPhoto.getFashionTypeArrayList().get(i).getLoaiThoiTrang());
+                    menuMain.setName(menuPhoto.getFashionTypeArrayList().get(i).getTen());
+                    mainArrayList.add(menuMain);
+                }
 
                 break;
             case SupportKeyList.NewProduct_Url:
-//                for (int i = 0; i < menuPhoto.getBannerPhotoArrayList().size(); i++) {
-//                    menuMain = new MenuMain();
-//                    menuMain.setFlag(SupportKeyList.Banner);
-//                    menuMain.setUrl(menuPhoto.getBannerPhotoArrayList().get(i).getLinkAnh());
-//                    menuMain.setId(String.valueOf(menuPhoto.getBannerPhotoArrayList().get(i).getId()));
-//                    menuMain.setType(menuPhoto.getBannerPhotoArrayList().get(i).getLoaiBanner());
-//                    mainArrayList.add(menuMain);
-//                }
-//
-//                // sau khi nhận dư iệu của 3 loại banner hoàn tất trong listView ManiMenu
-//                finishLoadData(true);
+                menuMain = new MenuMain();
+                ArrayList<SanPham> sanPhamArrayList = new ArrayList<>();
+                for (int i = 0; i < menuPhoto.getSanPhamArrayList().size(); i++) {
+                    SanPham sanPham = new SanPham();
+                    sanPham.setIdSanPham(menuPhoto.getSanPhamArrayList().get(i).getIdSanPham());
+                    sanPham.setTenSanPham(menuPhoto.getSanPhamArrayList().get(i).getTenSanPham());
+                    sanPham.setNgayTao(menuPhoto.getSanPhamArrayList().get(i).getNgayTao());
+                    sanPham.setGiaSanPham(menuPhoto.getSanPhamArrayList().get(i).getGiaSanPham());
+                    sanPham.setGiamGia(menuPhoto.getSanPhamArrayList().get(i).getGiamGia());
+                    sanPham.setChiTietSanPham(menuPhoto.getSanPhamArrayList().get(i).getChiTietSanPham());
+                    sanPham.setHinhSanPham(menuPhoto.getSanPhamArrayList().get(i).getHinhSanPham());
+                    sanPham.setMauSanPham(menuPhoto.getSanPhamArrayList().get(i).getMauSanPham());
+                    sanPham.setSize(menuPhoto.getSanPhamArrayList().get(i).getSize());
+//                    sanPham.getDanhMucHangId(menuPhoto.getSanPhamArrayList().get(i).getDanhMucHangId());
+                    sanPham.setLoaiSanPham(menuPhoto.getSanPhamArrayList().get(i).getLoaiSanPham());
+                    sanPham.setDescription(menuPhoto.getSanPhamArrayList().get(i).getDescription());
 
+                    sanPhamArrayList.add(sanPham);
+                }
+                menuMain.setFlag(Integer.parseInt(key));
+                menuMain.setSanPhamArrayList(sanPhamArrayList);
+                mainArrayList.add(menuMain);
                 break;
-            case SupportKeyList.Banner_Url:
-//                for (int i = 0; i < menuPhoto.getBannerPhotoArrayList().size(); i++) {
-//                    menuMain = new MenuMain();
-//                    menuMain.setFlag(SupportKeyList.Banner);
-//                    menuMain.setUrl(menuPhoto.getBannerPhotoArrayList().get(i).getLinkAnh());
-//                    menuMain.setId(String.valueOf(menuPhoto.getBannerPhotoArrayList().get(i).getId()));
-//                    menuMain.setType(menuPhoto.getBannerPhotoArrayList().get(i).getLoaiBanner());
-//                    mainArrayList.add(menuMain);
-//                }
-//
-//                // sau khi nhận dư iệu của 3 loại banner hoàn tất trong listView ManiMenu
-//                finishLoadData(true);
 
-                break;
             default:
+                for (int i = 0; i < menuPhoto.getBannerPhotoArrayList().size(); i++) {
+                    menuMain = new MenuMain();
+                    menuMain.setFlag(Integer.parseInt(key));
+                    menuMain.setUrl(menuPhoto.getBannerPhotoArrayList().get(i).getLinkAnh());
+                    menuMain.setId(String.valueOf(menuPhoto.getBannerPhotoArrayList().get(i).getId()));
+                    menuMain.setType(menuPhoto.getBannerPhotoArrayList().get(i).getLoaiBanner());
+                    if (menuPhoto.getBannerPhotoArrayList().get(i).getLoaiTapChi() != null){
+                        menuMain.setMagazineType(menuPhoto.getBannerPhotoArrayList().get(i).getLoaiTapChi());
+                        menuMain.setName(menuPhoto.getBannerPhotoArrayList().get(i).getName());
+                    }
+                    mainArrayList.add(menuMain);
+                }
+
+                // sau khi nhận dư iệu của 4 loại banner hoàn tất trong listView ManiMenu
+                finishLoadData(true);
                 break;
         }
     }

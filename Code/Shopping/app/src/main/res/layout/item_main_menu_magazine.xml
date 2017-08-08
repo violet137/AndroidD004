@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:layout_marginTop="@dimen/btnDiviver_1px"
     android:layout_height="wrap_content"
+    android:paddingBottom="@dimen/textView_pandding_left_15dp"
     android:background="#d0000000"
     android:orientation="vertical">
 
@@ -63,7 +65,7 @@
         android:scaleType="centerCrop" />
 
     <TextView
-        android:id="@+id/tvType_item_main_menu"
+        android:id="@+id/tvTypeMagazine_item_main_menu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
@@ -74,10 +76,14 @@
     <TextView
         android:id="@+id/tvNameMagzine_item_main_menu"
         android:gravity="center"
-        android:textSize="@dimen/layout_margin_20dp"
+        android:textSize="@dimen/text_size_20dp"
+        android:maxLines="2"
+        android:paddingLeft="@dimen/layout_margin_20dp"
+        android:paddingRight="@dimen/layout_margin_20dp"
         android:textColor="@color/cardview_light_background"
         android:typeface="serif"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:ellipsize="end"
         android:text="TextView" />
 </LinearLayout>

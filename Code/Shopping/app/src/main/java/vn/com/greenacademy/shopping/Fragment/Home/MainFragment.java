@@ -1,20 +1,21 @@
-package vn.com.greenacademy.shopping.Fragment.Main;
+package vn.com.greenacademy.shopping.Fragment.Home;
 
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ListView;
 
 import java.util.ArrayList;
 
-import vn.com.greenacademy.shopping.Handle.HandleData.MainMenuHandler;
+import vn.com.greenacademy.shopping.Handle.HandleData.Home.ClickListenerHomeItem;
+import vn.com.greenacademy.shopping.Handle.HandleData.Home.MainMenuHandler;
 import vn.com.greenacademy.shopping.Interface.ListMainMenuCallBack;
 import vn.com.greenacademy.shopping.MainActivity;
-import vn.com.greenacademy.shopping.Model.MenuMain;
+import vn.com.greenacademy.shopping.Model.Home.MenuMain;
 import vn.com.greenacademy.shopping.R;
 import vn.com.greenacademy.shopping.Util.Ui.BaseFragment;
 
@@ -36,6 +37,8 @@ public class MainFragment extends Fragment {
         // MainFragment ko sử dụng tvTenMuc ngoai MainActivity
         MainActivity.tvTenMuc.setVisibility(View.GONE);
 
+        ClickListenerHomeItem.Click(getActivity());
+
 //        // Inflate the layout for this fragment
 //        View view = inflater.inflate(R.layout.fragment_main, container, false);
 //
@@ -45,7 +48,9 @@ public class MainFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_menu_home, container, false);
 
-        RecyclerView rvMenu = (RecyclerView) view.findViewById(R.id.rvMenu_MenuHome_fragment);
+        final RecyclerView rvMenu = (RecyclerView) view.findViewById(R.id.rvMenu_MenuHome_fragment);
+        rvMenu.setLayoutManager(new GridLayoutManager(getActivity(), 1));
+
 
         //Xử lý sự kiện
         mainMenuHandler = new MainMenuHandler(getActivity(), new BaseFragment(getActivity().getSupportFragmentManager()));
@@ -59,7 +64,7 @@ public class MainFragment extends Fragment {
             public void callBack(ArrayList<MenuMain> menuMainArrayList) {
 ////                 gọi hàm Adapter và setAdapter cho lít view
 //                lv_menu_main.setAdapter(mainMenuHandler.getAdapter(menuMainArrayList));
-
+        rvMenu.setAdapter(mainMenuHandler.getAdapter(menuMainArrayList));
 
             }
         };

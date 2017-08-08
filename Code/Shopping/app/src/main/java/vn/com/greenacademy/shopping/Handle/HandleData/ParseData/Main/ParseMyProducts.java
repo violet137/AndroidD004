@@ -6,8 +6,8 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-import vn.com.greenacademy.shopping.Model.FashionType;
-import vn.com.greenacademy.shopping.Model.MenuPhoto;
+import vn.com.greenacademy.shopping.Model.Home.FashionType;
+import vn.com.greenacademy.shopping.Model.Home.MenuPhoto;
 
 /**
  * Created by ADMIN on 8/3/2017.

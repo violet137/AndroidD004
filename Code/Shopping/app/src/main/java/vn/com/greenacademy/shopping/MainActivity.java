@@ -1,7 +1,6 @@
 package vn.com.greenacademy.shopping;
 
 import android.content.pm.PackageManager;
-import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -22,7 +21,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import vn.com.greenacademy.shopping.Fragment.Main.MainFragment;
+import vn.com.greenacademy.shopping.Fragment.Home.MainFragment;
 import vn.com.greenacademy.shopping.Fragment.Main.MyShopping.GioHangFragment;
 import vn.com.greenacademy.shopping.Fragment.Main.MyShopping.TaiKhoan.DangNhapFragment;
 import vn.com.greenacademy.shopping.Fragment.SplashScreenFragment;
