@@ -15,7 +15,7 @@ import android.view.ViewGroup;
 
 import android.Manifest;
 import vn.com.greenacademy.shopping.Util.Ui.BaseFragment;
-import vn.com.greenacademy.shopping.Fragment.Main.MainFragment;
+import vn.com.greenacademy.shopping.Fragment.Home.MainFragment;
 import vn.com.greenacademy.shopping.R;
 import vn.com.greenacademy.shopping.Util.SupportKeyList;
 

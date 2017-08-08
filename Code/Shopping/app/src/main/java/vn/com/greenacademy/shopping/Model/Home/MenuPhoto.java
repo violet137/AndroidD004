@@ -1,6 +1,11 @@
-package vn.com.greenacademy.shopping.Model;
+package vn.com.greenacademy.shopping.Model.Home;
 
 import java.util.ArrayList;
+
+import vn.com.greenacademy.shopping.Model.Home.AdvertisePhoto;
+import vn.com.greenacademy.shopping.Model.Home.BannerPhoto;
+import vn.com.greenacademy.shopping.Model.Home.FashionType;
+import vn.com.greenacademy.shopping.Model.ThongTinSanPham.SanPham;
 
 /**
  * Created by ADMIN on 7/18/2017.
@@ -10,8 +15,17 @@ public class MenuPhoto {
     ArrayList<FashionType> fashionTypeArrayList;
     ArrayList<AdvertisePhoto> advertisePhotoArrayList;
     ArrayList<BannerPhoto> bannerPhotoArrayList;
+    ArrayList<SanPham> sanPhamArrayList;
     int Status;
     String Description;
+
+    public ArrayList<SanPham> getSanPhamArrayList() {
+        return sanPhamArrayList;
+    }
+
+    public void setSanPhamArrayList(ArrayList<SanPham> sanPhamArrayList) {
+        this.sanPhamArrayList = sanPhamArrayList;
+    }
 
     public ArrayList<BannerPhoto> getBannerPhotoArrayList() {
         return bannerPhotoArrayList;

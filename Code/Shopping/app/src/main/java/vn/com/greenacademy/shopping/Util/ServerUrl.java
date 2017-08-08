@@ -14,11 +14,13 @@ public class ServerUrl {
     //Data
     public static final String HomeUrl = ServerLink + "api/Home/";
     public static final String StoreUrl = ServerLink + "api/CuaHang/";
+    public static final String ProductUrl = ServerLink + "api/SanPham/";
     public static final String MagazineUrl = ServerLink + "api/TapChi/";
     public static final String XuHuongThoiTrangUrl = ServerLink + "api/XuHuongTtrang/XuHuongTtrangById?idXuHuong=";
 
 
     public static final String UrlDanhSachThoiTrang = HomeUrl + "DanhSachThoiTrang";
+    public static final String UrlDanhSachSPMoi = ProductUrl + "SanPhamMoi?soLuong=";
     public static final String UrlDanhSachKhuyenMai = HomeUrl + "KhuyenMai";
     public static final String UrlDanhBannerHome = HomeUrl + "BannerHome";
     public static final String UrlDanhSachStore = StoreUrl + "DanhSachCuaHang";

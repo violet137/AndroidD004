@@ -2,6 +2,8 @@ package vn.com.greenacademy.shopping.Model;
 
 import java.util.ArrayList;
 
+import vn.com.greenacademy.shopping.Model.Home.FashionType;
+
 /**
  * Created by ADMIN on 7/27/2017.
  */

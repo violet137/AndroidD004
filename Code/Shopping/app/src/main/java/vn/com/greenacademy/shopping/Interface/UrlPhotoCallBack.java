@@ -1,6 +1,6 @@
 package vn.com.greenacademy.shopping.Interface;
 
-import vn.com.greenacademy.shopping.Model.MenuPhoto;
+import vn.com.greenacademy.shopping.Model.Home.MenuPhoto;
 
 /**
  * Created by ADMIN on 7/18/2017.

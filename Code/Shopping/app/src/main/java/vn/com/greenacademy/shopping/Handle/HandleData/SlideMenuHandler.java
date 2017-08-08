@@ -3,19 +3,17 @@ package vn.com.greenacademy.shopping.Handle.HandleData;
 import android.app.Activity;
 import android.content.res.TypedArray;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.ListView;
 
 import java.util.ArrayList;
 
 import vn.com.greenacademy.shopping.Fragment.Magazine.MagazineFragment;
 import vn.com.greenacademy.shopping.Fragment.Main.DanhMucSanPham.DanhMucSPFragment;
-import vn.com.greenacademy.shopping.Fragment.Main.MainFragment;
+import vn.com.greenacademy.shopping.Fragment.Home.MainFragment;
 import vn.com.greenacademy.shopping.Fragment.Main.MyShopping.GioHangFragment;
 import vn.com.greenacademy.shopping.Fragment.Sale.SaleFragment;
 import vn.com.greenacademy.shopping.Fragment.Store.FindStoreFragment;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.AdapterSlideMenu;
 import vn.com.greenacademy.shopping.Fragment.Main.MyShopping.MyShoppingFragment;
-import vn.com.greenacademy.shopping.Model.ProductsPhoto;
 import vn.com.greenacademy.shopping.Model.SlideMenu;
 import vn.com.greenacademy.shopping.R;
 import vn.com.greenacademy.shopping.Util.SupportKeyList;

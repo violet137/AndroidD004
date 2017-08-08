@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import vn.com.greenacademy.shopping.Fragment.Magazine.MagazineFragment;
-import vn.com.greenacademy.shopping.Fragment.Main.MainFragment;
 import vn.com.greenacademy.shopping.Fragment.Main.MyShopping.TaiKhoan.DangKyFragment;
 import vn.com.greenacademy.shopping.Fragment.Main.MyShopping.TaiKhoan.DangNhapFragment;
 import vn.com.greenacademy.shopping.R;

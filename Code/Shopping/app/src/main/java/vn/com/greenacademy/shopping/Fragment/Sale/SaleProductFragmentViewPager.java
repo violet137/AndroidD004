@@ -16,6 +16,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import vn.com.greenacademy.shopping.Handle.HandleData.ImageLoad;
+import vn.com.greenacademy.shopping.Handle.HandleData.SanPhamHandler;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.Sale.AdapterRecyclerColorProduct;
 import vn.com.greenacademy.shopping.Model.ThongTinSanPham.SanPham;
 import vn.com.greenacademy.shopping.R;
@@ -24,11 +25,11 @@ import vn.com.greenacademy.shopping.Util.SupportKeyList;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class SaleProductFragment extends Fragment implements View.OnClickListener {
+public class SaleProductFragmentViewPager extends Fragment implements View.OnClickListener {
 
     ArrayList<SanPham> sanPhamArrayList;
     int positionViewPager;
-    public SaleProductFragment(ArrayList<SanPham> sanPhamArrayList, int positionViewPager) {
+    public SaleProductFragmentViewPager(ArrayList<SanPham> sanPhamArrayList, int positionViewPager) {
         // Required empty public constructor
         if (positionViewPager == 0){
             this.positionViewPager = positionViewPager;
@@ -77,9 +78,10 @@ public class SaleProductFragment extends Fragment implements View.OnClickListene
         ImageLoad imageLoad = new ImageLoad(getActivity());
         imageLoad.load(sanPhamArrayList.get(position).getHinhDaiDien(), imageView);
 
-        textView.setText(String.valueOf(sanPhamArrayList.get(position).getGiamGia()));
+        textView.setText(SanPhamHandler.chuyenGia(sanPhamArrayList.get(position).getGiamGia()));
 
-        recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), sanPhamArrayList.get(position).getMauSanPham().length> SupportKeyList.SoMauHienThiToiDa ? SupportKeyList.SoMauHienThiToiDa + 1 : sanPhamArrayList.get(position).getMauSanPham().length));
+        recyclerView.setLayoutManager(new GridLayoutManager(getActivity(),
+                sanPhamArrayList.get(position).getMauSanPham().length> SupportKeyList.SoMauHienThiToiDa ? SupportKeyList.SoMauHienThiToiDa + 1 : sanPhamArrayList.get(position).getMauSanPham().length));
 
         AdapterRecyclerColorProduct adapterRecyclerColorProduct = new AdapterRecyclerColorProduct(
                 getContext(), sanPhamArrayList.get(position).getMauSanPham());

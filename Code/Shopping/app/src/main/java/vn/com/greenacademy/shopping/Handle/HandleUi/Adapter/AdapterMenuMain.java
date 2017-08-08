@@ -14,10 +14,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import vn.com.greenacademy.shopping.Handle.HandleData.ImageLoad;
-import vn.com.greenacademy.shopping.Model.AdvertisePhoto;
-import vn.com.greenacademy.shopping.Model.BannerPhoto;
-import vn.com.greenacademy.shopping.Model.MenuMain;
-import vn.com.greenacademy.shopping.Model.ProductsPhoto;
+import vn.com.greenacademy.shopping.Model.Home.AdvertisePhoto;
+import vn.com.greenacademy.shopping.Model.Home.BannerPhoto;
+import vn.com.greenacademy.shopping.Model.Home.MenuMain;
+import vn.com.greenacademy.shopping.Model.Home.ProductsPhoto;
 import vn.com.greenacademy.shopping.R;
 import vn.com.greenacademy.shopping.Util.SupportKeyList;
 
@@ -91,7 +91,7 @@ public class AdapterMenuMain extends ArrayAdapter {
             default:
                 switch (menuMainArrayList.get(position).getFlag()){
                     // set du lieu cho loại item san pham
-                    case SupportKeyList.Products:
+                    case SupportKeyList.Products_Url:
                         convertView.findViewById(R.id.constrainLayout_menu_main).setVisibility(View.VISIBLE);
 
                         ImageView imageViewProducts = (ImageView) convertView.findViewById(R.id.ivMenuType_menu_main);
