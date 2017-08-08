@@ -12,11 +12,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/description_xu_huong_thoi_trang_margin"
+        android:ellipsize="end"
         android:gravity="center"
         android:maxLines="2"
-        android:ellipsize="end"
-        android:text="Description"
-        android:typeface="monospace"
+        android:text="Test Description"
+        android:textSize="@dimen/text_size"
         android:textColor="@color/colorTextDark"/>
 
     <!-- Hình set đồ -->

@@ -67,7 +67,7 @@
     <!-- Xu hướng thời trang -->
     <dimen name="banner_height">240dp</dimen>
     <dimen name="xu_huong_thoi_trang_horizontal_padding">15dp</dimen>
-    <dimen name="description_xu_huong_thoi_trang_margin">15dp</dimen>
+    <dimen name="description_xu_huong_thoi_trang_margin">20dp</dimen>
     <dimen name="xu_huong_thoi_trang_vertical_margin">5dp</dimen>
     <dimen name="item_list_set_do_margin">20dp</dimen>
     <dimen name="item_list_set_do_image_height">300dp</dimen>
