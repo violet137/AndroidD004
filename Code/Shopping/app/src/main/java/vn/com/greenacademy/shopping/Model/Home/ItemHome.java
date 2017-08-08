@@ -7,6 +7,15 @@ package vn.com.greenacademy.shopping.Model.Home;
 public class ItemHome {
     int flagItemHome;
     String id;
+    Object object;
+
+    public Object getObject() {
+        return object;
+    }
+
+    public void setObject(Object object) {
+        this.object = object;
+    }
 
     public int getFlagItemHome() {
         return flagItemHome;
