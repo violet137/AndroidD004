@@ -5,8 +5,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 import vn.com.greenacademy.shopping.Fragment.Magazine.MagazineFragment;
+import vn.com.greenacademy.shopping.Fragment.Main.SanPham.ThongTinSanPhamFragment;
+import vn.com.greenacademy.shopping.Fragment.Main.XuHuongThoiTrang.XuHuongThoiTrangFragment;
 import vn.com.greenacademy.shopping.Model.Home.ItemHome;
+import vn.com.greenacademy.shopping.Model.ThongTinSanPham.SanPham;
 import vn.com.greenacademy.shopping.Util.SupportKeyList;
 import vn.com.greenacademy.shopping.Util.Ui.BaseFragment;
 
@@ -39,6 +44,7 @@ public class ClickListenerHomeItem {
 
                     case SupportKeyList.ClickHome_Fashion:
                         Toast.makeText(activity, itemHome.getId(), Toast.LENGTH_SHORT).show();
+                        baseFragment.ChuyenFragment(new XuHuongThoiTrangFragment(Long.parseLong(itemHome.getId())), SupportKeyList.TAG_THONG_TIN_SAN_PHAM, true);
                         break;
 
                     case SupportKeyList.ClickHome_Magazine:
