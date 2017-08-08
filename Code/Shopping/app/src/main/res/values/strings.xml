@@ -95,9 +95,10 @@
     <!-- Xu hướng thời trang -->
     <string name="xem_san_pham">XEM CÁC SẢN PHẨM</string>
 
-    <!-- Sản phẩm -->
+    <!-- Thông tin sản phẩm -->
     <string name="description_san_pham">MÔ TẢ</string>
     <string name="details">CHI TIẾT</string>
+    <string name="chon_size">Chọn\nSize</string>
 
     <!-- Fragment Dang Ky -->
     <string name="email_fragment_DangKy">Email(username):*</string>

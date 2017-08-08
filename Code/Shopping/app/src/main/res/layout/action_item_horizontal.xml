@@ -10,21 +10,22 @@
 
     <ImageView
         android:id="@+id/iv_icon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_centerHorizontal="true" />
 
     <TextView
         android:id="@+id/tv_title"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="50dp"
+        android:layout_height="40dp"
         android:layout_below="@+id/iv_icon"
         android:layout_centerHorizontal="true"
-        android:gravity="center_horizontal"
+        android:gravity="center"
         android:paddingLeft="5dip"
         android:paddingRight="5dip"
+        android:background="@drawable/shape_oval_white"
         android:text="Chart"
-        android:textColor="#fff"
+        android:textColor="@color/colorTextDark"
         android:textSize="16sp" />
 
 </RelativeLayout>

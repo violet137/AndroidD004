@@ -16,6 +16,7 @@ import android.widget.VideoView;
 import java.util.ArrayList;
 
 import vn.com.greenacademy.shopping.Handle.HandleData.ImageLoad;
+import vn.com.greenacademy.shopping.Handle.HandleData.SanPhamHandler;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.SanPham.ListSanPhamAdapter;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.XuHuongThoiTrang.ListSetDoAdapter;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Dialog.LoadingDialog;
@@ -79,6 +80,7 @@ public class XuHuongThoiTrangFragment extends Fragment implements DataCallBack, 
 
     private void LoadUI() {
         ImageLoad imageLoad = new ImageLoad(getActivity());
+        SanPhamHandler sanPhamHandler = new SanPhamHandler(getActivity());
         if(!xuHuongThoiTrang.isVideo()) {
             imageLoad.load(xuHuongThoiTrang.getHinhDaiDien(), vBanner);
         }
