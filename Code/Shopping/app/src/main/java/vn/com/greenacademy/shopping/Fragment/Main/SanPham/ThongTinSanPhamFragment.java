@@ -274,6 +274,7 @@ public class ThongTinSanPhamFragment extends Fragment implements View.OnClickLis
         btnInfo.setVisibility(View.GONE);
         SanPhamPagerFragment.tvGia.setVisibility(View.GONE);
         sanPhamPagerAdapter.notifyDataSetChanged();
+        pagerSanPham.invalidate();
     }
 
     public static void showInfo() {
