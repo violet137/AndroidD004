@@ -7,10 +7,14 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import vn.com.greenacademy.shopping.Fragment.Magazine.MagazineDetailFragment;
 import vn.com.greenacademy.shopping.Fragment.Magazine.MagazineFragment;
+import vn.com.greenacademy.shopping.Fragment.Main.DanhMucSanPham.DanhMucSPFragment;
 import vn.com.greenacademy.shopping.Fragment.Main.SanPham.ThongTinSanPhamFragment;
 import vn.com.greenacademy.shopping.Fragment.Main.XuHuongThoiTrang.XuHuongThoiTrangFragment;
 import vn.com.greenacademy.shopping.Model.Home.ItemHome;
+import vn.com.greenacademy.shopping.Model.Home.ProductsPhoto;
+import vn.com.greenacademy.shopping.Model.Item_recyclerView_magazine;
 import vn.com.greenacademy.shopping.Model.ThongTinSanPham.SanPham;
 import vn.com.greenacademy.shopping.Util.SupportKeyList;
 import vn.com.greenacademy.shopping.Util.Ui.BaseFragment;
@@ -35,7 +39,11 @@ public class ClickListenerHomeItem {
                         break;
 
                     case SupportKeyList.ClickHome_Products:
-                        Toast.makeText(activity, itemHome.getId(), Toast.LENGTH_SHORT).show();
+                        if (itemHome.getId().equals("TapChi")){
+                            baseFragment.ChuyenFragment(new MagazineFragment(), SupportKeyList.TAG_FRAGMENT_MAGAZINE, true);
+                        }else {
+                            baseFragment.ChuyenFragment(new DanhMucSPFragment(itemHome.getId()), SupportKeyList.TAG_DANH_MUC_SAN_PHAM, true);
+                        }
                         break;
 
                     case SupportKeyList.ClickHome_NewProduct:
@@ -48,12 +56,11 @@ public class ClickListenerHomeItem {
                         break;
 
                     case SupportKeyList.ClickHome_Magazine:
-                        Toast.makeText(activity, itemHome.getId(), Toast.LENGTH_SHORT).show();
+                        baseFragment.ChuyenFragment(new MagazineDetailFragment(itemHome.getId()), SupportKeyList.TAG_FRAGMENT_MAGAZINE_DETAIL, true);
                         break;
 
                     case SupportKeyList.ClickHome_Button_Magazine:
-                        baseFragment.ChuyenFragment(
-                                new MagazineFragment(), SupportKeyList.TAG_FRAGMENT_MAGAZINE, true);
+                        baseFragment.ChuyenFragment(new MagazineFragment(), SupportKeyList.TAG_FRAGMENT_MAGAZINE, true);
                         break;
 
                     default:

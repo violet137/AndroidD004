@@ -36,13 +36,6 @@ public class AdapterHomeRecyclerView extends RecyclerView.Adapter<RecyclerView.V
     // lay vi tri item dau tiên cuar magazine
     int firstPositionMagazine = -1;
 
-    public AdapterHomeRecyclerView(Activity activity, View.OnClickListener onClickListener,
-                                   ArrayList<MenuMain> menuMainArrayList) {
-        this.activity = activity;
-        this.onClickListener=onClickListener;
-        this.menuMainArrayList=menuMainArrayList;
-    }
-
     public AdapterHomeRecyclerView(Activity activity, ArrayList<MenuMain> menuMainArrayList) {
         this.activity = activity;
         this.onClickListener=onClickListener;

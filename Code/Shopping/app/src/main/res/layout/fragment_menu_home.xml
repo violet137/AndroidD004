@@ -2,12 +2,60 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="vn.com.greenacademy.shopping.Fragment.Main.Menu.MenuHomeFragment">
+    tools:context="vn.com.greenacademy.shopping.Fragment.Home.MainFragment">
 
     <!-- TODO: Update blank fragment layout -->
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rvMenu_MenuHome_fragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <include
+                layout="@layout/item_main_menu_advertise"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </include>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rvProduct_menuHome"
+                android:layout_width="match_parent"
+                android:layout_marginTop="@dimen/layout_margin_10dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent" />
+
+            <include
+                layout="@layout/item_main_menu_new_product"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </include>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rvFashion_menuHome"
+                android:layout_width="match_parent"
+                android:layout_marginTop="@dimen/layout_margin_10dp"
+                android:layout_weight="1"
+                android:layout_height="match_parent" />
+
+            <android.support.v7.widget.RecyclerView
+                android:layout_weight="1"
+                android:id="@+id/rvMagazine_menuHome"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+        </LinearLayout>
+    </ScrollView>
+
 </FrameLayout>

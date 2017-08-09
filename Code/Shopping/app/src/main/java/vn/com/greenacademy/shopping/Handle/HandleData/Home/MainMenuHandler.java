@@ -1,8 +1,13 @@
 package vn.com.greenacademy.shopping.Handle.HandleData.Home;
 
 import android.app.Activity;
+import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
+import android.widget.ViewFlipper;
 
 import java.util.ArrayList;
 
@@ -10,14 +15,20 @@ import vn.com.greenacademy.shopping.Fragment.Magazine.MagazineFragment;
 import vn.com.greenacademy.shopping.Fragment.Main.DanhMucSanPham.DanhMucSPFragment;
 import vn.com.greenacademy.shopping.Fragment.Home.MainFragment;
 import vn.com.greenacademy.shopping.Fragment.Main.XuHuongThoiTrang.XuHuongThoiTrangFragment;
+import vn.com.greenacademy.shopping.Handle.HandleData.ImageLoad;
 import vn.com.greenacademy.shopping.Handle.HandleData.ParseData.Main.ParseNewProductList;
 import vn.com.greenacademy.shopping.Handle.HandleData.ParseData.Main.ParseAdvertise;
 import vn.com.greenacademy.shopping.Handle.HandleData.ParseData.Main.ParseBanner;
 import vn.com.greenacademy.shopping.Handle.HandleData.ParseData.Main.ParseMyProducts;
+import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.Home.AdapterHomeRVFashion;
+import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.Home.AdapterHomeRVMagazine;
+import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.Home.AdapterHomeRVProducts;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.Home.AdapterHomeRecyclerView;
+import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.Home.AdapterNewProductViewPager;
 import vn.com.greenacademy.shopping.Interface.ServerCallBack;
 import vn.com.greenacademy.shopping.Model.Home.AdvertisePhoto;
 import vn.com.greenacademy.shopping.Model.Home.BannerPhoto;
+import vn.com.greenacademy.shopping.Model.Home.ItemHome;
 import vn.com.greenacademy.shopping.Model.Home.MenuMain;
 import vn.com.greenacademy.shopping.Model.Home.MenuPhoto;
 import vn.com.greenacademy.shopping.Model.Home.ProductsPhoto;
@@ -115,32 +126,63 @@ public class MainMenuHandler extends LoadDataMainMenuHandler{
         AdapterHomeRecyclerView adapter = new AdapterHomeRecyclerView(activity, menuMainArrayList);
         return adapter;
     }
+
+    public void setDataAdvertise(ArrayList<MenuMain> menuMainArrayList, ViewFlipper vfAdvertise) {
+        ImageLoad imageLoad = new ImageLoad(activity);
+        for (int i = 0; i < menuMainArrayList.get(0).getAdvertiseMenuMains().size() ; i++) {
+            // chu y neu ko tai hinh dc thi kiem tra lai mang
+            ImageView image = new ImageView(activity);
+
+            ItemHome itemHome = new ItemHome();
+            itemHome.setFlagItemHome(SupportKeyList.ClickHome_Advertise);
+            itemHome.setId(String.valueOf(menuMainArrayList.get(0).getAdvertiseMenuMains().get(i).getId()));
+
+            image.setTag(itemHome);
+            image.setOnClickListener(ClickListenerHomeItem.onClickListener);
+
+            image.setScaleType(ImageView.ScaleType.CENTER_CROP);
+
+            // dùng hàm load ảnh của imageLoad để tải anh theo link web và set vào imageView
+            imageLoad.load(menuMainArrayList.get(0).getAdvertiseMenuMains().get(i).getHinhDaiDien(), image);
+            vfAdvertise.addView(image);
+        }
+        // bắt đầu chuyển imageView
+        vfAdvertise.startFlipping();
+    }
+
+    public void setAdapter(ArrayList<MenuMain> menuMainArrayList, int flag, RecyclerView recycler) {
+        switch (flag){
+            case SupportKeyList.ClickHome_Products:
+                AdapterHomeRVProducts adapterHomeRVProducts = new AdapterHomeRVProducts(activity, menuMainArrayList);
+                recycler.setAdapter(adapterHomeRVProducts);
+                break;
+            case SupportKeyList.ClickHome_Fashion:
+                AdapterHomeRVFashion adapterHomeRVFashion = new AdapterHomeRVFashion(activity, menuMainArrayList);
+                recycler.setAdapter(adapterHomeRVFashion);
+                break;
+            case SupportKeyList.ClickHome_Magazine:
+                AdapterHomeRVMagazine adapterHomeRVMagazine = new AdapterHomeRVMagazine(activity, menuMainArrayList);
+                recycler.setAdapter(adapterHomeRVMagazine);
+                break;
+        }
+    }
+
+    public void setDataNewProduct(ArrayList<MenuMain> menuMainArrayList, ViewPager vpNewProduct) {
+        AdapterNewProductViewPager adapterNewProductViewPager =
+                new AdapterNewProductViewPager(((AppCompatActivity) activity).getSupportFragmentManager(),
+                        activity, menuMainArrayList.get(0).getSanPhamArrayList());
+
+        vpNewProduct.setAdapter(adapterNewProductViewPager);
+    }
 }
 
 class LoadDataMainMenuHandler implements ServerCallBack{
 
     // mainArrayList chứa cái đối tượng MenuMain server trả về
-    ArrayList<MenuMain> mainArrayList = new ArrayList<>();
+    ArrayList<MenuMain> mainArrayList ;
 
     // getServerData đối tượng gọi lên server
     GetServerData getServerData;
-//    // tai du lieu tu file xml cua may vao doi tuong array de dua vao adapter
-//    public void getDataServer() {
-//        //sử dụng kiểu trả về 2 đối tượng của hàm getServerData
-//
-//        // lấy danh sách tất cả các banner quảng cáo
-//        getServerData = new GetServerData(this);
-//        getServerData.execute(ServerUrl.UrlDanhSachKhuyenMai, String.valueOf(SupportKeyList.Advertise_Url));
-//
-//        // lấy danh sách tất cả các banner sản phẩm
-//        getServerData = new GetServerData(this);
-//        getServerData.execute(ServerUrl.UrlDanhSachThoiTrang, String.valueOf(SupportKeyList.Products_Url));
-//
-//        // lấy danh sách các banner phần xu hướng + khuyến mãi + tạp chí
-//        getServerData = new GetServerData(this);
-//        getServerData.execute(ServerUrl.UrlDanhBannerHome, String.valueOf(SupportKeyList.Banner_Url));
-//
-//    }
 
     // tai du lieu tu file xml cua may vao doi tuong array de dua vao adapter
     public void getDataServer() {
@@ -235,60 +277,13 @@ class LoadDataMainMenuHandler implements ServerCallBack{
     }
 
 
-//    // hàm nhận dữ liệu sau khi parse xong
-//    private void containerData(MenuPhoto menuPhoto, String key) {
-//        MenuMain menuMain;
-//        // đưa dữ liệu sau khi parse xong vao mainArrayList
-//        switch (Integer.parseInt(key)){
-//            case SupportKeyList.Advertise_Url:
-//                menuMain = new MenuMain();
-//                ArrayList<AdvertisePhoto> advertisePhotos = new ArrayList<>();
-//                for (int i = 0; i < menuPhoto.getAdvertisePhotoArrayList().size(); i++) {
-//                    AdvertisePhoto advertisePhoto = new AdvertisePhoto();
-//                    advertisePhoto.setHinhDaiDien(menuPhoto.getAdvertisePhotoArrayList().get(i).getHinhDaiDien());
-//                    advertisePhoto.setId(menuPhoto.getAdvertisePhotoArrayList().get(i).getId());
-//                    advertisePhotos.add(advertisePhoto);
-//                }
-//                menuMain.setAdvertiseMenuMains(advertisePhotos);
-//                mainArrayList.add(menuMain);
-//                break;
-//
-//            case SupportKeyList.Products_Url:
-//                for (int i = 0; i < menuPhoto.getFashionTypeArrayList().size(); i++) {
-//                    menuMain = new MenuMain();
-//                    menuMain.setFlag(SupportKeyList.Products);
-//                    menuMain.setUrl(menuPhoto.getFashionTypeArrayList().get(i).getLinkHinh());
-//                    menuMain.setId(menuPhoto.getFashionTypeArrayList().get(i).getLoaiThoiTrang());
-//                    menuMain.setName(menuPhoto.getFashionTypeArrayList().get(i).getTen());
-//                    mainArrayList.add(menuMain);
-//                }
-//
-//                break;
-//            case SupportKeyList.Banner_Url:
-//                for (int i = 0; i < menuPhoto.getBannerPhotoArrayList().size(); i++) {
-//                    menuMain = new MenuMain();
-//                    menuMain.setFlag(SupportKeyList.Banner);
-//                    menuMain.setUrl(menuPhoto.getBannerPhotoArrayList().get(i).getLinkAnh());
-//                    menuMain.setId(String.valueOf(menuPhoto.getBannerPhotoArrayList().get(i).getId()));
-//                    menuMain.setType(menuPhoto.getBannerPhotoArrayList().get(i).getLoaiBanner());
-//                    mainArrayList.add(menuMain);
-//                }
-//
-//                // sau khi nhận dư iệu của 3 loại banner hoàn tất trong listView ManiMenu
-//                finishLoadData(true);
-//
-//                break;
-//            default:
-//                break;
-//        }
-//    }
-
     // hàm nhận dữ liệu sau khi parse xong
     private void containerData(MenuPhoto menuPhoto, String key) {
         MenuMain menuMain;
         // đưa dữ liệu sau khi parse xong vao mainArrayList
         switch (Integer.parseInt(key)){
             case SupportKeyList.Advertise_Url:
+                mainArrayList = new ArrayList<>();
                 menuMain = new MenuMain();
                 menuMain.setFlag(Integer.parseInt(key));
                 ArrayList<AdvertisePhoto> advertisePhotos = new ArrayList<>();
@@ -300,9 +295,11 @@ class LoadDataMainMenuHandler implements ServerCallBack{
                 }
                 menuMain.setAdvertiseMenuMains(advertisePhotos);
                 mainArrayList.add(menuMain);
+                finishLoadData(SupportKeyList.ClickHome_Advertise);
                 break;
 
             case SupportKeyList.Products_Url:
+                mainArrayList = new ArrayList<>();
                 for (int i = 0; i < menuPhoto.getFashionTypeArrayList().size(); i++) {
                     menuMain = new MenuMain();
                     menuMain.setFlag(Integer.parseInt(key));
@@ -311,9 +308,10 @@ class LoadDataMainMenuHandler implements ServerCallBack{
                     menuMain.setName(menuPhoto.getFashionTypeArrayList().get(i).getTen());
                     mainArrayList.add(menuMain);
                 }
-
+                finishLoadData(SupportKeyList.ClickHome_Products);
                 break;
             case SupportKeyList.NewProduct_Url:
+                mainArrayList = new ArrayList<>();
                 menuMain = new MenuMain();
                 ArrayList<SanPham> sanPhamArrayList = new ArrayList<>();
                 for (int i = 0; i < menuPhoto.getSanPhamArrayList().size(); i++) {
@@ -336,9 +334,11 @@ class LoadDataMainMenuHandler implements ServerCallBack{
                 menuMain.setFlag(Integer.parseInt(key));
                 menuMain.setSanPhamArrayList(sanPhamArrayList);
                 mainArrayList.add(menuMain);
+                finishLoadData(SupportKeyList.ClickHome_NewProduct);
                 break;
-
             default:
+                int count =0;
+                mainArrayList = new ArrayList<>();
                 for (int i = 0; i < menuPhoto.getBannerPhotoArrayList().size(); i++) {
                     menuMain = new MenuMain();
                     menuMain.setFlag(Integer.parseInt(key));
@@ -346,23 +346,39 @@ class LoadDataMainMenuHandler implements ServerCallBack{
                     menuMain.setId(String.valueOf(menuPhoto.getBannerPhotoArrayList().get(i).getId()));
                     menuMain.setType(menuPhoto.getBannerPhotoArrayList().get(i).getLoaiBanner());
                     if (menuPhoto.getBannerPhotoArrayList().get(i).getLoaiTapChi() != null){
+                        if (count == 0){
+                            finishLoadData(SupportKeyList.ClickHome_Fashion);
+                            mainArrayList = new ArrayList<>();
+                            count = 1;
+                        }
                         menuMain.setMagazineType(menuPhoto.getBannerPhotoArrayList().get(i).getLoaiTapChi());
                         menuMain.setName(menuPhoto.getBannerPhotoArrayList().get(i).getName());
                     }
                     mainArrayList.add(menuMain);
                 }
-
-                // sau khi nhận dư iệu của 4 loại banner hoàn tất trong listView ManiMenu
-                finishLoadData(true);
+                finishLoadData(SupportKeyList.ClickHome_Magazine);
                 break;
         }
     }
 
     // dư liệu server trả về hoàn tất
-    public void finishLoadData(boolean flag){
-        if (flag){
-            // trả dư liệu hoàn tất về MainFragmnet
-            MainFragment.listMainMenuCallBack.callBack(mainArrayList);
+    public void finishLoadData(int flag){
+        switch (flag){
+            case SupportKeyList.ClickHome_Advertise:
+                MainFragment.listMainMenuCallBack.callBack(mainArrayList, flag);
+                break;
+            case SupportKeyList.ClickHome_Products:
+                MainFragment.listMainMenuCallBack.callBack(mainArrayList, flag);
+                break;
+            case SupportKeyList.ClickHome_NewProduct:
+                MainFragment.listMainMenuCallBack.callBack(mainArrayList, flag);
+                break;
+            case SupportKeyList.ClickHome_Fashion:
+                MainFragment.listMainMenuCallBack.callBack(mainArrayList, flag);
+                break;
+            case SupportKeyList.ClickHome_Magazine:
+                MainFragment.listMainMenuCallBack.callBack(mainArrayList, flag);
+                break;
         }
     }
 

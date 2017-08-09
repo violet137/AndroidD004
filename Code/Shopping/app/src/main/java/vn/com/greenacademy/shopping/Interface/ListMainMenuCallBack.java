@@ -9,5 +9,5 @@ import vn.com.greenacademy.shopping.Model.Home.MenuMain;
  */
 
 public interface ListMainMenuCallBack {
-    void callBack(ArrayList<MenuMain> menuMainArrayList);
+    void callBack(ArrayList<MenuMain> menuMainArrayList, int flag);
 }
