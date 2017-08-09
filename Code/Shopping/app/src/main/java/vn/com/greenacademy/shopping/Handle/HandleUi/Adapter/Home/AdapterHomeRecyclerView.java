@@ -30,7 +30,6 @@ import vn.com.greenacademy.shopping.Util.SupportKeyList;
 
 public class AdapterHomeRecyclerView extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
     Activity activity;
-    View.OnClickListener onClickListener;
     ArrayList<MenuMain> menuMainArrayList;
 
     // lay vi tri item dau tiên cuar magazine
@@ -38,7 +37,6 @@ public class AdapterHomeRecyclerView extends RecyclerView.Adapter<RecyclerView.V
 
     public AdapterHomeRecyclerView(Activity activity, ArrayList<MenuMain> menuMainArrayList) {
         this.activity = activity;
-        this.onClickListener=onClickListener;
         this.menuMainArrayList=menuMainArrayList;
     }
     @Override

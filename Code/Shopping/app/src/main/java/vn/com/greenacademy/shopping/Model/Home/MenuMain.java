@@ -17,7 +17,16 @@ public class MenuMain {
     String type;
     ArrayList<SanPham> sanPhamArrayList;
     String name;
+    int flagItem;
     String magazineType;
+
+    public int getFlagItem() {
+        return flagItem;
+    }
+
+    public void setFlagItem(int flagItem) {
+        this.flagItem = flagItem;
+    }
 
     public ArrayList<SanPham> getSanPhamArrayList() {
         return sanPhamArrayList;
