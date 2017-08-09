@@ -31,6 +31,7 @@ import java.util.ArrayList;
 import vn.com.greenacademy.shopping.Handle.HandleData.ImageLoad;
 import vn.com.greenacademy.shopping.Handle.HandleData.SanPhamHandler;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.SanPham.SanPhamPagerAdapter;
+import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.SanPham.SinglePageUiHandler;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Model.QuickActionItem;
 import vn.com.greenacademy.shopping.Handle.HandleUi.SanPham.QuickActionPopup;
 import vn.com.greenacademy.shopping.Model.ThongTinSanPham.SanPham;
@@ -56,7 +57,7 @@ public class ThongTinSanPhamFragment extends Fragment implements View.OnClickLis
     private QuickActionPopup quickActionPopup;
 
     private SanPhamHandler sanPhamHandler;
-    private SanPhamPagerAdapter sanPhamPagerAdapter;
+    private static SanPhamPagerAdapter sanPhamPagerAdapter;
     private ImageLoad imageLoad;
     private ArrayList<SanPham> listSanPham = new ArrayList<>();
     private SanPham sanPham;
@@ -205,7 +206,7 @@ public class ThongTinSanPhamFragment extends Fragment implements View.OnClickLis
         for (int i = 0; i < sanPham.getHinhSanPham().size(); i++) {
             if (sanPham.getHinhSanPham().get(i).getMau().equals(mauDuocChon)) {
                 for (int j = 0; j < sanPham.getHinhSanPham().get(i).getLinkHinh().length; j++) {
-                    QuickActionItem mauItem = new QuickActionItem(sanPham.getMauSanPham()[i], null, sanPham.getHinhSanPham().get(i).getLinkHinh()[j]);
+                    QuickActionItem mauItem = new QuickActionItem(sanPham.getHinhSanPham().get(i).getLinkHinh()[j], null, sanPham.getHinhSanPham().get(i).getLinkHinh()[j]);
                     quickActionPopup.addActionItem(mauItem);
                 }
                 return;
@@ -216,10 +217,17 @@ public class ThongTinSanPhamFragment extends Fragment implements View.OnClickLis
         quickActionPopup.setOnActionItemClickListener(new QuickActionPopup.OnActionItemClickListener() {
             @Override
             public void onItemClick(QuickActionPopup source, int pos, String actionId) {
-                for (int i = 0; i < sanPham.getMauSanPham().length; i++) {
-                    if (actionId.equals(sanPham.getMauSanPham()[i])) {
-                        Toast.makeText(getActivity(), sanPham.getMauSanPham()[i], Toast.LENGTH_LONG).show();
-                        btnColor.setBackgroundResource(sanPhamHandler.doiMaMau(sanPham.getMauSanPham()[i]));
+                for (int i = 0; i < sanPham.getHinhSanPham().size(); i++) {
+                    if (sanPham.getHinhSanPham().get(i).getMau().equals(mauDuocChon)) {
+                        for (int j = 0; j < sanPham.getHinhSanPham().get(i).getLinkHinh().length; j++) {
+                            if(actionId.equals(sanPham.getHinhSanPham().get(j).getLinkHinh()[j])){
+                                //Đổi hình page
+//                                Bundle bundleHinh = new Bundle();
+//                                bundleHinh.putString("HinhSanPham", sanPham.getHinhSanPham().get(j).getLinkHinh()[0]);
+//                                sanPhamPagerAdapter.updateUiSinglePage(SanPhamPagerAdapter.ACTION_DOI_HINH_SAN_PHAM, bundleHinh);
+                            }
+                        }
+                        return;
                     }
                 }
             }
@@ -262,6 +270,11 @@ public class ThongTinSanPhamFragment extends Fragment implements View.OnClickLis
                                 formatTenVaMau = new SpannableString(sanPham.getTenSanPham() + " - " + SanPhamHandler.chuyenTenMau(mauDuocChon));
                                 formatTenVaMau.setSpan(new StyleSpan(Typeface.BOLD), 0, sanPham.getTenSanPham().length(), 0);
                                 tvTenVaMau.setText(formatTenVaMau);
+
+                                //Đổi hình page
+                                Bundle bundleHinh = new Bundle();
+                                bundleHinh.putString("HinhSanPham", sanPham.getHinhSanPham().get(j).getLinkHinh()[0]);
+                                sanPhamPagerAdapter.updateUiSinglePage(SanPhamPagerAdapter.ACTION_DOI_HINH_SAN_PHAM, bundleHinh);
                                 return;
                             }
                         }
@@ -276,7 +289,7 @@ public class ThongTinSanPhamFragment extends Fragment implements View.OnClickLis
         bottomInfo.setVisibility(View.GONE);
         btnShare.setVisibility(View.GONE);
         btnInfo.setVisibility(View.GONE);
-//        sanPhamPagerAdapter.updateUiSinglePage();
+        sanPhamPagerAdapter.updateUiSinglePage(SanPhamPagerAdapter.ACTION_HIDE_GIA, null);
     }
 
     public static void showInfo() {
@@ -284,6 +297,6 @@ public class ThongTinSanPhamFragment extends Fragment implements View.OnClickLis
         bottomInfo.setVisibility(View.VISIBLE);
         btnShare.setVisibility(View.VISIBLE);
         btnInfo.setVisibility(View.VISIBLE);
-//        SanPhamPagerFragment.tvGia.setVisibility(View.VISIBLE);
+        sanPhamPagerAdapter.updateUiSinglePage(SanPhamPagerAdapter.ACTION_SHOW_GIA, null);
     }
 }
