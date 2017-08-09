@@ -2,11 +2,15 @@ package vn.com.greenacademy.shopping.Fragment.Main.SanPham;
 
 
 import android.graphics.Typeface;
+import android.graphics.drawable.Drawable;
+import android.media.Image;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.text.Html;
 import android.text.SpannableString;
+import android.text.style.RelativeSizeSpan;
 import android.text.style.StrikethroughSpan;
 import android.text.style.StyleSpan;
 import android.text.style.TextAppearanceSpan;
@@ -14,11 +18,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.vision.text.Line;
+
 import java.util.ArrayList;
 
+import vn.com.greenacademy.shopping.Handle.HandleData.ImageLoad;
 import vn.com.greenacademy.shopping.Handle.HandleData.SanPhamHandler;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.SanPham.SanPhamPagerAdapter;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Model.QuickActionItem;
@@ -33,12 +43,25 @@ import static com.facebook.FacebookSdk.getApplicationContext;
  * A simple {@link Fragment} subclass.
  */
 public class ThongTinSanPhamFragment extends Fragment implements View.OnClickListener {
-    Button btnSizeInfo;
+    private TextView tvTenVaMau;
+    private TextView tvSoLuong;
+    private Button btnSizeInfo;
+    private Button btnColor;
+    private static ImageView btnShare;
+    private static ImageView btnInfo;
+    private static LinearLayout topInfo;
+    private static LinearLayout bottomInfo;
+    private ImageView btnHinh;
+    private ViewPager pagerSanPham;
     private QuickActionPopup quickActionPopup;
 
-    private BaseFragment baseFragment;
+    private SanPhamHandler sanPhamHandler;
+    private SanPhamPagerAdapter sanPhamPagerAdapter;
+    private ImageLoad imageLoad;
     private ArrayList<SanPham> listSanPham = new ArrayList<>();
+    private SanPham sanPham;
     private int position;
+    private String mauDuocChon;
 
     public ThongTinSanPhamFragment(int position, ArrayList<SanPham> listSanPham) {
         this.listSanPham = listSanPham;
@@ -46,31 +69,43 @@ public class ThongTinSanPhamFragment extends Fragment implements View.OnClickLis
     }
 
     @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        imageLoad = new ImageLoad(getActivity());
+        sanPhamHandler = new SanPhamHandler(getActivity());
+        sanPhamPagerAdapter = new SanPhamPagerAdapter(getActivity().getSupportFragmentManager(),listSanPham);
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_thong_tin_san_pham, container, false);
-        final TextView tvTenVaMau = (TextView) root.findViewById(R.id.ten_va_mau_fragment_san_pham);
-        final TextView tvSoLuong = (TextView) root.findViewById(R.id.so_luong_fragment_san_pham);
-        ViewPager pagerSanPham = (ViewPager) root.findViewById(R.id.pager_fragment_san_pham);
+        tvTenVaMau = (TextView) root.findViewById(R.id.ten_va_mau_fragment_san_pham);
+        tvSoLuong = (TextView) root.findViewById(R.id.so_luong_fragment_san_pham);
+        pagerSanPham = (ViewPager) root.findViewById(R.id.pager_fragment_san_pham);
+        btnShare = (ImageView) root.findViewById(R.id.button_share_san_pham);
+        btnInfo = (ImageView) root.findViewById(R.id.button_info_san_pham);
         btnSizeInfo = (Button) root.findViewById(R.id.button_size_san_pham);
+        btnColor = (Button) root.findViewById(R.id.button_color_san_pham);
+        btnHinh = (ImageView) root.findViewById(R.id.button_hinh_san_pham);
+        topInfo = (LinearLayout) root.findViewById(R.id.top_info);
+        bottomInfo = (LinearLayout) root.findViewById(R.id.bottom_info);
 
-        root.findViewById(R.id.button_info_san_pham).setOnClickListener(this);
-        root.findViewById(R.id.button_share_san_pham).setOnClickListener(this);
         root.findViewById(R.id.button_san_pham_khac).setOnClickListener(this);
-        root.findViewById(R.id.button_hinh_san_pham).setOnClickListener(this);
-        root.findViewById(R.id.button_color_san_pham).setOnClickListener(this);
-        root.findViewById(R.id.button_size_san_pham).setOnClickListener(this);
         root.findViewById(R.id.button_them_san_pham).setOnClickListener(this);
+        btnInfo.setOnClickListener(this);
+        btnShare.setOnClickListener(this);
         btnSizeInfo.setOnClickListener(this);
+        btnColor.setOnClickListener(this);
+        btnHinh.setOnClickListener(this);
 
-        baseFragment = new BaseFragment(getActivity().getSupportFragmentManager());
-        pagerSanPham.setAdapter(new SanPhamPagerAdapter(getActivity().getSupportFragmentManager(),listSanPham));
+        sanPham = listSanPham.get(position);
+        pagerSanPham.setAdapter(sanPhamPagerAdapter);
         pagerSanPham.setCurrentItem(position);
 
         //Xử lý thông tin hiển thị
-        final SpannableString formatTenVaMau = new SpannableString(listSanPham.get(position).getTenSanPham() + " - " + SanPhamHandler.chuyenTenMau(listSanPham.get(position).getHinhSanPham().get(0).getMau()));
-        formatTenVaMau.setSpan(new StyleSpan(Typeface.BOLD), 0, listSanPham.get(position).getTenSanPham().length(), 0);
+        setUpUi(0);
         pagerSanPham.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -79,8 +114,8 @@ public class ThongTinSanPhamFragment extends Fragment implements View.OnClickLis
 
             @Override
             public void onPageSelected(int position) {
-                tvTenVaMau.setText(formatTenVaMau);
-                tvSoLuong.setText(String.valueOf(position + 1) + "/" + String.valueOf(listSanPham.size()));
+                sanPham = listSanPham.get(position);
+                setUpUi(position);
             }
 
             @Override
@@ -88,18 +123,16 @@ public class ThongTinSanPhamFragment extends Fragment implements View.OnClickLis
 
             }
         });
-        tvTenVaMau.setText(formatTenVaMau);
-        tvSoLuong.setText(String.valueOf(position + 1) + "/" + String.valueOf(listSanPham.size()));
 
         getActivity().supportInvalidateOptionsMenu();
         return root;
     }
-
     @Override
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.button_info_san_pham:
-                new DetailsSanPhamFragment(getActivity(), listSanPham.get(position).getDescription(), listSanPham.get(position).getChiTietSanPham()).show();
+                new DetailsSanPhamFragment(getActivity(), sanPham.getDescription(), sanPham.getChiTietSanPham()).show();
+                hideInfo();
                 break;
             case R.id.button_share_san_pham:
                 Toast.makeText(getActivity(), "Share", Toast.LENGTH_LONG).show();
@@ -108,15 +141,15 @@ public class ThongTinSanPhamFragment extends Fragment implements View.OnClickLis
                 Toast.makeText(getActivity(), "Sản phẩm khác", Toast.LENGTH_LONG).show();
                 break;
             case R.id.button_hinh_san_pham:
-                setUpQuickAction();
+                setUpQuickActionHinh();
                 quickActionPopup.show(v);
                 break;
             case R.id.button_color_san_pham:
-                setUpQuickAction();
+                setUpQuickActionColor();
                 quickActionPopup.show(v);
                 break;
             case R.id.button_size_san_pham:
-                setUpQuickAction();
+                setUpQuickActionSize();
                 quickActionPopup.show(v);
                 break;
             case R.id.button_them_san_pham:
@@ -125,37 +158,130 @@ public class ThongTinSanPhamFragment extends Fragment implements View.OnClickLis
         }
     }
 
-    public void setUpQuickAction(){
-        final int ID_VLC    = 1;
-        final int ID_MAIL   = 2;
-        final int ID_SAFARI = 3;
+    private void setUpUi(int pos) {
+        final SpannableString formatTenVaMau = new SpannableString(sanPham.getTenSanPham() + " - " + SanPhamHandler.chuyenTenMau(sanPham.getHinhSanPham().get(0).getMau()));
+        formatTenVaMau.setSpan(new StyleSpan(Typeface.BOLD), 0, sanPham.getTenSanPham().length(), 0);
+        tvTenVaMau.setText(formatTenVaMau);
+        tvSoLuong.setText(String.valueOf(pos + 1) + "/" + String.valueOf(listSanPham.size()));
+        btnColor.setBackgroundResource(sanPhamHandler.doiMaMau(sanPham.getMauSanPham()[0]));
+        for (int j = 0; j < sanPham.getHinhSanPham().size(); j++) {
+            if (sanPham.getMauSanPham()[0].equals(sanPham.getHinhSanPham().get(j).getMau())) {
+                mauDuocChon = sanPham.getMauSanPham()[0];
+                imageLoad.load(sanPham.getHinhSanPham().get(j).getLinkHinh()[0], btnHinh);
+                break;
+            }
+        }
+        btnSizeInfo.setText(getResources().getString(R.string.chon_size));
+    }
 
-        QuickActionItem mailItem    = new QuickActionItem(ID_MAIL, null, getResources().getDrawable(R.drawable.red));
-        QuickActionItem vlcItem     = new QuickActionItem(ID_VLC, null, getResources().getDrawable(R.drawable.black));
-        QuickActionItem safariItem  = new QuickActionItem(ID_SAFARI, null, getResources().getDrawable(R.drawable.yellow));
+    private void setUpQuickActionSize() {
         //create QuickActionPopup. Use QuickActionPopup.VERTICAL or QuickActionPopup.HORIZONTAL //param to define orientation
         quickActionPopup = new QuickActionPopup(getActivity(), QuickActionPopup.HORIZONTAL);
 
-        //add action items into QuickActionPopup
-        quickActionPopup.addActionItem(mailItem);
-        quickActionPopup.addActionItem(vlcItem);
-        quickActionPopup.addActionItem(safariItem);
+        for (int i = 0; i < sanPham.getSize().length; i++) {
+            QuickActionItem mauItem = new QuickActionItem(sanPham.getSize()[i], sanPham.getSize()[i], -1);
+            quickActionPopup.addActionItem(mauItem);
+        }
 
         //Set listener for action item clicked
         quickActionPopup.setOnActionItemClickListener(new QuickActionPopup.OnActionItemClickListener() {
             @Override
-            public void onItemClick(QuickActionPopup source, int pos, int actionId) {
-
-                //filtering items by id
-                if (actionId == ID_MAIL) {
-                    Toast.makeText(getApplicationContext(), "Đỏ", Toast.LENGTH_SHORT).show();
-                } else if (actionId == ID_VLC) {
-                    Toast.makeText(getApplicationContext(), "Đen", Toast.LENGTH_SHORT).show();
-                } else if(actionId == ID_SAFARI){
-                    Toast.makeText(getApplicationContext(), "Vàng", Toast.LENGTH_SHORT).show();
+            public void onItemClick(QuickActionPopup source, int pos, String actionId) {
+                for (int i = 0; i < sanPham.getSize().length; i++) {
+                    if (actionId.equals(sanPham.getSize()[i])) {
+                        Toast.makeText(getActivity(), sanPham.getSize()[i], Toast.LENGTH_LONG).show();
+                        btnSizeInfo.setText(sanPham.getSize()[i]);
+                    }
                 }
             }
         });
-        
+    }
+
+    private void setUpQuickActionHinh() {
+        //create QuickActionPopup. Use QuickActionPopup.VERTICAL or QuickActionPopup.HORIZONTAL //param to define orientation
+        quickActionPopup = new QuickActionPopup(getActivity(), QuickActionPopup.HORIZONTAL, imageLoad);
+
+        for (int i = 0; i < sanPham.getHinhSanPham().size(); i++) {
+            if (sanPham.getHinhSanPham().get(i).getMau().equals(mauDuocChon)) {
+                for (int j = 0; j < sanPham.getHinhSanPham().get(i).getLinkHinh().length; j++) {
+                    QuickActionItem mauItem = new QuickActionItem(sanPham.getMauSanPham()[i], null, sanPham.getHinhSanPham().get(i).getLinkHinh()[j]);
+                    quickActionPopup.addActionItem(mauItem);
+                }
+                return;
+            }
+        }
+
+        //Set listener for action item clicked
+        quickActionPopup.setOnActionItemClickListener(new QuickActionPopup.OnActionItemClickListener() {
+            @Override
+            public void onItemClick(QuickActionPopup source, int pos, String actionId) {
+                for (int i = 0; i < sanPham.getMauSanPham().length; i++) {
+                    if (actionId.equals(sanPham.getMauSanPham()[i])) {
+                        Toast.makeText(getActivity(), sanPham.getMauSanPham()[i], Toast.LENGTH_LONG).show();
+                        btnColor.setBackgroundResource(sanPhamHandler.doiMaMau(sanPham.getMauSanPham()[i]));
+                    }
+                }
+            }
+        });
+    }
+
+    public void setUpQuickActionColor() {
+        final int ID_MAIL = 2;
+        final int ID_SAFARI = 3;
+
+        //create QuickActionPopup. Use QuickActionPopup.VERTICAL or QuickActionPopup.HORIZONTAL //param to define orientation
+        quickActionPopup = new QuickActionPopup(getActivity(), QuickActionPopup.HORIZONTAL);
+
+        for (int i = 0; i < sanPham.getMauSanPham().length; i++) {
+            QuickActionItem mauItem = new QuickActionItem(sanPham.getMauSanPham()[i], null, sanPhamHandler.doiMaMau(sanPham.getMauSanPham()[i]));
+            quickActionPopup.addActionItem(mauItem);
+        }
+
+//        QuickActionItem mailItem    = new QuickActionItem(ID_MAIL, null, getResources().getDrawable(R.drawable.red));
+//        QuickActionItem vlcItem     = new QuickActionItem(ID_VLC, null, getResources().getDrawable(R.drawable.black));
+//        QuickActionItem safariItem  = new QuickActionItem(ID_SAFARI, null, getResources().getDrawable(R.drawable.yellow));
+
+
+        //add action items into QuickActionPopup
+//        quickActionPopup.addActionItem(mailItem);
+//        quickActionPopup.addActionItem(vlcItem);
+//        quickActionPopup.addActionItem(safariItem);
+
+        //Set listener for action item clicked
+        quickActionPopup.setOnActionItemClickListener(new QuickActionPopup.OnActionItemClickListener() {
+            @Override
+            public void onItemClick(QuickActionPopup source, int pos, String actionId) {
+                for (int i = 0; i < sanPham.getMauSanPham().length; i++) {
+                    if (actionId.equals(sanPham.getMauSanPham()[i])) {
+                        btnColor.setBackgroundResource(sanPhamHandler.doiMaMau(sanPham.getMauSanPham()[i]));
+                        for (int j = 0; j < sanPham.getHinhSanPham().size(); j++) {
+                            if (sanPham.getMauSanPham()[i].equals(sanPham.getHinhSanPham().get(j).getMau())) {
+                                mauDuocChon = sanPham.getMauSanPham()[i];
+                                imageLoad.load(sanPham.getHinhSanPham().get(j).getLinkHinh()[0], btnHinh);
+                                return;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    }
+
+    public void hideInfo() {
+        topInfo.setVisibility(View.GONE);
+        bottomInfo.setVisibility(View.GONE);
+        btnShare.setVisibility(View.GONE);
+        btnInfo.setVisibility(View.GONE);
+        SanPhamPagerFragment.tvGia.setVisibility(View.GONE);
+        sanPhamPagerAdapter.notifyDataSetChanged();
+        pagerSanPham.invalidate();
+    }
+
+    public static void showInfo() {
+        topInfo.setVisibility(View.VISIBLE);
+        bottomInfo.setVisibility(View.VISIBLE);
+        btnShare.setVisibility(View.VISIBLE);
+        btnInfo.setVisibility(View.VISIBLE);
+        SanPhamPagerFragment.tvGia.setVisibility(View.VISIBLE);
     }
 }

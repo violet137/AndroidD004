@@ -19,6 +19,7 @@ import android.widget.PopupWindow.OnDismissListener;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import vn.com.greenacademy.shopping.Handle.HandleData.ImageLoad;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Model.QuickActionItem;
 import vn.com.greenacademy.shopping.R;
 
@@ -37,6 +38,7 @@ public class QuickActionPopup extends PopupWindowHandler implements PopupWindow.
     private OnActionItemClickListener mItemClickListener;
     private OnDismissListener mDismissListener;
 
+    private ImageLoad imageLoad;
     private List<QuickActionItem> actionItems = new ArrayList<QuickActionItem>();
 
     private boolean mDidAction;
@@ -69,11 +71,32 @@ public class QuickActionPopup extends PopupWindowHandler implements PopupWindow.
      *
      * @param context    Context
      * @param orientation Layout orientation, can be vartical or horizontal
+     * @param imageLoad   Load hình từ url
      */
+    public QuickActionPopup(Context context, int orientation, ImageLoad imageLoad) {
+        super(context);
+
+        mOrientation = orientation;
+        this.imageLoad = imageLoad;
+
+        mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+        if (mOrientation == HORIZONTAL) {
+            setRootViewId(R.layout.popup_horizontal);
+        } else {
+            //setRootViewId(R.layout.popup_vertical);
+        }
+
+        mAnimStyle  = ANIM_GROW_FROM_LEFT;
+        mChildPos   = 0;
+    }
+
+    // Constructor Load icon từ drawable
     public QuickActionPopup(Context context, int orientation) {
         super(context);
 
         mOrientation = orientation;
+        this.imageLoad = imageLoad;
 
         mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
@@ -159,8 +182,8 @@ public class QuickActionPopup extends PopupWindowHandler implements PopupWindow.
         actionItems.add(action);
 
         String title    = action.getTitle();
-        Drawable icon   = action.getIcon();
-
+        int icon   = action.getIcon();
+        String iconHinh = action.getIconHinh();
         View container;
 
 
@@ -174,12 +197,19 @@ public class QuickActionPopup extends PopupWindowHandler implements PopupWindow.
         ImageView img   = (ImageView) container.findViewById(R.id.iv_icon);
         TextView text   = (TextView) container.findViewById(R.id.tv_title);
 
-        if (icon != null) {
-            img.setImageDrawable(icon);
+        //Set icon
+        if (icon != -1 || iconHinh != null) {
+//            img.setImageDrawable(icon);
+            if (iconHinh != null) {
+                imageLoad.load(iconHinh, img);
+            }
+            else
+                img.setImageResource(icon);
         } else {
             img.setVisibility(View.GONE);
         }
 
+        //Set title
         if (title != null) {
             text.setText(title);
         } else {
@@ -187,7 +217,7 @@ public class QuickActionPopup extends PopupWindowHandler implements PopupWindow.
         }
 
         final int pos   =  mChildPos;
-        final int actionId  = action.getActionId();
+        final String actionId  = action.getActionId();
 
         container.setOnClickListener(new OnClickListener() {
             @Override
@@ -362,7 +392,7 @@ public class QuickActionPopup extends PopupWindowHandler implements PopupWindow.
      */
     public interface OnActionItemClickListener {
 
-        public abstract void onItemClick(QuickActionPopup source, int pos, int actionId);
+        public abstract void onItemClick(QuickActionPopup source, int pos, String actionId);
     }
 
     /**

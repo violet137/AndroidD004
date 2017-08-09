@@ -11,34 +11,42 @@ import android.graphics.drawable.Drawable;
 
 public class QuickActionItem {
 
-    private Drawable icon;
+    private int icon;
+    private String iconHinh;
     private String title;
-    private int actionId = -1;
+    private String actionId = null;
     private boolean sticky;
 
-    public QuickActionItem(int actionId, String title, Drawable icon) {
+    public QuickActionItem(String actionId, String title, int icon) {
 
         this.title = title;
         this.icon = icon;
         this.actionId = actionId;
     }
 
-    public QuickActionItem() {
+    public QuickActionItem(String actionId, String title, String iconHinh) {
 
-        this(-1, null, null);
+        this.title = title;
+        this.iconHinh = iconHinh;
+        this.actionId = actionId;
     }
 
-    public QuickActionItem(int actionId, String title) {
+//    public QuickActionItem(String actionId, String title, int i) {
+//
+//        this(null, null, null);
+//    }
 
-        this(actionId, title, null);
+    public QuickActionItem(String actionId, String title) {
+
+        this(actionId, title, 0);
     }
 
-    public QuickActionItem(Drawable icon) {
+    public QuickActionItem(int icon) {
 
-        this(-1, null, icon);
+        this(null, null, icon);
     }
 
-    public QuickActionItem(int actionId, Drawable icon) {
+    public QuickActionItem(String actionId, int icon) {
 
         this(actionId, null, icon);
     }
@@ -52,20 +60,28 @@ public class QuickActionItem {
         return this.title;
     }
 
-    public void setIcon(Drawable icon) {
+    public void setIcon(int icon) {
         this.icon = icon;
     }
 
-    public Drawable getIcon() {
+    public int getIcon() {
         return this.icon;
     }
 
-    public void setActionId(int actionId) {
+    public String getIconHinh() {
+        return iconHinh;
+    }
+
+    public void setIconHinh(String iconHinh) {
+        this.iconHinh = iconHinh;
+    }
+
+    public void setActionId(String actionId) {
 
         this.actionId = actionId;
     }
 
-    public int getActionId() {
+    public String getActionId() {
 
         return actionId;
     }

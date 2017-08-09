@@ -45,8 +45,10 @@ public class DetailsSanPhamFragment extends Dialog implements View.OnClickListen
 
     @Override
     public void onClick(View view) {
-        if (view.getId() == R.id.thoat_button_chi_tiet_san_pham)
+        if (view.getId() == R.id.thoat_button_chi_tiet_san_pham) {
             dismiss();
+            ThongTinSanPhamFragment.showInfo();
+        }
     }
 
     private void configDialog(View root) {
@@ -54,5 +56,13 @@ public class DetailsSanPhamFragment extends Dialog implements View.OnClickListen
         setContentView(root);
         this.getWindow().setBackgroundDrawableResource(R.drawable.dialog_scrim);
         this.getWindow().setLayout((int) (this.getContext().getResources().getDimension(R.dimen.dialog_chi_tiet_san_pham_width) / this.getContext().getResources().getDisplayMetrics().density), (int) (getContext().getResources().getDimension(R.dimen.dialog_chi_tiet_san_pham_height) / this.getContext().getResources().getDisplayMetrics().density));
+        this.getWindow().setDimAmount(0);
+    }
+
+
+    @Override
+    public void dismiss() {
+        super.dismiss();
+        ThongTinSanPhamFragment.showInfo();
     }
 }

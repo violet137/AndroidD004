@@ -27,8 +27,9 @@ import vn.com.greenacademy.shopping.R;
  * A simple {@link Fragment} subclass.
  */
 public class SanPhamPagerFragment extends Fragment {
-    private ArrayList<SanPham> listSanPham = new ArrayList<>();
+    public static TextView tvGia;
     private ImageLoad imageLoad;
+    private ArrayList<SanPham> listSanPham = new ArrayList<>();
     private int position;
 
     public SanPhamPagerFragment(int position, ArrayList<SanPham> listSanPham){
@@ -43,7 +44,7 @@ public class SanPhamPagerFragment extends Fragment {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_san_pham_page, container, false);
         ImageView vHinhSanPham = (ImageView) root.findViewById(R.id.hinh_san_pham);
-        TextView tvGia = (TextView) root.findViewById(R.id.gia_fragment_page_san_pham);
+        tvGia = (TextView) root.findViewById(R.id.gia_fragment_page_san_pham);
 
         imageLoad.load(listSanPham.get(position).getHinhSanPham().get(0).getLinkHinh()[0], vHinhSanPham);
         if (listSanPham.get(position).getGiamGia() != 0){

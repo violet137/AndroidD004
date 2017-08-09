@@ -30,4 +30,9 @@ public class SanPhamPagerAdapter extends FragmentStatePagerAdapter {
     public int getCount() {
         return listSanPham.size();
     }
+
+    @Override
+    public int getItemPosition(Object object) {
+        return POSITION_NONE;
+    }
 }
