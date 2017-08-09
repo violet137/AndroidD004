@@ -27,20 +27,17 @@ import static vn.com.greenacademy.shopping.MainActivity.MY_PERMISSIONS_REQUEST_C
  */
 
 public class SplashScreenDialog extends ProgressDialog {
-    private ActionBar actionBar;
     private DrawerLayout drawerLayout;
 
     private static final int DELAY_TIME = 3000;
 
-    public SplashScreenDialog(Context context, int theme, ActionBar actionBar, DrawerLayout drawerLayout) {
+    public SplashScreenDialog(Context context, int theme, DrawerLayout drawerLayout) {
         super(context, theme);
-        this.actionBar = actionBar;
         this.drawerLayout = drawerLayout;
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        actionBar.hide();
         drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
 
         //Xin quyền
@@ -71,7 +68,6 @@ public class SplashScreenDialog extends ProgressDialog {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                actionBar.show();
                 drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
                 dismiss();
             }

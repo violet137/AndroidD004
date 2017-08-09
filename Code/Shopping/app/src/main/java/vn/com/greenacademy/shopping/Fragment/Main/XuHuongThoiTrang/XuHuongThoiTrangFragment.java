@@ -52,7 +52,7 @@ public class XuHuongThoiTrangFragment extends Fragment implements DataCallBack, 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        loadingDialog = new LoadingDialog(getActivity(), new BaseFragment(getActivity().getSupportFragmentManager()));
+        loadingDialog = new LoadingDialog(getActivity(), 0, new BaseFragment(getActivity().getSupportFragmentManager()));
         loadingDialog.show();
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_xu_huong_thoi_trang, container, false);
