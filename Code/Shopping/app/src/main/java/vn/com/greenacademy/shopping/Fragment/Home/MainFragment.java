@@ -55,7 +55,7 @@ public class MainFragment extends Fragment {
 //        final ListView lv_menu_main = (ListView) view.findViewById(R.id.lv_menu_mani);
 
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_menu_home, container, false);
+        final View view = inflater.inflate(R.layout.fragment_menu_home, container, false);
 
 //        final RecyclerView rvMenu = (RecyclerView) view.findViewById(R.id.rvMenu_MenuHome_fragment);
         final RecyclerView rvProduct = (RecyclerView) view.findViewById(R.id.rvProduct_menuHome);
@@ -104,6 +104,7 @@ public class MainFragment extends Fragment {
                         mainMenuHandler.setAdapter(menuMainArrayList, flag, rvProduct);
                         break;
                     case SupportKeyList.ClickHome_NewProduct:
+                        view.findViewById(R.id.layoutNewProduct_menuHome).setVisibility(View.VISIBLE);
                         mainMenuHandler.setDataNewProduct(menuMainArrayList, vpNewProduct);
                         break;
                     case SupportKeyList.ClickHome_Fashion:
