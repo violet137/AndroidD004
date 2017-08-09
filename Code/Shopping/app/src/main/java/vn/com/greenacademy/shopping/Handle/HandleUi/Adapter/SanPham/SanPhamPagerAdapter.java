@@ -7,7 +7,7 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 
 import java.util.ArrayList;
 
-import vn.com.greenacademy.shopping.Fragment.Main.SanPham.SanPhamPagerCallBackFragment;
+import vn.com.greenacademy.shopping.Fragment.Main.SanPham.SanPhamPagerFragment;
 import vn.com.greenacademy.shopping.Interface.UpdateDataViewPagerCallBack;
 import vn.com.greenacademy.shopping.Model.ThongTinSanPham.SanPham;
 
@@ -17,6 +17,7 @@ import vn.com.greenacademy.shopping.Model.ThongTinSanPham.SanPham;
 
 public class SanPhamPagerAdapter extends FragmentStatePagerAdapter {
     private ArrayList<SanPham> listSanPham;
+    private int pagePosition;
     private String actionForSinglePage;
     private Bundle bundleChangePage;
 
@@ -31,7 +32,11 @@ public class SanPhamPagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        return new SanPhamPagerCallBackFragment(position, listSanPham);
+        SanPhamPagerFragment sanPhamPagerFragment = new SanPhamPagerFragment(position, listSanPham);
+        Bundle arg = new Bundle();
+        arg.putInt("pagePosition", position);
+        sanPhamPagerFragment.setArguments(arg);
+        return sanPhamPagerFragment;
     }
 
     @Override
@@ -42,12 +47,14 @@ public class SanPhamPagerAdapter extends FragmentStatePagerAdapter {
     @Override
     public int getItemPosition(Object object) {
         if (object instanceof UpdateDataViewPagerCallBack) {
-            ((UpdateDataViewPagerCallBack) object).updateData(actionForSinglePage, bundleChangePage);
+            ((UpdateDataViewPagerCallBack) object).updateData(pagePosition, actionForSinglePage, bundleChangePage);
         }
         return super.getItemPosition(object);
     }
 
-    public void updateUiSinglePage(String actionForSinglePage, Bundle bundleChangePage){
+    //Cập nhật giao diện của page khi có thay đổi nội dung
+    public void updateUiSinglePage(int pagePosition, String actionForSinglePage, Bundle bundleChangePage){
+        this.pagePosition = pagePosition;
         this.actionForSinglePage = actionForSinglePage;
         this.bundleChangePage = bundleChangePage;
         notifyDataSetChanged();

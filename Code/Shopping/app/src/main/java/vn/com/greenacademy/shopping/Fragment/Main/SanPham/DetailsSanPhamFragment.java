@@ -47,7 +47,6 @@ public class DetailsSanPhamFragment extends Dialog implements View.OnClickListen
     public void onClick(View view) {
         if (view.getId() == R.id.thoat_button_chi_tiet_san_pham) {
             dismiss();
-            ThongTinSanPhamFragment.showInfo();
         }
     }
 
@@ -59,10 +58,4 @@ public class DetailsSanPhamFragment extends Dialog implements View.OnClickListen
         this.getWindow().setDimAmount(0);
     }
 
-
-    @Override
-    public void dismiss() {
-        super.dismiss();
-        ThongTinSanPhamFragment.showInfo();
-    }
 }

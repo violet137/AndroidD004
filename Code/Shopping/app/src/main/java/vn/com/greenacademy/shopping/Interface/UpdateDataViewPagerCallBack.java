@@ -10,5 +10,5 @@ import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.SanPham.SinglePageUi
  */
 
 public interface UpdateDataViewPagerCallBack {
-    void updateData(String action, @Nullable Bundle bundle);
+    void updateData(int pagePosition, String action, @Nullable Bundle bundle);
 }

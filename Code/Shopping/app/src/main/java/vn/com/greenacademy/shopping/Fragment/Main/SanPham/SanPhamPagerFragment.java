@@ -26,7 +26,7 @@ import vn.com.greenacademy.shopping.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class SanPhamPagerCallBackFragment extends Fragment implements UpdateDataViewPagerCallBack {
+public class SanPhamPagerFragment extends Fragment implements UpdateDataViewPagerCallBack {
     public  TextView tvGia;
     private ImageView vHinhSanPham;
 
@@ -34,7 +34,7 @@ public class SanPhamPagerCallBackFragment extends Fragment implements UpdateData
     private ArrayList<SanPham> listSanPham = new ArrayList<>();
     private int position;
 
-    public SanPhamPagerCallBackFragment(int position, ArrayList<SanPham> listSanPham){
+    public SanPhamPagerFragment(int position, ArrayList<SanPham> listSanPham){
         this.listSanPham = listSanPham;
         this.position = position;
         imageLoad = new ImageLoad(getActivity());
@@ -65,15 +65,17 @@ public class SanPhamPagerCallBackFragment extends Fragment implements UpdateData
     }
 
     @Override
-    public void updateData(String action, Bundle bundle) {
-        if (action.equals(SanPhamPagerAdapter.ACTION_HIDE_GIA)){
-            tvGia.setVisibility(View.GONE);
-        }
-        if (action.equals(SanPhamPagerAdapter.ACTION_SHOW_GIA)){
-            tvGia.setVisibility(View.VISIBLE);
-        }
-        if (action.equals(SanPhamPagerAdapter.ACTION_DOI_HINH_SAN_PHAM)){
-            imageLoad.load(bundle.getString("HinhSanPham"), vHinhSanPham);
+    public void updateData(int pagePosition, String action, Bundle bundle) {
+        if (pagePosition == getArguments().getInt("pagePosition")){
+            if (action.equals(SanPhamPagerAdapter.ACTION_HIDE_GIA)){
+                tvGia.setVisibility(View.GONE);
+            }
+            if (action.equals(SanPhamPagerAdapter.ACTION_SHOW_GIA)){
+                tvGia.setVisibility(View.VISIBLE);
+            }
+            if (action.equals(SanPhamPagerAdapter.ACTION_DOI_HINH_SAN_PHAM)){
+                imageLoad.load(bundle.getString("HinhSanPham"), vHinhSanPham);
+            }
         }
     }
 }

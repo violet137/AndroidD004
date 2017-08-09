@@ -108,9 +108,8 @@ public class MainActivity extends AppCompatActivity implements DataCallBack {
         //Chạy màn hình splash
 //        baseFragment.ChuyenFragment(new SplashScreenFragment(getSupportActionBar(), drawerLayout), null, false);
         baseFragment.ChuyenFragment(new MainFragment(), null, false);
-        SplashScreenDialog splashScreenDialog = new SplashScreenDialog(this, R.style.Theme_Design_Light_NoActionBar, drawerLayout);
+        SplashScreenDialog splashScreenDialog = new SplashScreenDialog(this, 0, drawerLayout);
         splashScreenDialog.show();
-
 
     }
 
