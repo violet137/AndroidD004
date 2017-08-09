@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import java.util.ArrayList;
 
 import vn.com.greenacademy.shopping.Fragment.Main.SanPham.SanPhamPagerFragment;
+import vn.com.greenacademy.shopping.Interface.UpdateDataViewPager;
 import vn.com.greenacademy.shopping.Model.ThongTinSanPham.SanPham;
 
 /**
@@ -14,6 +15,7 @@ import vn.com.greenacademy.shopping.Model.ThongTinSanPham.SanPham;
  */
 
 public class SanPhamPagerAdapter extends FragmentStatePagerAdapter {
+    private SinglePageUiHandler uiHandler;
     private ArrayList<SanPham> listSanPham;
 
     public SanPhamPagerAdapter(FragmentManager fm, ArrayList<SanPham> listSanPham) {
@@ -33,6 +35,14 @@ public class SanPhamPagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public int getItemPosition(Object object) {
-        return POSITION_NONE;
+        if (object instanceof UpdateDataViewPager) {
+            ((UpdateDataViewPager) object).updateData(uiHandler);
+        }
+        return super.getItemPosition(object);
+    }
+
+    public void updateUiSinglePage(SinglePageUiHandler uiHandler){
+        this.uiHandler = uiHandler;
+        notifyDataSetChanged();
     }
 }

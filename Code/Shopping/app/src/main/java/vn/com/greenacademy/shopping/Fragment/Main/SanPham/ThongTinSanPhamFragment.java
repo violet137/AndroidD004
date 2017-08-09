@@ -60,6 +60,7 @@ public class ThongTinSanPhamFragment extends Fragment implements View.OnClickLis
     private ImageLoad imageLoad;
     private ArrayList<SanPham> listSanPham = new ArrayList<>();
     private SanPham sanPham;
+    private SpannableString formatTenVaMau;
     private int position;
     private String mauDuocChon;
 
@@ -159,7 +160,7 @@ public class ThongTinSanPhamFragment extends Fragment implements View.OnClickLis
     }
 
     private void setUpUi(int pos) {
-        final SpannableString formatTenVaMau = new SpannableString(sanPham.getTenSanPham() + " - " + SanPhamHandler.chuyenTenMau(sanPham.getHinhSanPham().get(0).getMau()));
+        formatTenVaMau = new SpannableString(sanPham.getTenSanPham() + " - " + SanPhamHandler.chuyenTenMau(sanPham.getHinhSanPham().get(0).getMau()));
         formatTenVaMau.setSpan(new StyleSpan(Typeface.BOLD), 0, sanPham.getTenSanPham().length(), 0);
         tvTenVaMau.setText(formatTenVaMau);
         tvSoLuong.setText(String.valueOf(pos + 1) + "/" + String.valueOf(listSanPham.size()));
@@ -258,6 +259,9 @@ public class ThongTinSanPhamFragment extends Fragment implements View.OnClickLis
                             if (sanPham.getMauSanPham()[i].equals(sanPham.getHinhSanPham().get(j).getMau())) {
                                 mauDuocChon = sanPham.getMauSanPham()[i];
                                 imageLoad.load(sanPham.getHinhSanPham().get(j).getLinkHinh()[0], btnHinh);
+                                formatTenVaMau = new SpannableString(sanPham.getTenSanPham() + " - " + SanPhamHandler.chuyenTenMau(mauDuocChon));
+                                formatTenVaMau.setSpan(new StyleSpan(Typeface.BOLD), 0, sanPham.getTenSanPham().length(), 0);
+                                tvTenVaMau.setText(formatTenVaMau);
                                 return;
                             }
                         }
@@ -272,9 +276,7 @@ public class ThongTinSanPhamFragment extends Fragment implements View.OnClickLis
         bottomInfo.setVisibility(View.GONE);
         btnShare.setVisibility(View.GONE);
         btnInfo.setVisibility(View.GONE);
-        SanPhamPagerFragment.tvGia.setVisibility(View.GONE);
-        sanPhamPagerAdapter.notifyDataSetChanged();
-        pagerSanPham.invalidate();
+//        sanPhamPagerAdapter.updateUiSinglePage();
     }
 
     public static void showInfo() {
@@ -282,6 +284,6 @@ public class ThongTinSanPhamFragment extends Fragment implements View.OnClickLis
         bottomInfo.setVisibility(View.VISIBLE);
         btnShare.setVisibility(View.VISIBLE);
         btnInfo.setVisibility(View.VISIBLE);
-        SanPhamPagerFragment.tvGia.setVisibility(View.VISIBLE);
+//        SanPhamPagerFragment.tvGia.setVisibility(View.VISIBLE);
     }
 }

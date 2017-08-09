@@ -1,4 +1,4 @@
-package vn.com.greenacademy.shopping.Handle.HandleData;
+package vn.com.greenacademy.shopping.Handle.HandleData.TaiKhoan;
 
 import android.app.Activity;
 import android.content.pm.PackageInfo;

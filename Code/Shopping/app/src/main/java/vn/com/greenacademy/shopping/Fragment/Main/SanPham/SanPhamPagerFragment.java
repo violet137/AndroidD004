@@ -1,8 +1,6 @@
 package vn.com.greenacademy.shopping.Fragment.Main.SanPham;
 
 
-import android.content.res.ColorStateList;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
@@ -19,15 +17,17 @@ import java.util.ArrayList;
 
 import vn.com.greenacademy.shopping.Handle.HandleData.ImageLoad;
 import vn.com.greenacademy.shopping.Handle.HandleData.SanPhamHandler;
-import vn.com.greenacademy.shopping.Handle.HandleUi.Model.ViewHolder.SanPhamHolder;
+import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.SanPham.SinglePageUiHandler;
+import vn.com.greenacademy.shopping.Interface.UpdateDataViewPager;
 import vn.com.greenacademy.shopping.Model.ThongTinSanPham.SanPham;
 import vn.com.greenacademy.shopping.R;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class SanPhamPagerFragment extends Fragment {
-    public static TextView tvGia;
+public class SanPhamPagerFragment extends Fragment implements UpdateDataViewPager{
+    public  TextView tvGia;
+
     private ImageLoad imageLoad;
     private ArrayList<SanPham> listSanPham = new ArrayList<>();
     private int position;
@@ -61,4 +61,8 @@ public class SanPhamPagerFragment extends Fragment {
         return root;
     }
 
+    @Override
+    public void updateData(SinglePageUiHandler uiHandler) {
+        tvGia.setVisibility(View.GONE);
+    }
 }

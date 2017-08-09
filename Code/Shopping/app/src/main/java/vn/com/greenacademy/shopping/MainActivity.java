@@ -24,10 +24,11 @@ import android.widget.Toast;
 import vn.com.greenacademy.shopping.Fragment.Home.MainFragment;
 import vn.com.greenacademy.shopping.Fragment.Main.MyShopping.GioHangFragment;
 import vn.com.greenacademy.shopping.Fragment.Main.MyShopping.TaiKhoan.DangNhapFragment;
+import vn.com.greenacademy.shopping.Fragment.Main.MyShopping.TaiKhoan.DangNhapKhongLuuFragment;
 import vn.com.greenacademy.shopping.Fragment.SplashScreenFragment;
 import vn.com.greenacademy.shopping.Fragment.Store.FindStoreFragment;
 import vn.com.greenacademy.shopping.Handle.HandleData.DataHandler;
-import vn.com.greenacademy.shopping.Handle.HandleData.GoogleHandler;
+import vn.com.greenacademy.shopping.Handle.HandleData.TaiKhoan.GoogleHandler;
 import vn.com.greenacademy.shopping.Handle.HandleData.SlideMenuHandler;
 import vn.com.greenacademy.shopping.Interface.DataCallBack;
 import vn.com.greenacademy.shopping.Util.SharePreference.MySharedPreferences;
@@ -201,7 +202,10 @@ public class MainActivity extends AppCompatActivity implements DataCallBack {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case R.id.dang_nhap_toolbar:
-                baseFragment.ChuyenFragment(new DangNhapFragment(), SupportKeyList.TAG_FRAGMENT_DANG_NHAP, true);
+                if (mySharedPref.getLuuDangNhap())
+                    baseFragment.ChuyenFragment(new DangNhapFragment(), SupportKeyList.TAG_FRAGMENT_DANG_NHAP, true);
+                else
+                    baseFragment.ChuyenFragment(new DangNhapKhongLuuFragment(), SupportKeyList.TAG_FRAGMENT_DANG_NHAP_KHONG_LUU, true);
                 break;
             case R.id.dang_xuat_toolbar:
                 switch (mySharedPref.getLoaiTaiKhoan()){
