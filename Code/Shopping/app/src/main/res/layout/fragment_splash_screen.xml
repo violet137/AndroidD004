@@ -1,15 +1,17 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="vn.com.greenacademy.shopping.Fragment.SplashScreenFragment">
 
+    <!-- Logo app -->
     <LinearLayout
+        android:id="@+id/logo_app_splash_screen"
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:orientation="horizontal"
         android:gravity="center"
-        android:layout_gravity="center">
+        android:layout_centerVertical="true">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -41,14 +43,24 @@
             android:textStyle="italic"
             android:typeface="serif" />
     </LinearLayout>
+
+    <!-- Loading icon -->
+    <ProgressBar
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_below="@+id/logo_app_splash_screen"
+        android:layout_centerHorizontal="true"
+        android:indeterminateDrawable="@drawable/loader_anim" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="7dp"
-        android:layout_gravity="center|bottom"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
         android:text="Fashion &amp; Life"
         android:textSize="22sp"
         android:textColor="@color/colorPrimaryDark"
         android:textStyle="italic"
         android:typeface="serif"/>
-</FrameLayout>
+</RelativeLayout>

@@ -169,7 +169,7 @@ public class ThongTinSanPhamFragment extends Fragment implements View.OnClickLis
         for (int j = 0; j < sanPham.getHinhSanPham().size(); j++) {
             if (sanPham.getMauSanPham()[0].equals(sanPham.getHinhSanPham().get(j).getMau())) {
                 mauDuocChon = sanPham.getMauSanPham()[0];
-                imageLoad.load(sanPham.getHinhSanPham().get(j).getLinkHinh()[0], btnHinh);
+                imageLoad.load(sanPham.getHinhSanPham().get(0).getLinkHinh()[0], btnHinh);
                 break;
             }
         }

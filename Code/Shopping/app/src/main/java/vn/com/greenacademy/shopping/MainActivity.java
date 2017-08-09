@@ -30,6 +30,7 @@ import vn.com.greenacademy.shopping.Fragment.Store.FindStoreFragment;
 import vn.com.greenacademy.shopping.Handle.HandleData.DataHandler;
 import vn.com.greenacademy.shopping.Handle.HandleData.TaiKhoan.GoogleHandler;
 import vn.com.greenacademy.shopping.Handle.HandleData.SlideMenuHandler;
+import vn.com.greenacademy.shopping.Handle.HandleUi.Dialog.SplashScreenDialog;
 import vn.com.greenacademy.shopping.Interface.DataCallBack;
 import vn.com.greenacademy.shopping.Util.SharePreference.MySharedPreferences;
 import vn.com.greenacademy.shopping.Util.SupportKeyList;
@@ -105,8 +106,10 @@ public class MainActivity extends AppCompatActivity implements DataCallBack {
         toggle.syncState();
 
         //Chạy màn hình splash
-        baseFragment.ChuyenFragment(new SplashScreenFragment(getSupportActionBar(), drawerLayout), null, false);
-
+//        baseFragment.ChuyenFragment(new SplashScreenFragment(getSupportActionBar(), drawerLayout), null, false);
+        baseFragment.ChuyenFragment(new MainFragment(), null, false);
+        SplashScreenDialog splashScreenDialog = new SplashScreenDialog(this, R.style.Theme_Design_Light_NoActionBar, getSupportActionBar(), drawerLayout);
+        splashScreenDialog.show();
 
 
     }
