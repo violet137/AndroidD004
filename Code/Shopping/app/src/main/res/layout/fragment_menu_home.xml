@@ -37,6 +37,8 @@
 
             <include
                 layout="@layout/item_main_menu_new_product"
+                android:id="@+id/layoutNewProduct_menuHome"
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
