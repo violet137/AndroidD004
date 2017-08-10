@@ -28,7 +28,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 import vn.com.greenacademy.shopping.Handle.HandleData.DataHandler;
-import vn.com.greenacademy.shopping.Handle.HandleData.GoogleHandler;
+import vn.com.greenacademy.shopping.Handle.HandleData.TaiKhoan.GoogleHandler;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Dialog.LoadingDialog;
 import vn.com.greenacademy.shopping.Interface.DataCallBack;
 import vn.com.greenacademy.shopping.R;

@@ -1,8 +1,6 @@
 package vn.com.greenacademy.shopping.Fragment.Main.SanPham;
 
 
-import android.content.res.ColorStateList;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
@@ -19,15 +17,19 @@ import java.util.ArrayList;
 
 import vn.com.greenacademy.shopping.Handle.HandleData.ImageLoad;
 import vn.com.greenacademy.shopping.Handle.HandleData.SanPhamHandler;
-import vn.com.greenacademy.shopping.Handle.HandleUi.Model.ViewHolder.SanPhamHolder;
+import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.SanPham.SanPhamPagerAdapter;
+import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.SanPham.SinglePageUiHandler;
+import vn.com.greenacademy.shopping.Interface.UpdateDataViewPagerCallBack;
 import vn.com.greenacademy.shopping.Model.ThongTinSanPham.SanPham;
 import vn.com.greenacademy.shopping.R;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class SanPhamPagerFragment extends Fragment {
-    public static TextView tvGia;
+public class SanPhamPagerFragment extends Fragment implements UpdateDataViewPagerCallBack {
+    public  TextView tvGia;
+    private ImageView vHinhSanPham;
+
     private ImageLoad imageLoad;
     private ArrayList<SanPham> listSanPham = new ArrayList<>();
     private int position;
@@ -43,7 +45,7 @@ public class SanPhamPagerFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_san_pham_page, container, false);
-        ImageView vHinhSanPham = (ImageView) root.findViewById(R.id.hinh_san_pham);
+        vHinhSanPham = (ImageView) root.findViewById(R.id.hinh_san_pham);
         tvGia = (TextView) root.findViewById(R.id.gia_fragment_page_san_pham);
 
         imageLoad.load(listSanPham.get(position).getHinhSanPham().get(0).getLinkHinh()[0], vHinhSanPham);
@@ -58,7 +60,22 @@ public class SanPhamPagerFragment extends Fragment {
             tvGia.setText(SanPhamHandler.chuyenGia(listSanPham.get(position).getGiaSanPham()));
             tvGia.setTextColor(ContextCompat.getColor(getActivity(), R.color.colorTextDark));
         }
+
         return root;
     }
 
+    @Override
+    public void updateData(int pagePosition, String action, Bundle bundle) {
+        if (pagePosition == getArguments().getInt("pagePosition")){
+            if (action.equals(SanPhamPagerAdapter.ACTION_HIDE_GIA)){
+                tvGia.setVisibility(View.GONE);
+            }
+            if (action.equals(SanPhamPagerAdapter.ACTION_SHOW_GIA)){
+                tvGia.setVisibility(View.VISIBLE);
+            }
+            if (action.equals(SanPhamPagerAdapter.ACTION_DOI_HINH_SAN_PHAM)){
+                imageLoad.load(bundle.getString("HinhSanPham"), vHinhSanPham);
+            }
+        }
+    }
 }

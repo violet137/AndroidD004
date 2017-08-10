@@ -11,7 +11,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import vn.com.greenacademy.shopping.Handle.HandleData.DangKyTkHandler;
+import vn.com.greenacademy.shopping.Handle.HandleData.TaiKhoan.DangKyTkHandler;
 import vn.com.greenacademy.shopping.Interface.ErrorCallBack;
 import vn.com.greenacademy.shopping.R;
 import vn.com.greenacademy.shopping.Util.SupportKeyList;

@@ -1,6 +1,7 @@
 package vn.com.greenacademy.shopping.Fragment.Main.SanPham;
 
 
+import android.content.DialogInterface;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.media.Image;
@@ -31,6 +32,7 @@ import java.util.ArrayList;
 import vn.com.greenacademy.shopping.Handle.HandleData.ImageLoad;
 import vn.com.greenacademy.shopping.Handle.HandleData.SanPhamHandler;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.SanPham.SanPhamPagerAdapter;
+import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.SanPham.SinglePageUiHandler;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Model.QuickActionItem;
 import vn.com.greenacademy.shopping.Handle.HandleUi.SanPham.QuickActionPopup;
 import vn.com.greenacademy.shopping.Model.ThongTinSanPham.SanPham;
@@ -56,10 +58,12 @@ public class ThongTinSanPhamFragment extends Fragment implements View.OnClickLis
     private QuickActionPopup quickActionPopup;
 
     private SanPhamHandler sanPhamHandler;
-    private SanPhamPagerAdapter sanPhamPagerAdapter;
+    private static SanPhamPagerAdapter sanPhamPagerAdapter;
     private ImageLoad imageLoad;
     private ArrayList<SanPham> listSanPham = new ArrayList<>();
     private SanPham sanPham;
+    private SpannableString formatTenVaMau;
+    private Bundle bundleHinh;
     private int position;
     private String mauDuocChon;
 
@@ -74,6 +78,7 @@ public class ThongTinSanPhamFragment extends Fragment implements View.OnClickLis
         imageLoad = new ImageLoad(getActivity());
         sanPhamHandler = new SanPhamHandler(getActivity());
         sanPhamPagerAdapter = new SanPhamPagerAdapter(getActivity().getSupportFragmentManager(),listSanPham);
+        bundleHinh = new Bundle();
     }
 
     @Override
@@ -113,9 +118,10 @@ public class ThongTinSanPhamFragment extends Fragment implements View.OnClickLis
             }
 
             @Override
-            public void onPageSelected(int position) {
-                sanPham = listSanPham.get(position);
-                setUpUi(position);
+            public void onPageSelected(int pos) {
+                position = pos;
+                sanPham = listSanPham.get(pos);
+                setUpUi(pos);
             }
 
             @Override
@@ -131,7 +137,15 @@ public class ThongTinSanPhamFragment extends Fragment implements View.OnClickLis
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.button_info_san_pham:
-                new DetailsSanPhamFragment(getActivity(), sanPham.getDescription(), sanPham.getChiTietSanPham()).show();
+                //Hiện dialog chi tiết sản phẩm
+                DetailsSanPhamFragment detailsSanPhamFragment = new DetailsSanPhamFragment(getActivity(), sanPham.getDescription(), sanPham.getChiTietSanPham());
+                detailsSanPhamFragment.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                    @Override
+                    public void onDismiss(DialogInterface dialog) {
+                        showInfo();
+                    }
+                });
+                detailsSanPhamFragment.show();
                 hideInfo();
                 break;
             case R.id.button_share_san_pham:
@@ -159,7 +173,7 @@ public class ThongTinSanPhamFragment extends Fragment implements View.OnClickLis
     }
 
     private void setUpUi(int pos) {
-        final SpannableString formatTenVaMau = new SpannableString(sanPham.getTenSanPham() + " - " + SanPhamHandler.chuyenTenMau(sanPham.getHinhSanPham().get(0).getMau()));
+        formatTenVaMau = new SpannableString(sanPham.getTenSanPham() + " - " + SanPhamHandler.chuyenTenMau(sanPham.getHinhSanPham().get(0).getMau()));
         formatTenVaMau.setSpan(new StyleSpan(Typeface.BOLD), 0, sanPham.getTenSanPham().length(), 0);
         tvTenVaMau.setText(formatTenVaMau);
         tvSoLuong.setText(String.valueOf(pos + 1) + "/" + String.valueOf(listSanPham.size()));
@@ -167,7 +181,7 @@ public class ThongTinSanPhamFragment extends Fragment implements View.OnClickLis
         for (int j = 0; j < sanPham.getHinhSanPham().size(); j++) {
             if (sanPham.getMauSanPham()[0].equals(sanPham.getHinhSanPham().get(j).getMau())) {
                 mauDuocChon = sanPham.getMauSanPham()[0];
-                imageLoad.load(sanPham.getHinhSanPham().get(j).getLinkHinh()[0], btnHinh);
+                imageLoad.load(sanPham.getHinhSanPham().get(0).getLinkHinh()[0], btnHinh);
                 break;
             }
         }
@@ -189,7 +203,6 @@ public class ThongTinSanPhamFragment extends Fragment implements View.OnClickLis
             public void onItemClick(QuickActionPopup source, int pos, String actionId) {
                 for (int i = 0; i < sanPham.getSize().length; i++) {
                     if (actionId.equals(sanPham.getSize()[i])) {
-                        Toast.makeText(getActivity(), sanPham.getSize()[i], Toast.LENGTH_LONG).show();
                         btnSizeInfo.setText(sanPham.getSize()[i]);
                     }
                 }
@@ -204,10 +217,10 @@ public class ThongTinSanPhamFragment extends Fragment implements View.OnClickLis
         for (int i = 0; i < sanPham.getHinhSanPham().size(); i++) {
             if (sanPham.getHinhSanPham().get(i).getMau().equals(mauDuocChon)) {
                 for (int j = 0; j < sanPham.getHinhSanPham().get(i).getLinkHinh().length; j++) {
-                    QuickActionItem mauItem = new QuickActionItem(sanPham.getMauSanPham()[i], null, sanPham.getHinhSanPham().get(i).getLinkHinh()[j]);
+                    QuickActionItem mauItem = new QuickActionItem(sanPham.getHinhSanPham().get(i).getLinkHinh()[j], null, sanPham.getHinhSanPham().get(i).getLinkHinh()[j]);
                     quickActionPopup.addActionItem(mauItem);
                 }
-                return;
+                break;
             }
         }
 
@@ -215,10 +228,17 @@ public class ThongTinSanPhamFragment extends Fragment implements View.OnClickLis
         quickActionPopup.setOnActionItemClickListener(new QuickActionPopup.OnActionItemClickListener() {
             @Override
             public void onItemClick(QuickActionPopup source, int pos, String actionId) {
-                for (int i = 0; i < sanPham.getMauSanPham().length; i++) {
-                    if (actionId.equals(sanPham.getMauSanPham()[i])) {
-                        Toast.makeText(getActivity(), sanPham.getMauSanPham()[i], Toast.LENGTH_LONG).show();
-                        btnColor.setBackgroundResource(sanPhamHandler.doiMaMau(sanPham.getMauSanPham()[i]));
+                for (int i = 0; i < sanPham.getHinhSanPham().size(); i++) {
+                    if (sanPham.getHinhSanPham().get(i).getMau().equals(mauDuocChon)) {
+                        for (int j = 0; j < sanPham.getHinhSanPham().get(i).getLinkHinh().length; j++) {
+                            if(actionId.equals(sanPham.getHinhSanPham().get(i).getLinkHinh()[j])){
+                                imageLoad.load(sanPham.getHinhSanPham().get(i).getLinkHinh()[j], btnHinh);
+                                //Đổi hình page
+                                bundleHinh.putString("HinhSanPham", sanPham.getHinhSanPham().get(i).getLinkHinh()[j]);
+                                sanPhamPagerAdapter.updateUiSinglePage(position, SanPhamPagerAdapter.ACTION_DOI_HINH_SAN_PHAM, bundleHinh);
+                                break;
+                            }
+                        }
                     }
                 }
             }
@@ -258,7 +278,14 @@ public class ThongTinSanPhamFragment extends Fragment implements View.OnClickLis
                             if (sanPham.getMauSanPham()[i].equals(sanPham.getHinhSanPham().get(j).getMau())) {
                                 mauDuocChon = sanPham.getMauSanPham()[i];
                                 imageLoad.load(sanPham.getHinhSanPham().get(j).getLinkHinh()[0], btnHinh);
-                                return;
+                                formatTenVaMau = new SpannableString(sanPham.getTenSanPham() + " - " + SanPhamHandler.chuyenTenMau(mauDuocChon));
+                                formatTenVaMau.setSpan(new StyleSpan(Typeface.BOLD), 0, sanPham.getTenSanPham().length(), 0);
+                                tvTenVaMau.setText(formatTenVaMau);
+
+                                //Đổi hình page
+                                bundleHinh.putString("HinhSanPham", sanPham.getHinhSanPham().get(j).getLinkHinh()[0]);
+                                sanPhamPagerAdapter.updateUiSinglePage(position, SanPhamPagerAdapter.ACTION_DOI_HINH_SAN_PHAM, bundleHinh);
+                                break;
                             }
                         }
                     }
@@ -268,20 +295,20 @@ public class ThongTinSanPhamFragment extends Fragment implements View.OnClickLis
     }
 
     public void hideInfo() {
+        // Ẩn các thông tin không cần thiết khi hiện dialog chi tiết sản phẩm
         topInfo.setVisibility(View.GONE);
         bottomInfo.setVisibility(View.GONE);
         btnShare.setVisibility(View.GONE);
         btnInfo.setVisibility(View.GONE);
-        SanPhamPagerFragment.tvGia.setVisibility(View.GONE);
-        sanPhamPagerAdapter.notifyDataSetChanged();
-        pagerSanPham.invalidate();
+        sanPhamPagerAdapter.updateUiSinglePage(position, SanPhamPagerAdapter.ACTION_HIDE_GIA, null);
     }
 
-    public static void showInfo() {
+    public void showInfo() {
+        // Hiện lại thông tin khi thoát dialog chi tiết sản phẩm
         topInfo.setVisibility(View.VISIBLE);
         bottomInfo.setVisibility(View.VISIBLE);
         btnShare.setVisibility(View.VISIBLE);
         btnInfo.setVisibility(View.VISIBLE);
-        SanPhamPagerFragment.tvGia.setVisibility(View.VISIBLE);
+        sanPhamPagerAdapter.updateUiSinglePage(position, SanPhamPagerAdapter.ACTION_SHOW_GIA, null);
     }
 }

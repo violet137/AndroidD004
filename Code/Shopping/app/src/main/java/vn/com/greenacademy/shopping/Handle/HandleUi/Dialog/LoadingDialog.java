@@ -25,8 +25,8 @@ public class LoadingDialog extends ProgressDialog {
     public LoadingDialog(Context context) {
         super(context);
     }
-    public LoadingDialog(Context context, BaseFragment baseFragment) {
-        super(context);
+    public LoadingDialog(Context context, int theme, BaseFragment baseFragment) {
+        super(context, theme);
         this.baseFragment = baseFragment;
     }
     @Override

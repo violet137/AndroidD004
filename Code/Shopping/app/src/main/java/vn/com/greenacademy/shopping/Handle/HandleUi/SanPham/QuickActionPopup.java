@@ -96,7 +96,6 @@ public class QuickActionPopup extends PopupWindowHandler implements PopupWindow.
         super(context);
 
         mOrientation = orientation;
-        this.imageLoad = imageLoad;
 
         mInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
