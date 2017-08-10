@@ -69,7 +69,7 @@ public class MainFragment extends Fragment {
         // thiết lập xml android:layout_weight="1" cho recyclerView để có thể show toàn bộ nội dung trong list
 
         rvProduct.setLayoutManager(new GridLayoutManager(getActivity(), 1));
-        rvProduct.setNestedScrollingEnabled(false);
+//        rvProduct.setNestedScrollingEnabled(false);
 
         rvFashion.setLayoutManager(new GridLayoutManager(getActivity(), 1));
         rvFashion.addOnItemTouchListener(new RecyclerView.SimpleOnItemTouchListener() {
@@ -122,8 +122,9 @@ public class MainFragment extends Fragment {
                         mainMenuHandler.setAdapter(menuMainArrayList, flag, rvMagazien);
                         break;
                     case -5:
+//                        rvMenu.setAdapter(mainMenuHandler.getAdapterRVMultipleView(menuMainArrayList));
+//                        lvHome_menu_home.setAdapter(mainMenuHandler.getAdapterLV(menuMainArrayList));
                         rvMenu.setAdapter(mainMenuHandler.getAdapterRV(menuMainArrayList));
-                        lvHome_menu_home.setAdapter(mainMenuHandler.getAdapterLV(menuMainArrayList));
                         break;
                 }
             }

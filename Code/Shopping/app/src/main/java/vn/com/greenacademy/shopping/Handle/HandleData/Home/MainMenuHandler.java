@@ -22,6 +22,7 @@ import vn.com.greenacademy.shopping.Handle.HandleData.ParseData.Main.ParseAdvert
 import vn.com.greenacademy.shopping.Handle.HandleData.ParseData.Main.ParseBanner;
 import vn.com.greenacademy.shopping.Handle.HandleData.ParseData.Main.ParseMyProducts;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.Home.AdapterHomeListView;
+import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.Home.AdapterHomeRV;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.Home.AdapterHomeRVFashion;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.Home.AdapterHomeRVMagazine;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.Home.AdapterHomeRVProducts;
@@ -124,7 +125,7 @@ public class MainMenuHandler extends LoadDataMainMenuHandler{
 //    }
 
     // tai du lieu tu adapter len list
-    public AdapterHomeRecyclerView getAdapterRV (ArrayList<MenuMain> menuMainArrayList) {
+    public AdapterHomeRecyclerView getAdapterRVMultipleView (ArrayList<MenuMain> menuMainArrayList) {
         AdapterHomeRecyclerView adapter = new AdapterHomeRecyclerView(activity, menuMainArrayList);
         return adapter;
     }
@@ -180,6 +181,11 @@ public class MainMenuHandler extends LoadDataMainMenuHandler{
     public ListAdapter getAdapterLV(ArrayList<MenuMain> menuMainArrayList) {
         AdapterHomeListView adapterHomeListView = new AdapterHomeListView(activity, R.layout.item_menu_home_list_view, menuMainArrayList);
         return adapterHomeListView;
+    }
+
+    public RecyclerView.Adapter getAdapterRV(ArrayList<MenuMain> menuMainArrayList) {
+        AdapterHomeRV adapterHomeRV = new AdapterHomeRV(activity, menuMainArrayList);
+        return adapterHomeRV;
     }
 }
 

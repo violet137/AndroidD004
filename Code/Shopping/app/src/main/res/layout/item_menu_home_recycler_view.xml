@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:id="@+id/itemAdvertise_menu_home_rv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <ViewFlipper
+            android:id="@+id/vfAdvertise_menu_home_rv"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/viewFlipper_height">
+
+        </ViewFlipper>
+    </LinearLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/itemProducts_menu_home_rv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/btnDiviver_1dp"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/ivProduct_menu_home_rv"
+            android:layout_width="0dp"
+            android:layout_height="142dp"
+            android:scaleType="fitXY"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/tvNameProduct_menu_home_rv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="0dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="@dimen/textView_layout_marginTop"
+            android:background="@android:color/background_light"
+            android:paddingLeft="@dimen/textView_paddingLeft"
+            android:paddingRight="@dimen/textView_paddingRight"
+            android:text="Text View"
+            android:textColor="#ff000000"
+            android:textSize="@dimen/textView_textSize"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/ivProduct_menu_home_rv"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/ivProduct_menu_home_rv" />
+
+    </android.support.constraint.ConstraintLayout>
+
+    <LinearLayout
+        android:id="@+id/itemNewProduct_menu_home_rv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:paddingTop="@dimen/layout_margin_20dp"
+            android:text="Sản Phẩm Mới"
+            android:textColor="@color/cardview_dark_background"
+            android:textSize="@dimen/text_size_35dp"
+            android:textStyle="bold" />
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/vpNewProduct_menu_home_rv"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/vp_layout_height_400dp">
+
+        </android.support.v4.view.ViewPager>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/itemFashion_menu_home_rv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/ivFashion_menu_home_rv"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/imageView_height"
+            android:scaleType="centerCrop" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/itemMagazine_menu_home_rv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/btnDiviver_1px"
+        android:background="#d0000000"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/textView_pandding_left_15dp"
+        android:visibility="gone">
+
+
+        <LinearLayout
+            android:id="@+id/llName_Magazine_menu_home_rv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/layout_margin_20dp"
+            android:paddingTop="@dimen/layout_40dp"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/layout_margin_10dp"
+                android:gravity="center"
+                android:text="Tạp Chí F&amp;L"
+                android:textColor="@color/cardview_light_background"
+                android:textSize="@dimen/text_size_40dp"
+                android:textStyle="bold"
+                android:typeface="serif" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/ll_layout_padding_5dp"
+                android:gravity="center"
+                android:text="Thế Giới Của Cảm Hứng"
+                android:textColor="@color/cardview_light_background"
+                android:textSize="@dimen/text_size_17dp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btnMagazine_menu_home_rv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/layout_margin_20dp"
+                android:background="@color/cardview_light_background"
+                android:paddingLeft="@dimen/textView_pandding_left_15dp"
+                android:paddingRight="@dimen/textView_pandding_left_15dp"
+                android:text="Đọc Các bài Khác"
+                android:textSize="@dimen/text_size_12dp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/ivMagazine_menu_home_rv"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/imageView_height"
+            android:layout_marginBottom="@dimen/layout_margin_10dp"
+            android:layout_marginLeft="@dimen/layout_margin_20dp"
+            android:layout_marginRight="@dimen/layout_margin_20dp"
+            android:layout_marginTop="@dimen/layout_margin_10dp"
+            android:scaleType="centerCrop" />
+
+        <TextView
+            android:id="@+id/tvTypeMagazine_menu_home_rv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="TextView"
+            android:textColor="@color/cardview_light_background"
+            android:textSize="@dimen/text_size_12dp" />
+
+        <TextView
+            android:id="@+id/tvNameMagzine_menu_home_rv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:gravity="center"
+            android:maxLines="2"
+            android:paddingLeft="@dimen/layout_margin_20dp"
+            android:paddingRight="@dimen/layout_margin_20dp"
+            android:text="TextView"
+            android:textColor="@color/cardview_light_background"
+            android:textSize="@dimen/text_size_20dp"
+            android:typeface="serif" />
+    </LinearLayout>
+
+</LinearLayout>
