@@ -13,44 +13,53 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:background="@color/colorBackground">
 
+            <!-- Quảng cáo -->
             <include
                 layout="@layout/item_main_menu_advertise"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
-
             </include>
 
+            <!-- Danh mục sản phẩm -->
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/rvProduct_menuHome"
                 android:layout_width="match_parent"
                 android:layout_marginTop="@dimen/layout_margin_10dp"
                 android:layout_weight="1"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:background="@drawable/shape_khung"/>
 
+            <!-- Sản phẩm mới -->
             <include
                 layout="@layout/item_main_menu_new_product"
                 android:id="@+id/layoutNewProduct_menuHome"
                 android:visibility="gone"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/layout_margin_10dp">
             </include>
 
+            <!-- Xu hướng thời trang -->
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/rvFashion_menuHome"
                 android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:layout_height="match_parent" />
+                android:layout_marginTop="@dimen/layout_margin_10dp"
+                android:background="@drawable/shape_khung"/>
 
+            <!-- Tạp chí -->
             <android.support.v7.widget.RecyclerView
-                android:layout_weight="1"
                 android:id="@+id/rvMagazine_menuHome"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginTop="0.5dp"
+                android:background="@drawable/shape_khung"/>
 
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
-
 </FrameLayout>

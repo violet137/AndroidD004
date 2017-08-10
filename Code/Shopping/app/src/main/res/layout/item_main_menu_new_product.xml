@@ -2,27 +2,29 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#1ea9a9a9"
+    android:background="@drawable/shape_khung"
     android:orientation="vertical"
-    android:paddingBottom="@dimen/layout_margin_10dp">
+    android:paddingBottom="@dimen/san_pham_moi_padding_bottom">
 
+    <!-- Title -->
     <TextView
         android:id="@+id/textView8"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:gravity="center"
-        android:paddingTop="@dimen/layout_margin_20dp"
+        android:paddingTop="@dimen/title_new_product_horizontal_padding"
+        android:paddingBottom="@dimen/title_new_product_horizontal_padding"
         android:text="Sản Phẩm Mới"
         android:textColor="@color/cardview_dark_background"
-        android:textSize="@dimen/text_size_35dp"
-        android:textStyle="bold" />
+        android:textSize="@dimen/title_text_size"
+        android:textStyle="bold|italic" />
 
+    <!-- List sản phẩm -->
     <android.support.v4.view.ViewPager
         android:id="@+id/vpNewProduct_item_main_menu"
         android:layout_width="match_parent"
         android:layout_height="@dimen/vp_layout_height_400dp">
-
     </android.support.v4.view.ViewPager>
 
 </LinearLayout>

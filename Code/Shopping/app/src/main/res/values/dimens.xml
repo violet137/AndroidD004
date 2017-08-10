@@ -129,7 +129,18 @@
     <dimen name="text_layout_height_22dp">22dp</dimen>
     <dimen name="btnDiviver_1px">1px</dimen>
     <dimen name="btnDiviver_1dp">1dp</dimen>
-
+    <!-- Fragment Magazine (new) -->
+    <dimen name="magazine_title_text_size">40sp</dimen>
+    <dimen name="magazine_hinh_bai_viet_home">225dp</dimen>
+    <dimen name="button_bai_viet_khac_height">33dp</dimen>
+    <dimen name="magazine_title_description_size">10sp</dimen>
+    <dimen name="magazine_vertical_padding">30dp</dimen>
+    <dimen name="magazine_horizontal_padding">10dp</dimen>
+    <dimen name="magazine_title_description_margin_top">5dp</dimen>
+    <dimen name="magazine_button_bai_viet_khac_margin_top">15dp</dimen>
+    <dimen name="magazine_button_bai_viet_khac_margin_bottom">7dp</dimen>
+    <dimen name="magazine_hinh_bai_viet_margin_top">30dp</dimen>
+    
     <!-- Slide Menu -->
     <dimen name="imageView_padding_10dp">10dp</dimen>
 
@@ -143,7 +154,10 @@
     <dimen name="layout_margin_20dp">20dp</dimen>
     <dimen name="iv_layout_width_360dp">360dp</dimen>
     <dimen name="iv_layout_height_280dp">280dp</dimen>
-
+    <!-- dialog store detail (new) -->
+    <dimen name="title_new_product_horizontal_padding">25dp</dimen>
+    <dimen name="title_text_size">30sp</dimen>
+    <dimen name="san_pham_moi_padding_bottom">30dp</dimen>
 
     <!-- slae -->
     <dimen name="ll_layout_padding_5dp">5dp</dimen>
