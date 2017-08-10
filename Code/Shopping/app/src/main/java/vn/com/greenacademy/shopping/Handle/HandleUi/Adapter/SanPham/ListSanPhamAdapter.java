@@ -1,5 +1,6 @@
 package vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.SanPham;
 
+import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
 import android.support.v4.content.ContextCompat;
@@ -33,6 +34,7 @@ public class ListSanPhamAdapter extends RecyclerView.Adapter<SanPhamHolder> {
     private BaseFragment baseFragment;
     private ImageLoad imageLoad;
     private SanPhamCallBack sanPhamCallBack;
+    private boolean inDialog; //Kiểm tra nếu list trong dialog thì tùy chỉnh cho phù hợp
 
     public ListSanPhamAdapter(Context context, ArrayList<SanPham> listSanPham, BaseFragment baseFragment, SanPhamCallBack sanPhamCallBack, ImageLoad imageLoad){
         this.context = context;
@@ -42,16 +44,32 @@ public class ListSanPhamAdapter extends RecyclerView.Adapter<SanPhamHolder> {
         this.imageLoad = imageLoad;
     }
 
+    public ListSanPhamAdapter(Context context, boolean inDialog, ArrayList<SanPham> listSanPham, BaseFragment baseFragment, SanPhamCallBack sanPhamCallBack, ImageLoad imageLoad){
+        this.context = context;
+        this.listSanPham = listSanPham;
+        this.baseFragment = baseFragment;
+        this.sanPhamCallBack = sanPhamCallBack;
+        this.imageLoad = imageLoad;
+        this.inDialog = inDialog;
+    }
+
     @Override
     public SanPhamHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
         View root = inflater.inflate(R.layout.item_san_pham, parent, false);
+        if (inDialog)
+            root.setLayoutParams(new ViewGroup.LayoutParams((int)context.getResources().getDimension(R.dimen.item_list_san_pham_dialog_image_width), ViewGroup.LayoutParams.MATCH_PARENT));
         return new SanPhamHolder(root);
     }
 
     @Override
     public void onBindViewHolder(final SanPhamHolder holder, final int position) {
         sanPham = listSanPham.get(position);
+
+        if (inDialog){
+            holder.tvTenSanPham.setVisibility(View.GONE);
+            holder.recyclerViewListMau.setVisibility(View.GONE);
+        }
 
         // Hình sản phẩm
         imageLoad.load(sanPham.getHinhSanPham().get(0).getLinkHinh()[0], holder.imgSanPham);
