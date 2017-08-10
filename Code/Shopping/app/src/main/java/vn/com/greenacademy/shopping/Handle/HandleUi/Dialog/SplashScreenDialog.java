@@ -29,29 +29,34 @@ import static vn.com.greenacademy.shopping.MainActivity.MY_PERMISSIONS_REQUEST_C
 
 public class SplashScreenDialog extends ProgressDialog {
     private DrawerLayout drawerLayout;
+    private Context context;
 
     private static final int DELAY_TIME = 3000;
 
     public SplashScreenDialog(Context context, int theme, DrawerLayout drawerLayout) {
         super(context, theme);
+        if (context instanceof Activity){
+            setOwnerActivity((Activity)context);
+        }
         this.drawerLayout = drawerLayout;
+        this.context = context;
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
-
         //Xin quyền
         if(Build.VERSION.SDK_INT >= 23) {
             if (CheckPermission())
                 TiepTuc();
         }
         else TiepTuc();
-
         setCancelable(false);
         setInverseBackgroundForced(false);
+
         super.onCreate(savedInstanceState);
     }
+
 
     @Override
     public void show() {
@@ -79,11 +84,12 @@ public class SplashScreenDialog extends ProgressDialog {
         if (ActivityCompat.checkSelfPermission(getContext(), android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
                 ActivityCompat.checkSelfPermission(getContext(), android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // Should we show an explanation?
-            if (ActivityCompat.shouldShowRequestPermissionRationale((Activity)getContext(), android.Manifest.permission.ACCESS_FINE_LOCATION)) {
+            Activity activity = getOwnerActivity();
+            if (ActivityCompat.shouldShowRequestPermissionRationale(activity, android.Manifest.permission.ACCESS_FINE_LOCATION)) {
                 //Hiện giải thích về quyền và xin quyền
             } else {
                 // No explanation needed, we can request the permission.
-                ActivityCompat.requestPermissions((Activity)getContext(), new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, MY_PERMISSIONS_REQUEST_CODE);
+                ActivityCompat.requestPermissions(activity, new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, MY_PERMISSIONS_REQUEST_CODE);
             }
         } else {
             return true;
