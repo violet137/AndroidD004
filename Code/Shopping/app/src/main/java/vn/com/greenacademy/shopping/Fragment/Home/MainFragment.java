@@ -65,28 +65,17 @@ public class MainFragment extends Fragment {
         final RecyclerView rvFashion = (RecyclerView) view.findViewById(R.id.rvFashion_menuHome);
         final RecyclerView rvMagazien = (RecyclerView) view.findViewById(R.id.rvMagazine_menuHome);
 
-        // có thể dùng 1 trong 2 cách dưới để disable scroll recyclerview mà vẫn có thể click item dc
+        // cách dưới để disable scroll recyclerview mà vẫn có thể click item dc
         // thiết lập xml android:layout_weight="1" cho recyclerView để có thể show toàn bộ nội dung trong list
 
         rvProduct.setLayoutManager(new GridLayoutManager(getActivity(), 1));
         rvProduct.setNestedScrollingEnabled(false);
 
         rvFashion.setLayoutManager(new GridLayoutManager(getActivity(), 1));
-        rvFashion.addOnItemTouchListener(new RecyclerView.SimpleOnItemTouchListener() {
-            @Override
-            public boolean onInterceptTouchEvent(RecyclerView rv, MotionEvent e) {
-                // Stop only scrolling.
-                return rv.getScrollState() == RecyclerView.SCROLL_STATE_DRAGGING;
-            }
-        });
+        rvFashion.setNestedScrollingEnabled(false);
+
         rvMagazien.setLayoutManager(new GridLayoutManager(getActivity(), 1));
-        rvMagazien.addOnItemTouchListener(new RecyclerView.SimpleOnItemTouchListener() {
-            @Override
-            public boolean onInterceptTouchEvent(RecyclerView rv, MotionEvent e) {
-                // Stop only scrolling.
-                return rv.getScrollState() == RecyclerView.SCROLL_STATE_DRAGGING;
-            }
-        });
+        rvMagazien.setNestedScrollingEnabled(false);
 
         final ViewFlipper vfAdvertise = (ViewFlipper) view.findViewById(R.id.vfAdvertise_item_main_menu);
         final ViewPager vpNewProduct = (ViewPager) view.findViewById(R.id.vpNewProduct_item_main_menu);
