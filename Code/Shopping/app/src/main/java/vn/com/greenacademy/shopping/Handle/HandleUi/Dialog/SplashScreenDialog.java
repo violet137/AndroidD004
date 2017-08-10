@@ -13,6 +13,7 @@ import android.os.Handler;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
+import android.view.View;
 import android.view.ViewGroup;
 
 import vn.com.greenacademy.shopping.Fragment.Home.MainFragment;

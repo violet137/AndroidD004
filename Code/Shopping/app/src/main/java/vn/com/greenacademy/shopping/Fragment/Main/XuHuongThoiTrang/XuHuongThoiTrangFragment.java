@@ -41,19 +41,29 @@ public class XuHuongThoiTrangFragment extends Fragment implements DataCallBack, 
     private ScrollView scrollView;
 
     private LoadingDialog loadingDialog;
+    private ImageLoad imageLoad;
     private XuHuongThoiTrang xuHuongThoiTrang;
     private long idXuHuong;
     private int scrollPosition = 0;
+    private boolean isFromBackStack = false;
 
     public XuHuongThoiTrangFragment(long idXuHuong){
         this.idXuHuong = idXuHuong;
     }
 
     @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        loadingDialog = new LoadingDialog(getActivity(), new BaseFragment(getActivity().getSupportFragmentManager()));
+        new GoiAPIServerAsyncTask(this).execute(SupportKeyList.API_DATA_XU_HUONG_THOI_TRANG, ServerUrl.XuHuongThoiTrangUrl + String.valueOf(idXuHuong), String.valueOf(idXuHuong));
+        imageLoad = new ImageLoad(getActivity());
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        loadingDialog = new LoadingDialog(getActivity(), 0, new BaseFragment(getActivity().getSupportFragmentManager()));
-        loadingDialog.show();
+        if (!isFromBackStack)
+            loadingDialog.show();
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_xu_huong_thoi_trang, container, false);
         vBanner = (ImageView) root.findViewById(R.id.head_image_fragment_xu_huong_thoi_trang);
@@ -67,9 +77,10 @@ public class XuHuongThoiTrangFragment extends Fragment implements DataCallBack, 
     }
 
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        new GoiAPIServerAsyncTask(this).execute(SupportKeyList.API_DATA_XU_HUONG_THOI_TRANG, ServerUrl.XuHuongThoiTrangUrl + String.valueOf(idXuHuong), String.valueOf(idXuHuong));
+    public void onResume() {
+        super.onResume();
+        if (isFromBackStack)
+            LoadUI();
     }
 
     @Override
@@ -78,9 +89,14 @@ public class XuHuongThoiTrangFragment extends Fragment implements DataCallBack, 
         scrollPosition = scrollView.getScrollY();
     }
 
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        isFromBackStack = true;
+    }
+
     private void LoadUI() {
-        ImageLoad imageLoad = new ImageLoad(getActivity());
-        SanPhamHandler sanPhamHandler = new SanPhamHandler(getActivity());
+//        SanPhamHandler sanPhamHandler = new SanPhamHandler(getActivity());
         if(!xuHuongThoiTrang.isVideo()) {
             imageLoad.load(xuHuongThoiTrang.getHinhDaiDien(), vBanner);
         }

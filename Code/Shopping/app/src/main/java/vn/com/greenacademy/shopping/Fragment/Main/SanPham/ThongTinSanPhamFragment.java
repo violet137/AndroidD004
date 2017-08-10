@@ -49,16 +49,16 @@ public class ThongTinSanPhamFragment extends Fragment implements View.OnClickLis
     private TextView tvSoLuong;
     private Button btnSizeInfo;
     private Button btnColor;
-    private static ImageView btnShare;
-    private static ImageView btnInfo;
-    private static LinearLayout topInfo;
-    private static LinearLayout bottomInfo;
+    private ImageView btnShare;
+    private ImageView btnInfo;
+    private LinearLayout topInfo;
+    private LinearLayout bottomInfo;
     private ImageView btnHinh;
     private ViewPager pagerSanPham;
     private QuickActionPopup quickActionPopup;
 
     private SanPhamHandler sanPhamHandler;
-    private static SanPhamPagerAdapter sanPhamPagerAdapter;
+    private SanPhamPagerAdapter sanPhamPagerAdapter;
     private ImageLoad imageLoad;
     private ArrayList<SanPham> listSanPham = new ArrayList<>();
     private SanPham sanPham;
@@ -126,7 +126,6 @@ public class ThongTinSanPhamFragment extends Fragment implements View.OnClickLis
 
             @Override
             public void onPageScrollStateChanged(int state) {
-
             }
         });
 
@@ -188,6 +187,7 @@ public class ThongTinSanPhamFragment extends Fragment implements View.OnClickLis
         btnSizeInfo.setText(getResources().getString(R.string.chon_size));
     }
 
+    //Tùy chọn size
     private void setUpQuickActionSize() {
         //create QuickActionPopup. Use QuickActionPopup.VERTICAL or QuickActionPopup.HORIZONTAL //param to define orientation
         quickActionPopup = new QuickActionPopup(getActivity(), QuickActionPopup.HORIZONTAL);
@@ -210,6 +210,7 @@ public class ThongTinSanPhamFragment extends Fragment implements View.OnClickLis
         });
     }
 
+    //Tùy chọn hình
     private void setUpQuickActionHinh() {
         //create QuickActionPopup. Use QuickActionPopup.VERTICAL or QuickActionPopup.HORIZONTAL //param to define orientation
         quickActionPopup = new QuickActionPopup(getActivity(), QuickActionPopup.HORIZONTAL, imageLoad);
@@ -245,6 +246,7 @@ public class ThongTinSanPhamFragment extends Fragment implements View.OnClickLis
         });
     }
 
+    //Tùy chọn màu
     public void setUpQuickActionColor() {
         final int ID_MAIL = 2;
         final int ID_SAFARI = 3;
@@ -294,8 +296,8 @@ public class ThongTinSanPhamFragment extends Fragment implements View.OnClickLis
         });
     }
 
+    // Ẩn các thông tin không cần thiết khi hiện dialog chi tiết sản phẩm
     public void hideInfo() {
-        // Ẩn các thông tin không cần thiết khi hiện dialog chi tiết sản phẩm
         topInfo.setVisibility(View.GONE);
         bottomInfo.setVisibility(View.GONE);
         btnShare.setVisibility(View.GONE);
@@ -303,8 +305,8 @@ public class ThongTinSanPhamFragment extends Fragment implements View.OnClickLis
         sanPhamPagerAdapter.updateUiSinglePage(position, SanPhamPagerAdapter.ACTION_HIDE_GIA, null);
     }
 
+    // Hiện lại thông tin khi thoát dialog chi tiết sản phẩm
     public void showInfo() {
-        // Hiện lại thông tin khi thoát dialog chi tiết sản phẩm
         topInfo.setVisibility(View.VISIBLE);
         bottomInfo.setVisibility(View.VISIBLE);
         btnShare.setVisibility(View.VISIBLE);

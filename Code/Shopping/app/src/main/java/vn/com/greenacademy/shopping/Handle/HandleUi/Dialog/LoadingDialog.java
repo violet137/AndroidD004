@@ -25,8 +25,8 @@ public class LoadingDialog extends ProgressDialog {
     public LoadingDialog(Context context) {
         super(context);
     }
-    public LoadingDialog(Context context, int theme, BaseFragment baseFragment) {
-        super(context, theme);
+    public LoadingDialog(Context context, BaseFragment baseFragment) {
+        super(context);
         this.baseFragment = baseFragment;
     }
     @Override
@@ -47,6 +47,12 @@ public class LoadingDialog extends ProgressDialog {
         this.getWindow().setBackgroundDrawable(new ColorDrawable(Color.WHITE));
         this.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
         this.getWindow().setDimAmount(0);
+    }
+
+    @Override
+    public void dismiss() {
+        if (this.isShowing())
+            super.dismiss();
     }
 
     @Override
