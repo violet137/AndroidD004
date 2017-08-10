@@ -6,20 +6,8 @@
 
     <!-- TODO: Update blank fragment layout -->
 
-    <ListView
-        android:id="@+id/lvHome_menu_home"
-        android:visibility="gone"
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rvMenu_MenuHome_fragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:visibility="gone"
         android:layout_height="match_parent">
 
         <LinearLayout
@@ -64,6 +52,6 @@
                 android:layout_height="match_parent" />
 
         </LinearLayout>
-    </ScrollView>
+    </android.support.v4.widget.NestedScrollView>
 
 </FrameLayout>

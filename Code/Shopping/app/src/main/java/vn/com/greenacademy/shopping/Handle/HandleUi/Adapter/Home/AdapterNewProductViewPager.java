@@ -28,8 +28,7 @@ public class AdapterNewProductViewPager extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-//        return new NewProductFragmentViewPager(sanPhamArrayList,position);
-        return new Fragment();
+        return new NewProductFragmentViewPager(sanPhamArrayList,position);
 //        return new MagazineRecyclerViewFragment(position, sanPhamArrayList);
     }
 

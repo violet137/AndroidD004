@@ -193,8 +193,6 @@ class LoadDataMainMenuHandler implements ServerCallBack{
 
     // mainArrayList chứa cái đối tượng MenuMain server trả về
     ArrayList<MenuMain> mainArrayList ;
-    ArrayList<MenuMain> mainArrayList2 = new ArrayList<>();
-    ;
 
     // getServerData đối tượng gọi lên server
     GetServerData getServerData;
@@ -311,7 +309,6 @@ class LoadDataMainMenuHandler implements ServerCallBack{
                 }
                 menuMain.setAdvertiseMenuMains(advertisePhotos);
                 mainArrayList.add(menuMain);
-                mainArrayList2.add(menuMain);
                 finishLoadData(SupportKeyList.ClickHome_Advertise);
                 break;
 
@@ -325,7 +322,6 @@ class LoadDataMainMenuHandler implements ServerCallBack{
                     menuMain.setId(menuPhoto.getFashionTypeArrayList().get(i).getLoaiThoiTrang());
                     menuMain.setName(menuPhoto.getFashionTypeArrayList().get(i).getTen());
                     mainArrayList.add(menuMain);
-                    mainArrayList2.add(menuMain);
                 }
                 finishLoadData(SupportKeyList.ClickHome_Products);
                 break;
@@ -354,7 +350,6 @@ class LoadDataMainMenuHandler implements ServerCallBack{
                 menuMain.setFlagItem(SupportKeyList.ClickHome_NewProduct);
                 menuMain.setSanPhamArrayList(sanPhamArrayList);
                 mainArrayList.add(menuMain);
-                mainArrayList2.add(menuMain);
                 finishLoadData(SupportKeyList.ClickHome_NewProduct);
                 break;
             default:
@@ -379,10 +374,8 @@ class LoadDataMainMenuHandler implements ServerCallBack{
                         menuMain.setFlagItem(SupportKeyList.ClickHome_Fashion);
                     }
                     mainArrayList.add(menuMain);
-                    mainArrayList2.add(menuMain);
                 }
-//                finishLoadData(SupportKeyList.ClickHome_Magazine);
-                finishLoadData(-5);
+                finishLoadData(SupportKeyList.ClickHome_Magazine);
                 break;
         }
     }
@@ -404,9 +397,6 @@ class LoadDataMainMenuHandler implements ServerCallBack{
                 break;
             case SupportKeyList.ClickHome_Magazine:
                 MainFragment.listMainMenuCallBack.callBack(mainArrayList, flag);
-                break;
-            case -5:
-                MainFragment.listMainMenuCallBack.callBack(mainArrayList2, flag);
                 break;
         }
     }

@@ -39,7 +39,7 @@
     <dimen name="ConstraintLayout_height">100dp</dimen>
     <dimen name="imageView_constrain_height">142dp</dimen>
     <dimen name="imageView_height">277dp</dimen>
-    <dimen name="textView_layout_marginTop">90dp</dimen>
+    <dimen name="textView_layout_marginTop">105dp</dimen>
     <dimen name="textView_paddingLeft">10dp</dimen>
     <dimen name="textView_paddingRight">10dp</dimen>
     <dimen name="textView_textSize">18dp</dimen>
