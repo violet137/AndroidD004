@@ -58,8 +58,8 @@ public class MainFragment extends Fragment {
         // Inflate the layout for this fragment
         final View view = inflater.inflate(R.layout.fragment_menu_home, container, false);
 
-        final RecyclerView rvMenu = (RecyclerView) view.findViewById(R.id.rvMenu_MenuHome_fragment);
-        rvMenu.setLayoutManager(new GridLayoutManager(getActivity(), 1));
+//        final RecyclerView rvMenu = (RecyclerView) view.findViewById(R.id.rvMenu_MenuHome_fragment);
+//        rvMenu.setLayoutManager(new GridLayoutManager(getActivity(), 1));
 
         final RecyclerView rvProduct = (RecyclerView) view.findViewById(R.id.rvProduct_menuHome);
         final RecyclerView rvFashion = (RecyclerView) view.findViewById(R.id.rvFashion_menuHome);
@@ -69,7 +69,7 @@ public class MainFragment extends Fragment {
         // thiết lập xml android:layout_weight="1" cho recyclerView để có thể show toàn bộ nội dung trong list
 
         rvProduct.setLayoutManager(new GridLayoutManager(getActivity(), 1));
-//        rvProduct.setNestedScrollingEnabled(false);
+        rvProduct.setNestedScrollingEnabled(false);
 
         rvFashion.setLayoutManager(new GridLayoutManager(getActivity(), 1));
         rvFashion.addOnItemTouchListener(new RecyclerView.SimpleOnItemTouchListener() {
@@ -91,7 +91,7 @@ public class MainFragment extends Fragment {
         final ViewFlipper vfAdvertise = (ViewFlipper) view.findViewById(R.id.vfAdvertise_item_main_menu);
         final ViewPager vpNewProduct = (ViewPager) view.findViewById(R.id.vpNewProduct_item_main_menu);
 
-        final ListView lvHome_menu_home = (ListView) view.findViewById(R.id.lvHome_menu_home);
+//        final ListView lvHome_menu_home = (ListView) view.findViewById(R.id.lvHome_menu_home);
 
         //Xử lý sự kiện
         mainMenuHandler = new MainMenuHandler(getActivity(), new BaseFragment(getActivity().getSupportFragmentManager()));
@@ -121,11 +121,11 @@ public class MainFragment extends Fragment {
                     case SupportKeyList.ClickHome_Magazine:
                         mainMenuHandler.setAdapter(menuMainArrayList, flag, rvMagazien);
                         break;
-                    case -5:
-//                        rvMenu.setAdapter(mainMenuHandler.getAdapterRVMultipleView(menuMainArrayList));
-//                        lvHome_menu_home.setAdapter(mainMenuHandler.getAdapterLV(menuMainArrayList));
-                        rvMenu.setAdapter(mainMenuHandler.getAdapterRV(menuMainArrayList));
-                        break;
+//                    case -5:
+////                        rvMenu.setAdapter(mainMenuHandler.getAdapterRVMultipleView(menuMainArrayList));
+////                        lvHome_menu_home.setAdapter(mainMenuHandler.getAdapterLV(menuMainArrayList));
+////                        rvMenu.setAdapter(mainMenuHandler.getAdapterRV(menuMainArrayList));
+//                        break;
                 }
             }
 
