@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.ListAdapter;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
 
@@ -20,6 +21,8 @@ import vn.com.greenacademy.shopping.Handle.HandleData.ParseData.Main.ParseNewPro
 import vn.com.greenacademy.shopping.Handle.HandleData.ParseData.Main.ParseAdvertise;
 import vn.com.greenacademy.shopping.Handle.HandleData.ParseData.Main.ParseBanner;
 import vn.com.greenacademy.shopping.Handle.HandleData.ParseData.Main.ParseMyProducts;
+import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.Home.AdapterHomeListView;
+import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.Home.AdapterHomeRV;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.Home.AdapterHomeRVFashion;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.Home.AdapterHomeRVMagazine;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.Home.AdapterHomeRVProducts;
@@ -34,6 +37,7 @@ import vn.com.greenacademy.shopping.Model.Home.MenuPhoto;
 import vn.com.greenacademy.shopping.Model.Home.ProductsPhoto;
 import vn.com.greenacademy.shopping.Model.ThongTinSanPham.SanPham;
 import vn.com.greenacademy.shopping.Network.AsynTask.GetServerData;
+import vn.com.greenacademy.shopping.R;
 import vn.com.greenacademy.shopping.Util.ServerUrl;
 import vn.com.greenacademy.shopping.Util.SupportKeyList;
 import vn.com.greenacademy.shopping.Util.Ui.BaseFragment;
@@ -108,7 +112,6 @@ public class MainMenuHandler extends LoadDataMainMenuHandler{
                     // loại tạp chí
                     case SupportKeyList.TapChi_BannerType:
                         Toast.makeText(activity, String.valueOf(bannerPhoto.getId()) + " " + bannerPhoto.getLoaiBanner(), Toast.LENGTH_SHORT).show();
-
                         break;
                 }
             }
@@ -122,7 +125,7 @@ public class MainMenuHandler extends LoadDataMainMenuHandler{
 //    }
 
     // tai du lieu tu adapter len list
-    public AdapterHomeRecyclerView getAdapter (ArrayList<MenuMain> menuMainArrayList) {
+    public AdapterHomeRecyclerView getAdapterRVMultipleView (ArrayList<MenuMain> menuMainArrayList) {
         AdapterHomeRecyclerView adapter = new AdapterHomeRecyclerView(activity, menuMainArrayList);
         return adapter;
     }
@@ -174,12 +177,24 @@ public class MainMenuHandler extends LoadDataMainMenuHandler{
 
         vpNewProduct.setAdapter(adapterNewProductViewPager);
     }
+
+    public ListAdapter getAdapterLV(ArrayList<MenuMain> menuMainArrayList) {
+        AdapterHomeListView adapterHomeListView = new AdapterHomeListView(activity, R.layout.item_menu_home_list_view, menuMainArrayList);
+        return adapterHomeListView;
+    }
+
+    public RecyclerView.Adapter getAdapterRV(ArrayList<MenuMain> menuMainArrayList) {
+        AdapterHomeRV adapterHomeRV = new AdapterHomeRV(activity, menuMainArrayList);
+        return adapterHomeRV;
+    }
 }
 
 class LoadDataMainMenuHandler implements ServerCallBack{
 
     // mainArrayList chứa cái đối tượng MenuMain server trả về
     ArrayList<MenuMain> mainArrayList ;
+    ArrayList<MenuMain> mainArrayList2 = new ArrayList<>();
+    ;
 
     // getServerData đối tượng gọi lên server
     GetServerData getServerData;
@@ -286,6 +301,7 @@ class LoadDataMainMenuHandler implements ServerCallBack{
                 mainArrayList = new ArrayList<>();
                 menuMain = new MenuMain();
                 menuMain.setFlag(Integer.parseInt(key));
+                menuMain.setFlagItem(SupportKeyList.ClickHome_Advertise);
                 ArrayList<AdvertisePhoto> advertisePhotos = new ArrayList<>();
                 for (int i = 0; i < menuPhoto.getAdvertisePhotoArrayList().size(); i++) {
                     AdvertisePhoto advertisePhoto = new AdvertisePhoto();
@@ -295,6 +311,7 @@ class LoadDataMainMenuHandler implements ServerCallBack{
                 }
                 menuMain.setAdvertiseMenuMains(advertisePhotos);
                 mainArrayList.add(menuMain);
+                mainArrayList2.add(menuMain);
                 finishLoadData(SupportKeyList.ClickHome_Advertise);
                 break;
 
@@ -303,10 +320,12 @@ class LoadDataMainMenuHandler implements ServerCallBack{
                 for (int i = 0; i < menuPhoto.getFashionTypeArrayList().size(); i++) {
                     menuMain = new MenuMain();
                     menuMain.setFlag(Integer.parseInt(key));
+                    menuMain.setFlagItem(SupportKeyList.ClickHome_Products);
                     menuMain.setUrl(menuPhoto.getFashionTypeArrayList().get(i).getLinkHinh());
                     menuMain.setId(menuPhoto.getFashionTypeArrayList().get(i).getLoaiThoiTrang());
                     menuMain.setName(menuPhoto.getFashionTypeArrayList().get(i).getTen());
                     mainArrayList.add(menuMain);
+                    mainArrayList2.add(menuMain);
                 }
                 finishLoadData(SupportKeyList.ClickHome_Products);
                 break;
@@ -332,8 +351,10 @@ class LoadDataMainMenuHandler implements ServerCallBack{
                     sanPhamArrayList.add(sanPham);
                 }
                 menuMain.setFlag(Integer.parseInt(key));
+                menuMain.setFlagItem(SupportKeyList.ClickHome_NewProduct);
                 menuMain.setSanPhamArrayList(sanPhamArrayList);
                 mainArrayList.add(menuMain);
+                mainArrayList2.add(menuMain);
                 finishLoadData(SupportKeyList.ClickHome_NewProduct);
                 break;
             default:
@@ -351,12 +372,17 @@ class LoadDataMainMenuHandler implements ServerCallBack{
                             mainArrayList = new ArrayList<>();
                             count = 1;
                         }
+                        menuMain.setFlagItem(SupportKeyList.ClickHome_Magazine);
                         menuMain.setMagazineType(menuPhoto.getBannerPhotoArrayList().get(i).getLoaiTapChi());
                         menuMain.setName(menuPhoto.getBannerPhotoArrayList().get(i).getName());
+                    }else {
+                        menuMain.setFlagItem(SupportKeyList.ClickHome_Fashion);
                     }
                     mainArrayList.add(menuMain);
+                    mainArrayList2.add(menuMain);
                 }
-                finishLoadData(SupportKeyList.ClickHome_Magazine);
+//                finishLoadData(SupportKeyList.ClickHome_Magazine);
+                finishLoadData(-5);
                 break;
         }
     }
@@ -378,6 +404,9 @@ class LoadDataMainMenuHandler implements ServerCallBack{
                 break;
             case SupportKeyList.ClickHome_Magazine:
                 MainFragment.listMainMenuCallBack.callBack(mainArrayList, flag);
+                break;
+            case -5:
+                MainFragment.listMainMenuCallBack.callBack(mainArrayList2, flag);
                 break;
         }
     }

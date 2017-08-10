@@ -44,8 +44,8 @@ public class AdapterHomeRVFashion extends RecyclerView.Adapter<ItemRVFashionHold
 
     @Override
     public void onBindViewHolder(ItemRVFashionHolder holder, int position) {
-
         ImageLoad imageLoad = new ImageLoad(activity);
+
         ItemHome itemHome = new ItemHome();
         itemHome.setFlagItemHome(SupportKeyList.ClickHome_Fashion);
         itemHome.setId(String.valueOf(menuMainArrayList.get(position).getId()));

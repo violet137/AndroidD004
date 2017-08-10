@@ -7,5 +7,7 @@
     <ViewFlipper
         android:id="@+id/vfAdvertise_item_main_menu"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/viewFlipper_height"></ViewFlipper>
+        android:layout_height="@dimen/viewFlipper_height">
+
+    </ViewFlipper>
 </LinearLayout>

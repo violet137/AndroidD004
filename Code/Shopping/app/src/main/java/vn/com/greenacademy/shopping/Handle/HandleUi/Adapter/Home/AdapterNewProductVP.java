@@ -8,19 +8,18 @@ import android.support.v4.app.FragmentPagerAdapter;
 import java.util.ArrayList;
 
 import vn.com.greenacademy.shopping.Fragment.Home.NewProductFragmentViewPager;
-import vn.com.greenacademy.shopping.Fragment.Sale.SaleProductFragmentViewPager;
 import vn.com.greenacademy.shopping.Model.ThongTinSanPham.SanPham;
 
 /**
- * Created by ADMIN on 8/8/2017.
+ * Created by ADMIN on 8/10/2017.
  */
 
-public class AdapterNewProductViewPager extends FragmentPagerAdapter {
+public class AdapterNewProductVP  extends FragmentPagerAdapter {
     Activity activity;
     ArrayList<SanPham> sanPhamArrayList;
 
-    public AdapterNewProductViewPager(FragmentManager fm, Activity activity,
-                                ArrayList<SanPham> sanPhamArrayList) {
+    public AdapterNewProductVP(FragmentManager fm, Activity activity,
+                                      ArrayList<SanPham> sanPhamArrayList) {
         super(fm);
         this.activity = activity;
         this.sanPhamArrayList = sanPhamArrayList;
@@ -28,8 +27,7 @@ public class AdapterNewProductViewPager extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-//        return new NewProductFragmentViewPager(sanPhamArrayList,position);
-        return new Fragment();
+        return new NewProductFragmentViewPager(sanPhamArrayList,position);
 //        return new MagazineRecyclerViewFragment(position, sanPhamArrayList);
     }
 
