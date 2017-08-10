@@ -2,20 +2,21 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="@dimen/layout_margin_10dp"
-    android:orientation="vertical">
+    android:background="#1ea9a9a9"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/layout_margin_10dp">
 
     <TextView
         android:id="@+id/textView8"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="@dimen/layout_margin_20dp"
         android:layout_weight="1"
+        android:gravity="center"
+        android:paddingTop="@dimen/layout_margin_20dp"
+        android:text="Sản Phẩm Mới"
         android:textColor="@color/cardview_dark_background"
         android:textSize="@dimen/text_size_35dp"
-        android:gravity="center"
-        android:textStyle="bold"
-        android:text="Sản Phẩm Mới" />
+        android:textStyle="bold" />
 
     <android.support.v4.view.ViewPager
         android:id="@+id/vpNewProduct_item_main_menu"

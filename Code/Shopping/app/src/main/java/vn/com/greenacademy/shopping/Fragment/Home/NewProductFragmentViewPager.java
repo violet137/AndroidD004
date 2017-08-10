@@ -35,12 +35,12 @@ public class NewProductFragmentViewPager extends Fragment {
     public NewProductFragmentViewPager(ArrayList<SanPham> sanPhamArrayList, int positionViewPager) {
         // Required empty public constructor
         this.sanPhamArrayList=sanPhamArrayList;
-//        if (positionViewPager == 0) {
-//            position = positionViewPager;
-//        }else {
-//            position = (int) Math.pow(2, positionViewPager+1);
-//        }
-        position =positionViewPager;
+        if (positionViewPager == 0) {
+            position = positionViewPager;
+        }else {
+            position = (int) Math.pow(2, positionViewPager+1);
+        }
+//        position =positionViewPager;
     }
 
 
