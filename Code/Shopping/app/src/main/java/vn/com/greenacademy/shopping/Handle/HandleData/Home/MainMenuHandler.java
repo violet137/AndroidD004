@@ -171,6 +171,7 @@ public class MainMenuHandler extends LoadDataMainMenuHandler{
     }
 
     public void setDataNewProduct(ArrayList<MenuMain> menuMainArrayList, ViewPager vpNewProduct) {
+
         AdapterNewProductViewPager adapterNewProductViewPager =
                 new AdapterNewProductViewPager(((AppCompatActivity) activity).getSupportFragmentManager(),
                         activity, menuMainArrayList.get(0).getSanPhamArrayList());

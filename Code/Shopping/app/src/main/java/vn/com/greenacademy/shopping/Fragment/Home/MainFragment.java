@@ -4,6 +4,7 @@ package vn.com.greenacademy.shopping.Fragment.Home;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -19,6 +20,8 @@ import java.util.ArrayList;
 
 import vn.com.greenacademy.shopping.Handle.HandleData.Home.ClickListenerHomeItem;
 import vn.com.greenacademy.shopping.Handle.HandleData.Home.MainMenuHandler;
+import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.Home.AdapterNewProductVP;
+import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.Home.AdapterNewProductViewPager;
 import vn.com.greenacademy.shopping.Interface.FlagCallBack;
 import vn.com.greenacademy.shopping.Interface.ListMainMenuCallBack;
 import vn.com.greenacademy.shopping.MainActivity;
@@ -32,7 +35,6 @@ import vn.com.greenacademy.shopping.Util.Ui.BaseFragment;
  */
 public class MainFragment extends Fragment {
 
-
     // listMainMenuCallBack nhận dữ liệu hoàn chỉnh trên server trả về
     public static ListMainMenuCallBack listMainMenuCallBack;
 
@@ -41,9 +43,31 @@ public class MainFragment extends Fragment {
 
     public static FlagCallBack flagCallBack;
 
+    boolean backListener = false;
+    ArrayList<MenuMain> menuMainArrayListSave;
+    ViewPager vpNewProduct;
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        backListener = true;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (backListener && menuMainArrayListSave!= null){
+            AdapterNewProductViewPager adapterNewProductVP = new AdapterNewProductViewPager(getActivity().getSupportFragmentManager(),
+                    getActivity(),menuMainArrayListSave.get(0).getSanPhamArrayList());
+            vpNewProduct.setAdapter(adapterNewProductVP);
+        }
+
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         // MainFragment ko sử dụng tvTenMuc ngoai MainActivity
         MainActivity.tvTenMuc.setVisibility(View.GONE);
 
@@ -78,7 +102,7 @@ public class MainFragment extends Fragment {
         rvMagazien.setNestedScrollingEnabled(false);
 
         final ViewFlipper vfAdvertise = (ViewFlipper) view.findViewById(R.id.vfAdvertise_item_main_menu);
-        final ViewPager vpNewProduct = (ViewPager) view.findViewById(R.id.vpNewProduct_item_main_menu);
+        vpNewProduct = (ViewPager) view.findViewById(R.id.vpNewProduct_item_main_menu);
 
 //        final ListView lvHome_menu_home = (ListView) view.findViewById(R.id.lvHome_menu_home);
 
@@ -101,6 +125,7 @@ public class MainFragment extends Fragment {
                         mainMenuHandler.setAdapter(menuMainArrayList, flag, rvProduct);
                         break;
                     case SupportKeyList.ClickHome_NewProduct:
+                        menuMainArrayListSave = menuMainArrayList;
                         view.findViewById(R.id.layoutNewProduct_menuHome).setVisibility(View.VISIBLE);
                         mainMenuHandler.setDataNewProduct(menuMainArrayList, vpNewProduct);
                         break;
