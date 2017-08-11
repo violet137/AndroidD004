@@ -86,10 +86,10 @@
     <TextView
         android:id="@+id/tvNameMagzine_item_main_menu"
         android:gravity="center"
-        android:textSize="@dimen/text_size_20dp"
+        android:textSize="@dimen/magazine_description_bai_viet_text_size"
         android:maxLines="2"
-        android:paddingLeft="@dimen/layout_margin_20dp"
-        android:paddingRight="@dimen/layout_margin_20dp"
+        android:paddingLeft="@dimen/magazine_description_bai_viet_horizontal_padding"
+        android:paddingRight="@dimen/magazine_description_bai_viet_horizontal_padding"
         android:textColor="@color/cardview_light_background"
         android:typeface="serif"
         android:layout_width="match_parent"

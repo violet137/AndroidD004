@@ -153,7 +153,9 @@
     <dimen name="magazine_button_bai_viet_khac_margin_top">15dp</dimen>
     <dimen name="magazine_button_bai_viet_khac_margin_bottom">7dp</dimen>
     <dimen name="magazine_hinh_bai_viet_margin_top">30dp</dimen>
-    
+    <dimen name="magazine_description_bai_viet_horizontal_padding">10dp</dimen>
+    <dimen name="magazine_description_bai_viet_text_size">18sp</dimen>
+
     <!-- Slide Menu -->
     <dimen name="imageView_padding_10dp">10dp</dimen>
 
