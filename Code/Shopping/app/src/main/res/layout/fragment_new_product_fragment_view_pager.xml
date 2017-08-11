@@ -2,7 +2,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/vp_layout_height_400dp"
+    android:layout_height="@dimen/view_pager_san_pham_moi"
     tools:activity="vn.com.greenacademy.shopping.Fragment.Home.NewProductFragmentViewPager">
 
     <!-- TODO: Update blank fragment layout -->
@@ -11,12 +11,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-
+        <!-- Sản phẩm 1 & 2 -->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/ll_layout_height_200dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:orientation="horizontal">
-
+            <!-- Sản phẩm 1 -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -24,15 +25,20 @@
                 android:id="@+id/llNewProduct_1_NewProductFragment"
                 android:orientation="vertical">
 
+                <!-- Hình sản phẩm 1 -->
                 <ImageView
                     android:id="@+id/ivNewProduct_1_NewProductFragment"
                     android:layout_width="match_parent"
-                    android:layout_margin="@dimen/imageView_padding_10dp"
+                    android:layout_marginTop="@dimen/item_hinh_vertical_margin"
+                    android:layout_marginBottom="@dimen/item_hinh_vertical_margin"
+                    android:layout_marginLeft="@dimen/item_hinh_margin_left"
+                    android:layout_marginRight="@dimen/item_hinh_margin_right"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:scaleType="centerCrop"
                     app:srcCompat="@drawable/banner_xu_huong_thoi_trang" />
 
+                <!-- Tên sản phẩm -->
                 <TextView
                     android:id="@+id/tvNameProduct_1_NewProductFragment"
                     android:layout_width="match_parent"
@@ -46,14 +52,17 @@
                     android:textStyle="bold"
                     android:text="TextView" />
 
+                <!-- Giá -->
                 <TextView
                     android:id="@+id/tvGiaProduct_1_NewProductFragment"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/cardview_dark_background"
                     android:gravity="center"
+                    android:layout_margin="@dimen/gia_vertical_margin"
                     android:text="TextView" />
 
+                <!-- List màu -->
                 <android.support.v7.widget.RecyclerView
                     android:layout_width="wrap_content"
                     android:layout_height="@dimen/text_size_15dp"
@@ -62,7 +71,7 @@
 
                 </android.support.v7.widget.RecyclerView>
             </LinearLayout>
-
+            <!-- Sản phẩm 2 -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -70,14 +79,20 @@
                 android:id="@+id/llNewProduct_2_NewProductFragment"
                 android:orientation="vertical">
 
+                <!-- Hình -->
                 <ImageView
                     android:id="@+id/ivNewProduct_2_NewProductFragment"
                     android:layout_weight="1"
                     android:scaleType="centerCrop"
-                    android:layout_margin="@dimen/imageView_padding_10dp"
+                    android:layout_marginTop="@dimen/item_hinh_vertical_margin"
+                    android:layout_marginBottom="@dimen/item_hinh_vertical_margin"
+                    android:layout_marginRight="@dimen/item_hinh_margin_left"
+                    android:layout_marginLeft="@dimen/item_hinh_margin_right"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:srcCompat="@drawable/banner_test2" />
+
+                <!-- Tên -->
                 <TextView
                     android:id="@+id/tvNameProduct_2_NewProductFragment"
                     android:layout_width="match_parent"
@@ -91,10 +106,12 @@
                     android:textStyle="bold"
                     android:text="TextView" />
 
+                <!-- Giá -->
                 <TextView
                     android:id="@+id/tvGiaProduct_2_NewProductFragment"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/gia_vertical_margin"
                     android:textColor="@color/cardview_dark_background"
                     android:gravity="center"
                     android:text="TextView" />
@@ -109,11 +126,13 @@
             </LinearLayout>
         </LinearLayout>
 
+        <!-- Sản phẩm 3 & 4 -->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/ll_layout_height_200dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:orientation="horizontal">
-
+            <!-- Sản phẩm 3 -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -125,8 +144,10 @@
                     android:id="@+id/ivNewProduct_3_NewProductFragment"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/imageView_padding_10dp"
-                    android:layout_weight="1"
+                    android:layout_marginTop="@dimen/item_hinh_vertical_margin"
+                    android:layout_marginBottom="@dimen/item_hinh_vertical_margin"
+                    android:layout_marginLeft="@dimen/item_hinh_margin_left"
+                    android:layout_marginRight="@dimen/item_hinh_margin_right"                    android:layout_weight="1"
                     android:scaleType="centerCrop"
                     app:srcCompat="@drawable/banner_test1" />
 
@@ -148,6 +169,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/cardview_dark_background"
+                    android:layout_margin="@dimen/gia_vertical_margin"
                     android:gravity="center"
                     android:text="TextView" />
 
@@ -159,7 +181,7 @@
 
                 </android.support.v7.widget.RecyclerView>
             </LinearLayout>
-
+            <!-- Sản phẩm 4 -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -171,7 +193,10 @@
                     android:id="@+id/ivNewProduct_4_NewProductFragment"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/imageView_padding_10dp"
+                    android:layout_marginTop="@dimen/item_hinh_vertical_margin"
+                    android:layout_marginBottom="@dimen/item_hinh_vertical_margin"
+                    android:layout_marginRight="@dimen/item_hinh_margin_left"
+                    android:layout_marginLeft="@dimen/item_hinh_margin_right"
                     android:layout_weight="1"
                     android:scaleType="centerCrop"
                     app:srcCompat="@drawable/banner_test2" />
@@ -194,6 +219,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
+                    android:layout_margin="@dimen/gia_vertical_margin"
                     android:text="TextView"
                     android:textColor="@color/cardview_dark_background" />
 
@@ -205,10 +231,10 @@
 
                 </android.support.v7.widget.RecyclerView>
             </LinearLayout>
-
+            <!-- More -->
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="190dp"
                 android:layout_weight="1"
                 android:id="@+id/llNewProduct_5_NewProductFragment"
                 android:visibility="gone"
@@ -217,7 +243,11 @@
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_margin="@dimen/layout_margin_10dp"
+                    android:layout_marginTop="@dimen/item_hinh_vertical_margin"
+                    android:layout_marginBottom="@dimen/item_hinh_vertical_margin"
+                    android:layout_marginRight="@dimen/item_hinh_margin_left"
+                    android:layout_marginLeft="@dimen/item_hinh_margin_right"
+                    android:layout_weight="1"
                     android:background="#dcc1c1c1">
 
                     <TextView

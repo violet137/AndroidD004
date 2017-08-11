@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:visibility="gone"
+        android:visibility="visible"
         android:paddingTop="@dimen/magazine_vertical_padding"
         android:paddingLeft="@dimen/magazine_horizontal_padding"
         android:paddingRight="@dimen/magazine_horizontal_padding">
@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/layout_margin_10dp"
             android:gravity="center"
-            android:text="Tạp Chí F&amp;L"
+            android:text="TẠP CHÍ F&amp;L"
             android:textColor="@color/cardview_light_background"
             android:textSize="@dimen/magazine_title_text_size"
             android:textStyle="italic"
@@ -41,7 +41,7 @@
             android:layout_marginTop="@dimen/magazine_title_description_margin_top"
             android:gravity="center"
             android:text="THẾ GIỚI CỦA CẢM HỨNG"
-            android:textColor="@color/cardview_light_background"
+            android:textColor="@color/colorBackground"
             android:textSize="@dimen/magazine_title_description_size"
             android:typeface="sans"/>
 

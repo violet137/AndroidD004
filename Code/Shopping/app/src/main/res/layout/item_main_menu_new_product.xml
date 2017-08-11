@@ -10,11 +10,9 @@
     <TextView
         android:id="@+id/textView8"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/title_new_product_text_height"
         android:layout_weight="1"
         android:gravity="center"
-        android:paddingTop="@dimen/title_new_product_horizontal_padding"
-        android:paddingBottom="@dimen/title_new_product_horizontal_padding"
         android:text="Sản Phẩm Mới"
         android:textColor="@color/cardview_dark_background"
         android:textSize="@dimen/title_text_size"
@@ -24,7 +22,8 @@
     <android.support.v4.view.ViewPager
         android:id="@+id/vpNewProduct_item_main_menu"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/vp_layout_height_400dp">
+        android:layout_height="@dimen/view_pager_san_pham_moi"
+        android:layout_weight="1">
     </android.support.v4.view.ViewPager>
 
 </LinearLayout>

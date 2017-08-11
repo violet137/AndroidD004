@@ -58,6 +58,12 @@
     <dimen name="ten_muc_text_height">30dp</dimen>
     <dimen name="ten_muc_vertical_padding">7dp</dimen>
     <dimen name="ten_muc_horizontal_padding">15dp</dimen>
+    <dimen name="item_hinh_san_pham_moi_height">250dp</dimen>
+    <dimen name="item_hinh_vertical_margin">10dp</dimen>
+    <dimen name="item_hinh_margin_left">10dp</dimen>
+    <dimen name="item_hinh_margin_right">2.5dp</dimen>
+    <dimen name="view_pager_san_pham_moi">500dp</dimen>
+    <dimen name="gia_vertical_margin">5dp</dimen>
 
     <!-- Thông tin cá nhân -->
     <dimen name="thong_tin_ca_nhan_vertical_margin">15dp</dimen>
@@ -163,6 +169,7 @@
     <dimen name="iv_layout_height_280dp">280dp</dimen>
     <!-- dialog store detail (new) -->
     <dimen name="title_new_product_horizontal_padding">25dp</dimen>
+    <dimen name="title_new_product_text_height">100dp</dimen>
     <dimen name="title_text_size">30sp</dimen>
     <dimen name="san_pham_moi_padding_bottom">30dp</dimen>
 
