@@ -184,6 +184,9 @@
     <dimen name="iv_layout_height_95dp">95dp</dimen>
     <dimen name="tv_padding_top_2dp">2dp</dimen>
 
-
-
+    <!-- Dialog thông báo -->
+    <dimen name="message_dialog_text_size">20sp</dimen>
+    <dimen name="button_text_size">15sp</dimen>
+    <dimen name="button_xac_nhan_height">40dp</dimen>
+    <dimen name="message_dialog_margin">25dp</dimen>
 </resources>

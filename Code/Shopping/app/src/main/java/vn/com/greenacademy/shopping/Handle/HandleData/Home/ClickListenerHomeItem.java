@@ -27,7 +27,7 @@ public class ClickListenerHomeItem {
     public static View.OnClickListener onClickListener;
 
     public static void Click(final Activity activity){
-        final BaseFragment baseFragment = new BaseFragment(((AppCompatActivity)activity).getSupportFragmentManager());
+        final BaseFragment baseFragment = new BaseFragment(((AppCompatActivity)activity), ((AppCompatActivity)activity).getSupportFragmentManager());
         onClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {

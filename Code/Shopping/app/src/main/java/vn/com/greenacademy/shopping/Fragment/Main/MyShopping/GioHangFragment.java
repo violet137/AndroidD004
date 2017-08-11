@@ -32,7 +32,7 @@ public class GioHangFragment extends Fragment implements View.OnClickListener {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mySharedPref = new MySharedPreferences(getActivity(), SupportKeyList.SHAREDPREF_TEN_FILE);
-        baseFragment = new BaseFragment(getActivity().getSupportFragmentManager());
+        baseFragment = new BaseFragment(getActivity(), getActivity().getSupportFragmentManager());
     }
 
     @Override

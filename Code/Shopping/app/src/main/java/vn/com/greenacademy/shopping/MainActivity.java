@@ -1,7 +1,14 @@
 package vn.com.greenacademy.shopping;
 
+import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -25,19 +32,26 @@ import vn.com.greenacademy.shopping.Fragment.Home.MainFragment;
 import vn.com.greenacademy.shopping.Fragment.Main.MyShopping.GioHangFragment;
 import vn.com.greenacademy.shopping.Fragment.Main.MyShopping.TaiKhoan.DangNhapFragment;
 import vn.com.greenacademy.shopping.Fragment.Main.MyShopping.TaiKhoan.DangNhapKhongLuuFragment;
-import vn.com.greenacademy.shopping.Fragment.SplashScreenFragment;
 import vn.com.greenacademy.shopping.Fragment.Store.FindStoreFragment;
 import vn.com.greenacademy.shopping.Handle.HandleData.DataHandler;
 import vn.com.greenacademy.shopping.Handle.HandleData.TaiKhoan.GoogleHandler;
 import vn.com.greenacademy.shopping.Handle.HandleData.SlideMenuHandler;
+import vn.com.greenacademy.shopping.Handle.HandleUi.ActivityHandler;
+import vn.com.greenacademy.shopping.Handle.HandleUi.Dialog.NetworkDialog;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Dialog.SplashScreenDialog;
+import vn.com.greenacademy.shopping.Interface.CheckInternetCallback;
 import vn.com.greenacademy.shopping.Interface.DataCallBack;
+import vn.com.greenacademy.shopping.Network.NetworkChangeReceiver;
 import vn.com.greenacademy.shopping.Util.SharePreference.MySharedPreferences;
 import vn.com.greenacademy.shopping.Util.SupportKeyList;
 import vn.com.greenacademy.shopping.Util.Ui.BaseFragment;
 
-public class MainActivity extends AppCompatActivity implements DataCallBack {
+public class MainActivity extends AppCompatActivity implements DataCallBack, View.OnClickListener {
     ListView lv_item_slide_menu;
+    public static TextView tvTenMuc;
+    private DrawerLayout drawerLayout;
+    private Toolbar toolbar;
+    private NavigationView navigationView;
 
 //    ArrayList<SlideMenu> arrayModeSlideMenus;
 //    int[] arrIcon;
@@ -45,17 +59,19 @@ public class MainActivity extends AppCompatActivity implements DataCallBack {
 //    SlideMenu modeSlideMenu;
 //    AdapterSlideMenu adapterSlideMenu;
 
-    DrawerLayout drawerLayout;
-    Toolbar toolbar;
-    NavigationView navigationView;
-
     private BaseFragment baseFragment;
     private DataHandler dataHandler;
     private MySharedPreferences mySharedPref;
-
-    public static TextView tvTenMuc;
-    SlideMenuHandler slideMenuHandler;
+    private SlideMenuHandler slideMenuHandler;
     boolean trangThaiListFindStore = false;
+    //Biến cho check network
+    private static NetworkDialog networkDialog;
+    private static Fragment toFrag;
+    private static String fragmetTag;
+    private static boolean toBackStack;
+    public static NetworkInfo networkInfo;
+    public static boolean checkFirstTime = false;
+    public static boolean isConnect = false;
 
     public static final int MY_PERMISSIONS_REQUEST_CODE = 1;
 
@@ -89,16 +105,17 @@ public class MainActivity extends AppCompatActivity implements DataCallBack {
                 //modeSlideMenu = arrayModeSlideMenus.get(position);
                 slideMenuHandler.itemClickListener(position, baseFragment);
                 // dong slide menu
-                if (drawerLayout.isDrawerOpen(GravityCompat.START)){
+                if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
                     drawerLayout.closeDrawer(GravityCompat.START);
                 }
             }
         });
 
         //Khởi tạo, thiết lập giá trị
+        networkDialog = new NetworkDialog(this, getResources().getString(R.string.dialog_thong_bao_internet_error), this);
         mySharedPref = new MySharedPreferences(this, SupportKeyList.SHAREDPREF_TEN_FILE);
         dataHandler = new DataHandler(this);
-        baseFragment = new BaseFragment(getSupportFragmentManager());
+        baseFragment = new BaseFragment(this, getSupportFragmentManager());
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, 0, 0);
         drawerLayout.addDrawerListener(toggle);
@@ -106,16 +123,42 @@ public class MainActivity extends AppCompatActivity implements DataCallBack {
         toggle.syncState();
 
         //Chạy màn hình splash
-//        baseFragment.ChuyenFragment(new SplashScreenFragment(getSupportActionBar(), drawerLayout), null, false);
         baseFragment.ChuyenFragment(new MainFragment(), null, false);
-        SplashScreenDialog splashScreenDialog = new SplashScreenDialog(MainActivity.this, R.style.Theme_Dialog_Light_NoActionBar, drawerLayout);
-        splashScreenDialog.show();
+//        SplashScreenDialog splashScreenDialog = new SplashScreenDialog(MainActivity.this, drawerLayout);
+//        splashScreenDialog.show();
 
+//        networkDialog.show();
+//        CheckNetwork();
+    }
+
+//    private void CheckNetwork() {
+//        ConnectivityManager connManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+//        //Lấy thông tin kết nối
+//        NetworkInfo connInfo = connManager.getActiveNetworkInfo();
+//        if (connInfo != null && connInfo.isConnected()) {
+//            Toast.makeText(this, "connected", Toast.LENGTH_SHORT).show();
+//            showNetworkDialog(true);
+//        } else {
+//            Toast.makeText(this, "no", Toast.LENGTH_SHORT).show();
+//            showNetworkDialog(false);
+//        }
+//    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        ActivityHandler.activityPaused();// On Pause notify the Application
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        ActivityHandler.activityResumed();// On Resume notify the Application
     }
 
     @Override
     public void onBackPressed() {
-        if(drawerLayout.isDrawerOpen(GravityCompat.START)){
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
             drawerLayout.closeDrawer(GravityCompat.START);
         } else {
             if (getSupportFragmentManager().getBackStackEntryCount() <= 0)
@@ -138,8 +181,8 @@ public class MainActivity extends AppCompatActivity implements DataCallBack {
     public boolean onPrepareOptionsMenu(Menu menu) {
         super.onPrepareOptionsMenu(menu);
         Fragment fragment = getSupportFragmentManager().findFragmentById(R.id.content_main);
-        if(fragment != null && fragment.getTag() != null) {
-            switch (fragment.getTag()){
+        if (fragment != null && fragment.getTag() != null) {
+            switch (fragment.getTag()) {
                 case SupportKeyList.TAG_FRAGMENT_MAIN:
                     menu.findItem(R.id.search_toolbar).setVisible(true);
                     menu.findItem(R.id.my_bag_toolbar).setVisible(true);
@@ -150,7 +193,7 @@ public class MainActivity extends AppCompatActivity implements DataCallBack {
 
                 case SupportKeyList.TAG_FRAGMENT_MY_SHOPPING:
                     if (mySharedPref.getDaDangNhap()) {
-                        if(!mySharedPref.getLuuDangNhap()) {
+                        if (!mySharedPref.getLuuDangNhap()) {
                             menu.findItem(R.id.dang_nhap_toolbar).setVisible(true);
                             menu.findItem(R.id.dang_xuat_toolbar).setVisible(false);
                         } else {
@@ -202,7 +245,7 @@ public class MainActivity extends AppCompatActivity implements DataCallBack {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.dang_nhap_toolbar:
                 if (mySharedPref.getLuuDangNhap())
                     baseFragment.ChuyenFragment(new DangNhapFragment(), SupportKeyList.TAG_FRAGMENT_DANG_NHAP, true);
@@ -210,7 +253,7 @@ public class MainActivity extends AppCompatActivity implements DataCallBack {
                     baseFragment.ChuyenFragment(new DangNhapKhongLuuFragment(), SupportKeyList.TAG_FRAGMENT_DANG_NHAP_KHONG_LUU, true);
                 break;
             case R.id.dang_xuat_toolbar:
-                switch (mySharedPref.getLoaiTaiKhoan()){
+                switch (mySharedPref.getLoaiTaiKhoan()) {
                     case SupportKeyList.ACCOUNT_THUONG:
                         dataHandler.DangXuat();
                         baseFragment.ChuyenFragment(new DangNhapFragment(), SupportKeyList.TAG_FRAGMENT_DANG_NHAP, false);
@@ -225,7 +268,7 @@ public class MainActivity extends AppCompatActivity implements DataCallBack {
                 break;
 
             case R.id.find_store_toolbar:
-                if (trangThaiListFindStore){
+                if (trangThaiListFindStore) {
                     trangThaiListFindStore = false;
                     FindStoreFragment.listView.setVisibility(View.GONE);
                     tvTenMuc.setVisibility(View.GONE);
@@ -250,7 +293,7 @@ public class MainActivity extends AppCompatActivity implements DataCallBack {
     //Xử lý kết quả
     @Override
     public void KetQua(String result, Bundle bundle) {
-        switch (result){
+        switch (result) {
             case SupportKeyList.DANG_XUAT_THANH_CONG:
                 dataHandler.DangXuat();
                 Toast.makeText(this, "dang xuat thanh cong", Toast.LENGTH_SHORT).show();
@@ -258,17 +301,43 @@ public class MainActivity extends AppCompatActivity implements DataCallBack {
                 break;
         }
     }
+
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        switch (requestCode){
+        switch (requestCode) {
             case MY_PERMISSIONS_REQUEST_CODE:
-                if(grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     baseFragment.ChuyenFragment(new MainFragment(), SupportKeyList.TAG_FRAGMENT_MAGAZINE, false);
-                } else{
+                } else {
                     finish();
                 }
                 return;
         }
     }
 
+    //Hiện dialog thông báo khi không có internet
+    public static void showNetworkDialog(boolean isConnected, Bundle bundle, Fragment toFragment){
+        if (!isConnected) {
+            if (!networkDialog.isShowing())
+                networkDialog.show();
+            if (toFragment!=null){
+                toFrag = toFragment;
+                fragmetTag = bundle.getString("toFragmentTag");
+                toBackStack = bundle.getBoolean("toBackStack");
+            }
+        }
+//        else
+//            if (networkDialog.isShowing())
+//                networkDialog.dismiss();
+    }
+
+    @Override
+    public void onClick(View v) {
+        //Xủ lý sự kiệm click của network dialog
+        if (v.getId() == R.id.btn_xac_nhan_message_dialog){
+            networkDialog.dismiss();
+            if (getSupportFragmentManager().findFragmentById(R.id.content_main) != toFrag)
+                baseFragment.ChuyenFragment(toFrag, fragmetTag, toBackStack);
+        }
+    }
 }

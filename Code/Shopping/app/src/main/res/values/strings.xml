@@ -28,6 +28,7 @@
     <string name="toast_dang_ky_thanh_cong">Đăng ký thành công!</string>
     <string name="toast_dang_ky_that_bai">Đăng ký thất bại!</string>
     <string name="toast_nhap_thieu">Thiếu thông tin cần thiết!</string>
+    <string name="dialog_thong_bao_internet_error">Kiểm tra kết nối và thử lại</string>
 
     <!-- My Shopping -->
     <string name="title_my_shopping">MY SHOPPING</string>

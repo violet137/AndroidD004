@@ -40,7 +40,7 @@ public class ThongTinCaNhanFragment extends Fragment implements View.OnClickList
         root.findViewById(R.id.btnHuy_FragmentThongTinCaNhan).setOnClickListener(this);
 
         mySharedPref = new MySharedPreferences(getActivity(), SupportKeyList.SHAREDPREF_TEN_FILE);
-        baseFragment = new BaseFragment(getActivity().getSupportFragmentManager());
+        baseFragment = new BaseFragment(getActivity(), getActivity().getSupportFragmentManager());
         etUsername.setText(mySharedPref.getTenTaiKhoan());
 
         //reset option menu

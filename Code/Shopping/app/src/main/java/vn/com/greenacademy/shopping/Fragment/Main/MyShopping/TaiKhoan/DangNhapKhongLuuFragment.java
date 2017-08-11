@@ -50,7 +50,7 @@ public class DangNhapKhongLuuFragment extends Fragment implements View.OnClickLi
         tvTaiKhoanKhac.setOnClickListener(this);
 
         dataHandler = new DataHandler(getActivity(), this);
-        baseFragment = new BaseFragment(getActivity().getSupportFragmentManager());
+        baseFragment = new BaseFragment(getActivity(), getActivity().getSupportFragmentManager());
         mySharedPref = new MySharedPreferences(getActivity(), SupportKeyList.SHAREDPREF_TEN_FILE);
         tvUsername.setText(tvUsername.getText().toString() + " " + mySharedPref.getTenTaiKhoan());
         tvTaiKhoanKhac.setText(R.string.tai_khoan_khac);

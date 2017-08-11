@@ -107,7 +107,7 @@ public class MainFragment extends Fragment {
 //        final ListView lvHome_menu_home = (ListView) view.findViewById(R.id.lvHome_menu_home);
 
         //Xử lý sự kiện
-        mainMenuHandler = new MainMenuHandler(getActivity(), new BaseFragment(getActivity().getSupportFragmentManager()));
+        mainMenuHandler = new MainMenuHandler(getActivity(), new BaseFragment(getActivity(), getActivity().getSupportFragmentManager()));
 
         // goi hàm lấy dữ liệu trên server xuống
         mainMenuHandler.getDataServer();

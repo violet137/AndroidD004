@@ -35,7 +35,7 @@ public class MyShoppingFragment extends Fragment implements View.OnClickListener
         root.findViewById(R.id.tvTaiKhoan_MyShoppingFragment).setOnClickListener(this);
         TextView tvTenTaiKhoan = (TextView) root.findViewById(R.id.tvTenTaiKhoan_FragmentMyShopping);
 
-        baseFragment = new BaseFragment(getActivity().getSupportFragmentManager());
+        baseFragment = new BaseFragment(getActivity(), getActivity().getSupportFragmentManager());
         mySharedPref = new MySharedPreferences(getActivity(), SupportKeyList.SHAREDPREF_TEN_FILE);
 
         //Hiện tên tài khoản tren title bar
