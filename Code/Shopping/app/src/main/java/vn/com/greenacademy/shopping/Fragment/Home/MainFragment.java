@@ -65,7 +65,7 @@ public class MainFragment extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //Xử lý sự kiện
-        mainMenuHandler = new MainMenuHandler(getActivity(), new BaseFragment(getActivity().getSupportFragmentManager()));
+        mainMenuHandler = new MainMenuHandler(getActivity(), new BaseFragment(getActivity(), getActivity().getSupportFragmentManager()));
 
         // goi hàm lấy dữ liệu trên server xuống
         mainMenuHandler.getDataServer();
