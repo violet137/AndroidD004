@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:visibility="visible"
+        android:visibility="gone"
         android:paddingTop="@dimen/magazine_vertical_padding"
         android:paddingLeft="@dimen/magazine_horizontal_padding"
         android:paddingRight="@dimen/magazine_horizontal_padding">
