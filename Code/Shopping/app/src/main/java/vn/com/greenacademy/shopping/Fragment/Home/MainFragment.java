@@ -47,6 +47,7 @@ public class MainFragment extends Fragment {
     RecyclerView rvFashion;
     RecyclerView rvMagazien;
     ViewPager vpNewProduct;
+    ViewFlipper vfAdvertise;
 
     // luu data server trả về khi goi thanh cong
     ArrayList<MenuMain> dataAdvertise;
@@ -83,7 +84,7 @@ public class MainFragment extends Fragment {
         // Inflate the layout for this fragment
         final View view = inflater.inflate(R.layout.fragment_menu_home, container, false);
 
-        final ViewFlipper vfAdvertise = (ViewFlipper) view.findViewById(R.id.vfAdvertise_item_main_menu);
+        vfAdvertise = (ViewFlipper) view.findViewById(R.id.vfAdvertise_item_main_menu);
 
         rvProduct = (RecyclerView) view.findViewById(R.id.rvProduct_menuHome);
 
@@ -105,7 +106,6 @@ public class MainFragment extends Fragment {
         rvMagazien.setLayoutManager(new GridLayoutManager(getActivity(), 1));
         rvMagazien.setNestedScrollingEnabled(false);
 
-
         // nhận dữ liệu server trả về
         listMainMenuCallBack = new ListMainMenuCallBack() {
             @Override
@@ -122,7 +122,6 @@ public class MainFragment extends Fragment {
                         break;
                     case SupportKeyList.ClickHome_NewProduct:
                         dataNewProduct = menuMainArrayList;
-                        view.findViewById(R.id.layoutNewProduct_menuHome).setVisibility(View.VISIBLE);
                         mainMenuHandler.setDataNewProduct(menuMainArrayList, vpNewProduct);
                         break;
                     case SupportKeyList.ClickHome_Fashion:
@@ -138,9 +137,6 @@ public class MainFragment extends Fragment {
 
         };
 
-//        // ham dieu khien click item tren menu main
-//        mainMenuHandler.clickItemMenuMain();
-
         //reset option menu
         getActivity().supportInvalidateOptionsMenu();
 
@@ -151,9 +147,15 @@ public class MainFragment extends Fragment {
     public void onResume() {
         super.onResume();
         if (backListener){
-            // goi hàm lấy dữ liệu trên server xuống
-            mainMenuHandler.getDataServer();
-//            mainMenuHandler.setDataNewProduct(dataNewProduct, vpNewProduct);
+            mainMenuHandler.setDataAdvertise(dataAdvertise, vfAdvertise);
+
+            mainMenuHandler.setAdapter(dataProducts, SupportKeyList.ClickHome_Products, rvProduct);
+
+            mainMenuHandler.setDataNewProduct(dataNewProduct, vpNewProduct);
+
+            mainMenuHandler.setAdapter(dataFashion, SupportKeyList.ClickHome_Fashion, rvFashion);
+
+            mainMenuHandler.setAdapter(dataMagazine, SupportKeyList.ClickHome_Magazine, rvMagazien);
         }
     }
 
