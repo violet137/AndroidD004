@@ -124,25 +124,10 @@ public class MainActivity extends AppCompatActivity implements DataCallBack, Vie
 
         //Chạy màn hình splash
         baseFragment.ChuyenFragment(new MainFragment(), null, false);
-//        SplashScreenDialog splashScreenDialog = new SplashScreenDialog(MainActivity.this, drawerLayout);
-//        splashScreenDialog.show();
+        SplashScreenDialog splashScreenDialog = new SplashScreenDialog(MainActivity.this, drawerLayout);
+        splashScreenDialog.show();
 
-//        networkDialog.show();
-//        CheckNetwork();
     }
-
-//    private void CheckNetwork() {
-//        ConnectivityManager connManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
-//        //Lấy thông tin kết nối
-//        NetworkInfo connInfo = connManager.getActiveNetworkInfo();
-//        if (connInfo != null && connInfo.isConnected()) {
-//            Toast.makeText(this, "connected", Toast.LENGTH_SHORT).show();
-//            showNetworkDialog(true);
-//        } else {
-//            Toast.makeText(this, "no", Toast.LENGTH_SHORT).show();
-//            showNetworkDialog(false);
-//        }
-//    }
 
     @Override
     protected void onPause() {
