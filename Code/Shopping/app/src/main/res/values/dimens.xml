@@ -51,6 +51,13 @@
     <dimen name="layout_40dp">40dp</dimen>
     <dimen name="vp_layout_height_400dp">400dp</dimen>
     <dimen name="ll_layout_height_200dp">200dp</dimen>
+    <!-- fragment menu main (new) -->
+    <dimen name="banner_muc_height">130dp</dimen>
+    <dimen name="ten_muc_margin_top">100dp</dimen>
+    <dimen name="ten_muc_text_size">14sp</dimen>
+    <dimen name="ten_muc_text_height">30dp</dimen>
+    <dimen name="ten_muc_vertical_padding">7dp</dimen>
+    <dimen name="ten_muc_horizontal_padding">15dp</dimen>
 
     <!-- Thông tin cá nhân -->
     <dimen name="thong_tin_ca_nhan_vertical_margin">15dp</dimen>
