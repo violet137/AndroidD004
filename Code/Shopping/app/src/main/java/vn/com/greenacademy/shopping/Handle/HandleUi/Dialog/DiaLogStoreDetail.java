@@ -24,6 +24,8 @@ public class DiaLogStoreDetail extends DialogFragment implements View.OnClickLis
     double myLat;
     double myLng;
 
+    Button btnPhone;
+
     public DiaLogStoreDetail(Store store, double myLat, double myLng) {
         this.store = store;
         this.myLat = myLat;
@@ -43,16 +45,29 @@ public class DiaLogStoreDetail extends DialogFragment implements View.OnClickLis
         TextView tvOpenHours = (TextView) dialog.findViewById(R.id.tvOpeningHours_dialog_StoreDetail);
         TextView tvType = (TextView) dialog.findViewById(R.id.tvProductsType_dialog_StoreDetail);
 
-        Button btnDirection = (Button) dialog.findViewById(R.id.btnDirection_dialog_StoreDetail);
-        Button btnPhone = (Button) dialog.findViewById(R.id.btnPhone_dialog_StoreDetail);
+        dialog.findViewById(R.id.llDirection_dialog_StoreDetail).setOnClickListener(this);
+        dialog.findViewById(R.id.llCall_dialog_StoreDetail).setOnClickListener(this);
 
-        btnDirection.setOnClickListener(this);
+        btnPhone = (Button) dialog.findViewById(R.id.btnPhone_dialog_StoreDetail);
+
         btnPhone.setOnClickListener(this);
 
         ImageLoad imageLoad = new ImageLoad(getActivity());
         imageLoad.load(store.getLinkAnh(), ivPhoto);
 
-        btnPhone.setText(store.getSoDienThoai());
+        // format lại số dt
+        String phoneNumber = "";
+
+        char mangSoDT[] = store.getSoDienThoai().toCharArray();
+
+        for (int i = 0; i < mangSoDT.length; i++) {
+            // khoan tu 48 den 57 la cac so tu 0,1,2,3,4,5,6,7,8,9
+            if (mangSoDT[i]>47 && mangSoDT[i]<58){
+                phoneNumber += mangSoDT[i];
+            }
+        }
+
+        btnPhone.setText("  "+phoneNumber);
 
         tvName.setText(store.getTenCuaHang()!=null? store.getTenCuaHang():"");
         tvDiaChi.setText(store.getDiaChi() !=null? store.getDiaChi():"");
@@ -78,17 +93,20 @@ public class DiaLogStoreDetail extends DialogFragment implements View.OnClickLis
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-            case R.id.btnDirection_dialog_StoreDetail:
+            case R.id.llDirection_dialog_StoreDetail:
                 /// su dung app google map chi duong
-                Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
+                Intent intentMap = new Intent(android.content.Intent.ACTION_VIEW,
                         Uri.parse("http://maps.google.com/maps?saddr=" + myLat + "," + myLng + "&daddr=" + store.getLat() + "," + store.getLng()));
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                intent.addCategory(Intent.CATEGORY_LAUNCHER );
-                intent.setClassName("com.google.android.apps.maps", "com.google.android.maps.MapsActivity");
-                startActivity(intent);
+                intentMap.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intentMap.addCategory(Intent.CATEGORY_LAUNCHER );
+                intentMap.setClassName("com.google.android.apps.maps", "com.google.android.maps.MapsActivity");
+                startActivity(intentMap);
                 break;
-            case R.id.btnPhone_dialog_StoreDetail:
-
+            case R.id.llCall_dialog_StoreDetail:
+                // chuyen sang mang hinh goi cua dt
+                Intent intentPhone = new Intent(Intent.ACTION_DIAL);
+                intentPhone.setData(Uri.parse("tel:" + btnPhone.getText().toString()));
+                startActivity(intentPhone);
                 break;
         }
     }
