@@ -74,7 +74,7 @@ class LoadDataSupportHandler {
             supportArrayList.add(support);
         }
 
-        SupportFragment.objectCallBack.callBack(supportArrayList);
+        SupportFragment.objectCallBack.callBack(supportArrayList,0);
     }
 
 }

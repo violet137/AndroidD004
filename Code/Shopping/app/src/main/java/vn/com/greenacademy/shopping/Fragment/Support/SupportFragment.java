@@ -43,7 +43,7 @@ public class SupportFragment extends Fragment {
 
         objectCallBack = new ObjectCallBack() {
             @Override
-            public void callBack(Object object) {
+            public void callBack(Object object, int flag) {
                 lvSupport.setAdapter(supportHandler.getAdapter(object));
             }
         };

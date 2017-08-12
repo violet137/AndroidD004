@@ -5,5 +5,5 @@ package vn.com.greenacademy.shopping.Interface;
  */
 
 public interface ObjectCallBack {
-    void callBack(Object object);
+    void callBack(Object object , int flag);
 }

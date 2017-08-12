@@ -18,11 +18,20 @@
             android:background="@color/colorBackground">
 
             <!-- Quảng cáo -->
-            <include
-                layout="@layout/item_main_menu_advertise"
+            <LinearLayout
+                android:id="@+id/itemAdvertise_menuHome"
+                android:visibility="gone"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
-            </include>
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <include
+                    layout="@layout/item_main_menu_advertise"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+                </include>
+            </LinearLayout>
+
+
 
             <!-- Danh mục sản phẩm -->
             <android.support.v7.widget.RecyclerView
@@ -34,13 +43,21 @@
                 android:background="@drawable/shape_khung"/>
 
             <!-- Sản phẩm mới -->
-            <include
-                layout="@layout/item_main_menu_new_product"
-                android:id="@+id/layoutNewProduct_menuHome"
+            <LinearLayout
+                android:id="@+id/itemNewProduct_menuHome"
+                android:visibility="gone"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="@dimen/layout_margin_10dp">
-            </include>
+                android:orientation="vertical">
+                <include
+                    layout="@layout/item_main_menu_new_product"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/layout_margin_10dp">
+                </include>
+            </LinearLayout>
+
+
 
             <!-- Xu hướng thời trang -->
             <android.support.v7.widget.RecyclerView

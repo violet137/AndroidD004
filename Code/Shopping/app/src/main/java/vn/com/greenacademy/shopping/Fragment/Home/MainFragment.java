@@ -15,6 +15,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewStub;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ViewFlipper;
 
@@ -43,6 +44,8 @@ public class MainFragment extends Fragment {
     ViewPager vpNewProduct;
     ViewFlipper vfAdvertise;
     NestedScrollView vListHome;
+    LinearLayout itemAdvertise;
+    LinearLayout itemNewProduct;
 
     // listMainMenuCallBack nhận dữ liệu hoàn chỉnh trên server trả về
     public static ListMainMenuCallBack listMainMenuCallBack;
@@ -96,6 +99,9 @@ public class MainFragment extends Fragment {
 
         rvMagazien = (RecyclerView) view.findViewById(R.id.rvMagazine_menuHome);
 
+        itemAdvertise = (LinearLayout) view.findViewById(R.id.itemAdvertise_menuHome);
+
+        itemNewProduct = (LinearLayout) view.findViewById(R.id.itemNewProduct_menuHome);
         // cách dưới để disable scroll recyclerview mà vẫn có thể click item dc
         // thiết lập xml android:layout_weight="1" cho recyclerView để có thể show toàn bộ nội dung trong list
 
@@ -117,6 +123,7 @@ public class MainFragment extends Fragment {
                     case SupportKeyList.ClickHome_Advertise:
                         dataAdvertise = menuMainArrayList;
                         mainMenuHandler.setDataAdvertise(menuMainArrayList, vfAdvertise);
+                        itemAdvertise.setVisibility(View.VISIBLE);
                         break;
                     case SupportKeyList.ClickHome_Products:
                         dataProducts = menuMainArrayList;
@@ -125,6 +132,7 @@ public class MainFragment extends Fragment {
                     case SupportKeyList.ClickHome_NewProduct:
                         dataNewProduct = menuMainArrayList;
                         mainMenuHandler.setDataNewProduct(getChildFragmentManager(), menuMainArrayList, vpNewProduct);
+                        itemNewProduct.setVisibility(View.VISIBLE);
                         break;
                     case SupportKeyList.ClickHome_Fashion:
                         dataFashion = menuMainArrayList;
@@ -150,10 +158,12 @@ public class MainFragment extends Fragment {
         super.onResume();
         if (backListener){
             mainMenuHandler.setDataAdvertise(dataAdvertise, vfAdvertise);
+            itemAdvertise.setVisibility(View.VISIBLE);
 
             mainMenuHandler.setAdapter(dataProducts, SupportKeyList.ClickHome_Products, rvProduct);
 
             mainMenuHandler.setDataNewProduct(getChildFragmentManager(),dataNewProduct, vpNewProduct);
+            itemNewProduct.setVisibility(View.VISIBLE);
 
             mainMenuHandler.setAdapter(dataFashion, SupportKeyList.ClickHome_Fashion, rvFashion);
 

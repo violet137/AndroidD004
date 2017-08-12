@@ -36,7 +36,7 @@ public class MagazineFragment extends Fragment {
                              Bundle savedInstanceState) {
         objectCallBack = new ObjectCallBack() {
             @Override
-            public void callBack(Object object) {
+            public void callBack(Object object, int flag) {
 
             }
         };
