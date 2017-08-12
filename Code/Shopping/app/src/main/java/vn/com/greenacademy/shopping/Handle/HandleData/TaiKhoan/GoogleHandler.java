@@ -16,7 +16,7 @@ import com.google.android.gms.common.api.Status;
 
 import vn.com.greenacademy.shopping.Fragment.Main.MyShopping.TaiKhoan.DangNhapFragment;
 import vn.com.greenacademy.shopping.Interface.DataCallBack;
-import vn.com.greenacademy.shopping.Network.AsynTask.GoiAPIServerAsyncTask;
+import vn.com.greenacademy.shopping.Network.AsynTask.TaiKhoanServerAsyncTask;
 import vn.com.greenacademy.shopping.Util.ServerUrl;
 import vn.com.greenacademy.shopping.Util.SupportKeyList;
 
@@ -26,7 +26,7 @@ import vn.com.greenacademy.shopping.Util.SupportKeyList;
 
 public class GoogleHandler extends FragmentActivity implements GoogleApiClient.OnConnectionFailedListener {
     private Activity mActivity;
-    private GoiAPIServerAsyncTask goiAPIServerAsyncTask;
+    private TaiKhoanServerAsyncTask taiKhoanServerAsyncTask;
     private GoogleApiClient mGoogleApiClient;
     private DataCallBack dataCallBack;
     private DangNhapFragment fragment;
@@ -40,13 +40,13 @@ public class GoogleHandler extends FragmentActivity implements GoogleApiClient.O
         this.mActivity = activity;
         this.fragment = fragment;
         this.dataCallBack = dataCallBack;
-        goiAPIServerAsyncTask = new GoiAPIServerAsyncTask(dataCallBack);
+        taiKhoanServerAsyncTask = new TaiKhoanServerAsyncTask(dataCallBack);
     }
 
     public GoogleHandler(Activity activity, DataCallBack dataCallBack) {
         this.mActivity = activity;
         this.dataCallBack = dataCallBack;
-        goiAPIServerAsyncTask = new GoiAPIServerAsyncTask(dataCallBack);
+        taiKhoanServerAsyncTask = new TaiKhoanServerAsyncTask(dataCallBack);
     }
 
     public void connectBuild (){
@@ -146,7 +146,7 @@ public class GoogleHandler extends FragmentActivity implements GoogleApiClient.O
                     String hinh = result.getSignInAccount().getPhotoUrl().toString();
                     Toast.makeText(mActivity, hinh, Toast.LENGTH_SHORT).show();
                 }
-                goiAPIServerAsyncTask.execute(SupportKeyList.API_DANG_NHAP, ServerUrl.DangNhapUrl, SupportKeyList.ACCOUNT_GOOGLE, result.getSignInAccount().getId());
+                taiKhoanServerAsyncTask.execute(SupportKeyList.API_DANG_NHAP, ServerUrl.DangNhapUrl, SupportKeyList.ACCOUNT_GOOGLE, result.getSignInAccount().getId());
             }
             else {
                 requestCode = 0;

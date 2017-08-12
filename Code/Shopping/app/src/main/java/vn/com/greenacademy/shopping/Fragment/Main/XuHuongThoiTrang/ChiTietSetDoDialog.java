@@ -41,7 +41,6 @@ public class ChiTietSetDoDialog extends BottomSheetDialog implements SanPhamCall
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setTitle("Sản phẩm đi k");
         View bottomSheetView = getLayoutInflater().inflate(R.layout.dialog_chi_tiet_set_do, null);
         ImageButton ibThoat = (ImageButton) bottomSheetView.findViewById(R.id.thoat_button_chi_tiet_set_do);
         RecyclerView vListSanPham = (RecyclerView) bottomSheetView.findViewById(R.id.list_san_pham_chi_tiet_set_do);
@@ -49,8 +48,9 @@ public class ChiTietSetDoDialog extends BottomSheetDialog implements SanPhamCall
         ibThoat.setOnClickListener(this);
 
         vListSanPham.setLayoutManager(new GridLayoutManager(context, mListSanPham.size() < 3 ? 2 : 3));
-        vListSanPham.setAdapter(new ListSanPhamAdapter(context, mListSanPham, baseFragment, this, new ImageLoad((Activity) context)));
+        vListSanPham.setAdapter(new ListSanPhamAdapter(context, true, mListSanPham, baseFragment, this, new ImageLoad((Activity) context)));
         vListSanPham.setNestedScrollingEnabled(false);
+
         configBottomSheetBehavior(bottomSheetView);
     }
 

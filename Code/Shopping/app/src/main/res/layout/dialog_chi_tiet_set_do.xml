@@ -35,8 +35,8 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/list_san_pham_chi_tiet_set_do"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/title_chi_tiet_set_do"
-        android:paddingLeft="@dimen/set_do_horizontal_padding"
-        android:paddingRight="@dimen/set_do_horizontal_padding"/>
+        android:paddingTop="@dimen/san_pham_set_do_vertical_padding"
+        android:paddingBottom="@dimen/san_pham_set_do_vertical_padding"/>
 </RelativeLayout>

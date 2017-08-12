@@ -7,6 +7,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import vn.com.greenacademy.shopping.Fragment.Main.DanhMucSanPham.DanhMucSPFragment;
+import vn.com.greenacademy.shopping.Fragment.Main.DanhMucSanPham.ChiTietDanhMucFragment;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.AdapterDanhMucSP;
 import vn.com.greenacademy.shopping.Handle.HandleData.ParseData.Main.ParseDanhMucSP;
 import vn.com.greenacademy.shopping.Interface.ServerCallBack;
@@ -15,22 +16,27 @@ import vn.com.greenacademy.shopping.Model.MucSanPham;
 import vn.com.greenacademy.shopping.Network.AsynTask.GetServerData;
 import vn.com.greenacademy.shopping.R;
 import vn.com.greenacademy.shopping.Util.ServerUrl;
+import vn.com.greenacademy.shopping.Util.SupportKeyList;
+import vn.com.greenacademy.shopping.Util.Ui.BaseFragment;
 
 /**
  * Created by ADMIN on 7/31/2017.
  */
 
 public class DanhMucSPHandler extends LoadDataDanhMucSPHandler implements View.OnClickListener{
-    Activity activity;
+    private Activity activity;
+    private BaseFragment baseFragment;
 
-    public DanhMucSPHandler(Activity activity) {
+    public DanhMucSPHandler(Activity activity, BaseFragment baseFragment) {
         this.activity = activity;
+        this.baseFragment = baseFragment;
     }
 
     @Override
     public void onClick(View v) {
         MucSanPham mucSanPham = (MucSanPham) v.getTag();
         Toast.makeText(activity, String.valueOf(mucSanPham.getId()), Toast.LENGTH_SHORT).show();
+        baseFragment.ChuyenFragment(ChiTietDanhMucFragment.newInstance(mucSanPham.getId(), mucSanPham.getTenDanhMuc()), SupportKeyList.TAG_CHI_TIET_DANH_MUC_SAN_PHAM, true);
     }
 
     public AdapterDanhMucSP displayListView(ArrayList<MucSanPham> arrayList){

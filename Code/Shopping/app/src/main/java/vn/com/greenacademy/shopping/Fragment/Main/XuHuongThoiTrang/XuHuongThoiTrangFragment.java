@@ -13,18 +13,14 @@ import android.widget.ScrollView;
 import android.widget.Toast;
 import android.widget.VideoView;
 
-import java.util.ArrayList;
-
 import vn.com.greenacademy.shopping.Handle.HandleData.ImageLoad;
-import vn.com.greenacademy.shopping.Handle.HandleData.SanPhamHandler;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.SanPham.ListSanPhamAdapter;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.XuHuongThoiTrang.ListSetDoAdapter;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Dialog.LoadingDialog;
 import vn.com.greenacademy.shopping.Interface.DataCallBack;
 import vn.com.greenacademy.shopping.Interface.SetDoCallBack;
-import vn.com.greenacademy.shopping.Model.ThongTinSanPham.SanPham;
 import vn.com.greenacademy.shopping.Model.XuHuongThoiTrang;
-import vn.com.greenacademy.shopping.Network.AsynTask.GoiAPIServerAsyncTask;
+import vn.com.greenacademy.shopping.Network.AsynTask.DataServerAsyncTask;
 import vn.com.greenacademy.shopping.R;
 import vn.com.greenacademy.shopping.Util.ServerUrl;
 import vn.com.greenacademy.shopping.Util.SupportKeyList;
@@ -55,7 +51,7 @@ public class XuHuongThoiTrangFragment extends Fragment implements DataCallBack, 
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         loadingDialog = new LoadingDialog(getActivity(), new BaseFragment(getActivity(), getActivity().getSupportFragmentManager()));
-        new GoiAPIServerAsyncTask(this).execute(SupportKeyList.API_DATA_XU_HUONG_THOI_TRANG, ServerUrl.XuHuongThoiTrangUrl + String.valueOf(idXuHuong), String.valueOf(idXuHuong));
+        new DataServerAsyncTask(this).execute(SupportKeyList.API_DATA_XU_HUONG_THOI_TRANG, ServerUrl.XuHuongThoiTrangUrl + String.valueOf(idXuHuong), "GET");
         imageLoad = new ImageLoad(getActivity());
     }
 

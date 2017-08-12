@@ -56,6 +56,8 @@ public class GioHangFragment extends Fragment implements View.OnClickListener {
             root.findViewById(R.id.dang_nhap_gio_hang).setVisibility(View.GONE);
         }
 
+        //reset option menu
+        getActivity().supportInvalidateOptionsMenu();
         return root;
     }
 

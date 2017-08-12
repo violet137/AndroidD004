@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/colorBackground"
-    tools:context="vn.com.greenacademy.shopping.Fragment.Main.NganhThoiTrang.NganhThoiTrangFragment">
+    tools:context="vn.com.greenacademy.shopping.Fragment.Main.DanhMucSanPham.ChiTietDanhMucFragment">
 
     <!-- Title bar-->
     <LinearLayout
@@ -37,6 +37,17 @@
             android:textSize="@dimen/text_size"/>
     </LinearLayout>
 
+    <!-- Message -->
+    <TextView
+        android:id="@+id/message_chi_tiet_danh_muc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="30dp"
+        android:visibility="gone"
+        android:text="KHÔNG CÓ SẢN PHẨM"
+        android:textSize="25sp"/>
+
     <!-- Nội dung -->
     <ScrollView
         android:layout_width="match_parent"
@@ -46,11 +57,12 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
-            <!-- List phân loại -->
-            <ListView
-                android:id="@+id/list_phan_loai"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+            <!--&lt;!&ndash; List phân loại &ndash;&gt;-->
+            <!--<ListView-->
+                <!--android:id="@+id/list_phan_loai"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content" -->
+                <!--android:visibility="gone"/>-->
 
             <!-- Sản phẩm và phân loại -->
             <LinearLayout
@@ -59,30 +71,41 @@
                 android:orientation="vertical">
                 <!-- Phân loại -->
                 <LinearLayout
+                    android:id="@+id/btns_phan_loai_san_pham"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/buttons_height"
                     android:orientation="horizontal"
-                    android:layout_marginTop="10dp">
+                    android:paddingLeft="@dimen/buttons_horizontal_padding"
+                    android:paddingRight="@dimen/buttons_horizontal_padding"
+                    android:layout_marginTop="@dimen/buttons_margin_top">
                     <!-- Lọc -->
                     <Button
                         android:id="@+id/button_loc_san_pham"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
+                        android:layout_marginRight="@dimen/button_loc_margin_right"
+                        android:background="@drawable/shape_button_gray"
                         android:text="@string/loc_san_pham"/>
                     <!-- Sắp xếp -->
-                    <Spinner
+                    <Button
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_weight="1" />
+                        android:layout_weight="1"
+                        android:layout_marginLeft="@dimen/button_sap_xep_margin_left"
+                        android:background="@drawable/shape_button_gray"
+                        android:text="@string/sap_xep_san_pham"/>
                 </LinearLayout>
 
                 <!-- List sản phẩm -->
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/list_san_pham_nganh_thoi_trang"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"/>
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/list_san_pham_chi_tiet_danh_muc_margin_top"/>
             </LinearLayout>
         </LinearLayout>
     </ScrollView>
+
+
 </LinearLayout>
