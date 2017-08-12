@@ -1,6 +1,7 @@
 package vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.Sale;
 
 import android.app.Activity;
+import android.support.v4.app.FragmentManager;
 import android.content.Context;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import vn.com.greenacademy.shopping.Fragment.Sale.SaleFragment;
 import vn.com.greenacademy.shopping.Handle.HandleData.ImageLoad;
 import vn.com.greenacademy.shopping.Model.Sale;
 import vn.com.greenacademy.shopping.R;
@@ -26,13 +28,15 @@ public class AdapterSale extends RecyclerView.Adapter<SaleHolder>{
     LayoutInflater mLayoutInflater;
     View.OnClickListener onClickListener;
     ArrayList<Sale> saleArrayList;
+    FragmentManager fragmentManager;
 
-    public AdapterSale (Context context, View.OnClickListener onClickListener,
-                                       ArrayList<Sale> saleArrayList) {
+    public AdapterSale (FragmentManager fm,Context context, View.OnClickListener onClickListener,
+                        ArrayList<Sale> saleArrayList) {
         this.context = context;
         mLayoutInflater = LayoutInflater.from(context);
         this.onClickListener=onClickListener;
         this.saleArrayList=saleArrayList;
+        fragmentManager =fm;
     }
 
     @Override
@@ -69,7 +73,7 @@ public class AdapterSale extends RecyclerView.Adapter<SaleHolder>{
 //        holder.tvMoTa.setText("  "+saleArrayList.get(position).getMota());
 
         AdapterViewPagerSale adapterViewPagerSale = new AdapterViewPagerSale(
-                  ((AppCompatActivity)context).getSupportFragmentManager(),(Activity) context, saleArrayList.get(position).getSanPhamArrayList());
+                  fragmentManager,(Activity) context, saleArrayList.get(position).getSanPhamArrayList());
 
         holder.viewPager.setAdapter(adapterViewPagerSale);
 

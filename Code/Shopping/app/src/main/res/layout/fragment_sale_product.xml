@@ -60,7 +60,6 @@
 
         </LinearLayout>
 
-
         <LinearLayout
             android:id="@+id/ll2_SaleProduct_fragment"
             android:layout_width="match_parent"
@@ -149,6 +148,64 @@
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/rvMau3_Sale_product_fragment"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/text_size_15dp"
+                android:layout_gravity="center"  />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll4_SaleProduct_fragment"
+            android:layout_width="match_parent"
+            android:visibility="gone"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/cardview_dark_background"
+                android:layout_marginLeft="@dimen/tv_padding_top_2dp"
+                android:layout_marginRight="@dimen/tv_padding_top_2dp"
+                android:layout_marginTop="@dimen/ll_layout_padding_5dp"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/textView15"
+                    android:background="@color/cardview_light_background"
+                    android:layout_margin="@dimen/btnDiviver_1dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:textSize="@dimen/text_size_80dp"
+                    android:text="+" />
+            </FrameLayout>
+
+            <TextView
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:visibility="invisible"
+                android:layout_height="wrap_content"
+                android:textColor="#ff00"
+                android:paddingLeft="@dimen/ll_layout_padding_5dp"
+                android:paddingRight="@dimen/ll_layout_padding_5dp"
+                android:maxLines="1"
+                android:text="100,000,0000,000" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="invisible"
+                android:gravity="center"
+                android:paddingTop="@dimen/tv_padding_top_2dp"
+                android:text="@string/San_Pham_Moi"
+                android:textColor="#ff000000"
+                android:textSize="@dimen/text_size_10dp" />
+
+            <android.support.v7.widget.RecyclerView
+                android:visibility="invisible"
                 android:layout_width="wrap_content"
                 android:layout_height="@dimen/text_size_15dp"
                 android:layout_gravity="center"  />

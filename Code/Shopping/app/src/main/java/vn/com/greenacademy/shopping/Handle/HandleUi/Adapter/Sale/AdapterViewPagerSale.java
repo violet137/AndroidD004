@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentStatePagerAdapter;
 
 import java.util.ArrayList;
 
@@ -14,7 +15,7 @@ import vn.com.greenacademy.shopping.Model.ThongTinSanPham.SanPham;
  * Created by ADMIN on 8/2/2017.
  */
 
-public class AdapterViewPagerSale extends FragmentPagerAdapter {
+public class AdapterViewPagerSale extends FragmentStatePagerAdapter {
     Activity activity;
     ArrayList<SanPham> sanPhamArrayList;
 
@@ -25,15 +26,9 @@ public class AdapterViewPagerSale extends FragmentPagerAdapter {
         this.sanPhamArrayList = sanPhamArrayList;
     }
 
-//    public AdapterViewPagerSale(FragmentManager fm, Activity activity) {
-//        super(fm);
-//        this.activity = activity;
-//    }
-
     @Override
     public Fragment getItem(int position) {
         return new SaleProductFragmentViewPager(sanPhamArrayList, position);
-//        return new MagazineRecyclerViewFragment(position, sanPhamArrayList);
     }
 
     @Override

@@ -62,14 +62,34 @@ public class SaleProductFragmentViewPager extends Fragment implements View.OnCli
         linearLayout2.setOnClickListener(this);
         setData(imageView2, tvGia2, tvSanPhamMoi2,rvMau2, linearLayout2,positionViewPager+1);
 
-        ImageView imageView3 = (ImageView) view.findViewById(R.id.iv3_Sale_product_fragment);
-        TextView tvGia3 = (TextView) view.findViewById(R.id.tvGia3_Sale_product_fragment);
-        TextView tvSanPhamMoi3 = (TextView) view.findViewById(R.id.tvNewProduct3_Sale_product_fragment);
-        RecyclerView rvMau3 = (RecyclerView) view.findViewById(R.id.rvMau3_Sale_product_fragment);
-        LinearLayout linearLayout3 = (LinearLayout) view.findViewById(R.id.ll3_SaleProduct_fragment);
-        linearLayout3.setOnClickListener(this);
-        setData(imageView3, tvGia3, tvSanPhamMoi3,rvMau3,linearLayout3, positionViewPager+2);
+        int soLuongViewPager = 0;
 
+        if (sanPhamArrayList.size() < 5){
+            soLuongViewPager = 6;
+        } else  if (sanPhamArrayList.size() < 8){
+            soLuongViewPager = 3;
+        }else{
+            soLuongViewPager = 0;
+        }
+
+        if (positionViewPager+2 == 8-soLuongViewPager){
+            LinearLayout linearLayout4 = (LinearLayout) view.findViewById(R.id.ll4_SaleProduct_fragment);
+            LinearLayout linearLayout3 = (LinearLayout) view.findViewById(R.id.ll3_SaleProduct_fragment);
+            linearLayout3.setVisibility(View.GONE);
+            linearLayout4.setVisibility(View.VISIBLE);
+            SanPham sanPham = new SanPham();
+            sanPham.setIdSanPham(-1);
+            linearLayout4.setTag(sanPham);
+            linearLayout4.setOnClickListener(this);
+        }else {
+            ImageView imageView3 = (ImageView) view.findViewById(R.id.iv3_Sale_product_fragment);
+            TextView tvGia3 = (TextView) view.findViewById(R.id.tvGia3_Sale_product_fragment);
+            TextView tvSanPhamMoi3 = (TextView) view.findViewById(R.id.tvNewProduct3_Sale_product_fragment);
+            RecyclerView rvMau3 = (RecyclerView) view.findViewById(R.id.rvMau3_Sale_product_fragment);
+            LinearLayout linearLayout3 = (LinearLayout) view.findViewById(R.id.ll3_SaleProduct_fragment);
+            linearLayout3.setOnClickListener(this);
+            setData(imageView3, tvGia3, tvSanPhamMoi3,rvMau3,linearLayout3, positionViewPager+2);
+        }
 
         return view;
     }
@@ -94,6 +114,6 @@ public class SaleProductFragmentViewPager extends Fragment implements View.OnCli
     @Override
     public void onClick(View v) {
         SanPham sanPham = (SanPham) v.getTag();
-        Toast.makeText(getContext(),sanPham.getTenSanPham(),Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(),String.valueOf(sanPham.getIdSanPham()),Toast.LENGTH_SHORT).show();
     }
 }

@@ -1,6 +1,7 @@
 package vn.com.greenacademy.shopping.Handle.HandleData;
 
 import android.app.Activity;
+import android.support.v4.app.FragmentManager;
 import android.view.View;
 import android.widget.Toast;
 
@@ -33,9 +34,9 @@ public class SaleHandler extends LoadDataSaleHandler implements View.OnClickList
         Toast.makeText(activity,String.valueOf(sale.getId()),Toast.LENGTH_SHORT).show();
     }
 
-    public AdapterSale getAdapter(ArrayList<Sale> saleArrayList){
+    public AdapterSale getAdapter(FragmentManager fm,ArrayList<Sale> saleArrayList){
 
-        AdapterSale adapterSale = new AdapterSale(activity,this,saleArrayList);
+        AdapterSale adapterSale = new AdapterSale(fm,activity,this,saleArrayList);
 
         return adapterSale;
     }
@@ -50,18 +51,11 @@ class LoadDataSaleHandler implements ServerCallBack{
     }
 
     public void getDataServer() {
-//        GetSale getSale = new GetSale(this);
-//        getSale.execute(ServerUrl.UrlKhuyenMai);
-
         GetServerData getServerData = new GetServerData(this);
         getServerData.execute(ServerUrl.UrlKhuyenMai);
 
 
     }
-
-//    @Override
-//    public void saleCallBack(ArrayList<Sale> saleArrayList) {
-//    }
 
     @Override
     public void serverCallBack(String dataServer) {

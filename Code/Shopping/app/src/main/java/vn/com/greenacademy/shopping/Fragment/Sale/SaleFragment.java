@@ -2,6 +2,7 @@ package vn.com.greenacademy.shopping.Fragment.Sale;
 
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -23,10 +24,26 @@ public class SaleFragment extends Fragment {
 
     public static SaleCallBack saleCallBack;
 
+    boolean listenerBack = false;
+
+    SaleHandler saleHandler;
+
+    ArrayList<Sale> dataSale;
+
+    RecyclerView recyclerView;
+
     public SaleFragment() {
         // Required empty public constructor
     }
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        saleHandler =new SaleHandler(getActivity());
+
+        saleHandler.getDataServer();
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -34,21 +51,31 @@ public class SaleFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_sale, container, false);
 
-        final RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.rv_SaleFragment);
+        recyclerView = (RecyclerView) view.findViewById(R.id.rv_SaleFragment);
         recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 1));
-
-        final SaleHandler saleHandler =new SaleHandler(getActivity());
-
-        saleHandler.getDataServer();
 
         saleCallBack = new SaleCallBack() {
             @Override
             public void saleCallBack(ArrayList<Sale> saleArrayList) {
-                recyclerView.setAdapter(saleHandler.getAdapter(saleArrayList));
+                dataSale = saleArrayList;
+                recyclerView.setAdapter(saleHandler.getAdapter(getChildFragmentManager(),saleArrayList));
             }
         };
 
         return view;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (listenerBack){
+            recyclerView.setAdapter(saleHandler.getAdapter(getChildFragmentManager(),dataSale));
+        }
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        listenerBack = true;
+    }
 }
