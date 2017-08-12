@@ -14,7 +14,7 @@ import vn.com.greenacademy.shopping.Model.ThongTinSanPham.SanPham;
  */
 
 public class ParseSanPham {
-    String data;
+    private String data;
     public ParseSanPham(String data) {
         this.data=data;
     }
@@ -22,10 +22,11 @@ public class ParseSanPham {
     public SanPham parData(){
         SanPham sanPham = new SanPham();
         try {
-            JSONObject root = new JSONObject(data);
-            if (root.getInt("Status") == 1){
-                /// co the co loi o dong  can 30 get jsonArray ko get jsonObject
-                JSONObject objSanPham = root.getJSONArray("SanPhamTranfers").getJSONObject(0);
+            JSONObject objSanPham = new JSONObject(data);
+//            JSONObject root = new JSONObject(data);
+//            if (root.getInt("Status") == 1){
+//                JSONObject objSanPham = root.getJSONArray("SanPhamTranfers").getJSONObject(0);
+
                 sanPham = new SanPham();
                 sanPham.setIdSanPham(objSanPham.getInt("Id"));
                 sanPham.setTenSanPham(objSanPham.getString("Ten"));
@@ -78,7 +79,7 @@ public class ParseSanPham {
 //                sanPham.setSanPhamPhuHop(listSanPhamPhuHop);
 
                 sanPham.setDanhMucHangId(objSanPham.getInt("DanhMucHangId"));
-            }
+//            }
         } catch (JSONException e) {
             e.printStackTrace();
         }

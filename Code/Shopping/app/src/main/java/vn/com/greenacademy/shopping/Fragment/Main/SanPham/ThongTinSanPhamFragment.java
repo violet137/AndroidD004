@@ -179,7 +179,6 @@ public class ThongTinSanPhamFragment extends Fragment implements View.OnClickLis
                 Toast.makeText(getActivity(), "Share", Toast.LENGTH_LONG).show();
                 break;
             case R.id.button_san_pham_khac:
-                Toast.makeText(getActivity(), "Sản phẩm khác", Toast.LENGTH_LONG).show();
                 SanPhamPhuHopBottomDialog sanPhamPhuHopBottomDialog = new SanPhamPhuHopBottomDialog(getActivity(), listSanPham, new BaseFragment(getActivity(), getActivity().getSupportFragmentManager()));
                 sanPhamPhuHopBottomDialog.show();
                 break;

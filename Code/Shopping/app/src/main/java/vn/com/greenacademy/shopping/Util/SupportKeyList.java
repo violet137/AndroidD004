@@ -9,6 +9,7 @@ public class SupportKeyList {
     public static final String API_DANG_NHAP = "api_dang_nhap";
     public static final String API_DANG_KY = "api_dang_ky";
     public static final String API_DATA_XU_HUONG_THOI_TRANG = "api_data_xu_huong_thoi_trang";
+    public static final String API_DATA_SAN_PHAM_CHI_TIET_DANH_MUC = "api_data_chi_tiet_danh_muc";
 
     //Key Data
     public static final String SHAREDPREF_TEN_FILE = "vn.com.greenacademy.shopping.MY_SHAREDPREF";
@@ -45,6 +46,7 @@ public class SupportKeyList {
     public static final String TAG_FRAGMENT_DANG_KY = "DangKy";
     public static final String TAG_XU_HUONG_THOI_TRANG = "XuHuongThoiTrang";
     public static final String TAG_DANH_MUC_SAN_PHAM = "DanhMucSanPham";
+    public static final String TAG_CHI_TIET_DANH_MUC_SAN_PHAM = "ChiTietDanhMucSanPham";
     public static final String TAG_THONG_TIN_SAN_PHAM = "ThongTinSanPham";
     public static final String TAG_DETAILS_SAN_PHAM = "DetailsSanPham";
     public static final String TAG_FRAGMENT_FINDSTORE = "ParseStore";

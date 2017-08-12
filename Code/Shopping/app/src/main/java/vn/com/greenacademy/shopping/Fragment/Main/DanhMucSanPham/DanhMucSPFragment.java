@@ -14,6 +14,7 @@ import vn.com.greenacademy.shopping.Handle.HandleData.DanhMucSPHandler;
 import vn.com.greenacademy.shopping.Interface.MucSPCallBack;
 import vn.com.greenacademy.shopping.Model.MucSanPham;
 import vn.com.greenacademy.shopping.R;
+import vn.com.greenacademy.shopping.Util.Ui.BaseFragment;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -37,7 +38,7 @@ public class DanhMucSPFragment extends Fragment {
 
         final ListView listView = (ListView) view.findViewById(R.id.lvDanhMuc_DanhMucSP_Fragment);
 
-        final DanhMucSPHandler danhMucSPHandler = new DanhMucSPHandler(getActivity());
+        final DanhMucSPHandler danhMucSPHandler = new DanhMucSPHandler(getActivity(), new BaseFragment(getActivity(), getActivity().getSupportFragmentManager()));
 
         mucSPCallBack = new MucSPCallBack() {
             @Override

@@ -89,9 +89,10 @@
     <string name="nut_luu">Lưu</string>
     <string name="nut_huy">Hủy</string>
 
-    <!-- Ngành thời trang -->
+    <!-- Chi tiết danh mục sản phẩm -->
     <string name="text_so_luong_nganh_thoi_trang">sản phẩm</string>
     <string name="loc_san_pham">Lọc</string>
+    <string name="sap_xep_san_pham">Sắp xếp</string>
 
     <!-- Xu hướng thời trang -->
     <string name="xem_san_pham">XEM CÁC SẢN PHẨM</string>

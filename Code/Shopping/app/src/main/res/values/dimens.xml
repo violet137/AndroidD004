@@ -89,12 +89,13 @@
     <dimen name="set_do_text_height">50dp</dimen>
     <dimen name="button_thoat_size_set_do">50dp</dimen>
     <dimen name="set_do_horizontal_padding">10dp</dimen>
+    <dimen name="san_pham_set_do_vertical_padding">10dp</dimen>
 
     <!-- List sản phẩm -->
     <dimen name="item_list_san_pham_margin">7dp</dimen>
     <dimen name="item_list_san_pham_height">300dp</dimen>
     <dimen name="item_list_san_pham_image_height">200dp</dimen>
-    <dimen name="item_list_san_pham_dialog_image_width">200dp</dimen>
+    <dimen name="item_list_san_pham_dialog_image_width">180dp</dimen>
     <dimen name="item_list_san_pham_dialog_horizontal_padding">10dp</dimen>
     <dimen name="item_list_san_pham_dialog_vertical_padding">10dp</dimen>
     <dimen name="item_list_san_pham_padding_left">10dp</dimen>
@@ -117,6 +118,14 @@
     <dimen name="gia_tien_horizontal_padding">8dp</dimen>
     <dimen name="gia_tien_vertical_padding">6dp</dimen>
     <dimen name="gia_tien_margin_bottom">100dp</dimen>
+
+    <!-- Chi tiết danh mục sản phẩm -->
+    <dimen name="buttons_height">50dp</dimen>
+    <dimen name="buttons_margin_top">10dp</dimen>
+    <dimen name="buttons_horizontal_padding">5dp</dimen>
+    <dimen name="button_loc_margin_right">5dp</dimen>
+    <dimen name="button_sap_xep_margin_left">2.5dp</dimen>
+    <dimen name="list_san_pham_chi_tiet_danh_muc_margin_top">10dp</dimen>
 
     <!-- Dialog description sản phẩm -->
     <dimen name="dialog_chi_tiet_san_pham_width">950dp</dimen>

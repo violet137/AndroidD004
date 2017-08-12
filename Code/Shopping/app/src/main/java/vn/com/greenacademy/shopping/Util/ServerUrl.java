@@ -29,6 +29,6 @@ public class ServerUrl {
     public static final String UrlMagazineDetail = MagazineUrl + "ChiTietTapChi?idTapChi=";
     public static final String UrlDanhMucSP = HomeUrl + "DanhMucHang?loaiThoiTrang=";
     public static final String UrlKhuyenMai = HomeUrl + "KhuyenMai";
-
+    public static final String UrlSanPhamTheoDanhMuc = ProductUrl + "SanPhamTheoDanhMuc?danhMucHangId=";
 
 }
