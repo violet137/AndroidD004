@@ -12,6 +12,7 @@ import vn.com.greenacademy.shopping.Fragment.Home.MainFragment;
 import vn.com.greenacademy.shopping.Fragment.Main.MyShopping.GioHangFragment;
 import vn.com.greenacademy.shopping.Fragment.Sale.SaleFragment;
 import vn.com.greenacademy.shopping.Fragment.Store.FindStoreFragment;
+import vn.com.greenacademy.shopping.Fragment.Support.SupportFragment;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.AdapterSlideMenu;
 import vn.com.greenacademy.shopping.Fragment.Main.MyShopping.MyShoppingFragment;
 import vn.com.greenacademy.shopping.Model.SlideMenu;
@@ -76,7 +77,7 @@ public class SlideMenuHandler extends LoadDataSlideMenuHandler{
                 baseFragment.ChuyenFragment(new DanhMucSPFragment("Home"), SupportKeyList.TAG_DANH_MUC_SAN_PHAM, true);
                 break;
             case SupportKeyList.Sale_slide:
-                temp = "Support";
+                temp = "Sale";
                 while(count > 0){
                     baseFragment.XoaFragment();
                     count--;
@@ -116,7 +117,12 @@ public class SlideMenuHandler extends LoadDataSlideMenuHandler{
                 baseFragment.ChuyenFragment(new FindStoreFragment(), SupportKeyList.TAG_FRAGMENT_FINDSTORE, true);
                 break;
             case SupportKeyList.Newsletter_slide:
-                temp = "Newsletter";
+                temp = "Support";
+                while(count > 0){
+                    baseFragment.XoaFragment();
+                    count--;
+                }
+                baseFragment.ChuyenFragment(new SupportFragment(), SupportKeyList.TAG_FRAGMENT_SUPPORT, true);
                 break;
             default:
                 temp = "null";
@@ -145,8 +151,10 @@ class LoadDataSlideMenuHandler{
 
     // tai du lieu tu file xml cua may vao doi tuong array de dua vao adapter
     public void loadData() {
+
         arrName = activity.getResources().getStringArray(R.array.name_slide_menu);
         TypedArray listAnh = activity.getResources().obtainTypedArray(R.array.icon_slide_menu);
+
         arrIcon = new int[arrName.length];
         for(int i=0; i< arrName.length;i++){
             arrIcon[i]=listAnh.getResourceId(i,-1);

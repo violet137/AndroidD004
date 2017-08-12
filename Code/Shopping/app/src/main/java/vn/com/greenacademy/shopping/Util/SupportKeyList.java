@@ -49,6 +49,7 @@ public class SupportKeyList {
     public static final String TAG_DETAILS_SAN_PHAM = "DetailsSanPham";
     public static final String TAG_FRAGMENT_FINDSTORE = "ParseStore";
     public static final String TAG_FRAGMENT_SALE = "Sale";
+    public static final String TAG_FRAGMENT_SUPPORT = "Support";
 
     //Key Menu Main
     public static final int Banner = -1;
