@@ -40,7 +40,6 @@ public class NewProductFragmentViewPager extends Fragment {
         }else {
             position = (int) Math.pow(2, positionViewPager+1);
         }
-//        position =positionViewPager;
     }
 
 
