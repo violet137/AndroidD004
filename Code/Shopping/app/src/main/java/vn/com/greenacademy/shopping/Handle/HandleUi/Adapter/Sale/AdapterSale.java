@@ -16,6 +16,7 @@ import java.util.ArrayList;
 
 import vn.com.greenacademy.shopping.Fragment.Sale.SaleFragment;
 import vn.com.greenacademy.shopping.Handle.HandleData.ImageLoad;
+import vn.com.greenacademy.shopping.Interface.ObjectCallBack;
 import vn.com.greenacademy.shopping.Model.Sale;
 import vn.com.greenacademy.shopping.R;
 
@@ -62,20 +63,21 @@ public class AdapterSale extends RecyclerView.Adapter<SaleHolder>{
 
     }
 
-    public void setData(SaleHolder holder, int position){
+    public void setData(final SaleHolder holder, int position){
         holder.itemView.setTag(saleArrayList.get(position));
         holder.itemView.setOnClickListener(onClickListener);
 
         ImageLoad imageLoad = new ImageLoad((Activity)context);
         imageLoad.load(saleArrayList.get(position).getHinhDaiDien(),holder.imageView);
 
-//        holder.tvName.setText(saleArrayList.get(position).getTen());
-//        holder.tvMoTa.setText("  "+saleArrayList.get(position).getMota());
+        if (saleArrayList.get(position).getSanPhamArrayList() != null){
+            AdapterViewPagerSale adapterViewPagerSale = new AdapterViewPagerSale(
+                    fragmentManager,(Activity) context, saleArrayList.get(position).getSanPhamArrayList());
 
-        AdapterViewPagerSale adapterViewPagerSale = new AdapterViewPagerSale(
-                  fragmentManager,(Activity) context, saleArrayList.get(position).getSanPhamArrayList());
+            holder.viewPager.setAdapter(adapterViewPagerSale);
+            holder.viewPager.setVisibility(View.VISIBLE);
 
-        holder.viewPager.setAdapter(adapterViewPagerSale);
+        }
 
     }
 }

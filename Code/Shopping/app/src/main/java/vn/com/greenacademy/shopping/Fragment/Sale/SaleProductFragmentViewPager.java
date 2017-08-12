@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import vn.com.greenacademy.shopping.Handle.HandleData.ImageLoad;
 import vn.com.greenacademy.shopping.Handle.HandleData.SanPhamHandler;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.Sale.AdapterRecyclerColorProduct;
+import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.Sale.AdapterSale;
 import vn.com.greenacademy.shopping.Model.ThongTinSanPham.SanPham;
 import vn.com.greenacademy.shopping.R;
 import vn.com.greenacademy.shopping.Util.SupportKeyList;

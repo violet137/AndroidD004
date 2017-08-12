@@ -62,15 +62,11 @@ public class SaleFragment extends Fragment {
             }
         };
 
-        return view;
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
         if (listenerBack){
             recyclerView.setAdapter(saleHandler.getAdapter(getChildFragmentManager(),dataSale));
         }
+
+        return view;
     }
 
     @Override
