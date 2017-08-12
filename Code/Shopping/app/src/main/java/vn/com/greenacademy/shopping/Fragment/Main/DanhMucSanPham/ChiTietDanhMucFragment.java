@@ -1,4 +1,4 @@
-package vn.com.greenacademy.shopping.Fragment.Main.NganhThoiTrang;
+package vn.com.greenacademy.shopping.Fragment.Main.DanhMucSanPham;
 
 
 import android.os.Bundle;
