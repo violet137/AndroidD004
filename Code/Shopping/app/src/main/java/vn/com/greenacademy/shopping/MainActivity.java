@@ -194,6 +194,8 @@ public class MainActivity extends AppCompatActivity implements DataCallBack, Vie
                     menu.findItem(R.id.my_bag_toolbar).setVisible(false);
                     break;
 
+                case SupportKeyList.TAG_DANH_MUC_SAN_PHAM:
+                case SupportKeyList.TAG_CHI_TIET_DANH_MUC_SAN_PHAM:
                 case SupportKeyList.TAG_XU_HUONG_THOI_TRANG:
                 case SupportKeyList.TAG_THONG_TIN_SAN_PHAM:
                     menu.findItem(R.id.my_bag_toolbar).setVisible(true);
