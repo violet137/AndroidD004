@@ -24,21 +24,21 @@
         <item>Giỏ Hàng</item>
         <item>Tài Khoản</item>
         <item>Cửa Hàng</item>
-        <item>Góp Ý</item>
+        <item>Hổ Trợ</item>
     </string-array>
 
     <string-array name="icon_slide_menu">
+        <item>@drawable/fashion_fife3</item>
         <item>@drawable/barcode</item>
         <item>@drawable/barcode</item>
         <item>@drawable/barcode</item>
         <item>@drawable/barcode</item>
-        <item>@drawable/barcode</item>
-        <item>@drawable/sale</item>
+        <item>@drawable/sale2</item>
         <item>@drawable/magazine</item>
         <item>@drawable/wish_list</item>
         <item>@drawable/user</item>
         <item>@drawable/find_a_store</item>
-        <item>@drawable/newsletter</item>
+        <item>@drawable/support</item>
     </string-array>
 
     <string-array name="name_menu_main">
@@ -92,4 +92,19 @@
         <item>@drawable/mau_trang</item>
         <item>@drawable/ic_more_items</item>
     </array>
+
+    <string-array name="name_support_menu">
+        <item>Liên Hệ</item>
+        <item>Các Câu Hỏi Thường Gặp</item>
+        <item>Theo Dỏi Chúng Tôi</item>
+        <item>Hướng Dận Mua Hàng</item>
+    </string-array>
+
+    <string-array name="icon_support_menu">
+        <item>@drawable/letter</item>
+        <item>@drawable/question</item>
+        <item>@drawable/follow</item>
+        <item>@drawable/touching</item>
+    </string-array>
+
 </resources>

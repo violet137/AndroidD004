@@ -55,75 +55,10 @@ public class MainMenuHandler extends LoadDataMainMenuHandler{
     // đối tượng activity
     Activity activity;
 
-    // các đối tượng để nhận sự kiện cick cái item trenen listView Main
-    View.OnClickListener onClickListenerAdvertise;
-    View.OnClickListener onClickListenerProducts;
-    View.OnClickListener onClickListenerHotTrend;
-
-
     public MainMenuHandler(Activity activity, BaseFragment baseFragment) {
         this.activity = activity;
         this.baseFragment = baseFragment;
     }
-
-    // dieu khien phần click menu main
-    public void clickItemMenuMain(){
-        // click phan quang cao
-        onClickListenerAdvertise = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AdvertisePhoto advertisePhoto = (AdvertisePhoto) v.getTag();
-                Toast.makeText(activity, String.valueOf( advertisePhoto.getId()), Toast.LENGTH_SHORT).show();
-            }
-        };
-
-        // click phan san pham
-        onClickListenerProducts = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ProductsPhoto productsPhoto = (ProductsPhoto) v.getTag();
-                if (((ProductsPhoto) v.getTag()).getId().equals("TapChi")){
-                    baseFragment.ChuyenFragment(new MagazineFragment(), SupportKeyList.TAG_FRAGMENT_MAGAZINE, true);
-                }else {
-                    baseFragment.ChuyenFragment(new DanhMucSPFragment(((ProductsPhoto) v.getTag()).getId()), SupportKeyList.TAG_DANH_MUC_SAN_PHAM, true);
-                }
-                Toast.makeText(activity, productsPhoto.getId(), Toast.LENGTH_SHORT).show();
-            }
-        };
-
-        // click phan bai bao va xu huong
-        onClickListenerHotTrend = new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                BannerPhoto bannerPhoto  = (BannerPhoto) v.getTag();
-                // bannner server trả về 3 loại banner được phân theo thứ tự tường loại
-                switch (bannerPhoto.getLoaiBanner()){
-                    // loại khuyen mãi
-                    case SupportKeyList.KhuyenMai_BannerType:
-                        Toast.makeText(activity, String.valueOf(bannerPhoto.getId()) + " " + bannerPhoto.getLoaiBanner(), Toast.LENGTH_SHORT).show();
-
-                        break;
-
-                    // loại xu hướng
-                    case SupportKeyList.XuHuong_BannerType:
-                        Toast.makeText(activity, String.valueOf(bannerPhoto.getId()) + " " + bannerPhoto.getLoaiBanner(), Toast.LENGTH_SHORT).show();
-                        baseFragment.ChuyenFragment(new XuHuongThoiTrangFragment(bannerPhoto.getId()), SupportKeyList.TAG_XU_HUONG_THOI_TRANG, true);
-                        break;
-
-                    // loại tạp chí
-                    case SupportKeyList.TapChi_BannerType:
-                        Toast.makeText(activity, String.valueOf(bannerPhoto.getId()) + " " + bannerPhoto.getLoaiBanner(), Toast.LENGTH_SHORT).show();
-                        break;
-                }
-            }
-        };
-    }
-//    // tai du lieu tu adapter len list
-//    public AdapterMenuMain getAdapter (ArrayList<MenuMain> menuMainArrayList) {
-//        AdapterMenuMain adapterMenuMain = new AdapterMenuMain(activity, R.layout.item_listview_menu_main, menuMainArrayList,
-//                onClickListenerAdvertise, onClickListenerProducts, onClickListenerHotTrend);
-//        return adapterMenuMain;
-//    }
 
     // tai du lieu tu adapter len list
     public AdapterHomeRecyclerView getAdapterRVMultipleView (ArrayList<MenuMain> menuMainArrayList) {
@@ -181,15 +116,6 @@ public class MainMenuHandler extends LoadDataMainMenuHandler{
 
     }
 
-    public ListAdapter getAdapterLV(ArrayList<MenuMain> menuMainArrayList) {
-        AdapterHomeListView adapterHomeListView = new AdapterHomeListView(activity, R.layout.item_menu_home_list_view, menuMainArrayList);
-        return adapterHomeListView;
-    }
-
-    public RecyclerView.Adapter getAdapterRV(ArrayList<MenuMain> menuMainArrayList) {
-        AdapterHomeRV adapterHomeRV = new AdapterHomeRV(activity, menuMainArrayList);
-        return adapterHomeRV;
-    }
 }
 
 class LoadDataMainMenuHandler implements ServerCallBack{
@@ -225,37 +151,6 @@ class LoadDataMainMenuHandler implements ServerCallBack{
     @Override
     public void serverCallBack(String dataServer) {
     }
-
-//    @Override
-//    public void serverCallBack(String dataServer, String key) {
-//        // hàm trả về 2 đối tượng của server
-//
-//        // gọi hàm parse data
-//        switch (Integer.parseInt(key)){
-//            // parse cho banner quảng cáo
-//              case SupportKeyList.Advertise_Url:
-//                  ParseAdvertise parseAdvertise = new ParseAdvertise(dataServer);
-//                  containerData(parseAdvertise.parData(), key);
-//                  break;
-//
-//            // parse cho banner sản phẩm
-//              case SupportKeyList.Products_Url:
-//                  ParseMyProducts parseMyProducts = new ParseMyProducts(dataServer);
-//                  containerData(parseMyProducts.parData(), key);
-//                  break;
-//
-//            // parse cho banner xu hướng + khuyến mãi + tạp chí
-//              case SupportKeyList.Banner_Url:
-//                  ParseBanner parseBanner = new ParseBanner(dataServer);
-//                  containerData(parseBanner.parData(), key);
-//                  break;
-//
-//              default:
-//                  break;
-//
-//        }
-//
-//    }
 
     @Override
     public void serverCallBack(String dataServer, String key) {
