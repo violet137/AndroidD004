@@ -21,18 +21,23 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import vn.com.greenacademy.shopping.Handle.HandleData.ImageLoad;
+import vn.com.greenacademy.shopping.Handle.HandleData.ParseData.Main.ParseNewProductList;
 import vn.com.greenacademy.shopping.Handle.HandleData.SanPhamHandler;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.SanPham.SanPhamPagerAdapter;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Model.QuickActionItem;
 import vn.com.greenacademy.shopping.Handle.HandleUi.SanPham.QuickActionPopup;
+import vn.com.greenacademy.shopping.Interface.ServerCallBack;
 import vn.com.greenacademy.shopping.Model.ThongTinSanPham.SanPham;
+import vn.com.greenacademy.shopping.Network.AsynTask.GetServerData;
 import vn.com.greenacademy.shopping.R;
+import vn.com.greenacademy.shopping.Util.ServerUrl;
+import vn.com.greenacademy.shopping.Util.SupportKeyList;
 import vn.com.greenacademy.shopping.Util.Ui.BaseFragment;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ThongTinSanPhamFragment extends Fragment implements View.OnClickListener {
+public class ThongTinSanPhamFragment extends Fragment implements View.OnClickListener, ServerCallBack {
     private TextView tvTenVaMau;
     private TextView tvSoLuong;
     private Button btnSizeInfo;
@@ -52,9 +57,20 @@ public class ThongTinSanPhamFragment extends Fragment implements View.OnClickLis
     private SanPham sanPham;
     private SpannableString formatTenVaMau;
     private Bundle bundleForPage;
+    private int idSanPham;
     private int position;
     private String mauDuocChon;
+    private String callFrom = "";
     private boolean isFromBackStack = false;
+
+    public ThongTinSanPhamFragment(String idSanPham, String callFrom) {
+        if (idSanPham.equals("ALL"))
+            this.idSanPham = -1;
+        else
+            this.idSanPham = Integer.parseInt(idSanPham);
+
+        this.callFrom = callFrom;
+    }
 
     public ThongTinSanPhamFragment(int position, ArrayList<SanPham> listSanPham) {
         this.listSanPham = listSanPham;
@@ -64,9 +80,13 @@ public class ThongTinSanPhamFragment extends Fragment implements View.OnClickLis
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (!callFrom.isEmpty() && callFrom.equals(SupportKeyList.TAG_FRAGMENT_MAIN)){
+            GetServerData getServerData = new GetServerData(this);
+            getServerData.execute(ServerUrl.UrlDanhSachSPMoi+"20", String.valueOf(SupportKeyList.NewProduct_Url));
+        }
         imageLoad = new ImageLoad(getActivity());
         sanPhamHandler = new SanPhamHandler(getActivity());
-        sanPhamPagerAdapter = new SanPhamPagerAdapter(getActivity().getSupportFragmentManager(),listSanPham);
+        sanPhamPagerAdapter = new SanPhamPagerAdapter(getChildFragmentManager(),listSanPham);
         bundleForPage = new Bundle();
     }
 
@@ -94,12 +114,14 @@ public class ThongTinSanPhamFragment extends Fragment implements View.OnClickLis
         btnColor.setOnClickListener(this);
         btnHinh.setOnClickListener(this);
 
-        sanPham = listSanPham.get(position);
-        pagerSanPham.setAdapter(sanPhamPagerAdapter);
-        pagerSanPham.setCurrentItem(position);
+        if (callFrom.isEmpty()) {
+            sanPham = listSanPham.get(position);
+            pagerSanPham.setAdapter(sanPhamPagerAdapter);
+            pagerSanPham.setCurrentItem(position);
 
-        //Xử lý thông tin hiển thị
-        setUpUi(0);
+            //Xử lý thông tin hiển thị
+            setUpUi(position);
+        }
         pagerSanPham.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -126,7 +148,7 @@ public class ThongTinSanPhamFragment extends Fragment implements View.OnClickLis
     public void onResume() {
         super.onResume();
         if (isFromBackStack) {
-            sanPhamPagerAdapter = new SanPhamPagerAdapter(getActivity().getSupportFragmentManager(),listSanPham);
+            sanPhamPagerAdapter = new SanPhamPagerAdapter(getChildFragmentManager(),listSanPham);
             pagerSanPham.setAdapter(sanPhamPagerAdapter);
             pagerSanPham.setCurrentItem(position);
         }
@@ -320,5 +342,39 @@ public class ThongTinSanPhamFragment extends Fragment implements View.OnClickLis
         btnShare.setVisibility(View.VISIBLE);
         btnInfo.setVisibility(View.VISIBLE);
         sanPhamPagerAdapter.updateUiSinglePage(position, SanPhamPagerAdapter.ACTION_SHOW_GIA, null);
+    }
+
+    @Override
+    public void serverCallBack(String dataServer) {
+
+    }
+
+    @Override
+    public void serverCallBack(String dataServer, String key) {
+        switch (Integer.parseInt(key)) {
+            case SupportKeyList.NewProduct_Url:
+                ParseNewProductList parseNewProductList = new ParseNewProductList(dataServer);
+                listSanPham = parseNewProductList.parData().getSanPhamArrayList();
+                position = findSanPhamPosition(idSanPham, listSanPham);
+                sanPham = listSanPham.get(position);
+                sanPhamPagerAdapter = new SanPhamPagerAdapter(getChildFragmentManager(),listSanPham);
+                pagerSanPham.setAdapter(sanPhamPagerAdapter);
+                pagerSanPham.setCurrentItem(position);
+                setUpUi(position);
+                break;
+        }
+    }
+
+    private int findSanPhamPosition(int idSanPham, ArrayList<SanPham> listSanPham) {
+        if (idSanPham == -1){
+            return 11;
+        }
+        else {
+            for (int i = 0; i < listSanPham.size(); i++) {
+                if (idSanPham == listSanPham.get(i).getIdSanPham())
+                    return i;
+            }
+        }
+        return -1;
     }
 }
