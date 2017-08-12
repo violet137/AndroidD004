@@ -38,7 +38,7 @@ public class TaiKhoanFragment extends Fragment implements View.OnClickListener {
         root.findViewById(R.id.btnEdit_FragmentTaiKhoan).setOnClickListener(this);
 
         mySharedPref = new MySharedPreferences(getActivity(), SupportKeyList.SHAREDPREF_TEN_FILE);
-        baseFragment = new BaseFragment(getActivity().getSupportFragmentManager());
+        baseFragment = new BaseFragment(getActivity(), getActivity().getSupportFragmentManager());
         tvUsername.setText(mySharedPref.getTenTaiKhoan());
 
         //reset option menu

@@ -24,7 +24,7 @@ public class BannerXuHuongThoiTrangAdapter extends RecyclerView.Adapter<XuHuongT
 
     public BannerXuHuongThoiTrangAdapter(Context context, FragmentManager fragmentManager) {
         this.context = context;
-        baseFragment = new BaseFragment(fragmentManager);
+        baseFragment = new BaseFragment(context, fragmentManager);
     }
 
     @Override

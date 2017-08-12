@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -35,6 +36,13 @@ import vn.com.greenacademy.shopping.Util.Ui.BaseFragment;
  * A simple {@link Fragment} subclass.
  */
 public class MainFragment extends Fragment {
+    // cac doi tuong xml
+    RecyclerView rvProduct;
+    RecyclerView rvFashion;
+    RecyclerView rvMagazien;
+    ViewPager vpNewProduct;
+    ViewFlipper vfAdvertise;
+    NestedScrollView vListHome;
 
     // listMainMenuCallBack nhận dữ liệu hoàn chỉnh trên server trả về
     public static ListMainMenuCallBack listMainMenuCallBack;
@@ -42,30 +50,22 @@ public class MainFragment extends Fragment {
     // mainMenuHandler lớp điều khiển của MainFragment
     private MainMenuHandler mainMenuHandler = null;
 
-    // cac doi tuong xml
-    RecyclerView rvProduct;
-    RecyclerView rvFashion;
-    RecyclerView rvMagazien;
-    ViewPager vpNewProduct;
-    ViewFlipper vfAdvertise;
-
     // luu data server trả về khi goi thanh cong
-    ArrayList<MenuMain> dataAdvertise;
-    ArrayList<MenuMain> dataProducts;
-    ArrayList<MenuMain> dataNewProduct;
-    ArrayList<MenuMain> dataFashion;
-    ArrayList<MenuMain> dataMagazine;
-
+    private ArrayList<MenuMain> dataAdvertise;
+    private ArrayList<MenuMain> dataProducts;
+    private ArrayList<MenuMain> dataNewProduct;
+    private ArrayList<MenuMain> dataFashion;
+    private ArrayList<MenuMain> dataMagazine;
+    private int scrollPosition = 0;
     //
     boolean backListener = false;
-
 
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //Xử lý sự kiện
-        mainMenuHandler = new MainMenuHandler(getActivity(), new BaseFragment(getActivity().getSupportFragmentManager()));
+        mainMenuHandler = new MainMenuHandler(getActivity(), new BaseFragment(getActivity(), getActivity().getSupportFragmentManager()));
 
         // goi hàm lấy dữ liệu trên server xuống
         mainMenuHandler.getDataServer();
@@ -83,6 +83,8 @@ public class MainFragment extends Fragment {
 
         // Inflate the layout for this fragment
         final View view = inflater.inflate(R.layout.fragment_menu_home, container, false);
+
+        vListHome = (NestedScrollView) view.findViewById(R.id.scroll_view_list_home);
 
         vfAdvertise = (ViewFlipper) view.findViewById(R.id.vfAdvertise_item_main_menu);
 
@@ -122,7 +124,7 @@ public class MainFragment extends Fragment {
                         break;
                     case SupportKeyList.ClickHome_NewProduct:
                         dataNewProduct = menuMainArrayList;
-                        mainMenuHandler.setDataNewProduct(menuMainArrayList, vpNewProduct);
+                        mainMenuHandler.setDataNewProduct(getChildFragmentManager(), menuMainArrayList, vpNewProduct);
                         break;
                     case SupportKeyList.ClickHome_Fashion:
                         dataFashion = menuMainArrayList;
@@ -151,11 +153,13 @@ public class MainFragment extends Fragment {
 
             mainMenuHandler.setAdapter(dataProducts, SupportKeyList.ClickHome_Products, rvProduct);
 
-            mainMenuHandler.setDataNewProduct(dataNewProduct, vpNewProduct);
+            mainMenuHandler.setDataNewProduct(getChildFragmentManager(),dataNewProduct, vpNewProduct);
 
             mainMenuHandler.setAdapter(dataFashion, SupportKeyList.ClickHome_Fashion, rvFashion);
 
             mainMenuHandler.setAdapter(dataMagazine, SupportKeyList.ClickHome_Magazine, rvMagazien);
+
+            vListHome.scrollTo(0, scrollPosition);
         }
     }
 
@@ -163,6 +167,7 @@ public class MainFragment extends Fragment {
     public void onDestroyView() {
         super.onDestroyView();
         backListener = true;
+        scrollPosition = vListHome.getScrollY();
     }
 
 }

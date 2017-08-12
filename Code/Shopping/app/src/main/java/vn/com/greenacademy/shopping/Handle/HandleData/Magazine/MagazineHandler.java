@@ -46,7 +46,7 @@ public class MagazineHandler implements ServerCallBack {
         onClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                BaseFragment baseFragment = new BaseFragment(((AppCompatActivity)activity).getSupportFragmentManager());
+                BaseFragment baseFragment = new BaseFragment(((AppCompatActivity)activity), ((AppCompatActivity)activity).getSupportFragmentManager());
                 baseFragment.ChuyenFragment(new MagazineDetailFragment(String.valueOf(((Item_recyclerView_magazine)v.getTag())
                         .getId())), SupportKeyList.TAG_FRAGMENT_MAGAZINE_DETAIL, true);
 

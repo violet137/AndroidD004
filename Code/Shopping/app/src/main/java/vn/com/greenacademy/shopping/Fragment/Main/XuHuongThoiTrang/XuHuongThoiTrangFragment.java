@@ -54,7 +54,7 @@ public class XuHuongThoiTrangFragment extends Fragment implements DataCallBack, 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        loadingDialog = new LoadingDialog(getActivity(), new BaseFragment(getActivity().getSupportFragmentManager()));
+        loadingDialog = new LoadingDialog(getActivity(), new BaseFragment(getActivity(), getActivity().getSupportFragmentManager()));
         new GoiAPIServerAsyncTask(this).execute(SupportKeyList.API_DATA_XU_HUONG_THOI_TRANG, ServerUrl.XuHuongThoiTrangUrl + String.valueOf(idXuHuong), String.valueOf(idXuHuong));
         imageLoad = new ImageLoad(getActivity());
     }
@@ -114,7 +114,7 @@ public class XuHuongThoiTrangFragment extends Fragment implements DataCallBack, 
         //List sản phẩm
         vListSanPham.setLayoutManager(new GridLayoutManager(getActivity(), 2));
         vListSanPham.setNestedScrollingEnabled(false);
-        vListSanPham.setAdapter(new ListSanPhamAdapter(getActivity(), xuHuongThoiTrang.getListSanPham(), new BaseFragment(getActivity().getSupportFragmentManager()), null, imageLoad));
+        vListSanPham.setAdapter(new ListSanPhamAdapter(getActivity(), xuHuongThoiTrang.getListSanPham(), new BaseFragment(getActivity(), getActivity().getSupportFragmentManager()), null, imageLoad));
         scrollView.postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -126,7 +126,7 @@ public class XuHuongThoiTrangFragment extends Fragment implements DataCallBack, 
 
     @Override
     public void clickSetDo(int position) {
-        ChiTietSetDoDialog chiTietSetDoDialog = new ChiTietSetDoDialog(getActivity(), xuHuongThoiTrang.getListSetDo().get(position).getListSanPham(), new BaseFragment(getActivity().getSupportFragmentManager()));
+        ChiTietSetDoDialog chiTietSetDoDialog = new ChiTietSetDoDialog(getActivity(), xuHuongThoiTrang.getListSetDo().get(position).getListSanPham(), new BaseFragment(getActivity(), getActivity().getSupportFragmentManager()));
         chiTietSetDoDialog.show();
     }
 

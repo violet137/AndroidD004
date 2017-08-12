@@ -1,6 +1,7 @@
 package vn.com.greenacademy.shopping.Handle.HandleData.Home;
 
 import android.app.Activity;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
@@ -169,14 +170,15 @@ public class MainMenuHandler extends LoadDataMainMenuHandler{
                 break;
         }
     }
+    private AdapterNewProductViewPager adapterNewProductViewPager;
+    public void setDataNewProduct(FragmentManager fm ,ArrayList<MenuMain> menuMainArrayList, ViewPager vpNewProduct) {
 
-    public void setDataNewProduct(ArrayList<MenuMain> menuMainArrayList, ViewPager vpNewProduct) {
-
-        AdapterNewProductViewPager adapterNewProductViewPager =
-                new AdapterNewProductViewPager(((AppCompatActivity) activity).getSupportFragmentManager(),
+       adapterNewProductViewPager =
+                new AdapterNewProductViewPager(fm,
                         activity, menuMainArrayList.get(0).getSanPhamArrayList());
 
         vpNewProduct.setAdapter(adapterNewProductViewPager);
+
     }
 
     public ListAdapter getAdapterLV(ArrayList<MenuMain> menuMainArrayList) {

@@ -66,7 +66,7 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener, 
         button_face_login.setOnClickListener(this);
 
         dataHandler = new DataHandler(getActivity(), this);
-        baseFragment = new BaseFragment(getActivity().getSupportFragmentManager());
+        baseFragment = new BaseFragment(getActivity(), getActivity().getSupportFragmentManager());
         loadingDialog = new LoadingDialog(getActivity());
         callbackManager = CallbackManager.Factory.create();
         button_face_login.setFragment(this);
