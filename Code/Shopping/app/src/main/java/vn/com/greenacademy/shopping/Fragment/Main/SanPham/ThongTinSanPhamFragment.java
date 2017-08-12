@@ -64,7 +64,11 @@ public class ThongTinSanPhamFragment extends Fragment implements View.OnClickLis
     private boolean isFromBackStack = false;
 
     public ThongTinSanPhamFragment(String idSanPham, String callFrom) {
-        this.idSanPham = Integer.parseInt(idSanPham);
+        if (idSanPham.equals("ALL"))
+            this.idSanPham = -1;
+        else
+            this.idSanPham = Integer.parseInt(idSanPham);
+
         this.callFrom = callFrom;
     }
 
@@ -82,7 +86,7 @@ public class ThongTinSanPhamFragment extends Fragment implements View.OnClickLis
         }
         imageLoad = new ImageLoad(getActivity());
         sanPhamHandler = new SanPhamHandler(getActivity());
-        sanPhamPagerAdapter = new SanPhamPagerAdapter(getActivity().getSupportFragmentManager(),listSanPham);
+        sanPhamPagerAdapter = new SanPhamPagerAdapter(getChildFragmentManager(),listSanPham);
         bundleForPage = new Bundle();
     }
 
@@ -144,7 +148,7 @@ public class ThongTinSanPhamFragment extends Fragment implements View.OnClickLis
     public void onResume() {
         super.onResume();
         if (isFromBackStack) {
-            sanPhamPagerAdapter = new SanPhamPagerAdapter(getActivity().getSupportFragmentManager(),listSanPham);
+            sanPhamPagerAdapter = new SanPhamPagerAdapter(getChildFragmentManager(),listSanPham);
             pagerSanPham.setAdapter(sanPhamPagerAdapter);
             pagerSanPham.setCurrentItem(position);
         }
@@ -353,7 +357,7 @@ public class ThongTinSanPhamFragment extends Fragment implements View.OnClickLis
                 listSanPham = parseNewProductList.parData().getSanPhamArrayList();
                 position = findSanPhamPosition(idSanPham, listSanPham);
                 sanPham = listSanPham.get(position);
-                sanPhamPagerAdapter = new SanPhamPagerAdapter(getActivity().getSupportFragmentManager(),listSanPham);
+                sanPhamPagerAdapter = new SanPhamPagerAdapter(getChildFragmentManager(),listSanPham);
                 pagerSanPham.setAdapter(sanPhamPagerAdapter);
                 pagerSanPham.setCurrentItem(position);
                 setUpUi(position);
@@ -362,9 +366,14 @@ public class ThongTinSanPhamFragment extends Fragment implements View.OnClickLis
     }
 
     private int findSanPhamPosition(int idSanPham, ArrayList<SanPham> listSanPham) {
-        for (int i = 1; i <= listSanPham.size(); i++) {
-            if (idSanPham == listSanPham.get(i).getIdSanPham())
-                return i;
+        if (idSanPham == -1){
+            return 11;
+        }
+        else {
+            for (int i = 0; i < listSanPham.size(); i++) {
+                if (idSanPham == listSanPham.get(i).getIdSanPham())
+                    return i;
+            }
         }
         return -1;
     }
