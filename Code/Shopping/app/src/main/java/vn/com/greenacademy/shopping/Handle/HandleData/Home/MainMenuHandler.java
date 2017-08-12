@@ -60,12 +60,6 @@ public class MainMenuHandler extends LoadDataMainMenuHandler{
         this.baseFragment = baseFragment;
     }
 
-    // tai du lieu tu adapter len list
-    public AdapterHomeRecyclerView getAdapterRVMultipleView (ArrayList<MenuMain> menuMainArrayList) {
-        AdapterHomeRecyclerView adapter = new AdapterHomeRecyclerView(activity, menuMainArrayList);
-        return adapter;
-    }
-
     public void setDataAdvertise(ArrayList<MenuMain> menuMainArrayList, ViewFlipper vfAdvertise) {
         ImageLoad imageLoad = new ImageLoad(activity);
         for (int i = 0; i < menuMainArrayList.get(0).getAdvertiseMenuMains().size() ; i++) {
@@ -105,12 +99,11 @@ public class MainMenuHandler extends LoadDataMainMenuHandler{
                 break;
         }
     }
-    private AdapterNewProductViewPager adapterNewProductViewPager;
+
     public void setDataNewProduct(FragmentManager fm ,ArrayList<MenuMain> menuMainArrayList, ViewPager vpNewProduct) {
 
-       adapterNewProductViewPager =
-                new AdapterNewProductViewPager(fm,
-                        activity, menuMainArrayList.get(0).getSanPhamArrayList());
+        AdapterNewProductViewPager adapterNewProductViewPager =
+                new AdapterNewProductViewPager(fm, activity, menuMainArrayList.get(0).getSanPhamArrayList());
 
         vpNewProduct.setAdapter(adapterNewProductViewPager);
 

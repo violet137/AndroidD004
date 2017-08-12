@@ -1,9 +1,7 @@
 package vn.com.greenacademy.shopping.Handle.HandleData.Magazine;
 
 import android.app.Activity;
-import android.app.FragmentManager;
-import android.support.design.widget.TabLayout;
-import android.support.v4.view.ViewPager;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -11,6 +9,7 @@ import android.view.View;
 import java.util.ArrayList;
 
 import vn.com.greenacademy.shopping.Fragment.Magazine.MagazineDetailFragment;
+import vn.com.greenacademy.shopping.Fragment.Magazine.MagazineFragment;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.Magazine.AdapterMagazineRecyclerView;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.Magazine.AdapterMagazineViewPager;
 import vn.com.greenacademy.shopping.Handle.HandleData.ParseData.Magazine.ParseMagazine;
@@ -32,11 +31,10 @@ public class MagazineHandler implements ServerCallBack {
 
     Activity activity;
     View.OnClickListener onClickListener;
-    ViewPager viewPager;
-    TabLayout tabLayout;
+//    ViewPager viewPager;
+//    TabLayout tabLayout;
     RecyclerView recyclerView;
     int positionViewPagger;
-    ArrayList<MagazineType> magazineTypeArrayList;
 
 
     public MagazineHandler(Activity activity) {
@@ -60,66 +58,16 @@ public class MagazineHandler implements ServerCallBack {
     public void setLayoutRecyclerView(RecyclerView recyclerView, int positionViewPagger, ArrayList<MagazineType> magazineTypeArrayList) {
         this.recyclerView = recyclerView;
         this.positionViewPagger = positionViewPagger;
-        this.magazineTypeArrayList = magazineTypeArrayList;
-
-//        GetMagazine getMagazine = new GetMagazine(this);
-//        getMagazine.execute(ServerUrl.UrlDanhSachMagazine+magazineTypeArrayList.get(positionViewPagger).getLoaiTapChi());
 
         GetServerData getServerData = new GetServerData(this);
         getServerData.execute(ServerUrl.UrlDanhSachMagazine+magazineTypeArrayList.get(positionViewPagger).getLoaiTapChi(),SupportKeyList.Magazine);
 
 
-//        AdapterHomeRecyclerView adapterMagazineRecyclerView = new AdapterHomeRecyclerView
-//                (activity,onClickListener,positionViewPagger, magazineTypeArrayList);
-//        recyclerView.setAdapter(adapterMagazineRecyclerView);
     }
-
-//    @Override
-//    public void magazineCallBack(ArrayList<Magazine> magazineArrayList) {
-//
-//    }
-
-//    @Override
-//    public void magazineTypeCallBack(ArrayList<MagazineType> magazineTypes) {
-//
-//    }
-
 
     public void getMagazineType() {
-//        GetMagazineType getMagazineType = new GetMagazineType(this);
-//        getMagazineType.execute(ServerUrl.UrlDanhSachMagazineType);
-
         GetServerData getServerData = new GetServerData(this);
         getServerData.execute(ServerUrl.UrlDanhSachMagazineType, SupportKeyList.MagazineType);
-    }
-
-    public void setLayoutMagazineFragment(final ViewPager viewPager, TabLayout tabLayout) {
-        this.viewPager = viewPager;
-        this.tabLayout = tabLayout;
-
-        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
-
-        // set su kien scroll cho tabLayout
-        tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
-
-        // set su kien click tablayout thay doi viewPagger
-        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
-                // thay doi view pager khi click vao tab layout
-                viewPager.setCurrentItem(tab.getPosition());
-
-            }
-
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-            }
-        });
     }
 
     @Override
@@ -148,14 +96,19 @@ public class MagazineHandler implements ServerCallBack {
     }
 
     private void containerMagazineType(ArrayList<MagazineType> magazineTypeArrayList) {
-        AdapterMagazineViewPager adapter = new AdapterMagazineViewPager(
-                ((AppCompatActivity)activity).getSupportFragmentManager(),
-                activity,magazineTypeArrayList.get(0).getTen(), magazineTypeArrayList);
 
-        viewPager.setAdapter(adapter);
+        MagazineFragment.objectCallBack.callBack(magazineTypeArrayList,0);
 
-        for (int i = 0; i < adapter.getCount(); i++) {
-            tabLayout.addTab(tabLayout.newTab().setText(adapter.getTitle(i)));
-        }
     }
+
+    public AdapterMagazineViewPager getAdapterMagazineType(FragmentManager fm,ArrayList<MagazineType> magazineTypeArrayList){
+
+        AdapterMagazineViewPager adapter = new AdapterMagazineViewPager
+                (fm, activity,magazineTypeArrayList.get(0).getTen(), magazineTypeArrayList);
+
+        MagazineFragment.objectCallBack.callBack(adapter,1);
+
+        return adapter;
+    }
+
 }
