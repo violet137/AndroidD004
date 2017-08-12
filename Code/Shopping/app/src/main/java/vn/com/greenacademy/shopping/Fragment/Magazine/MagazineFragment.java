@@ -13,6 +13,7 @@ import java.util.ArrayList;
 
 import vn.com.greenacademy.shopping.Handle.HandleData.Magazine.MagazineHandler;
 import vn.com.greenacademy.shopping.Interface.MagazineCallBack;
+import vn.com.greenacademy.shopping.Interface.ObjectCallBack;
 import vn.com.greenacademy.shopping.MainActivity;
 import vn.com.greenacademy.shopping.Model.Magazine;
 import vn.com.greenacademy.shopping.R;
@@ -21,6 +22,8 @@ import vn.com.greenacademy.shopping.R;
  * A simple {@link Fragment} subclass.
  */
 public class MagazineFragment extends Fragment {
+
+    ObjectCallBack objectCallBack;
 
     public MagazineFragment() {
         // Required empty public constructor
@@ -31,6 +34,12 @@ public class MagazineFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        objectCallBack = new ObjectCallBack() {
+            @Override
+            public void callBack(Object object) {
+
+            }
+        };
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_magazine, container, false);
 
