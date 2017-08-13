@@ -1,6 +1,7 @@
 package vn.com.greenacademy.shopping.Handle.HandleData;
 
 import android.app.Activity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Toast;
 
@@ -8,7 +9,7 @@ import java.util.ArrayList;
 
 import vn.com.greenacademy.shopping.Fragment.Main.DanhMucSanPham.DanhMucSPFragment;
 import vn.com.greenacademy.shopping.Fragment.Main.DanhMucSanPham.ChiTietDanhMucFragment;
-import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.AdapterDanhMucSP;
+import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.DanhMucSP.AdapterDanhMucSP;
 import vn.com.greenacademy.shopping.Handle.HandleData.ParseData.Main.ParseDanhMucSP;
 import vn.com.greenacademy.shopping.Interface.ServerCallBack;
 import vn.com.greenacademy.shopping.Model.DanhMucSP;
@@ -25,15 +26,14 @@ import vn.com.greenacademy.shopping.Util.Ui.BaseFragment;
 
 public class DanhMucSPHandler extends LoadDataDanhMucSPHandler implements View.OnClickListener{
     private Activity activity;
-    private BaseFragment baseFragment;
 
-    public DanhMucSPHandler(Activity activity, BaseFragment baseFragment) {
+    public DanhMucSPHandler(Activity activity) {
         this.activity = activity;
-        this.baseFragment = baseFragment;
     }
 
     @Override
     public void onClick(View v) {
+        BaseFragment baseFragment = new BaseFragment(activity,((AppCompatActivity)activity).getSupportFragmentManager());
         MucSanPham mucSanPham = (MucSanPham) v.getTag();
         Toast.makeText(activity, String.valueOf(mucSanPham.getId()), Toast.LENGTH_SHORT).show();
         baseFragment.ChuyenFragment(ChiTietDanhMucFragment.newInstance(mucSanPham.getId(), mucSanPham.getTenDanhMuc()), SupportKeyList.TAG_CHI_TIET_DANH_MUC_SAN_PHAM, true);
@@ -52,17 +52,10 @@ class LoadDataDanhMucSPHandler implements ServerCallBack{
     ArrayList<MucSanPham> arrayList;
 
     public void getDataServer (String loaiSP){
-//        GetDanhMucSP getDanhMucSP = new GetDanhMucSP(this);
-//        getDanhMucSP.execute(ServerUrl.UrlDanhMucSP+loaiSP);
 
         GetServerData getServerData = new GetServerData(this);
         getServerData.execute(ServerUrl.UrlDanhMucSP+loaiSP);
     }
-
-//    @Override
-//    public void danhMucCallBack(DanhMucSP danhMucSP) {
-//
-//    }
 
     private void finishGetData(boolean flag) {
         if (flag){
