@@ -140,21 +140,21 @@ public class ChiTietDanhMucFragment extends Fragment implements DataCallBack, Vi
     private void layMauVaSizeListSanPham() {
         ArrayList<String> mListMauSanPham = new ArrayList<>();
         ArrayList<String> mListSizeSanPham = new ArrayList<>();
-        String[] mauSanPham = {"Cam", "Den", "Do", "Hong", "Nau", "Reu", "Tim", "Vang", "Xam", "XanhDuong", "XanhLa", "Trang"};
-        String[] sizeSanPham = {""};
         int sttListMau, sttSanPham = 0, sttMauListSanPham;
         boolean trungMau = false;
+        boolean trungSize = false;
         SanPham sanPham;
 
         //Điều kiện dừng khi vượt quá số lượng màu của server hoặc quá số lượng sản phẩm của danh mục
-        while(mListMauSanPham.size() < mauSanPham.length && sttSanPham < mListSanPham.size()){
+        while(mListMauSanPham.size() < 12 && sttSanPham < mListSanPham.size()){
             sanPham = mListSanPham.get(sttSanPham);
-            String ten = sanPham.getTenSanPham();
 
             //Chạy từng sản phẩm để lấy màu
             if (sttSanPham == 0){
                 Collections.addAll(mListMauSanPham, sanPham.getMauSanPham());
+                Collections.addAll(mListSizeSanPham, sanPham.getSize());
             } else {
+                //Màu
                 for (sttMauListSanPham = 0; sttMauListSanPham < sanPham.getMauSanPham().length; sttMauListSanPham++) {
                     //So sanh từng màu của 1 sản phẩm với màu trong list màu
                     for (sttListMau = 0; sttListMau < mListMauSanPham.size(); sttListMau++) {
@@ -165,9 +165,26 @@ public class ChiTietDanhMucFragment extends Fragment implements DataCallBack, Vi
                     if (!trungMau)
                         mListMauSanPham.add(sanPham.getMauSanPham()[sttMauListSanPham]);
                 }
+
+                //Size
+                if (mListSizeSanPham.size() < 4){
+                    for (int sttSizeSanPham = 0; sttSizeSanPham < sanPham.getSize().length; sttSizeSanPham++) {
+                        //So sanh từng màu của 1 sản phẩm với màu trong list màu
+                        for (int sttListSize = 0; sttListSize < mListSizeSanPham.size(); sttListSize++) {
+                            //Nếu màu sản phẩm tại vị trí sttMauListSanPham không giống với toàn bộ màu của list màu thì thêm vào list màu
+                            if (sanPham.getMauSanPham()[sttSizeSanPham].equals(mListMauSanPham.get(sttListSize)))
+                                trungSize = true;
+                        }
+                        if (!trungSize)
+                            mListMauSanPham.add(sanPham.getMauSanPham()[sttSizeSanPham]);
+                    }
+                }
             }
+
+
             sttSanPham++;
             trungMau = false;
+            trungSize = false;
         }
         LocSanPhamDialog locSanPhamDialog = new LocSanPhamDialog(getActivity(), android.R.style.Theme_DeviceDefault_Light, mListSizeSanPham, mListMauSanPham, mListSanPham.size());
         locSanPhamDialog.show();

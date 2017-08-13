@@ -52,8 +52,8 @@ public class LocSanPhamDialog extends Dialog {
 
         tvSoLuong.setText(String.valueOf(soLuongSanPham) + " sản phẩm");
 
-//        vListSize.setLayoutManager(new GridLayoutManager(context, 5));
-//        vListSize.setAdapter(new LocSizeSanPhamAdapter(context, mListSize));
+        vListSize.setLayoutManager(new GridLayoutManager(context, 5));
+        vListSize.setAdapter(new LocSizeSanPhamAdapter(context, mListSize));
 
         vListMau.setLayoutManager(new GridLayoutManager(context, 2));
         vListMau.setAdapter(new LocMauSanPhamAdapter(context, mListMau));

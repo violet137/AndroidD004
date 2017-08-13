@@ -7,6 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
+
 import vn.com.greenacademy.shopping.Handle.HandleUi.Model.ViewHolder.LocSizeHolder;
 import vn.com.greenacademy.shopping.R;
 
@@ -16,9 +18,9 @@ import vn.com.greenacademy.shopping.R;
 
 public class LocSizeSanPhamAdapter extends RecyclerView.Adapter<LocSizeHolder> {
     private Context context;
-    private String[] mListSize;
+    private ArrayList<String> mListSize = new ArrayList<>();
 
-    public LocSizeSanPhamAdapter(Context context, String[] mListSize) {
+    public LocSizeSanPhamAdapter(Context context, ArrayList<String> mListSize) {
         this.context = context;
         this.mListSize = mListSize;
     }
@@ -32,7 +34,7 @@ public class LocSizeSanPhamAdapter extends RecyclerView.Adapter<LocSizeHolder> {
 
     @Override
     public void onBindViewHolder(LocSizeHolder holder, int position) {
-        holder.btnSize.setText(mListSize[position]);
+        holder.btnSize.setText(mListSize.get(position));
 
         holder.btnSize.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,6 +46,6 @@ public class LocSizeSanPhamAdapter extends RecyclerView.Adapter<LocSizeHolder> {
 
     @Override
     public int getItemCount() {
-        return mListSize.length;
+        return mListSize.size();
     }
 }
