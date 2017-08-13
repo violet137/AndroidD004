@@ -158,6 +158,7 @@
     <dimen name="button_bai_viet_khac_height">33dp</dimen>
     <dimen name="magazine_title_description_size">10sp</dimen>
     <dimen name="magazine_vertical_padding">30dp</dimen>
+    <dimen name="magazine_padding_bottom">25dp</dimen>
     <dimen name="magazine_horizontal_padding">10dp</dimen>
     <dimen name="magazine_title_description_margin_top">5dp</dimen>
     <dimen name="magazine_button_bai_viet_khac_margin_top">15dp</dimen>
