@@ -165,14 +165,14 @@ public class ThongTinSanPhamFragment extends Fragment implements View.OnClickLis
         switch (v.getId()){
             case R.id.button_info_san_pham:
                 //Hiện dialog chi tiết sản phẩm
-                DetailsSanPhamFragment detailsSanPhamFragment = new DetailsSanPhamFragment(getActivity(), sanPham.getDescription(), sanPham.getChiTietSanPham());
-                detailsSanPhamFragment.setOnDismissListener(new DialogInterface.OnDismissListener() {
+                DetailsSanPhamDialog detailsSanPhamDialog = new DetailsSanPhamDialog(getActivity(), sanPham.getDescription(), sanPham.getChiTietSanPham());
+                detailsSanPhamDialog.setOnDismissListener(new DialogInterface.OnDismissListener() {
                     @Override
                     public void onDismiss(DialogInterface dialog) {
                         showInfo();
                     }
                 });
-                detailsSanPhamFragment.show();
+                detailsSanPhamDialog.show();
                 hideInfo();
                 break;
             case R.id.button_share_san_pham:

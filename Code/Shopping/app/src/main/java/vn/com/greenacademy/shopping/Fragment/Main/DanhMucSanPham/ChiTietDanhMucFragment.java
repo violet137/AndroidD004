@@ -9,11 +9,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import vn.com.greenacademy.shopping.Fragment.Main.SanPham.LocSanPhamDialog;
 import vn.com.greenacademy.shopping.Handle.HandleData.ImageLoad;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.SanPham.ListSanPhamAdapter;
 import vn.com.greenacademy.shopping.Interface.DataCallBack;
@@ -27,7 +29,7 @@ import vn.com.greenacademy.shopping.Util.Ui.BaseFragment;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ChiTietDanhMucFragment extends Fragment implements DataCallBack {
+public class ChiTietDanhMucFragment extends Fragment implements DataCallBack, View.OnClickListener {
     private View root;
     private TextView tvTitle;
     private TextView tvSoLuong;
@@ -37,6 +39,8 @@ public class ChiTietDanhMucFragment extends Fragment implements DataCallBack {
     private String idDanhMuc;
     private String tenDanhMuc;
     private ArrayList<SanPham> mListSanPham = new ArrayList<>();
+    private String[] mListMauSanPham;
+    private String[] mListSizeSanPham;
     private boolean isFromBackStack = false;
 
     public ChiTietDanhMucFragment() {
@@ -73,6 +77,7 @@ public class ChiTietDanhMucFragment extends Fragment implements DataCallBack {
         vListSanPham = (RecyclerView) root.findViewById(R.id.list_san_pham_nganh_thoi_trang);
         //        ListView vListPhanLoai = (ListView) root.findViewById(R.id.list_phan_loai);
 
+        root.findViewById(R.id.button_loc_san_pham).setOnClickListener(this);
         getActivity().supportInvalidateOptionsMenu();
         return root;
     }
@@ -122,5 +127,47 @@ public class ChiTietDanhMucFragment extends Fragment implements DataCallBack {
                 }
                 break;
         }
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.button_loc_san_pham:
+                layMauVaSizeListSanPham();
+
+        }
+    }
+
+    private void layMauVaSizeListSanPham() {
+        String[] mauSanPham = {"Cam", "Den", "Do", "Hong", "Nau", "Reu", "Tim", "Vang", "Xam", "XanhDuong", "XanhLa", "Trang"};
+        String[] sizeSanPham = {""};
+        int sttListMau, sttSanPham = 0, sttMauListSanPham, lengthListMauSanPham = 0;
+        SanPham sanPham;
+        mListMauSanPham = new String[mauSanPham.length];
+        //Điều kiện dừng khi vượt quá số lượng màu của server hoặc quá số lượng sản phẩm của danh mục
+        while(lengthListMauSanPham < mauSanPham.length && sttSanPham < mListSanPham.size()){
+            sanPham = mListSanPham.get(sttSanPham);
+            //Chạy từng sản phẩm để lấy màu
+            for (sttMauListSanPham = 0; sttMauListSanPham < sanPham.getMauSanPham().length; sttMauListSanPham++) {
+                //Nếu là sản phẩm đầu tiên thì thêm trực tiếp vào list màu không cần xét
+                if (sttSanPham == 0){
+                    mListMauSanPham = sanPham.getMauSanPham();
+                    lengthListMauSanPham = sanPham.getMauSanPham().length;
+                }
+                //Từ sau sản phẩm đầu tiên quét so sanh từng màu của 1 sản phẩm với màu trong list màu
+                else {
+                    for (sttListMau = 0; sttListMau < mListMauSanPham.length; sttListMau++) {
+                        //Nếu màu sản phẩm tại vị trí sttMauListSanPham không giống với toàn bộ màu của list màu thì thêm vào list màu
+                        if (!sanPham.getMauSanPham()[sttMauListSanPham].equals(mListMauSanPham[sttListMau])){
+                            mListMauSanPham[lengthListMauSanPham] = sanPham.getMauSanPham()[sttMauListSanPham];
+                            lengthListMauSanPham++;
+                        }
+                    }
+                }
+            }
+            sttSanPham++;
+        }
+        LocSanPhamDialog locSanPhamDialog = new LocSanPhamDialog(getActivity(), android.R.style.Theme_DeviceDefault_Light, mListSizeSanPham, mListMauSanPham, mListSanPham.size());
+        locSanPhamDialog.show();
     }
 }

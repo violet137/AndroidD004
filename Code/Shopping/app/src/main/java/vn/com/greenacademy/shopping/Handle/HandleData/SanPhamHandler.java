@@ -57,6 +57,39 @@ public class SanPhamHandler {
                 return null;
         }
     }
+
+    public int layMauTheoTen(String mau){
+        // tao ban mau mau
+        arrayMauSP = activity.getResources().obtainTypedArray(R.array.arr_mauSanPham);
+        switch (mau){
+            case "Cam":
+                return arrayMauSP.getResourceId(Integer.parseInt("0"),-1);
+            case "Den":
+                return arrayMauSP.getResourceId(Integer.parseInt("1"),-1);
+            case "Do":
+                return arrayMauSP.getResourceId(Integer.parseInt("2"),-1);
+            case "Hong":
+                return arrayMauSP.getResourceId(Integer.parseInt("3"),-1);
+            case "Nau":
+                return arrayMauSP.getResourceId(Integer.parseInt("4"),-1);
+            case "Reu":
+                return arrayMauSP.getResourceId(Integer.parseInt("5"),-1);
+            case "Tim":
+                return arrayMauSP.getResourceId(Integer.parseInt("6"),-1);
+            case "Vang":
+                return arrayMauSP.getResourceId(Integer.parseInt("7"),-1);
+            case "Xam":
+                return arrayMauSP.getResourceId(Integer.parseInt("8"),-1);
+            case "XanhDuong":
+                return arrayMauSP.getResourceId(Integer.parseInt("9"),-1);
+            case "XanhLa":
+                return arrayMauSP.getResourceId(Integer.parseInt("10"),-1);
+            case "Trang":
+                return arrayMauSP.getResourceId(Integer.parseInt("11"),-1);
+        }
+        return -1;
+    }
+
     public int doiMaMau(String maMau){
         // tao ban mau mau
         arrayMauSP = activity.getResources().obtainTypedArray(R.array.arr_mauSP);
