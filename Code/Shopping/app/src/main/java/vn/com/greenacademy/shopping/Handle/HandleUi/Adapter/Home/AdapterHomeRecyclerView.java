@@ -28,6 +28,7 @@ import vn.com.greenacademy.shopping.Util.SupportKeyList;
  * Created by ADMIN on 7/22/2017.
  */
 
+// demo dang recycler view muiti types nhung ổn dịnh cua recycler view ko cao co hien tuong giật lag
 public class AdapterHomeRecyclerView extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
     Activity activity;
     ArrayList<MenuMain> menuMainArrayList;

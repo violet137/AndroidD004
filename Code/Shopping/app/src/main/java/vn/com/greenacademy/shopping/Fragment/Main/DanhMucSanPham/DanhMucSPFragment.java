@@ -38,7 +38,7 @@ public class DanhMucSPFragment extends Fragment {
 
         final ListView listView = (ListView) view.findViewById(R.id.lvDanhMuc_DanhMucSP_Fragment);
 
-        final DanhMucSPHandler danhMucSPHandler = new DanhMucSPHandler(getActivity(), new BaseFragment(getActivity(), getActivity().getSupportFragmentManager()));
+        final DanhMucSPHandler danhMucSPHandler = new DanhMucSPHandler(getActivity());
 
         mucSPCallBack = new MucSPCallBack() {
             @Override

@@ -22,12 +22,9 @@ import vn.com.greenacademy.shopping.Handle.HandleData.ParseData.Main.ParseNewPro
 import vn.com.greenacademy.shopping.Handle.HandleData.ParseData.Main.ParseAdvertise;
 import vn.com.greenacademy.shopping.Handle.HandleData.ParseData.Main.ParseBanner;
 import vn.com.greenacademy.shopping.Handle.HandleData.ParseData.Main.ParseMyProducts;
-import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.Home.AdapterHomeListView;
-import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.Home.AdapterHomeRV;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.Home.AdapterHomeRVFashion;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.Home.AdapterHomeRVMagazine;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.Home.AdapterHomeRVProducts;
-import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.Home.AdapterHomeRecyclerView;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.Home.AdapterNewProductViewPager;
 import vn.com.greenacademy.shopping.Interface.ServerCallBack;
 import vn.com.greenacademy.shopping.Model.Home.AdvertisePhoto;

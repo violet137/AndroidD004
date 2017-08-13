@@ -23,9 +23,6 @@ import java.util.ArrayList;
 
 import vn.com.greenacademy.shopping.Handle.HandleData.Home.ClickListenerHomeItem;
 import vn.com.greenacademy.shopping.Handle.HandleData.Home.MainMenuHandler;
-import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.Home.AdapterNewProductVP;
-import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.Home.AdapterNewProductViewPager;
-import vn.com.greenacademy.shopping.Interface.FlagCallBack;
 import vn.com.greenacademy.shopping.Interface.ListMainMenuCallBack;
 import vn.com.greenacademy.shopping.MainActivity;
 import vn.com.greenacademy.shopping.Model.Home.MenuMain;
