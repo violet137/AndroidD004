@@ -58,12 +58,12 @@ public class SaleFragment extends Fragment {
             @Override
             public void saleCallBack(ArrayList<Sale> saleArrayList) {
                 dataSale = saleArrayList;
-                recyclerView.setAdapter(saleHandler.getAdapter(getChildFragmentManager(),saleArrayList));
+                recyclerView.setAdapter(saleHandler.getAdapter(getActivity().getSupportFragmentManager(),saleArrayList));
             }
         };
 
         if (listenerBack){
-            recyclerView.setAdapter(saleHandler.getAdapter(getChildFragmentManager(),dataSale));
+            recyclerView.setAdapter(saleHandler.getAdapter(getActivity().getSupportFragmentManager(),dataSale));
         }
 
         return view;

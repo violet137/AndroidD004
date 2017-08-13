@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_marginTop="@dimen/btnDiviver_1px"
     android:layout_height="wrap_content"
-    android:paddingBottom="@dimen/magazine_vertical_padding"
     android:background="#d6000000"
     android:orientation="vertical"
     android:paddingLeft="@dimen/magazine_horizontal_padding"
@@ -90,10 +88,16 @@
         android:maxLines="2"
         android:paddingLeft="@dimen/magazine_description_bai_viet_horizontal_padding"
         android:paddingRight="@dimen/magazine_description_bai_viet_horizontal_padding"
+        android:paddingBottom="@dimen/magazine_padding_bottom"
         android:textColor="@color/cardview_light_background"
         android:typeface="serif"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ellipsize="end"
         android:text="TextView" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/colorBackgroundFront"/>
 </LinearLayout>
