@@ -22,10 +22,10 @@ import vn.com.greenacademy.shopping.R;
 
 public class LocMauSanPhamAdapter extends RecyclerView.Adapter<LocMauHolder> {
     private Context context;
-    private String[] mListMau;
+    private ArrayList<String> mListMau = new ArrayList<>();
     private SanPhamHandler sanPhamHandler;
 
-    public LocMauSanPhamAdapter(Context context, String[] mListMau) {
+    public LocMauSanPhamAdapter(Context context, ArrayList<String> mListMau) {
         this.context = context;
         this.mListMau = mListMau;
         sanPhamHandler = new SanPhamHandler((Activity) context);
@@ -40,24 +40,19 @@ public class LocMauSanPhamAdapter extends RecyclerView.Adapter<LocMauHolder> {
 
     @Override
     public void onBindViewHolder(LocMauHolder holder, final int position) {
-        holder.btnHinhMau.setBackgroundResource(sanPhamHandler.doiMaMau(mListMau[position]));
-        holder.tvTenMau.setText(SanPhamHandler.chuyenTenMau(mListMau[position]));
+        holder.btnHinhMau.setBackgroundResource(sanPhamHandler.doiMaMau(mListMau.get(position)));
+        holder.tvTenMau.setText(SanPhamHandler.chuyenTenMau(mListMau.get(position)));
 
         holder.vItemMau.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context, SanPhamHandler.chuyenTenMau(mListMau[position]), Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, SanPhamHandler.chuyenTenMau(mListMau.get(position)), Toast.LENGTH_SHORT).show();
             }
         });
     }
 
     @Override
     public int getItemCount() {
-        int count = 0;
-        for (int i = 0; i < mListMau.length; i++) {
-            if (mListMau[i] != null)
-                count++;
-        }
-        return count;
+        return mListMau.size();
     }
 }

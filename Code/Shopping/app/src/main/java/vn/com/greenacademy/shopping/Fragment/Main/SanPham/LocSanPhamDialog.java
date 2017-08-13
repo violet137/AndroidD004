@@ -14,6 +14,8 @@ import android.view.WindowManager;
 import android.widget.GridView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.DanhMucSanPhamAdapter.LocMauSanPhamAdapter;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.DanhMucSanPhamAdapter.LocSizeSanPhamAdapter;
 import vn.com.greenacademy.shopping.R;
@@ -27,11 +29,11 @@ public class LocSanPhamDialog extends Dialog {
     private View root;
 
     private Context context;
-    private String[] mListSize;
-    private String[] mListMau;
+    private ArrayList<String> mListSize = new ArrayList<>();
+    private ArrayList<String> mListMau = new ArrayList<>();
     private int soLuongSanPham;
 
-    public LocSanPhamDialog(Context context, int theme, String[] listSize, String[] listMau, int soLuongSanPham){
+    public LocSanPhamDialog(Context context, int theme, ArrayList<String> listSize, ArrayList<String> listMau, int soLuongSanPham){
         super(context, theme);
         this.context = context;
         mListSize = listSize;

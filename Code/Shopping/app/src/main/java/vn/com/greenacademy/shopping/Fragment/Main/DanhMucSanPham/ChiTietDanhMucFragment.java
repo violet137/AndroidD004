@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import vn.com.greenacademy.shopping.Fragment.Main.SanPham.LocSanPhamDialog;
 import vn.com.greenacademy.shopping.Handle.HandleData.ImageLoad;
@@ -39,8 +40,6 @@ public class ChiTietDanhMucFragment extends Fragment implements DataCallBack, Vi
     private String idDanhMuc;
     private String tenDanhMuc;
     private ArrayList<SanPham> mListSanPham = new ArrayList<>();
-    private String[] mListMauSanPham;
-    private String[] mListSizeSanPham;
     private boolean isFromBackStack = false;
 
     public ChiTietDanhMucFragment() {
@@ -139,33 +138,36 @@ public class ChiTietDanhMucFragment extends Fragment implements DataCallBack, Vi
     }
 
     private void layMauVaSizeListSanPham() {
+        ArrayList<String> mListMauSanPham = new ArrayList<>();
+        ArrayList<String> mListSizeSanPham = new ArrayList<>();
         String[] mauSanPham = {"Cam", "Den", "Do", "Hong", "Nau", "Reu", "Tim", "Vang", "Xam", "XanhDuong", "XanhLa", "Trang"};
         String[] sizeSanPham = {""};
-        int sttListMau, sttSanPham = 0, sttMauListSanPham, lengthListMauSanPham = 0;
+        int sttListMau, sttSanPham = 0, sttMauListSanPham;
+        boolean trungMau = false;
         SanPham sanPham;
-        mListMauSanPham = new String[mauSanPham.length];
+
         //Điều kiện dừng khi vượt quá số lượng màu của server hoặc quá số lượng sản phẩm của danh mục
-        while(lengthListMauSanPham < mauSanPham.length && sttSanPham < mListSanPham.size()){
+        while(mListMauSanPham.size() < mauSanPham.length && sttSanPham < mListSanPham.size()){
             sanPham = mListSanPham.get(sttSanPham);
+            String ten = sanPham.getTenSanPham();
+
             //Chạy từng sản phẩm để lấy màu
-            for (sttMauListSanPham = 0; sttMauListSanPham < sanPham.getMauSanPham().length; sttMauListSanPham++) {
-                //Nếu là sản phẩm đầu tiên thì thêm trực tiếp vào list màu không cần xét
-                if (sttSanPham == 0){
-                    mListMauSanPham = sanPham.getMauSanPham();
-                    lengthListMauSanPham = sanPham.getMauSanPham().length;
-                }
-                //Từ sau sản phẩm đầu tiên quét so sanh từng màu của 1 sản phẩm với màu trong list màu
-                else {
-                    for (sttListMau = 0; sttListMau < mListMauSanPham.length; sttListMau++) {
+            if (sttSanPham == 0){
+                Collections.addAll(mListMauSanPham, sanPham.getMauSanPham());
+            } else {
+                for (sttMauListSanPham = 0; sttMauListSanPham < sanPham.getMauSanPham().length; sttMauListSanPham++) {
+                    //So sanh từng màu của 1 sản phẩm với màu trong list màu
+                    for (sttListMau = 0; sttListMau < mListMauSanPham.size(); sttListMau++) {
                         //Nếu màu sản phẩm tại vị trí sttMauListSanPham không giống với toàn bộ màu của list màu thì thêm vào list màu
-                        if (!sanPham.getMauSanPham()[sttMauListSanPham].equals(mListMauSanPham[sttListMau])){
-                            mListMauSanPham[lengthListMauSanPham] = sanPham.getMauSanPham()[sttMauListSanPham];
-                            lengthListMauSanPham++;
-                        }
+                        if (sanPham.getMauSanPham()[sttMauListSanPham].equals(mListMauSanPham.get(sttListMau)))
+                            trungMau = true;
                     }
+                    if (!trungMau)
+                        mListMauSanPham.add(sanPham.getMauSanPham()[sttMauListSanPham]);
                 }
             }
             sttSanPham++;
+            trungMau = false;
         }
         LocSanPhamDialog locSanPhamDialog = new LocSanPhamDialog(getActivity(), android.R.style.Theme_DeviceDefault_Light, mListSizeSanPham, mListMauSanPham, mListSanPham.size());
         locSanPhamDialog.show();
