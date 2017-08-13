@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="@dimen/item_list_san_pham_height"
     android:paddingLeft="@dimen/item_list_san_pham_padding_left"
-    android:paddingRight="@dimen/item_list_san_pham_padding_right">
+    android:paddingRight="@dimen/item_list_san_pham_padding_right"
+    android:layout_marginBottom="@dimen/item_list_san_pham_margin_bottom">
 
     <!-- Hình sản phẩm -->
     <ImageView

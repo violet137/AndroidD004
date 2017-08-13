@@ -39,6 +39,9 @@ public class ChiTietDanhMucFragment extends Fragment implements DataCallBack {
     private ArrayList<SanPham> mListSanPham = new ArrayList<>();
     private boolean isFromBackStack = false;
 
+    public ChiTietDanhMucFragment() {
+    }
+
     public static ChiTietDanhMucFragment newInstance(int idDanhMuc, String tenDanhMuc) {
 
         Bundle args = new Bundle();
@@ -97,6 +100,7 @@ public class ChiTietDanhMucFragment extends Fragment implements DataCallBack {
         } else {
             vListSanPham.setLayoutManager(new GridLayoutManager(getActivity(), 2));
             vListSanPham.setAdapter(new ListSanPhamAdapter(getActivity(), mListSanPham, new BaseFragment(getActivity(), getActivity().getSupportFragmentManager()), null, new ImageLoad(getActivity())));
+            vListSanPham.setNestedScrollingEnabled(false);
         }
         tvTitle.setText(tenDanhMuc);
         tvSoLuong.setText(String.valueOf(mListSanPham.size()));
