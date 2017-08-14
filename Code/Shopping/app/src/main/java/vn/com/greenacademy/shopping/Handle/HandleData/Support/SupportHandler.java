@@ -10,6 +10,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import vn.com.greenacademy.shopping.Fragment.Support.SupportFragment;
+import vn.com.greenacademy.shopping.Handle.HandleData.DanhMucSanPham.ClickListenerDanhMucSanPham;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.Support.AdapterSupportLV;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Model.Support;
 import vn.com.greenacademy.shopping.Model.SlideMenu;
@@ -19,7 +20,7 @@ import vn.com.greenacademy.shopping.R;
  * Created by ADMIN on 8/12/2017.
  */
 
-public class SupportHandler extends LoadDataSupportHandler implements AdapterView.OnItemClickListener {
+public class SupportHandler extends LoadDataSupportHandler{
     Activity activity;
 
     public SupportHandler(Activity activity) {
@@ -27,25 +28,14 @@ public class SupportHandler extends LoadDataSupportHandler implements AdapterVie
         this.activity = activity;
     }
 
-    public void Cick(ListView listView){
-        listView.setOnItemClickListener(this);
-    }
-
-
 
     public AdapterSupportLV getAdapter(Object object){
         AdapterSupportLV adapterSupportLV = new AdapterSupportLV(activity, R.layout.item_slide_menu,(ArrayList<Support>) object);
         return adapterSupportLV;
     }
-
-
-    @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Toast.makeText(activity, String.valueOf(position), Toast.LENGTH_SHORT).show();
-    }
 }
 
-class LoadDataSupportHandler {
+class LoadDataSupportHandler extends ClickListenerDanhMucSanPham{
 
     int[] arrIcon;
     String[] arrName;
@@ -53,6 +43,7 @@ class LoadDataSupportHandler {
     ArrayList<Support> supportArrayList;
 
     public LoadDataSupportHandler(Activity activity) {
+        super(activity);
         this.activity = activity;
     }
 

@@ -39,7 +39,8 @@ public class SupportFragment extends Fragment {
 
         final SupportHandler supportHandler = new SupportHandler(getActivity());
 
-        supportHandler.Cick(lvSupport);
+        supportHandler.Click();
+//        supportHandler.Cick(lvSupport);
 
         objectCallBack = new ObjectCallBack() {
             @Override

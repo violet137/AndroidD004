@@ -29,7 +29,8 @@ public class AdapterDanhMucSanPhamVP extends FragmentStatePagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        return new HotProductViewPagerFragment();
+        return new Fragment();
+//        return new HotProductViewPagerFragment();
     }
 
     @Override
