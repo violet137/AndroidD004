@@ -10,11 +10,10 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
-import vn.com.greenacademy.shopping.Handle.HandleData.DanhMucSPHandler;
+import vn.com.greenacademy.shopping.Handle.HandleData.DanhMucSanPham.DanhMucSPHandler;
 import vn.com.greenacademy.shopping.Interface.MucSPCallBack;
 import vn.com.greenacademy.shopping.Model.MucSanPham;
 import vn.com.greenacademy.shopping.R;
-import vn.com.greenacademy.shopping.Util.Ui.BaseFragment;
 
 /**
  * A simple {@link Fragment} subclass.

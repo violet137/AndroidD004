@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import vn.com.greenacademy.shopping.Fragment.Magazine.MagazineDetailFragment;
 import vn.com.greenacademy.shopping.Fragment.Magazine.MagazineFragment;
 import vn.com.greenacademy.shopping.Fragment.Main.DanhMucSanPham.DanhMucSPFragment;
+import vn.com.greenacademy.shopping.Fragment.Main.DanhMucSanPham.DanhMucSanPhamFragment;
 import vn.com.greenacademy.shopping.Fragment.Main.SanPham.ThongTinSanPhamFragment;
 import vn.com.greenacademy.shopping.Fragment.Main.XuHuongThoiTrang.XuHuongThoiTrangFragment;
 import vn.com.greenacademy.shopping.Model.Home.ItemHome;
@@ -42,7 +43,7 @@ public class ClickListenerHomeItem {
                         if (itemHome.getId().equals("TapChi")){
                             baseFragment.ChuyenFragment(new MagazineFragment(), SupportKeyList.TAG_FRAGMENT_MAGAZINE, true);
                         }else {
-                            baseFragment.ChuyenFragment(new DanhMucSPFragment(itemHome.getId()), SupportKeyList.TAG_DANH_MUC_SAN_PHAM, true);
+                            baseFragment.ChuyenFragment(new DanhMucSanPhamFragment(itemHome.getId()), SupportKeyList.TAG_DANH_MUC_SAN_PHAM, true);
                         }
                         break;
 

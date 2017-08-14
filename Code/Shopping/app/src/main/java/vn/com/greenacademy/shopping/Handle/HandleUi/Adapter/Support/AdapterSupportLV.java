@@ -7,10 +7,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import vn.com.greenacademy.shopping.Handle.HandleData.DanhMucSanPham.ClickListenerDanhMucSanPham;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Model.Support;
 import vn.com.greenacademy.shopping.Model.SlideMenu;
 import vn.com.greenacademy.shopping.R;
@@ -48,6 +50,10 @@ public class AdapterSupportLV extends ArrayAdapter {
 
         tvName.setText(support.getName());
         ivIcon.setImageResource(support.getIcon());
+
+        LinearLayout itemMenu = (LinearLayout) convertView.findViewById(R.id.item_menu_SlideMenu);
+        itemMenu.setTag(position);
+        itemMenu.setOnClickListener(ClickListenerDanhMucSanPham.onClickListener);
 
         return convertView;
     }

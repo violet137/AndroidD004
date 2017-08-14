@@ -116,5 +116,7 @@ public class SupportKeyList {
     public static final int ClickHome_NewProduct = 2;
     public static final int ClickHome_Fashion = 3;
     public static final int ClickHome_Magazine = 4;
+    public static final int ClickDanhMuc_Photo = 5;
+    public static final int ClickDanhMuc_Menu = 6;
 
 }

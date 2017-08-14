@@ -9,12 +9,14 @@ import java.util.ArrayList;
 import vn.com.greenacademy.shopping.Fragment.Magazine.MagazineFragment;
 import vn.com.greenacademy.shopping.Fragment.Main.DanhMucSanPham.DanhMucSPFragment;
 import vn.com.greenacademy.shopping.Fragment.Home.MainFragment;
+import vn.com.greenacademy.shopping.Fragment.Main.DanhMucSanPham.DanhMucSanPhamFragment;
 import vn.com.greenacademy.shopping.Fragment.Main.MyShopping.GioHangFragment;
 import vn.com.greenacademy.shopping.Fragment.Sale.SaleFragment;
 import vn.com.greenacademy.shopping.Fragment.Store.FindStoreFragment;
 import vn.com.greenacademy.shopping.Fragment.Support.SupportFragment;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.AdapterSlideMenu;
 import vn.com.greenacademy.shopping.Fragment.Main.MyShopping.MyShoppingFragment;
+import vn.com.greenacademy.shopping.Model.DanhMucSanPhamModel.DanhMucSanPhamModel;
 import vn.com.greenacademy.shopping.Model.SlideMenu;
 import vn.com.greenacademy.shopping.R;
 import vn.com.greenacademy.shopping.Util.SupportKeyList;
@@ -50,7 +52,7 @@ public class SlideMenuHandler extends LoadDataSlideMenuHandler{
                     baseFragment.XoaFragment();
                     count--;
                 }
-                baseFragment.ChuyenFragment(new DanhMucSPFragment("Nu"), SupportKeyList.TAG_DANH_MUC_SAN_PHAM, true);
+                baseFragment.ChuyenFragment(new DanhMucSanPhamFragment("Nu"), SupportKeyList.TAG_DANH_MUC_SAN_PHAM, true);
                 break;
             case SupportKeyList.Men_slide:
                 temp = "Men";
@@ -58,7 +60,7 @@ public class SlideMenuHandler extends LoadDataSlideMenuHandler{
                     baseFragment.XoaFragment();
                     count--;
                 }
-                baseFragment.ChuyenFragment(new DanhMucSPFragment("Nam"), SupportKeyList.TAG_DANH_MUC_SAN_PHAM, true);
+                baseFragment.ChuyenFragment(new DanhMucSanPhamFragment("Nam"), SupportKeyList.TAG_DANH_MUC_SAN_PHAM, true);
                 break;
             case SupportKeyList.Kids_slide:
                 temp = "Kids";
@@ -66,7 +68,7 @@ public class SlideMenuHandler extends LoadDataSlideMenuHandler{
                     baseFragment.XoaFragment();
                     count--;
                 }
-                baseFragment.ChuyenFragment(new DanhMucSPFragment("TreEm"), SupportKeyList.TAG_DANH_MUC_SAN_PHAM, true);
+                baseFragment.ChuyenFragment(new DanhMucSanPhamFragment("TreEm"), SupportKeyList.TAG_DANH_MUC_SAN_PHAM, true);
                 break;
             case SupportKeyList.Home_slide:
                 temp = "Home";
@@ -74,7 +76,7 @@ public class SlideMenuHandler extends LoadDataSlideMenuHandler{
                     baseFragment.XoaFragment();
                     count--;
                 }
-                baseFragment.ChuyenFragment(new DanhMucSPFragment("Home"), SupportKeyList.TAG_DANH_MUC_SAN_PHAM, true);
+                baseFragment.ChuyenFragment(new DanhMucSanPhamFragment("Home"), SupportKeyList.TAG_DANH_MUC_SAN_PHAM, true);
                 break;
             case SupportKeyList.Sale_slide:
                 temp = "Sale";

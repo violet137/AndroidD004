@@ -18,7 +18,7 @@
 
             <include
                 layout="@layout/item_main_menu_fashion"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_width="match_parent">
             </include>
 
@@ -37,4 +37,6 @@
 
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
+
+
 </FrameLayout>
