@@ -54,7 +54,6 @@ public class LocSanPhamDialog extends Dialog {
 
         vListSize.setLayoutManager(new GridLayoutManager(context, 5));
         vListSize.setAdapter(new LocSizeSanPhamAdapter(context, mListSize));
-
         vListMau.setLayoutManager(new GridLayoutManager(context, 2));
         vListMau.setAdapter(new LocMauSanPhamAdapter(context, mListMau));
 

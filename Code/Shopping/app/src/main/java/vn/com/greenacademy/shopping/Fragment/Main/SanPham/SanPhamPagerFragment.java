@@ -32,6 +32,9 @@ public class SanPhamPagerFragment extends Fragment implements UpdateDataViewPage
 
     private ImageLoad imageLoad;
     private ArrayList<SanPham> listSanPham = new ArrayList<>();
+    private String giaSP;
+    private String giaGiam;
+    private String mauSanPham;
     private int position;
 
     public SanPhamPagerFragment(int position, ArrayList<SanPham> listSanPham){
