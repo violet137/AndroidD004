@@ -55,4 +55,10 @@ public class LocMauSanPhamAdapter extends RecyclerView.Adapter<LocMauHolder> {
     public int getItemCount() {
         return mListMau.size();
     }
+
+    public void setData(ArrayList<String> listMau){
+        this.mListMau.clear();
+        mListMau.addAll(listMau);
+        notifyDataSetChanged();
+    }
 }

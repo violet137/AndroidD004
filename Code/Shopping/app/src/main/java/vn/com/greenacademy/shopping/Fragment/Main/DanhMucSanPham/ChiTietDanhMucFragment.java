@@ -186,7 +186,7 @@ public class ChiTietDanhMucFragment extends Fragment implements DataCallBack, Vi
             trungMau = false;
             trungSize = false;
         }
-        LocSanPhamDialog locSanPhamDialog = new LocSanPhamDialog(getActivity(), android.R.style.Theme_DeviceDefault_Light, mListSizeSanPham, mListMauSanPham, mListSanPham.size());
+        LocSanPhamDialog locSanPhamDialog = new LocSanPhamDialog(getActivity(), android.R.style.Theme_DeviceDefault_Light, mListSanPham, mListSizeSanPham, mListMauSanPham, mListSanPham.size());
         locSanPhamDialog.show();
     }
 }

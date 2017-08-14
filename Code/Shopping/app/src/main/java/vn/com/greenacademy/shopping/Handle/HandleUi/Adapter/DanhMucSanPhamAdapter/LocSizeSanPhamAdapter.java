@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 
 import vn.com.greenacademy.shopping.Handle.HandleUi.Model.ViewHolder.LocSizeHolder;
+import vn.com.greenacademy.shopping.Interface.ClickListenerSizeVaMau;
 import vn.com.greenacademy.shopping.R;
 
 /**
@@ -19,10 +20,11 @@ import vn.com.greenacademy.shopping.R;
 public class LocSizeSanPhamAdapter extends RecyclerView.Adapter<LocSizeHolder> {
     private Context context;
     private ArrayList<String> mListSize = new ArrayList<>();
-
-    public LocSizeSanPhamAdapter(Context context, ArrayList<String> mListSize) {
+    private ClickListenerSizeVaMau clickListenerSizeVaMau;
+    public LocSizeSanPhamAdapter(Context context, ArrayList<String> mListSize, ClickListenerSizeVaMau clickListenerSizeVaMau) {
         this.context = context;
         this.mListSize = mListSize;
+        this.clickListenerSizeVaMau = clickListenerSizeVaMau;
     }
 
     @Override
@@ -33,13 +35,13 @@ public class LocSizeSanPhamAdapter extends RecyclerView.Adapter<LocSizeHolder> {
     }
 
     @Override
-    public void onBindViewHolder(LocSizeHolder holder, int position) {
+    public void onBindViewHolder(LocSizeHolder holder, final int position) {
         holder.btnSize.setText(mListSize.get(position));
 
         holder.btnSize.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                clickListenerSizeVaMau.onClickSizeVaMau("size", mListSize.get(position));
             }
         });
     }

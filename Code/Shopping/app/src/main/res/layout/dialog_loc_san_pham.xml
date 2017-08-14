@@ -12,6 +12,7 @@
         android:orientation="horizontal">
         <!-- Xóa tất cả lựa chọn -->
         <Button
+            android:id="@+id/btn_clear_all_dialog_loc_san_pham"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -25,6 +26,7 @@
             android:layout_marginBottom="7dp"/>
         <!-- Lọc -->
         <Button
+            android:id="@+id/btn_loc_dialog_loc_san_pham"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
