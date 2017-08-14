@@ -14,7 +14,6 @@ import android.widget.ViewFlipper;
 import java.util.ArrayList;
 
 import vn.com.greenacademy.shopping.Fragment.Magazine.MagazineFragment;
-import vn.com.greenacademy.shopping.Fragment.Main.DanhMucSanPham.DanhMucSPFragment;
 import vn.com.greenacademy.shopping.Fragment.Home.MainFragment;
 import vn.com.greenacademy.shopping.Fragment.Main.XuHuongThoiTrang.XuHuongThoiTrangFragment;
 import vn.com.greenacademy.shopping.Handle.HandleData.ImageLoad;

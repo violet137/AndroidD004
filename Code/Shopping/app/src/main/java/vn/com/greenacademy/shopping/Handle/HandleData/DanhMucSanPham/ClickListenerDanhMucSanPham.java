@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.view.View;
 import android.widget.Toast;
 
+import vn.com.greenacademy.shopping.Model.MucSanPham;
+
 /**
  * Created by ADMIN on 8/14/2017.
  */
@@ -21,7 +23,8 @@ public class ClickListenerDanhMucSanPham {
         onClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(activity,String.valueOf((int)v.getTag()), Toast.LENGTH_SHORT).show();
+                MucSanPham mucSanPham = (MucSanPham) v.getTag();
+                Toast.makeText(activity,mucSanPham.getTenDanhMuc(), Toast.LENGTH_SHORT).show();
             }
         };
     }

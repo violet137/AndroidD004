@@ -3,6 +3,7 @@ package vn.com.greenacademy.shopping.Handle.HandleData.DanhMucSanPham;
 import android.app.Activity;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -44,12 +45,6 @@ public class DanhMucSPHandler extends LoadDataDanhMucSPHandler implements View.O
         baseFragment.ChuyenFragment(ChiTietDanhMucFragment.newInstance(mucSanPham.getId(), mucSanPham.getTenDanhMuc()), SupportKeyList.TAG_CHI_TIET_DANH_MUC_SAN_PHAM, true);
     }
 
-    public AdapterDanhMucSP displayListView(ArrayList<MucSanPham> arrayList){
-        AdapterDanhMucSP adapterDanhMucSP = new AdapterDanhMucSP(activity, R.layout.item_danh_muc_san_pham, arrayList,this);
-        return adapterDanhMucSP;
-    }
-
-
     public void setPhoto(MucSanPham mucSanPham, ImageView ivPhoto) {
         imageLoad = new ImageLoad(activity);
         if (mucSanPham.getLinkAnh().equals("")){
@@ -73,15 +68,19 @@ public class DanhMucSPHandler extends LoadDataDanhMucSPHandler implements View.O
 class LoadDataDanhMucSPHandler implements ServerCallBack{
 
     public void getDataServer (String loaiSP){
-
         GetServerData getServerData = new GetServerData(this);
-        getServerData.execute(ServerUrl.UrlDanhMucSP+loaiSP);
+        getServerData.execute(ServerUrl.UrlDanhMucSP+loaiSP, SupportKeyList.ListDanhMucSP);
+    }
+
+    public void getDataNewProductServer (String loaiSP){
+        GetServerData getServerData = new GetServerData(this);
+        getServerData.execute(ServerUrl.UrlDanhMucSP+loaiSP, SupportKeyList.ListDanhMucSP);
     }
 
     @Override
     public void serverCallBack(String dataServer) {
-        ParseDanhMucSP parseDanhMucSP = new ParseDanhMucSP(dataServer);
-        containerData(parseDanhMucSP.parData());
+//        ParseDanhMucSP parseDanhMucSP = new ParseDanhMucSP(dataServer);
+//        containerData(parseDanhMucSP.parData());
     }
 
     private void containerData(DanhMucSP danhMucSP) {
@@ -100,6 +99,16 @@ class LoadDataDanhMucSPHandler implements ServerCallBack{
 
     @Override
     public void serverCallBack(String dataServer, String key) {
-
+        switch (key){
+            case SupportKeyList.ListDanhMucSP:
+                ParseDanhMucSP parseDanhMucSP = new ParseDanhMucSP(dataServer);
+                containerData(parseDanhMucSP.parData());
+                break;
+            case SupportKeyList.ViewPagerDMSPMoi:
+                break;
+            default:
+                Log.d("case severCallBack DanhMucSPHandler","lôi");
+                break;
+        }
     }
 }

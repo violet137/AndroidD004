@@ -46,7 +46,7 @@ public class AdapterDanhMucSanPham extends RecyclerView.Adapter<MenuDanhMucHolde
     @Override
     public void onBindViewHolder(MenuDanhMucHolder holder, int position) {
 
-        holder.itemMenuDanhMuc.setTag(mucSanPhamArrayList.get(position).getId());
+        holder.itemMenuDanhMuc.setTag(mucSanPhamArrayList.get(position));
         holder.itemMenuDanhMuc.setOnClickListener(ClickListenerDanhMucSanPham.onClickListener);
 
         holder.tvNameDanhMuc.setText(mucSanPhamArrayList.get(position).getTenDanhMuc());

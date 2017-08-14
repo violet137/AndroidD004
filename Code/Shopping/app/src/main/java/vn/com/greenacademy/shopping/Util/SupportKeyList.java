@@ -124,4 +124,8 @@ public class SupportKeyList {
     public static final int ClickSupport_TheoDoi = 2;
     public static final int ClickSupport_GioiThieu = 3;
 
+    //key danh muc
+    public static final String ListDanhMucSP = "ListDanhMucSP";
+    public static final String ViewPagerDMSPMoi = "ViewPagerDMSPMoi";
+
 }
