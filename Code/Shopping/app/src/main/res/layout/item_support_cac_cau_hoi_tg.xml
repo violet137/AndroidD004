@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/item_Support_CCHTG"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+        android:id="@+id/tvName_item_CacCAuHoiTG"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/layout_margin_10dp"
+        android:layout_marginLeft="@dimen/textView_pandding_left_15dp"
+
+        android:layout_marginRight="@dimen/layout_margin_10dp"
+        android:layout_marginTop="@dimen/layout_margin_10dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="TextView"
+        android:textColor="#ff000000"
+        android:textSize="@dimen/text_size_20dp" />
+</LinearLayout>

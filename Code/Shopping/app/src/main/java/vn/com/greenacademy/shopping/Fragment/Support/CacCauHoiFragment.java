@@ -6,9 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import vn.com.greenacademy.shopping.Handle.HandleData.Support.SupportHandler;
 import vn.com.greenacademy.shopping.Interface.ObjectCallBack;
@@ -18,11 +16,11 @@ import vn.com.greenacademy.shopping.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class SupportFragment extends Fragment {
+public class CacCauHoiFragment extends Fragment {
 
     public static ObjectCallBack objectCallBack;
 
-    public SupportFragment() {
+    public CacCauHoiFragment() {
         // Required empty public constructor
     }
 
@@ -30,25 +28,24 @@ public class SupportFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         MainActivity.tvTenMuc.setVisibility(View.VISIBLE);
-        MainActivity.tvTenMuc.setText("Hổ Trợ");
-
+        MainActivity.tvTenMuc.setText("Các Câu Hỏi Thường Gặp");
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_support, container, false);
+        View view = inflater.inflate(R.layout.fragment_cac_cau_hoi, container, false);
 
-        final ListView lvSupport = (ListView) view.findViewById(R.id.lvSupport_SuportFragment);
+        final ListView lvCauHoi = (ListView) view.findViewById(R.id.lvCauHoi_CacCauHoiFragment);
 
         final SupportHandler supportHandler = new SupportHandler(getActivity());
 
-        supportHandler.Cick(lvSupport);
+        supportHandler.ClickCauHoi(lvCauHoi);
 
         objectCallBack = new ObjectCallBack() {
             @Override
             public void callBack(Object object, int flag) {
-                lvSupport.setAdapter(supportHandler.getAdapter(object));
+                lvCauHoi.setAdapter(supportHandler.getAdapterCacCauHoi(object));
             }
         };
 
-        supportHandler.loadData();
+        supportHandler.loadDataCacCauHoiTG();
 
         return view;
     }

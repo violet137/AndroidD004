@@ -52,6 +52,7 @@ public class SupportKeyList {
     public static final String TAG_FRAGMENT_FINDSTORE = "ParseStore";
     public static final String TAG_FRAGMENT_SALE = "Sale";
     public static final String TAG_FRAGMENT_SUPPORT = "Support";
+    public static final String TAG_FRAGMENT_CAUHOI = "CacCauHoiThuongGap";
 
     //Key Menu Main
     public static final int Banner = -1;
@@ -118,5 +119,9 @@ public class SupportKeyList {
     public static final int ClickHome_Magazine = 4;
     public static final int ClickDanhMuc_Photo = 5;
     public static final int ClickDanhMuc_Menu = 6;
+    public static final int ClickSupport_LienHe = 0;
+    public static final int ClickSupport_CauHoi = 1;
+    public static final int ClickSupport_TheoDoi = 2;
+    public static final int ClickSupport_GioiThieu = 3;
 
 }
