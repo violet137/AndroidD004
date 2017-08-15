@@ -98,23 +98,8 @@ public class DanhMucSanPhamFragment extends Fragment {
         MucSanPham temp = new MucSanPham();
         temp.setId(-2);
         temp.setTenDanhMuc("Tất Cả");
-        switch (idDanhMuc){
-            case "Nam":
-                temp.setLoaiThoiTrang("Nam");
-                break;
-            case "Nu":
-                temp.setLoaiThoiTrang("Nữ");
-                break;
-            case "TreEm":
-                temp.setLoaiThoiTrang("Trẻ Em");
-                break;
-            case "Home":
-                temp.setLoaiThoiTrang("Trang Trí");
-                break;
-            default:
-                temp.setLoaiThoiTrang("");
-                break;
-        }
+        temp.setLoaiThoiTrang(idDanhMuc);
+        
         llXemTatCa.setTag(temp);
         llXemTatCa.setOnClickListener(ClickListenerDanhMucSanPham.onClickListener);
 
