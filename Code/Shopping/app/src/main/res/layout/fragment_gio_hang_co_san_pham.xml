@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/colorBackground"
-    tools:context="vn.com.greenacademy.shopping.Fragment.Main.MyShopping.GioHangFragment">
+    tools:context=".Fragment.MyShopping.GioHangFragment">
 
     <!-- Title bar-->
     <LinearLayout

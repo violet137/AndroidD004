@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:layout_margin="@dimen/layout_margin_linear_main_fragment_DangKy"
     android:orientation="vertical"
-    tools:context="vn.com.greenacademy.shopping.Fragment.Main.MyShopping.TaiKhoan.DangKyFragment">
+    tools:context=".Fragment.MyShopping.TaiKhoan.DangKyFragment">
 
     <!-- TODO: Update blank fragment layout -->
 

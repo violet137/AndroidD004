@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorBackground"
     android:orientation="vertical"
-    tools:context="vn.com.greenacademy.shopping.Fragment.Main.MyShopping.TaiKhoan.DangNhapFragment">
+    tools:context=".Fragment.MyShopping.TaiKhoan.DangNhapFragment">
 
     <!-- Title -->
     <TextView

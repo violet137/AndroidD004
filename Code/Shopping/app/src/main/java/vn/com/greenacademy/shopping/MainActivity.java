@@ -1,13 +1,7 @@
 package vn.com.greenacademy.shopping;
 
-import android.app.Activity;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
-import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -29,9 +23,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import vn.com.greenacademy.shopping.Fragment.Home.MainFragment;
-import vn.com.greenacademy.shopping.Fragment.Main.MyShopping.GioHangFragment;
-import vn.com.greenacademy.shopping.Fragment.Main.MyShopping.TaiKhoan.DangNhapFragment;
-import vn.com.greenacademy.shopping.Fragment.Main.MyShopping.TaiKhoan.DangNhapKhongLuuFragment;
+import vn.com.greenacademy.shopping.Fragment.MyShopping.GioHangFragment;
+import vn.com.greenacademy.shopping.Fragment.MyShopping.TaiKhoan.DangNhapFragment;
+import vn.com.greenacademy.shopping.Fragment.MyShopping.TaiKhoan.DangNhapKhongLuuFragment;
 import vn.com.greenacademy.shopping.Fragment.Store.FindStoreFragment;
 import vn.com.greenacademy.shopping.Handle.HandleData.DataHandler;
 import vn.com.greenacademy.shopping.Handle.HandleData.TaiKhoan.GoogleHandler;
@@ -39,9 +33,7 @@ import vn.com.greenacademy.shopping.Handle.HandleData.SlideMenuHandler;
 import vn.com.greenacademy.shopping.Handle.HandleUi.ActivityHandler;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Dialog.NetworkDialog;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Dialog.SplashScreenDialog;
-import vn.com.greenacademy.shopping.Interface.CheckInternetCallback;
 import vn.com.greenacademy.shopping.Interface.DataCallBack;
-import vn.com.greenacademy.shopping.Network.NetworkChangeReceiver;
 import vn.com.greenacademy.shopping.Util.SharePreference.MySharedPreferences;
 import vn.com.greenacademy.shopping.Util.SupportKeyList;
 import vn.com.greenacademy.shopping.Util.Ui.BaseFragment;

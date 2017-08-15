@@ -1,4 +1,4 @@
-package vn.com.greenacademy.shopping.Fragment.Main.MyShopping.TaiKhoan;
+package vn.com.greenacademy.shopping.Fragment.MyShopping.TaiKhoan;
 
 
 import android.app.ProgressDialog;
