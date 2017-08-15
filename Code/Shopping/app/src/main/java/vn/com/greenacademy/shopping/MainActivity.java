@@ -187,6 +187,7 @@ public class MainActivity extends AppCompatActivity implements DataCallBack, Vie
                     break;
 
                 case SupportKeyList.TAG_DANH_MUC_SAN_PHAM:
+                case SupportKeyList.TAG_FRAGMENT_SALE:
                 case SupportKeyList.TAG_CHI_TIET_DANH_MUC_SAN_PHAM:
                 case SupportKeyList.TAG_XU_HUONG_THOI_TRANG:
                 case SupportKeyList.TAG_THONG_TIN_SAN_PHAM:
