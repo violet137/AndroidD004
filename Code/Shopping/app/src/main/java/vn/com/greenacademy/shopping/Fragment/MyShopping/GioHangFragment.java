@@ -1,4 +1,4 @@
-package vn.com.greenacademy.shopping.Fragment.Main.MyShopping;
+package vn.com.greenacademy.shopping.Fragment.MyShopping;
 
 
 import android.os.Bundle;
@@ -10,8 +10,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import vn.com.greenacademy.shopping.Fragment.Magazine.MagazineFragment;
-import vn.com.greenacademy.shopping.Fragment.Main.MyShopping.TaiKhoan.DangKyFragment;
-import vn.com.greenacademy.shopping.Fragment.Main.MyShopping.TaiKhoan.DangNhapFragment;
+import vn.com.greenacademy.shopping.Fragment.MyShopping.TaiKhoan.DangKyFragment;
+import vn.com.greenacademy.shopping.Fragment.MyShopping.TaiKhoan.DangNhapFragment;
 import vn.com.greenacademy.shopping.R;
 import vn.com.greenacademy.shopping.Util.SharePreference.MySharedPreferences;
 import vn.com.greenacademy.shopping.Util.SupportKeyList;

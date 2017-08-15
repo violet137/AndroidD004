@@ -55,7 +55,7 @@ public class LocSizeSanPhamAdapter extends RecyclerView.Adapter<LocSizeHolder> {
                     public void run() {
                         progressDialog.dismiss();
                     }
-                }, 1000);
+                }, 800);
             }
         });
     }

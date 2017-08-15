@@ -183,4 +183,46 @@ public class SanPhamHandler {
         bundleLocSanPham.putSerializable("ListMau", result);
         return bundleLocSanPham;
     }
+
+    //return số lượng sản phẩm và list size theo màu
+    public Bundle locSizeTheoMau(String mau, ArrayList<SanPham> listSanPham){
+        ArrayList<String> resultSize = new ArrayList<>();
+        int sttListMau, sttSanPham = 0, sttMauListSanPham;
+        boolean trungMau = false;
+        SanPham sanPham;
+
+        //Điều kiện dừng khi vượt quá số lượng màu của server hoặc quá số lượng sản phẩm của danh mục
+        while(resultSize.size() < 4 && sttSanPham < listSanPham.size()){
+            sanPham = listSanPham.get(sttSanPham);
+
+            //Nếu sản phẩm có màu yêu cầu thì lấy toàn bộ size của sp đó
+            for (int i = 0; i < sanPham.getSize().length; i++) {
+                if (resultSize.equals(sanPham.getSize()[i])){
+                    //Chạy từng sản phẩm để lấy màu
+                    if (sttSanPham == 0){
+                        Collections.addAll(resultSize, sanPham.getMauSanPham());
+                    } else {
+                        //Màu
+                        for (sttMauListSanPham = 0; sttMauListSanPham < sanPham.getMauSanPham().length; sttMauListSanPham++) {
+                            //So sanh từng màu của 1 sản phẩm với màu trong list màu
+                            for (sttListMau = 0; sttListMau < resultSize.size(); sttListMau++) {
+                                //Nếu màu sản phẩm tại vị trí sttMauListSanPham không giống với toàn bộ màu của list màu thì thêm vào list màu
+                                if (sanPham.getMauSanPham()[sttMauListSanPham].equals(resultSize.get(sttListMau)))
+                                    trungMau = true;
+                            }
+                            if (!trungMau)
+                                resultSize.add(sanPham.getMauSanPham()[sttMauListSanPham]);
+                        }
+                    }
+
+                    sttSanPham++;
+                    trungMau = false;
+                    break;
+                }
+            }
+        }
+        bundleLocSanPham.putString("SoLuongSanPham", String.valueOf(sttSanPham));
+        bundleLocSanPham.putSerializable("ListMau", resultSize);
+        return bundleLocSanPham;
+    }
 }
