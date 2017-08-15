@@ -1,30 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+    android:orientation="horizontal"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/item_loc_mau_margin_bottom">
 
-    <LinearLayout
-        android:id="@+id/item_loc_mau_san_pham"
+    <!-- Hình màu -->
+    <Button
+        android:id="@+id/hinh_mau_san_pham"
+        android:layout_width="@dimen/hinh_mau_size"
+        android:layout_height="@dimen/hinh_mau_size"
+        android:background="@android:color/holo_red_light"/>
+
+    <!-- Tên màu -->
+    <TextView
+        android:id="@+id/ten_mau_san_pham"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <!-- Hình màu -->
-        <Button
-            android:id="@+id/hinh_mau_san_pham"
-            android:layout_width="@dimen/hinh_mau_size"
-            android:layout_height="@dimen/hinh_mau_size"
-            android:background="@android:color/holo_red_light"/>
-
-        <!-- Tên màu -->
-        <TextView
-            android:id="@+id/ten_mau_san_pham"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Đỏ"
-            android:textSize="@dimen/title_size"
-            android:textColor="@color/colorTextDark"/>
-    </LinearLayout>
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:background="@null"
+        android:text="Đỏ"
+        android:textSize="@dimen/title_size"
+        android:textColor="@color/colorTextDark"/>
 </LinearLayout>

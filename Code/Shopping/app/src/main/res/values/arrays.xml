@@ -93,21 +93,6 @@
         <item>@drawable/ic_more_items</item>
     </array>
 
-    <array name="arr_mauSanPham">
-        <item>@android:color/holo_orange_dark</item>
-        <item>@android:color/black</item>
-        <item>@android:color/holo_red_dark</item>
-        <item>@color/hong</item>
-        <item>@color/nau</item>
-        <item>@color/reu</item>
-        <item>@color/tim</item>
-        <item>@color/vang</item>
-        <item>@color/xam</item>
-        <item>@color/xanh_duong</item>
-        <item>@color/xanh_la</item>
-        <item>@color/trang</item>
-    </array>
-
     <string-array name="name_support_menu">
         <item>Liên Hệ</item>
         <item>Các Câu Hỏi Thường Gặp</item>

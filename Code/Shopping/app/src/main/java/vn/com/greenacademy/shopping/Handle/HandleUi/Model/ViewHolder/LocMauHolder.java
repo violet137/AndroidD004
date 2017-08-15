@@ -13,13 +13,11 @@ import vn.com.greenacademy.shopping.R;
  */
 
 public class LocMauHolder extends RecyclerView.ViewHolder {
-    public LinearLayout vItemMau;
     public Button btnHinhMau;
     public TextView tvTenMau;
 
     public LocMauHolder(View itemView) {
         super(itemView);
-        vItemMau = (LinearLayout) itemView.findViewById(R.id.item_loc_mau_san_pham);
         btnHinhMau = (Button) itemView.findViewById(R.id.hinh_mau_san_pham);
         tvTenMau = (TextView) itemView.findViewById(R.id.ten_mau_san_pham);
     }

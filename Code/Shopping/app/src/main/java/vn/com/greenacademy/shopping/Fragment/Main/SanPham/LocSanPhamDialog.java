@@ -14,6 +14,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.GridView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -53,7 +54,7 @@ public class LocSanPhamDialog extends Dialog implements View.OnClickListener, Cl
         mListMau = listMau;
         this.soLuongSanPham = soLuongSanPham;
         locSizeSanPhamAdapter = new LocSizeSanPhamAdapter(context, mListSize, this);
-        locMauSanPhamAdapter = new LocMauSanPhamAdapter(context, mListMau);
+        locMauSanPhamAdapter = new LocMauSanPhamAdapter(context, mListMau, this);
     }
 
     @Override
@@ -100,10 +101,11 @@ public class LocSanPhamDialog extends Dialog implements View.OnClickListener, Cl
             case "size":
                 bundleTheoSize = sanPhamHandler.locMauTheoSize(item, mListSanPham);
                 ArrayList<String> listMauTheoSize = (ArrayList<String>)bundleTheoSize.getSerializable("ListMau");
-                tvSoLuong.setText(bundleTheoSize.getString("SoLuongSanPham"));
+                tvSoLuong.setText(bundleTheoSize.getString("SoLuongSanPham") + " sản phẩm");
                 locMauSanPhamAdapter.setData(listMauTheoSize);
                 break;
             case "mau":
+                Toast.makeText(context, SanPhamHandler.chuyenTenMau(item), Toast.LENGTH_SHORT).show();
                 break;
         }
     }

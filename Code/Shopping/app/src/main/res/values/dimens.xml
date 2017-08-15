@@ -129,6 +129,8 @@
     <dimen name="list_san_pham_chi_tiet_danh_muc_margin_top">15dp</dimen>
 
     <!-- Dialog lọc sản phẩm -->
+    <dimen name="item_loc_mau_margin_bottom">3dp</dimen>
+    <dimen name="item_loc_size_margin_right">3dp</dimen>
     <dimen name="hinh_mau_size">50dp</dimen>
 
     <!-- Dialog description sản phẩm -->

@@ -13,6 +13,9 @@
     <color name="scrimWhite">#C4FFFFFF</color>
 
     <!-- Màu sản phẩm -->
+    <color name="cam">#ffff8800</color>
+    <color name="den">#000000</color>
+    <color name="mau_do">#ffcc0000</color>
     <color name="hong">#FFFF01DD</color>
     <color name="nau">#FF411818</color>
     <color name="reu">#FF115A12</color>

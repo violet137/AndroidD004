@@ -3,6 +3,7 @@ package vn.com.greenacademy.shopping.Handle.HandleData;
 import android.app.Activity;
 import android.content.res.TypedArray;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
@@ -21,9 +22,11 @@ public class SanPhamHandler {
     public TypedArray arrayMauSP;
 
     Activity activity;
+    private Bundle bundleLocSanPham;
 
     public SanPhamHandler(Activity activity) {
         this.activity = activity;
+        bundleLocSanPham = new Bundle();
     }
 
     public static String chuyenGia(long gia){
@@ -63,33 +66,31 @@ public class SanPhamHandler {
     }
 
     public int layMauTheoTen(String mau){
-        // tao ban mau mau
-        arrayMauSP = activity.getResources().obtainTypedArray(R.array.arr_mauSanPham);
         switch (mau){
             case "Cam":
-                return arrayMauSP.getResourceId(Integer.parseInt("0"),-1);
+                return ContextCompat.getColor(activity, R.color.cam);
             case "Den":
-                return arrayMauSP.getResourceId(Integer.parseInt("1"),-1);
+                return ContextCompat.getColor(activity, R.color.den);
             case "Do":
-                return arrayMauSP.getResourceId(Integer.parseInt("2"),-1);
+                return ContextCompat.getColor(activity, R.color.mau_do);
             case "Hong":
-                return arrayMauSP.getResourceId(Integer.parseInt("3"),-1);
+                return ContextCompat.getColor(activity, R.color.hong);
             case "Nau":
-                return arrayMauSP.getResourceId(Integer.parseInt("4"),-1);
+                return ContextCompat.getColor(activity, R.color.nau);
             case "Reu":
-                return arrayMauSP.getResourceId(Integer.parseInt("5"),-1);
+                return ContextCompat.getColor(activity, R.color.reu);
             case "Tim":
-                return arrayMauSP.getResourceId(Integer.parseInt("6"),-1);
+                return ContextCompat.getColor(activity, R.color.tim);
             case "Vang":
-                return arrayMauSP.getResourceId(Integer.parseInt("7"),-1);
+                return ContextCompat.getColor(activity, R.color.vang);
             case "Xam":
-                return arrayMauSP.getResourceId(Integer.parseInt("8"),-1);
+                return ContextCompat.getColor(activity, R.color.xam);
             case "XanhDuong":
-                return arrayMauSP.getResourceId(Integer.parseInt("9"),-1);
+                return ContextCompat.getColor(activity, R.color.xanh_duong);
             case "XanhLa":
-                return arrayMauSP.getResourceId(Integer.parseInt("10"),-1);
+                return ContextCompat.getColor(activity, R.color.xanh_la);
             case "Trang":
-                return arrayMauSP.getResourceId(Integer.parseInt("11"),-1);
+                return ContextCompat.getColor(activity, R.color.trang);
         }
         return -1;
     }
@@ -178,9 +179,8 @@ public class SanPhamHandler {
                 }
             }
         }
-        Bundle bundle = new Bundle();
-        bundle.putString("SoLuongSanPham", String.valueOf(sttSanPham));
-        bundle.putSerializable("ListMau", result);
-        return bundle;
+        bundleLocSanPham.putString("SoLuongSanPham", String.valueOf(sttSanPham));
+        bundleLocSanPham.putSerializable("ListMau", result);
+        return bundleLocSanPham;
     }
 }

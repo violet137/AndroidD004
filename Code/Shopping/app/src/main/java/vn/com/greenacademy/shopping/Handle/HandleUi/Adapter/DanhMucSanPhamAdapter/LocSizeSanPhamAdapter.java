@@ -1,6 +1,8 @@
 package vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.DanhMucSanPhamAdapter;
 
+import android.app.ProgressDialog;
 import android.content.Context;
+import android.os.Handler;
 import android.support.v7.widget.RecyclerView;
 import android.text.Layout;
 import android.view.LayoutInflater;
@@ -21,10 +23,15 @@ public class LocSizeSanPhamAdapter extends RecyclerView.Adapter<LocSizeHolder> {
     private Context context;
     private ArrayList<String> mListSize = new ArrayList<>();
     private ClickListenerSizeVaMau clickListenerSizeVaMau;
+    private ProgressDialog progressDialog;
+    private Handler handler;
+
     public LocSizeSanPhamAdapter(Context context, ArrayList<String> mListSize, ClickListenerSizeVaMau clickListenerSizeVaMau) {
         this.context = context;
         this.mListSize = mListSize;
         this.clickListenerSizeVaMau = clickListenerSizeVaMau;
+        progressDialog = new ProgressDialog(context);
+        handler = new Handler();
     }
 
     @Override
@@ -41,7 +48,14 @@ public class LocSizeSanPhamAdapter extends RecyclerView.Adapter<LocSizeHolder> {
         holder.btnSize.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                progressDialog.show();
                 clickListenerSizeVaMau.onClickSizeVaMau("size", mListSize.get(position));
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        progressDialog.dismiss();
+                    }
+                }, 1000);
             }
         });
     }
