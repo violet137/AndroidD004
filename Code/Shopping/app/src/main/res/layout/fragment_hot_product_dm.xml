@@ -1,0 +1,178 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/iv_layout_height_250dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="vn.com.greenacademy.shopping.Fragment.Main.DanhMucSanPham.HotProductDMFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:id="@+id/llNewProduct_1_HotProductFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <!-- Hình sản phẩm 1 -->
+            <ImageView
+                android:id="@+id/ivNewProduct_1_HotProductFragment"
+                app:srcCompat="@drawable/banner_xu_huong_thoi_trang"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/item_hinh_vertical_margin"
+                android:layout_marginLeft="@dimen/item_hinh_margin_left"
+                android:layout_marginRight="@dimen/item_hinh_margin_right"
+                android:layout_marginTop="@dimen/item_hinh_vertical_margin"
+                android:layout_weight="1"
+                android:scaleType="centerCrop" />
+
+            <!-- Tên sản phẩm -->
+            <TextView
+                android:id="@+id/tvNameProduct_1_HotProductFragment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="1"
+                android:paddingLeft="@dimen/layout_margin_10dp"
+                android:paddingRight="@dimen/layout_margin_10dp"
+                android:text="TextView"
+                android:textColor="@color/cardview_dark_background"
+                android:textStyle="bold" />
+
+            <!-- Giá -->
+            <TextView
+                android:id="@+id/tvGiaProduct_1_HotProductFragment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/gia_vertical_margin"
+                android:gravity="center"
+                android:text="TextView"
+                android:textColor="@color/cardview_dark_background" />
+
+            <!-- List màu -->
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rvMauProduct_1_HotProductFragment"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/text_size_15dp"
+                android:layout_gravity="center">
+
+            </android.support.v7.widget.RecyclerView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llNewProduct_2_HotProductFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <!-- Hình sản phẩm 1 -->
+            <ImageView
+                android:id="@+id/ivNewProduct_2_HotProductFragment"
+                app:srcCompat="@drawable/banner_xu_huong_thoi_trang"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/item_hinh_vertical_margin"
+                android:layout_marginLeft="@dimen/item_hinh_margin_left"
+                android:layout_marginRight="@dimen/item_hinh_margin_right"
+                android:layout_marginTop="@dimen/item_hinh_vertical_margin"
+                android:layout_weight="1"
+                android:scaleType="centerCrop" />
+
+            <!-- Tên sản phẩm -->
+            <TextView
+                android:id="@+id/tvNameProduct_2_HotProductFragment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="1"
+                android:paddingLeft="@dimen/layout_margin_10dp"
+                android:paddingRight="@dimen/layout_margin_10dp"
+                android:text="TextView"
+                android:textColor="@color/cardview_dark_background"
+                android:textStyle="bold" />
+
+            <!-- Giá -->
+            <TextView
+                android:id="@+id/tvGiaProduct_2_HotProductFragment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/gia_vertical_margin"
+                android:gravity="center"
+                android:text="TextView"
+                android:textColor="@color/cardview_dark_background" />
+
+            <!-- List màu -->
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rvMauProduct_2_HotProductFragment"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/text_size_15dp"
+                android:layout_gravity="center">
+
+            </android.support.v7.widget.RecyclerView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/llNewProduct_3_HotProductFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <!-- Hình sản phẩm 1 -->
+            <ImageView
+                android:id="@+id/ivNewProduct_3_HotProductFragment"
+                app:srcCompat="@drawable/banner_xu_huong_thoi_trang"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/item_hinh_vertical_margin"
+                android:layout_marginLeft="@dimen/item_hinh_margin_left"
+                android:layout_marginRight="@dimen/item_hinh_margin_right"
+                android:layout_marginTop="@dimen/item_hinh_vertical_margin"
+                android:layout_weight="1"
+                android:scaleType="centerCrop" />
+
+            <!-- Tên sản phẩm -->
+            <TextView
+                android:id="@+id/tvNameProduct_3_HotProductFragment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="1"
+                android:paddingLeft="@dimen/layout_margin_10dp"
+                android:paddingRight="@dimen/layout_margin_10dp"
+                android:text="TextView"
+                android:textColor="@color/cardview_dark_background"
+                android:textStyle="bold" />
+
+            <!-- Giá -->
+            <TextView
+                android:id="@+id/tvGiaProduct_3_HotProductFragment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/gia_vertical_margin"
+                android:gravity="center"
+                android:text="TextView"
+                android:textColor="@color/cardview_dark_background" />
+
+            <!-- List màu -->
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rvMauProduct_3_HotProductFragment"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/text_size_15dp"
+                android:layout_gravity="center">
+
+            </android.support.v7.widget.RecyclerView>
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>

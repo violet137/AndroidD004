@@ -95,7 +95,7 @@ public class MainActivity extends AppCompatActivity implements DataCallBack, Vie
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 //modeSlideMenu = arrayModeSlideMenus.get(position);
-                slideMenuHandler.itemClickListener(position, baseFragment);
+                slideMenuHandler.itemClickListener(position);
                 // dong slide menu
                 if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
                     drawerLayout.closeDrawer(GravityCompat.START);

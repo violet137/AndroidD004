@@ -1,6 +1,8 @@
 package vn.com.greenacademy.shopping.Handle.HandleData.DanhMucSanPham;
 
 import android.app.Activity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.view.PagerAdapter;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -13,12 +15,17 @@ import java.util.ArrayList;
 import vn.com.greenacademy.shopping.Fragment.Main.DanhMucSanPham.ChiTietDanhMucFragment;
 import vn.com.greenacademy.shopping.Fragment.Main.DanhMucSanPham.DanhMucSanPhamFragment;
 import vn.com.greenacademy.shopping.Handle.HandleData.ImageLoad;
+import vn.com.greenacademy.shopping.Handle.HandleData.ParseData.DanhMucSanPham.ParseSanPhamChiTietDanhMuc;
+import vn.com.greenacademy.shopping.Handle.HandleData.ParseData.Product.ParseListSanPham;
+import vn.com.greenacademy.shopping.Handle.HandleData.ParseData.Product.ParseNewProductList;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.DanhMucSP.AdapterDanhMucSP;
 import vn.com.greenacademy.shopping.Handle.HandleData.ParseData.Main.ParseDanhMucSP;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.DanhMucSP.AdapterDanhMucSanPham;
+import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.DanhMucSP.AdapterHotProductViewPager;
 import vn.com.greenacademy.shopping.Interface.ServerCallBack;
 import vn.com.greenacademy.shopping.Model.DanhMucSP;
 import vn.com.greenacademy.shopping.Model.MucSanPham;
+import vn.com.greenacademy.shopping.Model.ThongTinSanPham.SanPham;
 import vn.com.greenacademy.shopping.Network.AsynTask.GetServerData;
 import vn.com.greenacademy.shopping.R;
 import vn.com.greenacademy.shopping.Util.ServerUrl;
@@ -48,11 +55,11 @@ public class DanhMucSPHandler extends LoadDataDanhMucSPHandler implements View.O
     public void setPhoto(MucSanPham mucSanPham, ImageView ivPhoto) {
         imageLoad = new ImageLoad(activity);
         if (mucSanPham.getLinkAnh().equals("")){
-            ivPhoto.setOnClickListener(ClickListenerDanhMucSanPham.onClickListener);
-
             imageLoad.load("https://lmt.com.vn/media/k2/items/cache/4251dec72b18ac89643edfb7a8300016_XL.jpg", ivPhoto);
         }else {
-            ivPhoto.setTag(-1);
+            MucSanPham temp = new MucSanPham();
+            mucSanPham.setId(-1);
+            ivPhoto.setTag(mucSanPham);
             ivPhoto.setOnClickListener(ClickListenerDanhMucSanPham.onClickListener);
 
             imageLoad.load(mucSanPham.getLinkAnh(), ivPhoto);
@@ -61,6 +68,11 @@ public class DanhMucSPHandler extends LoadDataDanhMucSPHandler implements View.O
 
     public RecyclerView.Adapter getAdapterListDM(ArrayList<MucSanPham> object) {
         AdapterDanhMucSanPham adapter = new AdapterDanhMucSanPham(activity, object);
+        return adapter;
+    }
+
+    public AdapterHotProductViewPager getAdapterHotProduct(FragmentManager fm, ArrayList<SanPham> dataHotProduct) {
+        AdapterHotProductViewPager adapter = new AdapterHotProductViewPager(fm,activity,dataHotProduct);
         return adapter;
     }
 }
@@ -72,28 +84,39 @@ class LoadDataDanhMucSPHandler implements ServerCallBack{
         getServerData.execute(ServerUrl.UrlDanhMucSP+loaiSP, SupportKeyList.ListDanhMucSP);
     }
 
-    public void getDataNewProductServer (String loaiSP){
+    public void getDataNewProductServer (String loaiSP, int numberSP){
         GetServerData getServerData = new GetServerData(this);
-        getServerData.execute(ServerUrl.UrlDanhMucSP+loaiSP, SupportKeyList.ListDanhMucSP);
+//        getServerData.execute(ServerUrl.UrlSPMoiTheoDM + loaiSP + ServerUrl.AndSoLuonSanPham + numberSP, SupportKeyList.ViewPagerDMSPMoi);
+        getServerData.execute(ServerUrl.UrlSPMoiTheoDM + loaiSP + "&soLuong=9", SupportKeyList.ViewPagerDMSPMoi);
     }
 
     @Override
-    public void serverCallBack(String dataServer) {
-//        ParseDanhMucSP parseDanhMucSP = new ParseDanhMucSP(dataServer);
-//        containerData(parseDanhMucSP.parData());
-    }
+    public void serverCallBack(String dataServer) {}
 
-    private void containerData(DanhMucSP danhMucSP) {
-        MucSanPham newMucSanPham = new MucSanPham();
-        newMucSanPham.setLinkAnh(danhMucSP.getXuHuongTtrangLink());
-        newMucSanPham.setId(danhMucSP.getXuHuongTtrangId());
-        newMucSanPham.setLoaiThoiTrang(danhMucSP.getLoaiThoiTrang());
+    private void containerData(Object object, String key) {
+        switch (key){
+            case SupportKeyList.ListDanhMucSP:
+                DanhMucSP danhMucSP = (DanhMucSP) object;
 
-        DanhMucSanPhamFragment.objectCallBack.callBack(
-                newMucSanPham,SupportKeyList.ClickDanhMuc_Photo);
+                MucSanPham newMucSanPham = new MucSanPham();
+                newMucSanPham.setLinkAnh(danhMucSP.getXuHuongTtrangLink());
+                newMucSanPham.setId(danhMucSP.getXuHuongTtrangId());
+                newMucSanPham.setLoaiThoiTrang(danhMucSP.getLoaiThoiTrang());
 
-        DanhMucSanPhamFragment.objectCallBack.callBack(
-                danhMucSP.getMucSanPhamArrayList(),SupportKeyList.ClickDanhMuc_Menu);
+                DanhMucSanPhamFragment.objectCallBack.callBack(
+                        newMucSanPham,SupportKeyList.ClickDanhMuc_Photo);
+
+                DanhMucSanPhamFragment.objectCallBack.callBack(
+                        danhMucSP.getMucSanPhamArrayList(),SupportKeyList.ClickDanhMuc_Menu);
+                break;
+            case SupportKeyList.ViewPagerDMSPMoi:
+                DanhMucSanPhamFragment.objectCallBack.callBack(object, SupportKeyList.ClickDanhMuc_HotProduct);
+                break;
+            default:
+                Log.d("case containerData DanhMucSPHandler","lỗi");
+                break;
+        }
+
     }
 
 
@@ -102,9 +125,11 @@ class LoadDataDanhMucSPHandler implements ServerCallBack{
         switch (key){
             case SupportKeyList.ListDanhMucSP:
                 ParseDanhMucSP parseDanhMucSP = new ParseDanhMucSP(dataServer);
-                containerData(parseDanhMucSP.parData());
+                containerData(parseDanhMucSP.parData(),key);
                 break;
             case SupportKeyList.ViewPagerDMSPMoi:
+                ParseNewProductList parseNewProductList = new ParseNewProductList(dataServer);
+                containerData(parseNewProductList.parData(),key);
                 break;
             default:
                 Log.d("case severCallBack DanhMucSPHandler","lôi");

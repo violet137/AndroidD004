@@ -32,5 +32,7 @@ public class ServerUrl {
     public static final String UrlKhuyenMai = HomeUrl + "KhuyenMai";
     public static final String UrlSanPhamTheoDanhMuc = ProductUrl + "SanPhamTheoDanhMuc?danhMucHangId=";
     public static final String UrlCauHoiTG = HoTroUrl + "DanhSachCauHoi";
+    public static final String UrlSPMoiTheoDM = ProductUrl + "SpMoiTheoThoiTrang?loaiThoiTrang=";
+    public static final String AndSoLuonSanPham = "&soLuong=";
 
 }
