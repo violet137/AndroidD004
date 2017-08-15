@@ -31,7 +31,7 @@ public class ClickListenerDanhMucSanPham {
             public void onClick(View v) {
                 MucSanPham mucSanPham = (MucSanPham) v.getTag();
                 Toast.makeText(activity,mucSanPham.getTenDanhMuc(), Toast.LENGTH_SHORT).show();
-                baseFragment.ChuyenFragment(ChiTietDanhMucFragment.newInstance(mucSanPham.getId(), mucSanPham.getTenDanhMuc()), SupportKeyList.TAG_CHI_TIET_DANH_MUC_SAN_PHAM, true);
+                baseFragment.ChuyenFragment(ChiTietDanhMucFragment.newInstance(mucSanPham.getId(), mucSanPham.getTenDanhMuc(), mucSanPham.getLoaiThoiTrang()), SupportKeyList.TAG_CHI_TIET_DANH_MUC_SAN_PHAM, true);
             }
         };
     }

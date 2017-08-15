@@ -20,7 +20,7 @@ public class MySharedPreferences {
     private final String KEY_LUU_DANG_NHAP = "luu_dang_nhap";
     private final String KEY_LOAI_TAI_KHOAN = "loai_tai_khoan";
     private final String KEY_GIO_HANG = "gio_hang";
-    
+
     public MySharedPreferences(Context context, String tenFile){
         this.context = context;
 
@@ -87,4 +87,6 @@ public class MySharedPreferences {
         editor.putString(KEY_LOAI_TAI_KHOAN, loaiTK);
         editor.commit();
     }
+
+
 }

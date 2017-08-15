@@ -45,11 +45,12 @@ public class ChiTietDanhMucFragment extends Fragment implements DataCallBack, Vi
     public ChiTietDanhMucFragment() {
     }
 
-    public static ChiTietDanhMucFragment newInstance(int idDanhMuc, String tenDanhMuc) {
+    public static ChiTietDanhMucFragment newInstance(int idDanhMuc, String tenDanhMuc, String loaiThoiTrang) {
 
         Bundle args = new Bundle();
         args.putString("idDanhMuc", String.valueOf(idDanhMuc));
         args.putString("tenDanhMuc", tenDanhMuc);
+        args.putString("loadThoiTrang", loaiThoiTrang);
         ChiTietDanhMucFragment fragment = new ChiTietDanhMucFragment();
         fragment.setArguments(args);
         return fragment;
@@ -62,7 +63,10 @@ public class ChiTietDanhMucFragment extends Fragment implements DataCallBack, Vi
             idDanhMuc = getArguments().getString("idDanhMuc");
             tenDanhMuc = getArguments().getString("tenDanhMuc");
             DataServerAsyncTask dataServerAsyncTask = new DataServerAsyncTask(this);
-            dataServerAsyncTask.execute(SupportKeyList.API_DATA_SAN_PHAM_CHI_TIET_DANH_MUC, ServerUrl.UrlSanPhamTheoDanhMuc + idDanhMuc, "GET");
+            if (idDanhMuc.equals("ALL"))
+                dataServerAsyncTask.execute(SupportKeyList.API_DATA_SAN_PHAM_THEO_THOI_TRANG, ServerUrl.UrlSanPhamTheoThoiTrang + getArguments().getSerializable("loaiThoiTrang"), "GET");
+            else
+                dataServerAsyncTask.execute(SupportKeyList.API_DATA_SAN_PHAM_CHI_TIET_DANH_MUC, ServerUrl.UrlSanPhamTheoDanhMuc + idDanhMuc, "GET");
         }
     }
 
