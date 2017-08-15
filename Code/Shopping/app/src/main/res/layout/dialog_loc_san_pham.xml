@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackgroundFront">
+
+    <!-- Nút thao tác -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/toolbar_height"
+        android:orientation="horizontal">
+        <!-- Xóa tất cả lựa chọn -->
+        <Button
+            android:id="@+id/btn_clear_all_dialog_loc_san_pham"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@null"
+            android:text="@string/xoa_lua_chon"/>
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@android:color/darker_gray"
+            android:layout_marginTop="7dp"
+            android:layout_marginBottom="7dp"/>
+        <!-- Lọc -->
+        <Button
+            android:id="@+id/btn_loc_dialog_loc_san_pham"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@null"
+            android:text="Lọc"/>
+    </LinearLayout>
+
+    <!-- Số lượng -->
+    <TextView
+        android:id="@+id/text_so_luong_loc_san_pham"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title_height"
+        android:gravity="right|center"
+        android:paddingRight="@dimen/vertical_padding"
+        android:background="@color/colorSecondaryDark"
+        android:textColor="@color/colorText"
+        android:textSize="@dimen/text_size"/>
+
+    <!-- Thông tin lọc -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <!-- Size -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/activity_horizontal_margin">
+                <!-- Title -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/layout_margin_10dp"
+                    android:text="@string/title_size"
+                    android:textColor="@color/colorTextDark"
+                    android:textSize="@dimen/title_size"
+                    android:textStyle="bold"/>
+                <!-- List size -->
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recycler_view_size_loc_san_pham"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <!-- Màu -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/activity_horizontal_margin">
+                <!-- Title -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/layout_margin_10dp"
+                    android:text="@string/title_color"
+                    android:textColor="@color/colorTextDark"
+                    android:textSize="@dimen/title_size"
+                    android:textStyle="bold"/>
+                <!-- List size -->
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recycler_view_mau_loc_san_pham"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

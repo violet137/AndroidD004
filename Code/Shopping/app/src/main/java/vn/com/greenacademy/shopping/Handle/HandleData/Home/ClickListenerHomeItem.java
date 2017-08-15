@@ -47,7 +47,7 @@ public class ClickListenerHomeItem {
                         break;
 
                     case SupportKeyList.ClickHome_NewProduct:
-                        Toast.makeText(activity, itemHome.getId(), Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(activity, itemHome.getId(), Toast.LENGTH_SHORT).show();
                         baseFragment.ChuyenFragment(new ThongTinSanPhamFragment(itemHome.getId(), SupportKeyList.TAG_FRAGMENT_MAIN), SupportKeyList.TAG_FRAGMENT_MAIN, true);
                         break;
 

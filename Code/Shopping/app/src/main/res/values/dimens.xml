@@ -128,6 +128,9 @@
     <dimen name="button_sap_xep_margin_left">2.5dp</dimen>
     <dimen name="list_san_pham_chi_tiet_danh_muc_margin_top">15dp</dimen>
 
+    <!-- Dialog lọc sản phẩm -->
+    <dimen name="hinh_mau_size">50dp</dimen>
+
     <!-- Dialog description sản phẩm -->
     <dimen name="dialog_chi_tiet_san_pham_width">950dp</dimen>
     <dimen name="dialog_chi_tiet_san_pham_height">1100dp</dimen>

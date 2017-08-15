@@ -94,6 +94,12 @@
     <string name="loc_san_pham">Lọc</string>
     <string name="sap_xep_san_pham">Sắp xếp</string>
 
+    <!-- Dialog lọc sản phẩm -->
+    <string name="xoa_lua_chon">Xóa lựa chọn</string>
+    <string name="loc">Lọc</string>
+    <string name="title_size">Size</string>
+    <string name="title_color">Màu</string>
+
     <!-- Xu hướng thời trang -->
     <string name="xem_san_pham">XEM CÁC SẢN PHẨM</string>
 

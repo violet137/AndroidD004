@@ -9,11 +9,14 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
+import vn.com.greenacademy.shopping.Fragment.Main.SanPham.LocSanPhamDialog;
 import vn.com.greenacademy.shopping.Handle.HandleData.ImageLoad;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.SanPham.ListSanPhamAdapter;
 import vn.com.greenacademy.shopping.Interface.DataCallBack;
@@ -27,7 +30,7 @@ import vn.com.greenacademy.shopping.Util.Ui.BaseFragment;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ChiTietDanhMucFragment extends Fragment implements DataCallBack {
+public class ChiTietDanhMucFragment extends Fragment implements DataCallBack, View.OnClickListener {
     private View root;
     private TextView tvTitle;
     private TextView tvSoLuong;
@@ -73,6 +76,7 @@ public class ChiTietDanhMucFragment extends Fragment implements DataCallBack {
         vListSanPham = (RecyclerView) root.findViewById(R.id.list_san_pham_nganh_thoi_trang);
         //        ListView vListPhanLoai = (ListView) root.findViewById(R.id.list_phan_loai);
 
+        root.findViewById(R.id.button_loc_san_pham).setOnClickListener(this);
         getActivity().supportInvalidateOptionsMenu();
         return root;
     }
@@ -122,5 +126,67 @@ public class ChiTietDanhMucFragment extends Fragment implements DataCallBack {
                 }
                 break;
         }
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.button_loc_san_pham:
+                layMauVaSizeListSanPham();
+
+        }
+    }
+
+    private void layMauVaSizeListSanPham() {
+        ArrayList<String> mListMauSanPham = new ArrayList<>();
+        ArrayList<String> mListSizeSanPham = new ArrayList<>();
+        int sttListMau, sttSanPham = 0, sttMauListSanPham;
+        boolean trungMau = false;
+        boolean trungSize = false;
+        SanPham sanPham;
+
+        //Điều kiện dừng khi vượt quá số lượng màu của server hoặc quá số lượng sản phẩm của danh mục
+        while(mListMauSanPham.size() < 12 && sttSanPham < mListSanPham.size()){
+            sanPham = mListSanPham.get(sttSanPham);
+
+            //Chạy từng sản phẩm để lấy màu
+            if (sttSanPham == 0){
+                Collections.addAll(mListMauSanPham, sanPham.getMauSanPham());
+                Collections.addAll(mListSizeSanPham, sanPham.getSize());
+            } else {
+                //Màu
+                for (sttMauListSanPham = 0; sttMauListSanPham < sanPham.getMauSanPham().length; sttMauListSanPham++) {
+                    //So sanh từng màu của 1 sản phẩm với màu trong list màu
+                    for (sttListMau = 0; sttListMau < mListMauSanPham.size(); sttListMau++) {
+                        //Nếu màu sản phẩm tại vị trí sttMauListSanPham không giống với toàn bộ màu của list màu thì thêm vào list màu
+                        if (sanPham.getMauSanPham()[sttMauListSanPham].equals(mListMauSanPham.get(sttListMau)))
+                            trungMau = true;
+                    }
+                    if (!trungMau)
+                        mListMauSanPham.add(sanPham.getMauSanPham()[sttMauListSanPham]);
+                }
+
+                //Size
+                if (mListSizeSanPham.size() < 4){
+                    for (int sttSizeSanPham = 0; sttSizeSanPham < sanPham.getSize().length; sttSizeSanPham++) {
+                        //So sanh từng màu của 1 sản phẩm với màu trong list màu
+                        for (int sttListSize = 0; sttListSize < mListSizeSanPham.size(); sttListSize++) {
+                            //Nếu màu sản phẩm tại vị trí sttMauListSanPham không giống với toàn bộ màu của list màu thì thêm vào list màu
+                            if (sanPham.getMauSanPham()[sttSizeSanPham].equals(mListMauSanPham.get(sttListSize)))
+                                trungSize = true;
+                        }
+                        if (!trungSize)
+                            mListMauSanPham.add(sanPham.getMauSanPham()[sttSizeSanPham]);
+                    }
+                }
+            }
+
+
+            sttSanPham++;
+            trungMau = false;
+            trungSize = false;
+        }
+        LocSanPhamDialog locSanPhamDialog = new LocSanPhamDialog(getActivity(), android.R.style.Theme_DeviceDefault_Light, mListSanPham, mListSizeSanPham, mListMauSanPham, mListSanPham.size());
+        locSanPhamDialog.show();
     }
 }

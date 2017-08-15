@@ -19,11 +19,11 @@ import vn.com.greenacademy.shopping.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class DetailsSanPhamFragment extends Dialog implements View.OnClickListener {
+public class DetailsSanPhamDialog extends Dialog implements View.OnClickListener {
     private String description;
     private String details;
 
-    public DetailsSanPhamFragment(Context context, String description, String details) {
+    public DetailsSanPhamDialog(Context context, String description, String details) {
         super(context);
         this.description = description;
         this.details = details;
