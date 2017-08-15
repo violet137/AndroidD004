@@ -63,7 +63,7 @@ public class SaleFragment extends Fragment {
             }
         };
 
-        getActivity().invalidateOptionsMenu();
+        getActivity().supportInvalidateOptionsMenu();
         return view;
     }
 
