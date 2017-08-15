@@ -98,6 +98,23 @@ public class DanhMucSanPhamFragment extends Fragment {
         MucSanPham temp = new MucSanPham();
         temp.setId(-2);
         temp.setTenDanhMuc("Tất Cả");
+        switch (idDanhMuc){
+            case "Nam":
+                temp.setLoaiThoiTrang("Nam");
+                break;
+            case "Nu":
+                temp.setLoaiThoiTrang("Nữ");
+                break;
+            case "TreEm":
+                temp.setLoaiThoiTrang("Trẻ Em");
+                break;
+            case "Home":
+                temp.setLoaiThoiTrang("Trang Trí");
+                break;
+            default:
+                temp.setLoaiThoiTrang("");
+                break;
+        }
         llXemTatCa.setTag(temp);
         llXemTatCa.setOnClickListener(ClickListenerDanhMucSanPham.onClickListener);
 
@@ -142,6 +159,9 @@ public class DanhMucSanPhamFragment extends Fragment {
             rvMenu.setAdapter(danhMucSPHandler.getAdapterListDM(dataMucSanPham));
 
             vpHotProduct.setAdapter(danhMucSPHandler.getAdapterHotProduct(getChildFragmentManager(),dataHotProduct));
+
+            llXemTatCa.setVisibility(View.VISIBLE);
+
             itemHotProduct.setVisibility(View.VISIBLE);
         }
     }
