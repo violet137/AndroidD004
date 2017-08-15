@@ -48,7 +48,7 @@
         android:textSize="25sp" />
 
     <!-- Nội dung -->
-    <ScrollView
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/colorBackgroundFront"
@@ -105,7 +105,7 @@
                     android:layout_marginTop="@dimen/list_san_pham_chi_tiet_danh_muc_margin_top"/>
             </LinearLayout>
         </LinearLayout>
-    </ScrollView>
+    </android.support.v4.widget.NestedScrollView>
 
 
 </LinearLayout>
