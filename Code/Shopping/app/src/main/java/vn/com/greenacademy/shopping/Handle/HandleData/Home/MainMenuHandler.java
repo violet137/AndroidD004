@@ -3,21 +3,15 @@ package vn.com.greenacademy.shopping.Handle.HandleData.Home;
 import android.app.Activity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
 import android.widget.ImageView;
-import android.widget.ListAdapter;
-import android.widget.Toast;
 import android.widget.ViewFlipper;
 
 import java.util.ArrayList;
 
-import vn.com.greenacademy.shopping.Fragment.Magazine.MagazineFragment;
 import vn.com.greenacademy.shopping.Fragment.Home.MainFragment;
-import vn.com.greenacademy.shopping.Fragment.Main.XuHuongThoiTrang.XuHuongThoiTrangFragment;
 import vn.com.greenacademy.shopping.Handle.HandleData.ImageLoad;
-import vn.com.greenacademy.shopping.Handle.HandleData.ParseData.Main.ParseNewProductList;
+import vn.com.greenacademy.shopping.Handle.HandleData.ParseData.Product.ParseNewProductList;
 import vn.com.greenacademy.shopping.Handle.HandleData.ParseData.Main.ParseAdvertise;
 import vn.com.greenacademy.shopping.Handle.HandleData.ParseData.Main.ParseBanner;
 import vn.com.greenacademy.shopping.Handle.HandleData.ParseData.Main.ParseMyProducts;
@@ -27,14 +21,11 @@ import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.Home.AdapterHomeRVPr
 import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.Home.AdapterNewProductViewPager;
 import vn.com.greenacademy.shopping.Interface.ServerCallBack;
 import vn.com.greenacademy.shopping.Model.Home.AdvertisePhoto;
-import vn.com.greenacademy.shopping.Model.Home.BannerPhoto;
 import vn.com.greenacademy.shopping.Model.Home.ItemHome;
 import vn.com.greenacademy.shopping.Model.Home.MenuMain;
 import vn.com.greenacademy.shopping.Model.Home.MenuPhoto;
-import vn.com.greenacademy.shopping.Model.Home.ProductsPhoto;
 import vn.com.greenacademy.shopping.Model.ThongTinSanPham.SanPham;
 import vn.com.greenacademy.shopping.Network.AsynTask.GetServerData;
-import vn.com.greenacademy.shopping.R;
 import vn.com.greenacademy.shopping.Util.ServerUrl;
 import vn.com.greenacademy.shopping.Util.SupportKeyList;
 import vn.com.greenacademy.shopping.Util.Ui.BaseFragment;

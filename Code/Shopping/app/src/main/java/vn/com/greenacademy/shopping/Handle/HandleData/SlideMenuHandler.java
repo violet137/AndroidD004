@@ -32,7 +32,8 @@ public class SlideMenuHandler extends LoadDataSlideMenuHandler{
     }
 
     // xu ly su kien click cua nguoi dung
-    public void itemClickListener(int position, BaseFragment baseFragment) {
+    public void itemClickListener(int position) {
+        BaseFragment baseFragment = new BaseFragment(activity,((AppCompatActivity)activity).getSupportFragmentManager());
         String temp ;
         int count = ((AppCompatActivity)activity).getSupportFragmentManager().getBackStackEntryCount();
         switch (position){

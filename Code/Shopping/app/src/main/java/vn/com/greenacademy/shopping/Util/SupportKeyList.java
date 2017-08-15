@@ -120,6 +120,7 @@ public class SupportKeyList {
     public static final int ClickHome_Magazine = 4;
     public static final int ClickDanhMuc_Photo = 5;
     public static final int ClickDanhMuc_Menu = 6;
+    public static final int ClickDanhMuc_HotProduct = 7;
     public static final int ClickSupport_LienHe = 0;
     public static final int ClickSupport_CauHoi = 1;
     public static final int ClickSupport_TheoDoi = 2;

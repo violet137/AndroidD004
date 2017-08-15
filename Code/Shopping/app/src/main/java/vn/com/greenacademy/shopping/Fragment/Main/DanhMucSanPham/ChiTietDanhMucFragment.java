@@ -63,8 +63,8 @@ public class ChiTietDanhMucFragment extends Fragment implements DataCallBack, Vi
             idDanhMuc = getArguments().getString("idDanhMuc");
             tenDanhMuc = getArguments().getString("tenDanhMuc");
             DataServerAsyncTask dataServerAsyncTask = new DataServerAsyncTask(this);
-            if (idDanhMuc.equals("ALL"))
-                dataServerAsyncTask.execute(SupportKeyList.API_DATA_SAN_PHAM_THEO_THOI_TRANG, ServerUrl.UrlSanPhamTheoThoiTrang + getArguments().getSerializable("loaiThoiTrang"), "GET");
+            if (idDanhMuc.equals("-2"))
+                dataServerAsyncTask.execute(SupportKeyList.API_DATA_SAN_PHAM_THEO_THOI_TRANG, ServerUrl.UrlSanPhamTheoThoiTrang + getArguments().getString("loaiThoiTrang"), "GET");
             else
                 dataServerAsyncTask.execute(SupportKeyList.API_DATA_SAN_PHAM_CHI_TIET_DANH_MUC, ServerUrl.UrlSanPhamTheoDanhMuc + idDanhMuc, "GET");
         }
@@ -110,7 +110,10 @@ public class ChiTietDanhMucFragment extends Fragment implements DataCallBack, Vi
             vListSanPham.setAdapter(new ListSanPhamAdapter(getActivity(), mListSanPham, new BaseFragment(getActivity(), getActivity().getSupportFragmentManager()), null, new ImageLoad(getActivity())));
             vListSanPham.setNestedScrollingEnabled(false);
         }
-        tvTitle.setText(tenDanhMuc);
+        if (idDanhMuc.equals("-2"))
+            tvTitle.setText("Tất cả");
+        else
+            tvTitle.setText(tenDanhMuc);
         tvSoLuong.setText(String.valueOf(mListSanPham.size()));
     }
 

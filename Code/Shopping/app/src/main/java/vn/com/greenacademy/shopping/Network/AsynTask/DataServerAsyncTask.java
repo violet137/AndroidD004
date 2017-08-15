@@ -102,9 +102,16 @@ public class DataServerAsyncTask extends AsyncTask<String, Void, String> {
                 case SupportKeyList.API_DATA_SAN_PHAM_CHI_TIET_DANH_MUC:
                     //Truyền kết quả về cho class yêu cầu
                     ArrayList<SanPham> mListSanPhamChiTietDanhMuc = new ParseSanPhamChiTietDanhMuc(result).parseData();
-                    Bundle data = new Bundle();
-                    data.putSerializable(SupportKeyList.API_DATA_SAN_PHAM_CHI_TIET_DANH_MUC, mListSanPhamChiTietDanhMuc);
-                    dataCallBack.KetQua(SupportKeyList.LAY_DATA_THANH_CONG, data);
+                    Bundle dataChiTietDanhMuc = new Bundle();
+                    dataChiTietDanhMuc.putSerializable(SupportKeyList.API_DATA_SAN_PHAM_CHI_TIET_DANH_MUC, mListSanPhamChiTietDanhMuc);
+                    dataCallBack.KetQua(SupportKeyList.LAY_DATA_THANH_CONG, dataChiTietDanhMuc);
+                    break;
+                case SupportKeyList.API_DATA_SAN_PHAM_THEO_THOI_TRANG:
+                    //Truyền kết quả về cho class yêu cầu
+                    ArrayList<SanPham> mListSanPhamTheoThoiTrang = new ParseSanPhamChiTietDanhMuc(result).parseData();
+                    Bundle dataSanPhamTheoThoiTrang = new Bundle();
+                    dataSanPhamTheoThoiTrang.putSerializable(SupportKeyList.API_DATA_SAN_PHAM_CHI_TIET_DANH_MUC, mListSanPhamTheoThoiTrang);
+                    dataCallBack.KetQua(SupportKeyList.LAY_DATA_THANH_CONG, dataSanPhamTheoThoiTrang);
                     break;
                 default:
                     break;

@@ -11,6 +11,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -18,7 +20,9 @@ import java.util.ArrayList;
 import vn.com.greenacademy.shopping.Handle.HandleData.DanhMucSanPham.ClickListenerDanhMucSanPham;
 import vn.com.greenacademy.shopping.Handle.HandleData.DanhMucSanPham.DanhMucSPHandler;
 import vn.com.greenacademy.shopping.Interface.ObjectCallBack;
+import vn.com.greenacademy.shopping.Model.Home.MenuPhoto;
 import vn.com.greenacademy.shopping.Model.MucSanPham;
+import vn.com.greenacademy.shopping.Model.ThongTinSanPham.SanPham;
 import vn.com.greenacademy.shopping.R;
 import vn.com.greenacademy.shopping.Util.SupportKeyList;
 
@@ -37,13 +41,17 @@ public class DanhMucSanPhamFragment extends Fragment {
 
     ArrayList<MucSanPham> dataMucSanPham;
 
+    ArrayList<SanPham> dataHotProduct;
+
     MucSanPham dataPhotoMucSP;
 
     String idDanhMuc;
 
+    LinearLayout llXemTatCa;
     ImageView ivPhoto;
     ViewPager vpHotProduct;
     RecyclerView rvMenu;
+    LinearLayout itemHotProduct;
 
     public DanhMucSanPhamFragment(String idDanhMuc) {
         this.idDanhMuc = idDanhMuc;
@@ -64,9 +72,13 @@ public class DanhMucSanPhamFragment extends Fragment {
 
         clickListenerDanhMucSanPham.Click();
 
+        clickListenerDanhMucSanPham.listSanPhamCallBcak();
+
         danhMucSPHandler = new DanhMucSPHandler(getActivity());
 //        String a = getArguments().getString("idDanhMuc");
         danhMucSPHandler.getDataServer(idDanhMuc);
+
+        danhMucSPHandler.getDataNewProductServer(idDanhMuc, 9);
     }
 
     @Override
@@ -78,6 +90,16 @@ public class DanhMucSanPhamFragment extends Fragment {
         ivPhoto = (ImageView) view.findViewById(R.id.ivFashion_item_main_menu);
 
         vpHotProduct = (ViewPager) view.findViewById(R.id.vpSanPham_vp_sp_hot);
+
+        itemHotProduct = (LinearLayout) view.findViewById(R.id.item_vp_sp_hot);
+
+        llXemTatCa = (LinearLayout) view.findViewById(R.id.llXemAll_DanhMucSanPham_Fragment);
+
+        MucSanPham temp = new MucSanPham();
+        temp.setId(-2);
+        temp.setTenDanhMuc("Tất Cả");
+        llXemTatCa.setTag(temp);
+        llXemTatCa.setOnClickListener(ClickListenerDanhMucSanPham.onClickListener);
 
         rvMenu = (RecyclerView) view.findViewById(R.id.rvMenu_DanhMucSanPham_Fragment);
         rvMenu.setLayoutManager(new GridLayoutManager(getActivity(), 1));
@@ -95,6 +117,12 @@ public class DanhMucSanPhamFragment extends Fragment {
                         dataMucSanPham = (ArrayList<MucSanPham>) object;
                         rvMenu.setAdapter(danhMucSPHandler.getAdapterListDM((ArrayList<MucSanPham>)object));
                         break;
+                    case SupportKeyList.ClickDanhMuc_HotProduct:
+                        llXemTatCa.setVisibility(View.VISIBLE);
+                        dataHotProduct = ((MenuPhoto)object).getSanPhamArrayList();
+                        vpHotProduct.setAdapter(danhMucSPHandler.getAdapterHotProduct(getChildFragmentManager(),dataHotProduct));
+                        itemHotProduct.setVisibility(View.VISIBLE);
+                        break;
                     default:
                         Toast.makeText(getActivity(),"Lổi case DanhMucSanPhamFragment", Toast.LENGTH_LONG).show();
                         break;
@@ -108,6 +136,14 @@ public class DanhMucSanPhamFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+        if (listenerBack){
+            danhMucSPHandler.setPhoto(dataPhotoMucSP, ivPhoto);
+
+            rvMenu.setAdapter(danhMucSPHandler.getAdapterListDM(dataMucSanPham));
+
+            vpHotProduct.setAdapter(danhMucSPHandler.getAdapterHotProduct(getChildFragmentManager(),dataHotProduct));
+            itemHotProduct.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
