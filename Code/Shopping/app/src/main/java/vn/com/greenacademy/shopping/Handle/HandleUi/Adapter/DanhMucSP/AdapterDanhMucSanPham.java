@@ -1,24 +1,17 @@
 package vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.DanhMucSP;
 
-import android.app.Activity;
 import android.content.Context;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.view.ViewPager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 
 import vn.com.greenacademy.shopping.Handle.HandleData.DanhMucSanPham.ClickListenerDanhMucSanPham;
-import vn.com.greenacademy.shopping.Handle.HandleData.ImageLoad;
-import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.Sale.AdapterViewPagerSale;
-import vn.com.greenacademy.shopping.Model.MucSanPham;
-import vn.com.greenacademy.shopping.Model.Sale;
+import vn.com.greenacademy.shopping.Model.DanhMuc.MucSanPham;
 import vn.com.greenacademy.shopping.R;
 
 /**

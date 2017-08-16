@@ -2,8 +2,7 @@ package vn.com.greenacademy.shopping.Interface;
 
 import java.util.ArrayList;
 
-import vn.com.greenacademy.shopping.Model.Magazine;
-import vn.com.greenacademy.shopping.Model.Store;
+import vn.com.greenacademy.shopping.Model.Magazine.Magazine;
 
 /**
  * Created by ADMIN on 7/28/2017.

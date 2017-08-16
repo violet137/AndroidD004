@@ -51,7 +51,7 @@ public class ChiTietDanhMucFragment extends Fragment implements DataCallBack, Vi
         args.putString("idDanhMuc", String.valueOf(idDanhMuc));
         args.putString("tenDanhMuc", tenDanhMuc);
         args.putString("loaiThoiTrang", loaiThoiTrang);
-        
+
         ChiTietDanhMucFragment fragment = new ChiTietDanhMucFragment();
         fragment.setArguments(args);
         return fragment;

@@ -3,7 +3,7 @@ package vn.com.greenacademy.shopping.Handle.HandleData.ParseData.Magazine;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import vn.com.greenacademy.shopping.Model.MagazineDetail;
+import vn.com.greenacademy.shopping.Model.Magazine.MagazineDetail;
 
 /**
  * Created by ADMIN on 8/3/2017.

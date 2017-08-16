@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 
 import java.util.ArrayList;
 
-import vn.com.greenacademy.shopping.Model.MucSanPham;
+import vn.com.greenacademy.shopping.Model.DanhMuc.MucSanPham;
 import vn.com.greenacademy.shopping.R;
 
 /**

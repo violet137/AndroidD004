@@ -14,19 +14,17 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import vn.com.greenacademy.shopping.Fragment.Support.GoiMailFragment;
 import vn.com.greenacademy.shopping.Interface.ErrorCallBack;
-import vn.com.greenacademy.shopping.Model.IDNew;
 import vn.com.greenacademy.shopping.Util.SupportKeyList;
 
 /**
- * Created by ADMIN on 7/19/2017.
+ * Created by ADMIN on 8/16/2017.
  */
 
-public class PostIDNew  extends AsyncTask<Object, Object, String> {
+public class PostMail  extends AsyncTask<Object, Object, String> {
 
-    ErrorCallBack errorCallBack;
-    public PostIDNew(ErrorCallBack errorCallBack) {
-        this.errorCallBack = errorCallBack;
+    public PostMail() {
     }
 
     @Override
@@ -46,9 +44,10 @@ public class PostIDNew  extends AsyncTask<Object, Object, String> {
             // gui data
             OutputStream outputStream = connection.getOutputStream();
             JSONObject object = new JSONObject();
-            object.put("Username", params[1]);
-            object.put("Pwd", params[2]);
-            object.put("Ten", params[3]);
+            object.put("LoaiHoTro", params[1]);
+            object.put("NoiDungHoTro", params[2]);
+            object.put("Email", params[3]);
+            object.put("Ten", params[4]);
             String json = object.toString();
             outputStream.write(json.getBytes());
 
@@ -78,19 +77,23 @@ public class PostIDNew  extends AsyncTask<Object, Object, String> {
 
     @Override
     protected void onPostExecute(String result) {
-        ParDataPostIDNew par = new ParDataPostIDNew(result);
+        ParDataPostMail par = new ParDataPostMail(result);
         try {
-            errorCallBack.errorCallBack(String.valueOf(par.parData()), SupportKeyList.Email_Error);
+            if (par.parData() == 0){
+                GoiMailFragment.objectServerCallBack.callBack(true,0);
+            }else {
+                GoiMailFragment.objectServerCallBack.callBack(false,0);
+            }
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
     }
 }
-class ParDataPostIDNew {
+class ParDataPostMail {
     String data;
 
-    public ParDataPostIDNew(String data) {
+    public ParDataPostMail(String data) {
         this.data = data;
     }
 
@@ -98,4 +101,5 @@ class ParDataPostIDNew {
         JSONObject root = new JSONObject(data);
         return root.getInt("Status");
     }
+
 }

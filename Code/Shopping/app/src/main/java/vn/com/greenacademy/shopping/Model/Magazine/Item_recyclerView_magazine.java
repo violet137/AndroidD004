@@ -1,4 +1,4 @@
-package vn.com.greenacademy.shopping.Model;
+package vn.com.greenacademy.shopping.Model.Magazine;
 
 /**
  * Created by ADMIN on 7/23/2017.

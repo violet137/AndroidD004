@@ -1,4 +1,4 @@
-package vn.com.greenacademy.shopping.Model;
+package vn.com.greenacademy.shopping.Model.DanhMuc;
 
 /**
  * Created by ADMIN on 7/31/2017.

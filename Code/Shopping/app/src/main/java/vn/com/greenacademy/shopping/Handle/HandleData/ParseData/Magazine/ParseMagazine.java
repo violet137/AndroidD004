@@ -6,7 +6,7 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-import vn.com.greenacademy.shopping.Model.Magazine;
+import vn.com.greenacademy.shopping.Model.Magazine.Magazine;
 
 /**
  * Created by ADMIN on 8/3/2017.

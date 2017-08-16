@@ -54,6 +54,8 @@ public class SupportKeyList {
     public static final String TAG_FRAGMENT_SALE = "Sale";
     public static final String TAG_FRAGMENT_SUPPORT = "Support";
     public static final String TAG_FRAGMENT_CAUHOI = "CacCauHoiThuongGap";
+    public static final String TAG_FRAGMENT_GOIMAIL = "GoiMail";
+    public static final String TAG_FRAGMENT_HTML = "HTML";
 
     //Key Menu Main
     public static final int Banner = -1;
@@ -83,7 +85,7 @@ public class SupportKeyList {
     public static final int Wish_list_slide = 7;
     public static final int My_Shopping_slide = 8;
     public static final int Find_a_store_slide = 9;
-    public static final int Newsletter_slide = 10;
+    public static final int Support_slide = 10;
 
     // key vi tri loi cua Fragment Dang ky
     public static final int Email_Error = 0;

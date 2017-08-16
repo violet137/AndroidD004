@@ -1,4 +1,4 @@
-package vn.com.greenacademy.shopping.Model;
+package vn.com.greenacademy.shopping.Model.DanhMuc;
 
 import java.util.ArrayList;
 

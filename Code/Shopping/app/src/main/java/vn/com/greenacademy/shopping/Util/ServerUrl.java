@@ -7,6 +7,8 @@ package vn.com.greenacademy.shopping.Util;
 public class ServerUrl {
     public static final String ServerLink="http://tamod.vn:8050/";
 
+    public static final String UrlGioThieuFAndL = ServerLink + "images/about.html";
+
     //Tài khoản
     public static final String DangNhapUrl = ServerLink + "api/Auth/Login";
     public static final String DangKyUrl = ServerLink + "api/Auth/Register";
@@ -34,5 +36,7 @@ public class ServerUrl {
     public static final String UrlCauHoiTG = HoTroUrl + "DanhSachCauHoi";
     public static final String UrlSPMoiTheoDM = ProductUrl + "SpMoiTheoThoiTrang?loaiThoiTrang=";
     public static final String AndSoLuonSanPham = "&soLuong=";
+    public static final String UrlLoaiVD = HoTroUrl + "LoaiHoTro";
+    public static final String UrlGuiMail = HoTroUrl + "GuiHoTro";
 
 }

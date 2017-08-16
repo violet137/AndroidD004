@@ -2,7 +2,6 @@ package vn.com.greenacademy.shopping.Handle.HandleData.DanhMucSanPham;
 
 import android.app.Activity;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.view.PagerAdapter;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -15,19 +14,15 @@ import java.util.ArrayList;
 import vn.com.greenacademy.shopping.Fragment.Main.DanhMucSanPham.ChiTietDanhMucFragment;
 import vn.com.greenacademy.shopping.Fragment.Main.DanhMucSanPham.DanhMucSanPhamFragment;
 import vn.com.greenacademy.shopping.Handle.HandleData.ImageLoad;
-import vn.com.greenacademy.shopping.Handle.HandleData.ParseData.DanhMucSanPham.ParseSanPhamChiTietDanhMuc;
-import vn.com.greenacademy.shopping.Handle.HandleData.ParseData.Product.ParseListSanPham;
 import vn.com.greenacademy.shopping.Handle.HandleData.ParseData.Product.ParseNewProductList;
-import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.DanhMucSP.AdapterDanhMucSP;
 import vn.com.greenacademy.shopping.Handle.HandleData.ParseData.Main.ParseDanhMucSP;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.DanhMucSP.AdapterDanhMucSanPham;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.DanhMucSP.AdapterHotProductViewPager;
 import vn.com.greenacademy.shopping.Interface.ServerCallBack;
-import vn.com.greenacademy.shopping.Model.DanhMucSP;
-import vn.com.greenacademy.shopping.Model.MucSanPham;
+import vn.com.greenacademy.shopping.Model.DanhMuc.DanhMucSP;
+import vn.com.greenacademy.shopping.Model.DanhMuc.MucSanPham;
 import vn.com.greenacademy.shopping.Model.ThongTinSanPham.SanPham;
 import vn.com.greenacademy.shopping.Network.AsynTask.GetServerData;
-import vn.com.greenacademy.shopping.R;
 import vn.com.greenacademy.shopping.Util.ServerUrl;
 import vn.com.greenacademy.shopping.Util.SupportKeyList;
 import vn.com.greenacademy.shopping.Util.Ui.BaseFragment;
@@ -86,8 +81,8 @@ class LoadDataDanhMucSPHandler implements ServerCallBack{
 
     public void getDataNewProductServer (String loaiSP, int numberSP){
         GetServerData getServerData = new GetServerData(this);
-//        getServerData.execute(ServerUrl.UrlSPMoiTheoDM + loaiSP + ServerUrl.AndSoLuonSanPham + numberSP, SupportKeyList.ViewPagerDMSPMoi);
-        getServerData.execute(ServerUrl.UrlSPMoiTheoDM + loaiSP + "&soLuong=9", SupportKeyList.ViewPagerDMSPMoi);
+        getServerData.execute(ServerUrl.UrlSPMoiTheoDM + loaiSP + ServerUrl.AndSoLuonSanPham + numberSP, SupportKeyList.ViewPagerDMSPMoi);
+//        getServerData.execute(ServerUrl.UrlSPMoiTheoDM + loaiSP + "&soLuong=9", SupportKeyList.ViewPagerDMSPMoi);
     }
 
     @Override

@@ -15,9 +15,9 @@ import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.Magazine.AdapterMaga
 import vn.com.greenacademy.shopping.Handle.HandleData.ParseData.Magazine.ParseMagazine;
 import vn.com.greenacademy.shopping.Handle.HandleData.ParseData.Magazine.ParseMagazineType;
 import vn.com.greenacademy.shopping.Interface.ServerCallBack;
-import vn.com.greenacademy.shopping.Model.Item_recyclerView_magazine;
-import vn.com.greenacademy.shopping.Model.Magazine;
-import vn.com.greenacademy.shopping.Model.MagazineType;
+import vn.com.greenacademy.shopping.Model.Magazine.Item_recyclerView_magazine;
+import vn.com.greenacademy.shopping.Model.Magazine.Magazine;
+import vn.com.greenacademy.shopping.Model.Magazine.MagazineType;
 import vn.com.greenacademy.shopping.Network.AsynTask.GetServerData;
 import vn.com.greenacademy.shopping.Util.ServerUrl;
 import vn.com.greenacademy.shopping.Util.SupportKeyList;

@@ -14,11 +14,9 @@ import java.util.ArrayList;
 
 import vn.com.greenacademy.shopping.Handle.HandleData.Magazine.MagazineHandler;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.Magazine.AdapterMagazineViewPager;
-import vn.com.greenacademy.shopping.Interface.MagazineCallBack;
 import vn.com.greenacademy.shopping.Interface.ObjectCallBack;
 import vn.com.greenacademy.shopping.MainActivity;
-import vn.com.greenacademy.shopping.Model.Magazine;
-import vn.com.greenacademy.shopping.Model.MagazineType;
+import vn.com.greenacademy.shopping.Model.Magazine.MagazineType;
 import vn.com.greenacademy.shopping.R;
 
 /**

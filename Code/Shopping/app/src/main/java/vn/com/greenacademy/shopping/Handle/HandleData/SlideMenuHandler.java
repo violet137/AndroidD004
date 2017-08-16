@@ -117,7 +117,7 @@ public class SlideMenuHandler extends LoadDataSlideMenuHandler{
                 }
                 baseFragment.ChuyenFragment(new FindStoreFragment(), SupportKeyList.TAG_FRAGMENT_FINDSTORE, true);
                 break;
-            case SupportKeyList.Newsletter_slide:
+            case SupportKeyList.Support_slide:
                 temp = "Support";
                 while(count > 0){
                     baseFragment.XoaFragment();
