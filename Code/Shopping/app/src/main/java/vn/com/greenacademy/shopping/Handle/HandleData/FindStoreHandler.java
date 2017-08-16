@@ -83,11 +83,6 @@ public class FindStoreHandler implements OnMapReadyCallback, ServerCallBack {
         }
     }
 
-//    @Override
-//    public void storeCallBack(ArrayList<Store> storeArrayList) {
-//
-//    }
-
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;

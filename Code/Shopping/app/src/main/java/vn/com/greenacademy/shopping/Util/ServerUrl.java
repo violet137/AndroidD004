@@ -5,6 +5,9 @@ package vn.com.greenacademy.shopping.Util;
  */
 
 public class ServerUrl {
+    public static final String UrlFacebookFashionAndLife = "https://www.facebook.com/FL-Fashion-and-Life-643129985890828/?sw_fnr_id=2339152974&fnr_t=0";
+    public static final String UrlYouTubeFashionAndLife = "https://www.youtube.com/channel/UCTBFYNdyZPCSINDjQNhSOAA";
+
     public static final String ServerLink="http://tamod.vn:8050/";
 
     public static final String UrlGioThieuFAndL = ServerLink + "images/about.html";

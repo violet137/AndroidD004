@@ -7,6 +7,15 @@ package vn.com.greenacademy.shopping.Model.Magazine;
 public class Item_recyclerView_magazine {
     int id;
     String name;
+    String loaiTapChi;
+
+    public String getLoaiTapChi() {
+        return loaiTapChi;
+    }
+
+    public void setLoaiTapChi(String loaiTapChi) {
+        this.loaiTapChi = loaiTapChi;
+    }
 
     public String getName() {
         return name;

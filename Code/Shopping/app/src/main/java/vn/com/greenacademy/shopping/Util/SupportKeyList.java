@@ -54,6 +54,7 @@ public class SupportKeyList {
     public static final String TAG_FRAGMENT_SALE = "Sale";
     public static final String TAG_FRAGMENT_SUPPORT = "Support";
     public static final String TAG_FRAGMENT_CAUHOI = "CacCauHoiThuongGap";
+    public static final String TAG_FRAGMENT_FOLLOWUS = "FollowUs";
     public static final String TAG_FRAGMENT_GOIMAIL = "GoiMail";
     public static final String TAG_FRAGMENT_HTML = "HTML";
 
@@ -62,7 +63,7 @@ public class SupportKeyList {
     public static final int Advertise = 0;
     public static final int Products = 1;
     public static final int NewProduct = 2;
-    public static final int Fashion = 3;
+    public static final int Magazine_video = 3;
 
     public static final int Advertise_Item = 0;
     public static final int Products_Item = 1;
@@ -99,7 +100,6 @@ public class SupportKeyList {
     public static final int Magazine_FASHION = 1;
     public static final int Magazine_BEAUTY = 2;
     public static final int Magazine_CULURE = 3;
-    public static final int Magazine_VIDEO = 4;
 
     // flag async get photo url
     public static final int Banner_Url = -1;
@@ -127,6 +127,8 @@ public class SupportKeyList {
     public static final int ClickSupport_CauHoi = 1;
     public static final int ClickSupport_TheoDoi = 2;
     public static final int ClickSupport_GioiThieu = 3;
+    public static final int ClickSocialNetwork_Facebook = 0;
+    public static final int ClickSocialNetwork_Youtube = 1;
 
     //key danh muc
     public static final String ListDanhMucSP = "ListDanhMucSP";

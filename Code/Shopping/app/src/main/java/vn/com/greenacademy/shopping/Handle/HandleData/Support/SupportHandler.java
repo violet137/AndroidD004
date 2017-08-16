@@ -1,7 +1,10 @@
 package vn.com.greenacademy.shopping.Handle.HandleData.Support;
 
 import android.app.Activity;
+import android.app.SearchManager;
+import android.content.Intent;
 import android.content.res.TypedArray;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
@@ -13,6 +16,7 @@ import java.util.ArrayList;
 
 import vn.com.greenacademy.shopping.Fragment.Home.MainFragment;
 import vn.com.greenacademy.shopping.Fragment.Support.CacCauHoiFragment;
+import vn.com.greenacademy.shopping.Fragment.Support.FollowUsFragment;
 import vn.com.greenacademy.shopping.Fragment.Support.GoiMailFragment;
 import vn.com.greenacademy.shopping.Fragment.Support.SupportFragment;
 import vn.com.greenacademy.shopping.Fragment.Support.ViewHTMLFragment;
@@ -43,6 +47,38 @@ public class SupportHandler extends LoadDataSupportHandler {
         this.activity = activity;
     }
 
+    public void ClickFollowUS (ListView listView){
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Uri web;
+                Intent intent;
+                switch (position){
+                    case SupportKeyList.ClickSocialNetwork_Facebook:
+                        // sử dụng dạng search google
+//                        Intent intent = new Intent(Intent.ACTION_WEB_SEARCH);
+//                        intent.putExtra(SearchManager.QUERY,
+//                                ServerUrl.UrlFacebookFashionAndLife );
+//                        activity.startActivity(intent);
+
+                        // sự dang url web
+                        web = Uri.parse(ServerUrl.UrlFacebookFashionAndLife);
+                        intent = new Intent(Intent.ACTION_VIEW,web);
+                        activity.startActivity(intent);
+
+                        break;
+                    case SupportKeyList.ClickSocialNetwork_Youtube:
+
+                        // sự dang url web
+                        web = Uri.parse(ServerUrl.UrlYouTubeFashionAndLife);
+                        intent = new Intent(Intent.ACTION_VIEW,web);
+                        activity.startActivity(intent);
+
+                        break;
+                }
+            }
+        });
+    }
     public void Cick(ListView listView){
         final BaseFragment baseFragment = new BaseFragment(activity, ((AppCompatActivity)activity).getSupportFragmentManager());
         AdapterView.OnItemClickListener onItemClickListener = new AdapterView.OnItemClickListener() {
@@ -57,7 +93,7 @@ public class SupportHandler extends LoadDataSupportHandler {
                         baseFragment.ChuyenFragment(new CacCauHoiFragment(), SupportKeyList.TAG_FRAGMENT_CAUHOI, true);
                         break;
                     case SupportKeyList.ClickSupport_TheoDoi:
-                        Toast.makeText(activity, "Đang Cập Nhật Hệ Thống...", Toast.LENGTH_SHORT).show();
+                        baseFragment.ChuyenFragment(new FollowUsFragment(), SupportKeyList.TAG_FRAGMENT_FOLLOWUS, true);
                         break;
                     case SupportKeyList.ClickSupport_GioiThieu:
                         baseFragment.ChuyenFragment(new ViewHTMLFragment(ServerUrl.UrlGioThieuFAndL,
@@ -110,11 +146,7 @@ public class SupportHandler extends LoadDataSupportHandler {
 }
 
 class LoadDataSupportHandler implements ServerCallBack {
-
-    int[] arrIcon;
-    String[] arrName;
     Activity activity;
-    ArrayList<Support> supportArrayList;
 
     public LoadDataSupportHandler(Activity activity) {
         this.activity = activity;
@@ -122,15 +154,16 @@ class LoadDataSupportHandler implements ServerCallBack {
 
     // tai du lieu tu file xml cua may vao doi tuong array de dua vao adapter
     public void loadData() {
-        arrName = activity.getResources().getStringArray(R.array.name_support_menu);
+        String[] arrName = activity.getResources().getStringArray(R.array.name_support_menu);
         TypedArray listAnh = activity.getResources().obtainTypedArray(R.array.icon_support_menu);
 
-        arrIcon = new int[arrName.length];
+        int[] arrIcon = new int[arrName.length];
         for(int i=0; i< arrName.length;i++){
             arrIcon[i]=listAnh.getResourceId(i,-1);
         }
 
-        supportArrayList = new ArrayList<>();
+
+        ArrayList<Support> supportArrayList = new ArrayList<>();
         for(int i = 0; i< arrName.length; i++){
             Support support = new Support();
             support.setName(arrName[i]);
@@ -139,6 +172,27 @@ class LoadDataSupportHandler implements ServerCallBack {
         }
 
         SupportFragment.objectCallBack.callBack(supportArrayList,0);
+    }
+
+    public void loadDataSocialNetWork() {
+        String[] arrName = activity.getResources().getStringArray(R.array.name_social_network_menu);
+        TypedArray listAnh = activity.getResources().obtainTypedArray(R.array.icon_social_network_menu);
+
+        int[] arrIcon = new int[arrName.length];
+        for(int i=0; i< arrName.length;i++){
+            arrIcon[i]=listAnh.getResourceId(i,-1);
+        }
+
+
+        ArrayList<Support> supportArrayList = new ArrayList<>();
+        for(int i = 0; i< arrName.length; i++){
+            Support support = new Support();
+            support.setName(arrName[i]);
+            support.setIcon(arrIcon[i]);
+            supportArrayList.add(support);
+        }
+        FollowUsFragment.objectCallBack.callBack(supportArrayList,0);
+
     }
 
     public void loadDataCacCauHoiTG() {
