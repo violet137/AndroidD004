@@ -122,6 +122,10 @@
     <dimen name="gia_tien_vertical_padding">6dp</dimen>
     <dimen name="gia_tien_margin_bottom">100dp</dimen>
 
+    <!-- Danh mục sản phẩm -->
+    <dimen name="item_list_danh_muc_text_size">16sp</dimen>
+    <dimen name="item_danh_muc_margin_top">9dp</dimen>
+
     <!-- Chi tiết danh mục sản phẩm -->
     <dimen name="buttons_height">48dp</dimen>
     <dimen name="buttons_margin_top">15dp</dimen>

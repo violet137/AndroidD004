@@ -8,6 +8,6 @@
         android:id="@+id/vfAdvertise_item_main_menu"
         android:layout_width="match_parent"
         android:layout_height="@dimen/viewFlipper_height"
-        android:background="@drawable/shape_khung">
+        android:background="@drawable/shape_khung_thin">
     </ViewFlipper>
 </LinearLayout>

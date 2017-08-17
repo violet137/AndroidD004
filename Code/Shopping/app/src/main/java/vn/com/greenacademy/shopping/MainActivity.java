@@ -43,27 +43,19 @@ public class MainActivity extends AppCompatActivity implements DataCallBack, Vie
     public static TextView tvTenMuc;
     private DrawerLayout drawerLayout;
     private Toolbar toolbar;
-    private NavigationView navigationView;
-
-//    ArrayList<SlideMenu> arrayModeSlideMenus;
-//    int[] arrIcon;
-//    String[] arrName;
-//    SlideMenu modeSlideMenu;
-//    AdapterSlideMenu adapterSlideMenu;
 
     private BaseFragment baseFragment;
     private DataHandler dataHandler;
     private MySharedPreferences mySharedPref;
     private SlideMenuHandler slideMenuHandler;
     boolean trangThaiListFindStore = false;
+    private static SplashScreenDialog splashScreenDialog;
+
     //Biến cho check network
     private static NetworkDialog networkDialog;
     private static Fragment toFrag;
     private static String fragmetTag;
     private static boolean toBackStack;
-    public static NetworkInfo networkInfo;
-    public static boolean checkFirstTime = false;
-    public static boolean isConnect = false;
 
     public static final int MY_PERMISSIONS_REQUEST_CODE = 1;
 
@@ -116,11 +108,14 @@ public class MainActivity extends AppCompatActivity implements DataCallBack, Vie
 
         //Chạy màn hình splash
         baseFragment.ChuyenFragment(new MainFragment(), null, false);
-        SplashScreenDialog splashScreenDialog = new SplashScreenDialog(MainActivity.this, drawerLayout);
+        splashScreenDialog = new SplashScreenDialog(MainActivity.this, drawerLayout);
         splashScreenDialog.show();
-
     }
 
+    public static void thoatSplashScreen(){
+        if (splashScreenDialog.isShowing())
+            splashScreenDialog.dismiss();
+    }
     @Override
     protected void onPause() {
         super.onPause();

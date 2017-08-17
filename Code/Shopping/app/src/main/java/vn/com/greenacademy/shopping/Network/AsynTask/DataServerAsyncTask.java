@@ -19,6 +19,7 @@ import vn.com.greenacademy.shopping.Handle.HandleData.ParseData.DanhMucSanPham.P
 import vn.com.greenacademy.shopping.Handle.HandleData.ParseData.Product.ParseListSanPham;
 import vn.com.greenacademy.shopping.Handle.HandleData.ParseData.Product.ParseSanPham;
 import vn.com.greenacademy.shopping.Handle.HandleData.ParseData.XuHuongThoiTrang.ParseXuHuongThoiTrang;
+import vn.com.greenacademy.shopping.Handle.HandleUi.Model.Support;
 import vn.com.greenacademy.shopping.Interface.DataCallBack;
 import vn.com.greenacademy.shopping.Model.SetDo;
 import vn.com.greenacademy.shopping.Model.ThongTinSanPham.HinhSanPham;
@@ -33,8 +34,6 @@ import vn.com.greenacademy.shopping.Util.SupportKeyList;
 public class DataServerAsyncTask extends AsyncTask<String, Void, String> {
     private DataCallBack dataCallBack;
     private String API = null;
-    private String phuongThucGet = "GET";
-    private String phuongThucPost = "POST";
 
     public DataServerAsyncTask(DataCallBack dataCallBack) {
         this.dataCallBack = dataCallBack;
@@ -51,10 +50,10 @@ public class DataServerAsyncTask extends AsyncTask<String, Void, String> {
         try {
             URL url = new URL(strings[1]);
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-            //Kiểm tra API được gọi
-            API = strings[0];
-            if (strings[2].equals(phuongThucGet)){
-                try {
+            API = strings[0]; // lưu lại api để xử lý kết quả ở postexcute
+
+            switch (strings[2]){
+                case "GET":
                     //Cài đặt các thiết lập gửi server
                     conn.setRequestProperty("Accept", "application/json");
                     conn.setRequestMethod("GET");
@@ -74,13 +73,39 @@ public class DataServerAsyncTask extends AsyncTask<String, Void, String> {
                             return result.toString("UTF-8");
                         }
                     }
-                } catch (JSONException e) {
-                    return SupportKeyList.LOI_DATA;
-                }
-                return SupportKeyList.LOI_DATA_SERVER;
+                    return SupportKeyList.LOI_DATA_SERVER;
+
+                case "POST":
+                    conn.setRequestProperty("Accept", "application/json");
+                    conn.setRequestProperty("content-type", "application/json; charset=utf-8");
+                    conn.setRequestMethod("POST");
+
+                    OutputStream outputStream = conn.getOutputStream();
+                    JSONObject object = new JSONObject(strings[3]);
+                    outputStream.write(object.toString().getBytes());
+                    conn.connect();
+
+                    if (conn.getResponseCode() == HttpURLConnection.HTTP_OK || conn.getResponseCode() == HttpURLConnection.HTTP_CREATED){
+                        InputStream inputStream= conn.getInputStream();
+                        ByteArrayOutputStream result = new ByteArrayOutputStream();
+                        byte[] buffer = new byte[1024];
+                        int length;
+                        while((length = inputStream.read(buffer)) != -1){
+                            result.write(buffer, 0, length);
+                        }
+
+                        JSONObject obj = new JSONObject(result.toString("UTF-8"));
+                        if (obj.getInt("Status") == 1)
+                            return SupportKeyList.CAP_NHAT_THANH_CONG;
+                        else
+                            return SupportKeyList.CAP_NHAT_THAT_BAI;
+                    }
+                    return SupportKeyList.LOI_DATA_SERVER;
             }
         } catch (IOException e) {
             return SupportKeyList.LOI_KET_NOI;
+        } catch (JSONException e) {
+            return SupportKeyList.LOI_DATA;
         }
         return null;
     }
@@ -90,11 +115,16 @@ public class DataServerAsyncTask extends AsyncTask<String, Void, String> {
         super.onPostExecute(result);
 
         if (!result.isEmpty()) {
-            if (result.equals(SupportKeyList.LOI_KET_NOI) || result.equals(SupportKeyList.LOI_DATA_SERVER)){
+            //Kiểm tra lỗi
+            if (result.equals(SupportKeyList.LOI_KET_NOI) || result.equals(SupportKeyList.LOI_DATA_SERVER))
                 dataCallBack.KetQua(result, null);
-            }
 
-            //Phân loại kết quả của API
+            //Kết quả của phương thức post
+            if (result.equals(SupportKeyList.CAP_NHAT_THANH_CONG) || result.equals(SupportKeyList.CAP_NHAT_THAT_BAI))
+                dataCallBack.KetQua(result, null);
+
+            //Kết quả của phương thức get
+            //Phân loại API
             switch (API) {
                 case SupportKeyList.API_DATA_XU_HUONG_THOI_TRANG:
                     new ParseXuHuongThoiTrang(result, dataCallBack).parseData();

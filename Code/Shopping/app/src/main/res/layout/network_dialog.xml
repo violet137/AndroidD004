@@ -3,7 +3,7 @@
     android:orientation="vertical"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:background="@drawable/shape_khung"
+    android:background="@drawable/shape_khung_thin"
     android:layout_gravity="center"
     android:paddingBottom="20dp">
 
@@ -23,7 +23,7 @@
         android:id="@+id/btn_xac_nhan_message_dialog"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/button_xac_nhan_height"
-        android:background="@drawable/shape_khung"
+        android:background="@drawable/shape_khung_thin"
         android:layout_gravity="center"
         android:text="Thử lại"
         android:textSize="@dimen/button_text_size"/>

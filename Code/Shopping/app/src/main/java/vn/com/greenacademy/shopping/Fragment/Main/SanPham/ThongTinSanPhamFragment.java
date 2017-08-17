@@ -1,6 +1,7 @@
 package vn.com.greenacademy.shopping.Fragment.Main.SanPham;
 
 
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -18,14 +19,19 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.json.JSONArray;
+
 import java.util.ArrayList;
 
-import vn.com.greenacademy.shopping.Handle.HandleUi.ImageLoad;
+import vn.com.greenacademy.shopping.Handle.HandleData.GioHang.GioHangHandler;
+
 import vn.com.greenacademy.shopping.Handle.HandleData.ParseData.Product.ParseNewProductList;
 import vn.com.greenacademy.shopping.Handle.HandleData.SanPhamHandler;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.SanPham.SanPhamPagerAdapter;
+import vn.com.greenacademy.shopping.Handle.HandleUi.ImageLoad;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Model.QuickActionItem;
 import vn.com.greenacademy.shopping.Handle.HandleUi.SanPham.QuickActionPopup;
+import vn.com.greenacademy.shopping.Interface.DataCallBack;
 import vn.com.greenacademy.shopping.Interface.ServerCallBack;
 import vn.com.greenacademy.shopping.Model.ThongTinSanPham.SanPham;
 import vn.com.greenacademy.shopping.Network.AsynTask.GetServerData;
@@ -37,7 +43,7 @@ import vn.com.greenacademy.shopping.Util.Ui.BaseFragment;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ThongTinSanPhamFragment extends Fragment implements View.OnClickListener, ServerCallBack {
+public class ThongTinSanPhamFragment extends Fragment implements View.OnClickListener, ServerCallBack, DataCallBack {
     private TextView tvTenVaMau;
     private TextView tvSoLuong;
     private Button btnSizeInfo;
@@ -49,8 +55,10 @@ public class ThongTinSanPhamFragment extends Fragment implements View.OnClickLis
     private ImageView btnHinh;
     private ViewPager pagerSanPham;
     private QuickActionPopup quickActionPopup;
+    private ProgressDialog progressDialog;
 
     private SanPhamHandler sanPhamHandler;
+    private GioHangHandler gioHangHandler;
     private SanPhamPagerAdapter sanPhamPagerAdapter;
     private ImageLoad imageLoad;
     private ArrayList<SanPham> listSanPham = new ArrayList<>();
@@ -60,6 +68,7 @@ public class ThongTinSanPhamFragment extends Fragment implements View.OnClickLis
     private int idSanPham;
     private int position;
     private String mauDuocChon;
+    private String sizeDuocChon = null;
     private String callFrom = "";
     private boolean isFromBackStack = false;
 
@@ -85,9 +94,11 @@ public class ThongTinSanPhamFragment extends Fragment implements View.OnClickLis
             getServerData.execute(ServerUrl.UrlDanhSachSPMoi+"20", String.valueOf(SupportKeyList.NewProduct_Url));
         }
         imageLoad = new ImageLoad(getActivity());
+        gioHangHandler = new GioHangHandler(getActivity(), this);
         sanPhamHandler = new SanPhamHandler(getActivity());
         sanPhamPagerAdapter = new SanPhamPagerAdapter(getChildFragmentManager(),listSanPham);
         bundleForPage = new Bundle();
+        progressDialog = new ProgressDialog(getActivity());
     }
 
     @Override
@@ -195,7 +206,14 @@ public class ThongTinSanPhamFragment extends Fragment implements View.OnClickLis
                 quickActionPopup.show(v);
                 break;
             case R.id.button_them_san_pham:
-                Toast.makeText(getActivity(), "Thêm vào giỏ hàng", Toast.LENGTH_LONG).show();
+                if (sizeDuocChon == null){
+                    setUpQuickActionSize();
+                    quickActionPopup.show(v);
+                }
+                else {
+                    progressDialog.show();
+                    gioHangHandler.themSanPhamGioHang(sanPham.getIdSanPham(), 1, sizeDuocChon, mauDuocChon);
+                }
                 break;
         }
     }
@@ -232,6 +250,7 @@ public class ThongTinSanPhamFragment extends Fragment implements View.OnClickLis
             public void onItemClick(QuickActionPopup source, int pos, String actionId) {
                 for (int i = 0; i < sanPham.getSize().length; i++) {
                     if (actionId.equals(sanPham.getSize()[i])) {
+                        sizeDuocChon = sanPham.getSize()[i];
                         btnSizeInfo.setText(sanPham.getSize()[i]);
                     }
                 }
@@ -343,6 +362,19 @@ public class ThongTinSanPhamFragment extends Fragment implements View.OnClickLis
         sanPhamPagerAdapter.updateUiSinglePage(position, SanPhamPagerAdapter.ACTION_SHOW_GIA, null);
     }
 
+    private int findSanPhamPosition(int idSanPham, ArrayList<SanPham> listSanPham) {
+        if (idSanPham == -1){
+            return 11;
+        }
+        else {
+            for (int i = 0; i < listSanPham.size(); i++) {
+                if (idSanPham == listSanPham.get(i).getIdSanPham())
+                    return i;
+            }
+        }
+        return -1;
+    }
+
     @Override
     public void serverCallBack(String dataServer) {
 
@@ -364,16 +396,23 @@ public class ThongTinSanPhamFragment extends Fragment implements View.OnClickLis
         }
     }
 
-    private int findSanPhamPosition(int idSanPham, ArrayList<SanPham> listSanPham) {
-        if (idSanPham == -1){
-            return 11;
+
+    @Override
+    public void KetQua(String result, @Nullable Bundle bundle) {
+        switch (result){
+            case SupportKeyList.LOI_DATA_SERVER:
+                Toast.makeText(getActivity(), getString(R.string.toast_loi_data_server), Toast.LENGTH_SHORT).show();
+                break;
+            case SupportKeyList.LOI_DATA:
+                Toast.makeText(getActivity(), getString(R.string.toast_loi_data), Toast.LENGTH_SHORT).show();
+                break;
+            case SupportKeyList.CAP_NHAT_THANH_CONG:
+                Toast.makeText(getActivity(), "Thêm thành công!", Toast.LENGTH_SHORT).show();
+                break;
+            case SupportKeyList.CAP_NHAT_THAT_BAI:
+                Toast.makeText(getActivity(), "Thêm thất bại!", Toast.LENGTH_SHORT).show();
+                break;
         }
-        else {
-            for (int i = 0; i < listSanPham.size(); i++) {
-                if (idSanPham == listSanPham.get(i).getIdSanPham())
-                    return i;
-            }
-        }
-        return -1;
+        progressDialog.dismiss();
     }
 }

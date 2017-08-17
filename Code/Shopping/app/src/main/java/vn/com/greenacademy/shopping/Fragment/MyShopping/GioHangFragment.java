@@ -38,7 +38,7 @@ public class GioHangFragment extends Fragment implements View.OnClickListener {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragmentTextView tvTenTaiKhoan = (TextView) root.findViewById(R.id.tvTenTaiKhoan_FragmentGioHang);[]\
+        // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_gio_hang, container, false);
         TextView nutInspiration = (TextView) root.findViewById(R.id.nut_inspiration_gio_hang);
         TextView nutShopping = (TextView) root.findViewById(R.id.nut_shopping_gio_hang);
