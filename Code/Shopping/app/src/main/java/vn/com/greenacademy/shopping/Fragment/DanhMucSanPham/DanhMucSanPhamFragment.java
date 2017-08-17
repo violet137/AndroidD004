@@ -1,4 +1,4 @@
-package vn.com.greenacademy.shopping.Fragment.Main.DanhMucSanPham;
+package vn.com.greenacademy.shopping.Fragment.DanhMucSanPham;
 
 
 import android.os.Bundle;
@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import vn.com.greenacademy.shopping.Handle.HandleData.DanhMucSanPham.ClickListenerDanhMucSanPham;
 import vn.com.greenacademy.shopping.Handle.HandleData.DanhMucSanPham.DanhMucSPHandler;
 import vn.com.greenacademy.shopping.Interface.ObjectCallBack;
+import vn.com.greenacademy.shopping.MainActivity;
 import vn.com.greenacademy.shopping.Model.Home.MenuPhoto;
 import vn.com.greenacademy.shopping.Model.DanhMuc.MucSanPham;
 import vn.com.greenacademy.shopping.Model.ThongTinSanPham.SanPham;
@@ -83,6 +84,27 @@ public class DanhMucSanPhamFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        MainActivity.tvTenMuc.setVisibility(View.VISIBLE);
+        switch (idDanhMuc){
+            case "Nu":
+                MainActivity.tvTenMuc.setText("Nữ");
+                break;
+            case "Nam":
+                MainActivity.tvTenMuc.setText("Nam");
+                break;
+            case "TreEm":
+                MainActivity.tvTenMuc.setText("Trẻ Em");
+                break;
+            case "TapChi":
+                MainActivity.tvTenMuc.setText("Tạp Chí");
+                break;
+            case "Home":
+                MainActivity.tvTenMuc.setText("Trang Trí");
+                break;
+            default:
+                MainActivity.tvTenMuc.setVisibility(View.GONE);
+                break;
+        }
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_danh_muc_san_pham, container, false);
 
@@ -121,8 +143,10 @@ public class DanhMucSanPhamFragment extends Fragment {
                     case SupportKeyList.ClickDanhMuc_HotProduct:
                         llXemTatCa.setVisibility(View.VISIBLE);
                         dataHotProduct = ((MenuPhoto)object).getSanPhamArrayList();
-                        vpHotProduct.setAdapter(danhMucSPHandler.getAdapterHotProduct(getChildFragmentManager(),dataHotProduct));
-                        itemHotProduct.setVisibility(View.VISIBLE);
+                        if (dataHotProduct.size()>0){
+                            vpHotProduct.setAdapter(danhMucSPHandler.getAdapterHotProduct(getChildFragmentManager(),dataHotProduct));
+                            itemHotProduct.setVisibility(View.VISIBLE);
+                        }
                         break;
                     default:
                         Toast.makeText(getActivity(),"Lổi case DanhMucSanPhamFragment", Toast.LENGTH_LONG).show();
@@ -142,9 +166,10 @@ public class DanhMucSanPhamFragment extends Fragment {
 
             rvMenu.setAdapter(danhMucSPHandler.getAdapterListDM(dataMucSanPham));
 
-            vpHotProduct.setAdapter(danhMucSPHandler.getAdapterHotProduct(getChildFragmentManager(),dataHotProduct));
-
-            llXemTatCa.setVisibility(View.VISIBLE);
+            if (dataHotProduct.size()>0){
+                vpHotProduct.setAdapter(danhMucSPHandler.getAdapterHotProduct(getChildFragmentManager(),dataHotProduct));
+                itemHotProduct.setVisibility(View.VISIBLE);
+            }
 
             itemHotProduct.setVisibility(View.VISIBLE);
         }

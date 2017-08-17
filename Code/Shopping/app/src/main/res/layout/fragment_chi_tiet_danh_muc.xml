@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/colorBackgroundFront"
-    tools:context="vn.com.greenacademy.shopping.Fragment.Main.DanhMucSanPham.ChiTietDanhMucFragment">
+    tools:context=".Fragment.DanhMucSanPham.ChiTietDanhMucFragment">
 
     <!-- Title bar-->
     <LinearLayout
