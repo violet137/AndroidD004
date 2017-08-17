@@ -157,10 +157,10 @@ public class SanPhamHandler {
             for (int i = 0; i < sanPham.getSize().length; i++) {
                 if (size.equals(sanPham.getSize()[i])){
                     //Chạy từng sản phẩm để lấy màu
+                    //Nếu là sản phẩm đầu tiên thì add toàn bộ màu vào list result
                     if (sttSanPham == 0){
                         Collections.addAll(result, sanPham.getMauSanPham());
                     } else {
-                        //Màu
                         for (sttMauListSanPham = 0; sttMauListSanPham < sanPham.getMauSanPham().length; sttMauListSanPham++) {
                             //So sanh từng màu của 1 sản phẩm với màu trong list màu
                             for (sttListMau = 0; sttListMau < result.size(); sttListMau++) {

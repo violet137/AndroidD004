@@ -43,7 +43,7 @@
         android:paddingLeft="@dimen/horizontal_padding"
         android:paddingRight="@dimen/horizontal_padding"
         android:paddingBottom="@dimen/gio_hang_vertical_padding"
-        android:background="@drawable/shape_khung">
+        android:background="@drawable/shape_khung_thin">
         <!-- Nội dung -->
         <TextView
             android:layout_width="match_parent"
@@ -128,7 +128,7 @@
         android:paddingLeft="@dimen/horizontal_padding"
         android:drawableLeft="@drawable/ic_menu_gallery"
         android:drawablePadding="10dp"
-        android:background="@drawable/shape_khung"
+        android:background="@drawable/shape_khung_thin"
         android:gravity="center_vertical"
         android:text="@string/bat_dau_mua_sam"
         android:textSize="@dimen/text_size"

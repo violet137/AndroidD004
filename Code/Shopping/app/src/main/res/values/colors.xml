@@ -11,7 +11,7 @@
     <color name="colorChuButtonDangNhap">#ffff</color>
     <color name="scrim">#90000000</color>
     <color name="scrimWhite">#C4FFFFFF</color>
-
+    <color name="colorDivider">#bebebe</color>
     <!-- Màu sản phẩm -->
     <color name="cam">#ffff8800</color>
     <color name="den">#000000</color>

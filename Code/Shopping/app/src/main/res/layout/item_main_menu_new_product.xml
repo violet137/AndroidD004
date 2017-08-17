@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:id="@+id/item_iv_fashion"
-    android:background="@drawable/shape_khung"
+    android:background="@drawable/shape_khung_thin"
     android:orientation="vertical"
     android:paddingBottom="@dimen/san_pham_moi_padding_bottom">
 

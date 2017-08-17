@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="@dimen/view_pager_san_pham_moi"
+    android:background="@color/colorBackgroundFront"
     tools:activity="vn.com.greenacademy.shopping.Fragment.Home.NewProductFragmentViewPager">
 
     <!-- TODO: Update blank fragment layout -->
@@ -35,8 +36,7 @@
                     android:layout_marginRight="@dimen/item_hinh_margin_right"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:scaleType="centerCrop"
-                    app:srcCompat="@drawable/banner_xu_huong_thoi_trang" />
+                    android:scaleType="centerCrop" />
 
                 <!-- Tên sản phẩm -->
                 <TextView
@@ -89,8 +89,7 @@
                     android:layout_marginRight="@dimen/item_hinh_margin_left"
                     android:layout_marginLeft="@dimen/item_hinh_margin_right"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:srcCompat="@drawable/banner_test2" />
+                    android:layout_height="wrap_content"/>
 
                 <!-- Tên -->
                 <TextView
@@ -149,8 +148,7 @@
                     android:layout_marginLeft="@dimen/item_hinh_margin_left"
                     android:layout_marginRight="@dimen/item_hinh_margin_right"
                     android:layout_weight="1"
-                    android:scaleType="centerCrop"
-                    app:srcCompat="@drawable/banner_test1" />
+                    android:scaleType="centerCrop" />
 
                 <TextView
                     android:id="@+id/tvNameProduct_3_NewProductFragment"
@@ -199,8 +197,7 @@
                     android:layout_marginRight="@dimen/item_hinh_margin_left"
                     android:layout_marginLeft="@dimen/item_hinh_margin_right"
                     android:layout_weight="1"
-                    android:scaleType="centerCrop"
-                    app:srcCompat="@drawable/banner_test2" />
+                    android:scaleType="centerCrop" />
 
                 <TextView
                     android:id="@+id/tvNameProduct_4_NewProductFragment"
@@ -238,6 +235,7 @@
                 android:layout_height="190dp"
                 android:layout_weight="1"
                 android:id="@+id/llNewProduct_5_NewProductFragment"
+                android:padding="20dp"
                 android:visibility="gone"
                 android:orientation="vertical">
 
@@ -245,15 +243,16 @@
                         android:id="@+id/textView12"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:paddingBottom="30dp"
                         android:layout_marginTop="@dimen/item_hinh_vertical_margin"
                         android:layout_marginBottom="@dimen/item_hinh_vertical_margin"
                         android:layout_marginRight="@dimen/item_hinh_margin_left"
                         android:layout_marginLeft="@dimen/item_hinh_margin_right"
                         android:layout_weight="1"
-                        android:background="@drawable/shape_khung_more_product"
+                        android:background="@drawable/shape_khung_oval_thin"
                         android:gravity="center"
-                        android:text="+"
-                        android:textSize="120dp" />
+                        android:text="..."
+                        android:textSize="70dp" />
             </LinearLayout>
 
         </LinearLayout>

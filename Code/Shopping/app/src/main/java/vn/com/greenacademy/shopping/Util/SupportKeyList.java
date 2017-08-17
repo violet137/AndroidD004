@@ -11,6 +11,9 @@ public class SupportKeyList {
     public static final String API_DATA_XU_HUONG_THOI_TRANG = "api_data_xu_huong_thoi_trang";
     public static final String API_DATA_SAN_PHAM_CHI_TIET_DANH_MUC = "api_data_chi_tiet_danh_muc";
     public static final String API_DATA_SAN_PHAM_THEO_THOI_TRANG = "api_data_san_pham_theo_thoi_trang";
+    public static final String API_THEM_GIO_HANG = "api_them_gio_hang";
+    public static final String API_XOA_GIO_HANG = "api_xoa_gio_hang";
+    public static final String API_UPDATE_GIO_HANG = "api_update_gio_hang";
 
     //Key Data
     public static final String SHAREDPREF_TEN_FILE = "vn.com.greenacademy.shopping.MY_SHAREDPREF";
@@ -33,6 +36,8 @@ public class SupportKeyList {
     public static final String DANG_KY_THAT_BAI = "dang_ky_that_bai";
     public static final String DANG_KY_THANH_CONG = "dang_ky_thanh_cong";
     public static final String LAY_DATA_THANH_CONG = "lay_data_thanh_cong";
+    public static final String CAP_NHAT_THANH_CONG = "cap_nhat_thanh_cong";
+    public static final String CAP_NHAT_THAT_BAI = "cap_nhat_that_bai";
 
     //Key tag
     public static final String TAG_FRAGMENT_MAIN = "MainFragment";

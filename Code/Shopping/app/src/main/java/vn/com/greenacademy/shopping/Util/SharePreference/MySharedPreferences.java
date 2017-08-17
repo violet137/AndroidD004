@@ -88,5 +88,19 @@ public class MySharedPreferences {
         editor.commit();
     }
 
+    //Key giỏ hàng
 
+    public String getGioHang() {
+        return sharedPreferences.getString(KEY_GIO_HANG, null);
+    }
+
+    public void setGioHang(String dataGioHang){
+        editor.putString(KEY_GIO_HANG, dataGioHang);
+        editor.commit();
+    }
+
+    public void removeGioHang(){
+        editor.remove(KEY_GIO_HANG);
+        editor.commit();
+    }
 }

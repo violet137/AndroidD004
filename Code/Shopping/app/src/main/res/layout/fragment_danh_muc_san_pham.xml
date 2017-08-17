@@ -22,21 +22,15 @@
                 android:layout_width="match_parent">
             </include>
 
-            <!-- Sản phẩm mới -->
-            <include
-                layout="@layout/item_new_product_3sp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/layout_margin_10dp">
-            </include>
-
+            <!-- Xem tất cả -->
             <LinearLayout
                 android:id="@+id/llXemAll_DanhMucSanPham_Fragment"
                 android:layout_width="match_parent"
-                android:visibility="gone"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
-
+                android:visibility="gone"
+                android:orientation="vertical"
+                android:layout_marginTop="@dimen/item_danh_muc_margin_top"
+                android:background="@drawable/shape_khung_thin">
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -45,14 +39,23 @@
                     android:layout_marginTop="@dimen/textView_pandding_left_15dp"
                     android:text="Xem Tất Cả"
                     android:textColor="#ff000000"
-                    android:textSize="@dimen/text_size_20dp" />
+                    android:textSize="@dimen/item_list_danh_muc_text_size" />
             </LinearLayout>
 
+            <!-- List danh mục -->
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/rvMenu_DanhMucSanPham_Fragment"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:background="@color/colorBackgroundFront"/>
 
+            <!-- Sản phẩm mới -->
+            <include
+                layout="@layout/item_new_product_3sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/item_danh_muc_margin_top">
+            </include>
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
 

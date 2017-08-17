@@ -8,6 +8,7 @@
         android:id="@+id/ivFashion_item_main_menu"
         android:layout_width="match_parent"
         android:layout_height="@dimen/imageView_height"
-        android:scaleType="centerCrop" />
+        android:scaleType="centerCrop"
+        android:background="@drawable/shape_khung_thin"/>
 
 </LinearLayout>
