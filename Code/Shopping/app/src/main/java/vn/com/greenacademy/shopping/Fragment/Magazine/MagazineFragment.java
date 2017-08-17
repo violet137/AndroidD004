@@ -1,6 +1,8 @@
 package vn.com.greenacademy.shopping.Fragment.Magazine;
 
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
@@ -14,12 +16,12 @@ import java.util.ArrayList;
 
 import vn.com.greenacademy.shopping.Handle.HandleData.Magazine.MagazineHandler;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.Magazine.AdapterMagazineViewPager;
-import vn.com.greenacademy.shopping.Interface.MagazineCallBack;
 import vn.com.greenacademy.shopping.Interface.ObjectCallBack;
 import vn.com.greenacademy.shopping.MainActivity;
-import vn.com.greenacademy.shopping.Model.Magazine;
-import vn.com.greenacademy.shopping.Model.MagazineType;
+import vn.com.greenacademy.shopping.Model.Magazine.MagazineDetail;
+import vn.com.greenacademy.shopping.Model.Magazine.MagazineType;
 import vn.com.greenacademy.shopping.R;
+import vn.com.greenacademy.shopping.Util.SupportKeyList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -29,6 +31,7 @@ public class MagazineFragment extends Fragment {
     public static ObjectCallBack objectCallBack;
 
     boolean listenerBack = false;
+    boolean listenerNotPause = true;
 
     TabLayout tabLayout;
     ViewPager viewPager;
@@ -96,13 +99,25 @@ public class MagazineFragment extends Fragment {
                                 getChildFragmentManager(),(ArrayList<MagazineType>)object));
                         break;
                     case 1:
-                        for (int i = 0; i < ((AdapterMagazineViewPager)object).getCount(); i++) {
-                            tabLayout.addTab(tabLayout.newTab().setText(((AdapterMagazineViewPager)object).getTitle(i)));
+                        if (listenerNotPause){
+                            for (int i = 0; i < ((AdapterMagazineViewPager)object).getCount(); i++) {
+                                tabLayout.addTab(tabLayout.newTab().setText(((AdapterMagazineViewPager)object).getTitle(i)));
+                            }
                         }
+                        break;
+                    case SupportKeyList.Magazine_video:
+                        MagazineDetail magazineDetail = (MagazineDetail) object;
+                        // sự dang url web
+                        Uri web = Uri.parse(magazineDetail.getNoiDung());
+                        Intent intent = new Intent(Intent.ACTION_VIEW,web);
+                        startActivity(intent);
+                        listenerNotPause = false;
                         break;
                 }
             }
         };
+
+        listenerNotPause = true;
 
         //reset option menu
         getActivity().supportInvalidateOptionsMenu();

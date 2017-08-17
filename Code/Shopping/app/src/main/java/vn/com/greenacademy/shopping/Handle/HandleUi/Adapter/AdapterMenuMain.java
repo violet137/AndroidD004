@@ -13,7 +13,7 @@ import android.widget.ViewFlipper;
 import java.util.ArrayList;
 import java.util.List;
 
-import vn.com.greenacademy.shopping.Handle.HandleData.ImageLoad;
+import vn.com.greenacademy.shopping.Handle.HandleUi.ImageLoad;
 import vn.com.greenacademy.shopping.Model.Home.AdvertisePhoto;
 import vn.com.greenacademy.shopping.Model.Home.BannerPhoto;
 import vn.com.greenacademy.shopping.Model.Home.MenuMain;

@@ -1,4 +1,4 @@
-package vn.com.greenacademy.shopping.Handle.HandleData;
+package vn.com.greenacademy.shopping.Handle.HandleData.Store;
 
 import android.Manifest;
 import android.app.Activity;
@@ -82,11 +82,6 @@ public class FindStoreHandler implements OnMapReadyCallback, ServerCallBack {
             Toast.makeText(getApplicationContext(), "ko the lay vi tri" , Toast.LENGTH_LONG).show();
         }
     }
-
-//    @Override
-//    public void storeCallBack(ArrayList<Store> storeArrayList) {
-//
-//    }
 
     @Override
     public void onMapReady(GoogleMap googleMap) {

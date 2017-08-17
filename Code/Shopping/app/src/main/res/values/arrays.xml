@@ -96,7 +96,7 @@
     <string-array name="name_support_menu">
         <item>Liên Hệ</item>
         <item>Các Câu Hỏi Thường Gặp</item>
-        <item>Theo Dỏi Chúng Tôi</item>
+        <item>Kết Nối Với Chúng Tôi</item>
         <item>Giới Thiệu F&amp;L Fashion and File </item>
     </string-array>
 
@@ -105,6 +105,20 @@
         <item>@drawable/question</item>
         <item>@drawable/follow</item>
         <item>@drawable/touching</item>
+    </string-array>
+
+    <string-array name="name_social_network_menu">
+        <item>Facebook</item>
+        <item>Youtube</item>
+        <item>Google +</item>
+        <item>Instagram</item>
+    </string-array>
+
+    <string-array name="icon_social_network_menu">
+        <item>@drawable/facebook</item>
+        <item>@drawable/youtube</item>
+        <item>@drawable/google_plus</item>
+        <item>@drawable/instagram</item>
     </string-array>
 
 </resources>

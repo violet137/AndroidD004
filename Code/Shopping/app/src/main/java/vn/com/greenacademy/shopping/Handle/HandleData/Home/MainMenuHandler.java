@@ -10,7 +10,7 @@ import android.widget.ViewFlipper;
 import java.util.ArrayList;
 
 import vn.com.greenacademy.shopping.Fragment.Home.MainFragment;
-import vn.com.greenacademy.shopping.Handle.HandleData.ImageLoad;
+import vn.com.greenacademy.shopping.Handle.HandleUi.ImageLoad;
 import vn.com.greenacademy.shopping.Handle.HandleData.ParseData.Product.ParseNewProductList;
 import vn.com.greenacademy.shopping.Handle.HandleData.ParseData.Main.ParseAdvertise;
 import vn.com.greenacademy.shopping.Handle.HandleData.ParseData.Main.ParseBanner;

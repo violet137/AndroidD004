@@ -18,7 +18,7 @@ import android.widget.ViewFlipper;
 import java.util.ArrayList;
 
 import vn.com.greenacademy.shopping.Handle.HandleData.Home.ClickListenerHomeItem;
-import vn.com.greenacademy.shopping.Handle.HandleData.ImageLoad;
+import vn.com.greenacademy.shopping.Handle.HandleUi.ImageLoad;
 import vn.com.greenacademy.shopping.Model.Home.ItemHome;
 import vn.com.greenacademy.shopping.Model.Home.MenuMain;
 import vn.com.greenacademy.shopping.R;

@@ -7,10 +7,7 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 
 import java.util.ArrayList;
 
-import vn.com.greenacademy.shopping.Fragment.Home.NewProductFragmentViewPager;
-import vn.com.greenacademy.shopping.Fragment.Main.DanhMucSanPham.HotProductViewPagerFragment;
-import vn.com.greenacademy.shopping.Model.MucSanPham;
-import vn.com.greenacademy.shopping.Model.ThongTinSanPham.SanPham;
+import vn.com.greenacademy.shopping.Model.DanhMuc.MucSanPham;
 
 /**
  * Created by ADMIN on 8/13/2017.

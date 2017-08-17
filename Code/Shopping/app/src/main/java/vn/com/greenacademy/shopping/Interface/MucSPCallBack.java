@@ -2,7 +2,7 @@ package vn.com.greenacademy.shopping.Interface;
 
 import java.util.ArrayList;
 
-import vn.com.greenacademy.shopping.Model.MucSanPham;
+import vn.com.greenacademy.shopping.Model.DanhMuc.MucSanPham;
 
 /**
  * Created by ADMIN on 8/2/2017.

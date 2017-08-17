@@ -28,15 +28,6 @@ public class PostIDNew  extends AsyncTask<Object, Object, String> {
     public PostIDNew(ErrorCallBack errorCallBack) {
         this.errorCallBack = errorCallBack;
     }
-//    String id;
-//    String pass;
-//    String name;
-//
-//    public PostIDNew (String id, String pass, String name) {
-//        this.id = id;
-//        this.pass = pass;
-//        this.name = name;
-//    }
 
     @Override
     protected String doInBackground(Object... params) {

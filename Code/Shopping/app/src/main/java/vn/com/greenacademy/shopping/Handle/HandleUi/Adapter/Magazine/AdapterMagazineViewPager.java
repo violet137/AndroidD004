@@ -8,7 +8,7 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import java.util.ArrayList;
 
 import vn.com.greenacademy.shopping.Fragment.Magazine.MagazineRecyclerViewFragment;
-import vn.com.greenacademy.shopping.Model.MagazineType;
+import vn.com.greenacademy.shopping.Model.Magazine.MagazineType;
 
 /**
  * Created by ADMIN on 7/22/2017.

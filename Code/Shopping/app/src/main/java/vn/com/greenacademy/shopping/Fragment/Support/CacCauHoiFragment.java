@@ -2,15 +2,19 @@ package vn.com.greenacademy.shopping.Fragment.Support;
 
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
+import java.util.ArrayList;
+
 import vn.com.greenacademy.shopping.Handle.HandleData.Support.SupportHandler;
 import vn.com.greenacademy.shopping.Interface.ObjectCallBack;
 import vn.com.greenacademy.shopping.MainActivity;
+import vn.com.greenacademy.shopping.Model.Support.CauHoiTG;
 import vn.com.greenacademy.shopping.R;
 
 /**
@@ -18,10 +22,26 @@ import vn.com.greenacademy.shopping.R;
  */
 public class CacCauHoiFragment extends Fragment {
 
+    boolean listenBack = false;
+
     public static ObjectCallBack objectCallBack;
+
+    public static ArrayList<CauHoiTG> cauHoiTGArrayList;
+
+    ListView lvCauHoi;
+
+    SupportHandler supportHandler;
 
     public CacCauHoiFragment() {
         // Required empty public constructor
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        supportHandler = new SupportHandler(getActivity());
+        supportHandler.loadDataCacCauHoiTG();
+
     }
 
     @Override
@@ -32,22 +52,32 @@ public class CacCauHoiFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_cac_cau_hoi, container, false);
 
-        final ListView lvCauHoi = (ListView) view.findViewById(R.id.lvCauHoi_CacCauHoiFragment);
+        lvCauHoi = (ListView) view.findViewById(R.id.lvCauHoi_CacCauHoiFragment);
 
-        final SupportHandler supportHandler = new SupportHandler(getActivity());
 
         supportHandler.ClickCauHoi(lvCauHoi);
 
         objectCallBack = new ObjectCallBack() {
             @Override
             public void callBack(Object object, int flag) {
-                lvCauHoi.setAdapter(supportHandler.getAdapterCacCauHoi(object));
+                cauHoiTGArrayList = (ArrayList<CauHoiTG>) object;
+                lvCauHoi.setAdapter(supportHandler.getAdapterCacCauHoi(cauHoiTGArrayList));
             }
         };
-
-        supportHandler.loadDataCacCauHoiTG();
-
         return view;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (listenBack){
+            lvCauHoi.setAdapter(supportHandler.getAdapterCacCauHoi(cauHoiTGArrayList));
+        }
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        listenBack = true;
+    }
 }

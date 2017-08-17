@@ -10,7 +10,7 @@ import android.widget.ListView;
 
 import com.google.android.gms.maps.SupportMapFragment;
 
-import vn.com.greenacademy.shopping.Handle.HandleData.FindStoreHandler;
+import vn.com.greenacademy.shopping.Handle.HandleData.Store.FindStoreHandler;
 import vn.com.greenacademy.shopping.MainActivity;
 import vn.com.greenacademy.shopping.Network.AsynTask.GetServerData;
 import vn.com.greenacademy.shopping.R;

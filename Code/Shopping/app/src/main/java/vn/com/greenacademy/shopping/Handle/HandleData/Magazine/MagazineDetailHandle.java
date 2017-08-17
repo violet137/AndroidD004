@@ -9,12 +9,14 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.Toast;
 
+import vn.com.greenacademy.shopping.Fragment.Magazine.MagazineFragment;
 import vn.com.greenacademy.shopping.Handle.HandleData.ParseData.Magazine.ParseMagazineDetail;
 import vn.com.greenacademy.shopping.Interface.ServerCallBack;
 import vn.com.greenacademy.shopping.MainActivity;
-import vn.com.greenacademy.shopping.Model.MagazineDetail;
+import vn.com.greenacademy.shopping.Model.Magazine.MagazineDetail;
 import vn.com.greenacademy.shopping.Network.AsynTask.GetServerData;
 import vn.com.greenacademy.shopping.Util.ServerUrl;
+import vn.com.greenacademy.shopping.Util.SupportKeyList;
 
 /**
  * Created by ADMIN on 7/30/2017.
@@ -29,9 +31,6 @@ public class MagazineDetailHandle implements ServerCallBack{
     }
 
     public void getData(String id){
-//        GetMagazineDetail getMagazineDetail = new GetMagazineDetail(this);
-//        getMagazineDetail.execute(ServerUrl.UrlMagazineDetail+id);
-
         GetServerData getServerData = new GetServerData(this);
         getServerData.execute(ServerUrl.UrlMagazineDetail+id);
     }
@@ -61,11 +60,11 @@ public class MagazineDetailHandle implements ServerCallBack{
 
     }
 
-    public class WebAppInterface {
+    public static class WebAppInterface {
         Context mContext;
 
         /** Instantiate the interface and set the context */
-        WebAppInterface(Context c) {
+        public WebAppInterface(Context c) {
             mContext = c;
         }
 
@@ -88,9 +87,4 @@ public class MagazineDetailHandle implements ServerCallBack{
         Intent intent2 = new Intent(Intent.ACTION_VIEW, uri);
         activity.startActivity(intent2);
     }
-
-//    @Override
-//    public void magazineDetailCallBack(MagazineDetail magazineDetail) {
-//
-//    }
 }

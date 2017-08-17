@@ -29,7 +29,7 @@ import vn.com.greenacademy.shopping.Fragment.MyShopping.TaiKhoan.DangNhapKhongLu
 import vn.com.greenacademy.shopping.Fragment.Store.FindStoreFragment;
 import vn.com.greenacademy.shopping.Handle.HandleData.DataHandler;
 import vn.com.greenacademy.shopping.Handle.HandleData.TaiKhoan.GoogleHandler;
-import vn.com.greenacademy.shopping.Handle.HandleData.SlideMenuHandler;
+import vn.com.greenacademy.shopping.Handle.HandleData.SlideMenu.SlideMenuHandler;
 import vn.com.greenacademy.shopping.Handle.HandleUi.ActivityHandler;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Dialog.NetworkDialog;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Dialog.SplashScreenDialog;

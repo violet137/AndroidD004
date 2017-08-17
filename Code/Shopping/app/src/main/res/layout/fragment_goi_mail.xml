@@ -11,39 +11,119 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <Spinner
-            android:id="@+id/spinner2"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:padding="@dimen/horizontal_padding_7dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-        <EditText
-            android:id="@+id/ten_dang_nhap_edittext_fragment_dang_nhap"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/edittext_height"
-            android:background="@drawable/shape_edit_text"
-            android:paddingLeft="@dimen/edittext_padding"
-            android:textSize="@dimen/text_size" />
+            <TextView
+                android:textColor="#ff000000"
+                android:textSize="@dimen/text_size_15dp"
+                android:textStyle="bold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Mẫu Tin Liên Hệ" />
 
-        <EditText
-            android:id="@+id/ten_dang_nhap_edittext_fragment_dang_nhap"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/edittext_height"
-            android:background="@drawable/shape_edit_text"
-            android:paddingLeft="@dimen/edittext_padding"
-            android:textSize="@dimen/text_size" />
+            <TextView
+                android:textColor="#ff000000"
+                android:paddingTop="@dimen/horizontal_padding_7dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="  Để nâng cao chất lượng phụ vụ khách hàng. Hãy gữi vấn đề của bạn cho chúng tôi." />
+        </LinearLayout>
 
-        <EditText
-            android:id="@+id/ten_dang_nhap_edittext_fragment_dang_nhap"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/edittext_height"
-            android:background="@drawable/shape_edit_text"
-            android:paddingLeft="@dimen/edittext_padding"
-            android:textSize="@dimen/text_size" />
-
-        <Button
-            android:id="@+id/button2"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Button" />
+            android:orientation="vertical"
+            android:padding="@dimen/horizontal_padding_7dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Loại Vấn Đề: *"
+                android:textColor="#ff000000" />
+
+            <Spinner
+                android:id="@+id/snLoaiVD_GoiMail_Fragment"
+                android:background="@drawable/shape_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/edittext_height" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:padding="@dimen/horizontal_padding_7dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:textColor="#ff000000"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nội Dung: *" />
+
+            <EditText
+                android:id="@+id/etNoiDung_GoiMail_Fragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/shape_edit_text"
+                android:paddingLeft="@dimen/edittext_padding"
+                android:textSize="@dimen/text_size" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:padding="@dimen/horizontal_padding_7dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:textColor="#ff000000"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Tên Của Bạn: *" />
+
+            <EditText
+                android:id="@+id/etTen_GoiMail_Fragment"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/edittext_height"
+                android:background="@drawable/shape_edit_text"
+                android:paddingLeft="@dimen/edittext_padding"
+                android:textSize="@dimen/text_size" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:padding="@dimen/horizontal_padding_7dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Email Của Bạn: *"
+                android:textColor="#ff000000" />
+
+            <EditText
+                android:id="@+id/etEmail_GoiMail_Fragment"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/edittext_height"
+                android:background="@drawable/shape_edit_text"
+                android:paddingLeft="@dimen/edittext_padding"
+                android:textSize="@dimen/text_size" />
+        </LinearLayout>
+
+        <Button
+            android:layout_margin="@dimen/horizontal_padding_7dp"
+            android:id="@+id/btnGui_GoiMail_Fragment"
+            android:layout_width="match_parent"
+            android:background="#FF000000"
+            android:textColor="@color/cardview_light_background"
+            android:layout_height="wrap_content"
+            android:text="Gữi" />
     </LinearLayout>
 </FrameLayout>

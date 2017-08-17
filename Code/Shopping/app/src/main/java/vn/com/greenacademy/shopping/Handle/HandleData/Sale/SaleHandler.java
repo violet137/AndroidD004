@@ -1,4 +1,4 @@
-package vn.com.greenacademy.shopping.Handle.HandleData;
+package vn.com.greenacademy.shopping.Handle.HandleData.Sale;
 
 import android.app.Activity;
 import android.support.v4.app.FragmentManager;
@@ -12,7 +12,6 @@ import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.Sale.AdapterSale;
 import vn.com.greenacademy.shopping.Handle.HandleData.ParseData.Sale.ParseSale;
 import vn.com.greenacademy.shopping.Interface.ServerCallBack;
 import vn.com.greenacademy.shopping.Model.Sale;
-import vn.com.greenacademy.shopping.Model.ThongTinSanPham.SanPham;
 import vn.com.greenacademy.shopping.Network.AsynTask.GetServerData;
 import vn.com.greenacademy.shopping.Util.ServerUrl;
 

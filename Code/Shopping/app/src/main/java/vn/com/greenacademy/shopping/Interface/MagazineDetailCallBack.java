@@ -1,8 +1,6 @@
 package vn.com.greenacademy.shopping.Interface;
 
-import android.widget.TextView;
-
-import vn.com.greenacademy.shopping.Model.MagazineDetail;
+import vn.com.greenacademy.shopping.Model.Magazine.MagazineDetail;
 
 /**
  * Created by ADMIN on 7/30/2017.

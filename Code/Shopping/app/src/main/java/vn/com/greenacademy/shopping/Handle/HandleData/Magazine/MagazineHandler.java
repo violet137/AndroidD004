@@ -5,19 +5,21 @@ import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 import vn.com.greenacademy.shopping.Fragment.Magazine.MagazineDetailFragment;
 import vn.com.greenacademy.shopping.Fragment.Magazine.MagazineFragment;
+import vn.com.greenacademy.shopping.Handle.HandleData.ParseData.Magazine.ParseMagazineDetail;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.Magazine.AdapterMagazineRecyclerView;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.Magazine.AdapterMagazineViewPager;
 import vn.com.greenacademy.shopping.Handle.HandleData.ParseData.Magazine.ParseMagazine;
 import vn.com.greenacademy.shopping.Handle.HandleData.ParseData.Magazine.ParseMagazineType;
 import vn.com.greenacademy.shopping.Interface.ServerCallBack;
-import vn.com.greenacademy.shopping.Model.Item_recyclerView_magazine;
-import vn.com.greenacademy.shopping.Model.Magazine;
-import vn.com.greenacademy.shopping.Model.MagazineType;
+import vn.com.greenacademy.shopping.Model.Magazine.Item_recyclerView_magazine;
+import vn.com.greenacademy.shopping.Model.Magazine.Magazine;
+import vn.com.greenacademy.shopping.Model.Magazine.MagazineType;
 import vn.com.greenacademy.shopping.Network.AsynTask.GetServerData;
 import vn.com.greenacademy.shopping.Util.ServerUrl;
 import vn.com.greenacademy.shopping.Util.SupportKeyList;
@@ -27,7 +29,7 @@ import vn.com.greenacademy.shopping.Util.Ui.BaseFragment;
  * Created by ADMIN on 7/23/2017.
  */
 
-public class MagazineHandler implements ServerCallBack {
+public class MagazineHandler extends MagazineDetailHandle implements ServerCallBack {
 
     Activity activity;
     View.OnClickListener onClickListener;
@@ -38,6 +40,7 @@ public class MagazineHandler implements ServerCallBack {
 
 
     public MagazineHandler(Activity activity) {
+        super(activity);
         this.activity = activity;
     }
 
@@ -45,12 +48,13 @@ public class MagazineHandler implements ServerCallBack {
         onClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                BaseFragment baseFragment = new BaseFragment(((AppCompatActivity)activity), ((AppCompatActivity)activity).getSupportFragmentManager());
-                baseFragment.ChuyenFragment(new MagazineDetailFragment(String.valueOf(((Item_recyclerView_magazine)v.getTag())
-                        .getId())), SupportKeyList.TAG_FRAGMENT_MAGAZINE_DETAIL, true);
-
-//                Toast.makeText(activity, String.valueOf(((Item_recyclerView_magazine)v.getTag()).getId())
-//                        + " " + ((Item_recyclerView_magazine)v.getTag()).getName() ,Toast.LENGTH_SHORT).show();
+            BaseFragment baseFragment = new BaseFragment(activity, ((AppCompatActivity)activity).getSupportFragmentManager());
+            if (((Item_recyclerView_magazine)v.getTag()).getLoaiTapChi().equals("Video")){
+                getData(String.valueOf(((Item_recyclerView_magazine)v.getTag()).getId()));
+            }else {
+                baseFragment.ChuyenFragment(new MagazineDetailFragment(String.valueOf(((Item_recyclerView_magazine)v.getTag()).getId())),
+                        SupportKeyList.TAG_FRAGMENT_MAGAZINE_DETAIL, true);
+            }
             }
         };
     }
@@ -72,6 +76,9 @@ public class MagazineHandler implements ServerCallBack {
 
     @Override
     public void serverCallBack(String dataServer) {
+        ParseMagazineDetail parseMagazineDetail = new ParseMagazineDetail(dataServer);
+        MagazineFragment.objectCallBack.callBack(parseMagazineDetail.parData(),SupportKeyList.Magazine_video);
+
     }
 
 

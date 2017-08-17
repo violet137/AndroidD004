@@ -11,10 +11,10 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import vn.com.greenacademy.shopping.Handle.HandleData.ImageLoad;
-import vn.com.greenacademy.shopping.Model.Item_recyclerView_magazine;
-import vn.com.greenacademy.shopping.Model.Magazine;
-import vn.com.greenacademy.shopping.Model.MagazineType;
+import vn.com.greenacademy.shopping.Handle.HandleUi.ImageLoad;
+import vn.com.greenacademy.shopping.Model.Magazine.Item_recyclerView_magazine;
+import vn.com.greenacademy.shopping.Model.Magazine.Magazine;
+import vn.com.greenacademy.shopping.Model.Magazine.MagazineType;
 import vn.com.greenacademy.shopping.R;
 
 /**
@@ -64,7 +64,7 @@ public class AdapterMagazineRecyclerView extends RecyclerView.Adapter<MagazineHo
         Item_recyclerView_magazine item_recyclerView_magazine = new Item_recyclerView_magazine();
 
         item_recyclerView_magazine.setId(magazine.getIdTapChi());
-//        item_recyclerView_magazine.setName(nameViewPager);
+        item_recyclerView_magazine.setLoaiTapChi(magazine.getLoaiTapChi());
 
         holder.itemView.setTag(item_recyclerView_magazine);
         holder.itemView.setOnClickListener(onClickListener);

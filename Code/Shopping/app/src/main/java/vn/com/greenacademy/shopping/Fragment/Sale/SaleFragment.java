@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 
 import java.util.ArrayList;
 
-import vn.com.greenacademy.shopping.Handle.HandleData.SaleHandler;
+import vn.com.greenacademy.shopping.Handle.HandleData.Sale.SaleHandler;
 import vn.com.greenacademy.shopping.Interface.SaleCallBack;
 import vn.com.greenacademy.shopping.Model.Sale;
 import vn.com.greenacademy.shopping.R;
