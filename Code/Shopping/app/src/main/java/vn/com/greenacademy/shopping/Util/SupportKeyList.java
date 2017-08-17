@@ -129,6 +129,8 @@ public class SupportKeyList {
     public static final int ClickSupport_GioiThieu = 3;
     public static final int ClickSocialNetwork_Facebook = 0;
     public static final int ClickSocialNetwork_Youtube = 1;
+    public static final int ClickSocialNetwork_GooglePlus = 2;
+    public static final int ClickSocialNetwork_Instagram = 3;
 
     //key danh muc
     public static final String ListDanhMucSP = "ListDanhMucSP";

@@ -75,6 +75,23 @@ public class SupportHandler extends LoadDataSupportHandler {
                         activity.startActivity(intent);
 
                         break;
+                    case SupportKeyList.ClickSocialNetwork_GooglePlus:
+
+                        // sự dang url web
+                        web = Uri.parse(ServerUrl.UrlGooglePlusFashionAndLife);
+                        intent = new Intent(Intent.ACTION_VIEW,web);
+                        activity.startActivity(intent);
+
+                        break;
+                    case SupportKeyList.ClickSocialNetwork_Instagram:
+
+                        // sự dang url web
+                        web = Uri.parse(ServerUrl.UrlInstagramFashionAndLife);
+                        intent = new Intent(Intent.ACTION_VIEW,web);
+                        activity.startActivity(intent);
+
+                        break;
+
                 }
             }
         });

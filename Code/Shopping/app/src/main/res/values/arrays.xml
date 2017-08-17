@@ -110,11 +110,15 @@
     <string-array name="name_social_network_menu">
         <item>Facebook</item>
         <item>Youtube</item>
+        <item>Google +</item>
+        <item>Instagram</item>
     </string-array>
 
     <string-array name="icon_social_network_menu">
         <item>@drawable/facebook</item>
         <item>@drawable/youtube</item>
+        <item>@drawable/google_plus</item>
+        <item>@drawable/instagram</item>
     </string-array>
 
 </resources>
