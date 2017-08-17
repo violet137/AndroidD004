@@ -24,10 +24,11 @@ import org.json.JSONArray;
 import java.util.ArrayList;
 
 import vn.com.greenacademy.shopping.Handle.HandleData.GioHang.GioHangHandler;
-import vn.com.greenacademy.shopping.Handle.HandleData.ImageLoad;
+
 import vn.com.greenacademy.shopping.Handle.HandleData.ParseData.Product.ParseNewProductList;
 import vn.com.greenacademy.shopping.Handle.HandleData.SanPhamHandler;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.SanPham.SanPhamPagerAdapter;
+import vn.com.greenacademy.shopping.Handle.HandleUi.ImageLoad;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Model.QuickActionItem;
 import vn.com.greenacademy.shopping.Handle.HandleUi.SanPham.QuickActionPopup;
 import vn.com.greenacademy.shopping.Interface.DataCallBack;
