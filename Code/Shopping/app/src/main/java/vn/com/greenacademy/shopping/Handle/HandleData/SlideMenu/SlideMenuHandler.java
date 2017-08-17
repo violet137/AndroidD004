@@ -1,4 +1,4 @@
-package vn.com.greenacademy.shopping.Handle.HandleData;
+package vn.com.greenacademy.shopping.Handle.HandleData.SlideMenu;
 
 import android.app.Activity;
 import android.content.res.TypedArray;

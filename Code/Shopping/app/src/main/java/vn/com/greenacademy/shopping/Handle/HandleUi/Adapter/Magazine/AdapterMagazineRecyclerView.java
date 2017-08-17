@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import vn.com.greenacademy.shopping.Handle.HandleData.ImageLoad;
+import vn.com.greenacademy.shopping.Handle.HandleUi.ImageLoad;
 import vn.com.greenacademy.shopping.Model.Magazine.Item_recyclerView_magazine;
 import vn.com.greenacademy.shopping.Model.Magazine.Magazine;
 import vn.com.greenacademy.shopping.Model.Magazine.MagazineType;

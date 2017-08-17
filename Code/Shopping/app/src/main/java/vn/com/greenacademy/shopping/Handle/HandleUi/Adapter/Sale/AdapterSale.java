@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.support.v4.app.FragmentManager;
 import android.content.Context;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,9 +13,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import vn.com.greenacademy.shopping.Fragment.Sale.SaleFragment;
-import vn.com.greenacademy.shopping.Handle.HandleData.ImageLoad;
-import vn.com.greenacademy.shopping.Interface.ObjectCallBack;
+import vn.com.greenacademy.shopping.Handle.HandleUi.ImageLoad;
 import vn.com.greenacademy.shopping.Model.Sale;
 import vn.com.greenacademy.shopping.R;
 

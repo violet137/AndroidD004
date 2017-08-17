@@ -13,7 +13,7 @@ import android.widget.ScrollView;
 import android.widget.Toast;
 import android.widget.VideoView;
 
-import vn.com.greenacademy.shopping.Handle.HandleData.ImageLoad;
+import vn.com.greenacademy.shopping.Handle.HandleUi.ImageLoad;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.SanPham.ListSanPhamAdapter;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.XuHuongThoiTrang.ListSetDoAdapter;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Dialog.LoadingDialog;

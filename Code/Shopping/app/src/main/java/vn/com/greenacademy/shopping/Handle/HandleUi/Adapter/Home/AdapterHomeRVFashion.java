@@ -1,18 +1,16 @@
 package vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.Home;
 
 import android.app.Activity;
-import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 
 import vn.com.greenacademy.shopping.Handle.HandleData.Home.ClickListenerHomeItem;
-import vn.com.greenacademy.shopping.Handle.HandleData.ImageLoad;
+import vn.com.greenacademy.shopping.Handle.HandleUi.ImageLoad;
 import vn.com.greenacademy.shopping.Model.Home.ItemHome;
 import vn.com.greenacademy.shopping.Model.Home.MenuMain;
 import vn.com.greenacademy.shopping.R;
