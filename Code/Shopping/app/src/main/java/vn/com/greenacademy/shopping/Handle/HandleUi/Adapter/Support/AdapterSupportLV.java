@@ -44,9 +44,9 @@ public class AdapterSupportLV extends ArrayAdapter {
         convertView = inflater.inflate(layoutItem,null);
         final Support support = arrayList.get(position);
 
-        TextView tvName = (TextView) convertView.findViewById(R.id.tvName_item_slide_menu);
+        TextView tvName = (TextView) convertView.findViewById(R.id.tvName_item_support_menu);
 
-        ImageView ivIcon = (ImageView) convertView.findViewById(R.id.ivIcon_item_slide_menu);
+        ImageView ivIcon = (ImageView) convertView.findViewById(R.id.ivIcon_item_support_menu);
 
         tvName.setText(support.getName());
         ivIcon.setImageResource(support.getIcon());
