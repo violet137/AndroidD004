@@ -14,6 +14,7 @@ public class MySharedPreferences {
     private Context context;
     //Key Data
     private final String KEY_TOKEN = "token";
+    private final String KEY_ID_TAI_KHOAN = "key_id_tai_khoan"; //Lưu id google/facebook
     private final String KEY_TEN_TAI_KHOAN = "ten_tai_khoan";
     private final String KEY_EMAIL = "email";
     private final String KEY_DA_DANG_NHAP = "da_dang_nhap";
@@ -36,6 +37,16 @@ public class MySharedPreferences {
 
     public void setToken(String token){
         editor.putString(KEY_TOKEN, token);
+        editor.commit();
+    }
+
+    //Key Id tài khoản
+    public String getIdTaiKhoan() {
+        return sharedPreferences.getString(KEY_ID_TAI_KHOAN, null);
+    }
+
+    public void setIdTaiKhoan(String idTaiKhoan){
+        editor.putString(KEY_ID_TAI_KHOAN, idTaiKhoan);
         editor.commit();
     }
 
@@ -91,7 +102,10 @@ public class MySharedPreferences {
     //Key giỏ hàng
 
     public String getGioHang() {
-        return sharedPreferences.getString(KEY_GIO_HANG, null);
+        if (sharedPreferences.contains(KEY_GIO_HANG))
+            return sharedPreferences.getString(KEY_GIO_HANG, null);
+        else
+            return null;
     }
 
     public void setGioHang(String dataGioHang){

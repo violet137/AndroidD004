@@ -85,6 +85,18 @@ public class GoogleHandler extends FragmentActivity implements GoogleApiClient.O
         return "";
     }
 
+    //Lấy email
+    public String getId(){
+        // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
+        GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
+        if (requestCode == RC_SIGN_IN) {
+            return result.getSignInAccount().getId();
+        }else {
+            Toast.makeText(mActivity, "Chưa Đăng Nhập", Toast.LENGTH_SHORT).show();
+        }
+        return "";
+    }
+
     //Lấy hình
     public String getUserPhoto(){
         // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
@@ -120,7 +132,8 @@ public class GoogleHandler extends FragmentActivity implements GoogleApiClient.O
                         }
                     });
         }else {
-            Toast.makeText(mActivity, "Chưa Đăng Nhập", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(mActivity, "Chưa Đăng Nhập", Toast.LENGTH_SHORT).show();
+            dataCallBack.KetQua(SupportKeyList.DANG_XUAT_THANH_CONG, null);
         }
     }
 

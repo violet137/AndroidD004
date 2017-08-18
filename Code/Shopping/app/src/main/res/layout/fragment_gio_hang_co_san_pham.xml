@@ -36,84 +36,89 @@
     </LinearLayout>
 
     <!-- Content -->
-    <LinearLayout
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
+        android:layout_height="wrap_content"
+        android:background="@drawable/shape_khung_thin"
         android:layout_below="@+id/title_gio_hang"
-        android:layout_above="@+id/bottom_bar_gio_hang">
-        <!-- List sản phẩm -->
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recycler_view_list_san_pham_gio_hang"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingLeft="@dimen/horizontal_padding"
-            android:paddingRight="@dimen/horizontal_padding"
-            android:background="@drawable/shape_khung_thin"/>
-        <!-- Hóa đơn -->
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="@dimen/horizontal_padding">
-            <!-- Title hóa đơn -->
-            <TextView
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <!-- List sản phẩm -->
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_view_list_san_pham_gio_hang"
                 android:layout_width="match_parent"
-                android:layout_height="33dp"
-                android:gravity="center|left"
-                android:paddingLeft="@dimen/horizontal_padding"
-                android:background="@color/colorSecondaryDark"
-                android:text="Chi phí giỏ hàng"
-                android:textSize="17sp"
-                android:textStyle="bold"
-                android:textColor="@color/colorText"/>
-
-            <!-- Số lượng -->
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/list_san_pham_gio_hang_vertical_padding"
+                android:paddingBottom="@dimen/list_san_pham_gio_hang_vertical_padding"/>
+            <!-- Hóa đơn -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="10dp">
-                <!-- Title -->
+                android:orientation="vertical"
+                android:padding="@dimen/horizontal_padding">
+                <!-- Title hóa đơn -->
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Số lượng:"
-                    android:textSize="@dimen/text_size"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="right"
-                    android:text="1"
-                    android:textSize="@dimen/text_size"/>
-            </LinearLayout>
+                    android:layout_height="33dp"
+                    android:gravity="center|left"
+                    android:paddingLeft="@dimen/horizontal_padding"
+                    android:background="@color/colorSecondaryDark"
+                    android:text="Chi phí giỏ hàng"
+                    android:textSize="17sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorText"/>
 
-            <!-- Phí -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="10dp">
-                <!-- Title -->
-                <TextView
+                <!-- Số lượng -->
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Tổng cộng:"
-                    android:textSize="@dimen/text_size"/>
-                <TextView
+                    android:orientation="horizontal"
+                    android:layout_marginTop="10dp">
+                    <!-- Title -->
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Số lượng:"
+                        android:textSize="@dimen/text_size"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:text="1"
+                        android:textSize="@dimen/text_size"/>
+                </LinearLayout>
+
+                <!-- Phí -->
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="right"
-                    android:text="1.000.000 vnđ"
-                    android:textSize="@dimen/title_size"
-                    android:textStyle="bold"/>
+                    android:orientation="horizontal"
+                    android:layout_marginTop="10dp">
+                    <!-- Title -->
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Tổng cộng:"
+                        android:textSize="@dimen/text_size"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:text="1.000.000 vnđ"
+                        android:textSize="@dimen/title_size"
+                        android:textStyle="bold"/>
+                </LinearLayout>
             </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
 
     <!-- Bottom bar-->
     <LinearLayout

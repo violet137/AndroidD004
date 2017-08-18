@@ -16,6 +16,7 @@ import java.net.URL;
 import java.util.ArrayList;
 
 import vn.com.greenacademy.shopping.Handle.HandleData.ParseData.DanhMucSanPham.ParseSanPhamChiTietDanhMuc;
+import vn.com.greenacademy.shopping.Handle.HandleData.ParseData.GioHang.ParseGioHang;
 import vn.com.greenacademy.shopping.Handle.HandleData.ParseData.Product.ParseListSanPham;
 import vn.com.greenacademy.shopping.Handle.HandleData.ParseData.Product.ParseSanPham;
 import vn.com.greenacademy.shopping.Handle.HandleData.ParseData.XuHuongThoiTrang.ParseXuHuongThoiTrang;
@@ -24,6 +25,7 @@ import vn.com.greenacademy.shopping.Interface.DataCallBack;
 import vn.com.greenacademy.shopping.Model.SetDo;
 import vn.com.greenacademy.shopping.Model.ThongTinSanPham.HinhSanPham;
 import vn.com.greenacademy.shopping.Model.ThongTinSanPham.SanPham;
+import vn.com.greenacademy.shopping.Model.ThongTinSanPham.SanPhamGioHang;
 import vn.com.greenacademy.shopping.Model.XuHuongThoiTrang;
 import vn.com.greenacademy.shopping.Util.SupportKeyList;
 
@@ -144,7 +146,10 @@ public class DataServerAsyncTask extends AsyncTask<String, Void, String> {
                     dataCallBack.KetQua(SupportKeyList.LAY_DATA_THANH_CONG, dataSanPhamTheoThoiTrang);
                     break;
                 case SupportKeyList.API_GET_GIO_HANG:
-
+                    //Truyền kết quả về cho class yêu cầu
+                    Bundle dataGioHang = new Bundle();
+                    dataGioHang.putString(SupportKeyList.API_GET_GIO_HANG, result);
+                    dataCallBack.KetQua(SupportKeyList.LAY_DATA_THANH_CONG, dataGioHang);
                 default:
                     break;
             }

@@ -125,7 +125,7 @@ public class SupportHandler extends LoadDataSupportHandler {
 
 
     public AdapterSupportLV getAdapter(Object object){
-        AdapterSupportLV adapterSupportLV = new AdapterSupportLV(activity, R.layout.item_slide_menu,(ArrayList<Support>) object);
+        AdapterSupportLV adapterSupportLV = new AdapterSupportLV(activity, R.layout.item_support_menu,(ArrayList<Support>) object);
         return adapterSupportLV;
     }
 

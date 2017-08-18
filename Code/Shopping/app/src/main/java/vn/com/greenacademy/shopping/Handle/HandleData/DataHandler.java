@@ -51,22 +51,29 @@ public class DataHandler{
         }
     }
 
-    public void setTrangThaiDangNhap(String token, String loaiTaiKhoan, String email, String tenHienThi, boolean luuDangNhap){
+    public void setTrangThaiDangNhap(String token, String loaiTaiKhoan, String email, String tenHienThi, String idTaiKhoan, boolean luuDangNhap){
         mySharedPref.setToken(token);
         mySharedPref.setEmail(email);
         mySharedPref.setTenTaiKhoan(tenHienThi);
         mySharedPref.setDaDangNhap(true);
         mySharedPref.setLuuDangNhap(luuDangNhap);
         mySharedPref.setLoaiTaiKhoan(loaiTaiKhoan);
+
+        if (idTaiKhoan != null)
+            mySharedPref.setIdTaiKhoan(idTaiKhoan);
+        else
+            mySharedPref.setIdTaiKhoan("");
     }
 
     public void DangXuat(){
         mySharedPref.setToken("");
         mySharedPref.setEmail("");
         mySharedPref.setTenTaiKhoan("");
+        mySharedPref.setIdTaiKhoan("");
         mySharedPref.setDaDangNhap(false);
         mySharedPref.setLuuDangNhap(false);
         mySharedPref.setLoaiTaiKhoan("");
+        mySharedPref.removeGioHang();
     }
 
 }

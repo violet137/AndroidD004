@@ -1,4 +1,4 @@
-package vn.com.greenacademy.shopping.Handle.HandleData.ParseData.Product;
+package vn.com.greenacademy.shopping.Handle.HandleData.ParseData.GioHang;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -16,6 +16,7 @@ import vn.com.greenacademy.shopping.Model.ThongTinSanPham.SanPhamGioHang;
 
 public class ParseSanPhamGioHang {
     private String data;
+
     public ParseSanPhamGioHang(String data) {
         this.data=data;
     }

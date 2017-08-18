@@ -71,6 +71,7 @@ public class ThongTinSanPhamFragment extends Fragment implements View.OnClickLis
     private String sizeDuocChon = null;
     private String callFrom = "";
     private boolean isFromBackStack = false;
+    private boolean themGioHang = false;
 
     public ThongTinSanPhamFragment(String idSanPham, String callFrom) {
         if (idSanPham.equals("ALL"))
@@ -209,6 +210,7 @@ public class ThongTinSanPhamFragment extends Fragment implements View.OnClickLis
                 if (sizeDuocChon == null){
                     setUpQuickActionSize();
                     quickActionPopup.show(v);
+                    themGioHang = true;
                 }
                 else {
                     progressDialog.show();
@@ -252,6 +254,11 @@ public class ThongTinSanPhamFragment extends Fragment implements View.OnClickLis
                     if (actionId.equals(sanPham.getSize()[i])) {
                         sizeDuocChon = sanPham.getSize()[i];
                         btnSizeInfo.setText(sanPham.getSize()[i]);
+                        if (themGioHang){
+                            progressDialog.show();
+                            gioHangHandler.themSanPhamGioHang(sanPham.getIdSanPham(), 1, sizeDuocChon, mauDuocChon);
+                        }
+                        themGioHang = false;
                     }
                 }
             }

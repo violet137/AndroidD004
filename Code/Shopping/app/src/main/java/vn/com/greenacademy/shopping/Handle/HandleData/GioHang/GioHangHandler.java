@@ -1,6 +1,9 @@
 package vn.com.greenacademy.shopping.Handle.HandleData.GioHang;
 
 import android.content.Context;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 
@@ -8,9 +11,15 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 import vn.com.greenacademy.shopping.Fragment.Support.SupportFragment;
+import vn.com.greenacademy.shopping.Handle.HandleData.ParseData.GioHang.ParseGioHang;
+import vn.com.greenacademy.shopping.Handle.HandleData.ParseData.GioHang.ParseGioHangSharedPreferences;
 import vn.com.greenacademy.shopping.Interface.DataCallBack;
+import vn.com.greenacademy.shopping.Model.ThongTinSanPham.SanPhamGioHang;
 import vn.com.greenacademy.shopping.Network.AsynTask.DataServerAsyncTask;
+import vn.com.greenacademy.shopping.R;
 import vn.com.greenacademy.shopping.Util.ServerUrl;
 import vn.com.greenacademy.shopping.Util.SharePreference.MySharedPreferences;
 import vn.com.greenacademy.shopping.Util.SupportKeyList;
@@ -103,6 +112,7 @@ public class GioHangHandler {
             e.printStackTrace();
         }
     }
+
     public void XoaSanPhamGioHang(int idSanPham){
         try {
             jsonArraySanPham = new JSONArray(mySharedPref.getGioHang());
@@ -124,6 +134,33 @@ public class GioHangHandler {
             serverAsyncTask.execute(SupportKeyList.API_THEM_GIO_HANG, ServerUrl.UrlUpdateGioHang, "POST", objGioHang.toString());
         } catch (JSONException e) {
             e.printStackTrace();
+        }
+    }
+
+    public ArrayList<SanPhamGioHang> getGioHang(){
+        return new ParseGioHangSharedPreferences(mySharedPref.getGioHang()).parseData();
+    }
+
+    public void getGioHangTuServer(){
+        if(mySharedPref.getDaDangNhap()) {
+            if (mySharedPref.getLoaiTaiKhoan().equals(SupportKeyList.ACCOUNT_THUONG))
+                serverAsyncTask.execute(SupportKeyList.API_GET_GIO_HANG, ServerUrl.UrlGetGioHang + mySharedPref.getEmail(), "GET");
+            else
+                serverAsyncTask.execute(SupportKeyList.API_GET_GIO_HANG, ServerUrl.UrlGetGioHang + mySharedPref.getIdTaiKhoan(), "GET");
+        }
+    }
+
+    public void luuGioHang(Bundle bundle){
+        if (bundle != null) {
+            try {
+                JSONArray jsonArray = new JSONObject(bundle.getString(SupportKeyList.API_GET_GIO_HANG)).getJSONObject("GioHangTranfer").getJSONArray("DanhSachSanPham");
+                if (jsonArray.length() != 0)
+                    mySharedPref.setGioHang(jsonArray.toString());
+                else
+                    mySharedPref.removeGioHang();
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
         }
     }
 }

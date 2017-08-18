@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/list_san_pham_gio_hang_horizontal_padding"
+        android:paddingRight="@dimen/horizontal_padding">
+        <!-- Hình sản phẩm -->
+        <ImageView
+            android:id="@+id/hinh_san_pham_gio_hang"
+            android:layout_width="@dimen/hinh_san_pham_gio_hang_width"
+            android:layout_height="@dimen/hinh_san_pham_gio_hang_height"
+            app:srcCompat="@drawable/banner_test2"
+            android:scaleType="fitXY"/>
+        <!-- Thông tin sản phẩm -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingTop="@dimen/khung_thong_tin_vertical_padding"
+            android:paddingBottom="@dimen/khung_thong_tin_vertical_padding"
+            android:paddingLeft="@dimen/khung_thong_tin_horizontal_padding">
+            <!-- Tên và Giá -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:gravity="center">
+                <!-- Tên sản phẩm -->
+                <TextView
+                    android:id="@+id/ten_san_pham_gio_hang"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2"
+                    android:layout_marginRight="@dimen/ten_san_pham_margin_right"
+                    android:maxLines="1"
+                    android:ellipsize="end"
+                    android:text="Test tên"
+                    android:textSize="@dimen/text_size"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorTextDark"/>
+                <!-- Giá -->
+                <TextView
+                    android:id="@+id/gia_san_pham_gio_hang"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="200.000 vnđ"
+                    android:textColor="@color/colorTextDark"
+                    android:textStyle="bold"/>
+            </LinearLayout>
+            <!-- Giá giảm -->
+            <TextView
+                android:id="@+id/gia_giam_san_pham_gio_hang"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center|left"
+                android:text="100.000 vnđ"/>
+            <!-- Số lượng -->
+            <TextView
+                android:id="@+id/so_luong_san_pham_gio_hang"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center|left"
+                android:text="Số lượng: "/>
+            <!-- Màu -->
+            <TextView
+                android:id="@+id/mau_san_pham_gio_hang"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center|left"
+                android:text="Màu: "/>
+            <!-- Size -->
+            <TextView
+                android:id="@+id/size_san_pham_gio_hang"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center|left"
+                android:text="Size: "/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Divider -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/cardview_dark_background"/>
+</LinearLayout>

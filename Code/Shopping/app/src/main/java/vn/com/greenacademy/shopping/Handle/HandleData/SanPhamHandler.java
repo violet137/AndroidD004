@@ -9,6 +9,7 @@ import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Locale;
 
 import vn.com.greenacademy.shopping.Model.ThongTinSanPham.SanPham;
 import vn.com.greenacademy.shopping.R;
@@ -30,8 +31,9 @@ public class SanPhamHandler {
     }
 
     public static String chuyenGia(long gia){
-        DecimalFormat formatGia = new DecimalFormat("###,###,###");
-        return formatGia.format(gia) + " đ";
+//        DecimalFormat formatGia = new DecimalFormat("000.000.000");
+        NumberFormat formatGia = NumberFormat.getCurrencyInstance(new Locale("vi", "VN"));
+        return formatGia.format(gia);
     }
 
     public static String chuyenTenMau(String mau){

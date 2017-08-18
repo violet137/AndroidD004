@@ -28,6 +28,8 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 import vn.com.greenacademy.shopping.Handle.HandleData.DataHandler;
+import vn.com.greenacademy.shopping.Handle.HandleData.GioHang.GioHangHandler;
+import vn.com.greenacademy.shopping.Handle.HandleData.ParseData.GioHang.ParseGioHang;
 import vn.com.greenacademy.shopping.Handle.HandleData.TaiKhoan.GoogleHandler;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Dialog.LoadingDialog;
 import vn.com.greenacademy.shopping.Interface.DataCallBack;
@@ -130,6 +132,7 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener, 
     //Xử lý kết quả trả về
     @Override
     public void KetQua(String result, Bundle bundle) {
+        GioHangHandler gioHangHandler = new GioHangHandler(getActivity(), this);
         switch (result){
             case SupportKeyList.LOI_KET_NOI:
                 Toast.makeText(getActivity(), getString(R.string.toast_loi_ket_noi), Toast.LENGTH_LONG).show();
@@ -137,13 +140,14 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener, 
 
             case SupportKeyList.DANG_NHAP_THANH_CONG:
                 Toast.makeText(getActivity(), getString(R.string.toast_dang_nhap_thanh_cong) + " " + etTenDangNhap.getText().toString() , Toast.LENGTH_SHORT).show();
-                dataHandler.setTrangThaiDangNhap(bundle.getString("Token"), SupportKeyList.ACCOUNT_THUONG, etTenDangNhap.getText().toString(), etTenDangNhap.getText().toString(), cbLuuDangNhap.isChecked());
+                dataHandler.setTrangThaiDangNhap(bundle.getString("Token"), SupportKeyList.ACCOUNT_THUONG, etTenDangNhap.getText().toString(), etTenDangNhap.getText().toString(), null, cbLuuDangNhap.isChecked());
                 baseFragment.ChuyenFragment(new TaiKhoanFragment(), SupportKeyList.TAG_FRAGMENT_TAI_KHOAN, false);
+                gioHangHandler.getGioHangTuServer();
                 break;
 
             case SupportKeyList.DANG_NHAP_GOOGLE_THANH_CONG:
                 Toast.makeText(getActivity(), getString(R.string.toast_dang_nhap_thanh_cong) + " " + googleHandler.getUsername() , Toast.LENGTH_SHORT).show();
-                dataHandler.setTrangThaiDangNhap(bundle.getString("Token"),SupportKeyList.ACCOUNT_GOOGLE, googleHandler.getEmail(), googleHandler.getUsername(), true);
+                dataHandler.setTrangThaiDangNhap(bundle.getString("Token"),SupportKeyList.ACCOUNT_GOOGLE, googleHandler.getEmail(), googleHandler.getUsername(), googleHandler.getId(), true);
                 baseFragment.ChuyenFragment(new TaiKhoanFragment(), SupportKeyList.TAG_FRAGMENT_TAI_KHOAN, false);
                 break;
 
@@ -161,6 +165,10 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener, 
                 break;
 
             case SupportKeyList.DANG_XUAT_THANH_CONG:
+                break;
+
+            case SupportKeyList.LAY_DATA_THANH_CONG:
+                gioHangHandler.luuGioHang(bundle);
                 break;
         }
         loadingDialog.dismiss();

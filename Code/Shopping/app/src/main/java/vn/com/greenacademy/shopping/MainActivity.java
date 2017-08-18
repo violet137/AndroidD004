@@ -222,7 +222,7 @@ public class MainActivity extends AppCompatActivity implements DataCallBack, Vie
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.dang_nhap_toolbar:
-                if (mySharedPref.getLuuDangNhap())
+                if (!mySharedPref.getDaDangNhap() && !mySharedPref.getLuuDangNhap())
                     baseFragment.ChuyenFragment(new DangNhapFragment(), SupportKeyList.TAG_FRAGMENT_DANG_NHAP, true);
                 else
                     baseFragment.ChuyenFragment(new DangNhapKhongLuuFragment(), SupportKeyList.TAG_FRAGMENT_DANG_NHAP_KHONG_LUU, true);
