@@ -31,7 +31,7 @@
     <dimen name="fab_margin">16dp</dimen>
 
     <!-- item slide menu -->
-    <dimen name="imageView_width_height">50dp</dimen>
+    <dimen name="imageView_width_height">43dp</dimen>
     <dimen name="textView_layout_margin_left">20dp</dimen>
     <dimen name="imageView_layout_margin_left">10dp</dimen>
     <dimen name="imageView_layout_50dp">50dp</dimen>

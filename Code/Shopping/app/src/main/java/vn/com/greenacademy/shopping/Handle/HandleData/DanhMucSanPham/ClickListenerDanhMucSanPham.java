@@ -7,7 +7,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-import vn.com.greenacademy.shopping.Fragment.Main.DanhMucSanPham.ChiTietDanhMucFragment;
+import vn.com.greenacademy.shopping.Fragment.DanhMucSanPham.ChiTietDanhMucFragment;
 import vn.com.greenacademy.shopping.Interface.ObjectCallBack;
 import vn.com.greenacademy.shopping.Model.DanhMuc.MucSanPham;
 import vn.com.greenacademy.shopping.Model.ThongTinSanPham.SanPham;

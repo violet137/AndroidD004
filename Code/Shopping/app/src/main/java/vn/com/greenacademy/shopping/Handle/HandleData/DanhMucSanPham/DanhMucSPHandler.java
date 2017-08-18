@@ -11,8 +11,8 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-import vn.com.greenacademy.shopping.Fragment.Main.DanhMucSanPham.ChiTietDanhMucFragment;
-import vn.com.greenacademy.shopping.Fragment.Main.DanhMucSanPham.DanhMucSanPhamFragment;
+import vn.com.greenacademy.shopping.Fragment.DanhMucSanPham.ChiTietDanhMucFragment;
+import vn.com.greenacademy.shopping.Fragment.DanhMucSanPham.DanhMucSanPhamFragment;
 import vn.com.greenacademy.shopping.Handle.HandleUi.ImageLoad;
 import vn.com.greenacademy.shopping.Handle.HandleData.ParseData.Product.ParseNewProductList;
 import vn.com.greenacademy.shopping.Handle.HandleData.ParseData.Main.ParseDanhMucSP;
