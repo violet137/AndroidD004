@@ -1,4 +1,4 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,6 +8,7 @@
 
     <!-- Title bar-->
     <LinearLayout
+        android:id="@+id/title_gio_hang"
         android:layout_width="match_parent"
         android:layout_height="@dimen/title_height"
         android:orientation="horizontal"
@@ -34,4 +35,86 @@
             android:textSize="@dimen/text_size"/>
     </LinearLayout>
 
-</LinearLayout>
+    <!-- Content -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_below="@+id/title_gio_hang"
+        android:layout_above="@+id/bottom_bar_gio_hang">
+        <!-- List sản phẩm -->
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view_list_san_pham_gio_hang"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/horizontal_padding"
+            android:paddingRight="@dimen/horizontal_padding"
+            android:background="@drawable/shape_khung_thin"/>
+        <!-- Hóa đơn -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/horizontal_padding">
+            <!-- Title hóa đơn -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="33dp"
+                android:gravity="center|left"
+                android:paddingLeft="@dimen/horizontal_padding"
+                android:background="@color/colorSecondaryDark"
+                android:text="Chi phí giỏ hàng"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                android:textColor="@color/colorText"/>
+            <!-- Số lượng -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Số lượng:"
+                    android:textSize="@dimen/text_size"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textSize="@dimen/text_size"/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Bottom bar-->
+    <LinearLayout
+        android:id="@+id/bottom_bar_gio_hang"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title_height"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorSecondaryDark">
+        <!-- Title -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/vertical_padding"
+            android:text="@string/title_gio_hang"
+            android:textColor="@color/colorText"
+            android:textSize="@dimen/title_size"
+            android:textStyle="bold"/>
+        <!-- Tên tài khoản -->
+        <TextView
+            android:id="@+id/tvTenTaiKhoan_FragmentGioHang"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textColor="@color/colorText"
+            android:textSize="@dimen/text_size"/>
+    </LinearLayout>
+</RelativeLayout>
