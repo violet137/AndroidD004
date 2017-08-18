@@ -48,11 +48,11 @@
         <item>@drawable/barcode</item>
         <item>@drawable/barcode</item>
         <item>@drawable/icon_sale</item>
-        <item>@drawable/icon_magazine</item>
-        <item>@drawable/icon_bag</item>
-        <item>@drawable/icon_user</item>
-        <item>@drawable/icon_gps</item>
-        <item>@drawable/icon_support</item>
+        <item>@drawable/icon_magazine2</item>
+        <item>@drawable/icon_bag2</item>
+        <item>@drawable/icon_user2</item>
+        <item>@drawable/icon_gps2</item>
+        <item>@drawable/icon_support2</item>
     </string-array>
 
     <string-array name="name_menu_main">
@@ -121,10 +121,10 @@
         <!--<item>@drawable/touching</item>-->
     <!--</string-array>-->
     <string-array name="icon_support_menu">
-        <item>@drawable/icon_writer</item>
-        <item>@drawable/icon_question</item>
-        <item>@drawable/icon_user_plus</item>
-        <item>@drawable/icon_phone</item>
+        <item>@drawable/icon_writer2</item>
+        <item>@drawable/icon_question2</item>
+        <item>@drawable/icon_user_plus2</item>
+        <item>@drawable/icon_phone2</item>
     </string-array>
 
     <string-array name="name_social_network_menu">

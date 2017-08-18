@@ -143,6 +143,8 @@ public class DataServerAsyncTask extends AsyncTask<String, Void, String> {
                     dataSanPhamTheoThoiTrang.putSerializable(SupportKeyList.API_DATA_SAN_PHAM_CHI_TIET_DANH_MUC, mListSanPhamTheoThoiTrang);
                     dataCallBack.KetQua(SupportKeyList.LAY_DATA_THANH_CONG, dataSanPhamTheoThoiTrang);
                     break;
+                case SupportKeyList.API_GET_GIO_HANG:
+
                 default:
                     break;
             }
