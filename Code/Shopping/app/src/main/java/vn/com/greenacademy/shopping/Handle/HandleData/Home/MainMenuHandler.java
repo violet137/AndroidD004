@@ -4,7 +4,10 @@ import android.app.Activity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.ViewFlipper;
 
 import java.util.ArrayList;
@@ -87,13 +90,37 @@ public class MainMenuHandler extends LoadDataMainMenuHandler{
         }
     }
 
-    public void setDataNewProduct(FragmentManager fm ,ArrayList<MenuMain> menuMainArrayList, ViewPager vpNewProduct) {
+    public void setDataNewProduct(FragmentManager fm , ArrayList<MenuMain> menuMainArrayList, ViewPager vpNewProduct, RadioGroup radioGroup) {
 
         AdapterNewProductViewPager adapterNewProductViewPager =
                 new AdapterNewProductViewPager(fm, activity, menuMainArrayList.get(0).getSanPhamArrayList());
 
         vpNewProduct.setAdapter(adapterNewProductViewPager);
 
+        final ArrayList<RadioButton> radioButtons = new ArrayList<>();
+        RadioButton radioButton;
+        for (int i = 0; i < adapterNewProductViewPager.getCount(); i++) {
+            radioButton = new RadioButton(activity);
+            radioGroup.addView(radioButton);
+            radioButtons.add(radioButton);
+        }
+
+        vpNewProduct.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                radioButtons.get(position).setChecked(true);
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
     }
 
 }

@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import android.view.ViewStub;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RadioGroup;
 import android.widget.ViewFlipper;
 
 import java.util.ArrayList;
@@ -43,6 +44,7 @@ public class MainFragment extends Fragment {
     NestedScrollView vListHome;
     LinearLayout itemAdvertise;
     LinearLayout itemNewProduct;
+    RadioGroup rgSoLuongVP;
 
     // listMainMenuCallBack nhận dữ liệu hoàn chỉnh trên server trả về
     public static ListMainMenuCallBack listMainMenuCallBack;
@@ -92,6 +94,8 @@ public class MainFragment extends Fragment {
 
         vpNewProduct = (ViewPager) view.findViewById(R.id.vpNewProduct_item_main_menu);
 
+        rgSoLuongVP = (RadioGroup) view.findViewById(R.id.rgSoLuongVP_item_main_menu);
+
         rvFashion = (RecyclerView) view.findViewById(R.id.rvFashion_menuHome);
 
         rvMagazien = (RecyclerView) view.findViewById(R.id.rvMagazine_menuHome);
@@ -128,7 +132,8 @@ public class MainFragment extends Fragment {
                         break;
                     case SupportKeyList.ClickHome_NewProduct:
                         dataNewProduct = menuMainArrayList;
-                        mainMenuHandler.setDataNewProduct(getChildFragmentManager(), menuMainArrayList, vpNewProduct);
+                        mainMenuHandler.setDataNewProduct(getChildFragmentManager(), menuMainArrayList,
+                                vpNewProduct, rgSoLuongVP);
                         itemNewProduct.setVisibility(View.VISIBLE);
                         break;
                     case SupportKeyList.ClickHome_Fashion:
@@ -160,7 +165,7 @@ public class MainFragment extends Fragment {
 
             mainMenuHandler.setAdapter(dataProducts, SupportKeyList.ClickHome_Products, rvProduct);
 
-            mainMenuHandler.setDataNewProduct(getChildFragmentManager(),dataNewProduct, vpNewProduct);
+            mainMenuHandler.setDataNewProduct(getChildFragmentManager(),dataNewProduct, vpNewProduct, rgSoLuongVP);
             itemNewProduct.setVisibility(View.VISIBLE);
 
             mainMenuHandler.setAdapter(dataFashion, SupportKeyList.ClickHome_Fashion, rvFashion);
