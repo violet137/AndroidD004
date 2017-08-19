@@ -1,13 +1,8 @@
 package vn.com.greenacademy.shopping.Handle.HandleData.ParseData.GioHang;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
-
-import vn.com.greenacademy.shopping.Model.ThongTinSanPham.HinhSanPham;
-import vn.com.greenacademy.shopping.Model.ThongTinSanPham.SanPham;
 import vn.com.greenacademy.shopping.Model.ThongTinSanPham.SanPhamGioHang;
 
 /**
@@ -32,7 +27,8 @@ public class ParseSanPhamGioHang {
             sanPham.setSize(objSanPham.getString("Size"));
             sanPham.setSoLuong(objSanPham.getInt("SoLuong"));
             sanPham.setLinkHinh(objSanPham.getString("LinkAnh"));
-            sanPham.setGia(objSanPham.getLong("GiaTien"));
+            sanPham.setGiaGiam(objSanPham.getLong("GiaTien"));
+            sanPham.setGiaGoc(objSanPham.getLong("GiaGoc"));
         } catch (JSONException e) {
             e.printStackTrace();
         }

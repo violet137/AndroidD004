@@ -190,11 +190,17 @@
     <!-- Giỏ hàng -->
     <dimen name="hinh_san_pham_gio_hang_width">100dp</dimen>
     <dimen name="hinh_san_pham_gio_hang_height">130dp</dimen>
-    <dimen name="list_san_pham_gio_hang_horizontal_padding">7dp</dimen>
-    <dimen name="list_san_pham_gio_hang_vertical_padding">7dp</dimen>
+    <dimen name="list_san_pham_gio_hang_horizontal_padding">10dp</dimen>
+    <dimen name="list_san_pham_gio_hang_vertical_padding">10dp</dimen>
     <dimen name="ten_san_pham_margin_right">15dp</dimen>
     <dimen name="khung_thong_tin_horizontal_padding">10dp</dimen>
     <dimen name="khung_thong_tin_vertical_padding">10dp</dimen>
+    <dimen name="bottom_bar_gio_hang_height">55dp</dimen>
+    <dimen name="bottom_bar_gio_hang_vertical_padding">4dp</dimen>
+    <dimen name="button_xac_nhan_horizontal_padding">30dp</dimen>
+    <dimen name="title_hoa_don_height">30dp</dimen>
+    <dimen name="title_hoa_don_text_size">16sp</dimen>
+    <dimen name="tong_tien_gio_hang_text_size">20sp</dimen>
 
     <!-- dialog store detail -->
     <dimen name="layout_object">10dp</dimen>

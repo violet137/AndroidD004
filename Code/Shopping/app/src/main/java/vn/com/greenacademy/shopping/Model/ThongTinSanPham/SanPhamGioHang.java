@@ -1,7 +1,5 @@
 package vn.com.greenacademy.shopping.Model.ThongTinSanPham;
 
-import java.util.ArrayList;
-
 /**
  * Created by zzzzz on 7/15/2017.
  */
@@ -13,18 +11,20 @@ public class SanPhamGioHang {
     private String size;
     private int soLuong;
     private String linkHinh;
-    private long Gia;
+    private long giaGiam;
+    private long giaGoc;
 
     public SanPhamGioHang(){}
 
-    public SanPhamGioHang(long idSanPham, String tenSanPham, String mauSanPham, String size, int soLuong, String linkHinh, long gia) {
+    public SanPhamGioHang(long idSanPham, String tenSanPham, String mauSanPham, String size, int soLuong, String linkHinh, long giaGiam, long giaGoc) {
         this.idSanPham = idSanPham;
         this.tenSanPham = tenSanPham;
         this.mauSanPham = mauSanPham;
         this.size = size;
         this.soLuong = soLuong;
         this.linkHinh = linkHinh;
-        Gia = gia;
+        this.giaGiam = giaGiam;
+        this.giaGoc = giaGoc;
     }
 
     public long getIdSanPham() {
@@ -75,11 +75,19 @@ public class SanPhamGioHang {
         this.linkHinh = linkHinh;
     }
 
-    public long getGia() {
-        return Gia;
+    public long getGiaGiam() {
+        return giaGiam;
     }
 
-    public void setGia(long gia) {
-        Gia = gia;
+    public void setGiaGiam(long giaGiam) {
+        this.giaGiam = giaGiam;
+    }
+
+    public long getGiaGoc() {
+        return giaGoc;
+    }
+
+    public void setGiaGoc(long giaGoc) {
+        this.giaGoc = giaGoc;
     }
 }

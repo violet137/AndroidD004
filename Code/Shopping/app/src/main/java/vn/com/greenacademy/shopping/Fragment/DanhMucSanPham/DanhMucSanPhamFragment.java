@@ -155,6 +155,7 @@ public class DanhMucSanPhamFragment extends Fragment {
             }
         };
 
+        getActivity().supportInvalidateOptionsMenu();
         return view;
     }
 

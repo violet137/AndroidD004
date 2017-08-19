@@ -41,7 +41,14 @@
     <string name="message_dang_nhap_gio_hang">Đăng nhập để lưu các sản phẩm bạn muốn mua vào giỏ hàng.</string>
     <string name="bat_dau_mua_sam">Bắt đầu mua sắm</string>
     <string name="tao_cam_hung">Tạo cảm hứng</string>
-
+    <!-- Giỏ hàng có sản phẩm -->
+    <string name="title_hoa_don">TỔNG CHI PHÍ GIỎ HÀNG</string>
+    <string name="so_luong_san_pham_gio_hang">SỐ LƯỢNG: </string>
+    <string name="gia_tri_gio_hang">GIÁ TRỊ GIỎ HÀNG: </string>
+    <string name="tien_khuyen_mai">KHUYẾN MÃI: </string>
+    <string name="gia_giam_gio_hang">SAU GIẢM GIÁ: </string>
+    <string name="tong_gia_tri_gio_hang">TỔNG: </string>
+    <string name="xac_nhan_gio_hang">Xác nhận</string>
     <!-- Đăng nhập -->
     <string name="title_dang_nhap">ĐĂNG NHẬP</string>
     <string name="title_user_name">Username:</string>

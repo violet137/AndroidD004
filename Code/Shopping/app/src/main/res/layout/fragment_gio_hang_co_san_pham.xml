@@ -40,6 +40,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/shape_khung_thin"
+        android:layout_above="@+id/bottom_bar_gio_hang"
         android:layout_below="@+id/title_gio_hang"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true">
@@ -51,9 +52,8 @@
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recycler_view_list_san_pham_gio_hang"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingTop="@dimen/list_san_pham_gio_hang_vertical_padding"
-                android:paddingBottom="@dimen/list_san_pham_gio_hang_vertical_padding"/>
+                android:layout_height="wrap_content"/>
+
             <!-- Hóa đơn -->
             <LinearLayout
                 android:layout_width="match_parent"
@@ -63,12 +63,12 @@
                 <!-- Title hóa đơn -->
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="33dp"
+                    android:layout_height="@dimen/title_hoa_don_height"
                     android:gravity="center|left"
                     android:paddingLeft="@dimen/horizontal_padding"
                     android:background="@color/colorSecondaryDark"
-                    android:text="Chi phí giỏ hàng"
-                    android:textSize="17sp"
+                    android:text="@string/title_hoa_don"
+                    android:textSize="@dimen/title_hoa_don_text_size"
                     android:textStyle="bold"
                     android:textColor="@color/colorText"/>
 
@@ -83,18 +83,20 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Số lượng:"
+                        android:text="@string/so_luong_san_pham_gio_hang"
                         android:textSize="@dimen/text_size"/>
                     <TextView
+                        android:id="@+id/tong_so_luong_san_pham_gio_hang"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="right"
                         android:text="1"
-                        android:textSize="@dimen/text_size"/>
+                        android:textSize="@dimen/title_size"
+                        android:textColor="@color/colorTextDark"/>
                 </LinearLayout>
 
-                <!-- Phí -->
+                <!-- Tổng giá -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -105,48 +107,152 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Tổng cộng:"
+                        android:text="@string/gia_tri_gio_hang"
                         android:textSize="@dimen/text_size"/>
+                    <!-- Số tiền -->
                     <TextView
+                        android:id="@+id/tong_tien_ban_dau_gio_hang"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="right"
                         android:text="1.000.000 vnđ"
                         android:textSize="@dimen/title_size"
+                        android:textColor="@color/colorTextDark"/>
+                </LinearLayout>
+
+                <!-- Divider -->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="0.1dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/colorDivider"/>
+
+                <!-- Trừ khuyến mãi -->
+                <LinearLayout
+                    android:id="@+id/thong_tin_khuyen_mai"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                    <!-- Số tiền giảm -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="10dp">
+                        <!-- Title -->
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/tien_khuyen_mai"
+                            android:textSize="@dimen/text_size"/>
+                        <TextView
+                            android:id="@+id/tong_gia_giam_gio_hang"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="right"
+                            android:text="-300.000 đ"
+                            android:textSize="@dimen/title_size"/>
+                    </LinearLayout>
+
+                    <!-- Tổng giá -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="10dp">
+                        <!-- Title -->
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/gia_giam_gio_hang"
+                            android:textSize="@dimen/text_size"/>
+                        <!-- Số tiền -->
+                        <TextView
+                            android:id="@+id/tong_tien_sau_giam_gia_gio_hang"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="right"
+                            android:text="1.000.000 vnđ"
+                            android:textSize="@dimen/title_size"
+                            android:textColor="@color/colorTextDark"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Divider -->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/colorAccent"/>
+
+                <!-- Tổng giá trị-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="10dp">
+                    <!-- Title -->
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/tong_gia_tri_gio_hang"
+                        android:textSize="@dimen/title_size"
+                        android:textColor="@color/colorTextDark"/>
+                    <!-- Số tiền -->
+                    <TextView
+                        android:id="@+id/tong_tien_gio_hang"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="right"
+                        android:text="1.000.000 vnđ"
+                        android:textColor="@color/colorTextDark"
+                        android:textSize="@dimen/tong_tien_gio_hang_text_size"
                         android:textStyle="bold"/>
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
 
-    <!-- Bottom bar-->
+    <!-- Xác nhận đơn hàng -->
     <LinearLayout
         android:id="@+id/bottom_bar_gio_hang"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/title_height"
+        android:layout_height="@dimen/bottom_bar_gio_hang_height"
         android:orientation="horizontal"
+        android:paddingTop="@dimen/bottom_bar_gio_hang_vertical_padding"
+        android:paddingLeft="@dimen/vertical_padding"
+        android:paddingRight="@dimen/vertical_padding"
         android:layout_alignParentBottom="true"
         android:background="@color/colorSecondaryDark">
-        <!-- Title -->
+        <!-- Tổng tiền -->
         <TextView
+            android:id="@+id/bottom_bar_tong_tien_gio_hang"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center_vertical"
-            android:paddingLeft="@dimen/vertical_padding"
-            android:text="@string/title_gio_hang"
+            android:text="@string/tong_gia_tri_gio_hang"
             android:textColor="@color/colorText"
             android:textSize="@dimen/title_size"
             android:textStyle="bold"/>
-        <!-- Tên tài khoản -->
-        <TextView
-            android:id="@+id/tvTenTaiKhoan_FragmentGioHang"
-            android:layout_width="match_parent"
+        <!-- Nút xác nhận -->
+        <Button
+            android:id="@+id/btn_xac_nhan_gio_hang"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:paddingLeft="@dimen/button_xac_nhan_horizontal_padding"
+            android:paddingRight="@dimen/button_xac_nhan_horizontal_padding"
             android:gravity="center"
-            android:textColor="@color/colorText"
+            android:background="@drawable/shape_button_xac_nhan_gio_hang"
+            android:text="@string/xac_nhan_gio_hang"
+            android:textColor="@color/colorTextDark"
             android:textSize="@dimen/text_size"/>
     </LinearLayout>
 </RelativeLayout>

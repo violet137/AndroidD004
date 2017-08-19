@@ -143,6 +143,8 @@ public class ThongTinSanPhamFragment extends Fragment implements View.OnClickLis
             @Override
             public void onPageSelected(int pos) {
                 position = pos;
+                themGioHang = false;
+                sizeDuocChon = null;
                 sanPham = listSanPham.get(pos);
                 setUpUi(pos);
             }

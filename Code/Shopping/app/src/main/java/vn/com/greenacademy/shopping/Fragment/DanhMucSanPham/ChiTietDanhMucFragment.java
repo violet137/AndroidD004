@@ -19,6 +19,7 @@ import vn.com.greenacademy.shopping.Fragment.Main.SanPham.LocSanPhamDialog;
 import vn.com.greenacademy.shopping.Handle.HandleUi.ImageLoad;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.SanPham.ListSanPhamAdapter;
 import vn.com.greenacademy.shopping.Interface.DataCallBack;
+import vn.com.greenacademy.shopping.MainActivity;
 import vn.com.greenacademy.shopping.Model.ThongTinSanPham.SanPham;
 import vn.com.greenacademy.shopping.Network.AsynTask.DataServerAsyncTask;
 import vn.com.greenacademy.shopping.R;
@@ -81,6 +82,7 @@ public class ChiTietDanhMucFragment extends Fragment implements DataCallBack, Vi
         //        ListView vListPhanLoai = (ListView) root.findViewById(R.id.list_phan_loai);
 
         root.findViewById(R.id.button_loc_san_pham).setOnClickListener(this);
+        MainActivity.tvTenMuc.setVisibility(View.GONE);
         getActivity().supportInvalidateOptionsMenu();
         return root;
     }

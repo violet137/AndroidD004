@@ -5,11 +5,16 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.SpannableString;
+import android.text.style.ForegroundColorSpan;
+import android.text.style.StrikethroughSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,8 +25,10 @@ import vn.com.greenacademy.shopping.Fragment.MyShopping.TaiKhoan.DangKyFragment;
 import vn.com.greenacademy.shopping.Fragment.MyShopping.TaiKhoan.DangNhapFragment;
 import vn.com.greenacademy.shopping.Handle.HandleData.GioHang.GioHangHandler;
 import vn.com.greenacademy.shopping.Handle.HandleData.ParseData.GioHang.ParseGioHang;
+import vn.com.greenacademy.shopping.Handle.HandleData.SanPhamHandler;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.GioHang.SanPhamGioHangAdapter;
 import vn.com.greenacademy.shopping.Interface.DataCallBack;
+import vn.com.greenacademy.shopping.MainActivity;
 import vn.com.greenacademy.shopping.Model.ThongTinSanPham.SanPham;
 import vn.com.greenacademy.shopping.Model.ThongTinSanPham.SanPhamGioHang;
 import vn.com.greenacademy.shopping.Network.AsynTask.DataServerAsyncTask;
@@ -69,15 +76,58 @@ public class GioHangFragment extends Fragment implements View.OnClickListener, D
 
         //reset option menu
         getActivity().supportInvalidateOptionsMenu();
+        MainActivity.tvTenMuc.setVisibility(View.GONE);
         return root;
     }
 
     private void setUpUiCoSanPham() {
+        TextView tvTenTaiKhoan = (TextView) root.findViewById(R.id.tvTenTaiKhoan_FragmentGioHang);
+        TextView tvSoLuong = (TextView) root.findViewById(R.id.tong_so_luong_san_pham_gio_hang);
+        TextView tvTongTienTruocGiamGia = (TextView) root.findViewById(R.id.tong_tien_ban_dau_gio_hang);
+        TextView tvTongGiaGiam = (TextView) root.findViewById(R.id.tong_gia_giam_gio_hang);
+        TextView tvTongTienSauGiamGia = (TextView) root.findViewById(R.id.tong_tien_sau_giam_gia_gio_hang);
+        TextView tvTongTien = (TextView) root.findViewById(R.id.tong_tien_gio_hang);
+        TextView tvTongTienBottomBar = (TextView) root.findViewById(R.id.bottom_bar_tong_tien_gio_hang);
         RecyclerView vListSanPham = (RecyclerView) root.findViewById(R.id.recycler_view_list_san_pham_gio_hang);
+
+        root.findViewById(R.id.btn_xac_nhan_gio_hang).setOnClickListener(this);
 
         vListSanPham.setLayoutManager(new GridLayoutManager(getActivity(), 1));
         vListSanPham.setAdapter(new SanPhamGioHangAdapter(getActivity(), mListSanPham));
         vListSanPham.setNestedScrollingEnabled(false);
+        tvTenTaiKhoan.setText(getString(R.string.title_message) + " " + mySharedPref.getTenTaiKhoan());
+
+        //Hiển thị số lượng
+        int countSoLuong = 0;
+        for (int i = 0; i < mListSanPham.size(); i++) {
+            countSoLuong += mListSanPham.get(i).getSoLuong();
+        }
+        tvSoLuong.setText(String.valueOf(countSoLuong));
+
+        //Hiển thị giá tổng cộng
+        long sumGiaTruocKhiGiam = 0;
+        long sumGiaKhuyenMai = 0;
+        long sumTong = 0;
+        for (int i = 0; i < mListSanPham.size(); i++) {
+            if (mListSanPham.get(i).getGiaGiam() != 0)
+                sumGiaKhuyenMai += mListSanPham.get(i).getGiaGiam();
+            sumGiaTruocKhiGiam += mListSanPham.get(i).getGiaGoc();
+        }
+        tvTongTienTruocGiamGia.setText(SanPhamHandler.chuyenGia(sumGiaTruocKhiGiam));
+        if (sumGiaKhuyenMai != 0) {
+            String tongGiamGia = "-" + SanPhamHandler.chuyenGia(sumGiaKhuyenMai);
+            SpannableString spanString = new SpannableString(tongGiamGia);
+            //Xử lý hiển thị thông tin trên text
+            spanString.setSpan(new ForegroundColorSpan(ContextCompat.getColor(getActivity(), android.R.color.holo_red_dark)), 0, tongGiamGia.length(), 0);
+            tvTongGiaGiam.setText(spanString);
+        }
+        else
+            root.findViewById(R.id.thong_tin_khuyen_mai).setVisibility(View.GONE);
+
+        sumTong = sumGiaTruocKhiGiam - sumGiaKhuyenMai;
+        tvTongTienSauGiamGia.setText(SanPhamHandler.chuyenGia(sumTong));
+        tvTongTien.setText(SanPhamHandler.chuyenGia(sumTong));
+        tvTongTienBottomBar.setText(tvTongTienBottomBar.getText() + "\n" + SanPhamHandler.chuyenGia(sumTong));
     }
 
     private void setUpUiKhongSanPham(View root) {
@@ -112,6 +162,10 @@ public class GioHangFragment extends Fragment implements View.OnClickListener, D
                 break;
             case R.id.nut_shopping_gio_hang:
                 baseFragment.XoaFragment();
+                break;
+            case R.id.btn_xac_nhan_gio_hang:
+                Toast.makeText(getActivity(), "Xác nhận giỏ hàng", Toast.LENGTH_SHORT).show();
+                break;
         }
     }
 

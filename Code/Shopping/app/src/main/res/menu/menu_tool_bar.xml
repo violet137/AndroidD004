@@ -21,7 +21,7 @@
 
         <item
             android:id="@+id/my_bag_toolbar"
-            android:icon="@drawable/shopping_bag"
+            android:icon="@drawable/icon_bag2"
             android:title="Shopping bag"
             app:showAsAction="always" />
 
