@@ -165,7 +165,7 @@ public class SplashScreenDialog extends ProgressDialog implements DataCallBack {
 //                Toast.makeText(getOwnerActivity(), getOwnerActivity().getString(R.string.toast_loi_data), Toast.LENGTH_SHORT).show();
 //                break;
             case SupportKeyList.LAY_DATA_THANH_CONG:
-                gioHangHandler.luuGioHang(bundle);
+                gioHangHandler.luuGioHangTuServer(bundle);
                 break;
         }
     }

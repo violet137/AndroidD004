@@ -165,6 +165,7 @@ public class ThongTinSanPhamFragment extends Fragment implements View.OnClickLis
             sanPhamPagerAdapter = new SanPhamPagerAdapter(getChildFragmentManager(),listSanPham);
             pagerSanPham.setAdapter(sanPhamPagerAdapter);
             pagerSanPham.setCurrentItem(position);
+            setUpUi(position);
         }
     }
 
@@ -172,6 +173,7 @@ public class ThongTinSanPhamFragment extends Fragment implements View.OnClickLis
     public void onDestroyView() {
         super.onDestroyView();
         isFromBackStack = true;
+        position = pagerSanPham.getCurrentItem();
     }
 
     @Override
