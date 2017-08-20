@@ -169,7 +169,7 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener, 
                 break;
 
             case SupportKeyList.LAY_DATA_THANH_CONG:
-                gioHangHandler.luuGioHang(bundle);
+                gioHangHandler.luuGioHangTuServer(bundle);
                 break;
         }
         loadingDialog.dismiss();

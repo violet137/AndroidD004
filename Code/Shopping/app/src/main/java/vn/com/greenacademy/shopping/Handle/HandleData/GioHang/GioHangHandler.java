@@ -32,7 +32,7 @@ public class GioHangHandler {
     private Context context;
     private JSONArray jsonArraySanPham;
     private MySharedPreferences mySharedPref;
-    private DataServerAsyncTask serverAsyncTask;
+    private DataCallBack dataCallBack;
 
     //Key DataServer
     private final String KEY_ACCOUNT = "Account";
@@ -46,7 +46,7 @@ public class GioHangHandler {
 
     public GioHangHandler(Context context, DataCallBack dataCallBack){
         this.context = context;
-        serverAsyncTask = new DataServerAsyncTask(dataCallBack);
+        this.dataCallBack = dataCallBack;
         mySharedPref = new MySharedPreferences(context, SupportKeyList.SHAREDPREF_TEN_FILE);
     }
 
@@ -77,7 +77,8 @@ public class GioHangHandler {
             //Data server
             JSONObject objGioHang = new JSONObject();
             objGioHang.put(KEY_ACCOUNT, mySharedPref.getEmail());
-            objGioHang.put(KEY_LIST_GIO_HANG, jsonArraySanPham.toString());
+            objGioHang.put(KEY_LIST_GIO_HANG, jsonArraySanPham);
+            DataServerAsyncTask serverAsyncTask = new DataServerAsyncTask(dataCallBack);
             serverAsyncTask.execute(SupportKeyList.API_THEM_GIO_HANG, ServerUrl.UrlUpdateGioHang, "POST", objGioHang.toString());
         } catch (JSONException e) {
             e.printStackTrace();
@@ -85,7 +86,7 @@ public class GioHangHandler {
 
     }
 
-    public void UpdateSanPhamGioHang(int idSanPham, int soLuong, String size, String mau){
+    public void UpdateSanPhamGioHang(long idSanPham, int soLuong, String size, String mau){
         try{
             jsonArraySanPham = new JSONArray(mySharedPref.getGioHang());
             JSONObject objSanPham;
@@ -106,14 +107,15 @@ public class GioHangHandler {
             //Data server
             JSONObject objGioHang = new JSONObject();
             objGioHang.put(KEY_ACCOUNT, mySharedPref.getEmail());
-            objGioHang.put(KEY_LIST_GIO_HANG, jsonArraySanPham.toString());
+            objGioHang.put(KEY_LIST_GIO_HANG, jsonArraySanPham);
+            DataServerAsyncTask serverAsyncTask = new DataServerAsyncTask(dataCallBack);
             serverAsyncTask.execute(SupportKeyList.API_THEM_GIO_HANG, ServerUrl.UrlUpdateGioHang, "POST", objGioHang.toString());
         } catch (JSONException e) {
             e.printStackTrace();
         }
     }
 
-    public void XoaSanPhamGioHang(int idSanPham){
+    public void XoaSanPhamGioHang(long idSanPham){
         try {
             jsonArraySanPham = new JSONArray(mySharedPref.getGioHang());
             JSONObject objSanPham;
@@ -124,24 +126,31 @@ public class GioHangHandler {
                     break;
                 }
             }
-            mySharedPref.removeGioHang();
-            mySharedPref.setGioHang(jsonArraySanPham.toString());
+            if (jsonArraySanPham.length() != 0) {
+                mySharedPref.removeGioHang();
+                mySharedPref.setGioHang(jsonArraySanPham.toString());
+            } else
+                mySharedPref.removeGioHang();
 
             //Data server
             JSONObject objGioHang = new JSONObject();
             objGioHang.put(KEY_ACCOUNT, mySharedPref.getEmail());
-            objGioHang.put(KEY_LIST_GIO_HANG, jsonArraySanPham.toString());
+            objGioHang.put(KEY_LIST_GIO_HANG, jsonArraySanPham);
+            DataServerAsyncTask serverAsyncTask = new DataServerAsyncTask(dataCallBack);
             serverAsyncTask.execute(SupportKeyList.API_THEM_GIO_HANG, ServerUrl.UrlUpdateGioHang, "POST", objGioHang.toString());
         } catch (JSONException e) {
             e.printStackTrace();
         }
     }
 
+    //Xử lý giỏ hàng local
     public ArrayList<SanPhamGioHang> getGioHang(){
         return new ParseGioHangSharedPreferences(mySharedPref.getGioHang()).parseData();
     }
 
+    //Xử lý giỏ hàng từ server
     public void getGioHangTuServer(){
+        DataServerAsyncTask serverAsyncTask = new DataServerAsyncTask(dataCallBack);
         if(mySharedPref.getDaDangNhap()) {
             if (mySharedPref.getLoaiTaiKhoan().equals(SupportKeyList.ACCOUNT_THUONG))
                 serverAsyncTask.execute(SupportKeyList.API_GET_GIO_HANG, ServerUrl.UrlGetGioHang + mySharedPref.getEmail(), "GET");
@@ -150,7 +159,7 @@ public class GioHangHandler {
         }
     }
 
-    public void luuGioHang(Bundle bundle){
+    public void luuGioHangTuServer(Bundle bundle){
         if (bundle != null) {
             try {
                 JSONArray jsonArray = new JSONObject(bundle.getString(SupportKeyList.API_GET_GIO_HANG)).getJSONObject("GioHangTranfer").getJSONArray("DanhSachSanPham");

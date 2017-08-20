@@ -2,10 +2,12 @@ package vn.com.greenacademy.shopping.Fragment.MyShopping;
 
 
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.SpannableString;
@@ -27,7 +29,10 @@ import vn.com.greenacademy.shopping.Handle.HandleData.GioHang.GioHangHandler;
 import vn.com.greenacademy.shopping.Handle.HandleData.ParseData.GioHang.ParseGioHang;
 import vn.com.greenacademy.shopping.Handle.HandleData.SanPhamHandler;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.GioHang.SanPhamGioHangAdapter;
+import vn.com.greenacademy.shopping.Handle.HandleUi.Model.Support;
 import vn.com.greenacademy.shopping.Interface.DataCallBack;
+import vn.com.greenacademy.shopping.Interface.ItemClickCallBack;
+import vn.com.greenacademy.shopping.Interface.ItemLongClickCallBack;
 import vn.com.greenacademy.shopping.MainActivity;
 import vn.com.greenacademy.shopping.Model.ThongTinSanPham.SanPham;
 import vn.com.greenacademy.shopping.Model.ThongTinSanPham.SanPhamGioHang;
@@ -41,8 +46,17 @@ import vn.com.greenacademy.shopping.Util.Ui.BaseFragment;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class GioHangFragment extends Fragment implements View.OnClickListener, DataCallBack {
+public class GioHangFragment extends Fragment implements View.OnClickListener, DataCallBack, ItemLongClickCallBack {
     private View root;
+    private TextView tvTenTaiKhoan;
+    private TextView tvSoLuong;
+    private TextView tvTongTienTruocGiamGia;
+    private TextView tvTongGiaGiam;
+    private TextView tvTongTienSauGiamGia;
+    private TextView tvTongTien;
+    private TextView tvTongTienBottomBar;
+    private RecyclerView vListSanPham;
+
     private MySharedPreferences mySharedPref;
     private BaseFragment baseFragment;
     private ArrayList<SanPhamGioHang> mListSanPham = new ArrayList<>();
@@ -67,11 +81,22 @@ public class GioHangFragment extends Fragment implements View.OnClickListener, D
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        if (mySharedPref.getGioHang() != null)
+        if (mySharedPref.getGioHang() != null) {
             root = inflater.inflate(R.layout.fragment_gio_hang_co_san_pham, container, false);
+            tvTenTaiKhoan = (TextView) root.findViewById(R.id.tvTenTaiKhoan_FragmentGioHang);
+            tvSoLuong = (TextView) root.findViewById(R.id.tong_so_luong_san_pham_gio_hang);
+            tvTongTienTruocGiamGia = (TextView) root.findViewById(R.id.tong_tien_ban_dau_gio_hang);
+            tvTongGiaGiam = (TextView) root.findViewById(R.id.tong_gia_giam_gio_hang);
+            tvTongTienSauGiamGia = (TextView) root.findViewById(R.id.tong_tien_sau_giam_gia_gio_hang);
+            tvTongTien = (TextView) root.findViewById(R.id.tong_tien_gio_hang);
+            tvTongTienBottomBar = (TextView) root.findViewById(R.id.bottom_bar_tong_tien_gio_hang);
+            vListSanPham = (RecyclerView) root.findViewById(R.id.recycler_view_list_san_pham_gio_hang);
+
+            root.findViewById(R.id.btn_xac_nhan_gio_hang).setOnClickListener(this);
+        }
         else {
             root = inflater.inflate(R.layout.fragment_gio_hang, container, false);
-            setUpUiKhongSanPham(root);
+            setUpUiKhongSanPham();
         }
 
         //reset option menu
@@ -81,21 +106,12 @@ public class GioHangFragment extends Fragment implements View.OnClickListener, D
     }
 
     private void setUpUiCoSanPham() {
-        TextView tvTenTaiKhoan = (TextView) root.findViewById(R.id.tvTenTaiKhoan_FragmentGioHang);
-        TextView tvSoLuong = (TextView) root.findViewById(R.id.tong_so_luong_san_pham_gio_hang);
-        TextView tvTongTienTruocGiamGia = (TextView) root.findViewById(R.id.tong_tien_ban_dau_gio_hang);
-        TextView tvTongGiaGiam = (TextView) root.findViewById(R.id.tong_gia_giam_gio_hang);
-        TextView tvTongTienSauGiamGia = (TextView) root.findViewById(R.id.tong_tien_sau_giam_gia_gio_hang);
-        TextView tvTongTien = (TextView) root.findViewById(R.id.tong_tien_gio_hang);
-        TextView tvTongTienBottomBar = (TextView) root.findViewById(R.id.bottom_bar_tong_tien_gio_hang);
-        RecyclerView vListSanPham = (RecyclerView) root.findViewById(R.id.recycler_view_list_san_pham_gio_hang);
-
-        root.findViewById(R.id.btn_xac_nhan_gio_hang).setOnClickListener(this);
-
-        vListSanPham.setLayoutManager(new GridLayoutManager(getActivity(), 1));
-        vListSanPham.setAdapter(new SanPhamGioHangAdapter(getActivity(), mListSanPham));
-        vListSanPham.setNestedScrollingEnabled(false);
         tvTenTaiKhoan.setText(getString(R.string.title_message) + " " + mySharedPref.getTenTaiKhoan());
+
+        //List sản phẩm
+        vListSanPham.setLayoutManager(new GridLayoutManager(getActivity(), 1));
+        vListSanPham.setAdapter(new SanPhamGioHangAdapter(getActivity(), mListSanPham, this));
+        vListSanPham.setNestedScrollingEnabled(false);
 
         //Hiển thị số lượng
         int countSoLuong = 0;
@@ -127,10 +143,10 @@ public class GioHangFragment extends Fragment implements View.OnClickListener, D
         sumTong = sumGiaTruocKhiGiam - sumGiaKhuyenMai;
         tvTongTienSauGiamGia.setText(SanPhamHandler.chuyenGia(sumTong));
         tvTongTien.setText(SanPhamHandler.chuyenGia(sumTong));
-        tvTongTienBottomBar.setText(tvTongTienBottomBar.getText() + "\n" + SanPhamHandler.chuyenGia(sumTong));
+        tvTongTienBottomBar.setText("Tổng:" + "\n" + SanPhamHandler.chuyenGia(sumTong));
     }
 
-    private void setUpUiKhongSanPham(View root) {
+    private void setUpUiKhongSanPham() {
         TextView nutInspiration = (TextView) root.findViewById(R.id.nut_inspiration_gio_hang);
         TextView nutShopping = (TextView) root.findViewById(R.id.nut_shopping_gio_hang);
 
@@ -179,12 +195,42 @@ public class GioHangFragment extends Fragment implements View.OnClickListener, D
                 Toast.makeText(getActivity(), getString(R.string.toast_loi_data), Toast.LENGTH_SHORT).show();
                 break;
             case SupportKeyList.LAY_DATA_THANH_CONG:
-                gioHangHandler.luuGioHang(bundle);
+                gioHangHandler.luuGioHangTuServer(bundle);
                 mListSanPham = gioHangHandler.getGioHang();
                 if (mListSanPham != null)
                     setUpUiCoSanPham();
                 break;
+            case SupportKeyList.CAP_NHAT_THANH_CONG:
+                Toast.makeText(getActivity(), "Cập nhật thành công", Toast.LENGTH_SHORT).show();
+                if (mListSanPham.size() != 0)
+                    setUpUiCoSanPham();
+                else
+                    baseFragment.ChuyenFragment(new GioHangFragment(), SupportKeyList.TAG_FRAGMENT_GIO_HANG, false);
+                break;
+            case SupportKeyList.CAP_NHAT_THAT_BAI:
+                Toast.makeText(getActivity(), "Cập nhật thất bại", Toast.LENGTH_SHORT).show();
+                break;
         }
+    }
+
+    @Override
+    public void longClickItem(final int position) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setMessage("Xóa sản phẩm khỏi giỏ hàng ?");
+        builder.setNegativeButton("Hủy", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        builder.setPositiveButton("Xóa", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                gioHangHandler.XoaSanPhamGioHang(mListSanPham.get(position).getIdSanPham());
+                mListSanPham.remove(position);
+            }
+        });
+        builder.create().show();
     }
 }
 
