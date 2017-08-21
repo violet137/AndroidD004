@@ -145,7 +145,7 @@ public class MainFragment extends Fragment {
                         mainMenuHandler.setAdapter(menuMainArrayList, flag, rvMagazien);
                         break;
                 }
-                MainActivity.thoatSplashScreen();
+//                MainActivity.thoatSplashScreen();
             }
 
         };

@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import vn.com.greenacademy.shopping.Fragment.Magazine.MagazineFragment;
 import vn.com.greenacademy.shopping.Fragment.Home.MainFragment;
 import vn.com.greenacademy.shopping.Fragment.DanhMucSanPham.DanhMucSanPhamFragment;
-import vn.com.greenacademy.shopping.Fragment.MyShopping.GioHangFragment;
+import vn.com.greenacademy.shopping.Fragment.GioHang.GioHangFragment;
 import vn.com.greenacademy.shopping.Fragment.Sale.SaleFragment;
 import vn.com.greenacademy.shopping.Fragment.Store.FindStoreFragment;
 import vn.com.greenacademy.shopping.Fragment.Support.SupportFragment;

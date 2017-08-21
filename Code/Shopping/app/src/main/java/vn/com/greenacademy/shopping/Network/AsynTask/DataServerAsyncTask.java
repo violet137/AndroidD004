@@ -145,6 +145,16 @@ public class DataServerAsyncTask extends AsyncTask<String, Void, String> {
                     dataSanPhamTheoThoiTrang.putSerializable(SupportKeyList.API_DATA_SAN_PHAM_CHI_TIET_DANH_MUC, mListSanPhamTheoThoiTrang);
                     dataCallBack.KetQua(SupportKeyList.LAY_DATA_THANH_CONG, dataSanPhamTheoThoiTrang);
                     break;
+                case SupportKeyList.API_GET_SAN_PHAM:
+                    try {
+                        JSONObject root = new JSONObject(result);
+                        SanPham sanPham = new ParseSanPham(root.getJSONArray("SanPhamTranfers").get(0).toString()).parData();
+                        Bundle dataSanPham = new Bundle();
+                        dataSanPham.putSerializable("sanPham", sanPham);
+                        dataCallBack.KetQua(SupportKeyList.API_GET_SAN_PHAM, dataSanPham);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
                 case SupportKeyList.API_GET_GIO_HANG:
                     //Truyền kết quả về cho class yêu cầu
                     Bundle dataGioHang = new Bundle();

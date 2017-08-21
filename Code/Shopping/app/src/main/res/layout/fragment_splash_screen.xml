@@ -2,54 +2,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorBackgroundFront"
     tools:context="vn.com.greenacademy.shopping.Handle.HandleUi.Dialog.SplashScreenDialog">
 
     <!-- Logo app -->
-    <LinearLayout
-        android:id="@+id/logo_app_splash_screen"
+    <ImageView
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_centerVertical="true">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:text="F"
-            android:textSize="70sp"
-            android:textColor="@android:color/holo_red_dark"
-            android:textStyle="italic"
-            android:typeface="serif" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom"
-            android:layout_marginBottom="10dp"
-            android:text=" &amp; "
-            android:textSize="30sp"
-            android:textColor="@android:color/holo_red_dark"
-            android:textStyle="italic"
-            android:typeface="serif" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:gravity="center"
-            android:text="L"
-            android:textSize="70sp"
-            android:textColor="@android:color/holo_red_dark"
-            android:textStyle="italic"
-            android:typeface="serif" />
-    </LinearLayout>
+        android:layout_height="match_parent"
+        android:src="@drawable/splash_screen_img" />
 
     <!-- Loading icon -->
     <ProgressBar
         android:id="@+id/progress_bar_splash_screen"
         android:layout_width="30dp"
         android:layout_height="30dp"
-        android:layout_below="@+id/logo_app_splash_screen"
+        android:layout_marginTop="@dimen/loading_icon_margin_top"
         android:layout_centerHorizontal="true"
         android:indeterminateDrawable="@drawable/loader_anim" />
 
@@ -58,22 +25,10 @@
         android:id="@+id/button_retry_connect_splash_screen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/logo_app_splash_screen"
+        android:layout_marginTop="@dimen/loading_icon_margin_top"
         android:layout_centerHorizontal="true"
         android:visibility="gone"
         android:background="@null"
         android:text="Kết nối lại"
         android:textColor="@color/cardview_dark_background"/>
-    <!-- Full name -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="7dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:text="Fashion &amp; Life"
-        android:textSize="22sp"
-        android:textColor="@color/colorPrimaryDark"
-        android:textStyle="italic"
-        android:typeface="serif"/>
 </RelativeLayout>

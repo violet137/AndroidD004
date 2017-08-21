@@ -20,6 +20,9 @@
     <dimen name="nav_header_height">160dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
 
+    <!-- Splash screen -->
+    <dimen name="loading_icon_margin_top">300dp</dimen>
+
     <!-- Slide Menu -->
     <dimen name="imageView_padding_10dp">10dp</dimen>
 
@@ -234,4 +237,7 @@
     <dimen name="button_xac_nhan_height">40dp</dimen>
     <dimen name="message_dialog_margin">25dp</dimen>
 
+    <!-- QuickPopUp số lượng sản phẩm -->
+    <dimen name="quick_pop_up_so_luong_padding_bottom">17dp</dimen>
+    <dimen name="text_so_luong_horizontal_margin">20dp</dimen>
 </resources>

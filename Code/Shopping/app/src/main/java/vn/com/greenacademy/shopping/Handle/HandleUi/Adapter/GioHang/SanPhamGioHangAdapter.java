@@ -35,14 +35,16 @@ public class SanPhamGioHangAdapter extends RecyclerView.Adapter<SanPhamGioHangHo
     private ArrayList<SanPhamGioHang> mListSanPham = new ArrayList<>();
     private SanPhamGioHang sanPhamGioHang;
     private ImageLoad imageLoad;
+    private ItemClickCallBack itemClickCallBack;
     private ItemLongClickCallBack itemLongClickCallBack;
 
-    public SanPhamGioHangAdapter(Context context, ArrayList<SanPhamGioHang> listSanPham, ItemLongClickCallBack itemLongClickCallBack) {
+    public SanPhamGioHangAdapter(Context context, ArrayList<SanPhamGioHang> listSanPham, ItemLongClickCallBack itemLongClickCallBack, ItemClickCallBack itemClickCallBack) {
         this.context = context;
         mListSanPham = listSanPham;
         sanPhamGioHang = new SanPhamGioHang();
         imageLoad = new ImageLoad((Activity)context);
         gioHangHandler = new GioHangHandler(context, null);
+        this.itemClickCallBack = itemClickCallBack;
         this.itemLongClickCallBack = itemLongClickCallBack;
     }
 
@@ -57,6 +59,12 @@ public class SanPhamGioHangAdapter extends RecyclerView.Adapter<SanPhamGioHangHo
     public void onBindViewHolder(final SanPhamGioHangHolder holder, int position) {
         sanPhamGioHang = mListSanPham.get(position);
 
+        holder.itemGioHang.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                itemClickCallBack.clickItem(holder.getLayoutPosition());
+            }
+        });
         holder.itemGioHang.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {

@@ -19,10 +19,8 @@ import vn.com.greenacademy.shopping.R;
  */
 
 public class SanPhamHandler {
-
+    private Activity activity;
     public TypedArray arrayMauSP;
-
-    Activity activity;
     private Bundle bundleLocSanPham;
 
     public SanPhamHandler(Activity activity) {
@@ -31,7 +29,6 @@ public class SanPhamHandler {
     }
 
     public static String chuyenGia(long gia){
-//        DecimalFormat formatGia = new DecimalFormat("000.000.000");
         NumberFormat formatGia = NumberFormat.getCurrencyInstance(new Locale("vi", "VN"));
         return formatGia.format(gia);
     }

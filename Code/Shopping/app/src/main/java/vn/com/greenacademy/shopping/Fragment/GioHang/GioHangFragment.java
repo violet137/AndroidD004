@@ -1,7 +1,6 @@
-package vn.com.greenacademy.shopping.Fragment.MyShopping;
+package vn.com.greenacademy.shopping.Fragment.GioHang;
 
 
-import android.app.Activity;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -12,11 +11,9 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.SpannableString;
 import android.text.style.ForegroundColorSpan;
-import android.text.style.StrikethroughSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,19 +23,14 @@ import vn.com.greenacademy.shopping.Fragment.Magazine.MagazineFragment;
 import vn.com.greenacademy.shopping.Fragment.MyShopping.TaiKhoan.DangKyFragment;
 import vn.com.greenacademy.shopping.Fragment.MyShopping.TaiKhoan.DangNhapFragment;
 import vn.com.greenacademy.shopping.Handle.HandleData.GioHang.GioHangHandler;
-import vn.com.greenacademy.shopping.Handle.HandleData.ParseData.GioHang.ParseGioHang;
 import vn.com.greenacademy.shopping.Handle.HandleData.SanPhamHandler;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.GioHang.SanPhamGioHangAdapter;
-import vn.com.greenacademy.shopping.Handle.HandleUi.Model.Support;
 import vn.com.greenacademy.shopping.Interface.DataCallBack;
 import vn.com.greenacademy.shopping.Interface.ItemClickCallBack;
 import vn.com.greenacademy.shopping.Interface.ItemLongClickCallBack;
 import vn.com.greenacademy.shopping.MainActivity;
-import vn.com.greenacademy.shopping.Model.ThongTinSanPham.SanPham;
 import vn.com.greenacademy.shopping.Model.ThongTinSanPham.SanPhamGioHang;
-import vn.com.greenacademy.shopping.Network.AsynTask.DataServerAsyncTask;
 import vn.com.greenacademy.shopping.R;
-import vn.com.greenacademy.shopping.Util.ServerUrl;
 import vn.com.greenacademy.shopping.Util.SharePreference.MySharedPreferences;
 import vn.com.greenacademy.shopping.Util.SupportKeyList;
 import vn.com.greenacademy.shopping.Util.Ui.BaseFragment;
@@ -46,7 +38,7 @@ import vn.com.greenacademy.shopping.Util.Ui.BaseFragment;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class GioHangFragment extends Fragment implements View.OnClickListener, DataCallBack, ItemLongClickCallBack {
+public class GioHangFragment extends Fragment implements View.OnClickListener, DataCallBack, ItemLongClickCallBack, ItemClickCallBack {
     private View root;
     private TextView tvTenTaiKhoan;
     private TextView tvSoLuong;
@@ -61,9 +53,19 @@ public class GioHangFragment extends Fragment implements View.OnClickListener, D
     private BaseFragment baseFragment;
     private ArrayList<SanPhamGioHang> mListSanPham = new ArrayList<>();
     private GioHangHandler gioHangHandler;
+    private boolean fromBackStack = false;
 
     public GioHangFragment() {
         // Required empty public constructor
+    }
+
+    public static GioHangFragment newInstance() {
+
+        Bundle args = new Bundle();
+
+        GioHangFragment fragment = new GioHangFragment();
+        fragment.setArguments(args);
+        return fragment;
     }
 
     @Override
@@ -105,12 +107,29 @@ public class GioHangFragment extends Fragment implements View.OnClickListener, D
         return root;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (fromBackStack){
+            mySharedPref = new MySharedPreferences(getActivity(), SupportKeyList.SHAREDPREF_TEN_FILE);
+            baseFragment = new BaseFragment(getActivity(), getActivity().getSupportFragmentManager());
+            gioHangHandler = new GioHangHandler(getActivity(), this);
+            gioHangHandler.getGioHangTuServer();
+        }
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        fromBackStack = true;
+    }
+
     private void setUpUiCoSanPham() {
         tvTenTaiKhoan.setText(getString(R.string.title_message) + " " + mySharedPref.getTenTaiKhoan());
 
         //List sản phẩm
         vListSanPham.setLayoutManager(new GridLayoutManager(getActivity(), 1));
-        vListSanPham.setAdapter(new SanPhamGioHangAdapter(getActivity(), mListSanPham, this));
+        vListSanPham.setAdapter(new SanPhamGioHangAdapter(getActivity(), mListSanPham, this, this));
         vListSanPham.setNestedScrollingEnabled(false);
 
         //Hiển thị số lượng
@@ -186,6 +205,31 @@ public class GioHangFragment extends Fragment implements View.OnClickListener, D
     }
 
     @Override
+    public void longClickItem(final int position) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setMessage("Xóa sản phẩm khỏi giỏ hàng ?");
+        builder.setNegativeButton("Hủy", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        builder.setPositiveButton("Xóa", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                gioHangHandler.XoaSanPhamGioHang(mListSanPham.get(position).getIdSanPham());
+                mListSanPham.remove(position);
+            }
+        });
+        builder.create().show();
+    }
+
+    @Override
+    public void clickItem(int position) {
+        baseFragment.ChuyenFragment(ThongTinSanPhamGioHangFragment.newInstance(mListSanPham.get(position)), SupportKeyList.TAG_THONG_TIN_SAN_PHAM_GIO_HANG, true);
+    }
+
+    @Override
     public void KetQua(String result, @Nullable Bundle bundle) {
         switch (result){
             case SupportKeyList.LOI_DATA_SERVER:
@@ -213,24 +257,5 @@ public class GioHangFragment extends Fragment implements View.OnClickListener, D
         }
     }
 
-    @Override
-    public void longClickItem(final int position) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setMessage("Xóa sản phẩm khỏi giỏ hàng ?");
-        builder.setNegativeButton("Hủy", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.dismiss();
-            }
-        });
-        builder.setPositiveButton("Xóa", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                gioHangHandler.XoaSanPhamGioHang(mListSanPham.get(position).getIdSanPham());
-                mListSanPham.remove(position);
-            }
-        });
-        builder.create().show();
-    }
 }
 

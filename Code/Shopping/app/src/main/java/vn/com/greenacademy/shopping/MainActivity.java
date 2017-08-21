@@ -2,14 +2,13 @@ package vn.com.greenacademy.shopping;
 
 import android.content.pm.PackageManager;
 import android.graphics.Color;
-import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 
-import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -23,7 +22,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import vn.com.greenacademy.shopping.Fragment.Home.MainFragment;
-import vn.com.greenacademy.shopping.Fragment.MyShopping.GioHangFragment;
+import vn.com.greenacademy.shopping.Fragment.GioHang.GioHangFragment;
 import vn.com.greenacademy.shopping.Fragment.MyShopping.TaiKhoan.DangNhapFragment;
 import vn.com.greenacademy.shopping.Fragment.MyShopping.TaiKhoan.DangNhapKhongLuuFragment;
 import vn.com.greenacademy.shopping.Fragment.Store.FindStoreFragment;
@@ -103,13 +102,14 @@ public class MainActivity extends AppCompatActivity implements DataCallBack, Vie
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, 0, 0);
         drawerLayout.addDrawerListener(toggle);
-        toggle.getDrawerArrowDrawable().setColor(Color.parseColor("#ffcc0000"));
+        toggle.getDrawerArrowDrawable().setColor(ContextCompat.getColor(this, R.color.colorAccent));
         toggle.syncState();
 
         //Chạy màn hình splash
-        baseFragment.ChuyenFragment(new MainFragment(), null, false);
         splashScreenDialog = new SplashScreenDialog(MainActivity.this, drawerLayout);
         splashScreenDialog.show();
+
+        baseFragment.ChuyenFragment(new MainFragment(), null, false);
     }
 
     public static void thoatSplashScreen(){

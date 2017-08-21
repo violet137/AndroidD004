@@ -6,7 +6,9 @@ import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -27,6 +29,7 @@ import com.facebook.login.widget.LoginButton;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+import vn.com.greenacademy.shopping.Fragment.GioHang.GioHangFragment;
 import vn.com.greenacademy.shopping.Handle.HandleData.DataHandler;
 import vn.com.greenacademy.shopping.Handle.HandleData.GioHang.GioHangHandler;
 import vn.com.greenacademy.shopping.Handle.HandleData.ParseData.GioHang.ParseGioHang;
@@ -51,6 +54,13 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener, 
     private GoogleHandler googleHandler;
     private BaseFragment baseFragment;
     private CallbackManager callbackManager;
+    private GioHangHandler gioHangHandler;
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        gioHangHandler = new GioHangHandler(getActivity(), this);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -132,24 +142,34 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener, 
     //Xử lý kết quả trả về
     @Override
     public void KetQua(String result, Bundle bundle) {
-        GioHangHandler gioHangHandler = new GioHangHandler(getActivity(), this);
+
         switch (result){
             case SupportKeyList.LOI_KET_NOI:
                 Toast.makeText(getActivity(), getString(R.string.toast_loi_ket_noi), Toast.LENGTH_LONG).show();
                 break;
 
             case SupportKeyList.DANG_NHAP_THANH_CONG:
-                gioHangHandler.getGioHangTuServer();
                 Toast.makeText(getActivity(), getString(R.string.toast_dang_nhap_thanh_cong) + " " + etTenDangNhap.getText().toString() , Toast.LENGTH_SHORT).show();
                 dataHandler.setTrangThaiDangNhap(bundle.getString("Token"), SupportKeyList.ACCOUNT_THUONG, etTenDangNhap.getText().toString(), etTenDangNhap.getText().toString(), null, cbLuuDangNhap.isChecked());
-                baseFragment.ChuyenFragment(new TaiKhoanFragment(), SupportKeyList.TAG_FRAGMENT_TAI_KHOAN, false);
+                gioHangHandler.getGioHangTuServer();
+
+                //Check đăng nhập được gọi từ fragment nào
+                int index = getActivity().getSupportFragmentManager().getBackStackEntryCount();
+                FragmentManager.BackStackEntry backStackEntry = getActivity().getSupportFragmentManager().getBackStackEntryAt(index - 2);
+                if (!backStackEntry.getName().equals(SupportKeyList.TAG_FRAGMENT_GIO_HANG))
+                    baseFragment.ChuyenFragment(new TaiKhoanFragment(), SupportKeyList.TAG_FRAGMENT_TAI_KHOAN, false);
                 break;
 
             case SupportKeyList.DANG_NHAP_GOOGLE_THANH_CONG:
-                gioHangHandler.getGioHangTuServer();
                 Toast.makeText(getActivity(), getString(R.string.toast_dang_nhap_thanh_cong) + " " + googleHandler.getUsername() , Toast.LENGTH_SHORT).show();
                 dataHandler.setTrangThaiDangNhap(bundle.getString("Token"),SupportKeyList.ACCOUNT_GOOGLE, googleHandler.getEmail(), googleHandler.getUsername(), googleHandler.getId(), true);
-                baseFragment.ChuyenFragment(new TaiKhoanFragment(), SupportKeyList.TAG_FRAGMENT_TAI_KHOAN, false);
+                gioHangHandler.getGioHangTuServer();
+
+                //Check đăng nhập được gọi từ fragment nào
+                int index1 = getActivity().getSupportFragmentManager().getBackStackEntryCount();
+                FragmentManager.BackStackEntry backStackEntry1 = getActivity().getSupportFragmentManager().getBackStackEntryAt(index1 - 2);
+                if (!backStackEntry1.getName().equals(SupportKeyList.TAG_FRAGMENT_GIO_HANG))
+                    baseFragment.ChuyenFragment(new TaiKhoanFragment(), SupportKeyList.TAG_FRAGMENT_TAI_KHOAN, false);
                 break;
 
             case SupportKeyList.DANG_NHAP_THAT_BAI:
@@ -170,6 +190,7 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener, 
 
             case SupportKeyList.LAY_DATA_THANH_CONG:
                 gioHangHandler.luuGioHangTuServer(bundle);
+                baseFragment.XoaFragment();
                 break;
         }
         loadingDialog.dismiss();

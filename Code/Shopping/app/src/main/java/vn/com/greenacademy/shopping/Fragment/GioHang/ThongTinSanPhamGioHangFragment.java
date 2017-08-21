@@ -1,10 +1,11 @@
-package vn.com.greenacademy.shopping.Fragment.Main.SanPham;
+package vn.com.greenacademy.shopping.Fragment.GioHang;
 
 
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
@@ -19,12 +20,11 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.json.JSONArray;
-
 import java.util.ArrayList;
 
+import vn.com.greenacademy.shopping.Fragment.Main.SanPham.DetailsSanPhamDialog;
+import vn.com.greenacademy.shopping.Fragment.Main.SanPham.SanPhamPhuHopBottomDialog;
 import vn.com.greenacademy.shopping.Handle.HandleData.GioHang.GioHangHandler;
-
 import vn.com.greenacademy.shopping.Handle.HandleData.ParseData.Product.ParseNewProductList;
 import vn.com.greenacademy.shopping.Handle.HandleData.SanPhamHandler;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Adapter.SanPham.SanPhamPagerAdapter;
@@ -34,6 +34,8 @@ import vn.com.greenacademy.shopping.Handle.HandleUi.SanPham.QuickActionPopup;
 import vn.com.greenacademy.shopping.Interface.DataCallBack;
 import vn.com.greenacademy.shopping.Interface.ServerCallBack;
 import vn.com.greenacademy.shopping.Model.ThongTinSanPham.SanPham;
+import vn.com.greenacademy.shopping.Model.ThongTinSanPham.SanPhamGioHang;
+import vn.com.greenacademy.shopping.Network.AsynTask.DataServerAsyncTask;
 import vn.com.greenacademy.shopping.Network.AsynTask.GetServerData;
 import vn.com.greenacademy.shopping.R;
 import vn.com.greenacademy.shopping.Util.ServerUrl;
@@ -43,13 +45,14 @@ import vn.com.greenacademy.shopping.Util.Ui.BaseFragment;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ThongTinSanPhamFragment extends Fragment implements View.OnClickListener, ServerCallBack, DataCallBack {
+public class ThongTinSanPhamGioHangFragment extends Fragment implements View.OnClickListener, DataCallBack {
     private View root;
     private TextView tvTenVaMau;
     private TextView tvSoLuong;
     private Button btnSizeInfo;
     private Button btnColor;
-    private ImageView btnShare;
+    private Button btnSoLuong;
+    private ImageView btnXoa;
     private ImageView btnInfo;
     private ImageView btnHinh;
     private ViewPager pagerSanPham;
@@ -60,77 +63,66 @@ public class ThongTinSanPhamFragment extends Fragment implements View.OnClickLis
     private GioHangHandler gioHangHandler;
     private SanPhamPagerAdapter sanPhamPagerAdapter;
     private ImageLoad imageLoad;
-    private ArrayList<SanPham> listSanPham = new ArrayList<>();
-    private SanPham sanPham;
     private SpannableString formatTenVaMau;
     private Bundle bundleForPage;
+    private ArrayList<SanPham> listSanPham = new ArrayList<>();
+    private SanPham sanPham;
+    private SanPhamGioHang sanPhamGioHang;
     private int idSanPham;
     private int position;
     private String mauDuocChon;
     private String sizeDuocChon = null;
-    private String callFrom = "";
     private boolean isFromBackStack = false;
     private boolean themGioHang = false;
 
-    public ThongTinSanPhamFragment(String idSanPham, String callFrom) {
-        if (idSanPham.equals("ALL"))
-            this.idSanPham = -1;
-        else
-            this.idSanPham = Integer.parseInt(idSanPham);
+    public static ThongTinSanPhamGioHangFragment newInstance(SanPhamGioHang sanPhamGioHang) {
 
-        this.callFrom = callFrom;
-    }
+        Bundle args = new Bundle();
+        args.putSerializable("sanPhamGioHang", sanPhamGioHang);
 
-    public ThongTinSanPhamFragment(int position, ArrayList<SanPham> listSanPham) {
-        this.listSanPham = listSanPham;
-        this.position = position;
+        ThongTinSanPhamGioHangFragment fragment = new ThongTinSanPhamGioHangFragment();
+        fragment.setArguments(args);
+        return fragment;
     }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (!callFrom.isEmpty() && callFrom.equals(SupportKeyList.TAG_FRAGMENT_MAIN)){
-            GetServerData getServerData = new GetServerData(this);
-            getServerData.execute(ServerUrl.UrlDanhSachSPMoi+"20", String.valueOf(SupportKeyList.NewProduct_Url));
-        }
         imageLoad = new ImageLoad(getActivity());
         gioHangHandler = new GioHangHandler(getActivity(), this);
         sanPhamHandler = new SanPhamHandler(getActivity());
         sanPhamPagerAdapter = new SanPhamPagerAdapter(getChildFragmentManager(),listSanPham);
         bundleForPage = new Bundle();
         progressDialog = new ProgressDialog(getActivity());
+        position = 0;
+        sanPhamGioHang = (SanPhamGioHang) getArguments().getSerializable("sanPhamGioHang");
+        DataServerAsyncTask serverAsyncTask = new DataServerAsyncTask(this);
+        serverAsyncTask.execute(SupportKeyList.API_GET_SAN_PHAM, ServerUrl.UrlSanPhamTheoId + String.valueOf(sanPhamGioHang.getIdSanPham()), "GET");
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        root = inflater.inflate(R.layout.fragment_thong_tin_san_pham, container, false);
+        root = inflater.inflate(R.layout.fragment_thong_tin_san_pham_gio_hang, container, false);
         tvTenVaMau = (TextView) root.findViewById(R.id.ten_va_mau_fragment_san_pham);
         tvSoLuong = (TextView) root.findViewById(R.id.so_luong_fragment_san_pham);
         pagerSanPham = (ViewPager) root.findViewById(R.id.pager_fragment_san_pham);
-        btnShare = (ImageView) root.findViewById(R.id.button_share_san_pham);
+        btnXoa = (ImageView) root.findViewById(R.id.button_xoa_san_pham);
         btnInfo = (ImageView) root.findViewById(R.id.button_info_san_pham);
         btnSizeInfo = (Button) root.findViewById(R.id.button_size_san_pham);
         btnColor = (Button) root.findViewById(R.id.button_color_san_pham);
         btnHinh = (ImageView) root.findViewById(R.id.button_hinh_san_pham);
+        btnSoLuong = (Button) root.findViewById(R.id.button_so_luong_san_pham_gio_hang);
 
-        root.findViewById(R.id.button_san_pham_khac).setOnClickListener(this);
-        root.findViewById(R.id.button_them_san_pham).setOnClickListener(this);
+        root.findViewById(R.id.button_xoa_san_pham).setOnClickListener(this);
+        btnSoLuong.setOnClickListener(this);
         btnInfo.setOnClickListener(this);
-        btnShare.setOnClickListener(this);
+        btnXoa.setOnClickListener(this);
         btnSizeInfo.setOnClickListener(this);
         btnColor.setOnClickListener(this);
         btnHinh.setOnClickListener(this);
 
-        if (callFrom.isEmpty()) {
-            sanPham = listSanPham.get(position);
-            pagerSanPham.setAdapter(sanPhamPagerAdapter);
-            pagerSanPham.setCurrentItem(position);
-
-            //Xử lý thông tin hiển thị
-            setUpUi(position);
-        }
         pagerSanPham.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -188,12 +180,8 @@ public class ThongTinSanPhamFragment extends Fragment implements View.OnClickLis
                 detailsSanPhamDialog.show();
                 hideInfo();
                 break;
-            case R.id.button_share_san_pham:
-                Toast.makeText(getActivity(), "Share", Toast.LENGTH_LONG).show();
-                break;
-            case R.id.button_san_pham_khac:
-                SanPhamPhuHopBottomDialog sanPhamPhuHopBottomDialog = new SanPhamPhuHopBottomDialog(getActivity(), listSanPham, new BaseFragment(getActivity(), getActivity().getSupportFragmentManager()));
-                sanPhamPhuHopBottomDialog.show();
+            case R.id.button_xoa_san_pham:
+                Toast.makeText(getActivity(), "Xóa", Toast.LENGTH_LONG).show();
                 break;
             case R.id.button_hinh_san_pham:
                 setUpQuickActionHinh();
@@ -207,16 +195,9 @@ public class ThongTinSanPhamFragment extends Fragment implements View.OnClickLis
                 setUpQuickActionSize();
                 quickActionPopup.show(v);
                 break;
-            case R.id.button_them_san_pham:
-                if (sizeDuocChon == null){
-                    setUpQuickActionSize();
-                    quickActionPopup.show(v);
-                    themGioHang = true;
-                }
-                else {
-                    progressDialog.show();
-                    gioHangHandler.themSanPhamGioHang(sanPham.getIdSanPham(), 1, sizeDuocChon, mauDuocChon);
-                }
+            case R.id.button_so_luong_san_pham_gio_hang:
+                setUpQuickActionSoLuong();
+                quickActionPopup.show(v);
                 break;
         }
     }
@@ -226,15 +207,15 @@ public class ThongTinSanPhamFragment extends Fragment implements View.OnClickLis
         formatTenVaMau.setSpan(new StyleSpan(Typeface.BOLD), 0, sanPham.getTenSanPham().length(), 0);
         tvTenVaMau.setText(formatTenVaMau);
         tvSoLuong.setText(String.valueOf(pos + 1) + "/" + String.valueOf(listSanPham.size()));
-        btnColor.setBackgroundResource(sanPhamHandler.doiMaMau(sanPham.getMauSanPham()[0]));
-        for (int j = 0; j < sanPham.getHinhSanPham().size(); j++) {
-            if (sanPham.getMauSanPham()[0].equals(sanPham.getHinhSanPham().get(j).getMau())) {
-                mauDuocChon = sanPham.getMauSanPham()[0];
-                imageLoad.load(sanPham.getHinhSanPham().get(0).getLinkHinh()[0], btnHinh);
-                break;
-            }
-        }
-        btnSizeInfo.setText(getResources().getString(R.string.chon_size));
+        btnColor.setBackgroundResource(sanPhamHandler.doiMaMau(sanPhamGioHang.getMauSanPham()));
+        imageLoad.load(sanPhamGioHang.getLinkHinh(), btnHinh);
+        btnSizeInfo.setText(String.valueOf(sanPhamGioHang.getSize()));
+        pagerSanPham.setAdapter(sanPhamPagerAdapter);
+        mauDuocChon = sanPhamGioHang.getMauSanPham();
+
+        //Đổi hình page
+        bundleForPage.putString("HinhSanPham", sanPhamGioHang.getLinkHinh());
+        sanPhamPagerAdapter.updateUiSinglePage(position, SanPhamPagerAdapter.ACTION_DOI_HINH_SAN_PHAM, bundleForPage);
     }
 
     //Tùy chọn size
@@ -260,6 +241,9 @@ public class ThongTinSanPhamFragment extends Fragment implements View.OnClickLis
                             gioHangHandler.themSanPhamGioHang(sanPham.getIdSanPham(), 1, sizeDuocChon, mauDuocChon);
                         }
                         themGioHang = false;
+
+                        //Cập nhật thay đổi lên server
+                        gioHangHandler.UpdateSanPhamGioHang(sanPhamGioHang.getIdSanPham(), 0, sizeDuocChon, null);
                     }
                 }
             }
@@ -327,10 +311,12 @@ public class ThongTinSanPhamFragment extends Fragment implements View.OnClickLis
                                 formatTenVaMau = new SpannableString(sanPham.getTenSanPham() + " - " + SanPhamHandler.chuyenTenMau(mauDuocChon));
                                 formatTenVaMau.setSpan(new StyleSpan(Typeface.BOLD), 0, sanPham.getTenSanPham().length(), 0);
                                 tvTenVaMau.setText(formatTenVaMau);
-
                                 //Đổi hình page
                                 bundleForPage.putString("HinhSanPham", sanPham.getHinhSanPham().get(j).getLinkHinh()[0]);
                                 sanPhamPagerAdapter.updateUiSinglePage(position, SanPhamPagerAdapter.ACTION_DOI_HINH_SAN_PHAM, bundleForPage);
+
+                                //Cập nhật thay đổi lên server
+                                gioHangHandler.UpdateSanPhamGioHang(sanPhamGioHang.getIdSanPham(), 0 , null, mauDuocChon);
                                 break;
                             }
                         }
@@ -340,11 +326,70 @@ public class ThongTinSanPhamFragment extends Fragment implements View.OnClickLis
         });
     }
 
+    //Tùy chọn số lượng
+    private void setUpQuickActionSoLuong() {
+        //create QuickActionPopup. Use QuickActionPopup.VERTICAL or QuickActionPopup.HORIZONTAL //param to define orientation
+        quickActionPopup = new QuickActionPopup(getActivity(), QuickActionPopup.HORIZONTAL);
+        LayoutInflater inflater = LayoutInflater.from(getActivity());
+        final View root = inflater.inflate(R.layout.quick_pop_up_so_luong_san_pham, null);
+        final TextView tvSoLuong = (TextView) root.findViewById(R.id.text_so_luong);
+
+        root.findViewById(R.id.btn_tru_so_luong).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (Integer.parseInt(tvSoLuong.getText().toString()) == 2) {
+                    tvSoLuong.setText(String.valueOf(Integer.parseInt(tvSoLuong.getText().toString()) - 1));
+                    root.findViewById(R.id.btn_tru_so_luong).setVisibility(View.INVISIBLE);
+                }
+                else
+                    tvSoLuong.setText(String.valueOf(Integer.parseInt(tvSoLuong.getText().toString()) - 1));
+                btnSoLuong.setText(tvSoLuong.getText());
+                gioHangHandler.UpdateSanPhamGioHang(sanPhamGioHang.getIdSanPham(), Integer.parseInt(btnSoLuong.getText().toString()), null, null);
+
+                root.findViewById(R.id.btn_tru_so_luong).setClickable(false);
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        root.findViewById(R.id.btn_tru_so_luong).setClickable(true);
+                    }
+                }, 1000);
+            }
+        });
+
+        root.findViewById(R.id.btn_cong_so_luong).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (Integer.parseInt(tvSoLuong.getText().toString()) == 1) {
+                    tvSoLuong.setText(String.valueOf(Integer.parseInt(tvSoLuong.getText().toString())+1));
+                    root.findViewById(R.id.btn_tru_so_luong).setVisibility(View.VISIBLE);
+                }
+                else
+                    tvSoLuong.setText(String.valueOf(Integer.parseInt(tvSoLuong.getText().toString())+1));
+                btnSoLuong.setText(tvSoLuong.getText());
+                gioHangHandler.UpdateSanPhamGioHang(sanPhamGioHang.getIdSanPham(), Integer.parseInt(btnSoLuong.getText().toString()), null, null);
+
+                root.findViewById(R.id.btn_cong_so_luong).setClickable(false);
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        root.findViewById(R.id.btn_cong_so_luong).setClickable(true);
+                    }
+                }, 1000);
+            }
+        });
+
+        if (Integer.parseInt(tvSoLuong.getText().toString()) == 1)
+            root.findViewById(R.id.btn_tru_so_luong).setVisibility(View.INVISIBLE);
+
+        quickActionPopup.setRootViewId(root);
+//        quickActionPopup.setContentView(root);
+    }
+
     // Ẩn các thông tin không cần thiết khi hiện dialog chi tiết sản phẩm
     public void hideInfo() {
         root.findViewById(R.id.top_info).setVisibility(View.GONE);
         root.findViewById(R.id.bottom_info).setVisibility(View.GONE);
-        btnShare.setVisibility(View.GONE);
+        btnXoa.setVisibility(View.GONE);
         btnInfo.setVisibility(View.GONE);
         sanPhamPagerAdapter.updateUiSinglePage(position, SanPhamPagerAdapter.ACTION_HIDE_GIA, null);
     }
@@ -353,45 +398,10 @@ public class ThongTinSanPhamFragment extends Fragment implements View.OnClickLis
     public void showInfo() {
         root.findViewById(R.id.top_info).setVisibility(View.VISIBLE);
         root.findViewById(R.id.bottom_info).setVisibility(View.VISIBLE);
-        btnShare.setVisibility(View.VISIBLE);
+        btnXoa.setVisibility(View.VISIBLE);
         btnInfo.setVisibility(View.VISIBLE);
         sanPhamPagerAdapter.updateUiSinglePage(position, SanPhamPagerAdapter.ACTION_SHOW_GIA, null);
     }
-
-    private int findSanPhamPosition(int idSanPham, ArrayList<SanPham> listSanPham) {
-        if (idSanPham == -1){
-            return 11;
-        }
-        else {
-            for (int i = 0; i < listSanPham.size(); i++) {
-                if (idSanPham == listSanPham.get(i).getIdSanPham())
-                    return i;
-            }
-        }
-        return -1;
-    }
-
-    @Override
-    public void serverCallBack(String dataServer) {
-
-    }
-
-    @Override
-    public void serverCallBack(String dataServer, String key) {
-        switch (Integer.parseInt(key)) {
-            case SupportKeyList.NewProduct_Url:
-                ParseNewProductList parseNewProductList = new ParseNewProductList(dataServer);
-                listSanPham = parseNewProductList.parData().getSanPhamArrayList();
-                position = findSanPhamPosition(idSanPham, listSanPham);
-                sanPham = listSanPham.get(position);
-                sanPhamPagerAdapter = new SanPhamPagerAdapter(getChildFragmentManager(),listSanPham);
-                pagerSanPham.setAdapter(sanPhamPagerAdapter);
-                pagerSanPham.setCurrentItem(position);
-                setUpUi(position);
-                break;
-        }
-    }
-
 
     @Override
     public void KetQua(String result, @Nullable Bundle bundle) {
@@ -402,11 +412,16 @@ public class ThongTinSanPhamFragment extends Fragment implements View.OnClickLis
             case SupportKeyList.LOI_DATA:
                 Toast.makeText(getActivity(), getString(R.string.toast_loi_data), Toast.LENGTH_SHORT).show();
                 break;
+            case SupportKeyList.API_GET_SAN_PHAM:
+                sanPham = (SanPham) bundle.getSerializable("sanPham");
+                listSanPham.add(sanPham);
+                setUpUi(position);
+                break;
             case SupportKeyList.CAP_NHAT_THANH_CONG:
-                Toast.makeText(getActivity(), "Thêm thành công!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Cập nhật thành công!", Toast.LENGTH_SHORT).show();
                 break;
             case SupportKeyList.CAP_NHAT_THAT_BAI:
-                Toast.makeText(getActivity(), "Thêm thất bại!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Cập nhật thất bại!", Toast.LENGTH_SHORT).show();
                 break;
         }
         progressDialog.dismiss();

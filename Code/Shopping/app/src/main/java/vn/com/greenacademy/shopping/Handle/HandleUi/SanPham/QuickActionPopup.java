@@ -17,6 +17,7 @@ import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
+import vn.com.greenacademy.shopping.Handle.HandleData.GioHang.GioHangHandler;
 import vn.com.greenacademy.shopping.Handle.HandleUi.ImageLoad;
 import vn.com.greenacademy.shopping.Handle.HandleUi.Model.QuickActionItem;
 import vn.com.greenacademy.shopping.R;
@@ -139,13 +140,26 @@ public class QuickActionPopup extends PopupWindowHandler implements PopupWindow.
      *
      * @param id Layout resource id
      */
-    private void setRootViewId(int id) {
+    public void setRootViewId(int id) {
         mRootView   = (ViewGroup) mInflater.inflate(id, null);
         mTrack  = (ViewGroup) mRootView.findViewById(R.id.tracks);
 
         mArrowDown  = (ImageView) mRootView.findViewById(R.id.arrow_down);
         mArrowUp    = (ImageView) mRootView.findViewById(R.id.arrow_up);
         mScroller   = (ScrollView) mRootView.findViewById(R.id.scroller);
+
+        mRootView.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+
+        setContentView(mRootView);
+    }
+
+    public void setRootViewId(View root) {
+        mRootView   = root;
+        mTrack  = (ViewGroup) mRootView.findViewById(R.id.tracks);
+
+//        mArrowDown  = (ImageView) mRootView.findViewById(R.id.arrow_down);
+//        mArrowUp    = (ImageView) mRootView.findViewById(R.id.arrow_up);
+//        mScroller   = (ScrollView) mRootView.findViewById(R.id.scroller);
 
         mRootView.setLayoutParams(new LinearLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
 

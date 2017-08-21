@@ -11,6 +11,7 @@ public class SupportKeyList {
     public static final String API_DATA_XU_HUONG_THOI_TRANG = "api_data_xu_huong_thoi_trang";
     public static final String API_DATA_SAN_PHAM_CHI_TIET_DANH_MUC = "api_data_chi_tiet_danh_muc";
     public static final String API_DATA_SAN_PHAM_THEO_THOI_TRANG = "api_data_san_pham_theo_thoi_trang";
+    public static final String API_GET_SAN_PHAM = "api_get_san_pham";
     public static final String API_GET_GIO_HANG = "api_get_gio_hang";
     public static final String API_THEM_GIO_HANG = "api_them_gio_hang";
     public static final String API_XOA_GIO_HANG = "api_xoa_gio_hang";
@@ -55,6 +56,7 @@ public class SupportKeyList {
     public static final String TAG_DANH_MUC_SAN_PHAM = "DanhMucSanPham";
     public static final String TAG_CHI_TIET_DANH_MUC_SAN_PHAM = "ChiTietDanhMucSanPham";
     public static final String TAG_THONG_TIN_SAN_PHAM = "ThongTinSanPham";
+    public static final String TAG_THONG_TIN_SAN_PHAM_GIO_HANG = "ThongTinSanPhamGioHang";
     public static final String TAG_DETAILS_SAN_PHAM = "DetailsSanPham";
     public static final String TAG_FRAGMENT_FINDSTORE = "ParseStore";
     public static final String TAG_FRAGMENT_SALE = "Sale";

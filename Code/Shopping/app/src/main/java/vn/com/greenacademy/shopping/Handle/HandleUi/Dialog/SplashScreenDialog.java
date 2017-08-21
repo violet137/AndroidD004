@@ -60,7 +60,7 @@ public class SplashScreenDialog extends ProgressDialog implements DataCallBack {
     private MySharedPreferences mySharedPreferences;
     private GioHangHandler gioHangHandler;
 
-    private static final int DELAY_TIME = 3000;
+    private static final int DELAY_TIME = 5000;
 
     public SplashScreenDialog(Context context, DrawerLayout drawerLayout) {
         super(context);

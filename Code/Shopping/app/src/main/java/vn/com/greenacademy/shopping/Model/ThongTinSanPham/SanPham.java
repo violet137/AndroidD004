@@ -1,5 +1,6 @@
 package vn.com.greenacademy.shopping.Model.ThongTinSanPham;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import vn.com.greenacademy.shopping.Model.ThongTinSanPham.HinhSanPham;
@@ -8,7 +9,7 @@ import vn.com.greenacademy.shopping.Model.ThongTinSanPham.HinhSanPham;
  * Created by zzzzz on 7/15/2017.
  */
 
-public class SanPham {
+public class SanPham implements Serializable {
     private long idSanPham;
     private long danhMucHangId;
     private String tenSanPham;

@@ -34,6 +34,10 @@ public class ServerUrl {
     public static final String UrlSanPhamTheoThoiTrang = ProductUrl + "SanPhamTheoThoiTrang?loaiThoiTrang=";
     public static final String UrlSPMoiTheoDM = ProductUrl + "SpMoiTheoThoiTrang?loaiThoiTrang=";
     public static final String AndSoLuonSanPham = "&soLuong=";
+
+    //Sản phẩm
+    public static final String UrlSanPhamTheoId = ProductUrl + "SanPhamTheoId?sanPhamId=";
+
     //Đơn hàng
     public static final String UrlGetGioHang = DonHangUrl + "GetGioHang?account=";
     public static final String UrlUpdateGioHang = DonHangUrl + "UpdateGioHang";
@@ -47,6 +51,5 @@ public class ServerUrl {
     public static final String UrlGooglePlusFashionAndLife = "https://plus.google.com/u/0/110092588554737079316";
     public static final String UrlInstagramFashionAndLife = "https://www.instagram.com/appshoppingd004/?hl=vi";
     public static final String UrlGioThieuFAndL = ServerLink + "images/about.html";
-
 
 }
