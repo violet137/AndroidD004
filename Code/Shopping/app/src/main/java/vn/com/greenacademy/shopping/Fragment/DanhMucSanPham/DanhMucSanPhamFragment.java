@@ -171,6 +171,7 @@ public class DanhMucSanPhamFragment extends Fragment {
 
             rvMenu.setAdapter(danhMucSPHandler.getAdapterListDM(dataMucSanPham));
 
+            llXemTatCa.setVisibility(View.VISIBLE);
             if (dataHotProduct.size()>0){
                 danhMucSPHandler.getAdapterHotProduct(getChildFragmentManager(),dataHotProduct,vpHotProduct,rgHotProduct);
                 itemHotProduct.setVisibility(View.VISIBLE);
@@ -178,6 +179,7 @@ public class DanhMucSanPhamFragment extends Fragment {
 
             itemHotProduct.setVisibility(View.VISIBLE);
         }
+        listenerBack = false;
     }
 
     @Override

@@ -34,6 +34,7 @@ public class ServerUrl {
     public static final String UrlSanPhamTheoThoiTrang = ProductUrl + "SanPhamTheoThoiTrang?loaiThoiTrang=";
     public static final String UrlSPMoiTheoDM = ProductUrl + "SpMoiTheoThoiTrang?loaiThoiTrang=";
     public static final String AndSoLuonSanPham = "&soLuong=";
+    public static final String UrlChiTietKhuyenMai = HomeUrl + "ChiTietKhuyenMai?idKhuyenMai=";
 
     //Sản phẩm
     public static final String UrlSanPhamTheoId = ProductUrl + "SanPhamTheoId?sanPhamId=";

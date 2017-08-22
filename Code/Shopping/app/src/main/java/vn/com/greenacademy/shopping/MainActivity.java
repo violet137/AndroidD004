@@ -102,7 +102,8 @@ public class MainActivity extends AppCompatActivity implements DataCallBack, Vie
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, 0, 0);
         drawerLayout.addDrawerListener(toggle);
-        toggle.getDrawerArrowDrawable().setColor(ContextCompat.getColor(this, R.color.colorAccent));
+//        toggle.getDrawerArrowDrawable().setColor(ContextCompat.getColor(this, R.color.colorAccent));
+        toggle.getDrawerArrowDrawable().setColor(Color.parseColor("#ed3232"));
         toggle.syncState();
 
         //Chạy màn hình splash

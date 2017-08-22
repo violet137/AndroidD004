@@ -1,10 +1,12 @@
 package vn.com.greenacademy.shopping.Handle.HandleUi;
 
 import android.app.Activity;
+import android.util.Log;
 import android.widget.ImageView;
 
 import com.squareup.picasso.Picasso;
 
+import vn.com.greenacademy.shopping.R;
 import vn.com.greenacademy.shopping.Util.SupportKeyList;
 
 /**
@@ -20,6 +22,8 @@ public class ImageLoad {
     }
 
     public void load(String url, ImageView imageView) {
-        Picasso.with(activity).load(url).into(imageView);
+
+//        Log.d("load hinh","load hinh:"+url);
+        Picasso.with(activity).load(url).fit().centerCrop().into(imageView);
     }
 }

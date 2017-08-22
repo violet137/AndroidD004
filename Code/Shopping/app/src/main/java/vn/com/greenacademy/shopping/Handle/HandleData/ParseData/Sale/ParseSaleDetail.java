@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import vn.com.greenacademy.shopping.Handle.HandleData.ParseData.Product.ParseListSanPham;
 import vn.com.greenacademy.shopping.Handle.HandleData.ParseData.Product.ParseSanPham;
 import vn.com.greenacademy.shopping.Model.Sale;
+import vn.com.greenacademy.shopping.Model.ThongTinSanPham.HinhSanPham;
 import vn.com.greenacademy.shopping.Model.ThongTinSanPham.SanPham;
 
 /**
@@ -21,52 +22,74 @@ public class ParseSaleDetail {
         this.data=data;
     }
 
-    public ArrayList<Sale> parData(){
-        ArrayList<Sale> result = new ArrayList<>();
+    public Sale parData(){
+        Sale result = new Sale();
         try {
             JSONObject root = new JSONObject(data);
             if (root.getInt("Status") == 1){
-                JSONArray jsonArray = root.getJSONArray("KhuyenMaiTranfers");
-                ArrayList<Integer> temp;
+
+                result.setId(root.getInt("Id"));
+                result.setHinhDaiDien(root.getString("HinhDaiDien"));
+                result.setMota(root.getString("Mota"));
+                result.setTen(root.getString("Ten"));
+
                 SanPham sanPham;
-                ArrayList<SanPham> sanPhamArrayList;
-                for (int i = 0; i < jsonArray.length(); i++) {
-                    JSONObject jsonObject = jsonArray.getJSONObject(i);
-                    Sale sale = new Sale();
+                ArrayList<SanPham> sanPhamArrayList = new ArrayList<>();
+                JSONArray listSanPham = root.getJSONArray("ListSanPham");
 
-                    sale.setId(jsonObject.getInt("Id"));
-                    sale.setHinhDaiDien(jsonObject.getString("HinhDaiDien"));
-                    sale.setMota(jsonObject.getString("Mota"));
-                    sale.setTen(jsonObject.getString("Ten"));
+                for (int j = 0; j < listSanPham.length() ; j++) {
+                    JSONObject objSanPham = listSanPham.getJSONObject(j);
 
+                    sanPham = new SanPham();
+                    sanPham.setIdSanPham(objSanPham.getInt("Id"));
+                    sanPham.setTenSanPham(objSanPham.getString("Ten"));
+                    sanPham.setNgayTao(objSanPham.getString("NgayTao"));
+                    sanPham.setGiaSanPham(objSanPham.getLong("GiaTien"));
+                    sanPham.setGiamGia(objSanPham.getLong("GiaTienGiam"));
+                    sanPham.setDescription(objSanPham.getString("MoTa"));
+                    sanPham.setLoaiSanPham(objSanPham.getString("LoaiThoiTrang"));
+                    sanPham.setChiTietSanPham(objSanPham.getString("ChiTiet"));
 
-                    sanPhamArrayList = new ArrayList<>();
-//                    JSONObject rootProducts = new JSONObject(data);
-                    JSONArray listSanPham = jsonObject.getJSONArray("ListSanPham");
+                    //Link hình
+                    JSONArray arrHinhSanPham = objSanPham.getJSONArray("LinkHinh");
+                    ArrayList<HinhSanPham> listHinhSanPham = new ArrayList<>();
+                    for (int k = 0; k < arrHinhSanPham.length(); k++) {
+                        JSONObject objHinhSanPham = arrHinhSanPham.getJSONObject(k);
+                        HinhSanPham hinhSanPham = new HinhSanPham();
+                        hinhSanPham.setMau(objHinhSanPham.getString("MauSac"));
 
-//                    for (int j = 0; j < listSanPham.length(); j++) {
-//                        sanPham = new SanPham();
-//                        sanPham.setIdSanPham(listSanPham.getJSONObject(j).getInt("Id"));
-//                        sanPham.setTenSanPham(listSanPham.getJSONObject(j).getString("Ten"));
-//                        sanPham.setGiaSanPham(listSanPham.getJSONObject(j).getLong("GiaTien"));
-//                        sanPham.setGiamGia(listSanPham.getJSONObject(j).getLong("GiaGiam"));
-//                        sanPham.setHinhDaiDien(listSanPham.getJSONObject(j).getString("HinhSp"));
-//
-//                        //Màu sắc
-//                        String[] listMauSanPham = new String[listSanPham.getJSONObject(j).getJSONArray("Mau").length()];
-//                        for (int k = 0; k < listSanPham.getJSONObject(j).getJSONArray("Mau").length(); k++) {
-//                            listMauSanPham[k] = listSanPham.getJSONObject(j).getJSONArray("Mau").getString(k);
-//                        }
-//                        sanPham.setMauSanPham(listMauSanPham);
-//
-//                        sanPhamArrayList.add(sanPham);
-//                    }
-//                    sale.setSanPhamArrayList(sanPhamArrayList);
+                        //List hình
+                        int test = objHinhSanPham.getJSONArray("LinkHinh").length();
+                        String[] listHinh = new String[objHinhSanPham.getJSONArray("LinkHinh").length()];
+                        for (int l = 0; l < objHinhSanPham.getJSONArray("LinkHinh").length(); l++) {
+                            listHinh[l] = objHinhSanPham.getJSONArray("LinkHinh").getString(l);
+                        }
+                        hinhSanPham.setLinkHinh(listHinh);
+                        listHinhSanPham.add(hinhSanPham);
+                    }
+                    sanPham.setHinhSanPham(listHinhSanPham);
 
-                    result.add(sale);
+                    //Màu sắc
+                    String[] listMauSanPham = new String[objSanPham.getJSONArray("MauSac").length()];
+                    for (int k = 0; k < objSanPham.getJSONArray("MauSac").length(); k++) {
+                        listMauSanPham[k] = objSanPham.getJSONArray("MauSac").getString(k);
+                    }
+                    sanPham.setMauSanPham(listMauSanPham);
+
+                    //Size
+                    String[] listSize = new String[objSanPham.getJSONArray("Size").length()];
+                    for (int k = 0; k < objSanPham.getJSONArray("Size").length(); k++) {
+                        listSize[k] = objSanPham.getJSONArray("Size").getString(k);
+                    }
+                    sanPham.setSize(listSize);
+
+                    sanPham.setDanhMucHangId(objSanPham.getInt("DanhMucHangId"));
+
+                    sanPhamArrayList.add(sanPham);
                 }
+                result.setSanPhamArrayList(sanPhamArrayList);
+
             }
-//            result.setDescription(root.getString("Description"));
         } catch (JSONException e) {
             e.printStackTrace();
         }

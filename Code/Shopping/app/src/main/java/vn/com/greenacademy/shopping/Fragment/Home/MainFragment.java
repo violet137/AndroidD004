@@ -24,12 +24,16 @@ import java.util.ArrayList;
 
 import vn.com.greenacademy.shopping.Handle.HandleData.Home.ClickListenerHomeItem;
 import vn.com.greenacademy.shopping.Handle.HandleData.Home.MainMenuHandler;
+import vn.com.greenacademy.shopping.Handle.HandleData.ParseData.Sale.ParseSaleDetail;
 import vn.com.greenacademy.shopping.Handle.HandleData.SQLite.MySQLite;
 import vn.com.greenacademy.shopping.Interface.ListMainMenuCallBack;
+import vn.com.greenacademy.shopping.Interface.ServerCallBack;
 import vn.com.greenacademy.shopping.MainActivity;
 import vn.com.greenacademy.shopping.Model.Home.MenuMain;
 import vn.com.greenacademy.shopping.Model.ThongTinSanPham.SanPham;
+import vn.com.greenacademy.shopping.Network.AsynTask.GetServerData;
 import vn.com.greenacademy.shopping.R;
+import vn.com.greenacademy.shopping.Util.ServerUrl;
 import vn.com.greenacademy.shopping.Util.SupportKeyList;
 import vn.com.greenacademy.shopping.Util.Ui.BaseFragment;
 
@@ -75,10 +79,27 @@ public class MainFragment extends Fragment {
         mainMenuHandler.getDataServer();
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        ServerCallBack serverCallBack = new ServerCallBack() {
+            @Override
+            public void serverCallBack(String dataServer) {
+                ParseSaleDetail parseSaleDetail = new ParseSaleDetail(dataServer);
+                parseSaleDetail.parData();
+
+            }
+
+            @Override
+            public void serverCallBack(String dataServer, String key) {
+
+            }
+        };
+        GetServerData getServerData = new GetServerData(serverCallBack);
+        getServerData.execute(ServerUrl.UrlChiTietKhuyenMai+1);
+
+
         // MainFragment ko sử dụng tvTenMuc ngoai MainActivity
         MainActivity.tvTenMuc.setVisibility(View.GONE);
 
@@ -175,6 +196,7 @@ public class MainFragment extends Fragment {
 
             vListHome.scrollTo(0, scrollPosition);
         }
+        backListener = false;
     }
 
     @Override
