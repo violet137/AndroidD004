@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -52,6 +53,7 @@ public class DanhMucSanPhamFragment extends Fragment {
     ViewPager vpHotProduct;
     RecyclerView rvMenu;
     LinearLayout itemHotProduct;
+    RadioGroup rgHotProduct;
 
     public DanhMucSanPhamFragment(String idDanhMuc) {
         this.idDanhMuc = idDanhMuc;
@@ -112,6 +114,8 @@ public class DanhMucSanPhamFragment extends Fragment {
 
         vpHotProduct = (ViewPager) view.findViewById(R.id.vpSanPham_vp_sp_hot);
 
+        rgHotProduct = (RadioGroup) view.findViewById(R.id.rgSoLuongVP_item_hotProduct_DM);
+
         itemHotProduct = (LinearLayout) view.findViewById(R.id.item_vp_sp_hot);
 
         llXemTatCa = (LinearLayout) view.findViewById(R.id.llXemAll_DanhMucSanPham_Fragment);
@@ -144,7 +148,7 @@ public class DanhMucSanPhamFragment extends Fragment {
                         llXemTatCa.setVisibility(View.VISIBLE);
                         dataHotProduct = ((MenuPhoto)object).getSanPhamArrayList();
                         if (dataHotProduct.size()>0){
-                            vpHotProduct.setAdapter(danhMucSPHandler.getAdapterHotProduct(getChildFragmentManager(),dataHotProduct));
+                            danhMucSPHandler.getAdapterHotProduct(getChildFragmentManager(),dataHotProduct,vpHotProduct, rgHotProduct);
                             itemHotProduct.setVisibility(View.VISIBLE);
                         }
                         break;
@@ -168,7 +172,7 @@ public class DanhMucSanPhamFragment extends Fragment {
             rvMenu.setAdapter(danhMucSPHandler.getAdapterListDM(dataMucSanPham));
 
             if (dataHotProduct.size()>0){
-                vpHotProduct.setAdapter(danhMucSPHandler.getAdapterHotProduct(getChildFragmentManager(),dataHotProduct));
+                danhMucSPHandler.getAdapterHotProduct(getChildFragmentManager(),dataHotProduct,vpHotProduct,rgHotProduct);
                 itemHotProduct.setVisibility(View.VISIBLE);
             }
 

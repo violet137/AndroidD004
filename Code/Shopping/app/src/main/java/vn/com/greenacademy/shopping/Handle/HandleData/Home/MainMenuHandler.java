@@ -1,6 +1,7 @@
 package vn.com.greenacademy.shopping.Handle.HandleData.Home;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.RecyclerView;
@@ -90,24 +91,41 @@ public class MainMenuHandler extends LoadDataMainMenuHandler{
         }
     }
 
-    public void setDataNewProduct(FragmentManager fm , ArrayList<MenuMain> menuMainArrayList, ViewPager vpNewProduct, RadioGroup radioGroup) {
+    public void setDataNewProduct(FragmentManager fm , ArrayList<MenuMain> menuMainArrayList, final ViewPager vpNewProduct, RadioGroup radioGroup) {
 
         AdapterNewProductViewPager adapterNewProductViewPager =
                 new AdapterNewProductViewPager(fm, activity, menuMainArrayList.get(0).getSanPhamArrayList());
 
         vpNewProduct.setAdapter(adapterNewProductViewPager);
 
+        // [bat dau tao radio button hien thi so luong view pager]
+        // ham click cua radiobutton
+        View.OnClickListener onClickListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // thay doi view pager khi click vao tab layout
+                vpNewProduct.setCurrentItem((Integer) v.getTag());
+            }
+        };
+
         final ArrayList<RadioButton> radioButtons = new ArrayList<>();
         RadioButton radioButton;
         for (int i = 0; i < adapterNewProductViewPager.getCount(); i++) {
             radioButton = new RadioButton(activity);
+            radioButton.setScaleX((float) 0.5);
+            radioButton.setScaleY((float) 0.5);
+            radioButton.setTag(i);
+            radioButton.setOnClickListener(onClickListener);
             radioGroup.addView(radioButton);
             radioButtons.add(radioButton);
         }
 
+        // [ket thuc tao radio button hien thi so luong view pager]
+
         vpNewProduct.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                // thay doi radio button(hien thi so luong view pager) dc chon
                 radioButtons.get(position).setChecked(true);
             }
 
