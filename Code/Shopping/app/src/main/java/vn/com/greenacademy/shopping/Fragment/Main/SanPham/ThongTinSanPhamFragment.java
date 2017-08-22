@@ -7,9 +7,13 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.NotificationCompat;
 import android.support.v4.view.ViewPager;
+import android.text.Spannable;
 import android.text.SpannableString;
+import android.text.style.RelativeSizeSpan;
 import android.text.style.StyleSpan;
+import android.util.Size;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -72,23 +76,39 @@ public class ThongTinSanPhamFragment extends Fragment implements View.OnClickLis
     private boolean isFromBackStack = false;
     private boolean themGioHang = false;
 
-    public ThongTinSanPhamFragment(String idSanPham, String callFrom) {
+    public static ThongTinSanPhamFragment newInstance(String idSanPham, String callFrom) {
+        Bundle args = new Bundle();
         if (idSanPham.equals("ALL"))
-            this.idSanPham = -1;
+            args.putInt("idSanPham", -1);
         else
-            this.idSanPham = Integer.parseInt(idSanPham);
+            args.putInt("idSanPham", Integer.parseInt(idSanPham));
 
-        this.callFrom = callFrom;
+        args.putString("callFrom", callFrom);
+        ThongTinSanPhamFragment fragment = new ThongTinSanPhamFragment();
+        fragment.setArguments(args);
+        return fragment;
     }
 
-    public ThongTinSanPhamFragment(int position, ArrayList<SanPham> listSanPham) {
-        this.listSanPham = listSanPham;
-        this.position = position;
+    public static ThongTinSanPhamFragment newInstance(int position, ArrayList<SanPham> listSanPham) {
+        Bundle args = new Bundle();
+        args.putSerializable("listSanPham", listSanPham);
+        args.putInt("position", position);
+        ThongTinSanPhamFragment fragment = new ThongTinSanPhamFragment();
+        fragment.setArguments(args);
+        return fragment;
     }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if (getArguments().getString("callFrom") != null) {
+            idSanPham = getArguments().getInt("idSanPham");
+            callFrom = getArguments().getString("callFrom");
+        }
+        if (getArguments().getSerializable("listSanPham") != null) {
+            listSanPham = (ArrayList<SanPham>) getArguments().getSerializable("listSanPham");
+            position = getArguments().getInt("position");
+        }
         if (!callFrom.isEmpty() && callFrom.equals(SupportKeyList.TAG_FRAGMENT_MAIN)){
             GetServerData getServerData = new GetServerData(this);
             getServerData.execute(ServerUrl.UrlDanhSachSPMoi+"20", String.valueOf(SupportKeyList.NewProduct_Url));
@@ -127,10 +147,10 @@ public class ThongTinSanPhamFragment extends Fragment implements View.OnClickLis
             sanPham = listSanPham.get(position);
             pagerSanPham.setAdapter(sanPhamPagerAdapter);
             pagerSanPham.setCurrentItem(position);
-
             //Xử lý thông tin hiển thị
             setUpUi(position);
         }
+
         pagerSanPham.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {

@@ -32,10 +32,7 @@ public class SanPhamPagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        SanPhamPagerFragment sanPhamPagerFragment = new SanPhamPagerFragment(position, listSanPham);
-        Bundle arg = new Bundle();
-        arg.putInt("pagePosition", position);
-        sanPhamPagerFragment.setArguments(arg);
+        SanPhamPagerFragment sanPhamPagerFragment = SanPhamPagerFragment.newInstance(position, listSanPham);
         return sanPhamPagerFragment;
     }
 

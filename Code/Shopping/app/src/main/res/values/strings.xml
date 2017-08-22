@@ -113,7 +113,7 @@
     <!-- Thông tin sản phẩm -->
     <string name="description_san_pham">MÔ TẢ</string>
     <string name="details">CHI TIẾT</string>
-    <string name="chon_size">Chọn\nSize</string>
+    <string name="chon_size">Size</string>
     <string name="san_pham_phu_hop">Sản phẩm phù hợp</string>
 
     <!-- Fragment Dang Ky -->

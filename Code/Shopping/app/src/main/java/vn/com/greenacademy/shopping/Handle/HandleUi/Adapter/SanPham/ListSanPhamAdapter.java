@@ -91,7 +91,7 @@ public class ListSanPhamAdapter extends RecyclerView.Adapter<SanPhamHolder> {
         holder.imgSanPham.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                baseFragment.ChuyenFragment(new ThongTinSanPhamFragment(holder.getLayoutPosition(), listSanPham), SupportKeyList.TAG_THONG_TIN_SAN_PHAM, true);
+                baseFragment.ChuyenFragment(ThongTinSanPhamFragment.newInstance(holder.getLayoutPosition(), listSanPham), SupportKeyList.TAG_THONG_TIN_SAN_PHAM, true);
                 if (sanPhamCallBack != null)
                     sanPhamCallBack.clickSanPham(position);
             }

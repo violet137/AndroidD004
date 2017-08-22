@@ -43,7 +43,7 @@ public class ClickListenerHomeItem {
 
                     case SupportKeyList.ClickHome_NewProduct:
 //                        Toast.makeText(activity, itemHome.getId(), Toast.LENGTH_SHORT).show();
-                        baseFragment.ChuyenFragment(new ThongTinSanPhamFragment(itemHome.getId(), SupportKeyList.TAG_FRAGMENT_MAIN), SupportKeyList.TAG_FRAGMENT_MAIN, true);
+                        baseFragment.ChuyenFragment(ThongTinSanPhamFragment.newInstance(itemHome.getId(), SupportKeyList.TAG_FRAGMENT_MAIN), SupportKeyList.TAG_FRAGMENT_MAIN, true);
                         break;
 
                     case SupportKeyList.ClickHome_Fashion:

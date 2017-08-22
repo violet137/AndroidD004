@@ -109,7 +109,7 @@ public class GioHangHandler {
             objGioHang.put(KEY_ACCOUNT, mySharedPref.getEmail());
             objGioHang.put(KEY_LIST_GIO_HANG, jsonArraySanPham);
             DataServerAsyncTask serverAsyncTask = new DataServerAsyncTask(dataCallBack);
-            serverAsyncTask.execute(SupportKeyList.API_THEM_GIO_HANG, ServerUrl.UrlUpdateGioHang, "POST", objGioHang.toString());
+            serverAsyncTask.execute(SupportKeyList.API_UPDATE_GIO_HANG, ServerUrl.UrlUpdateGioHang, "POST", objGioHang.toString());
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -137,7 +137,7 @@ public class GioHangHandler {
             objGioHang.put(KEY_ACCOUNT, mySharedPref.getEmail());
             objGioHang.put(KEY_LIST_GIO_HANG, jsonArraySanPham);
             DataServerAsyncTask serverAsyncTask = new DataServerAsyncTask(dataCallBack);
-            serverAsyncTask.execute(SupportKeyList.API_THEM_GIO_HANG, ServerUrl.UrlUpdateGioHang, "POST", objGioHang.toString());
+            serverAsyncTask.execute(SupportKeyList.API_XOA_GIO_HANG, ServerUrl.UrlUpdateGioHang, "POST", objGioHang.toString());
         } catch (JSONException e) {
             e.printStackTrace();
         }

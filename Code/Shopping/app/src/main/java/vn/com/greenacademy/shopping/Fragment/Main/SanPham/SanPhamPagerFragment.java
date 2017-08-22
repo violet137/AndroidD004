@@ -2,6 +2,7 @@ package vn.com.greenacademy.shopping.Fragment.Main.SanPham;
 
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.text.SpannableString;
@@ -36,9 +37,21 @@ public class SanPhamPagerFragment extends Fragment implements UpdateDataViewPage
     private String mauSanPham;
     private int position;
 
-    public SanPhamPagerFragment(int position, ArrayList<SanPham> listSanPham){
-        this.listSanPham = listSanPham;
-        this.position = position;
+    public static SanPhamPagerFragment newInstance(int position, ArrayList<SanPham> listSanPham) {
+
+        Bundle args = new Bundle();
+        args.putSerializable("listSanPham", listSanPham);
+        args.putInt("position", position);
+        SanPhamPagerFragment fragment = new SanPhamPagerFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        listSanPham = (ArrayList<SanPham>) getArguments().getSerializable("listSanPham");
+        position = getArguments().getInt("position");
         imageLoad = new ImageLoad(getActivity());
     }
 
@@ -68,7 +81,7 @@ public class SanPhamPagerFragment extends Fragment implements UpdateDataViewPage
 
     @Override
     public void updateData(int pagePosition, String action, Bundle bundle) {
-        if (pagePosition == getArguments().getInt("pagePosition")){
+        if (pagePosition == position){
             if (action.equals(SanPhamPagerAdapter.ACTION_HIDE_GIA)){
                 tvGia.setVisibility(View.GONE);
             }

@@ -1,10 +1,12 @@
 package vn.com.greenacademy.shopping.Model.ThongTinSanPham;
 
+import java.io.Serializable;
+
 /**
  * Created by zzzzz on 8/2/2017.
  */
 
-public class HinhSanPham {
+public class HinhSanPham implements Serializable{
     private String[] linkHinh;
     private String mau;
 

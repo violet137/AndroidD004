@@ -122,8 +122,13 @@ public class DataServerAsyncTask extends AsyncTask<String, Void, String> {
                 dataCallBack.KetQua(result, null);
 
             //Kết quả của phương thức post
-            if (result.equals(SupportKeyList.CAP_NHAT_THANH_CONG) || result.equals(SupportKeyList.CAP_NHAT_THAT_BAI))
-                dataCallBack.KetQua(result, null);
+            if (result.equals(SupportKeyList.CAP_NHAT_THANH_CONG) || result.equals(SupportKeyList.CAP_NHAT_THAT_BAI)){
+                if (API.equals(SupportKeyList.API_XOA_GIO_HANG))
+                    dataCallBack.KetQua(SupportKeyList.API_XOA_GIO_HANG, null);
+                else
+                    dataCallBack.KetQua(result, null);
+            }
+
 
             //Kết quả của phương thức get
             //Phân loại API

@@ -94,30 +94,30 @@
         <View
             android:layout_width="0.1dp"
             android:layout_height="match_parent"
-            android:background="#ed000000"/>
+            android:background="#434343"/>
 
         <!-- Button color -->
         <FrameLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:padding="5dp">
+            android:padding="7dp">
             <Button
                 android:id="@+id/button_color_san_pham"
-                android:layout_width="50dp"
+                android:layout_width="45dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
-                android:background="@drawable/red"/>
+                android:background="@drawable/mau_do"/>
         </FrameLayout>
 
         <View
             android:layout_width="0.1dp"
             android:layout_height="match_parent"
-            android:background="#ed000000"/>
+            android:background="#434343"/>
 
         <!-- Button size -->
         <Button
-            android:id="@+id/button_size_san_pham"
+            android:id="@+id/button_size_san_pham_gio_hang"
             android:layout_width="50dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -128,7 +128,7 @@
         <View
             android:layout_width="0.1dp"
             android:layout_height="match_parent"
-            android:background="#ed000000"/>
+            android:background="#434343"/>
 
         <!-- Button số lượng -->
         <Button
