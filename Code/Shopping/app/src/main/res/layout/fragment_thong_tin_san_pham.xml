@@ -87,11 +87,11 @@
             android:layout_width="50dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            app:srcCompat="@android:drawable/ic_menu_sort_by_size"/>
+            app:srcCompat="@drawable/menu"/>
         <View
             android:layout_width="0.1dp"
             android:layout_height="match_parent"
-            android:background="#ed000000" />
+            android:background="#434343" />
 
         <!-- Button hình -->
         <ImageView
@@ -103,25 +103,25 @@
         <View
             android:layout_width="0.1dp"
             android:layout_height="match_parent"
-            android:background="#ed000000"/>
+            android:background="#434343"/>
 
         <!-- Button color -->
         <FrameLayout
-            android:layout_width="wrap_content"
+            android:layout_width="50dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:padding="5dp">
+            android:padding="7dp">
             <Button
                 android:id="@+id/button_color_san_pham"
-                android:layout_width="50dp"
+                android:layout_width="45dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
-                android:background="@drawable/red"/>
+                android:background="@null"/>
         </FrameLayout>
         <View
             android:layout_width="0.1dp"
             android:layout_height="match_parent"
-            android:background="#ed000000"/>
+            android:background="#434343"/>
 
         <!-- Button size -->
         <Button
@@ -135,7 +135,7 @@
         <View
             android:layout_width="0.1dp"
             android:layout_height="match_parent"
-            android:background="#ed000000"/>
+            android:background="#434343"/>
 
         <!-- Button thêm sản phẩm -->
         <ImageView
@@ -144,7 +144,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:padding="5dp"
-            android:src="@drawable/icon_bag2" />
+            android:src="@drawable/icon_bag_plus" />
 
     </LinearLayout>
 </RelativeLayout>

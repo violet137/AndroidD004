@@ -110,7 +110,7 @@ public class ThongTinSanPhamGioHangFragment extends Fragment implements View.OnC
         pagerSanPham = (ViewPager) root.findViewById(R.id.pager_fragment_san_pham);
         btnXoa = (ImageView) root.findViewById(R.id.button_xoa_san_pham);
         btnInfo = (ImageView) root.findViewById(R.id.button_info_san_pham);
-        btnSizeInfo = (Button) root.findViewById(R.id.button_size_san_pham);
+        btnSizeInfo = (Button) root.findViewById(R.id.button_size_san_pham_gio_hang);
         btnColor = (Button) root.findViewById(R.id.button_color_san_pham);
         btnHinh = (ImageView) root.findViewById(R.id.button_hinh_san_pham);
         btnSoLuong = (Button) root.findViewById(R.id.button_so_luong_san_pham_gio_hang);
@@ -181,7 +181,7 @@ public class ThongTinSanPhamGioHangFragment extends Fragment implements View.OnC
                 hideInfo();
                 break;
             case R.id.button_xoa_san_pham:
-                Toast.makeText(getActivity(), "Xóa", Toast.LENGTH_LONG).show();
+                gioHangHandler.XoaSanPhamGioHang(sanPhamGioHang.getIdSanPham());
                 break;
             case R.id.button_hinh_san_pham:
                 setUpQuickActionHinh();
@@ -191,7 +191,7 @@ public class ThongTinSanPhamGioHangFragment extends Fragment implements View.OnC
                 setUpQuickActionColor();
                 quickActionPopup.show(v);
                 break;
-            case R.id.button_size_san_pham:
+            case R.id.button_size_san_pham_gio_hang:
                 setUpQuickActionSize();
                 quickActionPopup.show(v);
                 break;
@@ -416,6 +416,11 @@ public class ThongTinSanPhamGioHangFragment extends Fragment implements View.OnC
                 sanPham = (SanPham) bundle.getSerializable("sanPham");
                 listSanPham.add(sanPham);
                 setUpUi(position);
+                break;
+            case SupportKeyList.API_XOA_GIO_HANG:
+                Toast.makeText(getActivity(), "Cập nhật thành công!", Toast.LENGTH_SHORT).show();
+                BaseFragment baseFragment = new BaseFragment(getActivity(), getActivity().getSupportFragmentManager());
+                baseFragment.XoaFragment();
                 break;
             case SupportKeyList.CAP_NHAT_THANH_CONG:
                 Toast.makeText(getActivity(), "Cập nhật thành công!", Toast.LENGTH_SHORT).show();

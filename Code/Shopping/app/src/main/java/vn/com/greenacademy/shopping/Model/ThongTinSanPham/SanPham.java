@@ -17,7 +17,7 @@ public class SanPham implements Serializable {
     private String loaiSanPham;
     private String description;
     private String chiTietSanPham;
-    private ArrayList<HinhSanPham> hinhSanPham;
+    private ArrayList<HinhSanPham> hinhSanPham = new ArrayList<>();
     private String[] mauSanPham;
     private String[] size;
     private String[] sanPhamPhuHop;
