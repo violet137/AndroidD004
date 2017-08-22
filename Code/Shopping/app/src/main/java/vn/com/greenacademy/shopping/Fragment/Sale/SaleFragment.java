@@ -4,17 +4,21 @@ package vn.com.greenacademy.shopping.Fragment.Sale;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.RadioGroup;
 
 import java.util.ArrayList;
 
 import vn.com.greenacademy.shopping.Handle.HandleData.Sale.SaleHandler;
 import vn.com.greenacademy.shopping.Interface.SaleCallBack;
 import vn.com.greenacademy.shopping.Model.Sale;
+import vn.com.greenacademy.shopping.Model.ThongTinSanPham.SanPham;
 import vn.com.greenacademy.shopping.R;
 
 /**
@@ -27,10 +31,14 @@ public class SaleFragment extends Fragment {
     boolean listenerBack = false;
 
     SaleHandler saleHandler;
+    ArrayList<Sale> dataPhotoSales;
+    public static ArrayList<SanPham> dataProductSaless;
 
-    ArrayList<Sale> dataSale;
-
-    RecyclerView recyclerView;
+    ViewPager vpPhotos;
+    ViewPager vpProducts;
+    RadioGroup rgSLVPProduct;
+    LinearLayout llDanhMuc;
+    LinearLayout itemAll;
 
     public SaleFragment() {
         // Required empty public constructor
@@ -43,6 +51,8 @@ public class SaleFragment extends Fragment {
         saleHandler =new SaleHandler(getActivity());
 
         saleHandler.getDataServer();
+
+        saleHandler.Click();
     }
 
     @Override
@@ -51,15 +61,39 @@ public class SaleFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_sale, container, false);
 
-        recyclerView = (RecyclerView) view.findViewById(R.id.rv_SaleFragment);
-        recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 1));
+        llDanhMuc = (LinearLayout) view.findViewById(R.id.listDM_saleFragment);
+        view.findViewById(R.id.llNu_saleFragment).setOnClickListener(SaleHandler.onClickListener);
+        view.findViewById(R.id.llNam_saleFragment).setOnClickListener(SaleHandler.onClickListener);
+        view.findViewById(R.id.llTreEm_saleFragment).setOnClickListener(SaleHandler.onClickListener);
+        view.findViewById(R.id.llTrangTri_saleFragment).setOnClickListener(SaleHandler.onClickListener);
+
+        vpPhotos = (ViewPager) view.findViewById(R.id.vpPhotos_saleFragment);
+
+        vpProducts = (ViewPager) view.findViewById(R.id.vpProducts_saleFragment);
+
+        rgSLVPProduct = (RadioGroup) view.findViewById(R.id.rgSoLuongVPProducts_saleFragment);
 
         saleCallBack = new SaleCallBack() {
             @Override
             public void saleCallBack(ArrayList<Sale> saleArrayList) {
-                dataSale = saleArrayList;
-//                recyclerView.setAdapter(saleHandler.getAdapter(getChildFragmentManager(),saleArrayList));
-                recyclerView.setAdapter(saleHandler.getAdapter(getActivity().getSupportFragmentManager(),saleArrayList));
+                dataPhotoSales = saleArrayList;
+                dataProductSaless = new ArrayList<>();
+                for (int i = 0; i < saleArrayList.size(); i++) {
+                    ArrayList<SanPham> listSP = saleArrayList.get(i).getSanPhamArrayList();
+                    for (int j = 0; j < listSP.size(); j++) {
+                        if (!listSP.get(j).getHinhDaiDien().equals("string")){
+                            dataProductSaless.add(listSP.get(j));
+                        }else {
+                            break;
+                        }
+                    }
+                }
+
+                saleHandler.setAdapterVPPhotos(getChildFragmentManager(),dataPhotoSales,vpPhotos);
+
+                saleHandler.setAdapterVPProducts(getChildFragmentManager(),dataProductSaless,vpProducts, rgSLVPProduct);
+
+                llDanhMuc.setVisibility(View.VISIBLE);
             }
         };
 
@@ -71,9 +105,13 @@ public class SaleFragment extends Fragment {
     public void onResume() {
         super.onResume();
         if (listenerBack){
-//            recyclerView.setAdapter(saleHandler.getAdapter(getChildFragmentManager(),dataSale));
-            recyclerView.setAdapter(saleHandler.getAdapter(getActivity().getSupportFragmentManager(),dataSale));
+            saleHandler.setAdapterVPPhotos(getChildFragmentManager(),dataPhotoSales,vpPhotos);
+
+            saleHandler.setAdapterVPProducts(getChildFragmentManager(),dataProductSaless,vpProducts, rgSLVPProduct);
+
+            llDanhMuc.setVisibility(View.VISIBLE);
         }
+        listenerBack = false;
     }
 
     @Override

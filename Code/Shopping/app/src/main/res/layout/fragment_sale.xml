@@ -6,9 +6,144 @@
 
     <!-- TODO: Update blank fragment layout -->
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_SaleFragment"
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#ffffff" />
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <android.support.v4.view.ViewPager
+                android:layout_marginTop="@dimen/item_danh_muc_margin_top"
+                android:id="@+id/vpPhotos_saleFragment"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/iv_layout_height_280dp">
+
+            </android.support.v4.view.ViewPager>
+
+            <LinearLayout
+                android:id="@+id/listDM_saleFragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:id="@+id/llXemAll_saleFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="@dimen/item_danh_muc_margin_top"
+                    android:background="@drawable/shape_khung_thin">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/textView_pandding_left_15dp"
+                        android:layout_marginLeft="@dimen/textView_pandding_left_15dp"
+                        android:layout_marginTop="@dimen/textView_pandding_left_15dp"
+                        android:text="Tất Cả"
+                        android:textColor="#ff000000"
+                        android:textSize="@dimen/item_list_danh_muc_text_size" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llNu_saleFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@drawable/shape_khung_thin">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/textView_pandding_left_15dp"
+                        android:layout_marginLeft="@dimen/textView_pandding_left_15dp"
+                        android:layout_marginTop="@dimen/textView_pandding_left_15dp"
+                        android:text="Nữ"
+                        android:textColor="#ff000000"
+                        android:textSize="@dimen/item_list_danh_muc_text_size" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llNam_saleFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@drawable/shape_khung_thin">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/textView_pandding_left_15dp"
+                        android:layout_marginLeft="@dimen/textView_pandding_left_15dp"
+                        android:layout_marginTop="@dimen/textView_pandding_left_15dp"
+                        android:text="Nam"
+                        android:textColor="#ff000000"
+                        android:textSize="@dimen/item_list_danh_muc_text_size" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llTreEm_saleFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@drawable/shape_khung_thin">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/textView_pandding_left_15dp"
+                        android:layout_marginLeft="@dimen/textView_pandding_left_15dp"
+                        android:layout_marginTop="@dimen/textView_pandding_left_15dp"
+                        android:text="Trẻ Em"
+                        android:textColor="#ff000000"
+                        android:textSize="@dimen/item_list_danh_muc_text_size" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llTrangTri_saleFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@drawable/shape_khung_thin">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/textView_pandding_left_15dp"
+                        android:layout_marginLeft="@dimen/textView_pandding_left_15dp"
+                        android:layout_marginTop="@dimen/textView_pandding_left_15dp"
+                        android:text="Trang Trí"
+                        android:textColor="#ff000000"
+                        android:textSize="@dimen/item_list_danh_muc_text_size" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <android.support.v4.view.ViewPager
+                    android:id="@+id/vpProducts_saleFragment"
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="@dimen/item_danh_muc_margin_top"
+                    android:layout_height="@dimen/ll_layout_height_200dp">
+
+                </android.support.v4.view.ViewPager>
+
+                <RadioGroup
+                    android:id="@+id/rgSoLuongVPProducts_saleFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="horizontal" />
+            </LinearLayout>
+
+            </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
 </FrameLayout>
