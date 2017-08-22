@@ -2,11 +2,14 @@ package vn.com.greenacademy.shopping.Handle.HandleData.DanhMucSanPham;
 
 import android.app.Activity;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -66,9 +69,51 @@ public class DanhMucSPHandler extends LoadDataDanhMucSPHandler implements View.O
         return adapter;
     }
 
-    public AdapterHotProductViewPager getAdapterHotProduct(FragmentManager fm, ArrayList<SanPham> dataHotProduct) {
+    public void getAdapterHotProduct(FragmentManager fm, ArrayList<SanPham> dataHotProduct, final ViewPager viewPager, RadioGroup radioGroup) {
         AdapterHotProductViewPager adapter = new AdapterHotProductViewPager(fm,activity,dataHotProduct);
-        return adapter;
+        viewPager.setAdapter(adapter);
+
+        // [bat dau tao radio button hien thi so luong view pager]
+        // ham click cua radiobutton
+        View.OnClickListener onClickListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // thay doi view pager khi click vao tab layout
+                viewPager.setCurrentItem((Integer) v.getTag());
+            }
+        };
+
+        final ArrayList<RadioButton> radioButtons = new ArrayList<>();
+        RadioButton radioButton;
+        for (int i = 0; i < adapter.getCount(); i++) {
+            radioButton = new RadioButton(activity);
+            radioButton.setScaleX((float) 0.5);
+            radioButton.setScaleY((float) 0.5);
+            radioButton.setTag(i);
+            radioButton.setOnClickListener(onClickListener);
+            radioGroup.addView(radioButton);
+            radioButtons.add(radioButton);
+        }
+
+        // [ket thuc tao radio button hien thi so luong view pager]
+
+        viewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                // thay doi radio button(hien thi so luong view pager) dc chon
+                radioButtons.get(position).setChecked(true);
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
     }
 }
 

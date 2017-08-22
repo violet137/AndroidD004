@@ -18,10 +18,25 @@
         android:textSize="@dimen/title_text_size"
         android:textStyle="bold|italic" />
 
-    <android.support.v4.view.ViewPager
-        android:id="@+id/vpSanPham_vp_sp_hot"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/iv_layout_height_250dp">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <android.support.v4.view.ViewPager
+            android:id="@+id/vpSanPham_vp_sp_hot"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/iv_layout_height_250dp">
 
-    </android.support.v4.view.ViewPager>
+        </android.support.v4.view.ViewPager>
+
+        <RadioGroup
+            android:id="@+id/rgSoLuongVP_item_hotProduct_DM"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal" />
+    </LinearLayout>
+
+
 </LinearLayout>
