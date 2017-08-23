@@ -21,9 +21,19 @@ public class ImageLoad {
         this.activity = activity;
     }
 
+    // centerCrop cho imageView
     public void load(String url, ImageView imageView) {
-
 //        Log.d("load hinh","load hinh:"+url);
         Picasso.with(activity).load(url).fit().centerCrop().into(imageView);
+    }
+
+    // fix XY cho imageView
+    public void loadFixXY(String url, ImageView imageView) {
+        Picasso.with(activity).load(url).fit().into(imageView);
+    }
+
+    // centerInside cho imageView
+    public void loadCenterInside(String url, ImageView imageView) {
+        Picasso.with(activity).load(url).fit().centerInside().into(imageView);
     }
 }
