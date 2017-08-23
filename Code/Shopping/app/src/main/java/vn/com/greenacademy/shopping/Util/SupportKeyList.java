@@ -45,6 +45,7 @@ public class SupportKeyList {
     public static final String TAG_FRAGMENT_MAIN = "MainFragment";
     public static final String TAG_FRAGMENT_MY_SHOPPING = "MyShopping";
     public static final String TAG_FRAGMENT_GIO_HANG = "GioHang";
+    public static final String TAG_FRAGMENT_SEARCH = "Search";
     public static final String TAG_FRAGMENT_MAGAZINE = "Magazine";
     public static final String TAG_FRAGMENT_MAGAZINE_DETAIL = "MagazineDetail";
     public static final String TAG_FRAGMENT_DANG_NHAP = "DangNhap";
@@ -78,6 +79,11 @@ public class SupportKeyList {
     public static final int NewProduct_Item = 2;
     public static final int Fashion_Item = 3;
     public static final int Magazine_Item = 4;
+
+    public static final String Search_SPHot = "0";
+    public static final String  Search_TKHot= "1";
+    public static final String  Search_LSSearch= "2";
+
 
     public static final String KhuyenMai_BannerType = "KhuyenMai";
     public static final String XuHuong_BannerType = "XuHuongThoiTrang";

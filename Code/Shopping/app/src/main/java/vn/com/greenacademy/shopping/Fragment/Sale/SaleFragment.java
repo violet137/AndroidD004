@@ -17,6 +17,7 @@ import java.util.ArrayList;
 
 import vn.com.greenacademy.shopping.Handle.HandleData.Sale.SaleHandler;
 import vn.com.greenacademy.shopping.Interface.SaleCallBack;
+import vn.com.greenacademy.shopping.MainActivity;
 import vn.com.greenacademy.shopping.Model.Sale;
 import vn.com.greenacademy.shopping.Model.ThongTinSanPham.SanPham;
 import vn.com.greenacademy.shopping.R;
@@ -58,6 +59,8 @@ public class SaleFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        MainActivity.tvTenMuc.setText("Khuyến Mãi");
+        MainActivity.tvTenMuc.setVisibility(View.VISIBLE);
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_sale, container, false);
 

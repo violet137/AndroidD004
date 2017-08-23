@@ -3,11 +3,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#f1f0f0"
     tools:context="vn.com.greenacademy.shopping.Fragment.Search.SearchFragment">
 
     <!-- TODO: Update blank fragment layout -->
 
+    <ListView
+        android:id="@+id/lvTuKhoa_search"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+
     <ScrollView
+        android:id="@+id/itemLayout_search"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -24,6 +32,8 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/textView_pandding_left_15dp"
+                    android:layout_marginTop="@dimen/textView_pandding_left_15dp"
                     android:gravity="center"
                     android:text="Xem Nhiều Nhất"
                     android:textColor="@color/cardview_dark_background"
@@ -42,8 +52,11 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/textView14"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/textView_pandding_left_15dp"
+                    android:layout_marginTop="@dimen/textView_pandding_left_15dp"
                     android:gravity="center"
                     android:text="Tìm Kiếm Nhiều Nhất"
                     android:textColor="@color/cardview_dark_background"
@@ -63,7 +76,9 @@
 
                 <android.support.constraint.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+                    android:layout_height="match_parent"
+                    android:layout_marginBottom="@dimen/textView_pandding_left_15dp"
+                    android:layout_marginTop="@dimen/textView_pandding_left_15dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -85,14 +100,17 @@
                         android:layout_marginRight="8dp"
                         android:drawableRight="@android:drawable/presence_offline"
                         android:text="Xóa  "
+                        android:textStyle="bold"
                         app:layout_constraintRight_toRightOf="parent"
                         tools:layout_editor_absoluteY="0dp" />
                 </android.support.constraint.ConstraintLayout>
 
-                <ListView
-                    android:id="@+id/lvTimKiem_SearchFragment"
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rvTimKiem_SearchFragment"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/iv_layout_height_100dp" />
+                    android:layout_height="match_parent" />
+
             </LinearLayout>
 
             <LinearLayout
@@ -111,7 +129,7 @@
                     <ImageView
                         android:layout_width="@dimen/imageView_layout_50dp"
                         android:layout_height="@dimen/imageView_layout_50dp"
-                        android:background="@android:drawable/ic_lock_power_off" />
+                        android:background="@drawable/icon_shipping" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -132,7 +150,7 @@
                     <ImageView
                         android:layout_width="@dimen/imageView_layout_50dp"
                         android:layout_height="@dimen/imageView_layout_50dp"
-                        android:background="@android:drawable/ic_lock_power_off" />
+                        android:background="@drawable/icon_pay" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -153,7 +171,7 @@
                     <ImageView
                         android:layout_width="@dimen/imageView_layout_50dp"
                         android:layout_height="@dimen/imageView_layout_50dp"
-                        android:background="@android:drawable/ic_lock_power_off" />
+                        android:background="@drawable/icon_return" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -172,9 +190,9 @@
                     android:orientation="vertical">
 
                     <ImageView
-                        android:layout_width="@dimen/imageView_layout_50dp"
-                        android:layout_height="@dimen/imageView_layout_50dp"
-                        android:background="@android:drawable/sym_action_call" />
+                        android:layout_width="@dimen/layout_40dp"
+                        android:layout_height="@dimen/layout_40dp"
+                        android:background="@drawable/icon_call" />
 
                     <TextView
                         android:layout_width="match_parent"

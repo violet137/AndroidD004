@@ -32,6 +32,7 @@ import vn.com.greenacademy.shopping.MainActivity;
 import vn.com.greenacademy.shopping.Model.Home.MenuMain;
 import vn.com.greenacademy.shopping.Model.ThongTinSanPham.SanPham;
 import vn.com.greenacademy.shopping.Network.AsynTask.GetServerData;
+import vn.com.greenacademy.shopping.Network.AsynTask.SetSanPhamSQL;
 import vn.com.greenacademy.shopping.R;
 import vn.com.greenacademy.shopping.Util.ServerUrl;
 import vn.com.greenacademy.shopping.Util.SupportKeyList;
@@ -77,6 +78,14 @@ public class MainFragment extends Fragment {
 
         // goi hàm lấy dữ liệu trên server xuống
         mainMenuHandler.getDataServer();
+
+        // lay du lieu cho phan search chi lay dc 1 lay duy nhat và chưa xu ly khi server chinh sữa
+        MySQLite mySQLite = new MySQLite(getContext());
+        ArrayList<SanPham> asdas= mySQLite.getSanPham();
+        if (mySQLite.getSanPham().size()==1){
+            SetSanPhamSQL setSanPhamSQL = new SetSanPhamSQL(getContext());
+            setSanPhamSQL.start();
+        }
     }
 
     @Override

@@ -25,6 +25,7 @@ import vn.com.greenacademy.shopping.Fragment.Home.MainFragment;
 import vn.com.greenacademy.shopping.Fragment.GioHang.GioHangFragment;
 import vn.com.greenacademy.shopping.Fragment.MyShopping.TaiKhoan.DangNhapFragment;
 import vn.com.greenacademy.shopping.Fragment.MyShopping.TaiKhoan.DangNhapKhongLuuFragment;
+import vn.com.greenacademy.shopping.Fragment.Search.SearchFragment;
 import vn.com.greenacademy.shopping.Fragment.Store.FindStoreFragment;
 import vn.com.greenacademy.shopping.Handle.HandleData.DataHandler;
 import vn.com.greenacademy.shopping.Handle.HandleData.TaiKhoan.GoogleHandler;
@@ -260,6 +261,9 @@ public class MainActivity extends AppCompatActivity implements DataCallBack, Vie
                 baseFragment.ChuyenFragment(new GioHangFragment(), SupportKeyList.TAG_FRAGMENT_GIO_HANG, true);
                 break;
 
+            case R.id.search_toolbar:
+                baseFragment.ChuyenFragment(new SearchFragment(), SupportKeyList.TAG_FRAGMENT_SEARCH, true);
+                break;
             default:
                 return super.onOptionsItemSelected(item);
         }

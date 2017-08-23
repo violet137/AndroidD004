@@ -161,7 +161,7 @@ class LoadDataSlideMenuHandler{
             arrIcon[i]=listAnh.getResourceId(i,-1);
         }
 
-        arraySlideMenus = new ArrayList<SlideMenu>();
+        arraySlideMenus = new ArrayList<>();
         for(int i = 0; i< arrName.length; i++){
             SlideMenu slideMenu = new SlideMenu();
             slideMenu.setTen(arrName[i]);

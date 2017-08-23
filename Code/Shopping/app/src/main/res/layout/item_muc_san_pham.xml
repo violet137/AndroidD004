@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/llLayout_mucSanPham"
+    android:layout_width="match_parent"
+    android:background="#f9f9f9"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tvName_mucSanPham"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/layout_margin_20dp"
+        android:paddingBottom="@dimen/textView_pandding_left_15dp"
+        android:paddingTop="@dimen/textView_pandding_left_15dp"
+        android:text="TextView"
+        android:textColor="#ff000000" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_weight="1"
+        android:background="#e7e7e7" />
+</LinearLayout>

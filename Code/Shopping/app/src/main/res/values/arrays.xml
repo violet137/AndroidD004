@@ -43,16 +43,16 @@
 
     <string-array name="icon_slide_menu">
         <item>@drawable/icon_fl_red</item>
-        <item>@drawable/barcode</item>
-        <item>@drawable/barcode</item>
-        <item>@drawable/barcode</item>
-        <item>@drawable/barcode</item>
-        <item>@drawable/icon_sale2</item>
-        <item>@drawable/icon_magazine2</item>
-        <item>@drawable/icon_bag2</item>
-        <item>@drawable/icon_user2</item>
-        <item>@drawable/icon_gps2</item>
-        <item>@drawable/icon_support2</item>
+        <item>@drawable/icon_rong</item>
+        <item>@drawable/icon_rong</item>
+        <item>@drawable/icon_rong</item>
+        <item>@drawable/icon_rong</item>
+        <item>@drawable/icon_sale_64</item>
+        <item>@drawable/icon_magazine_64</item>
+        <item>@drawable/icon_bag_64</item>
+        <item>@drawable/icon_user_64</item>
+        <item>@drawable/icon_gps_64</item>
+        <item>@drawable/icon_support_64</item>
     </string-array>
 
     <string-array name="name_menu_main">
@@ -141,4 +141,15 @@
         <item>@drawable/instagram</item>
     </string-array>
 
+    <string-array name="name_top_search">
+        <item>Đầm, váy</item>
+        <item>Ao đôi</item>
+        <item>Quần áo thể thao</item>
+    </string-array>
+
+    <string-array name="id_top_search">
+        <item>17</item>
+        <item>20</item>
+        <item>33</item>
+    </string-array>
 </resources>

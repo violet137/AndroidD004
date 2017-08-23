@@ -41,34 +41,34 @@ public class MySQLite extends SQLiteOpenHelper {
         // khoi tao gia tri ban dau cho bien tam
         contentValues = new ContentValues();
         // them du lieu vao bien tam
-        contentValues.put(ID, "1");
-        contentValues.put(NAME, "Duong Quoc Nghi");
+        contentValues.put(ID, "-1");
+        contentValues.put(NAME, "^$*!@#^*(+)(*&^%$");
         // goi ham ghi du lieu vao bang
         db.insert(PRODUCT_TABLE, null, contentValues);
 
-        // khoi tao gia tri ban dau cho bien tam
-        contentValues = new ContentValues();
-        // them du lieu vao bien tam
-        contentValues.put(ID, "2");
-        contentValues.put(NAME, "employee001");
-        // goi ham ghi du lieu vao bang
-        db.insert(PRODUCT_TABLE, null, contentValues);
-
-        // khoi tao gia tri ban dau cho bien tam
-        contentValues = new ContentValues();
-        // them du lieu vao bien tam
-        contentValues.put(ID, "3");
-        contentValues.put(NAME, "employee002");
-        // goi ham ghi du lieu vao bang
-        db.insert(PRODUCT_TABLE, null, contentValues);
-
-        // khoi tao gia tri ban dau cho bien tam
-        contentValues = new ContentValues();
-        // them du lieu vao bien tam
-        contentValues.put(ID, "4");
-        contentValues.put(NAME, "employee003");
-        // goi ham ghi du lieu vao bang
-        db.insert(PRODUCT_TABLE, null, contentValues);
+//        // khoi tao gia tri ban dau cho bien tam
+//        contentValues = new ContentValues();
+//        // them du lieu vao bien tam
+//        contentValues.put(ID, "2");
+//        contentValues.put(NAME, "employee001");
+//        // goi ham ghi du lieu vao bang
+//        db.insert(PRODUCT_TABLE, null, contentValues);
+//
+//        // khoi tao gia tri ban dau cho bien tam
+//        contentValues = new ContentValues();
+//        // them du lieu vao bien tam
+//        contentValues.put(ID, "3");
+//        contentValues.put(NAME, "employee002");
+//        // goi ham ghi du lieu vao bang
+//        db.insert(PRODUCT_TABLE, null, contentValues);
+//
+//        // khoi tao gia tri ban dau cho bien tam
+//        contentValues = new ContentValues();
+//        // them du lieu vao bien tam
+//        contentValues.put(ID, "4");
+//        contentValues.put(NAME, "employee003");
+//        // goi ham ghi du lieu vao bang
+//        db.insert(PRODUCT_TABLE, null, contentValues);
     }
 
     public MySQLite (Context context) {
