@@ -15,8 +15,7 @@
         <ImageView
             android:layout_width="50dp"
             android:layout_height="match_parent"
-            app:srcCompat="@drawable/logo_app_do"
-            android:padding="5dp"/>
+            app:srcCompat="@drawable/logo_app_den"/>
     </android.support.v7.widget.Toolbar>
 
     <!-- Title -->

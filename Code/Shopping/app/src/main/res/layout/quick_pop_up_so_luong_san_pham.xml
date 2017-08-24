@@ -16,7 +16,8 @@
         android:id="@+id/btn_tru_so_luong"
         android:layout_width="@dimen/imageView_layout_50dp"
         android:layout_height="@dimen/imageView_layout_50dp"
-        app:srcCompat="@android:drawable/btn_minus" />
+        android:padding="10dp"
+        app:srcCompat="@drawable/ic_tru" />
 
     <!-- Hiển thị số lượng -->
     <TextView
@@ -37,6 +38,7 @@
         android:id="@+id/btn_cong_so_luong"
         android:layout_width="@dimen/imageView_layout_50dp"
         android:layout_height="@dimen/imageView_layout_50dp"
-        app:srcCompat="@android:drawable/btn_plus" />
+        android:padding="10dp"
+        app:srcCompat="@drawable/ic_cong" />
     </LinearLayout>
 </LinearLayout>
