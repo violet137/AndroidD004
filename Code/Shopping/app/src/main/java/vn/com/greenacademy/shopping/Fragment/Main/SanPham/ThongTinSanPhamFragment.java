@@ -250,7 +250,7 @@ public class ThongTinSanPhamFragment extends Fragment implements View.OnClickLis
         for (int j = 0; j < sanPham.getHinhSanPham().size(); j++) {
             if (sanPham.getMauSanPham()[0].equals(sanPham.getHinhSanPham().get(j).getMau())) {
                 mauDuocChon = sanPham.getMauSanPham()[0];
-                imageLoad.load(sanPham.getHinhSanPham().get(0).getLinkHinh()[0], btnHinh);
+                imageLoad.loadCenterInside(sanPham.getHinhSanPham().get(0).getLinkHinh()[0], btnHinh);
                 break;
             }
         }
@@ -309,7 +309,7 @@ public class ThongTinSanPhamFragment extends Fragment implements View.OnClickLis
                     if (sanPham.getHinhSanPham().get(i).getMau().equals(mauDuocChon)) {
                         for (int j = 0; j < sanPham.getHinhSanPham().get(i).getLinkHinh().length; j++) {
                             if(actionId.equals(sanPham.getHinhSanPham().get(i).getLinkHinh()[j])){
-                                imageLoad.load(sanPham.getHinhSanPham().get(i).getLinkHinh()[j], btnHinh);
+                                imageLoad.loadCenterInside(sanPham.getHinhSanPham().get(i).getLinkHinh()[j], btnHinh);
                                 //Đổi hình page
                                 bundleForPage.putString("HinhSanPham", sanPham.getHinhSanPham().get(i).getLinkHinh()[j]);
                                 sanPhamPagerAdapter.updateUiSinglePage(position, SanPhamPagerAdapter.ACTION_DOI_HINH_SAN_PHAM, bundleForPage);
@@ -343,7 +343,7 @@ public class ThongTinSanPhamFragment extends Fragment implements View.OnClickLis
                         for (int j = 0; j < sanPham.getHinhSanPham().size(); j++) {
                             if (sanPham.getMauSanPham()[i].equals(sanPham.getHinhSanPham().get(j).getMau())) {
                                 mauDuocChon = sanPham.getMauSanPham()[i];
-                                imageLoad.load(sanPham.getHinhSanPham().get(j).getLinkHinh()[0], btnHinh);
+                                imageLoad.loadCenterInside(sanPham.getHinhSanPham().get(j).getLinkHinh()[0], btnHinh);
                                 formatTenVaMau = new SpannableString(sanPham.getTenSanPham() + " - " + SanPhamHandler.chuyenTenMau(mauDuocChon));
                                 formatTenVaMau.setSpan(new StyleSpan(Typeface.BOLD), 0, sanPham.getTenSanPham().length(), 0);
                                 tvTenVaMau.setText(formatTenVaMau);

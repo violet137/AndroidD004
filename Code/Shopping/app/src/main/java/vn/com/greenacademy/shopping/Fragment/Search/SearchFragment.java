@@ -13,6 +13,8 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ScrollView;
+import android.widget.SearchView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -103,7 +105,6 @@ public class SearchFragment extends Fragment {
                         dataLichSu = (ArrayList<MucSanPham>) object;
                         rvLichSu.setAdapter(searchHandler.getAdapterLichSu(dataLichSu));
                         break;
-
                 }
             }
         };

@@ -37,14 +37,7 @@ public class ParseSale {
                     sale.setHinhDaiDien(jsonObject.getString("HinhDaiDien"));
                     sale.setMota(jsonObject.getString("Mota"));
                     sale.setTen(jsonObject.getString("Ten"));
-//
-//                    temp = new ArrayList<>();
-//                    JSONArray jsonArrayListSanPham = jsonObject.getJSONArray("ListSanPham");
-//                    for (int j = 0; j < jsonArrayListSanPham.length(); j++) {
-//                        temp.add(jsonArrayListSanPham.getInt(j));
-//                    }
-//
-//                    sale.setListIDSanPham(temp);
+
 
                     sanPhamArrayList = new ArrayList<>();
 //                    JSONObject rootProducts = new JSONObject(data);
@@ -56,6 +49,7 @@ public class ParseSale {
                         sanPham.setGiaSanPham(listSanPham.getJSONObject(j).getLong("GiaTien"));
                         sanPham.setGiamGia(listSanPham.getJSONObject(j).getLong("GiaGiam"));
                         sanPham.setHinhDaiDien(listSanPham.getJSONObject(j).getString("HinhSp"));
+                        sanPham.setLoaiSanPham(listSanPham.getJSONObject(j).getString("LoaiThoiTrang"));
 
                         //Màu sắc
                         String[] listMauSanPham = new String[listSanPham.getJSONObject(j).getJSONArray("Mau").length()];
