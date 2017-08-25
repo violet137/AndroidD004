@@ -4,7 +4,7 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/search_toolbar"
-            android:icon="@drawable/places_ic_search"
+            android:icon="@drawable/icon_search"
             android:title="Search"
             app:actionViewClass="android.support.v7.widget.SearchView"
             app:showAsAction="always|collapseActionView" />
@@ -21,7 +21,7 @@
 
         <item
             android:id="@+id/my_bag_toolbar"
-            android:icon="@drawable/icon_bag2"
+            android:icon="@drawable/icon_bag_64"
             android:title="Shopping bag"
             app:showAsAction="always" />
 

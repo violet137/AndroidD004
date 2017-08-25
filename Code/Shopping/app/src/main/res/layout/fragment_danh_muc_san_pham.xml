@@ -56,6 +56,18 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/item_danh_muc_margin_top">
             </include>
+
+            <!-- Xu hướng thời trang -->
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rvFashion_DanhMucSanPham_Fragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginTop="@dimen/layout_margin_10dp"
+                android:paddingTop="1dp"
+                android:paddingBottom="1dp"
+                android:background="@drawable/shape_khung_thin"/>
+
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
 

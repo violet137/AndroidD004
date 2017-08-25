@@ -14,41 +14,41 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!-- Hình đại diện -->
-        <ImageView
-            android:id="@+id/head_image_fragment_chi_tiet_sale"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/banner_height"
-            android:paddingLeft="@dimen/xu_huong_thoi_trang_horizontal_padding"
-            android:paddingRight="@dimen/xu_huong_thoi_trang_horizontal_padding"
-            android:scaleType="fitXY"/>
-        <!-- Descripton -->
-        <TextView
-            android:id="@+id/description_text_fragment_chi_tiet_sale"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/description_xu_huong_thoi_trang_margin"
-            android:ellipsize="end"
-            android:gravity="center"
-            android:maxLines="2"
-            android:text="Test Description"
-            android:textSize="@dimen/text_size"
-            android:textColor="@color/colorTextDark"/>
-
-        <!-- Video -->
-        <VideoView
-            android:id="@+id/head_video_fragment_chi_tiet_sale"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/banner_height"
-            android:visibility="gone"
-            android:layout_marginBottom="@dimen/xu_huong_thoi_trang_vertical_margin"/>
+            android:orientation="vertical"
+            android:background="@drawable/shape_khung_thin">
+            <!-- Hình đại diện -->
+            <ImageView
+                android:id="@+id/head_image_fragment_chi_tiet_sale"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/banner_height"
+                android:paddingLeft="@dimen/xu_huong_thoi_trang_horizontal_padding"
+                android:paddingRight="@dimen/xu_huong_thoi_trang_horizontal_padding"
+                android:scaleType="fitXY"/>
+            <!-- Descripton -->
+            <TextView
+                android:id="@+id/description_text_fragment_chi_tiet_sale"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/description_xu_huong_thoi_trang_margin"
+                android:ellipsize="end"
+                android:gravity="center"
+                android:maxLines="2"
+                android:text="Test Description"
+                android:textSize="@dimen/text_size"
+                android:textStyle="bold"
+                android:textColor="@color/colorTextDark" />
+        </LinearLayout>
 
         <!-- List sản phẩm -->
         <android.support.v7.widget.RecyclerView
             android:id="@+id/list_san_pham_fragment_chi_tiet_sale"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/chi_tiet_sale_margin_top"
             android:layout_marginBottom="@dimen/xu_huong_thoi_trang_vertical_margin"
-            android:background="@color/colorPrimary"/>
+            android:background="@drawable/shape_khung_thin"/>
     </LinearLayout>
 </android.support.v4.widget.NestedScrollView>

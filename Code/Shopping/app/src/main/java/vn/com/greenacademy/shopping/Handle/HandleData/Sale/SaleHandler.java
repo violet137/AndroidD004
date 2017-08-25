@@ -40,19 +40,44 @@ public class SaleHandler extends LoadDataSaleHandler implements View.OnClickList
         onClickListener = new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ArrayList<SanPham> sanPham;
                 switch (v.getId()){
+                    case R.id.llXemAll_saleFragment:
+
+//                        SaleFragment.dataProductSaless;
+
+                        break;
                     case R.id.llNu_saleFragment:
-                        ArrayList<SanPham> sanPhamNu = new ArrayList<>();
+                        sanPham = new ArrayList<>();
                         for (int i = 0; i < SaleFragment.dataProductSaless.size(); i++) {
-//                            if (SaleFragment.dataProductSaless.get(i).get)
-                            sanPhamNu.add(SaleFragment.dataProductSaless.get(i));
+                            if (SaleFragment.dataProductSaless.get(i).getLoaiSanPham().equals("Nu")){
+                                sanPham.add(SaleFragment.dataProductSaless.get(i));
+                            }
                         }
                         break;
                     case R.id.llNam_saleFragment:
+                        sanPham = new ArrayList<>();
+                        for (int i = 0; i < SaleFragment.dataProductSaless.size(); i++) {
+                            if (SaleFragment.dataProductSaless.get(i).getLoaiSanPham().equals("Nam")){
+                                sanPham.add(SaleFragment.dataProductSaless.get(i));
+                            }
+                        }
                         break;
                     case R.id.llTreEm_saleFragment:
+                        sanPham = new ArrayList<>();
+                        for (int i = 0; i < SaleFragment.dataProductSaless.size(); i++) {
+                            if (SaleFragment.dataProductSaless.get(i).getLoaiSanPham().equals("TreEm")){
+                                sanPham.add(SaleFragment.dataProductSaless.get(i));
+                            }
+                        }
                         break;
                     case R.id.llTrangTri_saleFragment:
+                        sanPham = new ArrayList<>();
+                        for (int i = 0; i < SaleFragment.dataProductSaless.size(); i++) {
+                            if (SaleFragment.dataProductSaless.get(i).getLoaiSanPham().equals("Home")){
+                                sanPham.add(SaleFragment.dataProductSaless.get(i));
+                            }
+                        }
                         break;
                 }
             }

@@ -10,6 +10,7 @@ import vn.com.greenacademy.shopping.Fragment.Magazine.MagazineFragment;
 import vn.com.greenacademy.shopping.Fragment.DanhMucSanPham.DanhMucSanPhamFragment;
 import vn.com.greenacademy.shopping.Fragment.Main.SanPham.ThongTinSanPhamFragment;
 import vn.com.greenacademy.shopping.Fragment.Main.XuHuongThoiTrang.XuHuongThoiTrangFragment;
+import vn.com.greenacademy.shopping.Fragment.Sale.ChiTietSaleFragment;
 import vn.com.greenacademy.shopping.Model.Home.ItemHome;
 import vn.com.greenacademy.shopping.Util.SupportKeyList;
 import vn.com.greenacademy.shopping.Util.Ui.BaseFragment;
@@ -30,7 +31,9 @@ public class ClickListenerHomeItem {
                 switch (itemHome.getFlagItemHome()){
 
                     case SupportKeyList.ClickHome_Advertise:
-                        Toast.makeText(activity, itemHome.getId(), Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(activity, itemHome.getId(), Toast.LENGTH_SHORT).show();
+                        baseFragment.ChuyenFragment(ChiTietSaleFragment.newInstance(Long.parseLong(itemHome.getId())), SupportKeyList.TAG_CHI_TIET_DANH_MUC_SAN_PHAM, true);
+
                         break;
 
                     case SupportKeyList.ClickHome_Products:

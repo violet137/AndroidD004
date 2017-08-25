@@ -95,12 +95,12 @@ public class SupportKeyList {
     public static final int Men_slide = 2;
     public static final int Kids_slide = 3;
     public static final int Home_slide = 4;
-    public static final int Sale_slide = 5;
-    public static final int Magazine_slide = 6;
-    public static final int Wish_list_slide = 7;
-    public static final int My_Shopping_slide = 8;
-    public static final int Find_a_store_slide = 9;
-    public static final int Support_slide = 10;
+//    public static final int Sale_slide = 5;
+    public static final int Magazine_slide = 5;
+    public static final int Wish_list_slide = 6;
+    public static final int My_Shopping_slide = 7;
+    public static final int Find_a_store_slide = 8;
+    public static final int Support_slide = 9;
 
     // key vi tri loi cua Fragment Dang ky
     public static final int Email_Error = 0;

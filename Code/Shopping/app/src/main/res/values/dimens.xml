@@ -180,6 +180,9 @@
     <dimen name="ll_layout_padding_5dp">5dp</dimen>
     <dimen name="vp_layout_height_150dp">150dp</dimen>
 
+    <!-- Chi tiết sale -->
+    <dimen name="chi_tiet_sale_margin_top">10dp</dimen>
+
     <!-- item listview sale -->
     <dimen name="ll_layout_with_125dp">125dp</dimen>
     <dimen name="iv_layout_height_95dp">95dp</dimen>

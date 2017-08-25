@@ -77,14 +77,14 @@ public class SlideMenuHandler extends LoadDataSlideMenuHandler{
                 }
                 baseFragment.ChuyenFragment(new DanhMucSanPhamFragment("Home"), SupportKeyList.TAG_DANH_MUC_SAN_PHAM, true);
                 break;
-            case SupportKeyList.Sale_slide:
-                temp = "Sale";
-                while(count > 0){
-                    baseFragment.XoaFragment();
-                    count--;
-                }
-                baseFragment.ChuyenFragment(new SaleFragment(), SupportKeyList.TAG_FRAGMENT_SALE, true);
-                break;
+//            case SupportKeyList.Sale_slide:
+//                temp = "Sale";
+//                while(count > 0){
+//                    baseFragment.XoaFragment();
+//                    count--;
+//                }
+//                baseFragment.ChuyenFragment(new SaleFragment(), SupportKeyList.TAG_FRAGMENT_SALE, true);
+//                break;
             case SupportKeyList.Magazine_slide:
                 temp = "Magazine";
                 while(count > 0){

@@ -52,6 +52,7 @@ public class DanhMucSanPhamFragment extends Fragment {
     ImageView ivPhoto;
     ViewPager vpHotProduct;
     RecyclerView rvMenu;
+    RecyclerView rvFashion;
     LinearLayout itemHotProduct;
     RadioGroup rgHotProduct;
 
@@ -81,6 +82,8 @@ public class DanhMucSanPhamFragment extends Fragment {
         danhMucSPHandler.getDataServer(idDanhMuc);
 
         danhMucSPHandler.getDataNewProductServer(idDanhMuc, 9);
+
+//        danhMucSPHandler.getDataXuHuong(idDanhMuc);
     }
 
     @Override
@@ -115,6 +118,10 @@ public class DanhMucSanPhamFragment extends Fragment {
         vpHotProduct = (ViewPager) view.findViewById(R.id.vpSanPham_vp_sp_hot);
 
         rgHotProduct = (RadioGroup) view.findViewById(R.id.rgSoLuongVP_item_hotProduct_DM);
+
+        rvFashion = (RecyclerView) view.findViewById(R.id.rvFashion_DanhMucSanPham_Fragment);
+        rvFashion.setLayoutManager(new GridLayoutManager(getActivity(), 1));
+        rvFashion.setNestedScrollingEnabled(false);
 
         itemHotProduct = (LinearLayout) view.findViewById(R.id.item_vp_sp_hot);
 

@@ -26,7 +26,6 @@
                 android:id="@+id/listDM_saleFragment"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:visibility="gone"
                 android:orientation="vertical">
 
 
@@ -34,11 +33,12 @@
                     android:id="@+id/llXemAll_saleFragment"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
                     android:layout_marginTop="@dimen/item_danh_muc_margin_top"
-                    android:background="@drawable/shape_khung_thin">
+                    android:background="@drawable/shape_khung_thin"
+                    android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/textView16"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="@dimen/textView_pandding_left_15dp"
@@ -53,8 +53,9 @@
                     android:id="@+id/llNu_saleFragment"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:background="@drawable/shape_khung_thin">
+                    android:background="@drawable/shape_khung_thin"
+                    android:orientation="vertical">
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -70,8 +71,9 @@
                     android:id="@+id/llNam_saleFragment"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:background="@drawable/shape_khung_thin">
+                    android:background="@drawable/shape_khung_thin"
+                    android:orientation="vertical">
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -87,8 +89,9 @@
                     android:id="@+id/llTreEm_saleFragment"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:background="@drawable/shape_khung_thin">
+                    android:background="@drawable/shape_khung_thin"
+                    android:orientation="vertical">
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -104,8 +107,9 @@
                     android:id="@+id/llTrangTri_saleFragment"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:background="@drawable/shape_khung_thin">
+                    android:background="@drawable/shape_khung_thin"
+                    android:orientation="vertical">
+
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"

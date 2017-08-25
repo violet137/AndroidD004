@@ -65,6 +65,8 @@ public class SaleFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_sale, container, false);
 
         llDanhMuc = (LinearLayout) view.findViewById(R.id.listDM_saleFragment);
+
+        view.findViewById(R.id.llXemAll_saleFragment).setOnClickListener(SaleHandler.onClickListener);
         view.findViewById(R.id.llNu_saleFragment).setOnClickListener(SaleHandler.onClickListener);
         view.findViewById(R.id.llNam_saleFragment).setOnClickListener(SaleHandler.onClickListener);
         view.findViewById(R.id.llTreEm_saleFragment).setOnClickListener(SaleHandler.onClickListener);

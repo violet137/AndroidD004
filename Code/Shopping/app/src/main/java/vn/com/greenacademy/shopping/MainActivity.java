@@ -18,6 +18,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -39,6 +40,8 @@ import vn.com.greenacademy.shopping.Util.SupportKeyList;
 import vn.com.greenacademy.shopping.Util.Ui.BaseFragment;
 
 public class MainActivity extends AppCompatActivity implements DataCallBack, View.OnClickListener {
+    public  static SearchView  searchView;
+
     ListView lv_item_slide_menu;
     public static TextView tvTenMuc;
     private DrawerLayout drawerLayout;
@@ -147,6 +150,7 @@ public class MainActivity extends AppCompatActivity implements DataCallBack, Vie
     //Menu của tool bar
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
+        searchView = (SearchView) menu.findItem(R.id.search_toolbar);
         getMenuInflater().inflate(R.menu.menu_tool_bar, menu);
         return true;
     }
