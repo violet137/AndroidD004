@@ -162,7 +162,7 @@ public class MainActivity extends AppCompatActivity implements DataCallBack, Vie
         if (fragment != null && fragment.getTag() != null) {
             switch (fragment.getTag()) {
                 case SupportKeyList.TAG_FRAGMENT_MAIN:
-                    menu.findItem(R.id.search_toolbar).setVisible(true);
+                    menu.findItem(R.id.search_toolbar).setVisible(false);
                     menu.findItem(R.id.my_bag_toolbar).setVisible(true);
                     menu.findItem(R.id.find_store_toolbar).setVisible(false);
                     menu.findItem(R.id.dang_nhap_toolbar).setVisible(false);
@@ -216,8 +216,8 @@ public class MainActivity extends AppCompatActivity implements DataCallBack, Vie
             }
             return true;
         }
-        menu.findItem(R.id.search_toolbar).setVisible(true);
         menu.findItem(R.id.my_bag_toolbar).setVisible(true);
+        menu.findItem(R.id.search_toolbar).setVisible(false);
         menu.findItem(R.id.find_store_toolbar).setVisible(false);
         menu.findItem(R.id.dang_nhap_toolbar).setVisible(false);
         menu.findItem(R.id.dang_xuat_toolbar).setVisible(false);
