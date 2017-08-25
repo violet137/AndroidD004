@@ -176,4 +176,10 @@ class LoadDataDanhMucSPHandler implements ServerCallBack{
                 break;
         }
     }
+
+    public void getDataXuHuong(String idDanhMuc) {
+        GetServerData getServerData = new GetServerData(this);
+        getServerData.execute(ServerUrl.UrlDanhMucSP+idDanhMuc);
+
+    }
 }
