@@ -77,7 +77,8 @@
                     android:orientation="horizontal"
                     android:paddingLeft="@dimen/buttons_horizontal_padding"
                     android:paddingRight="@dimen/buttons_horizontal_padding"
-                    android:layout_marginTop="@dimen/buttons_margin_top">
+                    android:layout_marginTop="@dimen/buttons_margin_top"
+                    android:visibility="gone">
                     <!-- Lọc -->
                     <Button
                         android:id="@+id/button_loc_san_pham"

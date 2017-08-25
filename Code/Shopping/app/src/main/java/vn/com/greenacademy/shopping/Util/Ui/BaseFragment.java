@@ -75,4 +75,9 @@ public class BaseFragment extends Fragment {
             fragmentManager.popBackStack();
         }
     }
+
+    public void XoaFragmentTruocDo(){
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+
+    }
 }

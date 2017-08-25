@@ -3,6 +3,7 @@ package vn.com.greenacademy.shopping.Handle.HandleData.GioHang;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -23,6 +24,7 @@ import vn.com.greenacademy.shopping.R;
 import vn.com.greenacademy.shopping.Util.ServerUrl;
 import vn.com.greenacademy.shopping.Util.SharePreference.MySharedPreferences;
 import vn.com.greenacademy.shopping.Util.SupportKeyList;
+import vn.com.greenacademy.shopping.Util.Ui.BaseFragment;
 
 /**
  * Created by zzzzz on 8/16/2017.
@@ -51,39 +53,41 @@ public class GioHangHandler {
     }
 
     public void themSanPhamGioHang(long idSanPham, int soLuong, String size, String mau){
-        try {
-            //Kiểm tra nếu giỏ hàng có sản phẩm thì add thêm ngược lại tạo mới
-            if (mySharedPref.getGioHang() != null) {
-                jsonArraySanPham = new JSONArray(mySharedPref.getGioHang());
-                for (int i = 0; i < jsonArraySanPham.length(); i++) {
-                    if (jsonArraySanPham.getJSONObject(i).getInt(KEY_ID_SAN_PHAM) == idSanPham){
-                        jsonArraySanPham.remove(i);
-                        mySharedPref.removeGioHang();
-                        break;
+        if (mySharedPref.getDaDangNhap()) {
+            try {
+                //Kiểm tra nếu giỏ hàng có sản phẩm thì add thêm ngược lại tạo mới
+                if (mySharedPref.getGioHang() != null) {
+                    jsonArraySanPham = new JSONArray(mySharedPref.getGioHang());
+                    for (int i = 0; i < jsonArraySanPham.length(); i++) {
+                        if (jsonArraySanPham.getJSONObject(i).getInt(KEY_ID_SAN_PHAM) == idSanPham) {
+                            jsonArraySanPham.remove(i);
+                            mySharedPref.removeGioHang();
+                            break;
+                        }
                     }
-                }
+                } else
+                    jsonArraySanPham = new JSONArray();
+
+                JSONObject objSanPham = new JSONObject();
+                objSanPham.put(KEY_ID_SAN_PHAM, idSanPham);
+                objSanPham.put(KEY_SO_LUONG, soLuong);
+                objSanPham.put(KEY_SIZE, size);
+                objSanPham.put(KEY_COLOR, mau);
+                jsonArraySanPham.put(objSanPham);
+                mySharedPref.setGioHang(jsonArraySanPham.toString());
+
+                //Data server
+                JSONObject objGioHang = new JSONObject();
+                objGioHang.put(KEY_ACCOUNT, mySharedPref.getEmail());
+                objGioHang.put(KEY_LIST_GIO_HANG, jsonArraySanPham);
+                DataServerAsyncTask serverAsyncTask = new DataServerAsyncTask(dataCallBack);
+                serverAsyncTask.execute(SupportKeyList.API_THEM_GIO_HANG, ServerUrl.UrlUpdateGioHang, "POST", objGioHang.toString());
+            } catch (JSONException e) {
+                e.printStackTrace();
             }
-            else
-                jsonArraySanPham = new JSONArray();
-
-            JSONObject objSanPham = new JSONObject();
-            objSanPham.put(KEY_ID_SAN_PHAM, idSanPham);
-            objSanPham.put(KEY_SO_LUONG, soLuong);
-            objSanPham.put(KEY_SIZE, size);
-            objSanPham.put(KEY_COLOR, mau);
-            jsonArraySanPham.put(objSanPham);
-            mySharedPref.setGioHang(jsonArraySanPham.toString());
-
-            //Data server
-            JSONObject objGioHang = new JSONObject();
-            objGioHang.put(KEY_ACCOUNT, mySharedPref.getEmail());
-            objGioHang.put(KEY_LIST_GIO_HANG, jsonArraySanPham);
-            DataServerAsyncTask serverAsyncTask = new DataServerAsyncTask(dataCallBack);
-            serverAsyncTask.execute(SupportKeyList.API_THEM_GIO_HANG, ServerUrl.UrlUpdateGioHang, "POST", objGioHang.toString());
-        } catch (JSONException e) {
-            e.printStackTrace();
+        } else {
+            dataCallBack.KetQua("chua_dang_nhap", null);
         }
-
     }
 
     public void UpdateSanPhamGioHang(long idSanPham, int soLuong, String size, String mau){

@@ -27,6 +27,7 @@ import org.json.JSONArray;
 
 import java.util.ArrayList;
 
+import vn.com.greenacademy.shopping.Fragment.MyShopping.TaiKhoan.DangNhapFragment;
 import vn.com.greenacademy.shopping.Handle.HandleData.GioHang.GioHangHandler;
 
 import vn.com.greenacademy.shopping.Handle.HandleData.ParseData.Product.ParseNewProductList;
@@ -71,7 +72,7 @@ public class ThongTinSanPhamFragment extends Fragment implements View.OnClickLis
     private int idSanPham;
     private int position;
     private String mauDuocChon;
-    private String sizeDuocChon = null;
+    private String sizeDuocChon;
     private String callFrom = "";
     private boolean isFromBackStack = false;
     private boolean themGioHang = false;
@@ -254,7 +255,10 @@ public class ThongTinSanPhamFragment extends Fragment implements View.OnClickLis
                 break;
             }
         }
-        btnSizeInfo.setText(getResources().getString(R.string.chon_size));
+        if (sizeDuocChon == null)
+            btnSizeInfo.setText(getResources().getString(R.string.chon_size));
+        else
+            btnSizeInfo.setText(sizeDuocChon);
     }
 
     //Tùy chọn size
@@ -427,6 +431,11 @@ public class ThongTinSanPhamFragment extends Fragment implements View.OnClickLis
                 break;
             case SupportKeyList.CAP_NHAT_THAT_BAI:
                 Toast.makeText(getActivity(), "Thêm thất bại!", Toast.LENGTH_SHORT).show();
+                break;
+            case "chua_dang_nhap":
+                Toast.makeText(getActivity(), "Đăng nhập để tiếp tục", Toast.LENGTH_SHORT).show();
+                BaseFragment baseFragment = new BaseFragment(getActivity(), getActivity().getSupportFragmentManager());
+                baseFragment.ChuyenFragment(new DangNhapFragment(), SupportKeyList.TAG_FRAGMENT_DANG_NHAP, true);
                 break;
         }
         progressDialog.dismiss();
