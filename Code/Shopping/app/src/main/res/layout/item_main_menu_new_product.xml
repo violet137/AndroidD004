@@ -14,7 +14,7 @@
         android:layout_height="@dimen/title_new_product_text_height"
         android:layout_weight="1"
         android:gravity="center"
-        android:text="Sản Phẩm Mới"
+        android:text="SẢN PHẨM MỚI"
         android:textColor="@color/cardview_dark_background"
         android:textSize="@dimen/title_text_size"
         android:textStyle="bold|italic" />

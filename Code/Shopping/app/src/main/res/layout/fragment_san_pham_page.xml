@@ -9,6 +9,8 @@
         android:id="@+id/hinh_san_pham"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:paddingLeft="@dimen/vertical_padding"
+        android:paddingRight="@dimen/vertical_padding"
         android:src="@drawable/banner_test1" />
 
     <TextView
