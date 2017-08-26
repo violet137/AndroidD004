@@ -241,6 +241,7 @@ public class MainActivity extends AppCompatActivity implements DataCallBack, Vie
                         break;
                     case SupportKeyList.ACCOUNT_GOOGLE:
                         GoogleHandler googleHandle = new GoogleHandler(this, this);
+                        googleHandle.connectBuild();
                         googleHandle.signOut();
                         break;
                     case SupportKeyList.ACCOUNT_FACEBOOK:
@@ -280,7 +281,7 @@ public class MainActivity extends AppCompatActivity implements DataCallBack, Vie
         switch (result) {
             case SupportKeyList.DANG_XUAT_THANH_CONG:
                 dataHandler.DangXuat();
-                Toast.makeText(this, "dang xuat thanh cong", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Đăng xuất thành công", Toast.LENGTH_SHORT).show();
                 baseFragment.ChuyenFragment(new DangNhapFragment(), SupportKeyList.TAG_FRAGMENT_DANG_NHAP, false);
                 break;
         }

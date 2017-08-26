@@ -78,7 +78,10 @@ public class GioHangHandler {
 
                 //Data server
                 JSONObject objGioHang = new JSONObject();
-                objGioHang.put(KEY_ACCOUNT, mySharedPref.getEmail());
+                if (mySharedPref.getLoaiTaiKhoan().equals(SupportKeyList.ACCOUNT_THUONG))
+                    objGioHang.put(KEY_ACCOUNT, mySharedPref.getEmail());
+                else
+                    objGioHang.put(KEY_ACCOUNT, mySharedPref.getIdTaiKhoan());
                 objGioHang.put(KEY_LIST_GIO_HANG, jsonArraySanPham);
                 DataServerAsyncTask serverAsyncTask = new DataServerAsyncTask(dataCallBack);
                 serverAsyncTask.execute(SupportKeyList.API_THEM_GIO_HANG, ServerUrl.UrlUpdateGioHang, "POST", objGioHang.toString());
@@ -156,6 +159,7 @@ public class GioHangHandler {
     public void getGioHangTuServer(){
         DataServerAsyncTask serverAsyncTask = new DataServerAsyncTask(dataCallBack);
         if(mySharedPref.getDaDangNhap()) {
+            String tes = mySharedPref.getIdTaiKhoan();
             if (mySharedPref.getLoaiTaiKhoan().equals(SupportKeyList.ACCOUNT_THUONG))
                 serverAsyncTask.execute(SupportKeyList.API_GET_GIO_HANG, ServerUrl.UrlGetGioHang + mySharedPref.getEmail(), "GET");
             else

@@ -167,9 +167,11 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener, 
 
                 //Check đăng nhập được gọi từ fragment nào
                 int index1 = getActivity().getSupportFragmentManager().getBackStackEntryCount();
-                FragmentManager.BackStackEntry backStackEntry1 = getActivity().getSupportFragmentManager().getBackStackEntryAt(index1 - 2);
-                if (!backStackEntry1.getName().equals(SupportKeyList.TAG_FRAGMENT_GIO_HANG))
-                    baseFragment.ChuyenFragment(new TaiKhoanFragment(), SupportKeyList.TAG_FRAGMENT_TAI_KHOAN, false);
+                if (index1 - 2 != -1) {
+                    FragmentManager.BackStackEntry backStackEntry1 = getActivity().getSupportFragmentManager().getBackStackEntryAt(index1 - 2);
+                    if (!backStackEntry1.getName().equals(SupportKeyList.TAG_FRAGMENT_GIO_HANG))
+                        baseFragment.ChuyenFragment(new TaiKhoanFragment(), SupportKeyList.TAG_FRAGMENT_TAI_KHOAN, false);
+                }
                 break;
 
             case SupportKeyList.DANG_NHAP_THAT_BAI:
