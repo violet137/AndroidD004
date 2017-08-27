@@ -254,6 +254,13 @@ public class GioHangFragment extends Fragment implements View.OnClickListener, D
             case SupportKeyList.CAP_NHAT_THAT_BAI:
                 Toast.makeText(getActivity(), "Cập nhật thất bại", Toast.LENGTH_SHORT).show();
                 break;
+            case SupportKeyList.API_XOA_GIO_HANG:
+                Toast.makeText(getActivity(), "Cập nhật thành công", Toast.LENGTH_SHORT).show();
+                if (mListSanPham.size() != 0)
+                    setUpUiCoSanPham();
+                else
+                    baseFragment.ChuyenFragment(new GioHangFragment(), SupportKeyList.TAG_FRAGMENT_GIO_HANG, false);
+                break;
         }
     }
 
