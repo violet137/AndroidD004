@@ -128,12 +128,14 @@ public class GoogleHandler extends FragmentActivity implements GoogleApiClient.O
                         @Override
                         public void onResult(@NonNull Status status) {
                             requestCode = 0;
-                            dataCallBack.KetQua(SupportKeyList.DANG_XUAT_THANH_CONG, null);
+                            mGoogleApiClient.stopAutoManage((FragmentActivity)mActivity);
+                            mGoogleApiClient.disconnect();
+//                            dataCallBack.KetQua(SupportKeyList.DANG_XUAT_THANH_CONG, null);
                         }
                     });
         }else {
 //            Toast.makeText(mActivity, "Chưa Đăng Nhập", Toast.LENGTH_SHORT).show();
-            dataCallBack.KetQua(SupportKeyList.DANG_XUAT_THANH_CONG, null);
+//            dataCallBack.KetQua(SupportKeyList.DANG_XUAT_THANH_CONG, null);
         }
     }
 

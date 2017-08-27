@@ -155,8 +155,11 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener, 
 
                 //Check đăng nhập được gọi từ fragment nào
                 int index = getActivity().getSupportFragmentManager().getBackStackEntryCount();
-                FragmentManager.BackStackEntry backStackEntry = getActivity().getSupportFragmentManager().getBackStackEntryAt(index - 2);
-                if (!backStackEntry.getName().equals(SupportKeyList.TAG_FRAGMENT_GIO_HANG))
+                if (index - 2 != -1) {
+                    FragmentManager.BackStackEntry backStackEntry = getActivity().getSupportFragmentManager().getBackStackEntryAt(index - 2);
+                    if (!backStackEntry.getName().equals(SupportKeyList.TAG_FRAGMENT_GIO_HANG))
+                        baseFragment.ChuyenFragment(new TaiKhoanFragment(), SupportKeyList.TAG_FRAGMENT_TAI_KHOAN, false);
+                }else
                     baseFragment.ChuyenFragment(new TaiKhoanFragment(), SupportKeyList.TAG_FRAGMENT_TAI_KHOAN, false);
                 break;
 
@@ -164,14 +167,15 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener, 
                 Toast.makeText(getActivity(), getString(R.string.toast_dang_nhap_thanh_cong) + " " + googleHandler.getUsername() , Toast.LENGTH_SHORT).show();
                 dataHandler.setTrangThaiDangNhap(bundle.getString("Token"),SupportKeyList.ACCOUNT_GOOGLE, googleHandler.getEmail(), googleHandler.getUsername(), googleHandler.getId(), true);
                 gioHangHandler.getGioHangTuServer();
-
+                googleHandler.signOut();
                 //Check đăng nhập được gọi từ fragment nào
                 int index1 = getActivity().getSupportFragmentManager().getBackStackEntryCount();
                 if (index1 - 2 != -1) {
                     FragmentManager.BackStackEntry backStackEntry1 = getActivity().getSupportFragmentManager().getBackStackEntryAt(index1 - 2);
                     if (!backStackEntry1.getName().equals(SupportKeyList.TAG_FRAGMENT_GIO_HANG))
                         baseFragment.ChuyenFragment(new TaiKhoanFragment(), SupportKeyList.TAG_FRAGMENT_TAI_KHOAN, false);
-                }
+                }else
+                    baseFragment.ChuyenFragment(new TaiKhoanFragment(), SupportKeyList.TAG_FRAGMENT_TAI_KHOAN, false);
                 break;
 
             case SupportKeyList.DANG_NHAP_THAT_BAI:
@@ -192,7 +196,10 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener, 
 
             case SupportKeyList.LAY_DATA_THANH_CONG:
                 gioHangHandler.luuGioHangTuServer(bundle);
-                baseFragment.XoaFragment();
+                if (getActivity() != null)
+                if (getActivity().getSupportFragmentManager().getBackStackEntryAt(getActivity().getSupportFragmentManager().getBackStackEntryCount()-2).getName().equals(SupportKeyList.TAG_FRAGMENT_GIO_HANG)) {
+                    baseFragment.XoaFragment();
+                }
                 break;
         }
         loadingDialog.dismiss();

@@ -240,9 +240,12 @@ public class MainActivity extends AppCompatActivity implements DataCallBack, Vie
                         baseFragment.ChuyenFragment(new DangNhapFragment(), SupportKeyList.TAG_FRAGMENT_DANG_NHAP, false);
                         break;
                     case SupportKeyList.ACCOUNT_GOOGLE:
-                        GoogleHandler googleHandle = new GoogleHandler(this, this);
-                        googleHandle.connectBuild();
-                        googleHandle.signOut();
+//                        GoogleHandler googleHandle = new GoogleHandler(this, this);
+//                        googleHandle.connectBuild();
+//                        googleHandle.signOut();
+                        dataHandler.DangXuat();
+                        Toast.makeText(this, "Đăng xuất thành công", Toast.LENGTH_SHORT).show();
+                        baseFragment.ChuyenFragment(new DangNhapFragment(), SupportKeyList.TAG_FRAGMENT_DANG_NHAP, false);
                         break;
                     case SupportKeyList.ACCOUNT_FACEBOOK:
                         break;
