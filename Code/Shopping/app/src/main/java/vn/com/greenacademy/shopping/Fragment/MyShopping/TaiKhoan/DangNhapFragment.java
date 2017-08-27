@@ -161,7 +161,7 @@ public class DangNhapFragment extends Fragment implements View.OnClickListener, 
                         baseFragment.ChuyenFragment(new TaiKhoanFragment(), SupportKeyList.TAG_FRAGMENT_TAI_KHOAN, false);
                 }
                 else
-                    baseFragment.ChuyenFragment(new TaiKhoanFragment()/z, SupportKeyList.TAG_FRAGMENT_TAI_KHOAN, false);
+                    baseFragment.ChuyenFragment(new TaiKhoanFragment(), SupportKeyList.TAG_FRAGMENT_TAI_KHOAN, false);
                 break;
 
             case SupportKeyList.DANG_NHAP_GOOGLE_THANH_CONG:
